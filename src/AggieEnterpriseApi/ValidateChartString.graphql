@@ -1,0 +1,21 @@
+query glValidateChartstring($segmentString: GlSegmentString!, $validateCVRs: Boolean) {
+  glValidateChartstring(segmentString: $segmentString, validateCVRs: $validateCVRs) {
+    validationResponse {
+    errorMessages
+    messageProperties
+    valid
+    }
+    segments {
+      account
+      activity
+      department
+      entity
+      fund
+      program
+      project
+      purpose
+    }
+    completeChartstring
+    codeCombinationId
+  }
+}
