@@ -1,0 +1,39 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  majorVersion: 0
+  minorVersion: 2
+  patchVersion: $[counter(variables['minorVersion'], 0)]
+  version: $(majorVersion).$(minorVersion).$(patchVersion)
+
+name: $(majorVersion).$(minorVersion).$(patchVersion)
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '6.0.x'
+
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run Server Tests'
+  inputs:
+    command: 'test'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: 'src/AggieEnterpriseApi/*.csproj'
+    versioningScheme: 'byBuildNumber'
