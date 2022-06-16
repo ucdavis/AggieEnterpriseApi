@@ -4,6 +4,578 @@
 namespace AggieEnterpriseApi
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartSegmentsResult : global::System.IEquatable<GlValidateChartSegmentsResult>, IGlValidateChartSegmentsResult
+    {
+        public GlValidateChartSegmentsResult(global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments glValidateChartSegments)
+        {
+            GlValidateChartSegments = glValidateChartSegments;
+        }
+
+        /// <summary>
+        /// Validates that the given set of GL chartstring segments are most likely valid for posting
+        /// to the financial system general ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If validateCVRs is true, certain combinations of attributes will be sanity checked.
+        /// 
+        /// This operation will return a fully populated set of segments, including defaults in
+        /// both individual segment and full chartstring form.
+        /// 
+        /// If the combination was previously known/used in the financial system, its unique ID will be included.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments GlValidateChartSegments { get; }
+
+        public virtual global::System.Boolean Equals(GlValidateChartSegmentsResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (GlValidateChartSegments.Equals(other.GlValidateChartSegments));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlValidateChartSegmentsResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * GlValidateChartSegments.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Return data structure when validating a set of GL segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput>, IGlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput
+    {
+        public GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput(global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse validationResponse, global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Segments segments, global::System.String? completeChartstring, global::System.Int64? codeCombinationId)
+        {
+            ValidationResponse = validationResponse;
+            Segments = segments;
+            CompleteChartstring = completeChartstring;
+            CodeCombinationId = codeCombinationId;
+        }
+
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse ValidationResponse { get; }
+
+        /// <summary>
+        /// Fully populated object with the GL segments combination that was validated.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Segments Segments { get; }
+
+        /// <summary>
+        /// Full chartstring with the GL segments combination that was validated.
+        /// </summary>
+        public global::System.String? CompleteChartstring { get; }
+
+        /// <summary>
+        /// The "codeCombinationId" is an informational property only.  If populated, it
+        /// indicates that the validated combination of segment values was previously
+        /// known to the financial system.  Validity still needs to be checked, as
+        /// chartstrings can be disabled or expire.  However, segments which match an
+        /// existing valid combination can not fail validation when posted to the
+        /// financial system.
+        /// </summary>
+        public global::System.Int64? CodeCombinationId { get; }
+
+        public virtual global::System.Boolean Equals(GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (ValidationResponse.Equals(other.ValidationResponse)) && Segments.Equals(other.Segments) && ((CompleteChartstring is null && other.CompleteChartstring is null) || CompleteChartstring != null && CompleteChartstring.Equals(other.CompleteChartstring)) && CodeCombinationId == other.CodeCombinationId;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * ValidationResponse.GetHashCode();
+                hash ^= 397 * Segments.GetHashCode();
+                if (CompleteChartstring != null)
+                {
+                    hash ^= 397 * CompleteChartstring.GetHashCode();
+                }
+
+                if (CodeCombinationId != null)
+                {
+                    hash ^= 397 * CodeCombinationId.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse>, IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse
+    {
+        public GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse(global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties, global::System.Boolean valid)
+        {
+            ErrorMessages = errorMessages;
+            MessageProperties = messageProperties;
+            Valid = valid;
+        }
+
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
+        public global::System.Boolean Valid { get; }
+
+        public virtual global::System.Boolean Equals(GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(MessageProperties, other.MessageProperties) && Valid == other.Valid;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (ErrorMessages != null)
+                {
+                    foreach (var ErrorMessages_elm in ErrorMessages)
+                    {
+                        hash ^= 397 * ErrorMessages_elm.GetHashCode();
+                    }
+                }
+
+                if (MessageProperties != null)
+                {
+                    foreach (var MessageProperties_elm in MessageProperties)
+                    {
+                        hash ^= 397 * MessageProperties_elm.GetHashCode();
+                    }
+                }
+
+                hash ^= 397 * Valid.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// GL segment values as separate fields.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments>, IGlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments
+    {
+        public GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments(global::System.String? account, global::System.String? activity, global::System.String? department, global::System.String? entity, global::System.String? fund, global::System.String? program, global::System.String? project, global::System.String? purpose)
+        {
+            Account = account;
+            Activity = activity;
+            Department = department;
+            Entity = entity;
+            Fund = fund;
+            Program = program;
+            Project = project;
+            Purpose = purpose;
+        }
+
+        /// <summary>
+        /// Required: Nature of the transaction, expense, income, liability, etc...
+        /// </summary>
+        public global::System.String? Account { get; }
+
+        /// <summary>
+        /// Optional: 
+        /// </summary>
+        public global::System.String? Activity { get; }
+
+        /// <summary>
+        /// Required: Financial department to which to charge a transaction.
+        /// </summary>
+        public global::System.String? Department { get; }
+
+        /// <summary>
+        /// Required: Entity to which to charge a transaction.
+        /// </summary>
+        public global::System.String? Entity { get; }
+
+        /// <summary>
+        /// Required: Funding source to which to charge a transaction.
+        /// </summary>
+        public global::System.String? Fund { get; }
+
+        /// <summary>
+        /// Optional: 
+        /// </summary>
+        public global::System.String? Program { get; }
+
+        /// <summary>
+        /// Optional: 
+        /// </summary>
+        public global::System.String? Project { get; }
+
+        /// <summary>
+        /// Required for Expenses: Functional purpose of the expense.
+        /// </summary>
+        public global::System.String? Purpose { get; }
+
+        public virtual global::System.Boolean Equals(GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((Account is null && other.Account is null) || Account != null && Account.Equals(other.Account))) && ((Activity is null && other.Activity is null) || Activity != null && Activity.Equals(other.Activity)) && ((Department is null && other.Department is null) || Department != null && Department.Equals(other.Department)) && ((Entity is null && other.Entity is null) || Entity != null && Entity.Equals(other.Entity)) && ((Fund is null && other.Fund is null) || Fund != null && Fund.Equals(other.Fund)) && ((Program is null && other.Program is null) || Program != null && Program.Equals(other.Program)) && ((Project is null && other.Project is null) || Project != null && Project.Equals(other.Project)) && ((Purpose is null && other.Purpose is null) || Purpose != null && Purpose.Equals(other.Purpose));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Account != null)
+                {
+                    hash ^= 397 * Account.GetHashCode();
+                }
+
+                if (Activity != null)
+                {
+                    hash ^= 397 * Activity.GetHashCode();
+                }
+
+                if (Department != null)
+                {
+                    hash ^= 397 * Department.GetHashCode();
+                }
+
+                if (Entity != null)
+                {
+                    hash ^= 397 * Entity.GetHashCode();
+                }
+
+                if (Fund != null)
+                {
+                    hash ^= 397 * Fund.GetHashCode();
+                }
+
+                if (Program != null)
+                {
+                    hash ^= 397 * Program.GetHashCode();
+                }
+
+                if (Project != null)
+                {
+                    hash ^= 397 * Project.GetHashCode();
+                }
+
+                if (Purpose != null)
+                {
+                    hash ^= 397 * Purpose.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartSegmentsResult
+    {
+        /// <summary>
+        /// Validates that the given set of GL chartstring segments are most likely valid for posting
+        /// to the financial system general ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If validateCVRs is true, certain combinations of attributes will be sanity checked.
+        /// 
+        /// This operation will return a fully populated set of segments, including defaults in
+        /// both individual segment and full chartstring form.
+        /// 
+        /// If the combination was previously known/used in the financial system, its unique ID will be included.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments GlValidateChartSegments { get; }
+    }
+
+    /// <summary>
+    /// Return data structure when validating a set of GL segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartSegments_GlValidateChartSegments
+    {
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse ValidationResponse { get; }
+
+        /// <summary>
+        /// Fully populated object with the GL segments combination that was validated.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Segments Segments { get; }
+
+        /// <summary>
+        /// Full chartstring with the GL segments combination that was validated.
+        /// </summary>
+        public global::System.String? CompleteChartstring { get; }
+
+        /// <summary>
+        /// The "codeCombinationId" is an informational property only.  If populated, it
+        /// indicates that the validated combination of segment values was previously
+        /// known to the financial system.  Validity still needs to be checked, as
+        /// chartstrings can be disabled or expire.  However, segments which match an
+        /// existing valid combination can not fail validation when posted to the
+        /// financial system.
+        /// </summary>
+        public global::System.Int64? CodeCombinationId { get; }
+    }
+
+    /// <summary>
+    /// Return data structure when validating a set of GL segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput : IGlValidateChartSegments_GlValidateChartSegments
+    {
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse
+    {
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
+        public global::System.Boolean Valid { get; }
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse : IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse
+    {
+    }
+
+    /// <summary>
+    /// GL segment values as separate fields.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartSegments_GlValidateChartSegments_Segments
+    {
+        /// <summary>
+        /// Required: Nature of the transaction, expense, income, liability, etc...
+        /// </summary>
+        public global::System.String? Account { get; }
+
+        /// <summary>
+        /// Optional: 
+        /// </summary>
+        public global::System.String? Activity { get; }
+
+        /// <summary>
+        /// Required: Financial department to which to charge a transaction.
+        /// </summary>
+        public global::System.String? Department { get; }
+
+        /// <summary>
+        /// Required: Entity to which to charge a transaction.
+        /// </summary>
+        public global::System.String? Entity { get; }
+
+        /// <summary>
+        /// Required: Funding source to which to charge a transaction.
+        /// </summary>
+        public global::System.String? Fund { get; }
+
+        /// <summary>
+        /// Optional: 
+        /// </summary>
+        public global::System.String? Program { get; }
+
+        /// <summary>
+        /// Optional: 
+        /// </summary>
+        public global::System.String? Project { get; }
+
+        /// <summary>
+        /// Required for Expenses: Functional purpose of the expense.
+        /// </summary>
+        public global::System.String? Purpose { get; }
+    }
+
+    /// <summary>
+    /// GL segment values as separate fields.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments : IGlValidateChartSegments_GlValidateChartSegments_Segments
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartstringResult : global::System.IEquatable<GlValidateChartstringResult>, IGlValidateChartstringResult
     {
         public GlValidateChartstringResult(global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring glValidateChartstring)
@@ -575,6 +1147,626 @@ namespace AggieEnterpriseApi
     {
     }
 
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlSegmentInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpEntityCodeFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpFundCodeFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpDepartmentCodeFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpAccountCodeFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpPurposeCodeFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpProjectCodeFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpProgramCodeFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpActivityCodeFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpFlex1CodeFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpFlex2CodeFormatter = default !;
+        public global::System.String TypeName => "GlSegmentInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _erpEntityCodeFormatter = serializerResolver.GetInputValueFormatter("ErpEntityCode");
+            _erpFundCodeFormatter = serializerResolver.GetInputValueFormatter("ErpFundCode");
+            _erpDepartmentCodeFormatter = serializerResolver.GetInputValueFormatter("ErpDepartmentCode");
+            _erpAccountCodeFormatter = serializerResolver.GetInputValueFormatter("ErpAccountCode");
+            _erpPurposeCodeFormatter = serializerResolver.GetInputValueFormatter("ErpPurposeCode");
+            _erpProjectCodeFormatter = serializerResolver.GetInputValueFormatter("ErpProjectCode");
+            _erpProgramCodeFormatter = serializerResolver.GetInputValueFormatter("ErpProgramCode");
+            _erpActivityCodeFormatter = serializerResolver.GetInputValueFormatter("ErpActivityCode");
+            _erpFlex1CodeFormatter = serializerResolver.GetInputValueFormatter("ErpFlex1Code");
+            _erpFlex2CodeFormatter = serializerResolver.GetInputValueFormatter("ErpFlex2Code");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.GlSegmentInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IGlSegmentInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsEntitySet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("entity", FormatEntity(input.Entity)));
+            }
+
+            if (inputInfo.IsFundSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("fund", FormatFund(input.Fund)));
+            }
+
+            if (inputInfo.IsDepartmentSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("department", FormatDepartment(input.Department)));
+            }
+
+            if (inputInfo.IsAccountSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("account", FormatAccount(input.Account)));
+            }
+
+            if (inputInfo.IsPurposeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("purpose", FormatPurpose(input.Purpose)));
+            }
+
+            if (inputInfo.IsProjectSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("project", FormatProject(input.Project)));
+            }
+
+            if (inputInfo.IsProgramSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("program", FormatProgram(input.Program)));
+            }
+
+            if (inputInfo.IsActivitySet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("activity", FormatActivity(input.Activity)));
+            }
+
+            if (inputInfo.IsFlex1Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("flex1", FormatFlex1(input.Flex1)));
+            }
+
+            if (inputInfo.IsFlex2Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("flex2", FormatFlex2(input.Flex2)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatEntity(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _erpEntityCodeFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatFund(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _erpFundCodeFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatDepartment(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _erpDepartmentCodeFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatAccount(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _erpAccountCodeFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatPurpose(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _erpPurposeCodeFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatProject(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _erpProjectCodeFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatProgram(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _erpProgramCodeFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatActivity(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _erpActivityCodeFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatFlex1(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _erpFlex1CodeFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatFlex2(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _erpFlex2CodeFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Input structure for specifying GL segment values as separate fields.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlSegmentInput : global::AggieEnterpriseApi.State.IGlSegmentInputInfo, global::System.IEquatable<GlSegmentInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlSegmentInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(GlSegmentInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Entity.Equals(other.Entity)) && Fund.Equals(other.Fund) && Department.Equals(other.Department) && Account.Equals(other.Account) && ((Purpose is null && other.Purpose is null) || Purpose != null && Purpose.Equals(other.Purpose)) && ((Project is null && other.Project is null) || Project != null && Project.Equals(other.Project)) && ((Program is null && other.Program is null) || Program != null && Program.Equals(other.Program)) && ((Activity is null && other.Activity is null) || Activity != null && Activity.Equals(other.Activity)) && ((Flex1 is null && other.Flex1 is null) || Flex1 != null && Flex1.Equals(other.Flex1)) && ((Flex2 is null && other.Flex2 is null) || Flex2 != null && Flex2.Equals(other.Flex2));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Entity.GetHashCode();
+                hash ^= 397 * Fund.GetHashCode();
+                hash ^= 397 * Department.GetHashCode();
+                hash ^= 397 * Account.GetHashCode();
+                if (Purpose != null)
+                {
+                    hash ^= 397 * Purpose.GetHashCode();
+                }
+
+                if (Project != null)
+                {
+                    hash ^= 397 * Project.GetHashCode();
+                }
+
+                if (Program != null)
+                {
+                    hash ^= 397 * Program.GetHashCode();
+                }
+
+                if (Activity != null)
+                {
+                    hash ^= 397 * Activity.GetHashCode();
+                }
+
+                if (Flex1 != null)
+                {
+                    hash ^= 397 * Flex1.GetHashCode();
+                }
+
+                if (Flex2 != null)
+                {
+                    hash ^= 397 * Flex2.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.String _value_entity = default !;
+        private global::System.Boolean _set_entity;
+        private global::System.String _value_fund = default !;
+        private global::System.Boolean _set_fund;
+        private global::System.String _value_department = default !;
+        private global::System.Boolean _set_department;
+        private global::System.String _value_account = default !;
+        private global::System.Boolean _set_account;
+        private global::System.String? _value_purpose;
+        private global::System.Boolean _set_purpose;
+        private global::System.String? _value_project;
+        private global::System.Boolean _set_project;
+        private global::System.String? _value_program;
+        private global::System.Boolean _set_program;
+        private global::System.String? _value_activity;
+        private global::System.Boolean _set_activity;
+        private global::System.String? _value_flex1;
+        private global::System.Boolean _set_flex1;
+        private global::System.String? _value_flex2;
+        private global::System.Boolean _set_flex2;
+        ///<summary>Required: Entity to which to charge a transaction.</summary>
+        public global::System.String Entity
+        {
+            get => _value_entity;
+            set
+            {
+                _set_entity = true;
+                _value_entity = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsEntitySet => _set_entity;
+        ///<summary>Required: Funding source to which to charge a transaction.</summary>
+        public global::System.String Fund
+        {
+            get => _value_fund;
+            set
+            {
+                _set_fund = true;
+                _value_fund = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsFundSet => _set_fund;
+        ///<summary>Required: Financial department to which to charge a transaction.</summary>
+        public global::System.String Department
+        {
+            get => _value_department;
+            set
+            {
+                _set_department = true;
+                _value_department = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsDepartmentSet => _set_department;
+        ///<summary>Required: Nature of the transaction, expense, income, liability, etc...</summary>
+        public global::System.String Account
+        {
+            get => _value_account;
+            set
+            {
+                _set_account = true;
+                _value_account = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsAccountSet => _set_account;
+        ///<summary>Required for Expenses: Functional purpose of the expense.</summary>
+        public global::System.String? Purpose
+        {
+            get => _value_purpose;
+            set
+            {
+                _set_purpose = true;
+                _value_purpose = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsPurposeSet => _set_purpose;
+        ///<summary>Optional: </summary>
+        public global::System.String? Project
+        {
+            get => _value_project;
+            set
+            {
+                _set_project = true;
+                _value_project = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsProjectSet => _set_project;
+        ///<summary>Optional: </summary>
+        public global::System.String? Program
+        {
+            get => _value_program;
+            set
+            {
+                _set_program = true;
+                _value_program = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsProgramSet => _set_program;
+        ///<summary>Optional: </summary>
+        public global::System.String? Activity
+        {
+            get => _value_activity;
+            set
+            {
+                _set_activity = true;
+                _value_activity = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsActivitySet => _set_activity;
+        ///<summary>Unused: For future UCOP Reporting Requirements.  Always 000000.</summary>
+        public global::System.String? Flex1
+        {
+            get => _value_flex1;
+            set
+            {
+                _set_flex1 = true;
+                _value_flex1 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsFlex1Set => _set_flex1;
+        ///<summary>Unused: For future UCOP Reporting Requirements.  Always 000000.</summary>
+        public global::System.String? Flex2
+        {
+            get => _value_flex2;
+            set
+            {
+                _set_flex2 = true;
+                _value_flex2 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsFlex2Set => _set_flex2;
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlValidateChartSegments GraphQL operation
+    /// <code>
+    /// query GlValidateChartSegments($segments: GlSegmentInput!, $validateCVRs: Boolean) {
+    ///   glValidateChartSegments(segments: $segments, validateCVRs: $validateCVRs) {
+    ///     __typename
+    ///     validationResponse {
+    ///       __typename
+    ///       errorMessages
+    ///       messageProperties
+    ///       valid
+    ///     }
+    ///     segments {
+    ///       __typename
+    ///       account
+    ///       activity
+    ///       department
+    ///       entity
+    ///       fund
+    ///       program
+    ///       project
+    ///       purpose
+    ///     }
+    ///     completeChartstring
+    ///     codeCombinationId
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartSegmentsQueryDocument : global::StrawberryShake.IDocument
+    {
+        private GlValidateChartSegmentsQueryDocument()
+        {
+        }
+
+        public static GlValidateChartSegmentsQueryDocument Instance { get; } = new GlValidateChartSegmentsQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x6c, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x68, 0x61, 0x72, 0x74, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x47, 0x6c, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x2c, 0x20, 0x24, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x56, 0x52, 0x73, 0x3a, 0x20, 0x42, 0x6f, 0x6f, 0x6c, 0x65, 0x61, 0x6e, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x68, 0x61, 0x72, 0x74, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x2c, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x56, 0x52, 0x73, 0x3a, 0x20, 0x24, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x56, 0x52, 0x73, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x20, 0x64, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x20, 0x66, 0x75, 0x6e, 0x64, 0x20, 0x70, 0x72, 0x6f, 0x67, 0x72, 0x61, 0x6d, 0x20, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x20, 0x7d, 0x20, 0x63, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x68, 0x61, 0x72, 0x74, 0x73, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x43, 0x6f, 0x6d, 0x62, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "964cefc03e048a3621d582574da2807e");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlValidateChartSegments GraphQL operation
+    /// <code>
+    /// query GlValidateChartSegments($segments: GlSegmentInput!, $validateCVRs: Boolean) {
+    ///   glValidateChartSegments(segments: $segments, validateCVRs: $validateCVRs) {
+    ///     __typename
+    ///     validationResponse {
+    ///       __typename
+    ///       errorMessages
+    ///       messageProperties
+    ///       valid
+    ///     }
+    ///     segments {
+    ///       __typename
+    ///       account
+    ///       activity
+    ///       department
+    ///       entity
+    ///       fund
+    ///       program
+    ///       project
+    ///       purpose
+    ///     }
+    ///     completeChartstring
+    ///     codeCombinationId
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartSegmentsQuery : global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IGlValidateChartSegmentsResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _glSegmentInputFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _booleanFormatter;
+        public GlValidateChartSegmentsQuery(global::StrawberryShake.IOperationExecutor<IGlValidateChartSegmentsResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _glSegmentInputFormatter = serializerResolver.GetInputValueFormatter("GlSegmentInput");
+            _booleanFormatter = serializerResolver.GetInputValueFormatter("Boolean");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGlValidateChartSegmentsResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlValidateChartSegmentsResult>> ExecuteAsync(global::AggieEnterpriseApi.GlSegmentInput segments, global::System.Boolean? validateCVRs, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(segments, validateCVRs);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGlValidateChartSegmentsResult>> Watch(global::AggieEnterpriseApi.GlSegmentInput segments, global::System.Boolean? validateCVRs, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(segments, validateCVRs);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.GlSegmentInput segments, global::System.Boolean? validateCVRs)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("segments", FormatSegments(segments));
+            variables.Add("validateCVRs", FormatValidateCVRs(validateCVRs));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: GlValidateChartSegmentsQueryDocument.Instance.Hash.Value, name: "GlValidateChartSegments", document: GlValidateChartSegmentsQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatSegments(global::AggieEnterpriseApi.GlSegmentInput value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _glSegmentInputFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatValidateCVRs(global::System.Boolean? value)
+        {
+            if (value is null)
+            {
+                return value;
+            }
+            else
+            {
+                return _booleanFormatter.Format(value);
+            }
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlValidateChartSegments GraphQL operation
+    /// <code>
+    /// query GlValidateChartSegments($segments: GlSegmentInput!, $validateCVRs: Boolean) {
+    ///   glValidateChartSegments(segments: $segments, validateCVRs: $validateCVRs) {
+    ///     __typename
+    ///     validationResponse {
+    ///       __typename
+    ///       errorMessages
+    ///       messageProperties
+    ///       valid
+    ///     }
+    ///     segments {
+    ///       __typename
+    ///       account
+    ///       activity
+    ///       department
+    ///       entity
+    ///       fund
+    ///       program
+    ///       project
+    ///       purpose
+    ///     }
+    ///     completeChartstring
+    ///     codeCombinationId
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartSegmentsQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlValidateChartSegmentsResult>> ExecuteAsync(global::AggieEnterpriseApi.GlSegmentInput segments, global::System.Boolean? validateCVRs, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IGlValidateChartSegmentsResult>> Watch(global::AggieEnterpriseApi.GlSegmentInput segments, global::System.Boolean? validateCVRs, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
     /// <summary>
     /// Represents the operation service of the GlValidateChartstring GraphQL operation
     /// <code>
@@ -763,13 +1955,16 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class AggieEnterpriseClient : global::AggieEnterpriseApi.IAggieEnterpriseClient
     {
+        private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
+            _glValidateChartSegments = glValidateChartSegments ?? throw new global::System.ArgumentNullException(nameof(glValidateChartSegments));
             _glValidateChartstring = glValidateChartstring ?? throw new global::System.ArgumentNullException(nameof(glValidateChartstring));
         }
 
         public static global::System.String ClientName => "AggieEnterpriseClient";
+        public global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments => _glValidateChartSegments;
         public global::AggieEnterpriseApi.IGlValidateChartstringQuery GlValidateChartstring => _glValidateChartstring;
     }
 
@@ -779,12 +1974,124 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IAggieEnterpriseClient
     {
+        global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments { get; }
+
         global::AggieEnterpriseApi.IGlValidateChartstringQuery GlValidateChartstring { get; }
     }
 }
 
 namespace AggieEnterpriseApi.State
 {
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartSegmentsResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlValidateChartSegmentsResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public GlValidateChartSegmentsResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IGlValidateChartSegmentsResult);
+        public GlValidateChartSegmentsResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is GlValidateChartSegmentsResultInfo info)
+            {
+                return new GlValidateChartSegmentsResult(MapNonNullableIGlValidateChartSegments_GlValidateChartSegments(info.GlValidateChartSegments, snapshot));
+            }
+
+            throw new global::System.ArgumentException("GlValidateChartSegmentsResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments MapNonNullableIGlValidateChartSegments_GlValidateChartSegments(global::AggieEnterpriseApi.State.GlValidateChartSegmentsOutputData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlValidateChartSegments_GlValidateChartSegments returnValue = default !;
+            if (data.__typename.Equals("GlValidateChartSegmentsOutput", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput(MapNonNullableIGlValidateChartSegments_GlValidateChartSegments_ValidationResponse(data.ValidationResponse ?? throw new global::System.ArgumentNullException(), snapshot), MapNonNullableIGlValidateChartSegments_GlValidateChartSegments_Segments(data.Segments ?? throw new global::System.ArgumentNullException(), snapshot), data.CompleteChartstring, data.CodeCombinationId);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse MapNonNullableIGlValidateChartSegments_GlValidateChartSegments_ValidationResponse(global::AggieEnterpriseApi.State.ValidationResponseData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse returnValue = default !;
+            if (data.__typename.Equals("ValidationResponse", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse(data.ErrorMessages, data.MessageProperties, data.Valid ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Segments MapNonNullableIGlValidateChartSegments_GlValidateChartSegments_Segments(global::AggieEnterpriseApi.State.GlSegmentsData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlValidateChartSegments_GlValidateChartSegments_Segments returnValue = default !;
+            if (data.__typename.Equals("GlSegments", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments(data.Account, data.Activity, data.Department, data.Entity, data.Fund, data.Program, data.Project, data.Purpose);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartSegmentsResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public GlValidateChartSegmentsResultInfo(global::AggieEnterpriseApi.State.GlValidateChartSegmentsOutputData glValidateChartSegments, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            GlValidateChartSegments = glValidateChartSegments;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Validates that the given set of GL chartstring segments are most likely valid for posting
+        /// to the financial system general ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If validateCVRs is true, certain combinations of attributes will be sanity checked.
+        /// 
+        /// This operation will return a fully populated set of segments, including defaults in
+        /// both individual segment and full chartstring form.
+        /// 
+        /// If the combination was previously known/used in the financial system, its unique ID will be included.
+        /// </summary>
+        public global::AggieEnterpriseApi.State.GlValidateChartSegmentsOutputData GlValidateChartSegments { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new GlValidateChartSegmentsResultInfo(GlValidateChartSegments, _entityIds, version);
+        }
+    }
+
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartstringResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlValidateChartstringResult>
     {
@@ -892,6 +2199,229 @@ namespace AggieEnterpriseApi.State
         public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
         {
             return new GlValidateChartstringResultInfo(GlValidateChartstring, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IGlSegmentInputInfo
+    {
+        global::System.Boolean IsEntitySet { get; }
+
+        global::System.Boolean IsFundSet { get; }
+
+        global::System.Boolean IsDepartmentSet { get; }
+
+        global::System.Boolean IsAccountSet { get; }
+
+        global::System.Boolean IsPurposeSet { get; }
+
+        global::System.Boolean IsProjectSet { get; }
+
+        global::System.Boolean IsProgramSet { get; }
+
+        global::System.Boolean IsActivitySet { get; }
+
+        global::System.Boolean IsFlex1Set { get; }
+
+        global::System.Boolean IsFlex2Set { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartSegmentsBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpEntityCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFundCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpDepartmentCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpAccountCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPurposeCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProjectCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProgramCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpActivityCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFlex1CodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFlex2CodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _glSegmentStringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int64, global::System.Int64> _longParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        public GlValidateChartSegmentsBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _erpEntityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpEntityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpEntityCode` found.");
+            _erpFundCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFundCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpFundCode` found.");
+            _erpDepartmentCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpDepartmentCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpDepartmentCode` found.");
+            _erpAccountCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpAccountCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpAccountCode` found.");
+            _erpPurposeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPurposeCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPurposeCode` found.");
+            _erpProjectCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProjectCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProjectCode` found.");
+            _erpProgramCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProgramCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProgramCode` found.");
+            _erpActivityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpActivityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpActivityCode` found.");
+            _erpFlex1CodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFlex1Code") ?? throw new global::System.ArgumentException("No serializer for type `ErpFlex1Code` found.");
+            _erpFlex2CodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFlex2Code") ?? throw new global::System.ArgumentException("No serializer for type `ErpFlex2Code` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _glSegmentStringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("GlSegmentString") ?? throw new global::System.ArgumentException("No serializer for type `GlSegmentString` found.");
+            _longParser = serializerResolver.GetLeafValueParser<global::System.Int64, global::System.Int64>("Long") ?? throw new global::System.ArgumentException("No serializer for type `Long` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IGlValidateChartSegmentsResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IGlValidateChartSegmentsResult Result, GlValidateChartSegmentsResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IGlValidateChartSegmentsResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IGlValidateChartSegmentsResult, GlValidateChartSegmentsResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new GlValidateChartSegmentsResultInfo(DeserializeNonNullableIGlValidateChartSegments_GlValidateChartSegments(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "glValidateChartSegments")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.GlValidateChartSegmentsOutputData DeserializeNonNullableIGlValidateChartSegments_GlValidateChartSegments(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("GlValidateChartSegmentsOutput", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.GlValidateChartSegmentsOutputData(typename, validationResponse: DeserializeNonNullableIGlValidateChartSegments_GlValidateChartSegments_ValidationResponse(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResponse")), segments: DeserializeNonNullableIGlValidateChartSegments_GlValidateChartSegments_Segments(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "segments")), completeChartstring: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "completeChartstring")), codeCombinationId: DeserializeInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "codeCombinationId")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.ValidationResponseData DeserializeNonNullableIGlValidateChartSegments_GlValidateChartSegments_ValidationResponse(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ValidationResponseData(typename, errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), messageProperties: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "messageProperties")), valid: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "valid")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+
+        private global::AggieEnterpriseApi.State.GlSegmentsData DeserializeNonNullableIGlValidateChartSegments_GlValidateChartSegments_Segments(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("GlSegments", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.GlSegmentsData(typename, account: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "account")), activity: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "activity")), department: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "department")), entity: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "entity")), fund: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fund")), program: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "program")), project: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "project")), purpose: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "purpose")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _erpAccountCodeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Int64? DeserializeInt64(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _longParser.Parse(obj.Value.GetInt64()!);
         }
     }
 
@@ -1230,6 +2760,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::AggieEnterpriseApi.State.AggieEnterpriseClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartSegmentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartstringQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.AggieEnterpriseClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IAggieEnterpriseClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -1261,16 +2792,26 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteArraySerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlSegmentString"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpAccountCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpActivityCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDepartmentCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpEntityCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFundCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpProgramCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpProjectCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDepartmentCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpAccountCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpPurposeCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpProjectCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpProgramCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpActivityCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFlex1Code"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFlex2Code"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlSegmentString"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlSegmentInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>, global::AggieEnterpriseApi.State.GlValidateChartSegmentsResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>, global::AggieEnterpriseApi.State.GlValidateChartSegmentsBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.GlValidateChartSegmentsQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartSegmentsQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartstringResult>, global::AggieEnterpriseApi.State.GlValidateChartstringResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartstringResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IGlValidateChartstringQuery>(sp));

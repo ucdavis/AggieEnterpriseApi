@@ -17,4 +17,10 @@
     <PackageReference Include="StrawberryShake.Transport.Http" Version="12.11.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <GraphQL Update="Queries\ValidateChartString.graphql">
+      <Generator>MSBuild:Compile</Generator>
+    </GraphQL>
+  </ItemGroup>
+
 </Project>
