@@ -3,6 +3,7 @@ using AggieEnterpriseApi;
 using AggieEnterpriseApi.Extensions;
 using ApiTests.Setup;
 using Xunit;
+using Shouldly;
 
 namespace ApiTests;
 
@@ -16,8 +17,15 @@ public class ChartValidationTests
         var result = await client.GlValidateChartstring.ExecuteAsync("3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000-000000", false);
 
         var data = result.ReadData();
-
-        Assert.True(data.GlValidateChartstring.ValidationResponse.Valid, "Response should be valid");
+        data.GlValidateChartstring.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+        data.GlValidateChartstring.Segments.Entity.ShouldBe("3110");
+        data.GlValidateChartstring.Segments.Fund.ShouldBe("72160");
+        data.GlValidateChartstring.Segments.Department.ShouldBe("9300202");
+        data.GlValidateChartstring.Segments.Account.ShouldBe("775000");
+        data.GlValidateChartstring.Segments.Purpose.ShouldBe("85");
+        data.GlValidateChartstring.Segments.Project.ShouldBe("0000000000");
+        data.GlValidateChartstring.Segments.Program.ShouldBe("000");
+        data.GlValidateChartstring.Segments.Activity.ShouldBe("000000");
     }
     
     [Fact]
@@ -41,7 +49,7 @@ public class ChartValidationTests
         var result = await client.GlValidateChartSegments.ExecuteAsync(segments, false);
 
         var data = result.ReadData();
-
-        Assert.True(data.GlValidateChartSegments.ValidationResponse.Valid, "Response should be valid");
+        data.GlValidateChartSegments.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+        data.GlValidateChartSegments.CompleteChartstring.ShouldBe("3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000-000000");
     }
 }
