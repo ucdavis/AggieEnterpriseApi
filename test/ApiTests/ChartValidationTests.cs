@@ -4,15 +4,27 @@ using AggieEnterpriseApi.Extensions;
 using ApiTests.Setup;
 using Xunit;
 using Shouldly;
-
-namespace ApiTests;
+using Microsoft.Extensions.Configuration;
 
 public class ChartValidationTests
 {
+    private readonly string _token;
+
+    public ChartValidationTests()
+    {
+        var configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .AddUserSecrets<ChartValidationTests>()
+           .Build();
+
+        _token = configuration.GetSection("Token").Value;
+    }
+
+    
     [Fact]
     public async Task ValidChartString()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, TestData.GraphQlApiToken);
+                var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, _token);
 
         var result = await client.GlValidateChartstring.ExecuteAsync("3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000-000000", false);
 
@@ -31,7 +43,7 @@ public class ChartValidationTests
     [Fact]
     public async Task ValidChartSegments()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, TestData.GraphQlApiToken);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, _token);
 
         var segments = new GlSegmentInput
         {
@@ -56,7 +68,7 @@ public class ChartValidationTests
     [Fact]
     public async Task ValidChartSegmentsWithoutFlex()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, TestData.GraphQlApiToken);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, _token);
 
         var segments = new GlSegmentInput
         {
