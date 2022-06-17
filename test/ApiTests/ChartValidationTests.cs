@@ -13,7 +13,6 @@ public class ChartValidationTests
     public ChartValidationTests()
     {
         var configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
             .AddUserSecrets<ChartValidationTests>()
            .Build();
 
