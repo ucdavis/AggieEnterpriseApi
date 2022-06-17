@@ -52,4 +52,27 @@ public class ChartValidationTests
         data.GlValidateChartSegments.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
         data.GlValidateChartSegments.CompleteChartstring.ShouldBe("3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000-000000");
     }
+
+    [Fact]
+    public async Task ValidChartSegmentsWithoutFlex()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, TestData.GraphQlApiToken);
+
+        var segments = new GlSegmentInput
+        {
+            Entity = "3110",
+            Fund = "72160",
+            Department = "9300202",
+            Account = "775000",
+            Purpose = "85",
+            Project = "0000000000",
+            Program = "000",
+            Activity = "000000"
+        };
+        var result = await client.GlValidateChartSegments.ExecuteAsync(segments, false);
+
+        var data = result.ReadData();
+        data.GlValidateChartSegments.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+        data.GlValidateChartSegments.CompleteChartstring.ShouldBe("3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000-000000");
+    }
 }
