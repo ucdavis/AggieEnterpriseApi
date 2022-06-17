@@ -5,6 +5,7 @@
     <Version>1.0.0</Version>
     <Authors>Scott Kirkland</Authors>
     <Company>UC Davis</Company>
+    <Description>Aggie Enterprise API</Description>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
