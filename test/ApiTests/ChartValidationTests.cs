@@ -6,6 +6,8 @@ using Xunit;
 using Shouldly;
 using Microsoft.Extensions.Configuration;
 
+
+namespace ApiTests;
 public class ChartValidationTests
 {
     private readonly string _token;
