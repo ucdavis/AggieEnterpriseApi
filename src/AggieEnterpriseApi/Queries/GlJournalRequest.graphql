@@ -1,0 +1,18 @@
+mutation glJournalRequest($data:GlJournalRequestInput!){
+      glJournalRequest(data:$data) {
+        requestStatus {
+          requestId
+          consumerId
+          requestDateTime
+          requestStatus
+          operationName
+        }
+        glJournalId
+        ppmBatchName
+        validationResults {
+          errorMessages
+          messageProperties
+        }
+    }
+}
+    
