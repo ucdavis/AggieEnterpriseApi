@@ -3358,7 +3358,7 @@ namespace AggieEnterpriseApi
             }
         }
 
-        private global::System.Object? FormatDebitAmount(global::System.String? input)
+        private global::System.Object? FormatDebitAmount(global::System.Decimal? input)
         {
             if (input is null)
             {
@@ -3370,7 +3370,7 @@ namespace AggieEnterpriseApi
             }
         }
 
-        private global::System.Object? FormatCreditAmount(global::System.String? input)
+        private global::System.Object? FormatCreditAmount(global::System.Decimal? input)
         {
             if (input is null)
             {
@@ -3458,7 +3458,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (((GlSegments is null && other.GlSegments is null) || GlSegments != null && GlSegments.Equals(other.GlSegments))) && ((GlSegmentString is null && other.GlSegmentString is null) || GlSegmentString != null && GlSegmentString.Equals(other.GlSegmentString)) && ((GlAliasCode is null && other.GlAliasCode is null) || GlAliasCode != null && GlAliasCode.Equals(other.GlAliasCode)) && ((PpmSegments is null && other.PpmSegments is null) || PpmSegments != null && PpmSegments.Equals(other.PpmSegments)) && ((PpmSegmentString is null && other.PpmSegmentString is null) || PpmSegmentString != null && PpmSegmentString.Equals(other.PpmSegmentString)) && ((DebitAmount is null && other.DebitAmount is null) || DebitAmount != null && DebitAmount.Equals(other.DebitAmount)) && ((CreditAmount is null && other.CreditAmount is null) || CreditAmount != null && CreditAmount.Equals(other.CreditAmount)) && ExternalSystemIdentifier.Equals(other.ExternalSystemIdentifier) && ((ExternalSystemReference is null && other.ExternalSystemReference is null) || ExternalSystemReference != null && ExternalSystemReference.Equals(other.ExternalSystemReference)) && ((PpmComment is null && other.PpmComment is null) || PpmComment != null && PpmComment.Equals(other.PpmComment));
+            return (((GlSegments is null && other.GlSegments is null) || GlSegments != null && GlSegments.Equals(other.GlSegments))) && ((GlSegmentString is null && other.GlSegmentString is null) || GlSegmentString != null && GlSegmentString.Equals(other.GlSegmentString)) && ((GlAliasCode is null && other.GlAliasCode is null) || GlAliasCode != null && GlAliasCode.Equals(other.GlAliasCode)) && ((PpmSegments is null && other.PpmSegments is null) || PpmSegments != null && PpmSegments.Equals(other.PpmSegments)) && ((PpmSegmentString is null && other.PpmSegmentString is null) || PpmSegmentString != null && PpmSegmentString.Equals(other.PpmSegmentString)) && DebitAmount == other.DebitAmount && CreditAmount == other.CreditAmount && ExternalSystemIdentifier.Equals(other.ExternalSystemIdentifier) && ((ExternalSystemReference is null && other.ExternalSystemReference is null) || ExternalSystemReference != null && ExternalSystemReference.Equals(other.ExternalSystemReference)) && ((PpmComment is null && other.PpmComment is null) || PpmComment != null && PpmComment.Equals(other.PpmComment));
         }
 
         public override global::System.Int32 GetHashCode()
@@ -3526,9 +3526,9 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_ppmSegments;
         private global::System.String? _value_ppmSegmentString;
         private global::System.Boolean _set_ppmSegmentString;
-        private global::System.String? _value_debitAmount;
+        private global::System.Decimal? _value_debitAmount;
         private global::System.Boolean _set_debitAmount;
-        private global::System.String? _value_creditAmount;
+        private global::System.Decimal? _value_creditAmount;
         private global::System.Boolean _set_creditAmount;
         private global::System.String _value_externalSystemIdentifier = default !;
         private global::System.Boolean _set_externalSystemIdentifier;
@@ -3597,7 +3597,7 @@ namespace AggieEnterpriseApi
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsPpmSegmentStringSet => _set_ppmSegmentString;
         ///<summary>Debit amount of the GL transaction or PPM Cost.  Only one of debitAmount and creditAmount may be specified on a line.</summary>
-        public global::System.String? DebitAmount
+        public global::System.Decimal? DebitAmount
         {
             get => _value_debitAmount;
             set
@@ -3609,7 +3609,7 @@ namespace AggieEnterpriseApi
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsDebitAmountSet => _set_debitAmount;
         ///<summary>Credit amount of the GL transaction or PPM Cost.  Only one of debitAmount and creditAmount may be specified on a line.</summary>
-        public global::System.String? CreditAmount
+        public global::System.Decimal? CreditAmount
         {
             get => _value_creditAmount;
             set
@@ -5864,7 +5864,7 @@ namespace AggieEnterpriseApi.State
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString15Parser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _glSegmentStringParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmSegmentStringParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonNegativeFloatParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Decimal, global::System.Decimal> _nonNegativeFloatParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _glReferenceField10Parser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _glDescriptionField40Parser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpEntityCodeParser;
@@ -5903,7 +5903,7 @@ namespace AggieEnterpriseApi.State
             _nonEmptyTrimmedString15Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString15") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString15` found.");
             _glSegmentStringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("GlSegmentString") ?? throw new global::System.ArgumentException("No serializer for type `GlSegmentString` found.");
             _ppmSegmentStringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmSegmentString") ?? throw new global::System.ArgumentException("No serializer for type `PpmSegmentString` found.");
-            _nonNegativeFloatParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonNegativeFloat") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeFloat` found.");
+            _nonNegativeFloatParser = serializerResolver.GetLeafValueParser<global::System.Decimal, global::System.Decimal>("NonNegativeFloat") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeFloat` found.");
             _glReferenceField10Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("GlReferenceField10") ?? throw new global::System.ArgumentException("No serializer for type `GlReferenceField10` found.");
             _glDescriptionField40Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("GlDescriptionField40") ?? throw new global::System.ArgumentException("No serializer for type `GlDescriptionField40` found.");
             _erpEntityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpEntityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpEntityCode` found.");
@@ -7027,7 +7027,6 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString15"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlSegmentString"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmSegmentString"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonNegativeFloat"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlReferenceField10"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlDescriptionField40"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpEntityCode"));

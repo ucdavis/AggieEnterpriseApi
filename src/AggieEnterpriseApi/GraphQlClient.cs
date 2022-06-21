@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AggieEnterpriseApi.Serializers;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AggieEnterpriseApi;
 
@@ -10,7 +11,11 @@ public class GraphQlClient
 
         var serviceCollection = new ServiceCollection();
         
-        // TODO: likely need serializers for custom int/float types (ex: PositiveInt)
+        // add in serializers for custom int/float types (ex: PositiveInt)
+        serviceCollection.AddSerializer<PositiveIntSerializer>();
+        serviceCollection.AddSerializer<NonNegativeIntSerializer>();
+        serviceCollection.AddSerializer<NonPositiveIntSerializer>();
+        serviceCollection.AddSerializer<NonNegativeFloatSerializer>();
 
         serviceCollection
             .AddAggieEnterpriseClient()

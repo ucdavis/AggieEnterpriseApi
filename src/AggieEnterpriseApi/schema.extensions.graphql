@@ -11,3 +11,19 @@ directive @enumValue(value: String!) on ENUM_VALUE
 directive @rename(name: String!) on INPUT_FIELD_DEFINITION | INPUT_OBJECT | ENUM | ENUM_VALUE
 
 extend schema @key(fields: "id")
+
+extend scalar PositiveInt
+    @serializationType(name: "global::System.Int32")
+    @runtimeType(name: "global::System.Int32")
+
+extend scalar NonNegativeInt
+    @serializationType(name: "global::System.Int32")
+    @runtimeType(name: "global::System.Int32")
+
+extend scalar NonPositiveInt
+    @serializationType(name: "global::System.Int32")
+    @runtimeType(name: "global::System.Int32")
+    
+extend scalar NonNegativeFloat
+    @serializationType(name: "global::System.Decimal")
+    @runtimeType(name: "global::System.Decimal")
