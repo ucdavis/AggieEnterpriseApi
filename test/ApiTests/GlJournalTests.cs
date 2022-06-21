@@ -51,14 +51,14 @@ public class GlJournalTests : TestBase
                     new GlJournalLineInput
                     {
                         GlSegmentString = "3110-12100-0100322-410030-00-000-0000000000-000000-0000-000000-000000",
-                        DebitAmount = "100.00", // TODO: why not decimal?
+                        DebitAmount = 100.00m,
                         ExternalSystemIdentifier = "ITEMX",
                         ExternalSystemReference = "CYBERSOURCE-Deposit",
                     },
                     new GlJournalLineInput
                     {
                         GlSegmentString = "3110-U1310-0100333-410058-00-000-0000000000-000000-0000-000000-000000",
-                        CreditAmount = "100.00", // TODO: why not decimal?
+                        CreditAmount = 100.00m,
                         ExternalSystemIdentifier = "ITEMX",
                         ExternalSystemReference = "CYBERSOURCE-Deposit",
                     }
