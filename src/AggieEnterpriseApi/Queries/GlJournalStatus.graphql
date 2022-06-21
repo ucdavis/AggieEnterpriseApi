@@ -1,0 +1,27 @@
+query glJournalRequestStatus($requestId: String!) {
+    glJournalRequestStatus(requestId: $requestId) {
+        requestStatus {
+            statusRequestPayload
+            operationName
+            requestStatus
+            requestDateTime
+            lastStatusDateTime
+            errorMessages
+            processedDateTime
+            boundaryApplicationName
+            consumerId
+            consumerReferenceId
+        }
+        validationResults {
+            valid
+            errorMessages
+        }
+        jobResults {
+            jobId
+            jobStatus
+            completedDateTime
+            jobReport
+            failedRecords
+        }
+    }
+}

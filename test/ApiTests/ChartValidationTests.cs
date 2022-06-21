@@ -8,24 +8,12 @@ using Microsoft.Extensions.Configuration;
 
 
 namespace ApiTests;
-public class ChartValidationTests
+public class ChartValidationTests : TestBase
 {
-    private readonly string _token;
-
-    public ChartValidationTests()
-    {
-        var configuration = new ConfigurationBuilder()
-            .AddUserSecrets<ChartValidationTests>()
-           .Build();
-
-        _token = configuration.GetSection("Token").Value;
-    }
-
-    
     [Fact]
     public async Task ValidChartString()
     {
-                var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, _token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
         var result = await client.GlValidateChartstring.ExecuteAsync("3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000-000000", false);
 
@@ -44,7 +32,7 @@ public class ChartValidationTests
     [Fact]
     public async Task ValidChartSegments()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, _token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
         var segments = new GlSegmentInput
         {
@@ -69,7 +57,7 @@ public class ChartValidationTests
     [Fact]
     public async Task ValidChartSegmentsWithoutFlex()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, _token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
         var segments = new GlSegmentInput
         {
@@ -92,7 +80,7 @@ public class ChartValidationTests
     [Fact]
     public async Task InValidChartStringFormat()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, _token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
         var result = await client.GlValidateChartstring.ExecuteAsync("3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000", false);
 

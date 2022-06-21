@@ -4,6 +4,1262 @@
 namespace AggieEnterpriseApi
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestResult : global::System.IEquatable<GlJournalRequestResult>, IGlJournalRequestResult
+    {
+        public GlJournalRequestResult(global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest glJournalRequest)
+        {
+            GlJournalRequest = glJournalRequest;
+        }
+
+        /// <summary>
+        /// Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
+        /// 
+        /// The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
+        /// 
+        /// This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
+        /// 
+        /// The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
+        /// 
+        /// Please see below in this document for examples of payloads into this API.
+        /// 
+        /// #### Supporting Operations
+        /// 
+        /// Other operations which should be used to pre-validate chartstring segments are below.  Please see <https: / / financeandbusiness.ucdavis.edu / aggie-enterprise / chart-of-accounts / redesign> for information about each of these segments.
+        /// 
+        /// * [`erpEntity`]({{Queries.erpEntity}})
+        /// * [`erpFund`]({{Queries.erpFund}})
+        /// * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
+        /// * [`erpAccount`]({{Queries.erpAccount}})
+        /// * [`erpPurpose`]({{Queries.erpPurpose}})
+        /// * [`erpProject`]({{Queries.erpProject}})
+        /// * [`erpProgram`]({{Queries.erpProgram}})
+        /// * [`erpActivity`]({{Queries.erpActivity}})
+        /// 
+        /// For validating combinations, the following two operations are provided, differing only in their input format.
+        /// 
+        /// * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
+        /// * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
+        /// 
+        /// #### Managed Project Cost Entries (PPM/POET)
+        /// 
+        /// In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
+        /// 
+        /// For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
+        /// 
+        /// For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
+        /// 
+        /// * `p`roject
+        /// * `o`rganization (same values as `ErpFinancialDepartment`)
+        /// * `e`xpenditureType (same values as `ErpAccount`)
+        /// * `t`ask
+        /// 
+        /// Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
+        /// 
+        /// There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
+        /// 
+        /// * award (only for sponsored projects)
+        /// * fundingSource (only for sponsored projects)
+        /// 
+        /// As with the GL segments, the API provides the operations below for lookups and validation:
+        /// 
+        /// * [`ppmProject`]({{Queries.ppmProject}})
+        /// * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
+        /// * [`ppmOrganization`]({{Queries.ppmOrganization}})
+        /// * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
+        /// 
+        /// #### Volume of Data
+        /// 
+        /// Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
+        /// 
+        /// #### Journal Balancing
+        /// 
+        /// As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
+        /// 
+        /// While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
+        /// 
+        /// #### Basic Use
+        /// 
+        /// 1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
+        /// 2. GraphQL Server will validate content format and reject if invalid.
+        /// 3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
+        /// 4. A failure in either of these initial validations will result in an error response with no request being generated.
+        /// 5. Passing validation will save the request to allow for pickup by the integration platform for processing.
+        /// 6. A request tracking ID will be generated and returned to allow for the consumer to check on the status of the request and obtain results when completed.
+        /// 7. At a later time, use the generated request tracking ID against the [`glJournalRequestStatus`]({{Queries.glJournalRequestStatus}}) operation to determine if the request was processed successfully
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest GlJournalRequest { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (GlJournalRequest.Equals(other.GlJournalRequest));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * GlJournalRequest.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput>, IGlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput
+    {
+        public GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput(global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus requestStatus, global::System.String? glJournalId, global::System.String? ppmBatchName, global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? validationResults)
+        {
+            RequestStatus = requestStatus;
+            GlJournalId = glJournalId;
+            PpmBatchName = ppmBatchName;
+            ValidationResults = validationResults;
+        }
+
+        /// <summary>
+        /// Overall status of the action request
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus RequestStatus { get; }
+
+        /// <summary>
+        /// ERP-assigned journal ID for transactions posted to the GL.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.
+        /// </summary>
+        public global::System.String? GlJournalId { get; }
+
+        /// <summary>
+        /// Integration-assigned batch name for costs posted to the PPM sub-ledger.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.
+        /// </summary>
+        public global::System.String? PpmBatchName { get; }
+
+        /// <summary>
+        /// Errors found when validatating the payload data.  These must be corrected before the request will be accepted.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? ValidationResults { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (RequestStatus.Equals(other.RequestStatus)) && ((GlJournalId is null && other.GlJournalId is null) || GlJournalId != null && GlJournalId.Equals(other.GlJournalId)) && ((PpmBatchName is null && other.PpmBatchName is null) || PpmBatchName != null && PpmBatchName.Equals(other.PpmBatchName)) && ((ValidationResults is null && other.ValidationResults is null) || ValidationResults != null && ValidationResults.Equals(other.ValidationResults));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * RequestStatus.GetHashCode();
+                if (GlJournalId != null)
+                {
+                    hash ^= 397 * GlJournalId.GetHashCode();
+                }
+
+                if (PpmBatchName != null)
+                {
+                    hash ^= 397 * PpmBatchName.GetHashCode();
+                }
+
+                if (ValidationResults != null)
+                {
+                    hash ^= 397 * ValidationResults.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus>, IGlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus
+    {
+        public GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus(global::System.Guid? requestId, global::System.String consumerId, global::System.DateTimeOffset requestDateTime, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.String operationName)
+        {
+            RequestId = requestId;
+            ConsumerId = consumerId;
+            RequestDateTime = requestDateTime;
+            RequestStatus = requestStatus;
+            OperationName = operationName;
+        }
+
+        /// <summary>
+        /// Unique identifier assigned to the request
+        /// </summary>
+        public global::System.Guid? RequestId { get; }
+
+        /// <summary>
+        /// ID of the consumer who made the request extracted from the service authentication data
+        /// </summary>
+        public global::System.String ConsumerId { get; }
+
+        public global::System.DateTimeOffset RequestDateTime { get; }
+
+        public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
+
+        /// <summary>
+        /// Name of the operation called.
+        /// </summary>
+        public global::System.String OperationName { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((RequestId is null && other.RequestId is null) || RequestId != null && RequestId.Equals(other.RequestId))) && ConsumerId.Equals(other.ConsumerId) && RequestDateTime.Equals(other.RequestDateTime) && RequestStatus.Equals(other.RequestStatus) && OperationName.Equals(other.OperationName);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (RequestId != null)
+                {
+                    hash ^= 397 * RequestId.GetHashCode();
+                }
+
+                hash ^= 397 * ConsumerId.GetHashCode();
+                hash ^= 397 * RequestDateTime.GetHashCode();
+                hash ^= 397 * RequestStatus.GetHashCode();
+                hash ^= 397 * OperationName.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse : global::System.IEquatable<GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse>, IGlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse
+    {
+        public GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse(global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties)
+        {
+            ErrorMessages = errorMessages;
+            MessageProperties = messageProperties;
+        }
+
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(MessageProperties, other.MessageProperties);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (ErrorMessages != null)
+                {
+                    foreach (var ErrorMessages_elm in ErrorMessages)
+                    {
+                        hash ^= 397 * ErrorMessages_elm.GetHashCode();
+                    }
+                }
+
+                if (MessageProperties != null)
+                {
+                    foreach (var MessageProperties_elm in MessageProperties)
+                    {
+                        hash ^= 397 * MessageProperties_elm.GetHashCode();
+                    }
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestResult
+    {
+        /// <summary>
+        /// Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
+        /// 
+        /// The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
+        /// 
+        /// This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
+        /// 
+        /// The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
+        /// 
+        /// Please see below in this document for examples of payloads into this API.
+        /// 
+        /// #### Supporting Operations
+        /// 
+        /// Other operations which should be used to pre-validate chartstring segments are below.  Please see <https: / / financeandbusiness.ucdavis.edu / aggie-enterprise / chart-of-accounts / redesign> for information about each of these segments.
+        /// 
+        /// * [`erpEntity`]({{Queries.erpEntity}})
+        /// * [`erpFund`]({{Queries.erpFund}})
+        /// * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
+        /// * [`erpAccount`]({{Queries.erpAccount}})
+        /// * [`erpPurpose`]({{Queries.erpPurpose}})
+        /// * [`erpProject`]({{Queries.erpProject}})
+        /// * [`erpProgram`]({{Queries.erpProgram}})
+        /// * [`erpActivity`]({{Queries.erpActivity}})
+        /// 
+        /// For validating combinations, the following two operations are provided, differing only in their input format.
+        /// 
+        /// * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
+        /// * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
+        /// 
+        /// #### Managed Project Cost Entries (PPM/POET)
+        /// 
+        /// In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
+        /// 
+        /// For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
+        /// 
+        /// For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
+        /// 
+        /// * `p`roject
+        /// * `o`rganization (same values as `ErpFinancialDepartment`)
+        /// * `e`xpenditureType (same values as `ErpAccount`)
+        /// * `t`ask
+        /// 
+        /// Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
+        /// 
+        /// There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
+        /// 
+        /// * award (only for sponsored projects)
+        /// * fundingSource (only for sponsored projects)
+        /// 
+        /// As with the GL segments, the API provides the operations below for lookups and validation:
+        /// 
+        /// * [`ppmProject`]({{Queries.ppmProject}})
+        /// * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
+        /// * [`ppmOrganization`]({{Queries.ppmOrganization}})
+        /// * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
+        /// 
+        /// #### Volume of Data
+        /// 
+        /// Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
+        /// 
+        /// #### Journal Balancing
+        /// 
+        /// As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
+        /// 
+        /// While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
+        /// 
+        /// #### Basic Use
+        /// 
+        /// 1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
+        /// 2. GraphQL Server will validate content format and reject if invalid.
+        /// 3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
+        /// 4. A failure in either of these initial validations will result in an error response with no request being generated.
+        /// 5. Passing validation will save the request to allow for pickup by the integration platform for processing.
+        /// 6. A request tracking ID will be generated and returned to allow for the consumer to check on the status of the request and obtain results when completed.
+        /// 7. At a later time, use the generated request tracking ID against the [`glJournalRequestStatus`]({{Queries.glJournalRequestStatus}}) operation to determine if the request was processed successfully
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest GlJournalRequest { get; }
+    }
+
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequest_GlJournalRequest
+    {
+        /// <summary>
+        /// Overall status of the action request
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus RequestStatus { get; }
+
+        /// <summary>
+        /// ERP-assigned journal ID for transactions posted to the GL.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.
+        /// </summary>
+        public global::System.String? GlJournalId { get; }
+
+        /// <summary>
+        /// Integration-assigned batch name for costs posted to the PPM sub-ledger.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.
+        /// </summary>
+        public global::System.String? PpmBatchName { get; }
+
+        /// <summary>
+        /// Errors found when validatating the payload data.  These must be corrected before the request will be accepted.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? ValidationResults { get; }
+    }
+
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput : IGlJournalRequest_GlJournalRequest
+    {
+    }
+
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequest_GlJournalRequest_RequestStatus
+    {
+        /// <summary>
+        /// Unique identifier assigned to the request
+        /// </summary>
+        public global::System.Guid? RequestId { get; }
+
+        /// <summary>
+        /// ID of the consumer who made the request extracted from the service authentication data
+        /// </summary>
+        public global::System.String ConsumerId { get; }
+
+        public global::System.DateTimeOffset RequestDateTime { get; }
+
+        public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
+
+        /// <summary>
+        /// Name of the operation called.
+        /// </summary>
+        public global::System.String OperationName { get; }
+    }
+
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus : IGlJournalRequest_GlJournalRequest_RequestStatus
+    {
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequest_GlJournalRequest_ValidationResults
+    {
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse : IGlJournalRequest_GlJournalRequest_ValidationResults
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusResult : global::System.IEquatable<GlJournalRequestStatusResult>, IGlJournalRequestStatusResult
+    {
+        public GlJournalRequestStatusResult(global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus? glJournalRequestStatus)
+        {
+            GlJournalRequestStatus = glJournalRequestStatus;
+        }
+
+        /// <summary>
+        /// Get the status of a previously submitted journal voucher request by the API-assigned request ID.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus? GlJournalRequestStatus { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatusResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((GlJournalRequestStatus is null && other.GlJournalRequestStatus is null) || GlJournalRequestStatus != null && GlJournalRequestStatus.Equals(other.GlJournalRequestStatus)));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatusResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (GlJournalRequestStatus != null)
+                {
+                    hash ^= 397 * GlJournalRequestStatus.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput>, IGlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput
+    {
+        public GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput(global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus requestStatus, global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? validationResults, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults>? jobResults)
+        {
+            RequestStatus = requestStatus;
+            ValidationResults = validationResults;
+            JobResults = jobResults;
+        }
+
+        /// <summary>
+        /// Overall status of the action request
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus RequestStatus { get; }
+
+        /// <summary>
+        /// Errors found when validatating the payload data.  These must be corrected before the request will be accepted.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? ValidationResults { get; }
+
+        /// <summary>
+        /// Results of the Job or Jobs required to submit this request to the ERP.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults>? JobResults { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (RequestStatus.Equals(other.RequestStatus)) && ((ValidationResults is null && other.ValidationResults is null) || ValidationResults != null && ValidationResults.Equals(other.ValidationResults)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(JobResults, other.JobResults);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * RequestStatus.GetHashCode();
+                if (ValidationResults != null)
+                {
+                    hash ^= 397 * ValidationResults.GetHashCode();
+                }
+
+                if (JobResults != null)
+                {
+                    foreach (var JobResults_elm in JobResults)
+                    {
+                        hash ^= 397 * JobResults_elm.GetHashCode();
+                    }
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus>, IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus
+    {
+        public GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus(global::System.String? statusRequestPayload, global::System.String operationName, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.DateTimeOffset requestDateTime, global::System.DateTimeOffset lastStatusDateTime, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.DateTimeOffset? processedDateTime, global::System.String boundaryApplicationName, global::System.String consumerId, global::System.String consumerReferenceId)
+        {
+            StatusRequestPayload = statusRequestPayload;
+            OperationName = operationName;
+            RequestStatus = requestStatus;
+            RequestDateTime = requestDateTime;
+            LastStatusDateTime = lastStatusDateTime;
+            ErrorMessages = errorMessages;
+            ProcessedDateTime = processedDateTime;
+            BoundaryApplicationName = boundaryApplicationName;
+            ConsumerId = consumerId;
+            ConsumerReferenceId = consumerReferenceId;
+        }
+
+        /// <summary>
+        /// GraphQL Payload to post back to this server to check on the status of the request.
+        /// </summary>
+        public global::System.String? StatusRequestPayload { get; }
+
+        /// <summary>
+        /// Name of the operation called.
+        /// </summary>
+        public global::System.String OperationName { get; }
+
+        public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
+
+        public global::System.DateTimeOffset RequestDateTime { get; }
+
+        /// <summary>
+        /// When the status last changed
+        /// </summary>
+        public global::System.DateTimeOffset LastStatusDateTime { get; }
+
+        /// <summary>
+        /// Error information if the request failed during processing.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        /// <summary>
+        /// When the request was processed by the ERP system
+        /// </summary>
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
+
+        /// <summary>
+        /// Identifier for the boundary application originating the request.
+        /// </summary>
+        public global::System.String BoundaryApplicationName { get; }
+
+        /// <summary>
+        /// ID of the consumer who made the request extracted from the service authentication data
+        /// </summary>
+        public global::System.String ConsumerId { get; }
+
+        /// <summary>
+        /// Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.
+        /// </summary>
+        public global::System.String ConsumerReferenceId { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((StatusRequestPayload is null && other.StatusRequestPayload is null) || StatusRequestPayload != null && StatusRequestPayload.Equals(other.StatusRequestPayload))) && OperationName.Equals(other.OperationName) && RequestStatus.Equals(other.RequestStatus) && RequestDateTime.Equals(other.RequestDateTime) && LastStatusDateTime.Equals(other.LastStatusDateTime) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages) && ((ProcessedDateTime is null && other.ProcessedDateTime is null) || ProcessedDateTime != null && ProcessedDateTime.Equals(other.ProcessedDateTime)) && BoundaryApplicationName.Equals(other.BoundaryApplicationName) && ConsumerId.Equals(other.ConsumerId) && ConsumerReferenceId.Equals(other.ConsumerReferenceId);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (StatusRequestPayload != null)
+                {
+                    hash ^= 397 * StatusRequestPayload.GetHashCode();
+                }
+
+                hash ^= 397 * OperationName.GetHashCode();
+                hash ^= 397 * RequestStatus.GetHashCode();
+                hash ^= 397 * RequestDateTime.GetHashCode();
+                hash ^= 397 * LastStatusDateTime.GetHashCode();
+                if (ErrorMessages != null)
+                {
+                    foreach (var ErrorMessages_elm in ErrorMessages)
+                    {
+                        hash ^= 397 * ErrorMessages_elm.GetHashCode();
+                    }
+                }
+
+                if (ProcessedDateTime != null)
+                {
+                    hash ^= 397 * ProcessedDateTime.GetHashCode();
+                }
+
+                hash ^= 397 * BoundaryApplicationName.GetHashCode();
+                hash ^= 397 * ConsumerId.GetHashCode();
+                hash ^= 397 * ConsumerReferenceId.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse>, IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse
+    {
+        public GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse(global::System.Boolean valid, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages)
+        {
+            Valid = valid;
+            ErrorMessages = errorMessages;
+        }
+
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
+        public global::System.Boolean Valid { get; }
+
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Valid == other.Valid) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Valid.GetHashCode();
+                if (ErrorMessages != null)
+                {
+                    foreach (var ErrorMessages_elm in ErrorMessages)
+                    {
+                        hash ^= 397 * ErrorMessages_elm.GetHashCode();
+                    }
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Results of the job as submitted to the ERP system.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult>, IGlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult
+    {
+        public GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult(global::System.String jobId, global::System.String jobStatus, global::System.DateTimeOffset? completedDateTime, global::System.String? jobReport, global::System.String? failedRecords)
+        {
+            JobId = jobId;
+            JobStatus = jobStatus;
+            CompletedDateTime = completedDateTime;
+            JobReport = jobReport;
+            FailedRecords = failedRecords;
+        }
+
+        /// <summary>
+        /// Identifier of the type of job submitted.
+        /// </summary>
+        public global::System.String JobId { get; }
+
+        /// <summary>
+        /// Current status of the oracle job.
+        /// </summary>
+        public global::System.String JobStatus { get; }
+
+        /// <summary>
+        /// Time the job completion was recorded.
+        /// </summary>
+        public global::System.DateTimeOffset? CompletedDateTime { get; }
+
+        /// <summary>
+        /// Job report or log output from executing the request on the ERP system.
+        /// </summary>
+        public global::System.String? JobReport { get; }
+
+        /// <summary>
+        /// Records which caused the job to fail.
+        /// </summary>
+        public global::System.String? FailedRecords { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (JobId.Equals(other.JobId)) && JobStatus.Equals(other.JobStatus) && ((CompletedDateTime is null && other.CompletedDateTime is null) || CompletedDateTime != null && CompletedDateTime.Equals(other.CompletedDateTime)) && ((JobReport is null && other.JobReport is null) || JobReport != null && JobReport.Equals(other.JobReport)) && ((FailedRecords is null && other.FailedRecords is null) || FailedRecords != null && FailedRecords.Equals(other.FailedRecords));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * JobId.GetHashCode();
+                hash ^= 397 * JobStatus.GetHashCode();
+                if (CompletedDateTime != null)
+                {
+                    hash ^= 397 * CompletedDateTime.GetHashCode();
+                }
+
+                if (JobReport != null)
+                {
+                    hash ^= 397 * JobReport.GetHashCode();
+                }
+
+                if (FailedRecords != null)
+                {
+                    hash ^= 397 * FailedRecords.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusResult
+    {
+        /// <summary>
+        /// Get the status of a previously submitted journal voucher request by the API-assigned request ID.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus? GlJournalRequestStatus { get; }
+    }
+
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus
+    {
+        /// <summary>
+        /// Overall status of the action request
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus RequestStatus { get; }
+
+        /// <summary>
+        /// Errors found when validatating the payload data.  These must be corrected before the request will be accepted.
+        /// </summary>
+        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? ValidationResults { get; }
+
+        /// <summary>
+        /// Results of the Job or Jobs required to submit this request to the ERP.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults>? JobResults { get; }
+    }
+
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput : IGlJournalRequestStatus_GlJournalRequestStatus
+    {
+    }
+
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus
+    {
+        /// <summary>
+        /// GraphQL Payload to post back to this server to check on the status of the request.
+        /// </summary>
+        public global::System.String? StatusRequestPayload { get; }
+
+        /// <summary>
+        /// Name of the operation called.
+        /// </summary>
+        public global::System.String OperationName { get; }
+
+        public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
+
+        public global::System.DateTimeOffset RequestDateTime { get; }
+
+        /// <summary>
+        /// When the status last changed
+        /// </summary>
+        public global::System.DateTimeOffset LastStatusDateTime { get; }
+
+        /// <summary>
+        /// Error information if the request failed during processing.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        /// <summary>
+        /// When the request was processed by the ERP system
+        /// </summary>
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
+
+        /// <summary>
+        /// Identifier for the boundary application originating the request.
+        /// </summary>
+        public global::System.String BoundaryApplicationName { get; }
+
+        /// <summary>
+        /// ID of the consumer who made the request extracted from the service authentication data
+        /// </summary>
+        public global::System.String ConsumerId { get; }
+
+        /// <summary>
+        /// Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.
+        /// </summary>
+        public global::System.String ConsumerReferenceId { get; }
+    }
+
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus : IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus
+    {
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults
+    {
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
+        public global::System.Boolean Valid { get; }
+
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse : IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults
+    {
+    }
+
+    /// <summary>
+    /// Results of the job as submitted to the ERP system.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_JobResults
+    {
+        /// <summary>
+        /// Identifier of the type of job submitted.
+        /// </summary>
+        public global::System.String JobId { get; }
+
+        /// <summary>
+        /// Current status of the oracle job.
+        /// </summary>
+        public global::System.String JobStatus { get; }
+
+        /// <summary>
+        /// Time the job completion was recorded.
+        /// </summary>
+        public global::System.DateTimeOffset? CompletedDateTime { get; }
+
+        /// <summary>
+        /// Job report or log output from executing the request on the ERP system.
+        /// </summary>
+        public global::System.String? JobReport { get; }
+
+        /// <summary>
+        /// Records which caused the job to fail.
+        /// </summary>
+        public global::System.String? FailedRecords { get; }
+    }
+
+    /// <summary>
+    /// Results of the job as submitted to the ERP system.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult : IGlJournalRequestStatus_GlJournalRequestStatus_JobResults
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsResult : global::System.IEquatable<GlValidateChartSegmentsResult>, IGlValidateChartSegmentsResult
     {
         public GlValidateChartSegmentsResult(global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments glValidateChartSegments)
@@ -1148,6 +2404,1261 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _actionRequestHeaderInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _glJournalInputFormatter = default !;
+        public global::System.String TypeName => "GlJournalRequestInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _actionRequestHeaderInputFormatter = serializerResolver.GetInputValueFormatter("ActionRequestHeaderInput");
+            _glJournalInputFormatter = serializerResolver.GetInputValueFormatter("GlJournalInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.GlJournalRequestInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IGlJournalRequestInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsHeaderSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("header", FormatHeader(input.Header)));
+            }
+
+            if (inputInfo.IsPayloadSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("payload", FormatPayload(input.Payload)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatHeader(global::AggieEnterpriseApi.ActionRequestHeaderInput input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _actionRequestHeaderInputFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatPayload(global::AggieEnterpriseApi.GlJournalInput input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _glJournalInputFormatter.Format(input);
+        }
+    }
+
+    ///<summary>GL/PPM Combined journal input type.  Contains the standard request header information and journal data payload for creating journal and/or PPM costs in Oracle Financials.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestInput : global::AggieEnterpriseApi.State.IGlJournalRequestInputInfo, global::System.IEquatable<GlJournalRequestInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Header.Equals(other.Header)) && Payload.Equals(other.Payload);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Header.GetHashCode();
+                hash ^= 397 * Payload.GetHashCode();
+                return hash;
+            }
+        }
+
+        private global::AggieEnterpriseApi.ActionRequestHeaderInput _value_header = default !;
+        private global::System.Boolean _set_header;
+        private global::AggieEnterpriseApi.GlJournalInput _value_payload = default !;
+        private global::System.Boolean _set_payload;
+        ///<summary>Request-level header information common to all action requests.</summary>
+        public global::AggieEnterpriseApi.ActionRequestHeaderInput Header
+        {
+            get => _value_header;
+            set
+            {
+                _set_header = true;
+                _value_header = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalRequestInputInfo.IsHeaderSet => _set_header;
+        ///<summary>Main operation data.</summary>
+        public global::AggieEnterpriseApi.GlJournalInput Payload
+        {
+            get => _value_payload;
+            set
+            {
+                _set_payload = true;
+                _value_payload = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalRequestInputInfo.IsPayloadSet => _set_payload;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ActionRequestHeaderInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString80Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString240Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _booleanFormatter = default !;
+        public global::System.String TypeName => "ActionRequestHeaderInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _nonEmptyTrimmedString80Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString80");
+            _nonEmptyTrimmedString240Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString240");
+            _booleanFormatter = serializerResolver.GetInputValueFormatter("Boolean");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.ActionRequestHeaderInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsConsumerTrackingIdSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("consumerTrackingId", FormatConsumerTrackingId(input.ConsumerTrackingId)));
+            }
+
+            if (inputInfo.IsConsumerReferenceIdSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("consumerReferenceId", FormatConsumerReferenceId(input.ConsumerReferenceId)));
+            }
+
+            if (inputInfo.IsConsumerNotesSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("consumerNotes", FormatConsumerNotes(input.ConsumerNotes)));
+            }
+
+            if (inputInfo.IsBoundaryApplicationNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("boundaryApplicationName", FormatBoundaryApplicationName(input.BoundaryApplicationName)));
+            }
+
+            if (inputInfo.IsConsumerIdSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("consumerId", FormatConsumerId(input.ConsumerId)));
+            }
+
+            if (inputInfo.IsBatchRequestSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("batchRequest", FormatBatchRequest(input.BatchRequest)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatConsumerTrackingId(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _nonEmptyTrimmedString80Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatConsumerReferenceId(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _nonEmptyTrimmedString80Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatConsumerNotes(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonEmptyTrimmedString240Formatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatBoundaryApplicationName(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _nonEmptyTrimmedString80Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatConsumerId(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonEmptyTrimmedString80Formatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatBatchRequest(global::System.Boolean? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Fields common to all action requests.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ActionRequestHeaderInput : global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo, global::System.IEquatable<ActionRequestHeaderInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ActionRequestHeaderInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(ActionRequestHeaderInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (ConsumerTrackingId.Equals(other.ConsumerTrackingId)) && ConsumerReferenceId.Equals(other.ConsumerReferenceId) && ((ConsumerNotes is null && other.ConsumerNotes is null) || ConsumerNotes != null && ConsumerNotes.Equals(other.ConsumerNotes)) && BoundaryApplicationName.Equals(other.BoundaryApplicationName) && ((ConsumerId is null && other.ConsumerId is null) || ConsumerId != null && ConsumerId.Equals(other.ConsumerId)) && BatchRequest == other.BatchRequest;
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * ConsumerTrackingId.GetHashCode();
+                hash ^= 397 * ConsumerReferenceId.GetHashCode();
+                if (ConsumerNotes != null)
+                {
+                    hash ^= 397 * ConsumerNotes.GetHashCode();
+                }
+
+                hash ^= 397 * BoundaryApplicationName.GetHashCode();
+                if (ConsumerId != null)
+                {
+                    hash ^= 397 * ConsumerId.GetHashCode();
+                }
+
+                if (BatchRequest != null)
+                {
+                    hash ^= 397 * BatchRequest.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.String _value_consumerTrackingId = default !;
+        private global::System.Boolean _set_consumerTrackingId;
+        private global::System.String _value_consumerReferenceId = default !;
+        private global::System.Boolean _set_consumerReferenceId;
+        private global::System.String? _value_consumerNotes;
+        private global::System.Boolean _set_consumerNotes;
+        private global::System.String _value_boundaryApplicationName = default !;
+        private global::System.Boolean _set_boundaryApplicationName;
+        private global::System.String? _value_consumerId;
+        private global::System.Boolean _set_consumerId;
+        private global::System.Boolean? _value_batchRequest;
+        private global::System.Boolean _set_batchRequest;
+        ///<summary>Identifier provided by the consumer to track requests internally.  It is recommended that this be a globally unique identfier tracked in their system.  Can be used to match up data in the caller's system.</summary>
+        public global::System.String ConsumerTrackingId
+        {
+            get => _value_consumerTrackingId;
+            set
+            {
+                _set_consumerTrackingId = true;
+                _value_consumerTrackingId = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerTrackingIdSet => _set_consumerTrackingId;
+        ///<summary>Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.</summary>
+        public global::System.String ConsumerReferenceId
+        {
+            get => _value_consumerReferenceId;
+            set
+            {
+                _set_consumerReferenceId = true;
+                _value_consumerReferenceId = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerReferenceIdSet => _set_consumerReferenceId;
+        ///<summary>Any notes to include with the request, this is stored as metadata to provide context to the request.</summary>
+        public global::System.String? ConsumerNotes
+        {
+            get => _value_consumerNotes;
+            set
+            {
+                _set_consumerNotes = true;
+                _value_consumerNotes = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerNotesSet => _set_consumerNotes;
+        ///<summary>Identifier for the boundary application originating the request.</summary>
+        public global::System.String BoundaryApplicationName
+        {
+            get => _value_boundaryApplicationName;
+            set
+            {
+                _set_boundaryApplicationName = true;
+                _value_boundaryApplicationName = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsBoundaryApplicationNameSet => _set_boundaryApplicationName;
+        ///<summary>ID of the consumer which must match the authentication data.  Not required for API calls as will be filled in by the server.</summary>
+        public global::System.String? ConsumerId
+        {
+            get => _value_consumerId;
+            set
+            {
+                _set_consumerId = true;
+                _value_consumerId = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerIdSet => _set_consumerId;
+        ///<summary>If set to true, allows processing of this request to be delayed and combined with other compatible requests if supported by the request type.  It will be ignored if not supported.  Length of delay and pickup time is determined during integration processing.</summary>
+        public global::System.Boolean? BatchRequest
+        {
+            get => _value_batchRequest;
+            set
+            {
+                _set_batchRequest = true;
+                _value_batchRequest = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsBatchRequestSet => _set_batchRequest;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString80Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpNameField100Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _erpDescriptionField240Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _glReferenceField25Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _localDateFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString15Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _glJournalLineInputFormatter = default !;
+        public global::System.String TypeName => "GlJournalInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _nonEmptyTrimmedString80Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString80");
+            _erpNameField100Formatter = serializerResolver.GetInputValueFormatter("ErpNameField100");
+            _erpDescriptionField240Formatter = serializerResolver.GetInputValueFormatter("ErpDescriptionField240");
+            _glReferenceField25Formatter = serializerResolver.GetInputValueFormatter("GlReferenceField25");
+            _localDateFormatter = serializerResolver.GetInputValueFormatter("LocalDate");
+            _nonEmptyTrimmedString15Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString15");
+            _glJournalLineInputFormatter = serializerResolver.GetInputValueFormatter("GlJournalLineInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.GlJournalInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IGlJournalInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsJournalSourceNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("journalSourceName", FormatJournalSourceName(input.JournalSourceName)));
+            }
+
+            if (inputInfo.IsJournalCategoryNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("journalCategoryName", FormatJournalCategoryName(input.JournalCategoryName)));
+            }
+
+            if (inputInfo.IsJournalNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("journalName", FormatJournalName(input.JournalName)));
+            }
+
+            if (inputInfo.IsJournalDescriptionSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("journalDescription", FormatJournalDescription(input.JournalDescription)));
+            }
+
+            if (inputInfo.IsJournalReferenceSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("journalReference", FormatJournalReference(input.JournalReference)));
+            }
+
+            if (inputInfo.IsAccountingDateSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("accountingDate", FormatAccountingDate(input.AccountingDate)));
+            }
+
+            if (inputInfo.IsAccountingPeriodNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("accountingPeriodName", FormatAccountingPeriodName(input.AccountingPeriodName)));
+            }
+
+            if (inputInfo.IsJournalLinesSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("journalLines", FormatJournalLines(input.JournalLines)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatJournalSourceName(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _nonEmptyTrimmedString80Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatJournalCategoryName(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _nonEmptyTrimmedString80Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatJournalName(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _erpNameField100Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatJournalDescription(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _erpDescriptionField240Formatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatJournalReference(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _glReferenceField25Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatAccountingDate(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _localDateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatAccountingPeriodName(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonEmptyTrimmedString15Formatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatJournalLines(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.GlJournalLineInput> input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+            foreach (var input_elm in input)
+            {
+                if (input_elm is null)
+                {
+                    throw new global::System.ArgumentNullException(nameof(input_elm));
+                }
+
+                input_list.Add(_glJournalLineInputFormatter.Format(input_elm));
+            }
+
+            return input_list;
+        }
+    }
+
+    ///<summary>Main payload object for a `glJournalRequest`.  See operation documentation for more info.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalInput : global::AggieEnterpriseApi.State.IGlJournalInputInfo, global::System.IEquatable<GlJournalInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(GlJournalInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (JournalSourceName.Equals(other.JournalSourceName)) && JournalCategoryName.Equals(other.JournalCategoryName) && JournalName.Equals(other.JournalName) && ((JournalDescription is null && other.JournalDescription is null) || JournalDescription != null && JournalDescription.Equals(other.JournalDescription)) && JournalReference.Equals(other.JournalReference) && ((AccountingDate is null && other.AccountingDate is null) || AccountingDate != null && AccountingDate.Equals(other.AccountingDate)) && ((AccountingPeriodName is null && other.AccountingPeriodName is null) || AccountingPeriodName != null && AccountingPeriodName.Equals(other.AccountingPeriodName)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(JournalLines, other.JournalLines);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * JournalSourceName.GetHashCode();
+                hash ^= 397 * JournalCategoryName.GetHashCode();
+                hash ^= 397 * JournalName.GetHashCode();
+                if (JournalDescription != null)
+                {
+                    hash ^= 397 * JournalDescription.GetHashCode();
+                }
+
+                hash ^= 397 * JournalReference.GetHashCode();
+                if (AccountingDate != null)
+                {
+                    hash ^= 397 * AccountingDate.GetHashCode();
+                }
+
+                if (AccountingPeriodName != null)
+                {
+                    hash ^= 397 * AccountingPeriodName.GetHashCode();
+                }
+
+                foreach (var JournalLines_elm in JournalLines)
+                {
+                    hash ^= 397 * JournalLines_elm.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.String _value_journalSourceName = default !;
+        private global::System.Boolean _set_journalSourceName;
+        private global::System.String _value_journalCategoryName = default !;
+        private global::System.Boolean _set_journalCategoryName;
+        private global::System.String _value_journalName = default !;
+        private global::System.Boolean _set_journalName;
+        private global::System.String? _value_journalDescription;
+        private global::System.Boolean _set_journalDescription;
+        private global::System.String _value_journalReference = default !;
+        private global::System.Boolean _set_journalReference;
+        private global::System.String? _value_accountingDate;
+        private global::System.Boolean _set_accountingDate;
+        private global::System.String? _value_accountingPeriodName;
+        private global::System.Boolean _set_accountingPeriodName;
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.GlJournalLineInput> _value_journalLines = default !;
+        private global::System.Boolean _set_journalLines;
+        ///<summary>Centrally assigned source name for your boundary application.</summary>
+        public global::System.String JournalSourceName
+        {
+            get => _value_journalSourceName;
+            set
+            {
+                _set_journalSourceName = true;
+                _value_journalSourceName = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalSourceNameSet => _set_journalSourceName;
+        ///<summary>Centrally assigned category name for your boundary application's feed.</summary>
+        public global::System.String JournalCategoryName
+        {
+            get => _value_journalCategoryName;
+            set
+            {
+                _set_journalCategoryName = true;
+                _value_journalCategoryName = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalCategoryNameSet => _set_journalCategoryName;
+        ///<summary>Name which will appear on the journal header.</summary>
+        public global::System.String JournalName
+        {
+            get => _value_journalName;
+            set
+            {
+                _set_journalName = true;
+                _value_journalName = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalNameSet => _set_journalName;
+        ///<summary>Longer description of the journal if needed.</summary>
+        public global::System.String? JournalDescription
+        {
+            get => _value_journalDescription;
+            set
+            {
+                _set_journalDescription = true;
+                _value_journalDescription = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalDescriptionSet => _set_journalDescription;
+        ///<summary>Reference number for the journal.  Should be meaningful to the feeding system.</summary>
+        public global::System.String JournalReference
+        {
+            get => _value_journalReference;
+            set
+            {
+                _set_journalReference = true;
+                _value_journalReference = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalReferenceSet => _set_journalReference;
+        ///<summary>Accounting Date: The accounting date of the journal.  Will be defaulted to today's date if not provided.</summary>
+        public global::System.String? AccountingDate
+        {
+            get => _value_accountingDate;
+            set
+            {
+                _set_accountingDate = true;
+                _value_accountingDate = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsAccountingDateSet => _set_accountingDate;
+        ///<summary>Accounting Period: The accounting period of the journal.  If not specified, the API will add the current open period.</summary>
+        public global::System.String? AccountingPeriodName
+        {
+            get => _value_accountingPeriodName;
+            set
+            {
+                _set_accountingPeriodName = true;
+                _value_accountingPeriodName = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsAccountingPeriodNameSet => _set_accountingPeriodName;
+        ///<summary>List of journal lines to include.</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.GlJournalLineInput> JournalLines
+        {
+            get => _value_journalLines;
+            set
+            {
+                _set_journalLines = true;
+                _value_journalLines = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalLinesSet => _set_journalLines;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalLineInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _glSegmentInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _glSegmentStringFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString15Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _ppmSegmentInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _ppmSegmentStringFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonNegativeFloatFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _glReferenceField10Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _glReferenceField25Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _glDescriptionField40Formatter = default !;
+        public global::System.String TypeName => "GlJournalLineInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _glSegmentInputFormatter = serializerResolver.GetInputValueFormatter("GlSegmentInput");
+            _glSegmentStringFormatter = serializerResolver.GetInputValueFormatter("GlSegmentString");
+            _nonEmptyTrimmedString15Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString15");
+            _ppmSegmentInputFormatter = serializerResolver.GetInputValueFormatter("PpmSegmentInput");
+            _ppmSegmentStringFormatter = serializerResolver.GetInputValueFormatter("PpmSegmentString");
+            _nonNegativeFloatFormatter = serializerResolver.GetInputValueFormatter("NonNegativeFloat");
+            _glReferenceField10Formatter = serializerResolver.GetInputValueFormatter("GlReferenceField10");
+            _glReferenceField25Formatter = serializerResolver.GetInputValueFormatter("GlReferenceField25");
+            _glDescriptionField40Formatter = serializerResolver.GetInputValueFormatter("GlDescriptionField40");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.GlJournalLineInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IGlJournalLineInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsGlSegmentsSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("glSegments", FormatGlSegments(input.GlSegments)));
+            }
+
+            if (inputInfo.IsGlSegmentStringSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("glSegmentString", FormatGlSegmentString(input.GlSegmentString)));
+            }
+
+            if (inputInfo.IsGlAliasCodeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("glAliasCode", FormatGlAliasCode(input.GlAliasCode)));
+            }
+
+            if (inputInfo.IsPpmSegmentsSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ppmSegments", FormatPpmSegments(input.PpmSegments)));
+            }
+
+            if (inputInfo.IsPpmSegmentStringSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ppmSegmentString", FormatPpmSegmentString(input.PpmSegmentString)));
+            }
+
+            if (inputInfo.IsDebitAmountSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("debitAmount", FormatDebitAmount(input.DebitAmount)));
+            }
+
+            if (inputInfo.IsCreditAmountSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("creditAmount", FormatCreditAmount(input.CreditAmount)));
+            }
+
+            if (inputInfo.IsExternalSystemIdentifierSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("externalSystemIdentifier", FormatExternalSystemIdentifier(input.ExternalSystemIdentifier)));
+            }
+
+            if (inputInfo.IsExternalSystemReferenceSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("externalSystemReference", FormatExternalSystemReference(input.ExternalSystemReference)));
+            }
+
+            if (inputInfo.IsPpmCommentSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ppmComment", FormatPpmComment(input.PpmComment)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatGlSegments(global::AggieEnterpriseApi.GlSegmentInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _glSegmentInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGlSegmentString(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _glSegmentStringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGlAliasCode(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonEmptyTrimmedString15Formatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatPpmSegments(global::AggieEnterpriseApi.PpmSegmentInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _ppmSegmentInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatPpmSegmentString(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _ppmSegmentStringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatDebitAmount(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonNegativeFloatFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatCreditAmount(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonNegativeFloatFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatExternalSystemIdentifier(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _glReferenceField10Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatExternalSystemReference(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _glReferenceField25Formatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatPpmComment(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _glDescriptionField40Formatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>A single line representing a GL Journal Entry or PPM Cost.  A line must have only one of the two types of segments specified.* `ppmSegments`, when provided will override any `glXxxxxx` segment values.* For the GL segments, there are three options.  Only provide one of them.  Providing multiple will result in a rejection of the payload.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalLineInput : global::AggieEnterpriseApi.State.IGlJournalLineInputInfo, global::System.IEquatable<GlJournalLineInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalLineInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(GlJournalLineInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((GlSegments is null && other.GlSegments is null) || GlSegments != null && GlSegments.Equals(other.GlSegments))) && ((GlSegmentString is null && other.GlSegmentString is null) || GlSegmentString != null && GlSegmentString.Equals(other.GlSegmentString)) && ((GlAliasCode is null && other.GlAliasCode is null) || GlAliasCode != null && GlAliasCode.Equals(other.GlAliasCode)) && ((PpmSegments is null && other.PpmSegments is null) || PpmSegments != null && PpmSegments.Equals(other.PpmSegments)) && ((PpmSegmentString is null && other.PpmSegmentString is null) || PpmSegmentString != null && PpmSegmentString.Equals(other.PpmSegmentString)) && ((DebitAmount is null && other.DebitAmount is null) || DebitAmount != null && DebitAmount.Equals(other.DebitAmount)) && ((CreditAmount is null && other.CreditAmount is null) || CreditAmount != null && CreditAmount.Equals(other.CreditAmount)) && ExternalSystemIdentifier.Equals(other.ExternalSystemIdentifier) && ((ExternalSystemReference is null && other.ExternalSystemReference is null) || ExternalSystemReference != null && ExternalSystemReference.Equals(other.ExternalSystemReference)) && ((PpmComment is null && other.PpmComment is null) || PpmComment != null && PpmComment.Equals(other.PpmComment));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (GlSegments != null)
+                {
+                    hash ^= 397 * GlSegments.GetHashCode();
+                }
+
+                if (GlSegmentString != null)
+                {
+                    hash ^= 397 * GlSegmentString.GetHashCode();
+                }
+
+                if (GlAliasCode != null)
+                {
+                    hash ^= 397 * GlAliasCode.GetHashCode();
+                }
+
+                if (PpmSegments != null)
+                {
+                    hash ^= 397 * PpmSegments.GetHashCode();
+                }
+
+                if (PpmSegmentString != null)
+                {
+                    hash ^= 397 * PpmSegmentString.GetHashCode();
+                }
+
+                if (DebitAmount != null)
+                {
+                    hash ^= 397 * DebitAmount.GetHashCode();
+                }
+
+                if (CreditAmount != null)
+                {
+                    hash ^= 397 * CreditAmount.GetHashCode();
+                }
+
+                hash ^= 397 * ExternalSystemIdentifier.GetHashCode();
+                if (ExternalSystemReference != null)
+                {
+                    hash ^= 397 * ExternalSystemReference.GetHashCode();
+                }
+
+                if (PpmComment != null)
+                {
+                    hash ^= 397 * PpmComment.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::AggieEnterpriseApi.GlSegmentInput? _value_glSegments;
+        private global::System.Boolean _set_glSegments;
+        private global::System.String? _value_glSegmentString;
+        private global::System.Boolean _set_glSegmentString;
+        private global::System.String? _value_glAliasCode;
+        private global::System.Boolean _set_glAliasCode;
+        private global::AggieEnterpriseApi.PpmSegmentInput? _value_ppmSegments;
+        private global::System.Boolean _set_ppmSegments;
+        private global::System.String? _value_ppmSegmentString;
+        private global::System.Boolean _set_ppmSegmentString;
+        private global::System.String? _value_debitAmount;
+        private global::System.Boolean _set_debitAmount;
+        private global::System.String? _value_creditAmount;
+        private global::System.Boolean _set_creditAmount;
+        private global::System.String _value_externalSystemIdentifier = default !;
+        private global::System.Boolean _set_externalSystemIdentifier;
+        private global::System.String? _value_externalSystemReference;
+        private global::System.Boolean _set_externalSystemReference;
+        private global::System.String? _value_ppmComment;
+        private global::System.Boolean _set_ppmComment;
+        ///<summary>GL Segment fields</summary>
+        public global::AggieEnterpriseApi.GlSegmentInput? GlSegments
+        {
+            get => _value_glSegments;
+            set
+            {
+                _set_glSegments = true;
+                _value_glSegments = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsGlSegmentsSet => _set_glSegments;
+        ///<summary>Delimited complete GL segment string.  All fields of the GL Accounting Key must be provided.</summary>
+        public global::System.String? GlSegmentString
+        {
+            get => _value_glSegmentString;
+            set
+            {
+                _set_glSegmentString = true;
+                _value_glSegmentString = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsGlSegmentStringSet => _set_glSegmentString;
+        ///<summary>GL Alias string which will be used to populate all GL Segments for this accounting line.</summary>
+        public global::System.String? GlAliasCode
+        {
+            get => _value_glAliasCode;
+            set
+            {
+                _set_glAliasCode = true;
+                _value_glAliasCode = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsGlAliasCodeSet => _set_glAliasCode;
+        ///<summary>PPM POET segment values.  If provided, this will override any provided GL segments.</summary>
+        public global::AggieEnterpriseApi.PpmSegmentInput? PpmSegments
+        {
+            get => _value_ppmSegments;
+            set
+            {
+                _set_ppmSegments = true;
+                _value_ppmSegments = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsPpmSegmentsSet => _set_ppmSegments;
+        ///<summary>Hyphen-Delimited PPM segment stringMust be populated with either the 4 required segments, or all 6 segments.  (Project-Task Number-Expense Organization-Expense Type-Award Number-Funding Source)* Format Pattern (Required Only): \`SP00000001-0001-0000000-000000\`* Format Pattern (Sponsored Projects): \`CP00000001-0001-0000000-000000-0000000-00000\`For more information, see the description of the [PpmSegmentString scalar]({{Types.PpmSegmentString}})</summary>
+        public global::System.String? PpmSegmentString
+        {
+            get => _value_ppmSegmentString;
+            set
+            {
+                _set_ppmSegmentString = true;
+                _value_ppmSegmentString = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsPpmSegmentStringSet => _set_ppmSegmentString;
+        ///<summary>Debit amount of the GL transaction or PPM Cost.  Only one of debitAmount and creditAmount may be specified on a line.</summary>
+        public global::System.String? DebitAmount
+        {
+            get => _value_debitAmount;
+            set
+            {
+                _set_debitAmount = true;
+                _value_debitAmount = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsDebitAmountSet => _set_debitAmount;
+        ///<summary>Credit amount of the GL transaction or PPM Cost.  Only one of debitAmount and creditAmount may be specified on a line.</summary>
+        public global::System.String? CreditAmount
+        {
+            get => _value_creditAmount;
+            set
+            {
+                _set_creditAmount = true;
+                _value_creditAmount = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsCreditAmountSet => _set_creditAmount;
+        ///<summary>This 10-character field is intended to aid with linking boundary systems transactions to Oracle Cloud summarized journal entries for the purposes of reconciliation.</summary>
+        public global::System.String ExternalSystemIdentifier
+        {
+            get => _value_externalSystemIdentifier;
+            set
+            {
+                _set_externalSystemIdentifier = true;
+                _value_externalSystemIdentifier = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsExternalSystemIdentifierSet => _set_externalSystemIdentifier;
+        ///<summary>This 25-character field is intended to aid in additional linking of boundary systems transactions, as needed, to Oracle Cloud summarized journal entries for the purposes of reconciliation.</summary>
+        public global::System.String? ExternalSystemReference
+        {
+            get => _value_externalSystemReference;
+            set
+            {
+                _set_externalSystemReference = true;
+                _value_externalSystemReference = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsExternalSystemReferenceSet => _set_externalSystemReference;
+        ///<summary>Expenditure comment for PPM transactions.  Will be ignored for GL transactions.</summary>
+        public global::System.String? PpmComment
+        {
+            get => _value_ppmComment;
+            set
+            {
+                _set_ppmComment = true;
+                _value_ppmComment = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsPpmCommentSet => _set_ppmComment;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlSegmentInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _erpEntityCodeFormatter = default !;
@@ -1585,6 +4096,701 @@ namespace AggieEnterpriseApi
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsFlex2Set => _set_flex2;
     }
 
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmSegmentInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _ppmProjectNumberFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _ppmTaskNumberFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _ppmExpenseOrganizationCodeFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _ppmExpenseTypeCodeFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _ppmAwardNumberFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _ppmFundingSourceNumberFormatter = default !;
+        public global::System.String TypeName => "PpmSegmentInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _ppmProjectNumberFormatter = serializerResolver.GetInputValueFormatter("PpmProjectNumber");
+            _ppmTaskNumberFormatter = serializerResolver.GetInputValueFormatter("PpmTaskNumber");
+            _ppmExpenseOrganizationCodeFormatter = serializerResolver.GetInputValueFormatter("PpmExpenseOrganizationCode");
+            _ppmExpenseTypeCodeFormatter = serializerResolver.GetInputValueFormatter("PpmExpenseTypeCode");
+            _ppmAwardNumberFormatter = serializerResolver.GetInputValueFormatter("PpmAwardNumber");
+            _ppmFundingSourceNumberFormatter = serializerResolver.GetInputValueFormatter("PpmFundingSourceNumber");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.PpmSegmentInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IPpmSegmentInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsProjectSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("project", FormatProject(input.Project)));
+            }
+
+            if (inputInfo.IsTaskSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("task", FormatTask(input.Task)));
+            }
+
+            if (inputInfo.IsOrganizationSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("organization", FormatOrganization(input.Organization)));
+            }
+
+            if (inputInfo.IsExpenditureTypeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("expenditureType", FormatExpenditureType(input.ExpenditureType)));
+            }
+
+            if (inputInfo.IsAwardSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("award", FormatAward(input.Award)));
+            }
+
+            if (inputInfo.IsFundingSourceSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("fundingSource", FormatFundingSource(input.FundingSource)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatProject(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _ppmProjectNumberFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatTask(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _ppmTaskNumberFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatOrganization(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _ppmExpenseOrganizationCodeFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatExpenditureType(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _ppmExpenseTypeCodeFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatAward(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _ppmAwardNumberFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatFundingSource(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _ppmFundingSourceNumberFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Input structure for specifying POET/PPM segment values.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmSegmentInput : global::AggieEnterpriseApi.State.IPpmSegmentInputInfo, global::System.IEquatable<PpmSegmentInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((PpmSegmentInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(PpmSegmentInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Project.Equals(other.Project)) && Task.Equals(other.Task) && Organization.Equals(other.Organization) && ExpenditureType.Equals(other.ExpenditureType) && ((Award is null && other.Award is null) || Award != null && Award.Equals(other.Award)) && ((FundingSource is null && other.FundingSource is null) || FundingSource != null && FundingSource.Equals(other.FundingSource));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Project.GetHashCode();
+                hash ^= 397 * Task.GetHashCode();
+                hash ^= 397 * Organization.GetHashCode();
+                hash ^= 397 * ExpenditureType.GetHashCode();
+                if (Award != null)
+                {
+                    hash ^= 397 * Award.GetHashCode();
+                }
+
+                if (FundingSource != null)
+                {
+                    hash ^= 397 * FundingSource.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.String _value_project = default !;
+        private global::System.Boolean _set_project;
+        private global::System.String _value_task = default !;
+        private global::System.Boolean _set_task;
+        private global::System.String _value_organization = default !;
+        private global::System.Boolean _set_organization;
+        private global::System.String _value_expenditureType = default !;
+        private global::System.Boolean _set_expenditureType;
+        private global::System.String? _value_award;
+        private global::System.Boolean _set_award;
+        private global::System.String? _value_fundingSource;
+        private global::System.Boolean _set_fundingSource;
+        ///<summary>Required: Managed Project Number</summary>
+        public global::System.String Project
+        {
+            get => _value_project;
+            set
+            {
+                _set_project = true;
+                _value_project = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsProjectSet => _set_project;
+        ///<summary>Required: Task ID.  Must belong to Project and be a chargeable task</summary>
+        public global::System.String Task
+        {
+            get => _value_task;
+            set
+            {
+                _set_task = true;
+                _value_task = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsTaskSet => _set_task;
+        ///<summary>Required: Organization for which the expense is being incurred.  Aligns with the GL Financial Department segment.</summary>
+        public global::System.String Organization
+        {
+            get => _value_organization;
+            set
+            {
+                _set_organization = true;
+                _value_organization = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsOrganizationSet => _set_organization;
+        ///<summary>Required: Type of expense being charged to the project.  Aligns with the GL Account segment.</summary>
+        public global::System.String ExpenditureType
+        {
+            get => _value_expenditureType;
+            set
+            {
+                _set_expenditureType = true;
+                _value_expenditureType = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsExpenditureTypeSet => _set_expenditureType;
+        ///<summary>Award for Sponsored projects only**API Users, do not provide.  The valid value will be derived from the project if necessary.**</summary>
+        public global::System.String? Award
+        {
+            get => _value_award;
+            set
+            {
+                _set_award = true;
+                _value_award = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsAwardSet => _set_award;
+        ///<summary>Award funding source for Sponsored projects only**API Users, do not provide.  The valid value will be derived from the project if necessary.**</summary>
+        public global::System.String? FundingSource
+        {
+            get => _value_fundingSource;
+            set
+            {
+                _set_fundingSource = true;
+                _value_fundingSource = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsFundingSourceSet => _set_fundingSource;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public enum RequestStatus
+    {
+        /// <summary>
+        /// Request has been submitted to the server, but not validated or processed.
+        /// </summary>
+        Pending,
+        /// <summary>
+        /// Request has been picked up for processing.
+        /// </summary>
+        Inprocess,
+        /// <summary>
+        /// There was an error processing the request after it was picked up.
+        /// </summary>
+        Error,
+        /// <summary>
+        /// Request has been processed, but the callback has not been completed.
+        /// </summary>
+        Processed,
+        /// <summary>
+        /// If Callback URL Provided: Request has been processed, and the callback was successfully contacted.  Or, request has been processed, and no callback URL was provided.
+        /// </summary>
+        Complete,
+        /// <summary>
+        /// If Callback URL Provided: Request has been processed, but repeated attempts to contact the callback have failed and no more will be tried.
+        /// </summary>
+        Stale,
+        /// <summary>
+        /// There was a validation error in the request payload data.
+        /// </summary>
+        Rejected
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class RequestStatusSerializer : global::StrawberryShake.Serialization.IInputValueFormatter, global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, RequestStatus>
+    {
+        public global::System.String TypeName => "RequestStatus";
+        public RequestStatus Parse(global::System.String serializedValue)
+        {
+            return serializedValue switch
+            {
+                "PENDING" => RequestStatus.Pending,
+                "INPROCESS" => RequestStatus.Inprocess,
+                "ERROR" => RequestStatus.Error,
+                "PROCESSED" => RequestStatus.Processed,
+                "COMPLETE" => RequestStatus.Complete,
+                "STALE" => RequestStatus.Stale,
+                "REJECTED" => RequestStatus.Rejected,
+                _ => throw new global::StrawberryShake.GraphQLClientException()};
+        }
+
+        public global::System.Object Format(global::System.Object? runtimeValue)
+        {
+            return runtimeValue switch
+            {
+                RequestStatus.Pending => "PENDING",
+                RequestStatus.Inprocess => "INPROCESS",
+                RequestStatus.Error => "ERROR",
+                RequestStatus.Processed => "PROCESSED",
+                RequestStatus.Complete => "COMPLETE",
+                RequestStatus.Stale => "STALE",
+                RequestStatus.Rejected => "REJECTED",
+                _ => throw new global::StrawberryShake.GraphQLClientException()};
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlJournalRequest GraphQL operation
+    /// <code>
+    /// mutation GlJournalRequest($data: GlJournalRequestInput!) {
+    ///   glJournalRequest(data: $data) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       requestId
+    ///       consumerId
+    ///       requestDateTime
+    ///       requestStatus
+    ///       operationName
+    ///     }
+    ///     glJournalId
+    ///     ppmBatchName
+    ///     validationResults {
+    ///       __typename
+    ///       errorMessages
+    ///       messageProperties
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestMutationDocument : global::StrawberryShake.IDocument
+    {
+        private GlJournalRequestMutationDocument()
+        {
+        }
+
+        public static GlJournalRequestMutationDocument Instance { get; } = new GlJournalRequestMutationDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Mutation;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x6d, 0x75, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x28, 0x24, 0x64, 0x61, 0x74, 0x61, 0x3a, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x28, 0x64, 0x61, 0x74, 0x61, 0x3a, 0x20, 0x24, 0x64, 0x61, 0x74, 0x61, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x49, 0x64, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x7d, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x49, 0x64, 0x20, 0x70, 0x70, 0x6d, 0x42, 0x61, 0x74, 0x63, 0x68, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "3372a05f0df7e92b2e8c1e5ae076ee3f");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlJournalRequest GraphQL operation
+    /// <code>
+    /// mutation GlJournalRequest($data: GlJournalRequestInput!) {
+    ///   glJournalRequest(data: $data) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       requestId
+    ///       consumerId
+    ///       requestDateTime
+    ///       requestStatus
+    ///       operationName
+    ///     }
+    ///     glJournalId
+    ///     ppmBatchName
+    ///     validationResults {
+    ///       __typename
+    ///       errorMessages
+    ///       messageProperties
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestMutation : global::AggieEnterpriseApi.IGlJournalRequestMutation
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IGlJournalRequestResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _glJournalRequestInputFormatter;
+        public GlJournalRequestMutation(global::StrawberryShake.IOperationExecutor<IGlJournalRequestResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _glJournalRequestInputFormatter = serializerResolver.GetInputValueFormatter("GlJournalRequestInput");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGlJournalRequestResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestResult>> ExecuteAsync(global::AggieEnterpriseApi.GlJournalRequestInput data, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(data);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGlJournalRequestResult>> Watch(global::AggieEnterpriseApi.GlJournalRequestInput data, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(data);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.GlJournalRequestInput data)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("data", FormatData(data));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: GlJournalRequestMutationDocument.Instance.Hash.Value, name: "GlJournalRequest", document: GlJournalRequestMutationDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatData(global::AggieEnterpriseApi.GlJournalRequestInput value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _glJournalRequestInputFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlJournalRequest GraphQL operation
+    /// <code>
+    /// mutation GlJournalRequest($data: GlJournalRequestInput!) {
+    ///   glJournalRequest(data: $data) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       requestId
+    ///       consumerId
+    ///       requestDateTime
+    ///       requestStatus
+    ///       operationName
+    ///     }
+    ///     glJournalId
+    ///     ppmBatchName
+    ///     validationResults {
+    ///       __typename
+    ///       errorMessages
+    ///       messageProperties
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestMutation : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestResult>> ExecuteAsync(global::AggieEnterpriseApi.GlJournalRequestInput data, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IGlJournalRequestResult>> Watch(global::AggieEnterpriseApi.GlJournalRequestInput data, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlJournalRequestStatus GraphQL operation
+    /// <code>
+    /// query GlJournalRequestStatus($requestId: String!) {
+    ///   glJournalRequestStatus(requestId: $requestId) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       statusRequestPayload
+    ///       operationName
+    ///       requestStatus
+    ///       requestDateTime
+    ///       lastStatusDateTime
+    ///       errorMessages
+    ///       processedDateTime
+    ///       boundaryApplicationName
+    ///       consumerId
+    ///       consumerReferenceId
+    ///     }
+    ///     validationResults {
+    ///       __typename
+    ///       valid
+    ///       errorMessages
+    ///     }
+    ///     jobResults {
+    ///       __typename
+    ///       jobId
+    ///       jobStatus
+    ///       completedDateTime
+    ///       jobReport
+    ///       failedRecords
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusQueryDocument : global::StrawberryShake.IDocument
+    {
+        private GlJournalRequestStatusQueryDocument()
+        {
+        }
+
+        public static GlJournalRequestStatusQueryDocument Instance { get; } = new GlJournalRequestStatusQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x28, 0x24, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x28, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x3a, 0x20, 0x24, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x20, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x62, 0x6f, 0x75, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x49, 0x64, 0x20, 0x7d, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x6a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6a, 0x6f, 0x62, 0x49, 0x64, 0x20, 0x6a, 0x6f, 0x62, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x63, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6a, 0x6f, 0x62, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x20, 0x66, 0x61, 0x69, 0x6c, 0x65, 0x64, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "e76ae67384c7a5437e3642f964bb53c0");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlJournalRequestStatus GraphQL operation
+    /// <code>
+    /// query GlJournalRequestStatus($requestId: String!) {
+    ///   glJournalRequestStatus(requestId: $requestId) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       statusRequestPayload
+    ///       operationName
+    ///       requestStatus
+    ///       requestDateTime
+    ///       lastStatusDateTime
+    ///       errorMessages
+    ///       processedDateTime
+    ///       boundaryApplicationName
+    ///       consumerId
+    ///       consumerReferenceId
+    ///     }
+    ///     validationResults {
+    ///       __typename
+    ///       valid
+    ///       errorMessages
+    ///     }
+    ///     jobResults {
+    ///       __typename
+    ///       jobId
+    ///       jobStatus
+    ///       completedDateTime
+    ///       jobReport
+    ///       failedRecords
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusQuery : global::AggieEnterpriseApi.IGlJournalRequestStatusQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IGlJournalRequestStatusResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        public GlJournalRequestStatusQuery(global::StrawberryShake.IOperationExecutor<IGlJournalRequestStatusResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGlJournalRequestStatusResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusResult>> ExecuteAsync(global::System.String requestId, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(requestId);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusResult>> Watch(global::System.String requestId, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(requestId);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String requestId)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("requestId", FormatRequestId(requestId));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: GlJournalRequestStatusQueryDocument.Instance.Hash.Value, name: "GlJournalRequestStatus", document: GlJournalRequestStatusQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatRequestId(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlJournalRequestStatus GraphQL operation
+    /// <code>
+    /// query GlJournalRequestStatus($requestId: String!) {
+    ///   glJournalRequestStatus(requestId: $requestId) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       statusRequestPayload
+    ///       operationName
+    ///       requestStatus
+    ///       requestDateTime
+    ///       lastStatusDateTime
+    ///       errorMessages
+    ///       processedDateTime
+    ///       boundaryApplicationName
+    ///       consumerId
+    ///       consumerReferenceId
+    ///     }
+    ///     validationResults {
+    ///       __typename
+    ///       valid
+    ///       errorMessages
+    ///     }
+    ///     jobResults {
+    ///       __typename
+    ///       jobId
+    ///       jobStatus
+    ///       completedDateTime
+    ///       jobReport
+    ///       failedRecords
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusResult>> ExecuteAsync(global::System.String requestId, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusResult>> Watch(global::System.String requestId, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
     /// <summary>
     /// Represents the operation service of the GlValidateChartSegments GraphQL operation
     /// <code>
@@ -1955,15 +5161,21 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class AggieEnterpriseClient : global::AggieEnterpriseApi.IAggieEnterpriseClient
     {
+        private readonly global::AggieEnterpriseApi.IGlJournalRequestMutation _glJournalRequest;
+        private readonly global::AggieEnterpriseApi.IGlJournalRequestStatusQuery _glJournalRequestStatus;
         private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
+            _glJournalRequest = glJournalRequest ?? throw new global::System.ArgumentNullException(nameof(glJournalRequest));
+            _glJournalRequestStatus = glJournalRequestStatus ?? throw new global::System.ArgumentNullException(nameof(glJournalRequestStatus));
             _glValidateChartSegments = glValidateChartSegments ?? throw new global::System.ArgumentNullException(nameof(glValidateChartSegments));
             _glValidateChartstring = glValidateChartstring ?? throw new global::System.ArgumentNullException(nameof(glValidateChartstring));
         }
 
         public static global::System.String ClientName => "AggieEnterpriseClient";
+        public global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest => _glJournalRequest;
+        public global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus => _glJournalRequestStatus;
         public global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments => _glValidateChartSegments;
         public global::AggieEnterpriseApi.IGlValidateChartstringQuery GlValidateChartstring => _glValidateChartstring;
     }
@@ -1974,6 +5186,10 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IAggieEnterpriseClient
     {
+        global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest { get; }
+
+        global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus { get; }
+
         global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments { get; }
 
         global::AggieEnterpriseApi.IGlValidateChartstringQuery GlValidateChartstring { get; }
@@ -1982,6 +5198,327 @@ namespace AggieEnterpriseApi
 
 namespace AggieEnterpriseApi.State
 {
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlJournalRequestResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public GlJournalRequestResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IGlJournalRequestResult);
+        public GlJournalRequestResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is GlJournalRequestResultInfo info)
+            {
+                return new GlJournalRequestResult(MapNonNullableIGlJournalRequest_GlJournalRequest(info.GlJournalRequest, snapshot));
+            }
+
+            throw new global::System.ArgumentException("GlJournalRequestResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest MapNonNullableIGlJournalRequest_GlJournalRequest(global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlJournalRequest_GlJournalRequest returnValue = default !;
+            if (data.__typename.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput(MapNonNullableIGlJournalRequest_GlJournalRequest_RequestStatus(data.RequestStatus ?? throw new global::System.ArgumentNullException(), snapshot), data.GlJournalId, data.PpmBatchName, MapIGlJournalRequest_GlJournalRequest_ValidationResults(data.ValidationResults, snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus MapNonNullableIGlJournalRequest_GlJournalRequest_RequestStatus(global::AggieEnterpriseApi.State.ActionRequestStatusData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlJournalRequest_GlJournalRequest_RequestStatus returnValue = default !;
+            if (data.__typename.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus(data.RequestId, data.ConsumerId ?? throw new global::System.ArgumentNullException(), data.RequestDateTime ?? throw new global::System.ArgumentNullException(), data.RequestStatus ?? throw new global::System.ArgumentNullException(), data.OperationName ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? MapIGlJournalRequest_GlJournalRequest_ValidationResults(global::AggieEnterpriseApi.State.ValidationResponseData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGlJournalRequest_GlJournalRequest_ValidationResults returnValue = default !;
+            if (data?.__typename.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse(data.ErrorMessages, data.MessageProperties);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public GlJournalRequestResultInfo(global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData glJournalRequest, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            GlJournalRequest = glJournalRequest;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
+        /// 
+        /// The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
+        /// 
+        /// This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
+        /// 
+        /// The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
+        /// 
+        /// Please see below in this document for examples of payloads into this API.
+        /// 
+        /// #### Supporting Operations
+        /// 
+        /// Other operations which should be used to pre-validate chartstring segments are below.  Please see <https: / / financeandbusiness.ucdavis.edu / aggie-enterprise / chart-of-accounts / redesign> for information about each of these segments.
+        /// 
+        /// * [`erpEntity`]({{Queries.erpEntity}})
+        /// * [`erpFund`]({{Queries.erpFund}})
+        /// * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
+        /// * [`erpAccount`]({{Queries.erpAccount}})
+        /// * [`erpPurpose`]({{Queries.erpPurpose}})
+        /// * [`erpProject`]({{Queries.erpProject}})
+        /// * [`erpProgram`]({{Queries.erpProgram}})
+        /// * [`erpActivity`]({{Queries.erpActivity}})
+        /// 
+        /// For validating combinations, the following two operations are provided, differing only in their input format.
+        /// 
+        /// * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
+        /// * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
+        /// 
+        /// #### Managed Project Cost Entries (PPM/POET)
+        /// 
+        /// In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
+        /// 
+        /// For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
+        /// 
+        /// For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
+        /// 
+        /// * `p`roject
+        /// * `o`rganization (same values as `ErpFinancialDepartment`)
+        /// * `e`xpenditureType (same values as `ErpAccount`)
+        /// * `t`ask
+        /// 
+        /// Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
+        /// 
+        /// There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
+        /// 
+        /// * award (only for sponsored projects)
+        /// * fundingSource (only for sponsored projects)
+        /// 
+        /// As with the GL segments, the API provides the operations below for lookups and validation:
+        /// 
+        /// * [`ppmProject`]({{Queries.ppmProject}})
+        /// * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
+        /// * [`ppmOrganization`]({{Queries.ppmOrganization}})
+        /// * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
+        /// 
+        /// #### Volume of Data
+        /// 
+        /// Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
+        /// 
+        /// #### Journal Balancing
+        /// 
+        /// As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
+        /// 
+        /// While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
+        /// 
+        /// #### Basic Use
+        /// 
+        /// 1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
+        /// 2. GraphQL Server will validate content format and reject if invalid.
+        /// 3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
+        /// 4. A failure in either of these initial validations will result in an error response with no request being generated.
+        /// 5. Passing validation will save the request to allow for pickup by the integration platform for processing.
+        /// 6. A request tracking ID will be generated and returned to allow for the consumer to check on the status of the request and obtain results when completed.
+        /// 7. At a later time, use the generated request tracking ID against the [`glJournalRequestStatus`]({{Queries.glJournalRequestStatus}}) operation to determine if the request was processed successfully
+        /// </summary>
+        public global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData GlJournalRequest { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new GlJournalRequestResultInfo(GlJournalRequest, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlJournalRequestStatusResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public GlJournalRequestStatusResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IGlJournalRequestStatusResult);
+        public GlJournalRequestStatusResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is GlJournalRequestStatusResultInfo info)
+            {
+                return new GlJournalRequestStatusResult(MapIGlJournalRequestStatus_GlJournalRequestStatus(info.GlJournalRequestStatus, snapshot));
+            }
+
+            throw new global::System.ArgumentException("GlJournalRequestStatusResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus? MapIGlJournalRequestStatus_GlJournalRequestStatus(global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGlJournalRequestStatus_GlJournalRequestStatus returnValue = default !;
+            if (data?.__typename.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput(MapNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus(data.RequestStatus ?? throw new global::System.ArgumentNullException(), snapshot), MapIGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults(data.ValidationResults, snapshot), MapIGlJournalRequestStatus_GlJournalRequestStatus_JobResultsNonNullableArray(data.JobResults, snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus MapNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus(global::AggieEnterpriseApi.State.ActionRequestStatusData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus returnValue = default !;
+            if (data.__typename.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus(data.StatusRequestPayload, data.OperationName ?? throw new global::System.ArgumentNullException(), data.RequestStatus ?? throw new global::System.ArgumentNullException(), data.RequestDateTime ?? throw new global::System.ArgumentNullException(), data.LastStatusDateTime ?? throw new global::System.ArgumentNullException(), data.ErrorMessages, data.ProcessedDateTime, data.BoundaryApplicationName ?? throw new global::System.ArgumentNullException(), data.ConsumerId ?? throw new global::System.ArgumentNullException(), data.ConsumerReferenceId ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? MapIGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults(global::AggieEnterpriseApi.State.ValidationResponseData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults returnValue = default !;
+            if (data?.__typename.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse(data.Valid ?? throw new global::System.ArgumentNullException(), data.ErrorMessages);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults>? MapIGlJournalRequestStatus_GlJournalRequestStatus_JobResultsNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                return null;
+            }
+
+            var requestJobResults = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults>();
+            foreach (global::AggieEnterpriseApi.State.RequestJobResultData child in list)
+            {
+                requestJobResults.Add(MapNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_JobResults(child, snapshot));
+            }
+
+            return requestJobResults;
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults MapNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_JobResults(global::AggieEnterpriseApi.State.RequestJobResultData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlJournalRequestStatus_GlJournalRequestStatus_JobResults returnValue = default !;
+            if (data.__typename.Equals("RequestJobResult", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult(data.JobId ?? throw new global::System.ArgumentNullException(), data.JobStatus ?? throw new global::System.ArgumentNullException(), data.CompletedDateTime, data.JobReport, data.FailedRecords);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public GlJournalRequestStatusResultInfo(global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? glJournalRequestStatus, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            GlJournalRequestStatus = glJournalRequestStatus;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Get the status of a previously submitted journal voucher request by the API-assigned request ID.
+        /// </summary>
+        public global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? GlJournalRequestStatus { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new GlJournalRequestStatusResultInfo(GlJournalRequestStatus, _entityIds, version);
+        }
+    }
+
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlValidateChartSegmentsResult>
     {
@@ -2203,6 +5740,74 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IGlJournalRequestInputInfo
+    {
+        global::System.Boolean IsHeaderSet { get; }
+
+        global::System.Boolean IsPayloadSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IActionRequestHeaderInputInfo
+    {
+        global::System.Boolean IsConsumerTrackingIdSet { get; }
+
+        global::System.Boolean IsConsumerReferenceIdSet { get; }
+
+        global::System.Boolean IsConsumerNotesSet { get; }
+
+        global::System.Boolean IsBoundaryApplicationNameSet { get; }
+
+        global::System.Boolean IsConsumerIdSet { get; }
+
+        global::System.Boolean IsBatchRequestSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IGlJournalInputInfo
+    {
+        global::System.Boolean IsJournalSourceNameSet { get; }
+
+        global::System.Boolean IsJournalCategoryNameSet { get; }
+
+        global::System.Boolean IsJournalNameSet { get; }
+
+        global::System.Boolean IsJournalDescriptionSet { get; }
+
+        global::System.Boolean IsJournalReferenceSet { get; }
+
+        global::System.Boolean IsAccountingDateSet { get; }
+
+        global::System.Boolean IsAccountingPeriodNameSet { get; }
+
+        global::System.Boolean IsJournalLinesSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IGlJournalLineInputInfo
+    {
+        global::System.Boolean IsGlSegmentsSet { get; }
+
+        global::System.Boolean IsGlSegmentStringSet { get; }
+
+        global::System.Boolean IsGlAliasCodeSet { get; }
+
+        global::System.Boolean IsPpmSegmentsSet { get; }
+
+        global::System.Boolean IsPpmSegmentStringSet { get; }
+
+        global::System.Boolean IsDebitAmountSet { get; }
+
+        global::System.Boolean IsCreditAmountSet { get; }
+
+        global::System.Boolean IsExternalSystemIdentifierSet { get; }
+
+        global::System.Boolean IsExternalSystemReferenceSet { get; }
+
+        global::System.Boolean IsPpmCommentSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     internal interface IGlSegmentInputInfo
     {
         global::System.Boolean IsEntitySet { get; }
@@ -2224,6 +5829,506 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsFlex1Set { get; }
 
         global::System.Boolean IsFlex2Set { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IPpmSegmentInputInfo
+    {
+        global::System.Boolean IsProjectSet { get; }
+
+        global::System.Boolean IsTaskSet { get; }
+
+        global::System.Boolean IsOrganizationSet { get; }
+
+        global::System.Boolean IsExpenditureTypeSet { get; }
+
+        global::System.Boolean IsAwardSet { get; }
+
+        global::System.Boolean IsFundingSourceSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::AggieEnterpriseApi.RequestStatus> _requestStatusParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString80Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString240Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpNameField100Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpDescriptionField240Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _glReferenceField25Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _localDateParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString15Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _glSegmentStringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmSegmentStringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonNegativeFloatParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _glReferenceField10Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _glDescriptionField40Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpEntityCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFundCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpDepartmentCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpAccountCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPurposeCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProjectCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProgramCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpActivityCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFlex1CodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFlex2CodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmProjectNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmTaskNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseOrganizationCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseTypeCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmAwardNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmFundingSourceNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString100Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.Guid> _uUIDParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
+        public GlJournalRequestBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _requestStatusParser = serializerResolver.GetLeafValueParser<global::System.String, global::AggieEnterpriseApi.RequestStatus>("RequestStatus") ?? throw new global::System.ArgumentException("No serializer for type `RequestStatus` found.");
+            _nonEmptyTrimmedString80Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString80") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString80` found.");
+            _nonEmptyTrimmedString240Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString240") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString240` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _erpNameField100Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpNameField100") ?? throw new global::System.ArgumentException("No serializer for type `ErpNameField100` found.");
+            _erpDescriptionField240Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpDescriptionField240") ?? throw new global::System.ArgumentException("No serializer for type `ErpDescriptionField240` found.");
+            _glReferenceField25Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("GlReferenceField25") ?? throw new global::System.ArgumentException("No serializer for type `GlReferenceField25` found.");
+            _localDateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("LocalDate") ?? throw new global::System.ArgumentException("No serializer for type `LocalDate` found.");
+            _nonEmptyTrimmedString15Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString15") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString15` found.");
+            _glSegmentStringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("GlSegmentString") ?? throw new global::System.ArgumentException("No serializer for type `GlSegmentString` found.");
+            _ppmSegmentStringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmSegmentString") ?? throw new global::System.ArgumentException("No serializer for type `PpmSegmentString` found.");
+            _nonNegativeFloatParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonNegativeFloat") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeFloat` found.");
+            _glReferenceField10Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("GlReferenceField10") ?? throw new global::System.ArgumentException("No serializer for type `GlReferenceField10` found.");
+            _glDescriptionField40Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("GlDescriptionField40") ?? throw new global::System.ArgumentException("No serializer for type `GlDescriptionField40` found.");
+            _erpEntityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpEntityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpEntityCode` found.");
+            _erpFundCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFundCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpFundCode` found.");
+            _erpDepartmentCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpDepartmentCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpDepartmentCode` found.");
+            _erpAccountCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpAccountCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpAccountCode` found.");
+            _erpPurposeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPurposeCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPurposeCode` found.");
+            _erpProjectCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProjectCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProjectCode` found.");
+            _erpProgramCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProgramCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProgramCode` found.");
+            _erpActivityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpActivityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpActivityCode` found.");
+            _erpFlex1CodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFlex1Code") ?? throw new global::System.ArgumentException("No serializer for type `ErpFlex1Code` found.");
+            _erpFlex2CodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFlex2Code") ?? throw new global::System.ArgumentException("No serializer for type `ErpFlex2Code` found.");
+            _ppmProjectNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmProjectNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmProjectNumber` found.");
+            _ppmTaskNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmTaskNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmTaskNumber` found.");
+            _ppmExpenseOrganizationCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseOrganizationCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseOrganizationCode` found.");
+            _ppmExpenseTypeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseTypeCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseTypeCode` found.");
+            _ppmAwardNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmAwardNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmAwardNumber` found.");
+            _ppmFundingSourceNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmFundingSourceNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmFundingSourceNumber` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _nonEmptyTrimmedString100Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString100") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString100` found.");
+            _uUIDParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.Guid>("UUID") ?? throw new global::System.ArgumentException("No serializer for type `UUID` found.");
+            _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IGlJournalRequestResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IGlJournalRequestResult Result, GlJournalRequestResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IGlJournalRequestResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IGlJournalRequestResult, GlJournalRequestResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new GlJournalRequestResultInfo(DeserializeNonNullableIGlJournalRequest_GlJournalRequest(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "glJournalRequest")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData DeserializeNonNullableIGlJournalRequest_GlJournalRequest(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData(typename, requestStatus: DeserializeNonNullableIGlJournalRequest_GlJournalRequest_RequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), glJournalId: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "glJournalId")), ppmBatchName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "ppmBatchName")), validationResults: DeserializeIGlJournalRequest_GlJournalRequest_ValidationResults(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResults")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.ActionRequestStatusData DeserializeNonNullableIGlJournalRequest_GlJournalRequest_RequestStatus(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ActionRequestStatusData(typename, requestId: DeserializeGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestId")), consumerId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerId")), requestDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestDateTime")), requestStatus: DeserializeNonNullableRequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), operationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "operationName")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Guid? DeserializeGuid(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _uUIDParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _nonEmptyTrimmedString80Parser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.DateTimeOffset DeserializeNonNullableDateTimeOffset(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _dateTimeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::AggieEnterpriseApi.RequestStatus DeserializeNonNullableRequestStatus(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _requestStatusParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::AggieEnterpriseApi.State.ValidationResponseData? DeserializeIGlJournalRequest_GlJournalRequest_ValidationResults(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ValidationResponseData(typename, errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), messageProperties: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "messageProperties")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::AggieEnterpriseApi.RequestStatus> _requestStatusParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _jSONParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString80Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        public GlJournalRequestStatusBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _requestStatusParser = serializerResolver.GetLeafValueParser<global::System.String, global::AggieEnterpriseApi.RequestStatus>("RequestStatus") ?? throw new global::System.ArgumentException("No serializer for type `RequestStatus` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _jSONParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("JSON") ?? throw new global::System.ArgumentException("No serializer for type `JSON` found.");
+            _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
+            _nonEmptyTrimmedString80Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString80") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString80` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IGlJournalRequestStatusResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IGlJournalRequestStatusResult Result, GlJournalRequestStatusResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IGlJournalRequestStatusResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IGlJournalRequestStatusResult, GlJournalRequestStatusResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new GlJournalRequestStatusResultInfo(DeserializeIGlJournalRequestStatus_GlJournalRequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "glJournalRequestStatus")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? DeserializeIGlJournalRequestStatus_GlJournalRequestStatus(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData(typename, requestStatus: DeserializeNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), validationResults: DeserializeIGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResults")), jobResults: DeserializeIGlJournalRequestStatus_GlJournalRequestStatus_JobResultsNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobResults")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.ActionRequestStatusData DeserializeNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ActionRequestStatusData(typename, statusRequestPayload: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "statusRequestPayload")), operationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "operationName")), requestStatus: DeserializeNonNullableRequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), requestDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestDateTime")), lastStatusDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastStatusDateTime")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), processedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processedDateTime")), boundaryApplicationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "boundaryApplicationName")), consumerId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerId")), consumerReferenceId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerReferenceId")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _jSONParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::AggieEnterpriseApi.RequestStatus DeserializeNonNullableRequestStatus(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _requestStatusParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.DateTimeOffset DeserializeNonNullableDateTimeOffset(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _dateTimeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
+        }
+
+        private global::System.DateTimeOffset? DeserializeDateTimeOffset(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _dateTimeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::AggieEnterpriseApi.State.ValidationResponseData? DeserializeIGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ValidationResponseData(typename, valid: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "valid")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? DeserializeIGlJournalRequestStatus_GlJournalRequestStatus_JobResultsNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var requestJobResults = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.RequestJobResultData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                requestJobResults.Add(DeserializeNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_JobResults(child));
+            }
+
+            return requestJobResults;
+        }
+
+        private global::AggieEnterpriseApi.State.RequestJobResultData DeserializeNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_JobResults(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("RequestJobResult", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.RequestJobResultData(typename, jobId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobId")), jobStatus: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobStatus")), completedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "completedDateTime")), jobReport: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobReport")), failedRecords: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "failedRecords")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -2620,6 +6725,148 @@ namespace AggieEnterpriseApi.State
         }
     }
 
+    ///<summary>Output type for GLJournal requests and follow-up status updates.Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusOutputData
+    {
+        public GlJournalRequestStatusOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ActionRequestStatusData? requestStatus = default !, global::System.String? glJournalId = default !, global::System.String? ppmBatchName = default !, global::AggieEnterpriseApi.State.ValidationResponseData? validationResults = default !, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? jobResults = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            RequestStatus = requestStatus;
+            GlJournalId = glJournalId;
+            PpmBatchName = ppmBatchName;
+            ValidationResults = validationResults;
+            JobResults = jobResults;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Overall status of the action request</summary>
+        public global::AggieEnterpriseApi.State.ActionRequestStatusData? RequestStatus { get; }
+
+        ///<summary>ERP-assigned journal ID for transactions posted to the GL.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.</summary>
+        public global::System.String? GlJournalId { get; }
+
+        ///<summary>Integration-assigned batch name for costs posted to the PPM sub-ledger.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.</summary>
+        public global::System.String? PpmBatchName { get; }
+
+        ///<summary>Errors found when validatating the payload data.  These must be corrected before the request will be accepted.</summary>
+        public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResults { get; }
+
+        ///<summary>Results of the Job or Jobs required to submit this request to the ERP.</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? JobResults { get; }
+    }
+
+    ///<summary>Fields common to all action status requests.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ActionRequestStatusData
+    {
+        public ActionRequestStatusData(global::System.String __typename, global::System.Guid? requestId = default !, global::System.String? consumerId = default !, global::System.DateTimeOffset? requestDateTime = default !, global::AggieEnterpriseApi.RequestStatus? requestStatus = default !, global::System.String? operationName = default !, global::System.String? statusRequestPayload = default !, global::System.DateTimeOffset? lastStatusDateTime = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.DateTimeOffset? processedDateTime = default !, global::System.String? boundaryApplicationName = default !, global::System.String? consumerReferenceId = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            RequestId = requestId;
+            ConsumerId = consumerId;
+            RequestDateTime = requestDateTime;
+            RequestStatus = requestStatus;
+            OperationName = operationName;
+            StatusRequestPayload = statusRequestPayload;
+            LastStatusDateTime = lastStatusDateTime;
+            ErrorMessages = errorMessages;
+            ProcessedDateTime = processedDateTime;
+            BoundaryApplicationName = boundaryApplicationName;
+            ConsumerReferenceId = consumerReferenceId;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Unique identifier assigned to the request</summary>
+        public global::System.Guid? RequestId { get; }
+
+        ///<summary>ID of the consumer who made the request extracted from the service authentication data</summary>
+        public global::System.String? ConsumerId { get; }
+
+        public global::System.DateTimeOffset? RequestDateTime { get; }
+
+        public global::AggieEnterpriseApi.RequestStatus? RequestStatus { get; }
+
+        ///<summary>Name of the operation called.</summary>
+        public global::System.String? OperationName { get; }
+
+        ///<summary>GraphQL Payload to post back to this server to check on the status of the request.</summary>
+        public global::System.String? StatusRequestPayload { get; }
+
+        ///<summary>When the status last changed</summary>
+        public global::System.DateTimeOffset? LastStatusDateTime { get; }
+
+        ///<summary>Error information if the request failed during processing.</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        ///<summary>When the request was processed by the ERP system</summary>
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
+
+        ///<summary>Identifier for the boundary application originating the request.</summary>
+        public global::System.String? BoundaryApplicationName { get; }
+
+        ///<summary>Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.</summary>
+        public global::System.String? ConsumerReferenceId { get; }
+    }
+
+    ///<summary>Contains the validation overall status and any error messages and the properties they belong to.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ValidationResponseData
+    {
+        public ValidationResponseData(global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties = default !, global::System.Boolean? valid = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            ErrorMessages = errorMessages;
+            MessageProperties = messageProperties;
+            Valid = valid;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        ///<summary>Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+
+        ///<summary>Whether the overall validation succeeded or failed.</summary>
+        public global::System.Boolean? Valid { get; }
+    }
+
+    ///<summary>Results of the job as submitted to the ERP system.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class RequestJobResultData
+    {
+        public RequestJobResultData(global::System.String __typename, global::System.String? jobId = default !, global::System.String? jobStatus = default !, global::System.DateTimeOffset? completedDateTime = default !, global::System.String? jobReport = default !, global::System.String? failedRecords = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            JobId = jobId;
+            JobStatus = jobStatus;
+            CompletedDateTime = completedDateTime;
+            JobReport = jobReport;
+            FailedRecords = failedRecords;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Identifier of the type of job submitted.</summary>
+        public global::System.String? JobId { get; }
+
+        ///<summary>Current status of the oracle job.</summary>
+        public global::System.String? JobStatus { get; }
+
+        ///<summary>Time the job completion was recorded.</summary>
+        public global::System.DateTimeOffset? CompletedDateTime { get; }
+
+        ///<summary>Job report or log output from executing the request on the ERP system.</summary>
+        public global::System.String? JobReport { get; }
+
+        ///<summary>Records which caused the job to fail.</summary>
+        public global::System.String? FailedRecords { get; }
+    }
+
     ///<summary>Return data structure when validating a set of GL segment values.The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsOutputData
@@ -2646,30 +6893,6 @@ namespace AggieEnterpriseApi.State
 
         ///<summary>The "codeCombinationId" is an informational property only.  If populated, itindicates that the validated combination of segment values was previouslyknown to the financial system.  Validity still needs to be checked, aschartstrings can be disabled or expire.  However, segments which match anexisting valid combination can not fail validation when posted to thefinancial system.</summary>
         public global::System.Int64? CodeCombinationId { get; }
-    }
-
-    ///<summary>Contains the validation overall status and any error messages and the properties they belong to.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ValidationResponseData
-    {
-        public ValidationResponseData(global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties = default !, global::System.Boolean? valid = default !)
-        {
-            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
-            ErrorMessages = errorMessages;
-            MessageProperties = messageProperties;
-            Valid = valid;
-        }
-
-        public global::System.String __typename { get; }
-
-        ///<summary>Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.</summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
-
-        ///<summary>Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.</summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
-
-        ///<summary>Whether the overall validation succeeded or failed.</summary>
-        public global::System.Boolean? Valid { get; }
     }
 
     ///<summary>GL segment values as separate fields.</summary>
@@ -2760,6 +6983,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::AggieEnterpriseApi.State.AggieEnterpriseClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartSegmentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartstringQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.AggieEnterpriseClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -2776,6 +7001,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 var clientFactory = global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Net.Http.IHttpClientFactory>(parentServices);
                 return new global::StrawberryShake.Transport.Http.HttpConnection(() => clientFactory.CreateClient("AggieEnterpriseClient"));
             });
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.RequestStatusSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.StringSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.BooleanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteSerializer>(services);
@@ -2792,6 +7018,18 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteArraySerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString80"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString240"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpNameField100"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDescriptionField240"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlReferenceField25"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("LocalDate"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString15"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlSegmentString"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmSegmentString"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonNegativeFloat"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlReferenceField10"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlDescriptionField40"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpEntityCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFundCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDepartmentCode"));
@@ -2802,9 +7040,35 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpActivityCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFlex1Code"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFlex2Code"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlSegmentString"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmProjectNumber"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmTaskNumber"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmExpenseOrganizationCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmExpenseTypeCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmAwardNumber"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmFundingSourceNumber"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString100"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("JSON"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalRequestInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ActionRequestHeaderInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalLineInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlSegmentInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.PpmSegmentInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestResult>, global::AggieEnterpriseApi.State.GlJournalRequestResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IGlJournalRequestMutation>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestResult>, global::AggieEnterpriseApi.State.GlJournalRequestBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IGlJournalRequestResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.GlJournalRequestMutation>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IGlJournalRequestMutation>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestMutation>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusResult>, global::AggieEnterpriseApi.State.GlJournalRequestStatusResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IGlJournalRequestStatusQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusResult>, global::AggieEnterpriseApi.State.GlJournalRequestStatusBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IGlJournalRequestStatusResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IGlJournalRequestStatusQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>, global::AggieEnterpriseApi.State.GlValidateChartSegmentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery>(sp));
