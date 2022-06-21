@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using AggieEnterpriseApi;
 using AggieEnterpriseApi.Extensions;
@@ -23,5 +24,52 @@ public class GlJournalTests : TestBase
         data.GlJournalRequestStatus.ShouldNotBeNull();
         data.GlJournalRequestStatus.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Complete);
         data.GlJournalRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("CONSUMER_BATCH_NBR");
+    }
+
+    [Fact]
+    public async Task CreateValidJournal()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(TestData.GraphQlUrl, Token);
+
+        var newJournalEntry = await client.GlJournalRequest.ExecuteAsync(new GlJournalRequestInput
+        {
+            Header = new ActionRequestHeaderInput
+            {
+                ConsumerTrackingId = Guid.NewGuid().ToString(),
+                ConsumerReferenceId = "ORDER_12345",
+                ConsumerNotes = "Invoices for CAES Payments",
+                BoundaryApplicationName = "CAES Payments"
+            },
+            Payload = new GlJournalInput
+            {
+                JournalSourceName = "BOUNDARY_APP_1",
+                JournalCategoryName = "INTERCOMPANY_REVENUE",
+                JournalName = "Recharges July 2023",
+                JournalReference = "ORDER_12345",
+                JournalLines = new[]
+                {
+                    new GlJournalLineInput
+                    {
+                        GlSegmentString = "3110-12100-0100322-410030-00-000-0000000000-000000-0000-000000-000000",
+                        DebitAmount = "100.00", // TODO: why not decimal?
+                        ExternalSystemIdentifier = "ITEMX",
+                        ExternalSystemReference = "CYBERSOURCE-Deposit",
+                    },
+                    new GlJournalLineInput
+                    {
+                        GlSegmentString = "3110-U1310-0100333-410058-00-000-0000000000-000000-0000-000000-000000",
+                        CreditAmount = "100.00", // TODO: why not decimal?
+                        ExternalSystemIdentifier = "ITEMX",
+                        ExternalSystemReference = "CYBERSOURCE-Deposit",
+                    }
+                }
+            }
+        });
+        
+        var data = newJournalEntry.ReadData();
+
+        // newly created journal goes right into pending status
+        data.GlJournalRequest.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Pending);
+        data.GlJournalRequest.ValidationResults.ShouldBeNull(); // shouldn't be any errors
     }
 }
