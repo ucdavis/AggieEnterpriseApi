@@ -10,10 +10,7 @@ query glJournalRequestStatus($requestId: String!) {
             processedDateTime
             boundaryApplicationName
             consumerId
-            consumerNotes
-            consumerReferenceId        
-            actionRequestPayload
-            
+            consumerReferenceId
         }
         validationResults {
             valid

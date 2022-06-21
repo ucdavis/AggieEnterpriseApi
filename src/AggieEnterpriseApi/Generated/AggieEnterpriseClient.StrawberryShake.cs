@@ -771,7 +771,7 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus>, IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus
     {
-        public GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus(global::System.String? statusRequestPayload, global::System.String operationName, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.DateTimeOffset requestDateTime, global::System.DateTimeOffset lastStatusDateTime, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.DateTimeOffset? processedDateTime, global::System.String boundaryApplicationName, global::System.String consumerId, global::System.String? consumerNotes, global::System.String consumerReferenceId, global::System.String? actionRequestPayload)
+        public GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus(global::System.String? statusRequestPayload, global::System.String operationName, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.DateTimeOffset requestDateTime, global::System.DateTimeOffset lastStatusDateTime, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.DateTimeOffset? processedDateTime, global::System.String boundaryApplicationName, global::System.String consumerId, global::System.String consumerReferenceId)
         {
             StatusRequestPayload = statusRequestPayload;
             OperationName = operationName;
@@ -782,9 +782,7 @@ namespace AggieEnterpriseApi
             ProcessedDateTime = processedDateTime;
             BoundaryApplicationName = boundaryApplicationName;
             ConsumerId = consumerId;
-            ConsumerNotes = consumerNotes;
             ConsumerReferenceId = consumerReferenceId;
-            ActionRequestPayload = actionRequestPayload;
         }
 
         /// <summary>
@@ -827,19 +825,9 @@ namespace AggieEnterpriseApi
         public global::System.String ConsumerId { get; }
 
         /// <summary>
-        /// Any notes to include with the request, this is stored as metadata to provide context to the request.
-        /// </summary>
-        public global::System.String? ConsumerNotes { get; }
-
-        /// <summary>
         /// Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.
         /// </summary>
         public global::System.String ConsumerReferenceId { get; }
-
-        /// <summary>
-        /// Original action request payload for this request.
-        /// </summary>
-        public global::System.String? ActionRequestPayload { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus? other)
         {
@@ -858,7 +846,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (((StatusRequestPayload is null && other.StatusRequestPayload is null) || StatusRequestPayload != null && StatusRequestPayload.Equals(other.StatusRequestPayload))) && OperationName.Equals(other.OperationName) && RequestStatus.Equals(other.RequestStatus) && RequestDateTime.Equals(other.RequestDateTime) && LastStatusDateTime.Equals(other.LastStatusDateTime) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages) && ((ProcessedDateTime is null && other.ProcessedDateTime is null) || ProcessedDateTime != null && ProcessedDateTime.Equals(other.ProcessedDateTime)) && BoundaryApplicationName.Equals(other.BoundaryApplicationName) && ConsumerId.Equals(other.ConsumerId) && ((ConsumerNotes is null && other.ConsumerNotes is null) || ConsumerNotes != null && ConsumerNotes.Equals(other.ConsumerNotes)) && ConsumerReferenceId.Equals(other.ConsumerReferenceId) && ((ActionRequestPayload is null && other.ActionRequestPayload is null) || ActionRequestPayload != null && ActionRequestPayload.Equals(other.ActionRequestPayload));
+            return (((StatusRequestPayload is null && other.StatusRequestPayload is null) || StatusRequestPayload != null && StatusRequestPayload.Equals(other.StatusRequestPayload))) && OperationName.Equals(other.OperationName) && RequestStatus.Equals(other.RequestStatus) && RequestDateTime.Equals(other.RequestDateTime) && LastStatusDateTime.Equals(other.LastStatusDateTime) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages) && ((ProcessedDateTime is null && other.ProcessedDateTime is null) || ProcessedDateTime != null && ProcessedDateTime.Equals(other.ProcessedDateTime)) && BoundaryApplicationName.Equals(other.BoundaryApplicationName) && ConsumerId.Equals(other.ConsumerId) && ConsumerReferenceId.Equals(other.ConsumerReferenceId);
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -910,17 +898,7 @@ namespace AggieEnterpriseApi
 
                 hash ^= 397 * BoundaryApplicationName.GetHashCode();
                 hash ^= 397 * ConsumerId.GetHashCode();
-                if (ConsumerNotes != null)
-                {
-                    hash ^= 397 * ConsumerNotes.GetHashCode();
-                }
-
                 hash ^= 397 * ConsumerReferenceId.GetHashCode();
-                if (ActionRequestPayload != null)
-                {
-                    hash ^= 397 * ActionRequestPayload.GetHashCode();
-                }
-
                 return hash;
             }
         }
@@ -1203,19 +1181,9 @@ namespace AggieEnterpriseApi
         public global::System.String ConsumerId { get; }
 
         /// <summary>
-        /// Any notes to include with the request, this is stored as metadata to provide context to the request.
-        /// </summary>
-        public global::System.String? ConsumerNotes { get; }
-
-        /// <summary>
         /// Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.
         /// </summary>
         public global::System.String ConsumerReferenceId { get; }
-
-        /// <summary>
-        /// Original action request payload for this request.
-        /// </summary>
-        public global::System.String? ActionRequestPayload { get; }
     }
 
     /// <summary>
@@ -4652,9 +4620,7 @@ namespace AggieEnterpriseApi
     ///       processedDateTime
     ///       boundaryApplicationName
     ///       consumerId
-    ///       consumerNotes
     ///       consumerReferenceId
-    ///       actionRequestPayload
     ///     }
     ///     validationResults {
     ///       __typename
@@ -4682,8 +4648,8 @@ namespace AggieEnterpriseApi
 
         public static GlJournalRequestStatusQueryDocument Instance { get; } = new GlJournalRequestStatusQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x28, 0x24, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x28, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x3a, 0x20, 0x24, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x20, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x62, 0x6f, 0x75, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x4e, 0x6f, 0x74, 0x65, 0x73, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x49, 0x64, 0x20, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x20, 0x7d, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x6a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6a, 0x6f, 0x62, 0x49, 0x64, 0x20, 0x6a, 0x6f, 0x62, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x63, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6a, 0x6f, 0x62, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x20, 0x66, 0x61, 0x69, 0x6c, 0x65, 0x64, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "9bd4c618ac008601131d20eeb2eca969");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x28, 0x24, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x28, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x3a, 0x20, 0x24, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x20, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x62, 0x6f, 0x75, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x49, 0x64, 0x20, 0x7d, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x6a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6a, 0x6f, 0x62, 0x49, 0x64, 0x20, 0x6a, 0x6f, 0x62, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x63, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6a, 0x6f, 0x62, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x20, 0x66, 0x61, 0x69, 0x6c, 0x65, 0x64, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "e76ae67384c7a5437e3642f964bb53c0");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -4711,9 +4677,7 @@ namespace AggieEnterpriseApi
     ///       processedDateTime
     ///       boundaryApplicationName
     ///       consumerId
-    ///       consumerNotes
     ///       consumerReferenceId
-    ///       actionRequestPayload
     ///     }
     ///     validationResults {
     ///       __typename
@@ -4801,9 +4765,7 @@ namespace AggieEnterpriseApi
     ///       processedDateTime
     ///       boundaryApplicationName
     ///       consumerId
-    ///       consumerNotes
     ///       consumerReferenceId
-    ///       actionRequestPayload
     ///     }
     ///     validationResults {
     ///       __typename
@@ -5465,7 +5427,7 @@ namespace AggieEnterpriseApi.State
             IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus returnValue = default !;
             if (data.__typename.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal))
             {
-                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus(data.StatusRequestPayload, data.OperationName ?? throw new global::System.ArgumentNullException(), data.RequestStatus ?? throw new global::System.ArgumentNullException(), data.RequestDateTime ?? throw new global::System.ArgumentNullException(), data.LastStatusDateTime ?? throw new global::System.ArgumentNullException(), data.ErrorMessages, data.ProcessedDateTime, data.BoundaryApplicationName ?? throw new global::System.ArgumentNullException(), data.ConsumerId ?? throw new global::System.ArgumentNullException(), data.ConsumerNotes, data.ConsumerReferenceId ?? throw new global::System.ArgumentNullException(), data.ActionRequestPayload);
+                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus(data.StatusRequestPayload, data.OperationName ?? throw new global::System.ArgumentNullException(), data.RequestStatus ?? throw new global::System.ArgumentNullException(), data.RequestDateTime ?? throw new global::System.ArgumentNullException(), data.LastStatusDateTime ?? throw new global::System.ArgumentNullException(), data.ErrorMessages, data.ProcessedDateTime, data.BoundaryApplicationName ?? throw new global::System.ArgumentNullException(), data.ConsumerId ?? throw new global::System.ArgumentNullException(), data.ConsumerReferenceId ?? throw new global::System.ArgumentNullException());
             }
             else
             {
@@ -6145,7 +6107,6 @@ namespace AggieEnterpriseApi.State
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _jSONParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString80Parser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString240Parser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
         public GlJournalRequestStatusBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
@@ -6157,7 +6118,6 @@ namespace AggieEnterpriseApi.State
             _jSONParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("JSON") ?? throw new global::System.ArgumentException("No serializer for type `JSON` found.");
             _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
             _nonEmptyTrimmedString80Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString80") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString80` found.");
-            _nonEmptyTrimmedString240Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString240") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString240` found.");
             _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
         }
 
@@ -6240,7 +6200,7 @@ namespace AggieEnterpriseApi.State
             var typename = obj.Value.GetProperty("__typename").GetString();
             if (typename?.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::AggieEnterpriseApi.State.ActionRequestStatusData(typename, statusRequestPayload: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "statusRequestPayload")), operationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "operationName")), requestStatus: DeserializeNonNullableRequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), requestDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestDateTime")), lastStatusDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastStatusDateTime")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), processedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processedDateTime")), boundaryApplicationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "boundaryApplicationName")), consumerId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerId")), consumerNotes: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerNotes")), consumerReferenceId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerReferenceId")), actionRequestPayload: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "actionRequestPayload")));
+                return new global::AggieEnterpriseApi.State.ActionRequestStatusData(typename, statusRequestPayload: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "statusRequestPayload")), operationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "operationName")), requestStatus: DeserializeNonNullableRequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), requestDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestDateTime")), lastStatusDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastStatusDateTime")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), processedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processedDateTime")), boundaryApplicationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "boundaryApplicationName")), consumerId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerId")), consumerReferenceId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerReferenceId")));
             }
 
             throw new global::System.NotSupportedException();
@@ -6801,7 +6761,7 @@ namespace AggieEnterpriseApi.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ActionRequestStatusData
     {
-        public ActionRequestStatusData(global::System.String __typename, global::System.Guid? requestId = default !, global::System.String? consumerId = default !, global::System.DateTimeOffset? requestDateTime = default !, global::AggieEnterpriseApi.RequestStatus? requestStatus = default !, global::System.String? operationName = default !, global::System.String? statusRequestPayload = default !, global::System.DateTimeOffset? lastStatusDateTime = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.DateTimeOffset? processedDateTime = default !, global::System.String? boundaryApplicationName = default !, global::System.String? consumerNotes = default !, global::System.String? consumerReferenceId = default !, global::System.String? actionRequestPayload = default !)
+        public ActionRequestStatusData(global::System.String __typename, global::System.Guid? requestId = default !, global::System.String? consumerId = default !, global::System.DateTimeOffset? requestDateTime = default !, global::AggieEnterpriseApi.RequestStatus? requestStatus = default !, global::System.String? operationName = default !, global::System.String? statusRequestPayload = default !, global::System.DateTimeOffset? lastStatusDateTime = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.DateTimeOffset? processedDateTime = default !, global::System.String? boundaryApplicationName = default !, global::System.String? consumerReferenceId = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             RequestId = requestId;
@@ -6814,9 +6774,7 @@ namespace AggieEnterpriseApi.State
             ErrorMessages = errorMessages;
             ProcessedDateTime = processedDateTime;
             BoundaryApplicationName = boundaryApplicationName;
-            ConsumerNotes = consumerNotes;
             ConsumerReferenceId = consumerReferenceId;
-            ActionRequestPayload = actionRequestPayload;
         }
 
         public global::System.String __typename { get; }
@@ -6849,14 +6807,8 @@ namespace AggieEnterpriseApi.State
         ///<summary>Identifier for the boundary application originating the request.</summary>
         public global::System.String? BoundaryApplicationName { get; }
 
-        ///<summary>Any notes to include with the request, this is stored as metadata to provide context to the request.</summary>
-        public global::System.String? ConsumerNotes { get; }
-
         ///<summary>Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.</summary>
         public global::System.String? ConsumerReferenceId { get; }
-
-        ///<summary>Original action request payload for this request.</summary>
-        public global::System.String? ActionRequestPayload { get; }
     }
 
     ///<summary>Contains the validation overall status and any error messages and the properties they belong to.</summary>
