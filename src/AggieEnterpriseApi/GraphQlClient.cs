@@ -22,7 +22,7 @@ public class GraphQlClient
             .ConfigureHttpClient(client =>
             {
                 client.BaseAddress = graphQlUri;
-                client.DefaultRequestHeaders.Add("APIAuthToken", token);
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             });
 
         IServiceProvider services = serviceCollection.BuildServiceProvider();

@@ -5,7 +5,7 @@ namespace ApiTests.Setup;
 public class TestBase
 {
     protected readonly string Token;
-    protected readonly string GraphQlUrl = "https://graphql-data-server-erp-poc.aws.ait.ucdavis.edu/graphql";
+    protected readonly string GraphQlUrl;
 
     protected TestBase()
     {
@@ -14,5 +14,6 @@ public class TestBase
             .Build();
 
         Token = configuration.GetSection("Token").Value;
+        GraphQlUrl = configuration.GetSection("GraphQlUrl").Value;
     }
 }
