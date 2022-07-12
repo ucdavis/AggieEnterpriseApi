@@ -30,6 +30,18 @@ public class ValidationHelperTests : TestBase
         segments.Entity.ShouldBe("3110");
         // TODO: validate rest of segments
     }
+
+    [Fact]
+    public void GlSegmentsToString()
+    {
+        var glString = "3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000-000000";
+        
+        var segments = FinancialChartValidation.GetGlSegments(glString);
+
+        var glString2 = segments.ToSegmentString();
+        
+        glString2.ShouldBe(glString);
+    }
     
     [Fact]
     public void ValidPpmStringRequiredOnly()
@@ -57,5 +69,17 @@ public class ValidationHelperTests : TestBase
         var segments = FinancialChartValidation.GetPpmSegments(ppmString);
         
         segments.Project.ShouldBe("CP00000001");
+    }
+    
+    [Fact]
+    public void PpmSegmentsToString()
+    {
+        var ppmString = "CP00000001-000001-0000000-000000-0000000-00000";
+        
+        var segments = FinancialChartValidation.GetPpmSegments(ppmString);
+
+        var ppmString2 = segments.ToSegmentString();
+        
+        ppmString2.ShouldBe(ppmString);
     }
 }
