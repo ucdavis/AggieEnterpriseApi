@@ -21,6 +21,16 @@ public class ValidationHelperTests : TestBase
     }
     
     [Fact]
+    public void InvalidGlString()
+    {
+        var glString = "3110-72160-9300202-775000-85-000ABC";
+        
+        FinancialChartValidation.IsValidGlSegmentString(glString).ShouldBeFalse();
+
+        FinancialChartValidation.GetFinancialChartStringType(glString).ShouldBe(FinancialChartStringType.Invalid);
+    }
+    
+    [Fact]
     public void ValidGlSegments()
     {
         var glString = "3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000-000000";
@@ -59,6 +69,15 @@ public class ValidationHelperTests : TestBase
         
         FinancialChartValidation.IsValidPpmSegmentString(ppmString).ShouldBeTrue();
         FinancialChartValidation.GetFinancialChartStringType(ppmString).ShouldBe(FinancialChartStringType.Ppm);
+    }
+    
+    [Fact]
+    public void InvalidPpmStringRequiredOnly()
+    {
+        var ppmString = "SP0000000-FANCY-PROJECT";
+        
+        FinancialChartValidation.IsValidPpmSegmentString(ppmString).ShouldBeFalse();
+        FinancialChartValidation.GetFinancialChartStringType(ppmString).ShouldBe(FinancialChartStringType.Invalid);
     }
     
     [Fact]
