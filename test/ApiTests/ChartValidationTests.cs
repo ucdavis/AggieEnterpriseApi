@@ -90,4 +90,26 @@ public class ChartValidationTests : TestBase
         // TODO: API changed to put error in extension -- once api is more stable update this with expectations
         //result.Errors[0].Message.ShouldBe("Variable \"$segmentString\" got invalid value \"3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000\"; Expected type \"GlSegmentString\". Value is not a valid GL Segment String. (3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000)  Must match pattern: /^[0-9]{3}[0-9AB]-[0-9A-Z][0-9]{3}[0-9A-Z]-[0-9P][0-9]{5}[0-9A-F]-[0-9]{5}[0-9A-EX]-[0-9][0-9A-Z]-[0-9A-Z]{3}-[0-9A-Z]{10}-[0-9X]{5}[0-9AB]-0000-000000-000000$/");
     }
+
+    [Fact]
+    public async Task InvalidPpmSegments()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var ppmSegments = new PpmSegmentInput
+        {
+            Project = "SP20000018",
+            Task = "000001",
+            Organization = "9300052",
+            ExpenditureType = "508210",
+            Award = "1234567",
+            FundingSource = "12345"
+        };
+
+        var result = await client.PpmSegmentsValidate.ExecuteAsync(ppmSegments, accountingDate: null);
+        
+        var data = result.ReadData();
+        
+        data.PpmSegmentsValidate.ValidationResponse.Valid.ShouldBeFalse("Response should be invalid");
+    }
 }

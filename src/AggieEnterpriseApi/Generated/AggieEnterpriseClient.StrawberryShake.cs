@@ -1260,6 +1260,315 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmSegmentsValidateResult : global::System.IEquatable<PpmSegmentsValidateResult>, IPpmSegmentsValidateResult
+    {
+        public PpmSegmentsValidateResult(global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate ppmSegmentsValidate)
+        {
+            PpmSegmentsValidate = ppmSegmentsValidate;
+        }
+
+        /// <summary>
+        /// Validates that the given set of PPM segments are most likely valid for posting
+        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If no date is passed, today's date will be assumed.
+        /// 
+        /// This operation will return a fully populated set of segments.
+        /// </summary>
+        public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate PpmSegmentsValidate { get; }
+
+        public virtual global::System.Boolean Equals(PpmSegmentsValidateResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (PpmSegmentsValidate.Equals(other.PpmSegmentsValidate));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((PpmSegmentsValidateResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * PpmSegmentsValidate.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Return data structure when validating a set of PPM segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput : global::System.IEquatable<PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput>, IPpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput
+    {
+        public PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput(global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse validationResponse)
+        {
+            ValidationResponse = validationResponse;
+        }
+
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
+        public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse ValidationResponse { get; }
+
+        public virtual global::System.Boolean Equals(PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (ValidationResponse.Equals(other.ValidationResponse));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * ValidationResponse.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse : global::System.IEquatable<PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse>, IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse
+    {
+        public PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse(global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties, global::System.Boolean valid)
+        {
+            ErrorMessages = errorMessages;
+            MessageProperties = messageProperties;
+            Valid = valid;
+        }
+
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
+        public global::System.Boolean Valid { get; }
+
+        public virtual global::System.Boolean Equals(PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(MessageProperties, other.MessageProperties) && Valid == other.Valid;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (ErrorMessages != null)
+                {
+                    foreach (var ErrorMessages_elm in ErrorMessages)
+                    {
+                        hash ^= 397 * ErrorMessages_elm.GetHashCode();
+                    }
+                }
+
+                if (MessageProperties != null)
+                {
+                    foreach (var MessageProperties_elm in MessageProperties)
+                    {
+                        hash ^= 397 * MessageProperties_elm.GetHashCode();
+                    }
+                }
+
+                hash ^= 397 * Valid.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmSegmentsValidateResult
+    {
+        /// <summary>
+        /// Validates that the given set of PPM segments are most likely valid for posting
+        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If no date is passed, today's date will be assumed.
+        /// 
+        /// This operation will return a fully populated set of segments.
+        /// </summary>
+        public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate PpmSegmentsValidate { get; }
+    }
+
+    /// <summary>
+    /// Return data structure when validating a set of PPM segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmSegmentsValidate_PpmSegmentsValidate
+    {
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
+        public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse ValidationResponse { get; }
+    }
+
+    /// <summary>
+    /// Return data structure when validating a set of PPM segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput : IPpmSegmentsValidate_PpmSegmentsValidate
+    {
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse
+    {
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
+        public global::System.Boolean Valid { get; }
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse : IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsResult : global::System.IEquatable<GlValidateChartSegmentsResult>, IGlValidateChartSegmentsResult
     {
         public GlValidateChartSegmentsResult(global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments glValidateChartSegments)
@@ -4792,6 +5101,149 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
+    /// Represents the operation service of the PpmSegmentsValidate GraphQL operation
+    /// <code>
+    /// query PpmSegmentsValidate($segments: PpmSegmentInput!, $accountingDate: LocalDate) {
+    ///   ppmSegmentsValidate(segments: $segments, accountingDate: $accountingDate) {
+    ///     __typename
+    ///     validationResponse {
+    ///       __typename
+    ///       errorMessages
+    ///       messageProperties
+    ///       valid
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmSegmentsValidateQueryDocument : global::StrawberryShake.IDocument
+    {
+        private PpmSegmentsValidateQueryDocument()
+        {
+        }
+
+        public static PpmSegmentsValidateQueryDocument Instance { get; } = new PpmSegmentsValidateQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x2c, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x44, 0x61, 0x74, 0x65, 0x3a, 0x20, 0x4c, 0x6f, 0x63, 0x61, 0x6c, 0x44, 0x61, 0x74, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x70, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x2c, 0x20, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x44, 0x61, 0x74, 0x65, 0x3a, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x44, 0x61, 0x74, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "386626ca4bae336773dda2da79887ecd");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the PpmSegmentsValidate GraphQL operation
+    /// <code>
+    /// query PpmSegmentsValidate($segments: PpmSegmentInput!, $accountingDate: LocalDate) {
+    ///   ppmSegmentsValidate(segments: $segments, accountingDate: $accountingDate) {
+    ///     __typename
+    ///     validationResponse {
+    ///       __typename
+    ///       errorMessages
+    ///       messageProperties
+    ///       valid
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmSegmentsValidateQuery : global::AggieEnterpriseApi.IPpmSegmentsValidateQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IPpmSegmentsValidateResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _ppmSegmentInputFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _localDateFormatter;
+        public PpmSegmentsValidateQuery(global::StrawberryShake.IOperationExecutor<IPpmSegmentsValidateResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _ppmSegmentInputFormatter = serializerResolver.GetInputValueFormatter("PpmSegmentInput");
+            _localDateFormatter = serializerResolver.GetInputValueFormatter("LocalDate");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IPpmSegmentsValidateResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> ExecuteAsync(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.String? accountingDate, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(segments, accountingDate);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> Watch(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.String? accountingDate, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(segments, accountingDate);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.String? accountingDate)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("segments", FormatSegments(segments));
+            variables.Add("accountingDate", FormatAccountingDate(accountingDate));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: PpmSegmentsValidateQueryDocument.Instance.Hash.Value, name: "PpmSegmentsValidate", document: PpmSegmentsValidateQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatSegments(global::AggieEnterpriseApi.PpmSegmentInput value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _ppmSegmentInputFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatAccountingDate(global::System.String? value)
+        {
+            if (value is null)
+            {
+                return value;
+            }
+            else
+            {
+                return _localDateFormatter.Format(value);
+            }
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the PpmSegmentsValidate GraphQL operation
+    /// <code>
+    /// query PpmSegmentsValidate($segments: PpmSegmentInput!, $accountingDate: LocalDate) {
+    ///   ppmSegmentsValidate(segments: $segments, accountingDate: $accountingDate) {
+    ///     __typename
+    ///     validationResponse {
+    ///       __typename
+    ///       errorMessages
+    ///       messageProperties
+    ///       valid
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmSegmentsValidateQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> ExecuteAsync(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.String? accountingDate, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> Watch(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.String? accountingDate, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the operation service of the GlValidateChartSegments GraphQL operation
     /// <code>
     /// query GlValidateChartSegments($segments: GlSegmentInput!, $validateCVRs: Boolean) {
@@ -5163,12 +5615,14 @@ namespace AggieEnterpriseApi
     {
         private readonly global::AggieEnterpriseApi.IGlJournalRequestMutation _glJournalRequest;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestStatusQuery _glJournalRequestStatus;
+        private readonly global::AggieEnterpriseApi.IPpmSegmentsValidateQuery _ppmSegmentsValidate;
         private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
             _glJournalRequest = glJournalRequest ?? throw new global::System.ArgumentNullException(nameof(glJournalRequest));
             _glJournalRequestStatus = glJournalRequestStatus ?? throw new global::System.ArgumentNullException(nameof(glJournalRequestStatus));
+            _ppmSegmentsValidate = ppmSegmentsValidate ?? throw new global::System.ArgumentNullException(nameof(ppmSegmentsValidate));
             _glValidateChartSegments = glValidateChartSegments ?? throw new global::System.ArgumentNullException(nameof(glValidateChartSegments));
             _glValidateChartstring = glValidateChartstring ?? throw new global::System.ArgumentNullException(nameof(glValidateChartstring));
         }
@@ -5176,6 +5630,7 @@ namespace AggieEnterpriseApi
         public static global::System.String ClientName => "AggieEnterpriseClient";
         public global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest => _glJournalRequest;
         public global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus => _glJournalRequestStatus;
+        public global::AggieEnterpriseApi.IPpmSegmentsValidateQuery PpmSegmentsValidate => _ppmSegmentsValidate;
         public global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments => _glValidateChartSegments;
         public global::AggieEnterpriseApi.IGlValidateChartstringQuery GlValidateChartstring => _glValidateChartstring;
     }
@@ -5189,6 +5644,8 @@ namespace AggieEnterpriseApi
         global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest { get; }
 
         global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus { get; }
+
+        global::AggieEnterpriseApi.IPpmSegmentsValidateQuery PpmSegmentsValidate { get; }
 
         global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments { get; }
 
@@ -5516,6 +5973,98 @@ namespace AggieEnterpriseApi.State
         public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
         {
             return new GlJournalRequestStatusResultInfo(GlJournalRequestStatus, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmSegmentsValidateResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.PpmSegmentsValidateResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public PpmSegmentsValidateResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IPpmSegmentsValidateResult);
+        public PpmSegmentsValidateResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is PpmSegmentsValidateResultInfo info)
+            {
+                return new PpmSegmentsValidateResult(MapNonNullableIPpmSegmentsValidate_PpmSegmentsValidate(info.PpmSegmentsValidate, snapshot));
+            }
+
+            throw new global::System.ArgumentException("PpmSegmentsValidateResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate MapNonNullableIPpmSegmentsValidate_PpmSegmentsValidate(global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IPpmSegmentsValidate_PpmSegmentsValidate returnValue = default !;
+            if (data.__typename.Equals("PpmSegmentsValidateOutput", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput(MapNonNullableIPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse(data.ValidationResponse ?? throw new global::System.ArgumentNullException(), snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse MapNonNullableIPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse(global::AggieEnterpriseApi.State.ValidationResponseData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse returnValue = default !;
+            if (data.__typename.Equals("ValidationResponse", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse(data.ErrorMessages, data.MessageProperties, data.Valid ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmSegmentsValidateResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public PpmSegmentsValidateResultInfo(global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData ppmSegmentsValidate, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            PpmSegmentsValidate = ppmSegmentsValidate;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Validates that the given set of PPM segments are most likely valid for posting
+        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If no date is passed, today's date will be assumed.
+        /// 
+        /// This operation will return a fully populated set of segments.
+        /// </summary>
+        public global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData PpmSegmentsValidate { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new PpmSegmentsValidateResultInfo(PpmSegmentsValidate, _entityIds, version);
         }
     }
 
@@ -6332,6 +6881,159 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmSegmentsValidateBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmSegmentsValidateResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmSegmentsValidateResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmProjectNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmTaskNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseOrganizationCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseTypeCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmAwardNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmFundingSourceNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _localDateParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        public PpmSegmentsValidateBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmSegmentsValidateResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _ppmProjectNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmProjectNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmProjectNumber` found.");
+            _ppmTaskNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmTaskNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmTaskNumber` found.");
+            _ppmExpenseOrganizationCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseOrganizationCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseOrganizationCode` found.");
+            _ppmExpenseTypeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseTypeCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseTypeCode` found.");
+            _ppmAwardNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmAwardNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmAwardNumber` found.");
+            _ppmFundingSourceNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmFundingSourceNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmFundingSourceNumber` found.");
+            _localDateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("LocalDate") ?? throw new global::System.ArgumentException("No serializer for type `LocalDate` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IPpmSegmentsValidateResult Result, PpmSegmentsValidateResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IPpmSegmentsValidateResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IPpmSegmentsValidateResult, PpmSegmentsValidateResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new PpmSegmentsValidateResultInfo(DeserializeNonNullableIPpmSegmentsValidate_PpmSegmentsValidate(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "ppmSegmentsValidate")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData DeserializeNonNullableIPpmSegmentsValidate_PpmSegmentsValidate(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("PpmSegmentsValidateOutput", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData(typename, validationResponse: DeserializeNonNullableIPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResponse")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.ValidationResponseData DeserializeNonNullableIPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ValidationResponseData(typename, errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), messageProperties: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "messageProperties")), valid: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "valid")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -6867,6 +7569,22 @@ namespace AggieEnterpriseApi.State
         public global::System.String? FailedRecords { get; }
     }
 
+    ///<summary>Return data structure when validating a set of PPM segment values.The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmSegmentsValidateOutputData
+    {
+        public PpmSegmentsValidateOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ValidationResponseData? validationResponse = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            ValidationResponse = validationResponse;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Validation result and error messages, if any.</summary>
+        public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResponse { get; }
+    }
+
     ///<summary>Return data structure when validating a set of GL segment values.The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsOutputData
@@ -6985,6 +7703,7 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::AggieEnterpriseApi.State.AggieEnterpriseClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmSegmentsValidateQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartSegmentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartstringQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.AggieEnterpriseClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -7068,6 +7787,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IGlJournalRequestStatusResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IGlJournalRequestStatusQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmSegmentsValidateResult>, global::AggieEnterpriseApi.State.PpmSegmentsValidateResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmSegmentsValidateResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IPpmSegmentsValidateQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmSegmentsValidateResult>, global::AggieEnterpriseApi.State.PpmSegmentsValidateBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IPpmSegmentsValidateResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmSegmentsValidateResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmSegmentsValidateResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.PpmSegmentsValidateQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IPpmSegmentsValidateQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmSegmentsValidateQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>, global::AggieEnterpriseApi.State.GlValidateChartSegmentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery>(sp));

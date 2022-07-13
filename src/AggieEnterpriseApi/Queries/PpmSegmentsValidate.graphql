@@ -1,0 +1,9 @@
+query ppmSegmentsValidate($segments: PpmSegmentInput!, $accountingDate: LocalDate) {
+  ppmSegmentsValidate(segments: $segments, accountingDate: $accountingDate) {
+    validationResponse {
+        errorMessages
+        messageProperties
+        valid
+    }
+  }
+}
