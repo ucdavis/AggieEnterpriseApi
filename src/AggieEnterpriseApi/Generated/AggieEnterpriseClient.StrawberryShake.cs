@@ -11,82 +11,6 @@ namespace AggieEnterpriseApi
             GlJournalRequest = glJournalRequest;
         }
 
-        /// <summary>
-        /// Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
-        /// 
-        /// The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
-        /// 
-        /// This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
-        /// 
-        /// The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
-        /// 
-        /// Please see below in this document for examples of payloads into this API.
-        /// 
-        /// #### Supporting Operations
-        /// 
-        /// Other operations which should be used to pre-validate chartstring segments are below.  Please see <https: / / financeandbusiness.ucdavis.edu / aggie-enterprise / chart-of-accounts / redesign> for information about each of these segments.
-        /// 
-        /// * [`erpEntity`]({{Queries.erpEntity}})
-        /// * [`erpFund`]({{Queries.erpFund}})
-        /// * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
-        /// * [`erpAccount`]({{Queries.erpAccount}})
-        /// * [`erpPurpose`]({{Queries.erpPurpose}})
-        /// * [`erpProject`]({{Queries.erpProject}})
-        /// * [`erpProgram`]({{Queries.erpProgram}})
-        /// * [`erpActivity`]({{Queries.erpActivity}})
-        /// 
-        /// For validating combinations, the following two operations are provided, differing only in their input format.
-        /// 
-        /// * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
-        /// * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
-        /// 
-        /// #### Managed Project Cost Entries (PPM/POET)
-        /// 
-        /// In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
-        /// 
-        /// For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
-        /// 
-        /// For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
-        /// 
-        /// * `p`roject
-        /// * `o`rganization (same values as `ErpFinancialDepartment`)
-        /// * `e`xpenditureType (same values as `ErpAccount`)
-        /// * `t`ask
-        /// 
-        /// Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
-        /// 
-        /// There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
-        /// 
-        /// * award (only for sponsored projects)
-        /// * fundingSource (only for sponsored projects)
-        /// 
-        /// As with the GL segments, the API provides the operations below for lookups and validation:
-        /// 
-        /// * [`ppmProject`]({{Queries.ppmProject}})
-        /// * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
-        /// * [`ppmOrganization`]({{Queries.ppmOrganization}})
-        /// * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
-        /// 
-        /// #### Volume of Data
-        /// 
-        /// Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
-        /// 
-        /// #### Journal Balancing
-        /// 
-        /// As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
-        /// 
-        /// While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
-        /// 
-        /// #### Basic Use
-        /// 
-        /// 1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
-        /// 2. GraphQL Server will validate content format and reject if invalid.
-        /// 3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
-        /// 4. A failure in either of these initial validations will result in an error response with no request being generated.
-        /// 5. Passing validation will save the request to allow for pickup by the integration platform for processing.
-        /// 6. A request tracking ID will be generated and returned to allow for the consumer to check on the status of the request and obtain results when completed.
-        /// 7. At a later time, use the generated request tracking ID against the [`glJournalRequestStatus`]({{Queries.glJournalRequestStatus}}) operation to determine if the request was processed successfully
-        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest GlJournalRequest { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestResult? other)
@@ -140,11 +64,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Output type for GLJournal requests and follow-up status updates.
-    /// 
-    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput>, IGlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput
     {
@@ -156,24 +75,12 @@ namespace AggieEnterpriseApi
             ValidationResults = validationResults;
         }
 
-        /// <summary>
-        /// Overall status of the action request
-        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus RequestStatus { get; }
 
-        /// <summary>
-        /// ERP-assigned journal ID for transactions posted to the GL.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.
-        /// </summary>
         public global::System.String? GlJournalId { get; }
 
-        /// <summary>
-        /// Integration-assigned batch name for costs posted to the PPM sub-ledger.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.
-        /// </summary>
         public global::System.String? PpmBatchName { get; }
 
-        /// <summary>
-        /// Errors found when validatating the payload data.  These must be corrected before the request will be accepted.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? ValidationResults { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput? other)
@@ -242,9 +149,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Fields common to all action status requests.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus>, IGlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus
     {
@@ -257,23 +161,14 @@ namespace AggieEnterpriseApi
             OperationName = operationName;
         }
 
-        /// <summary>
-        /// Unique identifier assigned to the request
-        /// </summary>
         public global::System.Guid? RequestId { get; }
 
-        /// <summary>
-        /// ID of the consumer who made the request extracted from the service authentication data
-        /// </summary>
         public global::System.String ConsumerId { get; }
 
         public global::System.DateTimeOffset RequestDateTime { get; }
 
         public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
 
-        /// <summary>
-        /// Name of the operation called.
-        /// </summary>
         public global::System.String OperationName { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus? other)
@@ -335,9 +230,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse : global::System.IEquatable<GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse>, IGlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse
     {
@@ -347,14 +239,8 @@ namespace AggieEnterpriseApi
             MessageProperties = messageProperties;
         }
 
-        /// <summary>
-        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        /// <summary>
-        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse? other)
@@ -426,178 +312,53 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestResult
     {
-        /// <summary>
-        /// Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
-        /// 
-        /// The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
-        /// 
-        /// This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
-        /// 
-        /// The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
-        /// 
-        /// Please see below in this document for examples of payloads into this API.
-        /// 
-        /// #### Supporting Operations
-        /// 
-        /// Other operations which should be used to pre-validate chartstring segments are below.  Please see <https: / / financeandbusiness.ucdavis.edu / aggie-enterprise / chart-of-accounts / redesign> for information about each of these segments.
-        /// 
-        /// * [`erpEntity`]({{Queries.erpEntity}})
-        /// * [`erpFund`]({{Queries.erpFund}})
-        /// * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
-        /// * [`erpAccount`]({{Queries.erpAccount}})
-        /// * [`erpPurpose`]({{Queries.erpPurpose}})
-        /// * [`erpProject`]({{Queries.erpProject}})
-        /// * [`erpProgram`]({{Queries.erpProgram}})
-        /// * [`erpActivity`]({{Queries.erpActivity}})
-        /// 
-        /// For validating combinations, the following two operations are provided, differing only in their input format.
-        /// 
-        /// * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
-        /// * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
-        /// 
-        /// #### Managed Project Cost Entries (PPM/POET)
-        /// 
-        /// In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
-        /// 
-        /// For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
-        /// 
-        /// For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
-        /// 
-        /// * `p`roject
-        /// * `o`rganization (same values as `ErpFinancialDepartment`)
-        /// * `e`xpenditureType (same values as `ErpAccount`)
-        /// * `t`ask
-        /// 
-        /// Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
-        /// 
-        /// There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
-        /// 
-        /// * award (only for sponsored projects)
-        /// * fundingSource (only for sponsored projects)
-        /// 
-        /// As with the GL segments, the API provides the operations below for lookups and validation:
-        /// 
-        /// * [`ppmProject`]({{Queries.ppmProject}})
-        /// * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
-        /// * [`ppmOrganization`]({{Queries.ppmOrganization}})
-        /// * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
-        /// 
-        /// #### Volume of Data
-        /// 
-        /// Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
-        /// 
-        /// #### Journal Balancing
-        /// 
-        /// As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
-        /// 
-        /// While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
-        /// 
-        /// #### Basic Use
-        /// 
-        /// 1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
-        /// 2. GraphQL Server will validate content format and reject if invalid.
-        /// 3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
-        /// 4. A failure in either of these initial validations will result in an error response with no request being generated.
-        /// 5. Passing validation will save the request to allow for pickup by the integration platform for processing.
-        /// 6. A request tracking ID will be generated and returned to allow for the consumer to check on the status of the request and obtain results when completed.
-        /// 7. At a later time, use the generated request tracking ID against the [`glJournalRequestStatus`]({{Queries.glJournalRequestStatus}}) operation to determine if the request was processed successfully
-        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest GlJournalRequest { get; }
     }
 
-    /// <summary>
-    /// Output type for GLJournal requests and follow-up status updates.
-    /// 
-    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest
     {
-        /// <summary>
-        /// Overall status of the action request
-        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus RequestStatus { get; }
 
-        /// <summary>
-        /// ERP-assigned journal ID for transactions posted to the GL.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.
-        /// </summary>
         public global::System.String? GlJournalId { get; }
 
-        /// <summary>
-        /// Integration-assigned batch name for costs posted to the PPM sub-ledger.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.
-        /// </summary>
         public global::System.String? PpmBatchName { get; }
 
-        /// <summary>
-        /// Errors found when validatating the payload data.  These must be corrected before the request will be accepted.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? ValidationResults { get; }
     }
 
-    /// <summary>
-    /// Output type for GLJournal requests and follow-up status updates.
-    /// 
-    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput : IGlJournalRequest_GlJournalRequest
     {
     }
 
-    /// <summary>
-    /// Fields common to all action status requests.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_RequestStatus
     {
-        /// <summary>
-        /// Unique identifier assigned to the request
-        /// </summary>
         public global::System.Guid? RequestId { get; }
 
-        /// <summary>
-        /// ID of the consumer who made the request extracted from the service authentication data
-        /// </summary>
         public global::System.String ConsumerId { get; }
 
         public global::System.DateTimeOffset RequestDateTime { get; }
 
         public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
 
-        /// <summary>
-        /// Name of the operation called.
-        /// </summary>
         public global::System.String OperationName { get; }
     }
 
-    /// <summary>
-    /// Fields common to all action status requests.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus : IGlJournalRequest_GlJournalRequest_RequestStatus
     {
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_ValidationResults
     {
-        /// <summary>
-        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        /// <summary>
-        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse : IGlJournalRequest_GlJournalRequest_ValidationResults
     {
@@ -611,9 +372,6 @@ namespace AggieEnterpriseApi
             GlJournalRequestStatus = glJournalRequestStatus;
         }
 
-        /// <summary>
-        /// Get the status of a previously submitted journal voucher request by the API-assigned request ID.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus? GlJournalRequestStatus { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestStatusResult? other)
@@ -671,35 +429,21 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Output type for GLJournal requests and follow-up status updates.
-    /// 
-    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput>, IGlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput
     {
-        public GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput(global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus requestStatus, global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? validationResults, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults>? jobResults)
+        public GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput(global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus requestStatus, global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult? processingResult, global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? validationResults)
         {
             RequestStatus = requestStatus;
+            ProcessingResult = processingResult;
             ValidationResults = validationResults;
-            JobResults = jobResults;
         }
 
-        /// <summary>
-        /// Overall status of the action request
-        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus RequestStatus { get; }
 
-        /// <summary>
-        /// Errors found when validatating the payload data.  These must be corrected before the request will be accepted.
-        /// </summary>
-        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? ValidationResults { get; }
+        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult? ProcessingResult { get; }
 
-        /// <summary>
-        /// Results of the Job or Jobs required to submit this request to the ERP.
-        /// </summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults>? JobResults { get; }
+        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? ValidationResults { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput? other)
         {
@@ -718,7 +462,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (RequestStatus.Equals(other.RequestStatus)) && ((ValidationResults is null && other.ValidationResults is null) || ValidationResults != null && ValidationResults.Equals(other.ValidationResults)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(JobResults, other.JobResults);
+            return (RequestStatus.Equals(other.RequestStatus)) && ((ProcessingResult is null && other.ProcessingResult is null) || ProcessingResult != null && ProcessingResult.Equals(other.ProcessingResult)) && ((ValidationResults is null && other.ValidationResults is null) || ValidationResults != null && ValidationResults.Equals(other.ValidationResults));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -747,17 +491,14 @@ namespace AggieEnterpriseApi
             {
                 int hash = 5;
                 hash ^= 397 * RequestStatus.GetHashCode();
+                if (ProcessingResult != null)
+                {
+                    hash ^= 397 * ProcessingResult.GetHashCode();
+                }
+
                 if (ValidationResults != null)
                 {
                     hash ^= 397 * ValidationResults.GetHashCode();
-                }
-
-                if (JobResults != null)
-                {
-                    foreach (var JobResults_elm in JobResults)
-                    {
-                        hash ^= 397 * JobResults_elm.GetHashCode();
-                    }
                 }
 
                 return hash;
@@ -765,13 +506,10 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Fields common to all action status requests.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus>, IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus
     {
-        public GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus(global::System.String? statusRequestPayload, global::System.String operationName, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.DateTimeOffset requestDateTime, global::System.DateTimeOffset lastStatusDateTime, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.DateTimeOffset? processedDateTime, global::System.String boundaryApplicationName, global::System.String consumerId, global::System.String consumerReferenceId)
+        public GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus(global::System.String? statusRequestPayload, global::System.String operationName, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.DateTimeOffset requestDateTime, global::System.DateTimeOffset lastStatusDateTime, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.DateTimeOffset? processedDateTime, global::System.String boundaryApplicationName, global::System.String consumerId, global::System.String? consumerNotes, global::System.String consumerReferenceId)
         {
             StatusRequestPayload = statusRequestPayload;
             OperationName = operationName;
@@ -782,51 +520,30 @@ namespace AggieEnterpriseApi
             ProcessedDateTime = processedDateTime;
             BoundaryApplicationName = boundaryApplicationName;
             ConsumerId = consumerId;
+            ConsumerNotes = consumerNotes;
             ConsumerReferenceId = consumerReferenceId;
         }
 
-        /// <summary>
-        /// GraphQL Payload to post back to this server to check on the status of the request.
-        /// </summary>
         public global::System.String? StatusRequestPayload { get; }
 
-        /// <summary>
-        /// Name of the operation called.
-        /// </summary>
         public global::System.String OperationName { get; }
 
         public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
 
         public global::System.DateTimeOffset RequestDateTime { get; }
 
-        /// <summary>
-        /// When the status last changed
-        /// </summary>
         public global::System.DateTimeOffset LastStatusDateTime { get; }
 
-        /// <summary>
-        /// Error information if the request failed during processing.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        /// <summary>
-        /// When the request was processed by the ERP system
-        /// </summary>
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
 
-        /// <summary>
-        /// Identifier for the boundary application originating the request.
-        /// </summary>
         public global::System.String BoundaryApplicationName { get; }
 
-        /// <summary>
-        /// ID of the consumer who made the request extracted from the service authentication data
-        /// </summary>
         public global::System.String ConsumerId { get; }
 
-        /// <summary>
-        /// Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.
-        /// </summary>
+        public global::System.String? ConsumerNotes { get; }
+
         public global::System.String ConsumerReferenceId { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus? other)
@@ -846,7 +563,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (((StatusRequestPayload is null && other.StatusRequestPayload is null) || StatusRequestPayload != null && StatusRequestPayload.Equals(other.StatusRequestPayload))) && OperationName.Equals(other.OperationName) && RequestStatus.Equals(other.RequestStatus) && RequestDateTime.Equals(other.RequestDateTime) && LastStatusDateTime.Equals(other.LastStatusDateTime) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages) && ((ProcessedDateTime is null && other.ProcessedDateTime is null) || ProcessedDateTime != null && ProcessedDateTime.Equals(other.ProcessedDateTime)) && BoundaryApplicationName.Equals(other.BoundaryApplicationName) && ConsumerId.Equals(other.ConsumerId) && ConsumerReferenceId.Equals(other.ConsumerReferenceId);
+            return (((StatusRequestPayload is null && other.StatusRequestPayload is null) || StatusRequestPayload != null && StatusRequestPayload.Equals(other.StatusRequestPayload))) && OperationName.Equals(other.OperationName) && RequestStatus.Equals(other.RequestStatus) && RequestDateTime.Equals(other.RequestDateTime) && LastStatusDateTime.Equals(other.LastStatusDateTime) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages) && ((ProcessedDateTime is null && other.ProcessedDateTime is null) || ProcessedDateTime != null && ProcessedDateTime.Equals(other.ProcessedDateTime)) && BoundaryApplicationName.Equals(other.BoundaryApplicationName) && ConsumerId.Equals(other.ConsumerId) && ((ConsumerNotes is null && other.ConsumerNotes is null) || ConsumerNotes != null && ConsumerNotes.Equals(other.ConsumerNotes)) && ConsumerReferenceId.Equals(other.ConsumerReferenceId);
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -898,15 +615,86 @@ namespace AggieEnterpriseApi
 
                 hash ^= 397 * BoundaryApplicationName.GetHashCode();
                 hash ^= 397 * ConsumerId.GetHashCode();
+                if (ConsumerNotes != null)
+                {
+                    hash ^= 397 * ConsumerNotes.GetHashCode();
+                }
+
                 hash ^= 397 * ConsumerReferenceId.GetHashCode();
                 return hash;
             }
         }
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult>, IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult
+    {
+        public GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult(global::System.String status, global::System.DateTimeOffset? processedDateTime)
+        {
+            Status = status;
+            ProcessedDateTime = processedDateTime;
+        }
+
+        public global::System.String Status { get; }
+
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Status.Equals(other.Status)) && ((ProcessedDateTime is null && other.ProcessedDateTime is null) || ProcessedDateTime != null && ProcessedDateTime.Equals(other.ProcessedDateTime));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Status.GetHashCode();
+                if (ProcessedDateTime != null)
+                {
+                    hash ^= 397 * ProcessedDateTime.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse>, IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse
     {
@@ -916,14 +704,8 @@ namespace AggieEnterpriseApi
             ErrorMessages = errorMessages;
         }
 
-        /// <summary>
-        /// Whether the overall validation succeeded or failed.
-        /// </summary>
         public global::System.Boolean Valid { get; }
 
-        /// <summary>
-        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse? other)
@@ -985,277 +767,81 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Results of the job as submitted to the ERP system.
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult>, IGlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult
-    {
-        public GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult(global::System.String jobId, global::System.String jobStatus, global::System.DateTimeOffset? completedDateTime, global::System.String? jobReport, global::System.String? failedRecords)
-        {
-            JobId = jobId;
-            JobStatus = jobStatus;
-            CompletedDateTime = completedDateTime;
-            JobReport = jobReport;
-            FailedRecords = failedRecords;
-        }
-
-        /// <summary>
-        /// Identifier of the type of job submitted.
-        /// </summary>
-        public global::System.String JobId { get; }
-
-        /// <summary>
-        /// Current status of the oracle job.
-        /// </summary>
-        public global::System.String JobStatus { get; }
-
-        /// <summary>
-        /// Time the job completion was recorded.
-        /// </summary>
-        public global::System.DateTimeOffset? CompletedDateTime { get; }
-
-        /// <summary>
-        /// Job report or log output from executing the request on the ERP system.
-        /// </summary>
-        public global::System.String? JobReport { get; }
-
-        /// <summary>
-        /// Records which caused the job to fail.
-        /// </summary>
-        public global::System.String? FailedRecords { get; }
-
-        public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (JobId.Equals(other.JobId)) && JobStatus.Equals(other.JobStatus) && ((CompletedDateTime is null && other.CompletedDateTime is null) || CompletedDateTime != null && CompletedDateTime.Equals(other.CompletedDateTime)) && ((JobReport is null && other.JobReport is null) || JobReport != null && JobReport.Equals(other.JobReport)) && ((FailedRecords is null && other.FailedRecords is null) || FailedRecords != null && FailedRecords.Equals(other.FailedRecords));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * JobId.GetHashCode();
-                hash ^= 397 * JobStatus.GetHashCode();
-                if (CompletedDateTime != null)
-                {
-                    hash ^= 397 * CompletedDateTime.GetHashCode();
-                }
-
-                if (JobReport != null)
-                {
-                    hash ^= 397 * JobReport.GetHashCode();
-                }
-
-                if (FailedRecords != null)
-                {
-                    hash ^= 397 * FailedRecords.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatusResult
     {
-        /// <summary>
-        /// Get the status of a previously submitted journal voucher request by the API-assigned request ID.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus? GlJournalRequestStatus { get; }
     }
 
-    /// <summary>
-    /// Output type for GLJournal requests and follow-up status updates.
-    /// 
-    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus
     {
-        /// <summary>
-        /// Overall status of the action request
-        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus RequestStatus { get; }
 
-        /// <summary>
-        /// Errors found when validatating the payload data.  These must be corrected before the request will be accepted.
-        /// </summary>
-        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? ValidationResults { get; }
+        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult? ProcessingResult { get; }
 
-        /// <summary>
-        /// Results of the Job or Jobs required to submit this request to the ERP.
-        /// </summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults>? JobResults { get; }
+        public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? ValidationResults { get; }
     }
 
-    /// <summary>
-    /// Output type for GLJournal requests and follow-up status updates.
-    /// 
-    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput : IGlJournalRequestStatus_GlJournalRequestStatus
     {
     }
 
-    /// <summary>
-    /// Fields common to all action status requests.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus
     {
-        /// <summary>
-        /// GraphQL Payload to post back to this server to check on the status of the request.
-        /// </summary>
         public global::System.String? StatusRequestPayload { get; }
 
-        /// <summary>
-        /// Name of the operation called.
-        /// </summary>
         public global::System.String OperationName { get; }
 
         public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
 
         public global::System.DateTimeOffset RequestDateTime { get; }
 
-        /// <summary>
-        /// When the status last changed
-        /// </summary>
         public global::System.DateTimeOffset LastStatusDateTime { get; }
 
-        /// <summary>
-        /// Error information if the request failed during processing.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        /// <summary>
-        /// When the request was processed by the ERP system
-        /// </summary>
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
 
-        /// <summary>
-        /// Identifier for the boundary application originating the request.
-        /// </summary>
         public global::System.String BoundaryApplicationName { get; }
 
-        /// <summary>
-        /// ID of the consumer who made the request extracted from the service authentication data
-        /// </summary>
         public global::System.String ConsumerId { get; }
 
-        /// <summary>
-        /// Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.
-        /// </summary>
+        public global::System.String? ConsumerNotes { get; }
+
         public global::System.String ConsumerReferenceId { get; }
     }
 
-    /// <summary>
-    /// Fields common to all action status requests.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus : IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus
     {
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult
+    {
+        public global::System.String Status { get; }
+
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult : IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult
+    {
+    }
+
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults
     {
-        /// <summary>
-        /// Whether the overall validation succeeded or failed.
-        /// </summary>
         public global::System.Boolean Valid { get; }
 
-        /// <summary>
-        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse : IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults
-    {
-    }
-
-    /// <summary>
-    /// Results of the job as submitted to the ERP system.
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_JobResults
-    {
-        /// <summary>
-        /// Identifier of the type of job submitted.
-        /// </summary>
-        public global::System.String JobId { get; }
-
-        /// <summary>
-        /// Current status of the oracle job.
-        /// </summary>
-        public global::System.String JobStatus { get; }
-
-        /// <summary>
-        /// Time the job completion was recorded.
-        /// </summary>
-        public global::System.DateTimeOffset? CompletedDateTime { get; }
-
-        /// <summary>
-        /// Job report or log output from executing the request on the ERP system.
-        /// </summary>
-        public global::System.String? JobReport { get; }
-
-        /// <summary>
-        /// Records which caused the job to fail.
-        /// </summary>
-        public global::System.String? FailedRecords { get; }
-    }
-
-    /// <summary>
-    /// Results of the job as submitted to the ERP system.
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult : IGlJournalRequestStatus_GlJournalRequestStatus_JobResults
     {
     }
 
@@ -1267,15 +853,6 @@ namespace AggieEnterpriseApi
             PpmSegmentsValidate = ppmSegmentsValidate;
         }
 
-        /// <summary>
-        /// Validates that the given set of PPM segments are most likely valid for posting
-        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
-        /// for current validity.
-        /// 
-        /// If no date is passed, today's date will be assumed.
-        /// 
-        /// This operation will return a fully populated set of segments.
-        /// </summary>
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate PpmSegmentsValidate { get; }
 
         public virtual global::System.Boolean Equals(PpmSegmentsValidateResult? other)
@@ -1329,13 +906,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Return data structure when validating a set of PPM segment values.
-    /// 
-    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
-    /// 
-    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput : global::System.IEquatable<PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput>, IPpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput
     {
@@ -1344,9 +914,6 @@ namespace AggieEnterpriseApi
             ValidationResponse = validationResponse;
         }
 
-        /// <summary>
-        /// Validation result and error messages, if any.
-        /// </summary>
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse ValidationResponse { get; }
 
         public virtual global::System.Boolean Equals(PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput? other)
@@ -1400,9 +967,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse : global::System.IEquatable<PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse>, IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse
     {
@@ -1413,19 +977,10 @@ namespace AggieEnterpriseApi
             Valid = valid;
         }
 
-        /// <summary>
-        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        /// <summary>
-        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
-        /// <summary>
-        /// Whether the overall validation succeeded or failed.
-        /// </summary>
         public global::System.Boolean Valid { get; }
 
         public virtual global::System.Boolean Equals(PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse? other)
@@ -1498,71 +1053,30 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmSegmentsValidateResult
     {
-        /// <summary>
-        /// Validates that the given set of PPM segments are most likely valid for posting
-        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
-        /// for current validity.
-        /// 
-        /// If no date is passed, today's date will be assumed.
-        /// 
-        /// This operation will return a fully populated set of segments.
-        /// </summary>
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate PpmSegmentsValidate { get; }
     }
 
-    /// <summary>
-    /// Return data structure when validating a set of PPM segment values.
-    /// 
-    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
-    /// 
-    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate
     {
-        /// <summary>
-        /// Validation result and error messages, if any.
-        /// </summary>
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse ValidationResponse { get; }
     }
 
-    /// <summary>
-    /// Return data structure when validating a set of PPM segment values.
-    /// 
-    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
-    /// 
-    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput : IPpmSegmentsValidate_PpmSegmentsValidate
     {
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse
     {
-        /// <summary>
-        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        /// <summary>
-        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
-        /// <summary>
-        /// Whether the overall validation succeeded or failed.
-        /// </summary>
         public global::System.Boolean Valid { get; }
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse : IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse
     {
@@ -1576,18 +1090,6 @@ namespace AggieEnterpriseApi
             GlValidateChartSegments = glValidateChartSegments;
         }
 
-        /// <summary>
-        /// Validates that the given set of GL chartstring segments are most likely valid for posting
-        /// to the financial system general ledger.  Individual non-blank elements will be checked
-        /// for current validity.
-        /// 
-        /// If validateCVRs is true, certain combinations of attributes will be sanity checked.
-        /// 
-        /// This operation will return a fully populated set of segments, including defaults in
-        /// both individual segment and full chartstring form.
-        /// 
-        /// If the combination was previously known/used in the financial system, its unique ID will be included.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments GlValidateChartSegments { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartSegmentsResult? other)
@@ -1641,13 +1143,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Return data structure when validating a set of GL segment values.
-    /// 
-    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
-    /// 
-    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput>, IGlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput
     {
@@ -1659,29 +1154,12 @@ namespace AggieEnterpriseApi
             CodeCombinationId = codeCombinationId;
         }
 
-        /// <summary>
-        /// Validation result and error messages, if any.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse ValidationResponse { get; }
 
-        /// <summary>
-        /// Fully populated object with the GL segments combination that was validated.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Segments Segments { get; }
 
-        /// <summary>
-        /// Full chartstring with the GL segments combination that was validated.
-        /// </summary>
         public global::System.String? CompleteChartstring { get; }
 
-        /// <summary>
-        /// The "codeCombinationId" is an informational property only.  If populated, it
-        /// indicates that the validated combination of segment values was previously
-        /// known to the financial system.  Validity still needs to be checked, as
-        /// chartstrings can be disabled or expire.  However, segments which match an
-        /// existing valid combination can not fail validation when posted to the
-        /// financial system.
-        /// </summary>
         public global::System.Int64? CodeCombinationId { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput? other)
@@ -1746,9 +1224,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse>, IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse
     {
@@ -1759,19 +1234,10 @@ namespace AggieEnterpriseApi
             Valid = valid;
         }
 
-        /// <summary>
-        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        /// <summary>
-        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
-        /// <summary>
-        /// Whether the overall validation succeeded or failed.
-        /// </summary>
         public global::System.Boolean Valid { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse? other)
@@ -1841,9 +1307,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// GL segment values as separate fields.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments>, IGlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments
     {
@@ -1859,44 +1322,20 @@ namespace AggieEnterpriseApi
             Purpose = purpose;
         }
 
-        /// <summary>
-        /// Required: Nature of the transaction, expense, income, liability, etc...
-        /// </summary>
         public global::System.String? Account { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Activity { get; }
 
-        /// <summary>
-        /// Required: Financial department to which to charge a transaction.
-        /// </summary>
         public global::System.String? Department { get; }
 
-        /// <summary>
-        /// Required: Entity to which to charge a transaction.
-        /// </summary>
         public global::System.String? Entity { get; }
 
-        /// <summary>
-        /// Required: Funding source to which to charge a transaction.
-        /// </summary>
         public global::System.String? Fund { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Program { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Project { get; }
 
-        /// <summary>
-        /// Required for Expenses: Functional purpose of the expense.
-        /// </summary>
         public global::System.String? Purpose { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments? other)
@@ -1992,149 +1431,61 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegmentsResult
     {
-        /// <summary>
-        /// Validates that the given set of GL chartstring segments are most likely valid for posting
-        /// to the financial system general ledger.  Individual non-blank elements will be checked
-        /// for current validity.
-        /// 
-        /// If validateCVRs is true, certain combinations of attributes will be sanity checked.
-        /// 
-        /// This operation will return a fully populated set of segments, including defaults in
-        /// both individual segment and full chartstring form.
-        /// 
-        /// If the combination was previously known/used in the financial system, its unique ID will be included.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments GlValidateChartSegments { get; }
     }
 
-    /// <summary>
-    /// Return data structure when validating a set of GL segment values.
-    /// 
-    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
-    /// 
-    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments
     {
-        /// <summary>
-        /// Validation result and error messages, if any.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse ValidationResponse { get; }
 
-        /// <summary>
-        /// Fully populated object with the GL segments combination that was validated.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Segments Segments { get; }
 
-        /// <summary>
-        /// Full chartstring with the GL segments combination that was validated.
-        /// </summary>
         public global::System.String? CompleteChartstring { get; }
 
-        /// <summary>
-        /// The "codeCombinationId" is an informational property only.  If populated, it
-        /// indicates that the validated combination of segment values was previously
-        /// known to the financial system.  Validity still needs to be checked, as
-        /// chartstrings can be disabled or expire.  However, segments which match an
-        /// existing valid combination can not fail validation when posted to the
-        /// financial system.
-        /// </summary>
         public global::System.Int64? CodeCombinationId { get; }
     }
 
-    /// <summary>
-    /// Return data structure when validating a set of GL segment values.
-    /// 
-    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
-    /// 
-    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput : IGlValidateChartSegments_GlValidateChartSegments
     {
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse
     {
-        /// <summary>
-        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        /// <summary>
-        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
-        /// <summary>
-        /// Whether the overall validation succeeded or failed.
-        /// </summary>
         public global::System.Boolean Valid { get; }
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse : IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse
     {
     }
 
-    /// <summary>
-    /// GL segment values as separate fields.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_Segments
     {
-        /// <summary>
-        /// Required: Nature of the transaction, expense, income, liability, etc...
-        /// </summary>
         public global::System.String? Account { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Activity { get; }
 
-        /// <summary>
-        /// Required: Financial department to which to charge a transaction.
-        /// </summary>
         public global::System.String? Department { get; }
 
-        /// <summary>
-        /// Required: Entity to which to charge a transaction.
-        /// </summary>
         public global::System.String? Entity { get; }
 
-        /// <summary>
-        /// Required: Funding source to which to charge a transaction.
-        /// </summary>
         public global::System.String? Fund { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Program { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Project { get; }
 
-        /// <summary>
-        /// Required for Expenses: Functional purpose of the expense.
-        /// </summary>
         public global::System.String? Purpose { get; }
     }
 
-    /// <summary>
-    /// GL segment values as separate fields.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments : IGlValidateChartSegments_GlValidateChartSegments_Segments
     {
@@ -2148,18 +1499,6 @@ namespace AggieEnterpriseApi
             GlValidateChartstring = glValidateChartstring;
         }
 
-        /// <summary>
-        /// Validates that the given GL chartstring is most likely valid for posting
-        /// to the financial system general ledger.  The input string format is strongly typed
-        /// and will reject the call if not structured properly.  Please see the definition of the
-        /// [GlSegmentString]({{Types.GlSegmentString}}) for format information.
-        /// 
-        /// If validateCVRs is true, certain combinations of attributes will be sanity checked if the string format is accepted.
-        /// 
-        /// This operation will return the validation result and the segments as parsed out into their component fields.
-        /// 
-        /// If the combination was previously known/used in the financial system, its unique ID will be included.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring GlValidateChartstring { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartstringResult? other)
@@ -2213,13 +1552,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Return data structure when validating a set of GL segment values.
-    /// 
-    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
-    /// 
-    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput>, IGlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput
     {
@@ -2231,29 +1563,12 @@ namespace AggieEnterpriseApi
             CodeCombinationId = codeCombinationId;
         }
 
-        /// <summary>
-        /// Validation result and error messages, if any.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_ValidationResponse ValidationResponse { get; }
 
-        /// <summary>
-        /// Fully populated object with the GL segments combination that was validated.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Segments Segments { get; }
 
-        /// <summary>
-        /// Full chartstring with the GL segments combination that was validated.
-        /// </summary>
         public global::System.String? CompleteChartstring { get; }
 
-        /// <summary>
-        /// The "codeCombinationId" is an informational property only.  If populated, it
-        /// indicates that the validated combination of segment values was previously
-        /// known to the financial system.  Validity still needs to be checked, as
-        /// chartstrings can be disabled or expire.  However, segments which match an
-        /// existing valid combination can not fail validation when posted to the
-        /// financial system.
-        /// </summary>
         public global::System.Int64? CodeCombinationId { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput? other)
@@ -2318,9 +1633,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse>, IGlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse
     {
@@ -2331,19 +1643,10 @@ namespace AggieEnterpriseApi
             Valid = valid;
         }
 
-        /// <summary>
-        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        /// <summary>
-        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
-        /// <summary>
-        /// Whether the overall validation succeeded or failed.
-        /// </summary>
         public global::System.Boolean Valid { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse? other)
@@ -2413,9 +1716,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    /// <summary>
-    /// GL segment values as separate fields.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_Segments_GlSegments : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_Segments_GlSegments>, IGlValidateChartstring_GlValidateChartstring_Segments_GlSegments
     {
@@ -2431,44 +1731,20 @@ namespace AggieEnterpriseApi
             Purpose = purpose;
         }
 
-        /// <summary>
-        /// Required: Nature of the transaction, expense, income, liability, etc...
-        /// </summary>
         public global::System.String? Account { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Activity { get; }
 
-        /// <summary>
-        /// Required: Financial department to which to charge a transaction.
-        /// </summary>
         public global::System.String? Department { get; }
 
-        /// <summary>
-        /// Required: Entity to which to charge a transaction.
-        /// </summary>
         public global::System.String? Entity { get; }
 
-        /// <summary>
-        /// Required: Funding source to which to charge a transaction.
-        /// </summary>
         public global::System.String? Fund { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Program { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Project { get; }
 
-        /// <summary>
-        /// Required for Expenses: Functional purpose of the expense.
-        /// </summary>
         public global::System.String? Purpose { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_Segments_GlSegments? other)
@@ -2564,149 +1840,61 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstringResult
     {
-        /// <summary>
-        /// Validates that the given GL chartstring is most likely valid for posting
-        /// to the financial system general ledger.  The input string format is strongly typed
-        /// and will reject the call if not structured properly.  Please see the definition of the
-        /// [GlSegmentString]({{Types.GlSegmentString}}) for format information.
-        /// 
-        /// If validateCVRs is true, certain combinations of attributes will be sanity checked if the string format is accepted.
-        /// 
-        /// This operation will return the validation result and the segments as parsed out into their component fields.
-        /// 
-        /// If the combination was previously known/used in the financial system, its unique ID will be included.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring GlValidateChartstring { get; }
     }
 
-    /// <summary>
-    /// Return data structure when validating a set of GL segment values.
-    /// 
-    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
-    /// 
-    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring
     {
-        /// <summary>
-        /// Validation result and error messages, if any.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_ValidationResponse ValidationResponse { get; }
 
-        /// <summary>
-        /// Fully populated object with the GL segments combination that was validated.
-        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Segments Segments { get; }
 
-        /// <summary>
-        /// Full chartstring with the GL segments combination that was validated.
-        /// </summary>
         public global::System.String? CompleteChartstring { get; }
 
-        /// <summary>
-        /// The "codeCombinationId" is an informational property only.  If populated, it
-        /// indicates that the validated combination of segment values was previously
-        /// known to the financial system.  Validity still needs to be checked, as
-        /// chartstrings can be disabled or expire.  However, segments which match an
-        /// existing valid combination can not fail validation when posted to the
-        /// financial system.
-        /// </summary>
         public global::System.Int64? CodeCombinationId { get; }
     }
 
-    /// <summary>
-    /// Return data structure when validating a set of GL segment values.
-    /// 
-    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
-    /// 
-    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput : IGlValidateChartstring_GlValidateChartstring
     {
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_ValidationResponse
     {
-        /// <summary>
-        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        /// <summary>
-        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
-        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
-        /// <summary>
-        /// Whether the overall validation succeeded or failed.
-        /// </summary>
         public global::System.Boolean Valid { get; }
     }
 
-    /// <summary>
-    /// Contains the validation overall status and any error messages and the properties they belong to.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse : IGlValidateChartstring_GlValidateChartstring_ValidationResponse
     {
     }
 
-    /// <summary>
-    /// GL segment values as separate fields.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_Segments
     {
-        /// <summary>
-        /// Required: Nature of the transaction, expense, income, liability, etc...
-        /// </summary>
         public global::System.String? Account { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Activity { get; }
 
-        /// <summary>
-        /// Required: Financial department to which to charge a transaction.
-        /// </summary>
         public global::System.String? Department { get; }
 
-        /// <summary>
-        /// Required: Entity to which to charge a transaction.
-        /// </summary>
         public global::System.String? Entity { get; }
 
-        /// <summary>
-        /// Required: Funding source to which to charge a transaction.
-        /// </summary>
         public global::System.String? Fund { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Program { get; }
 
-        /// <summary>
-        /// Optional: 
-        /// </summary>
         public global::System.String? Project { get; }
 
-        /// <summary>
-        /// Required for Expenses: Functional purpose of the expense.
-        /// </summary>
         public global::System.String? Purpose { get; }
     }
 
-    /// <summary>
-    /// GL segment values as separate fields.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_Segments_GlSegments : IGlValidateChartstring_GlValidateChartstring_Segments
     {
@@ -2773,7 +1961,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    ///<summary>GL/PPM Combined journal input type.  Contains the standard request header information and journal data payload for creating journal and/or PPM costs in Oracle Financials.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestInput : global::AggieEnterpriseApi.State.IGlJournalRequestInputInfo, global::System.IEquatable<GlJournalRequestInput>
     {
@@ -2832,7 +2019,6 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_header;
         private global::AggieEnterpriseApi.GlJournalInput _value_payload = default !;
         private global::System.Boolean _set_payload;
-        ///<summary>Request-level header information common to all action requests.</summary>
         public global::AggieEnterpriseApi.ActionRequestHeaderInput Header
         {
             get => _value_header;
@@ -2844,7 +2030,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalRequestInputInfo.IsHeaderSet => _set_header;
-        ///<summary>Main operation data.</summary>
         public global::AggieEnterpriseApi.GlJournalInput Payload
         {
             get => _value_payload;
@@ -2987,7 +2172,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    ///<summary>Fields common to all action requests.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ActionRequestHeaderInput : global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo, global::System.IEquatable<ActionRequestHeaderInput>
     {
@@ -3070,7 +2254,6 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_consumerId;
         private global::System.Boolean? _value_batchRequest;
         private global::System.Boolean _set_batchRequest;
-        ///<summary>Identifier provided by the consumer to track requests internally.  It is recommended that this be a globally unique identfier tracked in their system.  Can be used to match up data in the caller's system.</summary>
         public global::System.String ConsumerTrackingId
         {
             get => _value_consumerTrackingId;
@@ -3082,7 +2265,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerTrackingIdSet => _set_consumerTrackingId;
-        ///<summary>Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.</summary>
         public global::System.String ConsumerReferenceId
         {
             get => _value_consumerReferenceId;
@@ -3094,7 +2276,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerReferenceIdSet => _set_consumerReferenceId;
-        ///<summary>Any notes to include with the request, this is stored as metadata to provide context to the request.</summary>
         public global::System.String? ConsumerNotes
         {
             get => _value_consumerNotes;
@@ -3106,7 +2287,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerNotesSet => _set_consumerNotes;
-        ///<summary>Identifier for the boundary application originating the request.</summary>
         public global::System.String BoundaryApplicationName
         {
             get => _value_boundaryApplicationName;
@@ -3118,7 +2298,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsBoundaryApplicationNameSet => _set_boundaryApplicationName;
-        ///<summary>ID of the consumer which must match the authentication data.  Not required for API calls as will be filled in by the server.</summary>
         public global::System.String? ConsumerId
         {
             get => _value_consumerId;
@@ -3130,7 +2309,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerIdSet => _set_consumerId;
-        ///<summary>If set to true, allows processing of this request to be delayed and combined with other compatible requests if supported by the request type.  It will be ignored if not supported.  Length of delay and pickup time is determined during integration processing.</summary>
         public global::System.Boolean? BatchRequest
         {
             get => _value_batchRequest;
@@ -3322,7 +2500,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    ///<summary>Main payload object for a `glJournalRequest`.  See operation documentation for more info.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalInput : global::AggieEnterpriseApi.State.IGlJournalInputInfo, global::System.IEquatable<GlJournalInput>
     {
@@ -3415,7 +2592,6 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_accountingPeriodName;
         private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.GlJournalLineInput> _value_journalLines = default !;
         private global::System.Boolean _set_journalLines;
-        ///<summary>Centrally assigned source name for your boundary application.</summary>
         public global::System.String JournalSourceName
         {
             get => _value_journalSourceName;
@@ -3427,7 +2603,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalSourceNameSet => _set_journalSourceName;
-        ///<summary>Centrally assigned category name for your boundary application's feed.</summary>
         public global::System.String JournalCategoryName
         {
             get => _value_journalCategoryName;
@@ -3439,7 +2614,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalCategoryNameSet => _set_journalCategoryName;
-        ///<summary>Name which will appear on the journal header.</summary>
         public global::System.String JournalName
         {
             get => _value_journalName;
@@ -3451,7 +2625,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalNameSet => _set_journalName;
-        ///<summary>Longer description of the journal if needed.</summary>
         public global::System.String? JournalDescription
         {
             get => _value_journalDescription;
@@ -3463,7 +2636,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalDescriptionSet => _set_journalDescription;
-        ///<summary>Reference number for the journal.  Should be meaningful to the feeding system.</summary>
         public global::System.String JournalReference
         {
             get => _value_journalReference;
@@ -3475,7 +2647,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalReferenceSet => _set_journalReference;
-        ///<summary>Accounting Date: The accounting date of the journal.  Will be defaulted to today's date if not provided.</summary>
         public global::System.String? AccountingDate
         {
             get => _value_accountingDate;
@@ -3487,7 +2658,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsAccountingDateSet => _set_accountingDate;
-        ///<summary>Accounting Period: The accounting period of the journal.  If not specified, the API will add the current open period.</summary>
         public global::System.String? AccountingPeriodName
         {
             get => _value_accountingPeriodName;
@@ -3499,7 +2669,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsAccountingPeriodNameSet => _set_accountingPeriodName;
-        ///<summary>List of journal lines to include.</summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.GlJournalLineInput> JournalLines
         {
             get => _value_journalLines;
@@ -3518,7 +2687,6 @@ namespace AggieEnterpriseApi
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _glSegmentInputFormatter = default !;
         private global::StrawberryShake.Serialization.IInputValueFormatter _glSegmentStringFormatter = default !;
-        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString15Formatter = default !;
         private global::StrawberryShake.Serialization.IInputValueFormatter _ppmSegmentInputFormatter = default !;
         private global::StrawberryShake.Serialization.IInputValueFormatter _ppmSegmentStringFormatter = default !;
         private global::StrawberryShake.Serialization.IInputValueFormatter _nonNegativeFloatFormatter = default !;
@@ -3530,7 +2698,6 @@ namespace AggieEnterpriseApi
         {
             _glSegmentInputFormatter = serializerResolver.GetInputValueFormatter("GlSegmentInput");
             _glSegmentStringFormatter = serializerResolver.GetInputValueFormatter("GlSegmentString");
-            _nonEmptyTrimmedString15Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString15");
             _ppmSegmentInputFormatter = serializerResolver.GetInputValueFormatter("PpmSegmentInput");
             _ppmSegmentStringFormatter = serializerResolver.GetInputValueFormatter("PpmSegmentString");
             _nonNegativeFloatFormatter = serializerResolver.GetInputValueFormatter("NonNegativeFloat");
@@ -3562,11 +2729,6 @@ namespace AggieEnterpriseApi
             if (inputInfo.IsGlSegmentStringSet)
             {
                 fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("glSegmentString", FormatGlSegmentString(input.GlSegmentString)));
-            }
-
-            if (inputInfo.IsGlAliasCodeSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("glAliasCode", FormatGlAliasCode(input.GlAliasCode)));
             }
 
             if (inputInfo.IsPpmSegmentsSet)
@@ -3628,18 +2790,6 @@ namespace AggieEnterpriseApi
             else
             {
                 return _glSegmentStringFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatGlAliasCode(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _nonEmptyTrimmedString15Formatter.Format(input);
             }
         }
 
@@ -3726,7 +2876,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    ///<summary>A single line representing a GL Journal Entry or PPM Cost.  A line must have only one of the two types of segments specified.* `ppmSegments`, when provided will override any `glXxxxxx` segment values.* For the GL segments, there are three options.  Only provide one of them.  Providing multiple will result in a rejection of the payload.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalLineInput : global::AggieEnterpriseApi.State.IGlJournalLineInputInfo, global::System.IEquatable<GlJournalLineInput>
     {
@@ -3767,7 +2916,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (((GlSegments is null && other.GlSegments is null) || GlSegments != null && GlSegments.Equals(other.GlSegments))) && ((GlSegmentString is null && other.GlSegmentString is null) || GlSegmentString != null && GlSegmentString.Equals(other.GlSegmentString)) && ((GlAliasCode is null && other.GlAliasCode is null) || GlAliasCode != null && GlAliasCode.Equals(other.GlAliasCode)) && ((PpmSegments is null && other.PpmSegments is null) || PpmSegments != null && PpmSegments.Equals(other.PpmSegments)) && ((PpmSegmentString is null && other.PpmSegmentString is null) || PpmSegmentString != null && PpmSegmentString.Equals(other.PpmSegmentString)) && DebitAmount == other.DebitAmount && CreditAmount == other.CreditAmount && ExternalSystemIdentifier.Equals(other.ExternalSystemIdentifier) && ((ExternalSystemReference is null && other.ExternalSystemReference is null) || ExternalSystemReference != null && ExternalSystemReference.Equals(other.ExternalSystemReference)) && ((PpmComment is null && other.PpmComment is null) || PpmComment != null && PpmComment.Equals(other.PpmComment));
+            return (((GlSegments is null && other.GlSegments is null) || GlSegments != null && GlSegments.Equals(other.GlSegments))) && ((GlSegmentString is null && other.GlSegmentString is null) || GlSegmentString != null && GlSegmentString.Equals(other.GlSegmentString)) && ((PpmSegments is null && other.PpmSegments is null) || PpmSegments != null && PpmSegments.Equals(other.PpmSegments)) && ((PpmSegmentString is null && other.PpmSegmentString is null) || PpmSegmentString != null && PpmSegmentString.Equals(other.PpmSegmentString)) && DebitAmount == other.DebitAmount && CreditAmount == other.CreditAmount && ExternalSystemIdentifier.Equals(other.ExternalSystemIdentifier) && ((ExternalSystemReference is null && other.ExternalSystemReference is null) || ExternalSystemReference != null && ExternalSystemReference.Equals(other.ExternalSystemReference)) && ((PpmComment is null && other.PpmComment is null) || PpmComment != null && PpmComment.Equals(other.PpmComment));
         }
 
         public override global::System.Int32 GetHashCode()
@@ -3783,11 +2932,6 @@ namespace AggieEnterpriseApi
                 if (GlSegmentString != null)
                 {
                     hash ^= 397 * GlSegmentString.GetHashCode();
-                }
-
-                if (GlAliasCode != null)
-                {
-                    hash ^= 397 * GlAliasCode.GetHashCode();
                 }
 
                 if (PpmSegments != null)
@@ -3829,8 +2973,6 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_glSegments;
         private global::System.String? _value_glSegmentString;
         private global::System.Boolean _set_glSegmentString;
-        private global::System.String? _value_glAliasCode;
-        private global::System.Boolean _set_glAliasCode;
         private global::AggieEnterpriseApi.PpmSegmentInput? _value_ppmSegments;
         private global::System.Boolean _set_ppmSegments;
         private global::System.String? _value_ppmSegmentString;
@@ -3845,7 +2987,6 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_externalSystemReference;
         private global::System.String? _value_ppmComment;
         private global::System.Boolean _set_ppmComment;
-        ///<summary>GL Segment fields</summary>
         public global::AggieEnterpriseApi.GlSegmentInput? GlSegments
         {
             get => _value_glSegments;
@@ -3857,7 +2998,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsGlSegmentsSet => _set_glSegments;
-        ///<summary>Delimited complete GL segment string.  All fields of the GL Accounting Key must be provided.</summary>
         public global::System.String? GlSegmentString
         {
             get => _value_glSegmentString;
@@ -3869,19 +3009,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsGlSegmentStringSet => _set_glSegmentString;
-        ///<summary>GL Alias string which will be used to populate all GL Segments for this accounting line.</summary>
-        public global::System.String? GlAliasCode
-        {
-            get => _value_glAliasCode;
-            set
-            {
-                _set_glAliasCode = true;
-                _value_glAliasCode = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsGlAliasCodeSet => _set_glAliasCode;
-        ///<summary>PPM POET segment values.  If provided, this will override any provided GL segments.</summary>
         public global::AggieEnterpriseApi.PpmSegmentInput? PpmSegments
         {
             get => _value_ppmSegments;
@@ -3893,7 +3020,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsPpmSegmentsSet => _set_ppmSegments;
-        ///<summary>Hyphen-Delimited PPM segment stringMust be populated with either the 4 required segments, or all 6 segments.  (Project-Task Number-Expense Organization-Expense Type-Award Number-Funding Source)* Format Pattern (Required Only): \`SP00000001-0001-0000000-000000\`* Format Pattern (Sponsored Projects): \`CP00000001-0001-0000000-000000-0000000-00000\`For more information, see the description of the [PpmSegmentString scalar]({{Types.PpmSegmentString}})</summary>
         public global::System.String? PpmSegmentString
         {
             get => _value_ppmSegmentString;
@@ -3905,7 +3031,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsPpmSegmentStringSet => _set_ppmSegmentString;
-        ///<summary>Debit amount of the GL transaction or PPM Cost.  Only one of debitAmount and creditAmount may be specified on a line.</summary>
         public global::System.Decimal? DebitAmount
         {
             get => _value_debitAmount;
@@ -3917,7 +3042,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsDebitAmountSet => _set_debitAmount;
-        ///<summary>Credit amount of the GL transaction or PPM Cost.  Only one of debitAmount and creditAmount may be specified on a line.</summary>
         public global::System.Decimal? CreditAmount
         {
             get => _value_creditAmount;
@@ -3929,7 +3053,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsCreditAmountSet => _set_creditAmount;
-        ///<summary>This 10-character field is intended to aid with linking boundary systems transactions to Oracle Cloud summarized journal entries for the purposes of reconciliation.</summary>
         public global::System.String ExternalSystemIdentifier
         {
             get => _value_externalSystemIdentifier;
@@ -3941,7 +3064,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsExternalSystemIdentifierSet => _set_externalSystemIdentifier;
-        ///<summary>This 25-character field is intended to aid in additional linking of boundary systems transactions, as needed, to Oracle Cloud summarized journal entries for the purposes of reconciliation.</summary>
         public global::System.String? ExternalSystemReference
         {
             get => _value_externalSystemReference;
@@ -3953,7 +3075,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsExternalSystemReferenceSet => _set_externalSystemReference;
-        ///<summary>Expenditure comment for PPM transactions.  Will be ignored for GL transactions.</summary>
         public global::System.String? PpmComment
         {
             get => _value_ppmComment;
@@ -4176,7 +3297,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    ///<summary>Input structure for specifying GL segment values as separate fields.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlSegmentInput : global::AggieEnterpriseApi.State.IGlSegmentInputInfo, global::System.IEquatable<GlSegmentInput>
     {
@@ -4283,7 +3403,6 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_flex1;
         private global::System.String? _value_flex2;
         private global::System.Boolean _set_flex2;
-        ///<summary>Required: Entity to which to charge a transaction.</summary>
         public global::System.String Entity
         {
             get => _value_entity;
@@ -4295,7 +3414,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsEntitySet => _set_entity;
-        ///<summary>Required: Funding source to which to charge a transaction.</summary>
         public global::System.String Fund
         {
             get => _value_fund;
@@ -4307,7 +3425,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsFundSet => _set_fund;
-        ///<summary>Required: Financial department to which to charge a transaction.</summary>
         public global::System.String Department
         {
             get => _value_department;
@@ -4319,7 +3436,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsDepartmentSet => _set_department;
-        ///<summary>Required: Nature of the transaction, expense, income, liability, etc...</summary>
         public global::System.String Account
         {
             get => _value_account;
@@ -4331,7 +3447,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsAccountSet => _set_account;
-        ///<summary>Required for Expenses: Functional purpose of the expense.</summary>
         public global::System.String? Purpose
         {
             get => _value_purpose;
@@ -4343,7 +3458,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsPurposeSet => _set_purpose;
-        ///<summary>Optional: </summary>
         public global::System.String? Project
         {
             get => _value_project;
@@ -4355,7 +3469,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsProjectSet => _set_project;
-        ///<summary>Optional: </summary>
         public global::System.String? Program
         {
             get => _value_program;
@@ -4367,7 +3480,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsProgramSet => _set_program;
-        ///<summary>Optional: </summary>
         public global::System.String? Activity
         {
             get => _value_activity;
@@ -4379,7 +3491,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsActivitySet => _set_activity;
-        ///<summary>Unused: For future UCOP Reporting Requirements.  Always 000000.</summary>
         public global::System.String? Flex1
         {
             get => _value_flex1;
@@ -4391,7 +3502,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsFlex1Set => _set_flex1;
-        ///<summary>Unused: For future UCOP Reporting Requirements.  Always 000000.</summary>
         public global::System.String? Flex2
         {
             get => _value_flex2;
@@ -4538,7 +3648,6 @@ namespace AggieEnterpriseApi
         }
     }
 
-    ///<summary>Input structure for specifying POET/PPM segment values.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentInput : global::AggieEnterpriseApi.State.IPpmSegmentInputInfo, global::System.IEquatable<PpmSegmentInput>
     {
@@ -4617,7 +3726,6 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_award;
         private global::System.String? _value_fundingSource;
         private global::System.Boolean _set_fundingSource;
-        ///<summary>Required: Managed Project Number</summary>
         public global::System.String Project
         {
             get => _value_project;
@@ -4629,7 +3737,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsProjectSet => _set_project;
-        ///<summary>Required: Task ID.  Must belong to Project and be a chargeable task</summary>
         public global::System.String Task
         {
             get => _value_task;
@@ -4641,7 +3748,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsTaskSet => _set_task;
-        ///<summary>Required: Organization for which the expense is being incurred.  Aligns with the GL Financial Department segment.</summary>
         public global::System.String Organization
         {
             get => _value_organization;
@@ -4653,7 +3759,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsOrganizationSet => _set_organization;
-        ///<summary>Required: Type of expense being charged to the project.  Aligns with the GL Account segment.</summary>
         public global::System.String ExpenditureType
         {
             get => _value_expenditureType;
@@ -4665,7 +3770,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsExpenditureTypeSet => _set_expenditureType;
-        ///<summary>Award for Sponsored projects only**API Users, do not provide.  The valid value will be derived from the project if necessary.**</summary>
         public global::System.String? Award
         {
             get => _value_award;
@@ -4677,7 +3781,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsAwardSet => _set_award;
-        ///<summary>Award funding source for Sponsored projects only**API Users, do not provide.  The valid value will be derived from the project if necessary.**</summary>
         public global::System.String? FundingSource
         {
             get => _value_fundingSource;
@@ -4694,33 +3797,12 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public enum RequestStatus
     {
-        /// <summary>
-        /// Request has been submitted to the server, but not validated or processed.
-        /// </summary>
         Pending,
-        /// <summary>
-        /// Request has been picked up for processing.
-        /// </summary>
         Inprocess,
-        /// <summary>
-        /// There was an error processing the request after it was picked up.
-        /// </summary>
         Error,
-        /// <summary>
-        /// Request has been processed, but the callback has not been completed.
-        /// </summary>
         Processed,
-        /// <summary>
-        /// If Callback URL Provided: Request has been processed, and the callback was successfully contacted.  Or, request has been processed, and no callback URL was provided.
-        /// </summary>
         Complete,
-        /// <summary>
-        /// If Callback URL Provided: Request has been processed, but repeated attempts to contact the callback have failed and no more will be tried.
-        /// </summary>
         Stale,
-        /// <summary>
-        /// There was a validation error in the request payload data.
-        /// </summary>
         Rejected
     }
 
@@ -4929,20 +4011,18 @@ namespace AggieEnterpriseApi
     ///       processedDateTime
     ///       boundaryApplicationName
     ///       consumerId
+    ///       consumerNotes
     ///       consumerReferenceId
+    ///     }
+    ///     processingResult {
+    ///       __typename
+    ///       status
+    ///       processedDateTime
     ///     }
     ///     validationResults {
     ///       __typename
     ///       valid
     ///       errorMessages
-    ///     }
-    ///     jobResults {
-    ///       __typename
-    ///       jobId
-    ///       jobStatus
-    ///       completedDateTime
-    ///       jobReport
-    ///       failedRecords
     ///     }
     ///   }
     /// }
@@ -4957,8 +4037,8 @@ namespace AggieEnterpriseApi
 
         public static GlJournalRequestStatusQueryDocument Instance { get; } = new GlJournalRequestStatusQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x28, 0x24, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x28, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x3a, 0x20, 0x24, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x20, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x62, 0x6f, 0x75, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x49, 0x64, 0x20, 0x7d, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x6a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6a, 0x6f, 0x62, 0x49, 0x64, 0x20, 0x6a, 0x6f, 0x62, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x63, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6a, 0x6f, 0x62, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x20, 0x66, 0x61, 0x69, 0x6c, 0x65, 0x64, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "e76ae67384c7a5437e3642f964bb53c0");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x28, 0x24, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x28, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x3a, 0x20, 0x24, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x20, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x62, 0x6f, 0x75, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x4e, 0x6f, 0x74, 0x65, 0x73, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x49, 0x64, 0x20, 0x7d, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x7d, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "73bdb48f69fb0e8238bcb26a5d7a47ac");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -4986,20 +4066,18 @@ namespace AggieEnterpriseApi
     ///       processedDateTime
     ///       boundaryApplicationName
     ///       consumerId
+    ///       consumerNotes
     ///       consumerReferenceId
+    ///     }
+    ///     processingResult {
+    ///       __typename
+    ///       status
+    ///       processedDateTime
     ///     }
     ///     validationResults {
     ///       __typename
     ///       valid
     ///       errorMessages
-    ///     }
-    ///     jobResults {
-    ///       __typename
-    ///       jobId
-    ///       jobStatus
-    ///       completedDateTime
-    ///       jobReport
-    ///       failedRecords
     ///     }
     ///   }
     /// }
@@ -5074,20 +4152,18 @@ namespace AggieEnterpriseApi
     ///       processedDateTime
     ///       boundaryApplicationName
     ///       consumerId
+    ///       consumerNotes
     ///       consumerReferenceId
+    ///     }
+    ///     processingResult {
+    ///       __typename
+    ///       status
+    ///       processedDateTime
     ///     }
     ///     validationResults {
     ///       __typename
     ///       valid
     ///       errorMessages
-    ///     }
-    ///     jobResults {
-    ///       __typename
-    ///       jobId
-    ///       jobStatus
-    ///       completedDateTime
-    ///       jobReport
-    ///       failedRecords
     ///     }
     ///   }
     /// }
@@ -5748,82 +4824,6 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
-        /// <summary>
-        /// Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
-        /// 
-        /// The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
-        /// 
-        /// This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
-        /// 
-        /// The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
-        /// 
-        /// Please see below in this document for examples of payloads into this API.
-        /// 
-        /// #### Supporting Operations
-        /// 
-        /// Other operations which should be used to pre-validate chartstring segments are below.  Please see <https: / / financeandbusiness.ucdavis.edu / aggie-enterprise / chart-of-accounts / redesign> for information about each of these segments.
-        /// 
-        /// * [`erpEntity`]({{Queries.erpEntity}})
-        /// * [`erpFund`]({{Queries.erpFund}})
-        /// * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
-        /// * [`erpAccount`]({{Queries.erpAccount}})
-        /// * [`erpPurpose`]({{Queries.erpPurpose}})
-        /// * [`erpProject`]({{Queries.erpProject}})
-        /// * [`erpProgram`]({{Queries.erpProgram}})
-        /// * [`erpActivity`]({{Queries.erpActivity}})
-        /// 
-        /// For validating combinations, the following two operations are provided, differing only in their input format.
-        /// 
-        /// * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
-        /// * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
-        /// 
-        /// #### Managed Project Cost Entries (PPM/POET)
-        /// 
-        /// In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
-        /// 
-        /// For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
-        /// 
-        /// For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
-        /// 
-        /// * `p`roject
-        /// * `o`rganization (same values as `ErpFinancialDepartment`)
-        /// * `e`xpenditureType (same values as `ErpAccount`)
-        /// * `t`ask
-        /// 
-        /// Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
-        /// 
-        /// There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
-        /// 
-        /// * award (only for sponsored projects)
-        /// * fundingSource (only for sponsored projects)
-        /// 
-        /// As with the GL segments, the API provides the operations below for lookups and validation:
-        /// 
-        /// * [`ppmProject`]({{Queries.ppmProject}})
-        /// * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
-        /// * [`ppmOrganization`]({{Queries.ppmOrganization}})
-        /// * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
-        /// 
-        /// #### Volume of Data
-        /// 
-        /// Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
-        /// 
-        /// #### Journal Balancing
-        /// 
-        /// As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
-        /// 
-        /// While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
-        /// 
-        /// #### Basic Use
-        /// 
-        /// 1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
-        /// 2. GraphQL Server will validate content format and reject if invalid.
-        /// 3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
-        /// 4. A failure in either of these initial validations will result in an error response with no request being generated.
-        /// 5. Passing validation will save the request to allow for pickup by the integration platform for processing.
-        /// 6. A request tracking ID will be generated and returned to allow for the consumer to check on the status of the request and obtain results when completed.
-        /// 7. At a later time, use the generated request tracking ID against the [`glJournalRequestStatus`]({{Queries.glJournalRequestStatus}}) operation to determine if the request was processed successfully
-        /// </summary>
         public global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData GlJournalRequest { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -5869,7 +4869,7 @@ namespace AggieEnterpriseApi.State
             IGlJournalRequestStatus_GlJournalRequestStatus returnValue = default !;
             if (data?.__typename.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal) ?? false)
             {
-                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput(MapNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus(data.RequestStatus ?? throw new global::System.ArgumentNullException(), snapshot), MapIGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults(data.ValidationResults, snapshot), MapIGlJournalRequestStatus_GlJournalRequestStatus_JobResultsNonNullableArray(data.JobResults, snapshot));
+                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput(MapNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus(data.RequestStatus ?? throw new global::System.ArgumentNullException(), snapshot), MapIGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult(data.ProcessingResult, snapshot), MapIGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults(data.ValidationResults, snapshot));
             }
             else
             {
@@ -5884,7 +4884,27 @@ namespace AggieEnterpriseApi.State
             IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus returnValue = default !;
             if (data.__typename.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal))
             {
-                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus(data.StatusRequestPayload, data.OperationName ?? throw new global::System.ArgumentNullException(), data.RequestStatus ?? throw new global::System.ArgumentNullException(), data.RequestDateTime ?? throw new global::System.ArgumentNullException(), data.LastStatusDateTime ?? throw new global::System.ArgumentNullException(), data.ErrorMessages, data.ProcessedDateTime, data.BoundaryApplicationName ?? throw new global::System.ArgumentNullException(), data.ConsumerId ?? throw new global::System.ArgumentNullException(), data.ConsumerReferenceId ?? throw new global::System.ArgumentNullException());
+                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus(data.StatusRequestPayload, data.OperationName ?? throw new global::System.ArgumentNullException(), data.RequestStatus ?? throw new global::System.ArgumentNullException(), data.RequestDateTime ?? throw new global::System.ArgumentNullException(), data.LastStatusDateTime ?? throw new global::System.ArgumentNullException(), data.ErrorMessages, data.ProcessedDateTime, data.BoundaryApplicationName ?? throw new global::System.ArgumentNullException(), data.ConsumerId ?? throw new global::System.ArgumentNullException(), data.ConsumerNotes, data.ConsumerReferenceId ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult? MapIGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult(global::AggieEnterpriseApi.State.ProcessingResultData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult returnValue = default !;
+            if (data?.__typename.Equals("ProcessingResult", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult(data.Status ?? throw new global::System.ArgumentNullException(), data.ProcessedDateTime);
             }
             else
             {
@@ -5914,37 +4934,6 @@ namespace AggieEnterpriseApi.State
             return returnValue;
         }
 
-        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults>? MapIGlJournalRequestStatus_GlJournalRequestStatus_JobResultsNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (list is null)
-            {
-                return null;
-            }
-
-            var requestJobResults = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults>();
-            foreach (global::AggieEnterpriseApi.State.RequestJobResultData child in list)
-            {
-                requestJobResults.Add(MapNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_JobResults(child, snapshot));
-            }
-
-            return requestJobResults;
-        }
-
-        private global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_JobResults MapNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_JobResults(global::AggieEnterpriseApi.State.RequestJobResultData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            IGlJournalRequestStatus_GlJournalRequestStatus_JobResults returnValue = default !;
-            if (data.__typename.Equals("RequestJobResult", global::System.StringComparison.Ordinal))
-            {
-                returnValue = new GlJournalRequestStatus_GlJournalRequestStatus_JobResults_RequestJobResult(data.JobId ?? throw new global::System.ArgumentNullException(), data.JobStatus ?? throw new global::System.ArgumentNullException(), data.CompletedDateTime, data.JobReport, data.FailedRecords);
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
         global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
         {
             return Create(dataInfo, snapshot);
@@ -5963,9 +4952,6 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
-        /// <summary>
-        /// Get the status of a previously submitted journal voucher request by the API-assigned request ID.
-        /// </summary>
         public global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? GlJournalRequestStatus { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -6049,15 +5035,6 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
-        /// <summary>
-        /// Validates that the given set of PPM segments are most likely valid for posting
-        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
-        /// for current validity.
-        /// 
-        /// If no date is passed, today's date will be assumed.
-        /// 
-        /// This operation will return a fully populated set of segments.
-        /// </summary>
         public global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData PpmSegmentsValidate { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -6156,18 +5133,6 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
-        /// <summary>
-        /// Validates that the given set of GL chartstring segments are most likely valid for posting
-        /// to the financial system general ledger.  Individual non-blank elements will be checked
-        /// for current validity.
-        /// 
-        /// If validateCVRs is true, certain combinations of attributes will be sanity checked.
-        /// 
-        /// This operation will return a fully populated set of segments, including defaults in
-        /// both individual segment and full chartstring form.
-        /// 
-        /// If the combination was previously known/used in the financial system, its unique ID will be included.
-        /// </summary>
         public global::AggieEnterpriseApi.State.GlValidateChartSegmentsOutputData GlValidateChartSegments { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -6266,18 +5231,6 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
-        /// <summary>
-        /// Validates that the given GL chartstring is most likely valid for posting
-        /// to the financial system general ledger.  The input string format is strongly typed
-        /// and will reject the call if not structured properly.  Please see the definition of the
-        /// [GlSegmentString]({{Types.GlSegmentString}}) for format information.
-        /// 
-        /// If validateCVRs is true, certain combinations of attributes will be sanity checked if the string format is accepted.
-        /// 
-        /// This operation will return the validation result and the segments as parsed out into their component fields.
-        /// 
-        /// If the combination was previously known/used in the financial system, its unique ID will be included.
-        /// </summary>
         public global::AggieEnterpriseApi.State.GlValidateChartSegmentsOutputData GlValidateChartstring { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -6338,8 +5291,6 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsGlSegmentsSet { get; }
 
         global::System.Boolean IsGlSegmentStringSet { get; }
-
-        global::System.Boolean IsGlAliasCodeSet { get; }
 
         global::System.Boolean IsPpmSegmentsSet { get; }
 
@@ -6656,6 +5607,7 @@ namespace AggieEnterpriseApi.State
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _jSONParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString80Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString240Parser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
         public GlJournalRequestStatusBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
@@ -6667,6 +5619,7 @@ namespace AggieEnterpriseApi.State
             _jSONParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("JSON") ?? throw new global::System.ArgumentException("No serializer for type `JSON` found.");
             _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
             _nonEmptyTrimmedString80Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString80") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString80` found.");
+            _nonEmptyTrimmedString240Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString240") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString240` found.");
             _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
         }
 
@@ -6733,7 +5686,7 @@ namespace AggieEnterpriseApi.State
             var typename = obj.Value.GetProperty("__typename").GetString();
             if (typename?.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData(typename, requestStatus: DeserializeNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), validationResults: DeserializeIGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResults")), jobResults: DeserializeIGlJournalRequestStatus_GlJournalRequestStatus_JobResultsNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobResults")));
+                return new global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData(typename, requestStatus: DeserializeNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), processingResult: DeserializeIGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processingResult")), validationResults: DeserializeIGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResults")));
             }
 
             throw new global::System.NotSupportedException();
@@ -6749,7 +5702,7 @@ namespace AggieEnterpriseApi.State
             var typename = obj.Value.GetProperty("__typename").GetString();
             if (typename?.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::AggieEnterpriseApi.State.ActionRequestStatusData(typename, statusRequestPayload: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "statusRequestPayload")), operationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "operationName")), requestStatus: DeserializeNonNullableRequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), requestDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestDateTime")), lastStatusDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastStatusDateTime")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), processedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processedDateTime")), boundaryApplicationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "boundaryApplicationName")), consumerId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerId")), consumerReferenceId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerReferenceId")));
+                return new global::AggieEnterpriseApi.State.ActionRequestStatusData(typename, statusRequestPayload: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "statusRequestPayload")), operationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "operationName")), requestStatus: DeserializeNonNullableRequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), requestDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestDateTime")), lastStatusDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastStatusDateTime")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), processedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processedDateTime")), boundaryApplicationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "boundaryApplicationName")), consumerId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerId")), consumerNotes: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerNotes")), consumerReferenceId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerReferenceId")));
             }
 
             throw new global::System.NotSupportedException();
@@ -6821,6 +5774,22 @@ namespace AggieEnterpriseApi.State
             return _dateTimeParser.Parse(obj.Value.GetString()!);
         }
 
+        private global::AggieEnterpriseApi.State.ProcessingResultData? DeserializeIGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ProcessingResult", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ProcessingResultData(typename, status: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "status")), processedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processedDateTime")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
         private global::AggieEnterpriseApi.State.ValidationResponseData? DeserializeIGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults(global::System.Text.Json.JsonElement? obj)
         {
             if (!obj.HasValue)
@@ -6845,38 +5814,6 @@ namespace AggieEnterpriseApi.State
             }
 
             return _booleanParser.Parse(obj.Value.GetBoolean()!);
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? DeserializeIGlJournalRequestStatus_GlJournalRequestStatus_JobResultsNonNullableArray(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            var requestJobResults = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.RequestJobResultData>();
-            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
-            {
-                requestJobResults.Add(DeserializeNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_JobResults(child));
-            }
-
-            return requestJobResults;
-        }
-
-        private global::AggieEnterpriseApi.State.RequestJobResultData DeserializeNonNullableIGlJournalRequestStatus_GlJournalRequestStatus_JobResults(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("RequestJobResult", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.RequestJobResultData(typename, jobId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobId")), jobStatus: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobStatus")), completedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "completedDateTime")), jobReport: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobReport")), failedRecords: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "failedRecords")));
-            }
-
-            throw new global::System.NotSupportedException();
         }
     }
 
@@ -7427,43 +6364,36 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    ///<summary>Output type for GLJournal requests and follow-up status updates.Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatusOutputData
     {
-        public GlJournalRequestStatusOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ActionRequestStatusData? requestStatus = default !, global::System.String? glJournalId = default !, global::System.String? ppmBatchName = default !, global::AggieEnterpriseApi.State.ValidationResponseData? validationResults = default !, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? jobResults = default !)
+        public GlJournalRequestStatusOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ActionRequestStatusData? requestStatus = default !, global::System.String? glJournalId = default !, global::System.String? ppmBatchName = default !, global::AggieEnterpriseApi.State.ValidationResponseData? validationResults = default !, global::AggieEnterpriseApi.State.ProcessingResultData? processingResult = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             RequestStatus = requestStatus;
             GlJournalId = glJournalId;
             PpmBatchName = ppmBatchName;
             ValidationResults = validationResults;
-            JobResults = jobResults;
+            ProcessingResult = processingResult;
         }
 
         public global::System.String __typename { get; }
 
-        ///<summary>Overall status of the action request</summary>
         public global::AggieEnterpriseApi.State.ActionRequestStatusData? RequestStatus { get; }
 
-        ///<summary>ERP-assigned journal ID for transactions posted to the GL.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.</summary>
         public global::System.String? GlJournalId { get; }
 
-        ///<summary>Integration-assigned batch name for costs posted to the PPM sub-ledger.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.</summary>
         public global::System.String? PpmBatchName { get; }
 
-        ///<summary>Errors found when validatating the payload data.  These must be corrected before the request will be accepted.</summary>
         public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResults { get; }
 
-        ///<summary>Results of the Job or Jobs required to submit this request to the ERP.</summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? JobResults { get; }
+        public global::AggieEnterpriseApi.State.ProcessingResultData? ProcessingResult { get; }
     }
 
-    ///<summary>Fields common to all action status requests.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ActionRequestStatusData
     {
-        public ActionRequestStatusData(global::System.String __typename, global::System.Guid? requestId = default !, global::System.String? consumerId = default !, global::System.DateTimeOffset? requestDateTime = default !, global::AggieEnterpriseApi.RequestStatus? requestStatus = default !, global::System.String? operationName = default !, global::System.String? statusRequestPayload = default !, global::System.DateTimeOffset? lastStatusDateTime = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.DateTimeOffset? processedDateTime = default !, global::System.String? boundaryApplicationName = default !, global::System.String? consumerReferenceId = default !)
+        public ActionRequestStatusData(global::System.String __typename, global::System.Guid? requestId = default !, global::System.String? consumerId = default !, global::System.DateTimeOffset? requestDateTime = default !, global::AggieEnterpriseApi.RequestStatus? requestStatus = default !, global::System.String? operationName = default !, global::System.String? statusRequestPayload = default !, global::System.DateTimeOffset? lastStatusDateTime = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.DateTimeOffset? processedDateTime = default !, global::System.String? boundaryApplicationName = default !, global::System.String? consumerNotes = default !, global::System.String? consumerReferenceId = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             RequestId = requestId;
@@ -7476,44 +6406,37 @@ namespace AggieEnterpriseApi.State
             ErrorMessages = errorMessages;
             ProcessedDateTime = processedDateTime;
             BoundaryApplicationName = boundaryApplicationName;
+            ConsumerNotes = consumerNotes;
             ConsumerReferenceId = consumerReferenceId;
         }
 
         public global::System.String __typename { get; }
 
-        ///<summary>Unique identifier assigned to the request</summary>
         public global::System.Guid? RequestId { get; }
 
-        ///<summary>ID of the consumer who made the request extracted from the service authentication data</summary>
         public global::System.String? ConsumerId { get; }
 
         public global::System.DateTimeOffset? RequestDateTime { get; }
 
         public global::AggieEnterpriseApi.RequestStatus? RequestStatus { get; }
 
-        ///<summary>Name of the operation called.</summary>
         public global::System.String? OperationName { get; }
 
-        ///<summary>GraphQL Payload to post back to this server to check on the status of the request.</summary>
         public global::System.String? StatusRequestPayload { get; }
 
-        ///<summary>When the status last changed</summary>
         public global::System.DateTimeOffset? LastStatusDateTime { get; }
 
-        ///<summary>Error information if the request failed during processing.</summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        ///<summary>When the request was processed by the ERP system</summary>
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
 
-        ///<summary>Identifier for the boundary application originating the request.</summary>
         public global::System.String? BoundaryApplicationName { get; }
 
-        ///<summary>Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.</summary>
+        public global::System.String? ConsumerNotes { get; }
+
         public global::System.String? ConsumerReferenceId { get; }
     }
 
-    ///<summary>Contains the validation overall status and any error messages and the properties they belong to.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ValidationResponseData
     {
@@ -7527,49 +6450,30 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
-        ///<summary>Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.</summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
-        ///<summary>Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.</summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
-        ///<summary>Whether the overall validation succeeded or failed.</summary>
         public global::System.Boolean? Valid { get; }
     }
 
-    ///<summary>Results of the job as submitted to the ERP system.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class RequestJobResultData
+    public partial class ProcessingResultData
     {
-        public RequestJobResultData(global::System.String __typename, global::System.String? jobId = default !, global::System.String? jobStatus = default !, global::System.DateTimeOffset? completedDateTime = default !, global::System.String? jobReport = default !, global::System.String? failedRecords = default !)
+        public ProcessingResultData(global::System.String __typename, global::System.String? status = default !, global::System.DateTimeOffset? processedDateTime = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
-            JobId = jobId;
-            JobStatus = jobStatus;
-            CompletedDateTime = completedDateTime;
-            JobReport = jobReport;
-            FailedRecords = failedRecords;
+            Status = status;
+            ProcessedDateTime = processedDateTime;
         }
 
         public global::System.String __typename { get; }
 
-        ///<summary>Identifier of the type of job submitted.</summary>
-        public global::System.String? JobId { get; }
+        public global::System.String? Status { get; }
 
-        ///<summary>Current status of the oracle job.</summary>
-        public global::System.String? JobStatus { get; }
-
-        ///<summary>Time the job completion was recorded.</summary>
-        public global::System.DateTimeOffset? CompletedDateTime { get; }
-
-        ///<summary>Job report or log output from executing the request on the ERP system.</summary>
-        public global::System.String? JobReport { get; }
-
-        ///<summary>Records which caused the job to fail.</summary>
-        public global::System.String? FailedRecords { get; }
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
     }
 
-    ///<summary>Return data structure when validating a set of PPM segment values.The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentsValidateOutputData
     {
@@ -7581,11 +6485,9 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
-        ///<summary>Validation result and error messages, if any.</summary>
         public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResponse { get; }
     }
 
-    ///<summary>Return data structure when validating a set of GL segment values.The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsOutputData
     {
@@ -7600,20 +6502,15 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
-        ///<summary>Validation result and error messages, if any.</summary>
         public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResponse { get; }
 
-        ///<summary>Fully populated object with the GL segments combination that was validated.</summary>
         public global::AggieEnterpriseApi.State.GlSegmentsData? Segments { get; }
 
-        ///<summary>Full chartstring with the GL segments combination that was validated.</summary>
         public global::System.String? CompleteChartstring { get; }
 
-        ///<summary>The "codeCombinationId" is an informational property only.  If populated, itindicates that the validated combination of segment values was previouslyknown to the financial system.  Validity still needs to be checked, aschartstrings can be disabled or expire.  However, segments which match anexisting valid combination can not fail validation when posted to thefinancial system.</summary>
         public global::System.Int64? CodeCombinationId { get; }
     }
 
-    ///<summary>GL segment values as separate fields.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlSegmentsData
     {
@@ -7632,28 +6529,20 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
-        ///<summary>Required: Nature of the transaction, expense, income, liability, etc...</summary>
         public global::System.String? Account { get; }
 
-        ///<summary>Optional: </summary>
         public global::System.String? Activity { get; }
 
-        ///<summary>Required: Financial department to which to charge a transaction.</summary>
         public global::System.String? Department { get; }
 
-        ///<summary>Required: Entity to which to charge a transaction.</summary>
         public global::System.String? Entity { get; }
 
-        ///<summary>Required: Funding source to which to charge a transaction.</summary>
         public global::System.String? Fund { get; }
 
-        ///<summary>Optional: </summary>
         public global::System.String? Program { get; }
 
-        ///<summary>Optional: </summary>
         public global::System.String? Project { get; }
 
-        ///<summary>Required for Expenses: Functional purpose of the expense.</summary>
         public global::System.String? Purpose { get; }
     }
 

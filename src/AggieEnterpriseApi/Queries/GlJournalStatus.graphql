@@ -10,18 +10,16 @@ query glJournalRequestStatus($requestId: String!) {
             processedDateTime
             boundaryApplicationName
             consumerId
-            consumerReferenceId
+            consumerNotes
+            consumerReferenceId 
+        }
+        processingResult {
+            status
+            processedDateTime
         }
         validationResults {
             valid
             errorMessages
-        }
-        jobResults {
-            jobId
-            jobStatus
-            completedDateTime
-            jobReport
-            failedRecords
         }
     }
 }
