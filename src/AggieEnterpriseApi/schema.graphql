@@ -1,4 +1,4 @@
-﻿directive @key(fields: String!) on OBJECT | INTERFACE
+directive @key(fields: String!) on OBJECT | INTERFACE
 
 directive @extends on OBJECT | INTERFACE
 
@@ -1190,7 +1190,7 @@ type ErpProject {
   # To be eligible for use, the ErpProject must:
   # * Be enabled
   # * Not be summaryOnly
-  # * Have a parentCode of GL0000000A (parent of all GL-only projects)
+  # * Have a parentCode of GLG000000A (parent of all GL-only projects)
   # * Have a startDate and endDate range which includes the given accountingDate
   eligibleForUse(accountingDate: LocalDate): Boolean!
 }
@@ -1304,6 +1304,9 @@ type ErpPurposeSearchResults {
   # Results of the search
   data: [ErpPurpose!]!
 }
+
+# String limited to 1000 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
+scalar NonEmptyTrimmedString1000
 
 # String limited to 360 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
 scalar NonEmptyTrimmedString360
@@ -1534,13 +1537,13 @@ scalar ErpEntityCode
 
 # Oracle GL Fund Segment Code
 #
-# * All values are exactly 5 characters matching the regex pattern: `[0-9A-Z][0-9]{3}[0-9A-Z]`
+# * All values are exactly 5 characters matching the regex pattern: `[0-9A-Z]{5}`
 # * Validated against the [`ErpFund`]({{Types.ErpFund}}) object.
 scalar ErpFundCode
 
 # Oracle GL Financial Department Segment Code
 #
-# * All values are exactly 7 characters matching the regex pattern: `[0-9P][0-9]{5}[0-9A-F]`
+# * All values are exactly 7 characters matching the regex pattern: `[0-9A-Z]{7}`
 # * Validated against the [`ErpFinancialDepartment`]({{Types.ErpFinancialDepartment}}) object.
 scalar ErpDepartmentCode
 
@@ -1552,13 +1555,13 @@ scalar ErpPurposeCode
 
 # Oracle GL Account Segment Code
 #
-# * All values are exactly 6 characters matching the regex pattern: `[0-9]{5}[0-9A-EX]`
+# * All values are exactly 6 characters matching the regex pattern: `[0-9A-Z]{6}`
 # * Validated against the [`ErpAccount`]({{Types.ErpAccount}}) object.
 scalar ErpAccountCode
 
 # Oracle GL Activity Segment Code
 #
-# * All values are exactly 6 characters matching the regex pattern: `[0-9X]{5}[0-9AB]`
+# * All values are exactly 6 characters matching the regex pattern: `[0-9A-Z]{6}`
 # * Validated against the [`ErpActivity`]({{Types.ErpActivity}}) object.
 scalar ErpActivityCode
 
@@ -1663,7 +1666,7 @@ scalar PpmFundingSourceNumber
 #
 # * Format Pattern (Required Only): `SP00000001-000001-0000000-000000`
 # * Format Pattern (Sponsored Projects): `CP00000001-000001-0000000-000000-0000000-00000`
-# * Format Regex:   `^[A-Z0-9]{10}-[0-9A-Za-z]{6}-[0-9A-Z]{7}-[0-9A-Z]{6}(-[0-9A-Z]{7}-[0-9A-Z]{5})?$`
+# * Format Regex:   `^[0-9A-Z]{10}-[0-9A-Z]{6}-[0-9A-Z]{7}-[0-9A-Z]{6}(-[0-9A-Z]{7}-[0-9A-Z]{5})?$`
 #
 # See documentation on the individual segments for more information:
 #
@@ -1695,7 +1698,7 @@ scalar GlJournalSourceKey
 # Must be fully populated with all 11 segments, even if unused.  Fill unused segments with zeroes.
 #
 # * Format Pattern: `0000-00000-0000000-000000-00-000-0000000000-000000-0000-000000-000000`
-# * Format Regex:   `^[0-9]{3}[0-9AB]-[0-9A-Z][0-9]{3}[0-9A-Z]-[0-9P][0-9]{5}[0-9A-F]-[0-9]{5}[0-9A-EX]-[0-9][0-9A-Z]-[0-9A-Z]{3}-[0-9A-Z]{10}-[0-9X]{5}[0-9AB]-0000-000000-000000$`
+# * Format Regex:   `^[0-9]{3}[0-9AB]-[0-9A-Z]{5}-[0-9A-Z]{7}-[0-9A-Z]{6}-[0-9][0-9A-Z]-[0-9A-Z]{3}-[0-9A-Z]{10}-[0-9A-Z]{6}-0000-000000-000000$`
 #
 scalar GlSegmentString
 
@@ -2434,14 +2437,8 @@ type GlJournalRequestStatusOutput {
   # Results of the Job or Jobs required to submit this request to the ERP.
   processingResult: ProcessingResult
 
-  # Errors found when validatating the payload data.  These must be corrected before the request will be accepted.
+  # Errors found when validating the payload data.  These must be corrected before the request will be accepted.
   validationResults: ValidationResponse
-
-  # ERP-assigned journal ID for transactions posted to the GL.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.
-  glJournalId: String
-
-  # Integration-assigned batch name for costs posted to the PPM sub-ledger.  Only populated on subsequent status requests if the journal was successfully processed and after a data extract has made this information available.
-  ppmBatchName: NonEmptyTrimmedString100
 }
 
 # Return data structure when validating a set of GL segment values.
@@ -2492,9 +2489,6 @@ type PpmAward {
 
   # Description: Brief description of the award.
   description: NonEmptyTrimmedString240
-
-  # Project ID: Project Identifier for award.
-  projectId: Long!
 
   # Start Date: Start date of the award.
   startDate: LocalDate
@@ -2978,6 +2972,18 @@ type PpmTask {
   # * Be a lowestLevelTask
   # * Have a taskStartDate and taskFinishDate range which includes the given accountingDate
   eligibleForUse(accountingDate: LocalDate): Boolean!
+
+  # GL Program used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+  glPostingProgramCode: ErpProgramCode
+
+  # GL Purpose  used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+  glPostingPurposeCode: ErpPurposeCode
+
+  # GL Fund used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+  glPostingFundCode: ErpFundCode
+
+  # GL Activity used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+  glPostingActivityCode: ErpActivityCode
 }
 
 # Data object used to run searches on PpmTask
@@ -3145,7 +3151,7 @@ input ScmInvoicePaymentInput {
   invoiceNumber: NonEmptyTrimmedString50!
 
   # Code that indicates the feeder system from which an invoice is created.
-  invoiceSourceCode: NonEmptyTrimmedString25
+  invoiceSourceCode: NonEmptyTrimmedString25!
 
   # The type of the invoice. The valid invoice types are Standard, Prepayment, Credit Memo, Debit Memo.
   invoiceType: ScmInvoiceType!
@@ -3154,7 +3160,7 @@ input ScmInvoicePaymentInput {
   paymentMethodCode: NonEmptyTrimmedString30
 
   # The payment terms used to calculate installments and to calculate due dates, discount dates, and discount amounts for each invoice.
-  paymentTerms: NonEmptyTrimmedString50
+  paymentTerms: NonEmptyTrimmedString50!
 
   # The purchase order document number that is matched to the invoice.
   purchaseOrderNumber: NonEmptyTrimmedString30
@@ -3250,7 +3256,7 @@ input ScmPurchaseRequisitionInput {
   description: NonEmptyTrimmedString240!
 
   # Reason for creating the requisition. Max Length:1000
-  justification: String!
+  justification: NonEmptyTrimmedString1000!
   transactionDate: LocalDate
   lines: [ScmPurchaseRequisitionLineInput!]!
 }
@@ -3268,6 +3274,9 @@ input ScmPurchaseRequisitionLineInput {
 
   # Description of the goods or services being purchased.
   itemDescription: NonEmptyTrimmedString240!
+
+  # Note to the buyer who will be processing the request.
+  noteToBuyer: NonEmptyTrimmedString1000
 
   # Name of the purchasing category that is used for classifying the purchase being made by using this order line. MaxLine:2400
   purchasingCategoryName: String!
@@ -3294,6 +3303,9 @@ input ScmPurchaseRequisitionDistributionInput {
 
   # PPM POET segment values.  If provided, this will override any provided or default GL segments.
   ppmSegments: PpmSegmentInput
+
+  # PPM POET segment values.  If provided, this will override any provided or default GL segments.
+  ppmSegmentString: PpmSegmentString
 }
 
 # Output type for ScmPurchaseRequisition creation and follow-up status updates.
@@ -3846,6 +3858,9 @@ type Query {
 
   # Gets a list of PpmProjects by exact name.  Returns empty list if none are found.  Project Name should be unique in oracle.
   ppmProjectByName(projectName: String!): [PpmProject!]!
+
+  # Gets default award and funding source for PpmProjects by exact name.   Project Name should be unique in oracle.
+  ppmProjectDefaultAwardFundingSource(projectName: String!): [PpmProject!]!
 
   # Search for PpmProject objects by multiple properties.
   # See

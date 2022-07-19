@@ -67,19 +67,13 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput>, IGlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput
     {
-        public GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput(global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus requestStatus, global::System.String? glJournalId, global::System.String? ppmBatchName, global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? validationResults)
+        public GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput(global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus requestStatus, global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? validationResults)
         {
             RequestStatus = requestStatus;
-            GlJournalId = glJournalId;
-            PpmBatchName = ppmBatchName;
             ValidationResults = validationResults;
         }
 
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus RequestStatus { get; }
-
-        public global::System.String? GlJournalId { get; }
-
-        public global::System.String? PpmBatchName { get; }
 
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? ValidationResults { get; }
 
@@ -100,7 +94,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (RequestStatus.Equals(other.RequestStatus)) && ((GlJournalId is null && other.GlJournalId is null) || GlJournalId != null && GlJournalId.Equals(other.GlJournalId)) && ((PpmBatchName is null && other.PpmBatchName is null) || PpmBatchName != null && PpmBatchName.Equals(other.PpmBatchName)) && ((ValidationResults is null && other.ValidationResults is null) || ValidationResults != null && ValidationResults.Equals(other.ValidationResults));
+            return (RequestStatus.Equals(other.RequestStatus)) && ((ValidationResults is null && other.ValidationResults is null) || ValidationResults != null && ValidationResults.Equals(other.ValidationResults));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -129,16 +123,6 @@ namespace AggieEnterpriseApi
             {
                 int hash = 5;
                 hash ^= 397 * RequestStatus.GetHashCode();
-                if (GlJournalId != null)
-                {
-                    hash ^= 397 * GlJournalId.GetHashCode();
-                }
-
-                if (PpmBatchName != null)
-                {
-                    hash ^= 397 * PpmBatchName.GetHashCode();
-                }
-
                 if (ValidationResults != null)
                 {
                     hash ^= 397 * ValidationResults.GetHashCode();
@@ -319,10 +303,6 @@ namespace AggieEnterpriseApi
     public partial interface IGlJournalRequest_GlJournalRequest
     {
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus RequestStatus { get; }
-
-        public global::System.String? GlJournalId { get; }
-
-        public global::System.String? PpmBatchName { get; }
 
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? ValidationResults { get; }
     }
@@ -3853,8 +3833,6 @@ namespace AggieEnterpriseApi
     ///       requestStatus
     ///       operationName
     ///     }
-    ///     glJournalId
-    ///     ppmBatchName
     ///     validationResults {
     ///       __typename
     ///       errorMessages
@@ -3873,8 +3851,8 @@ namespace AggieEnterpriseApi
 
         public static GlJournalRequestMutationDocument Instance { get; } = new GlJournalRequestMutationDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Mutation;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x6d, 0x75, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x28, 0x24, 0x64, 0x61, 0x74, 0x61, 0x3a, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x28, 0x64, 0x61, 0x74, 0x61, 0x3a, 0x20, 0x24, 0x64, 0x61, 0x74, 0x61, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x49, 0x64, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x7d, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x49, 0x64, 0x20, 0x70, 0x70, 0x6d, 0x42, 0x61, 0x74, 0x63, 0x68, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "3372a05f0df7e92b2e8c1e5ae076ee3f");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x6d, 0x75, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x28, 0x24, 0x64, 0x61, 0x74, 0x61, 0x3a, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x28, 0x64, 0x61, 0x74, 0x61, 0x3a, 0x20, 0x24, 0x64, 0x61, 0x74, 0x61, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x49, 0x64, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x7d, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "da96ac9c70d3e53b31bae883ff24eafb");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -3899,8 +3877,6 @@ namespace AggieEnterpriseApi
     ///       requestStatus
     ///       operationName
     ///     }
-    ///     glJournalId
-    ///     ppmBatchName
     ///     validationResults {
     ///       __typename
     ///       errorMessages
@@ -3976,8 +3952,6 @@ namespace AggieEnterpriseApi
     ///       requestStatus
     ///       operationName
     ///     }
-    ///     glJournalId
-    ///     ppmBatchName
     ///     validationResults {
     ///       __typename
     ///       errorMessages
@@ -4761,7 +4735,7 @@ namespace AggieEnterpriseApi.State
             IGlJournalRequest_GlJournalRequest returnValue = default !;
             if (data.__typename.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal))
             {
-                returnValue = new GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput(MapNonNullableIGlJournalRequest_GlJournalRequest_RequestStatus(data.RequestStatus ?? throw new global::System.ArgumentNullException(), snapshot), data.GlJournalId, data.PpmBatchName, MapIGlJournalRequest_GlJournalRequest_ValidationResults(data.ValidationResults, snapshot));
+                returnValue = new GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput(MapNonNullableIGlJournalRequest_GlJournalRequest_RequestStatus(data.RequestStatus ?? throw new global::System.ArgumentNullException(), snapshot), MapIGlJournalRequest_GlJournalRequest_ValidationResults(data.ValidationResults, snapshot));
             }
             else
             {
@@ -5383,10 +5357,9 @@ namespace AggieEnterpriseApi.State
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseTypeCodeParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmAwardNumberParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmFundingSourceNumberParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString100Parser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.Guid> _uUIDParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
         public GlJournalRequestBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
@@ -5422,10 +5395,9 @@ namespace AggieEnterpriseApi.State
             _ppmExpenseTypeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseTypeCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseTypeCode` found.");
             _ppmAwardNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmAwardNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmAwardNumber` found.");
             _ppmFundingSourceNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmFundingSourceNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmFundingSourceNumber` found.");
-            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
-            _nonEmptyTrimmedString100Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString100") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString100` found.");
             _uUIDParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.Guid>("UUID") ?? throw new global::System.ArgumentException("No serializer for type `UUID` found.");
             _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
         }
 
         public global::StrawberryShake.IOperationResult<IGlJournalRequestResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
@@ -5491,7 +5463,7 @@ namespace AggieEnterpriseApi.State
             var typename = obj.Value.GetProperty("__typename").GetString();
             if (typename?.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData(typename, requestStatus: DeserializeNonNullableIGlJournalRequest_GlJournalRequest_RequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), glJournalId: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "glJournalId")), ppmBatchName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "ppmBatchName")), validationResults: DeserializeIGlJournalRequest_GlJournalRequest_ValidationResults(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResults")));
+                return new global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData(typename, requestStatus: DeserializeNonNullableIGlJournalRequest_GlJournalRequest_RequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), validationResults: DeserializeIGlJournalRequest_GlJournalRequest_ValidationResults(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResults")));
             }
 
             throw new global::System.NotSupportedException();
@@ -5551,16 +5523,6 @@ namespace AggieEnterpriseApi.State
             }
 
             return _requestStatusParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            return _stringParser.Parse(obj.Value.GetString()!);
         }
 
         private global::AggieEnterpriseApi.State.ValidationResponseData? DeserializeIGlJournalRequest_GlJournalRequest_ValidationResults(global::System.Text.Json.JsonElement? obj)
@@ -6367,12 +6329,10 @@ namespace AggieEnterpriseApi.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatusOutputData
     {
-        public GlJournalRequestStatusOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ActionRequestStatusData? requestStatus = default !, global::System.String? glJournalId = default !, global::System.String? ppmBatchName = default !, global::AggieEnterpriseApi.State.ValidationResponseData? validationResults = default !, global::AggieEnterpriseApi.State.ProcessingResultData? processingResult = default !)
+        public GlJournalRequestStatusOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ActionRequestStatusData? requestStatus = default !, global::AggieEnterpriseApi.State.ValidationResponseData? validationResults = default !, global::AggieEnterpriseApi.State.ProcessingResultData? processingResult = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             RequestStatus = requestStatus;
-            GlJournalId = glJournalId;
-            PpmBatchName = ppmBatchName;
             ValidationResults = validationResults;
             ProcessingResult = processingResult;
         }
@@ -6380,10 +6340,6 @@ namespace AggieEnterpriseApi.State
         public global::System.String __typename { get; }
 
         public global::AggieEnterpriseApi.State.ActionRequestStatusData? RequestStatus { get; }
-
-        public global::System.String? GlJournalId { get; }
-
-        public global::System.String? PpmBatchName { get; }
 
         public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResults { get; }
 
@@ -6653,7 +6609,6 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmExpenseTypeCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmAwardNumber"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmFundingSourceNumber"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString100"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("JSON"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalRequestInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ActionRequestHeaderInputInputValueFormatter>(services);
