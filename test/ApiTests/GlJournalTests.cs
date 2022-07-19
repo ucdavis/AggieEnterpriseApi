@@ -17,13 +17,14 @@ public class GlJournalTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        var result = await client.GlJournalRequestStatus.ExecuteAsync("5a58177c-f47a-4b9c-88b9-743f3730085f");
+        // TODO: get better example request that wasn't errored out
+        var result = await client.GlJournalRequestStatus.ExecuteAsync("ffbb6f1c-2160-458e-938c-8ad48d44c04e");
 
         var data = result.ReadData();
 
         data.GlJournalRequestStatus.ShouldNotBeNull();
-        data.GlJournalRequestStatus.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Complete);
-        data.GlJournalRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("CONSUMER_BATCH_NBR");
+        data.GlJournalRequestStatus.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Error);
+        data.GlJournalRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("CAES-Payments");
     }
 
     [Fact]

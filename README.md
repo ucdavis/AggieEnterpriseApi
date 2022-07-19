@@ -12,6 +12,8 @@ If the API schema is changed and we need to update, run:
 
 See https://chillicream.com/docs/strawberryshake/tooling for more information
 
+If you need to manually replace the schema, put it in schema.graphql
+
 ## Query changes
 
 Queries (*.graphql) are compiled and injected on build (via roslyn).  So changes to queries don't require any special handling.
