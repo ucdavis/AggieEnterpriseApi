@@ -18,13 +18,13 @@ public class GlJournalTests : TestBase
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
         // TODO: get better example request that wasn't errored out
-        var result = await client.GlJournalRequestStatus.ExecuteAsync("ffbb6f1c-2160-458e-938c-8ad48d44c04e");
+        var result = await client.GlJournalRequestStatus.ExecuteAsync("22374301-0428-4356-847e-cb7ddaebf661");
 
         var data = result.ReadData();
 
         data.GlJournalRequestStatus.ShouldNotBeNull();
         data.GlJournalRequestStatus.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Error);
-        data.GlJournalRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("CAES-Payments");
+        data.GlJournalRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("ORDER_12345");
     }
 
     [Fact]
@@ -51,14 +51,14 @@ public class GlJournalTests : TestBase
                 {
                     new GlJournalLineInput
                     {
-                        GlSegmentString = "3110-12100-0100322-410030-00-000-0000000000-000000-0000-000000-000000",
+                        GlSegmentString = "3110-13U20-ADNO003-410000-43-000-0000000000-000000-0000-000000-000000",
                         DebitAmount = 100.00m,
                         ExternalSystemIdentifier = "ITEMX",
                         ExternalSystemReference = "CYBERSOURCE-Deposit",
                     },
                     new GlJournalLineInput
                     {
-                        GlSegmentString = "3110-U1310-0100333-410058-00-000-0000000000-000000-0000-000000-000000",
+                        GlSegmentString = "3110-13U20-ADNO003-410000-43-000-0000000000-000000-0000-000000-000000",
                         CreditAmount = 100.00m,
                         ExternalSystemIdentifier = "ITEMX",
                         ExternalSystemReference = "CYBERSOURCE-Deposit",
@@ -98,14 +98,14 @@ public class GlJournalTests : TestBase
                 {
                     new GlJournalLineInput
                     {
-                        GlSegmentString = "3110-12100-0100322-410030-00-000-0000000000-000000-0000-000000-000000",
+                        GlSegmentString = "3110-13U20-ADNO003-410000-43-000-0000000000-000000-0000-000000-000000",
                         DebitAmount = 100.01m,
                         ExternalSystemIdentifier = "ITEMX",
                         ExternalSystemReference = "CYBERSOURCE-Deposit",
                     },
                     new GlJournalLineInput
                     {
-                        GlSegmentString = "3110-U1310-0100333-410058-00-000-0000000000-000000-0000-000000-000000",
+                        GlSegmentString = "3110-13U20-ADNO003-410000-43-000-0000000000-000000-0000-000000-000000",
                         CreditAmount = 100.00m,
                         ExternalSystemIdentifier = "ITEMX",
                         ExternalSystemReference = "CYBERSOURCE-Deposit",
@@ -120,8 +120,9 @@ public class GlJournalTests : TestBase
         data.GlJournalRequest.ShouldNotBeNull();
         data.GlJournalRequest.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Rejected);
         data.GlJournalRequest.ValidationResults.ShouldNotBeNull();
+        data.GlJournalRequest.ValidationResults.ErrorMessages.ShouldNotBeNull();
         data.GlJournalRequest.ValidationResults.ErrorMessages.Count.ShouldBe(1);
-        data.GlJournalRequest.ValidationResults.ErrorMessages[0].ShouldBe("Credits and debits of journal lines must balance to zero.");
+        data.GlJournalRequest.ValidationResults.ErrorMessages[0].ShouldStartWith("Credits and debits of journal lines must balance to zero.");
         data.GlJournalRequest.ValidationResults.MessageProperties.ShouldNotBeNull();
         data.GlJournalRequest.ValidationResults.MessageProperties.Count.ShouldBe(1);
         data.GlJournalRequest.ValidationResults.MessageProperties[0].ShouldBe("journalLines.[creditAmount | debitAmount]");
