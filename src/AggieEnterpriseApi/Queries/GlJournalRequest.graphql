@@ -7,8 +7,6 @@ mutation glJournalRequest($data:GlJournalRequestInput!){
           requestStatus
           operationName
         }
-        glJournalId
-        ppmBatchName
         validationResults {
           errorMessages
           messageProperties
