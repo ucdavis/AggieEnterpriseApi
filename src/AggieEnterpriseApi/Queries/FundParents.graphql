@@ -1,23 +1,26 @@
-    query erpFund($code: String!) {
-        #Payments fund to check if it rolls up to expected fund
-      erpFund(code:$code) {
-        code
-        name
-        budgeted
-        eligibleForUse
-        enabled
-        endDate
-        id
-        startDate
-        hierarchyDepth
-        parent {
+query fundParents($code: String!) {
+  erpFund(code:$code) {
+    code
+    name
+    budgeted
+    eligibleForUse
+    enabled
+    endDate
+    id
+    startDate
+    hierarchyDepth
+    parent {
+      code
+      name
+      hierarchyDepth
+      parent{
           code
           name
           hierarchyDepth
-          parent{
-              code
-              name
-              hierarchyDepth
+            parent{
+                code
+                name
+                hierarchyDepth
                 parent{
                     code
                     name
@@ -34,16 +37,12 @@
                                 code
                                 name
                                 hierarchyDepth
-                                parent{
-                                    code
-                                    name
-                                    hierarchyDepth
-                                }
                             }
                         }
                     }
                 }
             }
         }
-      }
     }
+  }
+}
