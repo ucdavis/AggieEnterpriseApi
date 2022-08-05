@@ -1,0 +1,48 @@
+query fundParents($code: String!) {
+  erpFund(code:$code) {
+    code
+    name
+    budgeted
+    eligibleForUse
+    enabled
+    endDate
+    id
+    startDate
+    hierarchyDepth
+    parent {
+      code
+      name
+      hierarchyDepth
+      parent{
+          code
+          name
+          hierarchyDepth
+            parent{
+                code
+                name
+                hierarchyDepth
+                parent{
+                    code
+                    name
+                    hierarchyDepth
+                    parent{
+                        code
+                        name
+                        hierarchyDepth
+                        parent{
+                            code
+                            name
+                            hierarchyDepth
+                            parent{
+                                code
+                                name
+                                hierarchyDepth
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }
+}
