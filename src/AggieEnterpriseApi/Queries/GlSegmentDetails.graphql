@@ -1,0 +1,24 @@
+query CoaDetails($entity: String!, $fund: String!, $dept: String!, $account: String!, $purpose: String!) {
+  erpEntity(code: $entity) {
+    code
+    name
+  }
+  erpFund(code:$fund) {
+        code
+        name
+      }
+ erpFinancialDepartment(code: $dept) {
+    code
+    name
+    fiscalOfficerName
+    eligibleForUse
+  }
+    erpAccount(code: $account) {
+    code
+    name
+  }
+  erpPurpose(code:$purpose) {
+    code
+    name
+  }
+}
