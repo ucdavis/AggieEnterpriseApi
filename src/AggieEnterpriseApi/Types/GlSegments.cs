@@ -2,8 +2,8 @@ namespace AggieEnterpriseApi.Types;
 
 public class GlSegments
 {
-    public GlSegments(string entity, string fund, string department, string account, string purpose, string program,
-        string project, string activity, string interEntity = "0000", string flex1 = "000000", string flex2 = "000000")
+    public GlSegments(string entity, string fund, string department, string account, string purpose, string program = "000",
+        string project = "0000000000", string activity = "000000", string interEntity = "0000", string flex1 = "000000", string flex2 = "000000")
     {
         Account = account;
         Activity = activity;
