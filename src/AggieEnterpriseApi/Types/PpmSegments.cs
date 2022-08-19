@@ -3,7 +3,7 @@ namespace AggieEnterpriseApi.Types;
 public class PpmSegments
 {
     public PpmSegments(string project, string task, string organization, string expenditureType,
-        string? award = null, string? fundingSource? = null)
+        string? award = null, string? fundingSource = null)
     {
         Project = project;
         Task = task;
