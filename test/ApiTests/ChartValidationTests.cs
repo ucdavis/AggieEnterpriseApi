@@ -27,6 +27,15 @@ public class ChartValidationTests : TestBase
         data.GlValidateChartstring.Segments.Project.ShouldBe("0000000000");
         data.GlValidateChartstring.Segments.Program.ShouldBe("000");
         data.GlValidateChartstring.Segments.Activity.ShouldBe("000000");
+
+        data.GlValidateChartstring.SegmentNames.DepartmentName.ShouldBe("ADNO Deans Office Admin");
+        data.GlValidateChartstring.SegmentNames.FundName.ShouldBe("Unrestricted Other");
+        data.GlValidateChartstring.SegmentNames.ProjectName.ShouldBe("Default Project");
+        data.GlValidateChartstring.SegmentNames.AccountName.ShouldBe("External SalesandServices Revenues");
+        data.GlValidateChartstring.SegmentNames.ActivityName.ShouldBe("Activity Default Value");
+        data.GlValidateChartstring.SegmentNames.EntityName.ShouldBe("UC Davis Campus Excluding School of Health");
+        data.GlValidateChartstring.SegmentNames.PurposeName.ShouldBe("Academic Support");
+        data.GlValidateChartstring.SegmentNames.ProgramName.ShouldBe("Default Program Value");
     }
     
     [Fact]
@@ -52,6 +61,15 @@ public class ChartValidationTests : TestBase
         var data = result.ReadData();
         data.GlValidateChartSegments.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
         data.GlValidateChartSegments.CompleteChartstring.ShouldBe("3110-13U20-ADNO003-410000-43-000-0000000000-000000-0000-000000-000000");
+
+        data.GlValidateChartSegments.SegmentNames.DepartmentName.ShouldBe("ADNO Deans Office Admin");
+        data.GlValidateChartSegments.SegmentNames.FundName.ShouldBe("Unrestricted Other");
+        data.GlValidateChartSegments.SegmentNames.ProjectName.ShouldBe("Default Project");
+        data.GlValidateChartSegments.SegmentNames.AccountName.ShouldBe("External SalesandServices Revenues");
+        data.GlValidateChartSegments.SegmentNames.ActivityName.ShouldBe("Activity Default Value");
+        data.GlValidateChartSegments.SegmentNames.EntityName.ShouldBe("UC Davis Campus Excluding School of Health");
+        data.GlValidateChartSegments.SegmentNames.PurposeName.ShouldBe("Academic Support");
+        data.GlValidateChartSegments.SegmentNames.ProgramName.ShouldBe("Default Program Value");
     }
 
     [Fact]

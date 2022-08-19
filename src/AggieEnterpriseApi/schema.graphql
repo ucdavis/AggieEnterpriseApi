@@ -216,6 +216,9 @@ scalar RoutingNumber
 # Banking account number is a string of 5 to 17 alphanumeric values for representing an generic account number
 scalar AccountNumber
 
+# A field whose value conforms to the standard cuid format as specified in https://github.com/ericelliott/cuid#broken-down
+scalar Cuid
+
 # Represents an accounting period in the GL module of Oracle Financials.  Used for validation of submitted journal entry data.
 type ApAccountingPeriod {
   # The unique name of a GL Accounting Period
@@ -1527,6 +1530,23 @@ type ValidationResponse {
   messageProperties: [String!]
 }
 
+type SegmentWarning {
+  # Name of the segment per the property name in the GlSegments or PpmSegments types.
+  segmentName: String!
+
+  # Warning message associated with the use of the given segment.
+  warning: String!
+}
+
+# Valid end date for a given segment in a GL or PPM chartstring.
+type SegmentEndDate {
+  # Name of the segment per the property name in the GlSegments or PpmSegments types.
+  segmentName: String!
+
+  # End date of the given segment as defined in the associated table.
+  endDate: LocalDate!
+}
+
 # Oracle GL Entity Segment Code
 #
 # Represents the 4-character entity code that identifies the major operational unit within the University of California responsible for each transaction.
@@ -1899,6 +1919,17 @@ input PpmSegmentInput {
   fundingSource: PpmFundingSourceNumber
 }
 
+type GlSegmentNames {
+  entityName: String
+  fundName: String
+  departmentName: String
+  accountName: String
+  purposeName: String
+  projectName: String
+  programName: String
+  activityName: String
+}
+
 # POET/PPM segment values.
 type PpmSegments {
   # Required: Managed Project Number
@@ -2084,9 +2115,9 @@ input BooleanFilterInput {
   ne: Boolean
 }
 
-type ErpLocation {
+type ErpInstitutionLocation {
   # Value that uniquely identifies the supplier site.
-  locationId: Long
+  locationId: Long!
 
   # Address Line 1
   addressLine1: ScmAddressLine
@@ -2099,12 +2130,6 @@ type ErpLocation {
 
   # Address Line 4
   addressLine4: ScmAddressLine
-
-  # If true, then you can use the supplier address for ordering. If false, then you cannot use this address. The default value is false.
-  addressPurposeOrdering: Boolean
-
-  # If true, then you can use the supplier address to send payment
-  addressPurposeRemitTo: Boolean
 
   # City of the supplier address
   city: CityName
@@ -2123,6 +2148,55 @@ type ErpLocation {
 
   # State of the supplier address
   state: NonEmptyTrimmedString60
+}
+
+# Locations referenced by Supplier and AR Customer Sites
+type ErpLocation {
+  # Value that uniquely identifies the supplier site.
+  locationId: Long!
+
+  # Address Line 1
+  addressLine1: ScmAddressLine
+
+  # Address Line 2
+  addressLine2: ScmAddressLine
+
+  # Address Line 3
+  addressLine3: ScmAddressLine
+
+  # Address Line 4
+  addressLine4: ScmAddressLine
+
+  # City of the supplier address
+  city: CityName
+
+  # Postal code of the supplier address
+  postalCode: ErpPostalCode
+
+  # Country of the supplier address
+  countryName: NonEmptyTrimmedString80
+
+  # Abbreviation that identifies the country where the supplier address is located
+  countryCode: ErpCountryCode
+
+  # County of the supplier address
+  county: NonEmptyTrimmedString60
+
+  # State of the supplier address
+  state: NonEmptyTrimmedString60
+  statusCode: String!
+
+  # The date from when the value is available for use.
+  startDate: LocalDate
+
+  # The date till which the value is available for use.
+  endDate: LocalDate
+
+  # Timestamp this record was last updated in the financial system.
+  lastUpdateDateTime: DateTime!
+
+  # User ID of the person who last updated this record.
+  lastUpdateUserId: ErpUserId
 }
 
 type ErpUnitOfMeasure {
@@ -2236,9 +2310,6 @@ type KfsConvertAccountOutput {
 
   # The sub account number used when mapping.  Will be undefined if no mapping using the sub account was found.
   subAccount: KfsSubAccountNumber
-
-  # The KFS project code used when mapping.  Will be undefined if no mapping using the project code was found.
-  kfsProject: KfsProjectCode
 
   # The type of cost center this maps to in Oracle.  Determines which of glSegments and ppmSegments are populated.
   costCenterType: ErpCostCenterType
@@ -2425,6 +2496,9 @@ input GlJournalLineInput {
 
   # Expenditure comment for PPM transactions.  Will be ignored for GL transactions.
   ppmComment: GlDescriptionField40
+
+  # GLIDe fields. These fields are optional.
+  glide: GlideInput
 }
 
 # Output type for GLJournal requests and follow-up status updates.
@@ -2463,6 +2537,30 @@ type GlValidateChartSegmentsOutput {
   # existing valid combination can not fail validation when posted to the
   # financial system.
   codeCombinationId: Long
+  segmentNames: GlSegmentNames!
+
+  # Warnings, if any, related to segments validated during this operation.  The segmentName will be the same as the property name in the GlSegments object.
+  warnings: [SegmentWarning!]
+
+  # End Dates, if defined, after which a given segment will no longer be accepted for processing.  The segmentName will be the same as the property name in the GlSegments type.  Only segments which have defined end dates will be included in this list.
+  endDates: [SegmentEndDate!]
+}
+
+# GLIDe fields are part of the GL/PPM Combined journal. These fields are optional.
+input GlideInput {
+  lineDescription: String
+  journalLineNumber: Float
+  transactionDate: Date
+  udfNumeric1: Float
+  udfNumeric2: Float
+  udfNumeric3: Float
+  udfDate1: Date
+  udfDate2: Date
+  udfString1: String
+  udfString2: String
+  udfString3: String
+  udfString4: String
+  udfString5: String
 }
 
 # The Award Number identifies the number assigned to an award containing funding activities.
@@ -3160,7 +3258,7 @@ input ScmInvoicePaymentInput {
   paymentMethodCode: NonEmptyTrimmedString30
 
   # The payment terms used to calculate installments and to calculate due dates, discount dates, and discount amounts for each invoice.
-  paymentTerms: NonEmptyTrimmedString50!
+  paymentTerms: NonEmptyTrimmedString50
 
   # The purchase order document number that is matched to the invoice.
   purchaseOrderNumber: NonEmptyTrimmedString30
@@ -3376,15 +3474,16 @@ type ScmPurchasingCategorySearchResults {
 #
 # Supplier in Oracle replaces Vendor in KFS.
 type ScmSupplier {
-  # Value that uniquely identifies the supplier.
-  supplierId: Long
-  supplierNumber: Long
-  partyId: Long
+  # Value that uniquely identifies the supplier internally to Oracle.
+  supplierId: Long!
+
+  # Unique ID for the supplier used to reference it within the UI and in interfaces.  This largely corresponds to the Vendor ID in KFS.
+  supplierNumber: Long!
 
   # Supplier: Name of the supplier.
-  name: NonEmptyTrimmedString360
+  name: NonEmptyTrimmedString360!
 
-  # Alias: Alternate internal name for the organization.
+  # Alias: Alternate internal name for used for the supplier.
   aliasName: NonEmptyTrimmedString360
 
   # Alternate Name: Alternate name of the supplier.
@@ -3408,27 +3507,37 @@ type ScmSupplier {
   # User ID of the person who last updated this record.
   lastUpdateUserId: ErpUserId
 
-  # Sites: The Supplier Sites resource manages supplier sites.
-  sites: [ScmSupplierSite!]
+  # Supplier business locations referenced when making orders or payments to the supplier.
+  sites: [ScmSupplierSite!]!
 }
 
+# Supplier Site represents a business location referenced when making orders or payments to the supplier.
 type ScmSupplierSite {
-  # Value that uniquely identifies the supplier site.
-  supplierSiteId: Long
-  supplierSiteCode: NonEmptyTrimmedString15
-  supplierId: Long
+  # Value that uniquely identifies the supplier site internally within Oracle.
+  supplierSiteId: Long!
+
+  # Code used to identify the site on the UI and in interfaces.
+  supplierSiteCode: NonEmptyTrimmedString15!
+
+  # Internal location code containing address information.
   locationId: Long
+
+  # Physical address of the site.
   location: ErpLocation
 }
 
-# Data object used to run searches on Supplier
+# Input object used to run searches on ScmSupplier
 input ScmSupplierFilterInput {
   searchCommon: SearchCommonInputs
   name: StringFilterInput
+  aliasName: StringFilterInput
+  alternateName: StringFilterInput
   supplierId: StringFilterInput
   supplierNumber: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
+# Search results object for ScmSupplier
 type ScmSupplierSearchResults {
   # Information about the search results returned.
   metadata: SearchResultMetadata!
@@ -3682,7 +3791,6 @@ type Query {
     chart: KfsChartCode!
     account: KfsAccountNumber!
     subAccount: KfsSubAccountNumber
-    kfsProject: KfsProjectCode
   ): KfsConvertAccountOutput!
 
   # Accepts a chart and org code which was converted as part of cutover and returns the financial department(s) to which it was mapped.
@@ -3916,6 +4024,20 @@ type Query {
   # This operation will return a fully populated set of segments.
   ppmSegmentsValidate(
     segments: PpmSegmentInput!
+    accountingDate: LocalDate
+  ): PpmSegmentsValidateOutput!
+
+  # Validates that the given PPM chartstring is most likely valid for posting
+  # to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+  # for current validity.
+  #
+  # If no date is passed, today's date will be assumed.
+  #
+  # This operation will return a fully populated set of segments.
+  #
+  # This operation will return the validation result and the segments as parsed out into their component fields.
+  ppmStringSegmentsValidate(
+    segmentString: PpmSegmentString!
     accountingDate: LocalDate
   ): PpmSegmentsValidateOutput!
 

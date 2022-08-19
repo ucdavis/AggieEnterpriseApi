@@ -17,5 +17,23 @@ query glValidateChartSegments($segments: GlSegmentInput!, $validateCVRs: Boolean
     }
     completeChartstring
     codeCombinationId
+    segmentNames {
+            entityName
+            fundName
+            departmentName
+            accountName
+            purposeName
+            projectName
+            programName
+            activityName
+    }
+    warnings {
+        segmentName
+        warning
+    }
+    endDates {
+        segmentName
+        endDate
+    }
   }
 }
