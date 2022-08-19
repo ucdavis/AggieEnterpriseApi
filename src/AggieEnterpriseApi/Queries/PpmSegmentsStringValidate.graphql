@@ -1,0 +1,9 @@
+query ppmStringSegmentsValidate ($segmentString: PpmSegmentString!, $accountingDate: LocalDate) {
+    ppmStringSegmentsValidate (segmentString: $segmentString, accountingDate: $accountingDate) {
+        validationResponse {
+            valid
+            errorMessages
+            messageProperties
+        }       
+    }
+}
