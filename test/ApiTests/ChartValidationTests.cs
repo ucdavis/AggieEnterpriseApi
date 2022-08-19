@@ -132,6 +132,48 @@ public class ChartValidationTests : TestBase
     }
 
     [Fact]
+    public async Task ValidPpmSegmentsShort()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var ppmSegments = new PpmSegmentInput
+        {
+            Project = "K30APSD227",
+            Task = "TASK01",
+            Organization = "APLS002",
+            ExpenditureType = "770000",
+        };
+
+        var result = await client.PpmSegmentsValidate.ExecuteAsync(ppmSegments, accountingDate: null);
+
+        var data = result.ReadData();
+
+        data.PpmSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+    }
+
+    [Fact]
+    public async Task ValidPpmSegmentsLong()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var ppmSegments = new PpmSegmentInput
+        {
+            Project = "K30APSD227",
+            Task = "TASK01",
+            Organization = "APLS002",
+            ExpenditureType = "770000",
+            Award = "K381C99",
+            FundingSource = "27666"
+        };
+
+        var result = await client.PpmSegmentsValidate.ExecuteAsync(ppmSegments, accountingDate: null);
+
+        var data = result.ReadData();
+
+        data.PpmSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+    }
+
+    [Fact]
     public async Task ValidPPmStringShort()
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
