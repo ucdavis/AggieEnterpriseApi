@@ -3,7 +3,7 @@ namespace AggieEnterpriseApi.Types;
 public class PpmSegments
 {
     public PpmSegments(string project, string task, string organization, string expenditureType,
-        string award = "0000000", string fundingSource = "00000")
+        string? award = null, string? fundingSource? = null)
     {
         Project = project;
         Task = task;
@@ -45,6 +45,11 @@ public class PpmSegments
 
     public string ToSegmentString()
     {
+        if (Award == null && FundingSource == null)
+        {
+            return $"{Project}-{Task}-{Organization}-{ExpenditureType}";
+        }
+
         return $"{Project}-{Task}-{Organization}-{ExpenditureType}-{Award}-{FundingSource}";
     }
 }
