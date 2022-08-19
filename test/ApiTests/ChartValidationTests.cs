@@ -130,4 +130,52 @@ public class ChartValidationTests : TestBase
         
         data.PpmSegmentsValidate.ValidationResponse.Valid.ShouldBeFalse("Response should be invalid");
     }
+
+    [Fact]
+    public async Task ValidPPmStringShort()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000", accountingDate: null);
+
+        var data = result.ReadData();
+
+        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+    }
+
+    [Fact]
+    public async Task ValidPPmStringLong()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-K381C99-27666", accountingDate: null);
+
+        var data = result.ReadData();
+
+        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+    }
+
+    [Fact]
+    public async Task InValidPPmStringShort()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK99-APLS002-770000", accountingDate: null);
+
+        var data = result.ReadData();
+
+        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeFalse("Response should be invalid");
+    }
+
+    [Fact]
+    public async Task InValidPPmStringLong()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-0000000-00000", accountingDate: null);
+
+        var data = result.ReadData();
+
+        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeFalse("Response should be Invalid");
+    }
 }
