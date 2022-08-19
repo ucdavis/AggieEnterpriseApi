@@ -4,523 +4,6 @@
 namespace AggieEnterpriseApi
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetailsResult : global::System.IEquatable<CoaDetailsResult>, ICoaDetailsResult
-    {
-        public CoaDetailsResult(global::AggieEnterpriseApi.ICoaDetails_ErpEntity? erpEntity, global::AggieEnterpriseApi.ICoaDetails_ErpFund? erpFund, global::AggieEnterpriseApi.ICoaDetails_ErpFinancialDepartment? erpFinancialDepartment, global::AggieEnterpriseApi.ICoaDetails_ErpAccount? erpAccount, global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? erpPurpose)
-        {
-            ErpEntity = erpEntity;
-            ErpFund = erpFund;
-            ErpFinancialDepartment = erpFinancialDepartment;
-            ErpAccount = erpAccount;
-            ErpPurpose = erpPurpose;
-        }
-
-        public global::AggieEnterpriseApi.ICoaDetails_ErpEntity? ErpEntity { get; }
-
-        public global::AggieEnterpriseApi.ICoaDetails_ErpFund? ErpFund { get; }
-
-        public global::AggieEnterpriseApi.ICoaDetails_ErpFinancialDepartment? ErpFinancialDepartment { get; }
-
-        public global::AggieEnterpriseApi.ICoaDetails_ErpAccount? ErpAccount { get; }
-
-        public global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? ErpPurpose { get; }
-
-        public virtual global::System.Boolean Equals(CoaDetailsResult? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (((ErpEntity is null && other.ErpEntity is null) || ErpEntity != null && ErpEntity.Equals(other.ErpEntity))) && ((ErpFund is null && other.ErpFund is null) || ErpFund != null && ErpFund.Equals(other.ErpFund)) && ((ErpFinancialDepartment is null && other.ErpFinancialDepartment is null) || ErpFinancialDepartment != null && ErpFinancialDepartment.Equals(other.ErpFinancialDepartment)) && ((ErpAccount is null && other.ErpAccount is null) || ErpAccount != null && ErpAccount.Equals(other.ErpAccount)) && ((ErpPurpose is null && other.ErpPurpose is null) || ErpPurpose != null && ErpPurpose.Equals(other.ErpPurpose));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((CoaDetailsResult)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (ErpEntity != null)
-                {
-                    hash ^= 397 * ErpEntity.GetHashCode();
-                }
-
-                if (ErpFund != null)
-                {
-                    hash ^= 397 * ErpFund.GetHashCode();
-                }
-
-                if (ErpFinancialDepartment != null)
-                {
-                    hash ^= 397 * ErpFinancialDepartment.GetHashCode();
-                }
-
-                if (ErpAccount != null)
-                {
-                    hash ^= 397 * ErpAccount.GetHashCode();
-                }
-
-                if (ErpPurpose != null)
-                {
-                    hash ^= 397 * ErpPurpose.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetails_ErpEntity_ErpEntity : global::System.IEquatable<CoaDetails_ErpEntity_ErpEntity>, ICoaDetails_ErpEntity_ErpEntity
-    {
-        public CoaDetails_ErpEntity_ErpEntity(global::System.String code, global::System.String name)
-        {
-            Code = code;
-            Name = name;
-        }
-
-        public global::System.String Code { get; }
-
-        public global::System.String Name { get; }
-
-        public virtual global::System.Boolean Equals(CoaDetails_ErpEntity_ErpEntity? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Code.Equals(other.Code)) && Name.Equals(other.Name);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((CoaDetails_ErpEntity_ErpEntity)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Code.GetHashCode();
-                hash ^= 397 * Name.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetails_ErpFund_ErpFund : global::System.IEquatable<CoaDetails_ErpFund_ErpFund>, ICoaDetails_ErpFund_ErpFund
-    {
-        public CoaDetails_ErpFund_ErpFund(global::System.String code, global::System.String name)
-        {
-            Code = code;
-            Name = name;
-        }
-
-        public global::System.String Code { get; }
-
-        public global::System.String Name { get; }
-
-        public virtual global::System.Boolean Equals(CoaDetails_ErpFund_ErpFund? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Code.Equals(other.Code)) && Name.Equals(other.Name);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((CoaDetails_ErpFund_ErpFund)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Code.GetHashCode();
-                hash ^= 397 * Name.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment : global::System.IEquatable<CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment>, ICoaDetails_ErpFinancialDepartment_ErpFinancialDepartment
-    {
-        public CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment(global::System.String code, global::System.String name, global::System.String? fiscalOfficerName, global::System.Boolean eligibleForUse)
-        {
-            Code = code;
-            Name = name;
-            FiscalOfficerName = fiscalOfficerName;
-            EligibleForUse = eligibleForUse;
-        }
-
-        public global::System.String Code { get; }
-
-        public global::System.String Name { get; }
-
-        public global::System.String? FiscalOfficerName { get; }
-
-        public global::System.Boolean EligibleForUse { get; }
-
-        public virtual global::System.Boolean Equals(CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Code.Equals(other.Code)) && Name.Equals(other.Name) && ((FiscalOfficerName is null && other.FiscalOfficerName is null) || FiscalOfficerName != null && FiscalOfficerName.Equals(other.FiscalOfficerName)) && EligibleForUse == other.EligibleForUse;
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Code.GetHashCode();
-                hash ^= 397 * Name.GetHashCode();
-                if (FiscalOfficerName != null)
-                {
-                    hash ^= 397 * FiscalOfficerName.GetHashCode();
-                }
-
-                hash ^= 397 * EligibleForUse.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetails_ErpAccount_ErpAccount : global::System.IEquatable<CoaDetails_ErpAccount_ErpAccount>, ICoaDetails_ErpAccount_ErpAccount
-    {
-        public CoaDetails_ErpAccount_ErpAccount(global::System.String code, global::System.String name)
-        {
-            Code = code;
-            Name = name;
-        }
-
-        public global::System.String Code { get; }
-
-        public global::System.String Name { get; }
-
-        public virtual global::System.Boolean Equals(CoaDetails_ErpAccount_ErpAccount? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Code.Equals(other.Code)) && Name.Equals(other.Name);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((CoaDetails_ErpAccount_ErpAccount)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Code.GetHashCode();
-                hash ^= 397 * Name.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetails_ErpPurpose_ErpPurpose : global::System.IEquatable<CoaDetails_ErpPurpose_ErpPurpose>, ICoaDetails_ErpPurpose_ErpPurpose
-    {
-        public CoaDetails_ErpPurpose_ErpPurpose(global::System.String code, global::System.String name)
-        {
-            Code = code;
-            Name = name;
-        }
-
-        public global::System.String Code { get; }
-
-        public global::System.String Name { get; }
-
-        public virtual global::System.Boolean Equals(CoaDetails_ErpPurpose_ErpPurpose? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Code.Equals(other.Code)) && Name.Equals(other.Name);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((CoaDetails_ErpPurpose_ErpPurpose)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Code.GetHashCode();
-                hash ^= 397 * Name.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetailsResult
-    {
-        public global::AggieEnterpriseApi.ICoaDetails_ErpEntity? ErpEntity { get; }
-
-        public global::AggieEnterpriseApi.ICoaDetails_ErpFund? ErpFund { get; }
-
-        public global::AggieEnterpriseApi.ICoaDetails_ErpFinancialDepartment? ErpFinancialDepartment { get; }
-
-        public global::AggieEnterpriseApi.ICoaDetails_ErpAccount? ErpAccount { get; }
-
-        public global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? ErpPurpose { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetails_ErpEntity
-    {
-        public global::System.String Code { get; }
-
-        public global::System.String Name { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetails_ErpEntity_ErpEntity : ICoaDetails_ErpEntity
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetails_ErpFund
-    {
-        public global::System.String Code { get; }
-
-        public global::System.String Name { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetails_ErpFund_ErpFund : ICoaDetails_ErpFund
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetails_ErpFinancialDepartment
-    {
-        public global::System.String Code { get; }
-
-        public global::System.String Name { get; }
-
-        public global::System.String? FiscalOfficerName { get; }
-
-        public global::System.Boolean EligibleForUse { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetails_ErpFinancialDepartment_ErpFinancialDepartment : ICoaDetails_ErpFinancialDepartment
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetails_ErpAccount
-    {
-        public global::System.String Code { get; }
-
-        public global::System.String Name { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetails_ErpAccount_ErpAccount : ICoaDetails_ErpAccount
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetails_ErpPurpose
-    {
-        public global::System.String Code { get; }
-
-        public global::System.String Name { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetails_ErpPurpose_ErpPurpose : ICoaDetails_ErpPurpose
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParentsResult : global::System.IEquatable<FundParentsResult>, IFundParentsResult
     {
         public FundParentsResult(global::AggieEnterpriseApi.IFundParents_ErpFund? erpFund)
@@ -2232,6 +1715,523 @@ namespace AggieEnterpriseApi
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse : IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetailsResult : global::System.IEquatable<CoaDetailsResult>, ICoaDetailsResult
+    {
+        public CoaDetailsResult(global::AggieEnterpriseApi.ICoaDetails_ErpEntity? erpEntity, global::AggieEnterpriseApi.ICoaDetails_ErpFund? erpFund, global::AggieEnterpriseApi.ICoaDetails_ErpFinancialDepartment? erpFinancialDepartment, global::AggieEnterpriseApi.ICoaDetails_ErpAccount? erpAccount, global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? erpPurpose)
+        {
+            ErpEntity = erpEntity;
+            ErpFund = erpFund;
+            ErpFinancialDepartment = erpFinancialDepartment;
+            ErpAccount = erpAccount;
+            ErpPurpose = erpPurpose;
+        }
+
+        public global::AggieEnterpriseApi.ICoaDetails_ErpEntity? ErpEntity { get; }
+
+        public global::AggieEnterpriseApi.ICoaDetails_ErpFund? ErpFund { get; }
+
+        public global::AggieEnterpriseApi.ICoaDetails_ErpFinancialDepartment? ErpFinancialDepartment { get; }
+
+        public global::AggieEnterpriseApi.ICoaDetails_ErpAccount? ErpAccount { get; }
+
+        public global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? ErpPurpose { get; }
+
+        public virtual global::System.Boolean Equals(CoaDetailsResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((ErpEntity is null && other.ErpEntity is null) || ErpEntity != null && ErpEntity.Equals(other.ErpEntity))) && ((ErpFund is null && other.ErpFund is null) || ErpFund != null && ErpFund.Equals(other.ErpFund)) && ((ErpFinancialDepartment is null && other.ErpFinancialDepartment is null) || ErpFinancialDepartment != null && ErpFinancialDepartment.Equals(other.ErpFinancialDepartment)) && ((ErpAccount is null && other.ErpAccount is null) || ErpAccount != null && ErpAccount.Equals(other.ErpAccount)) && ((ErpPurpose is null && other.ErpPurpose is null) || ErpPurpose != null && ErpPurpose.Equals(other.ErpPurpose));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CoaDetailsResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (ErpEntity != null)
+                {
+                    hash ^= 397 * ErpEntity.GetHashCode();
+                }
+
+                if (ErpFund != null)
+                {
+                    hash ^= 397 * ErpFund.GetHashCode();
+                }
+
+                if (ErpFinancialDepartment != null)
+                {
+                    hash ^= 397 * ErpFinancialDepartment.GetHashCode();
+                }
+
+                if (ErpAccount != null)
+                {
+                    hash ^= 397 * ErpAccount.GetHashCode();
+                }
+
+                if (ErpPurpose != null)
+                {
+                    hash ^= 397 * ErpPurpose.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetails_ErpEntity_ErpEntity : global::System.IEquatable<CoaDetails_ErpEntity_ErpEntity>, ICoaDetails_ErpEntity_ErpEntity
+    {
+        public CoaDetails_ErpEntity_ErpEntity(global::System.String code, global::System.String name)
+        {
+            Code = code;
+            Name = name;
+        }
+
+        public global::System.String Code { get; }
+
+        public global::System.String Name { get; }
+
+        public virtual global::System.Boolean Equals(CoaDetails_ErpEntity_ErpEntity? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Code.Equals(other.Code)) && Name.Equals(other.Name);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CoaDetails_ErpEntity_ErpEntity)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Code.GetHashCode();
+                hash ^= 397 * Name.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetails_ErpFund_ErpFund : global::System.IEquatable<CoaDetails_ErpFund_ErpFund>, ICoaDetails_ErpFund_ErpFund
+    {
+        public CoaDetails_ErpFund_ErpFund(global::System.String code, global::System.String name)
+        {
+            Code = code;
+            Name = name;
+        }
+
+        public global::System.String Code { get; }
+
+        public global::System.String Name { get; }
+
+        public virtual global::System.Boolean Equals(CoaDetails_ErpFund_ErpFund? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Code.Equals(other.Code)) && Name.Equals(other.Name);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CoaDetails_ErpFund_ErpFund)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Code.GetHashCode();
+                hash ^= 397 * Name.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment : global::System.IEquatable<CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment>, ICoaDetails_ErpFinancialDepartment_ErpFinancialDepartment
+    {
+        public CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment(global::System.String code, global::System.String name, global::System.String? fiscalOfficerName, global::System.Boolean eligibleForUse)
+        {
+            Code = code;
+            Name = name;
+            FiscalOfficerName = fiscalOfficerName;
+            EligibleForUse = eligibleForUse;
+        }
+
+        public global::System.String Code { get; }
+
+        public global::System.String Name { get; }
+
+        public global::System.String? FiscalOfficerName { get; }
+
+        public global::System.Boolean EligibleForUse { get; }
+
+        public virtual global::System.Boolean Equals(CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Code.Equals(other.Code)) && Name.Equals(other.Name) && ((FiscalOfficerName is null && other.FiscalOfficerName is null) || FiscalOfficerName != null && FiscalOfficerName.Equals(other.FiscalOfficerName)) && EligibleForUse == other.EligibleForUse;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Code.GetHashCode();
+                hash ^= 397 * Name.GetHashCode();
+                if (FiscalOfficerName != null)
+                {
+                    hash ^= 397 * FiscalOfficerName.GetHashCode();
+                }
+
+                hash ^= 397 * EligibleForUse.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetails_ErpAccount_ErpAccount : global::System.IEquatable<CoaDetails_ErpAccount_ErpAccount>, ICoaDetails_ErpAccount_ErpAccount
+    {
+        public CoaDetails_ErpAccount_ErpAccount(global::System.String code, global::System.String name)
+        {
+            Code = code;
+            Name = name;
+        }
+
+        public global::System.String Code { get; }
+
+        public global::System.String Name { get; }
+
+        public virtual global::System.Boolean Equals(CoaDetails_ErpAccount_ErpAccount? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Code.Equals(other.Code)) && Name.Equals(other.Name);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CoaDetails_ErpAccount_ErpAccount)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Code.GetHashCode();
+                hash ^= 397 * Name.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetails_ErpPurpose_ErpPurpose : global::System.IEquatable<CoaDetails_ErpPurpose_ErpPurpose>, ICoaDetails_ErpPurpose_ErpPurpose
+    {
+        public CoaDetails_ErpPurpose_ErpPurpose(global::System.String code, global::System.String name)
+        {
+            Code = code;
+            Name = name;
+        }
+
+        public global::System.String Code { get; }
+
+        public global::System.String Name { get; }
+
+        public virtual global::System.Boolean Equals(CoaDetails_ErpPurpose_ErpPurpose? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Code.Equals(other.Code)) && Name.Equals(other.Name);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CoaDetails_ErpPurpose_ErpPurpose)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Code.GetHashCode();
+                hash ^= 397 * Name.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetailsResult
+    {
+        public global::AggieEnterpriseApi.ICoaDetails_ErpEntity? ErpEntity { get; }
+
+        public global::AggieEnterpriseApi.ICoaDetails_ErpFund? ErpFund { get; }
+
+        public global::AggieEnterpriseApi.ICoaDetails_ErpFinancialDepartment? ErpFinancialDepartment { get; }
+
+        public global::AggieEnterpriseApi.ICoaDetails_ErpAccount? ErpAccount { get; }
+
+        public global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? ErpPurpose { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetails_ErpEntity
+    {
+        public global::System.String Code { get; }
+
+        public global::System.String Name { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetails_ErpEntity_ErpEntity : ICoaDetails_ErpEntity
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetails_ErpFund
+    {
+        public global::System.String Code { get; }
+
+        public global::System.String Name { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetails_ErpFund_ErpFund : ICoaDetails_ErpFund
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetails_ErpFinancialDepartment
+    {
+        public global::System.String Code { get; }
+
+        public global::System.String Name { get; }
+
+        public global::System.String? FiscalOfficerName { get; }
+
+        public global::System.Boolean EligibleForUse { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetails_ErpFinancialDepartment_ErpFinancialDepartment : ICoaDetails_ErpFinancialDepartment
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetails_ErpAccount
+    {
+        public global::System.String Code { get; }
+
+        public global::System.String Name { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetails_ErpAccount_ErpAccount : ICoaDetails_ErpAccount
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetails_ErpPurpose
+    {
+        public global::System.String Code { get; }
+
+        public global::System.String Name { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetails_ErpPurpose_ErpPurpose : ICoaDetails_ErpPurpose
     {
     }
 
@@ -4083,6 +4083,7 @@ namespace AggieEnterpriseApi
         private global::StrawberryShake.Serialization.IInputValueFormatter _glReferenceField10Formatter = default !;
         private global::StrawberryShake.Serialization.IInputValueFormatter _glReferenceField25Formatter = default !;
         private global::StrawberryShake.Serialization.IInputValueFormatter _glDescriptionField40Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _glideInputFormatter = default !;
         public global::System.String TypeName => "GlJournalLineInput";
         public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
@@ -4094,6 +4095,7 @@ namespace AggieEnterpriseApi
             _glReferenceField10Formatter = serializerResolver.GetInputValueFormatter("GlReferenceField10");
             _glReferenceField25Formatter = serializerResolver.GetInputValueFormatter("GlReferenceField25");
             _glDescriptionField40Formatter = serializerResolver.GetInputValueFormatter("GlDescriptionField40");
+            _glideInputFormatter = serializerResolver.GetInputValueFormatter("GlideInput");
         }
 
         public global::System.Object? Format(global::System.Object? runtimeValue)
@@ -4154,6 +4156,11 @@ namespace AggieEnterpriseApi
             if (inputInfo.IsPpmCommentSet)
             {
                 fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ppmComment", FormatPpmComment(input.PpmComment)));
+            }
+
+            if (inputInfo.IsGlideSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("glide", FormatGlide(input.Glide)));
             }
 
             return fields;
@@ -4264,6 +4271,18 @@ namespace AggieEnterpriseApi
                 return _glDescriptionField40Formatter.Format(input);
             }
         }
+
+        private global::System.Object? FormatGlide(global::AggieEnterpriseApi.GlideInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _glideInputFormatter.Format(input);
+            }
+        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -4306,7 +4325,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (((GlSegments is null && other.GlSegments is null) || GlSegments != null && GlSegments.Equals(other.GlSegments))) && ((GlSegmentString is null && other.GlSegmentString is null) || GlSegmentString != null && GlSegmentString.Equals(other.GlSegmentString)) && ((PpmSegments is null && other.PpmSegments is null) || PpmSegments != null && PpmSegments.Equals(other.PpmSegments)) && ((PpmSegmentString is null && other.PpmSegmentString is null) || PpmSegmentString != null && PpmSegmentString.Equals(other.PpmSegmentString)) && DebitAmount == other.DebitAmount && CreditAmount == other.CreditAmount && ExternalSystemIdentifier.Equals(other.ExternalSystemIdentifier) && ((ExternalSystemReference is null && other.ExternalSystemReference is null) || ExternalSystemReference != null && ExternalSystemReference.Equals(other.ExternalSystemReference)) && ((PpmComment is null && other.PpmComment is null) || PpmComment != null && PpmComment.Equals(other.PpmComment));
+            return (((GlSegments is null && other.GlSegments is null) || GlSegments != null && GlSegments.Equals(other.GlSegments))) && ((GlSegmentString is null && other.GlSegmentString is null) || GlSegmentString != null && GlSegmentString.Equals(other.GlSegmentString)) && ((PpmSegments is null && other.PpmSegments is null) || PpmSegments != null && PpmSegments.Equals(other.PpmSegments)) && ((PpmSegmentString is null && other.PpmSegmentString is null) || PpmSegmentString != null && PpmSegmentString.Equals(other.PpmSegmentString)) && DebitAmount == other.DebitAmount && CreditAmount == other.CreditAmount && ExternalSystemIdentifier.Equals(other.ExternalSystemIdentifier) && ((ExternalSystemReference is null && other.ExternalSystemReference is null) || ExternalSystemReference != null && ExternalSystemReference.Equals(other.ExternalSystemReference)) && ((PpmComment is null && other.PpmComment is null) || PpmComment != null && PpmComment.Equals(other.PpmComment)) && ((Glide is null && other.Glide is null) || Glide != null && Glide.Equals(other.Glide));
         }
 
         public override global::System.Int32 GetHashCode()
@@ -4355,6 +4374,11 @@ namespace AggieEnterpriseApi
                     hash ^= 397 * PpmComment.GetHashCode();
                 }
 
+                if (Glide != null)
+                {
+                    hash ^= 397 * Glide.GetHashCode();
+                }
+
                 return hash;
             }
         }
@@ -4377,6 +4401,8 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_externalSystemReference;
         private global::System.String? _value_ppmComment;
         private global::System.Boolean _set_ppmComment;
+        private global::AggieEnterpriseApi.GlideInput? _value_glide;
+        private global::System.Boolean _set_glide;
         public global::AggieEnterpriseApi.GlSegmentInput? GlSegments
         {
             get => _value_glSegments;
@@ -4476,6 +4502,17 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsPpmCommentSet => _set_ppmComment;
+        public global::AggieEnterpriseApi.GlideInput? Glide
+        {
+            get => _value_glide;
+            set
+            {
+                _set_glide = true;
+                _value_glide = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsGlideSet => _set_glide;
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -5185,6 +5222,548 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlideInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _floatFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _dateFormatter = default !;
+        public global::System.String TypeName => "GlideInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+            _floatFormatter = serializerResolver.GetInputValueFormatter("Float");
+            _dateFormatter = serializerResolver.GetInputValueFormatter("Date");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.GlideInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IGlideInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsLineDescriptionSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lineDescription", FormatLineDescription(input.LineDescription)));
+            }
+
+            if (inputInfo.IsJournalLineNumberSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("journalLineNumber", FormatJournalLineNumber(input.JournalLineNumber)));
+            }
+
+            if (inputInfo.IsTransactionDateSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("transactionDate", FormatTransactionDate(input.TransactionDate)));
+            }
+
+            if (inputInfo.IsUdfNumeric1Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("udfNumeric1", FormatUdfNumeric1(input.UdfNumeric1)));
+            }
+
+            if (inputInfo.IsUdfNumeric2Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("udfNumeric2", FormatUdfNumeric2(input.UdfNumeric2)));
+            }
+
+            if (inputInfo.IsUdfNumeric3Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("udfNumeric3", FormatUdfNumeric3(input.UdfNumeric3)));
+            }
+
+            if (inputInfo.IsUdfDate1Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("udfDate1", FormatUdfDate1(input.UdfDate1)));
+            }
+
+            if (inputInfo.IsUdfDate2Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("udfDate2", FormatUdfDate2(input.UdfDate2)));
+            }
+
+            if (inputInfo.IsUdfString1Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("udfString1", FormatUdfString1(input.UdfString1)));
+            }
+
+            if (inputInfo.IsUdfString2Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("udfString2", FormatUdfString2(input.UdfString2)));
+            }
+
+            if (inputInfo.IsUdfString3Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("udfString3", FormatUdfString3(input.UdfString3)));
+            }
+
+            if (inputInfo.IsUdfString4Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("udfString4", FormatUdfString4(input.UdfString4)));
+            }
+
+            if (inputInfo.IsUdfString5Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("udfString5", FormatUdfString5(input.UdfString5)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatLineDescription(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatJournalLineNumber(global::System.Double? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _floatFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatTransactionDate(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUdfNumeric1(global::System.Double? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _floatFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUdfNumeric2(global::System.Double? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _floatFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUdfNumeric3(global::System.Double? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _floatFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUdfDate1(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUdfDate2(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUdfString1(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUdfString2(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUdfString3(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUdfString4(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUdfString5(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlideInput : global::AggieEnterpriseApi.State.IGlideInputInfo, global::System.IEquatable<GlideInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlideInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(GlideInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((LineDescription is null && other.LineDescription is null) || LineDescription != null && LineDescription.Equals(other.LineDescription))) && JournalLineNumber == other.JournalLineNumber && ((TransactionDate is null && other.TransactionDate is null) || TransactionDate != null && TransactionDate.Equals(other.TransactionDate)) && UdfNumeric1 == other.UdfNumeric1 && UdfNumeric2 == other.UdfNumeric2 && UdfNumeric3 == other.UdfNumeric3 && ((UdfDate1 is null && other.UdfDate1 is null) || UdfDate1 != null && UdfDate1.Equals(other.UdfDate1)) && ((UdfDate2 is null && other.UdfDate2 is null) || UdfDate2 != null && UdfDate2.Equals(other.UdfDate2)) && ((UdfString1 is null && other.UdfString1 is null) || UdfString1 != null && UdfString1.Equals(other.UdfString1)) && ((UdfString2 is null && other.UdfString2 is null) || UdfString2 != null && UdfString2.Equals(other.UdfString2)) && ((UdfString3 is null && other.UdfString3 is null) || UdfString3 != null && UdfString3.Equals(other.UdfString3)) && ((UdfString4 is null && other.UdfString4 is null) || UdfString4 != null && UdfString4.Equals(other.UdfString4)) && ((UdfString5 is null && other.UdfString5 is null) || UdfString5 != null && UdfString5.Equals(other.UdfString5));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (LineDescription != null)
+                {
+                    hash ^= 397 * LineDescription.GetHashCode();
+                }
+
+                if (JournalLineNumber != null)
+                {
+                    hash ^= 397 * JournalLineNumber.GetHashCode();
+                }
+
+                if (TransactionDate != null)
+                {
+                    hash ^= 397 * TransactionDate.GetHashCode();
+                }
+
+                if (UdfNumeric1 != null)
+                {
+                    hash ^= 397 * UdfNumeric1.GetHashCode();
+                }
+
+                if (UdfNumeric2 != null)
+                {
+                    hash ^= 397 * UdfNumeric2.GetHashCode();
+                }
+
+                if (UdfNumeric3 != null)
+                {
+                    hash ^= 397 * UdfNumeric3.GetHashCode();
+                }
+
+                if (UdfDate1 != null)
+                {
+                    hash ^= 397 * UdfDate1.GetHashCode();
+                }
+
+                if (UdfDate2 != null)
+                {
+                    hash ^= 397 * UdfDate2.GetHashCode();
+                }
+
+                if (UdfString1 != null)
+                {
+                    hash ^= 397 * UdfString1.GetHashCode();
+                }
+
+                if (UdfString2 != null)
+                {
+                    hash ^= 397 * UdfString2.GetHashCode();
+                }
+
+                if (UdfString3 != null)
+                {
+                    hash ^= 397 * UdfString3.GetHashCode();
+                }
+
+                if (UdfString4 != null)
+                {
+                    hash ^= 397 * UdfString4.GetHashCode();
+                }
+
+                if (UdfString5 != null)
+                {
+                    hash ^= 397 * UdfString5.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.String? _value_lineDescription;
+        private global::System.Boolean _set_lineDescription;
+        private global::System.Double? _value_journalLineNumber;
+        private global::System.Boolean _set_journalLineNumber;
+        private global::System.DateTime? _value_transactionDate;
+        private global::System.Boolean _set_transactionDate;
+        private global::System.Double? _value_udfNumeric1;
+        private global::System.Boolean _set_udfNumeric1;
+        private global::System.Double? _value_udfNumeric2;
+        private global::System.Boolean _set_udfNumeric2;
+        private global::System.Double? _value_udfNumeric3;
+        private global::System.Boolean _set_udfNumeric3;
+        private global::System.DateTime? _value_udfDate1;
+        private global::System.Boolean _set_udfDate1;
+        private global::System.DateTime? _value_udfDate2;
+        private global::System.Boolean _set_udfDate2;
+        private global::System.String? _value_udfString1;
+        private global::System.Boolean _set_udfString1;
+        private global::System.String? _value_udfString2;
+        private global::System.Boolean _set_udfString2;
+        private global::System.String? _value_udfString3;
+        private global::System.Boolean _set_udfString3;
+        private global::System.String? _value_udfString4;
+        private global::System.Boolean _set_udfString4;
+        private global::System.String? _value_udfString5;
+        private global::System.Boolean _set_udfString5;
+        public global::System.String? LineDescription
+        {
+            get => _value_lineDescription;
+            set
+            {
+                _set_lineDescription = true;
+                _value_lineDescription = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsLineDescriptionSet => _set_lineDescription;
+        public global::System.Double? JournalLineNumber
+        {
+            get => _value_journalLineNumber;
+            set
+            {
+                _set_journalLineNumber = true;
+                _value_journalLineNumber = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsJournalLineNumberSet => _set_journalLineNumber;
+        public global::System.DateTime? TransactionDate
+        {
+            get => _value_transactionDate;
+            set
+            {
+                _set_transactionDate = true;
+                _value_transactionDate = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsTransactionDateSet => _set_transactionDate;
+        public global::System.Double? UdfNumeric1
+        {
+            get => _value_udfNumeric1;
+            set
+            {
+                _set_udfNumeric1 = true;
+                _value_udfNumeric1 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsUdfNumeric1Set => _set_udfNumeric1;
+        public global::System.Double? UdfNumeric2
+        {
+            get => _value_udfNumeric2;
+            set
+            {
+                _set_udfNumeric2 = true;
+                _value_udfNumeric2 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsUdfNumeric2Set => _set_udfNumeric2;
+        public global::System.Double? UdfNumeric3
+        {
+            get => _value_udfNumeric3;
+            set
+            {
+                _set_udfNumeric3 = true;
+                _value_udfNumeric3 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsUdfNumeric3Set => _set_udfNumeric3;
+        public global::System.DateTime? UdfDate1
+        {
+            get => _value_udfDate1;
+            set
+            {
+                _set_udfDate1 = true;
+                _value_udfDate1 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsUdfDate1Set => _set_udfDate1;
+        public global::System.DateTime? UdfDate2
+        {
+            get => _value_udfDate2;
+            set
+            {
+                _set_udfDate2 = true;
+                _value_udfDate2 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsUdfDate2Set => _set_udfDate2;
+        public global::System.String? UdfString1
+        {
+            get => _value_udfString1;
+            set
+            {
+                _set_udfString1 = true;
+                _value_udfString1 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsUdfString1Set => _set_udfString1;
+        public global::System.String? UdfString2
+        {
+            get => _value_udfString2;
+            set
+            {
+                _set_udfString2 = true;
+                _value_udfString2 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsUdfString2Set => _set_udfString2;
+        public global::System.String? UdfString3
+        {
+            get => _value_udfString3;
+            set
+            {
+                _set_udfString3 = true;
+                _value_udfString3 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsUdfString3Set => _set_udfString3;
+        public global::System.String? UdfString4
+        {
+            get => _value_udfString4;
+            set
+            {
+                _set_udfString4 = true;
+                _value_udfString4 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsUdfString4Set => _set_udfString4;
+        public global::System.String? UdfString5
+        {
+            get => _value_udfString5;
+            set
+            {
+                _set_udfString5 = true;
+                _value_udfString5 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsUdfString5Set => _set_udfString5;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public enum RequestStatus
     {
         Pending,
@@ -5227,277 +5806,6 @@ namespace AggieEnterpriseApi
                 RequestStatus.Rejected => "REJECTED",
                 _ => throw new global::StrawberryShake.GraphQLClientException()};
         }
-    }
-
-    /// <summary>
-    /// Represents the operation service of the CoaDetails GraphQL operation
-    /// <code>
-    /// query CoaDetails($entity: String!, $fund: String!, $dept: String!, $account: String!, $purpose: String!) {
-    ///   erpEntity(code: $entity) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpEntity {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpFund(code: $fund) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpFund {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpFinancialDepartment(code: $dept) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     fiscalOfficerName
-    ///     eligibleForUse
-    ///     ... on ErpFinancialDepartment {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpAccount(code: $account) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpAccount {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpPurpose(code: $purpose) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpPurpose {
-    ///       id
-    ///     }
-    ///   }
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetailsQueryDocument : global::StrawberryShake.IDocument
-    {
-        private CoaDetailsQueryDocument()
-        {
-        }
-
-        public static CoaDetailsQueryDocument Instance { get; } = new CoaDetailsQueryDocument();
-        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x43, 0x6f, 0x61, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x28, 0x24, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x66, 0x75, 0x6e, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x64, 0x65, 0x70, 0x74, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x72, 0x70, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x46, 0x75, 0x6e, 0x64, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x66, 0x75, 0x6e, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x46, 0x75, 0x6e, 0x64, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x46, 0x69, 0x6e, 0x61, 0x6e, 0x63, 0x69, 0x61, 0x6c, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x64, 0x65, 0x70, 0x74, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x66, 0x69, 0x73, 0x63, 0x61, 0x6c, 0x4f, 0x66, 0x66, 0x69, 0x63, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x6c, 0x69, 0x67, 0x69, 0x62, 0x6c, 0x65, 0x46, 0x6f, 0x72, 0x55, 0x73, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x46, 0x69, 0x6e, 0x61, 0x6e, 0x63, 0x69, 0x61, 0x6c, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x50, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x50, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "52e1db2ee41cb011d8d9cfe82128f1d5");
-        public override global::System.String ToString()
-        {
-#if NETSTANDARD2_0
-        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
-#else
-            return global::System.Text.Encoding.UTF8.GetString(Body);
-#endif
-        }
-    }
-
-    /// <summary>
-    /// Represents the operation service of the CoaDetails GraphQL operation
-    /// <code>
-    /// query CoaDetails($entity: String!, $fund: String!, $dept: String!, $account: String!, $purpose: String!) {
-    ///   erpEntity(code: $entity) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpEntity {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpFund(code: $fund) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpFund {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpFinancialDepartment(code: $dept) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     fiscalOfficerName
-    ///     eligibleForUse
-    ///     ... on ErpFinancialDepartment {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpAccount(code: $account) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpAccount {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpPurpose(code: $purpose) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpPurpose {
-    ///       id
-    ///     }
-    ///   }
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetailsQuery : global::AggieEnterpriseApi.ICoaDetailsQuery
-    {
-        private readonly global::StrawberryShake.IOperationExecutor<ICoaDetailsResult> _operationExecutor;
-        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
-        public CoaDetailsQuery(global::StrawberryShake.IOperationExecutor<ICoaDetailsResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
-            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
-        }
-
-        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(ICoaDetailsResult);
-        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<ICoaDetailsResult>> ExecuteAsync(global::System.String entity, global::System.String fund, global::System.String dept, global::System.String account, global::System.String purpose, global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var request = CreateRequest(entity, fund, dept, account, purpose);
-            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
-        }
-
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<ICoaDetailsResult>> Watch(global::System.String entity, global::System.String fund, global::System.String dept, global::System.String account, global::System.String purpose, global::StrawberryShake.ExecutionStrategy? strategy = null)
-        {
-            var request = CreateRequest(entity, fund, dept, account, purpose);
-            return _operationExecutor.Watch(request, strategy);
-        }
-
-        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String entity, global::System.String fund, global::System.String dept, global::System.String account, global::System.String purpose)
-        {
-            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
-            variables.Add("entity", FormatEntity(entity));
-            variables.Add("fund", FormatFund(fund));
-            variables.Add("dept", FormatDept(dept));
-            variables.Add("account", FormatAccount(account));
-            variables.Add("purpose", FormatPurpose(purpose));
-            return CreateRequest(variables);
-        }
-
-        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
-        {
-            return new global::StrawberryShake.OperationRequest(id: CoaDetailsQueryDocument.Instance.Hash.Value, name: "CoaDetails", document: CoaDetailsQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
-        }
-
-        private global::System.Object? FormatEntity(global::System.String value)
-        {
-            if (value is null)
-            {
-                throw new global::System.ArgumentNullException(nameof(value));
-            }
-
-            return _stringFormatter.Format(value);
-        }
-
-        private global::System.Object? FormatFund(global::System.String value)
-        {
-            if (value is null)
-            {
-                throw new global::System.ArgumentNullException(nameof(value));
-            }
-
-            return _stringFormatter.Format(value);
-        }
-
-        private global::System.Object? FormatDept(global::System.String value)
-        {
-            if (value is null)
-            {
-                throw new global::System.ArgumentNullException(nameof(value));
-            }
-
-            return _stringFormatter.Format(value);
-        }
-
-        private global::System.Object? FormatAccount(global::System.String value)
-        {
-            if (value is null)
-            {
-                throw new global::System.ArgumentNullException(nameof(value));
-            }
-
-            return _stringFormatter.Format(value);
-        }
-
-        private global::System.Object? FormatPurpose(global::System.String value)
-        {
-            if (value is null)
-            {
-                throw new global::System.ArgumentNullException(nameof(value));
-            }
-
-            return _stringFormatter.Format(value);
-        }
-
-        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
-        {
-            return CreateRequest(variables!);
-        }
-    }
-
-    /// <summary>
-    /// Represents the operation service of the CoaDetails GraphQL operation
-    /// <code>
-    /// query CoaDetails($entity: String!, $fund: String!, $dept: String!, $account: String!, $purpose: String!) {
-    ///   erpEntity(code: $entity) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpEntity {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpFund(code: $fund) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpFund {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpFinancialDepartment(code: $dept) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     fiscalOfficerName
-    ///     eligibleForUse
-    ///     ... on ErpFinancialDepartment {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpAccount(code: $account) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpAccount {
-    ///       id
-    ///     }
-    ///   }
-    ///   erpPurpose(code: $purpose) {
-    ///     __typename
-    ///     code
-    ///     name
-    ///     ... on ErpPurpose {
-    ///       id
-    ///     }
-    ///   }
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface ICoaDetailsQuery : global::StrawberryShake.IOperationRequestFactory
-    {
-        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<ICoaDetailsResult>> ExecuteAsync(global::System.String entity, global::System.String fund, global::System.String dept, global::System.String account, global::System.String purpose, global::System.Threading.CancellationToken cancellationToken = default);
-        global::System.IObservable<global::StrawberryShake.IOperationResult<ICoaDetailsResult>> Watch(global::System.String entity, global::System.String fund, global::System.String dept, global::System.String account, global::System.String purpose, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -6167,6 +6475,277 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
+    /// Represents the operation service of the CoaDetails GraphQL operation
+    /// <code>
+    /// query CoaDetails($entity: String!, $fund: String!, $dept: String!, $account: String!, $purpose: String!) {
+    ///   erpEntity(code: $entity) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpEntity {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpFund(code: $fund) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpFund {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpFinancialDepartment(code: $dept) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     fiscalOfficerName
+    ///     eligibleForUse
+    ///     ... on ErpFinancialDepartment {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpAccount(code: $account) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpAccount {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpPurpose(code: $purpose) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpPurpose {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetailsQueryDocument : global::StrawberryShake.IDocument
+    {
+        private CoaDetailsQueryDocument()
+        {
+        }
+
+        public static CoaDetailsQueryDocument Instance { get; } = new CoaDetailsQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x43, 0x6f, 0x61, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x28, 0x24, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x66, 0x75, 0x6e, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x64, 0x65, 0x70, 0x74, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x72, 0x70, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x46, 0x75, 0x6e, 0x64, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x66, 0x75, 0x6e, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x46, 0x75, 0x6e, 0x64, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x46, 0x69, 0x6e, 0x61, 0x6e, 0x63, 0x69, 0x61, 0x6c, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x64, 0x65, 0x70, 0x74, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x66, 0x69, 0x73, 0x63, 0x61, 0x6c, 0x4f, 0x66, 0x66, 0x69, 0x63, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x6c, 0x69, 0x67, 0x69, 0x62, 0x6c, 0x65, 0x46, 0x6f, 0x72, 0x55, 0x73, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x46, 0x69, 0x6e, 0x61, 0x6e, 0x63, 0x69, 0x61, 0x6c, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x50, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x50, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "52e1db2ee41cb011d8d9cfe82128f1d5");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the CoaDetails GraphQL operation
+    /// <code>
+    /// query CoaDetails($entity: String!, $fund: String!, $dept: String!, $account: String!, $purpose: String!) {
+    ///   erpEntity(code: $entity) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpEntity {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpFund(code: $fund) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpFund {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpFinancialDepartment(code: $dept) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     fiscalOfficerName
+    ///     eligibleForUse
+    ///     ... on ErpFinancialDepartment {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpAccount(code: $account) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpAccount {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpPurpose(code: $purpose) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpPurpose {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetailsQuery : global::AggieEnterpriseApi.ICoaDetailsQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<ICoaDetailsResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        public CoaDetailsQuery(global::StrawberryShake.IOperationExecutor<ICoaDetailsResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(ICoaDetailsResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<ICoaDetailsResult>> ExecuteAsync(global::System.String entity, global::System.String fund, global::System.String dept, global::System.String account, global::System.String purpose, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(entity, fund, dept, account, purpose);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<ICoaDetailsResult>> Watch(global::System.String entity, global::System.String fund, global::System.String dept, global::System.String account, global::System.String purpose, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(entity, fund, dept, account, purpose);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String entity, global::System.String fund, global::System.String dept, global::System.String account, global::System.String purpose)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("entity", FormatEntity(entity));
+            variables.Add("fund", FormatFund(fund));
+            variables.Add("dept", FormatDept(dept));
+            variables.Add("account", FormatAccount(account));
+            variables.Add("purpose", FormatPurpose(purpose));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: CoaDetailsQueryDocument.Instance.Hash.Value, name: "CoaDetails", document: CoaDetailsQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatEntity(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatFund(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatDept(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatAccount(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatPurpose(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the CoaDetails GraphQL operation
+    /// <code>
+    /// query CoaDetails($entity: String!, $fund: String!, $dept: String!, $account: String!, $purpose: String!) {
+    ///   erpEntity(code: $entity) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpEntity {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpFund(code: $fund) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpFund {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpFinancialDepartment(code: $dept) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     fiscalOfficerName
+    ///     eligibleForUse
+    ///     ... on ErpFinancialDepartment {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpAccount(code: $account) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpAccount {
+    ///       id
+    ///     }
+    ///   }
+    ///   erpPurpose(code: $purpose) {
+    ///     __typename
+    ///     code
+    ///     name
+    ///     ... on ErpPurpose {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface ICoaDetailsQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<ICoaDetailsResult>> ExecuteAsync(global::System.String entity, global::System.String fund, global::System.String dept, global::System.String account, global::System.String purpose, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<ICoaDetailsResult>> Watch(global::System.String entity, global::System.String fund, global::System.String dept, global::System.String account, global::System.String purpose, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the operation service of the PpmSegmentsValidate GraphQL operation
     /// <code>
     /// query PpmSegmentsValidate($segments: PpmSegmentInput!, $accountingDate: LocalDate) {
@@ -6679,29 +7258,29 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class AggieEnterpriseClient : global::AggieEnterpriseApi.IAggieEnterpriseClient
     {
-        private readonly global::AggieEnterpriseApi.ICoaDetailsQuery _coaDetails;
         private readonly global::AggieEnterpriseApi.IFundParentsQuery _fundParents;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestMutation _glJournalRequest;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestStatusQuery _glJournalRequestStatus;
+        private readonly global::AggieEnterpriseApi.ICoaDetailsQuery _coaDetails;
         private readonly global::AggieEnterpriseApi.IPpmSegmentsValidateQuery _ppmSegmentsValidate;
         private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
-            _coaDetails = coaDetails ?? throw new global::System.ArgumentNullException(nameof(coaDetails));
             _fundParents = fundParents ?? throw new global::System.ArgumentNullException(nameof(fundParents));
             _glJournalRequest = glJournalRequest ?? throw new global::System.ArgumentNullException(nameof(glJournalRequest));
             _glJournalRequestStatus = glJournalRequestStatus ?? throw new global::System.ArgumentNullException(nameof(glJournalRequestStatus));
+            _coaDetails = coaDetails ?? throw new global::System.ArgumentNullException(nameof(coaDetails));
             _ppmSegmentsValidate = ppmSegmentsValidate ?? throw new global::System.ArgumentNullException(nameof(ppmSegmentsValidate));
             _glValidateChartSegments = glValidateChartSegments ?? throw new global::System.ArgumentNullException(nameof(glValidateChartSegments));
             _glValidateChartstring = glValidateChartstring ?? throw new global::System.ArgumentNullException(nameof(glValidateChartstring));
         }
 
         public static global::System.String ClientName => "AggieEnterpriseClient";
-        public global::AggieEnterpriseApi.ICoaDetailsQuery CoaDetails => _coaDetails;
         public global::AggieEnterpriseApi.IFundParentsQuery FundParents => _fundParents;
         public global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest => _glJournalRequest;
         public global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus => _glJournalRequestStatus;
+        public global::AggieEnterpriseApi.ICoaDetailsQuery CoaDetails => _coaDetails;
         public global::AggieEnterpriseApi.IPpmSegmentsValidateQuery PpmSegmentsValidate => _ppmSegmentsValidate;
         public global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments => _glValidateChartSegments;
         public global::AggieEnterpriseApi.IGlValidateChartstringQuery GlValidateChartstring => _glValidateChartstring;
@@ -6713,13 +7292,13 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IAggieEnterpriseClient
     {
-        global::AggieEnterpriseApi.ICoaDetailsQuery CoaDetails { get; }
-
         global::AggieEnterpriseApi.IFundParentsQuery FundParents { get; }
 
         global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest { get; }
 
         global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus { get; }
+
+        global::AggieEnterpriseApi.ICoaDetailsQuery CoaDetails { get; }
 
         global::AggieEnterpriseApi.IPpmSegmentsValidateQuery PpmSegmentsValidate { get; }
 
@@ -6731,20 +7310,6 @@ namespace AggieEnterpriseApi
 
 namespace AggieEnterpriseApi.State
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ErpEntityEntity
-    {
-        public ErpEntityEntity(global::System.String code = default !, global::System.String name = default !)
-        {
-            Code = code;
-            Name = name;
-        }
-
-        public global::System.String Code { get; }
-
-        public global::System.String Name { get; }
-    }
-
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ErpFundEntity
     {
@@ -6781,6 +7346,20 @@ namespace AggieEnterpriseApi.State
         public global::System.Int32? HierarchyDepth { get; }
 
         public global::StrawberryShake.EntityId? Parent { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpEntityEntity
+    {
+        public ErpEntityEntity(global::System.String code = default !, global::System.String name = default !)
+        {
+            Code = code;
+            Name = name;
+        }
+
+        public global::System.String Code { get; }
+
+        public global::System.String Name { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -6829,256 +7408,6 @@ namespace AggieEnterpriseApi.State
         public global::System.String Code { get; }
 
         public global::System.String Name { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetailsResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.CoaDetailsResult>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpEntityEntity, CoaDetails_ErpEntity_ErpEntity> _coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper;
-        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, CoaDetails_ErpFund_ErpFund> _coaDetails_ErpFund_ErpFundFromErpFundEntityMapper;
-        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity, CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment> _coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper;
-        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpAccountEntity, CoaDetails_ErpAccount_ErpAccount> _coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper;
-        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpPurposeEntity, CoaDetails_ErpPurpose_ErpPurpose> _coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper;
-        public CoaDetailsResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpEntityEntity, CoaDetails_ErpEntity_ErpEntity> coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, CoaDetails_ErpFund_ErpFund> coaDetails_ErpFund_ErpFundFromErpFundEntityMapper, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity, CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment> coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpAccountEntity, CoaDetails_ErpAccount_ErpAccount> coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpPurposeEntity, CoaDetails_ErpPurpose_ErpPurpose> coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper = coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper ?? throw new global::System.ArgumentNullException(nameof(coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper));
-            _coaDetails_ErpFund_ErpFundFromErpFundEntityMapper = coaDetails_ErpFund_ErpFundFromErpFundEntityMapper ?? throw new global::System.ArgumentNullException(nameof(coaDetails_ErpFund_ErpFundFromErpFundEntityMapper));
-            _coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper = coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper ?? throw new global::System.ArgumentNullException(nameof(coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper));
-            _coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper = coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper ?? throw new global::System.ArgumentNullException(nameof(coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper));
-            _coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper = coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper ?? throw new global::System.ArgumentNullException(nameof(coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper));
-        }
-
-        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.ICoaDetailsResult);
-        public CoaDetailsResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            if (dataInfo is CoaDetailsResultInfo info)
-            {
-                return new CoaDetailsResult(MapICoaDetails_ErpEntity(info.ErpEntity, snapshot), MapICoaDetails_ErpFund(info.ErpFund, snapshot), MapICoaDetails_ErpFinancialDepartment(info.ErpFinancialDepartment, snapshot), MapICoaDetails_ErpAccount(info.ErpAccount, snapshot), MapICoaDetails_ErpPurpose(info.ErpPurpose, snapshot));
-            }
-
-            throw new global::System.ArgumentException("CoaDetailsResultInfo expected.");
-        }
-
-        private global::AggieEnterpriseApi.ICoaDetails_ErpEntity? MapICoaDetails_ErpEntity(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (entityId is null)
-            {
-                return null;
-            }
-
-            if (entityId.Value.Name.Equals("ErpEntity", global::System.StringComparison.Ordinal))
-            {
-                return _coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ErpEntityEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::AggieEnterpriseApi.ICoaDetails_ErpFund? MapICoaDetails_ErpFund(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (entityId is null)
-            {
-                return null;
-            }
-
-            if (entityId.Value.Name.Equals("ErpFund", global::System.StringComparison.Ordinal))
-            {
-                return _coaDetails_ErpFund_ErpFundFromErpFundEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ErpFundEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::AggieEnterpriseApi.ICoaDetails_ErpFinancialDepartment? MapICoaDetails_ErpFinancialDepartment(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (entityId is null)
-            {
-                return null;
-            }
-
-            if (entityId.Value.Name.Equals("ErpFinancialDepartment", global::System.StringComparison.Ordinal))
-            {
-                return _coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::AggieEnterpriseApi.ICoaDetails_ErpAccount? MapICoaDetails_ErpAccount(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (entityId is null)
-            {
-                return null;
-            }
-
-            if (entityId.Value.Name.Equals("ErpAccount", global::System.StringComparison.Ordinal))
-            {
-                return _coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ErpAccountEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? MapICoaDetails_ErpPurpose(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (entityId is null)
-            {
-                return null;
-            }
-
-            if (entityId.Value.Name.Equals("ErpPurpose", global::System.StringComparison.Ordinal))
-            {
-                return _coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ErpPurposeEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
-        {
-            return Create(dataInfo, snapshot);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetailsResultInfo : global::StrawberryShake.IOperationResultDataInfo
-    {
-        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
-        private readonly global::System.UInt64 _version;
-        public CoaDetailsResultInfo(global::StrawberryShake.EntityId? erpEntity, global::StrawberryShake.EntityId? erpFund, global::StrawberryShake.EntityId? erpFinancialDepartment, global::StrawberryShake.EntityId? erpAccount, global::StrawberryShake.EntityId? erpPurpose, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
-        {
-            ErpEntity = erpEntity;
-            ErpFund = erpFund;
-            ErpFinancialDepartment = erpFinancialDepartment;
-            ErpAccount = erpAccount;
-            ErpPurpose = erpPurpose;
-            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
-            _version = version;
-        }
-
-        public global::StrawberryShake.EntityId? ErpEntity { get; }
-
-        public global::StrawberryShake.EntityId? ErpFund { get; }
-
-        public global::StrawberryShake.EntityId? ErpFinancialDepartment { get; }
-
-        public global::StrawberryShake.EntityId? ErpAccount { get; }
-
-        public global::StrawberryShake.EntityId? ErpPurpose { get; }
-
-        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
-        public global::System.UInt64 Version => _version;
-        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
-        {
-            return new CoaDetailsResultInfo(ErpEntity, ErpFund, ErpFinancialDepartment, ErpAccount, ErpPurpose, _entityIds, version);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpEntityEntity, CoaDetails_ErpEntity_ErpEntity>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public CoaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        public CoaDetails_ErpEntity_ErpEntity Map(global::AggieEnterpriseApi.State.ErpEntityEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            return new CoaDetails_ErpEntity_ErpEntity(entity.Code, entity.Name);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetails_ErpFund_ErpFundFromErpFundEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, CoaDetails_ErpFund_ErpFund>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public CoaDetails_ErpFund_ErpFundFromErpFundEntityMapper(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        public CoaDetails_ErpFund_ErpFund Map(global::AggieEnterpriseApi.State.ErpFundEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            return new CoaDetails_ErpFund_ErpFund(entity.Code, entity.Name);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity, CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public CoaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        public CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment Map(global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            return new CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment(entity.Code, entity.Name, entity.FiscalOfficerName, entity.EligibleForUse);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpAccountEntity, CoaDetails_ErpAccount_ErpAccount>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public CoaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        public CoaDetails_ErpAccount_ErpAccount Map(global::AggieEnterpriseApi.State.ErpAccountEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            return new CoaDetails_ErpAccount_ErpAccount(entity.Code, entity.Name);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpPurposeEntity, CoaDetails_ErpPurpose_ErpPurpose>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public CoaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        public CoaDetails_ErpPurpose_ErpPurpose Map(global::AggieEnterpriseApi.State.ErpPurposeEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            return new CoaDetails_ErpPurpose_ErpPurpose(entity.Code, entity.Name);
-        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -8019,6 +8348,256 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetailsResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.CoaDetailsResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpEntityEntity, CoaDetails_ErpEntity_ErpEntity> _coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper;
+        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, CoaDetails_ErpFund_ErpFund> _coaDetails_ErpFund_ErpFundFromErpFundEntityMapper;
+        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity, CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment> _coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper;
+        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpAccountEntity, CoaDetails_ErpAccount_ErpAccount> _coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper;
+        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpPurposeEntity, CoaDetails_ErpPurpose_ErpPurpose> _coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper;
+        public CoaDetailsResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpEntityEntity, CoaDetails_ErpEntity_ErpEntity> coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, CoaDetails_ErpFund_ErpFund> coaDetails_ErpFund_ErpFundFromErpFundEntityMapper, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity, CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment> coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpAccountEntity, CoaDetails_ErpAccount_ErpAccount> coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpPurposeEntity, CoaDetails_ErpPurpose_ErpPurpose> coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper = coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper ?? throw new global::System.ArgumentNullException(nameof(coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper));
+            _coaDetails_ErpFund_ErpFundFromErpFundEntityMapper = coaDetails_ErpFund_ErpFundFromErpFundEntityMapper ?? throw new global::System.ArgumentNullException(nameof(coaDetails_ErpFund_ErpFundFromErpFundEntityMapper));
+            _coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper = coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper ?? throw new global::System.ArgumentNullException(nameof(coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper));
+            _coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper = coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper ?? throw new global::System.ArgumentNullException(nameof(coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper));
+            _coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper = coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper ?? throw new global::System.ArgumentNullException(nameof(coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.ICoaDetailsResult);
+        public CoaDetailsResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is CoaDetailsResultInfo info)
+            {
+                return new CoaDetailsResult(MapICoaDetails_ErpEntity(info.ErpEntity, snapshot), MapICoaDetails_ErpFund(info.ErpFund, snapshot), MapICoaDetails_ErpFinancialDepartment(info.ErpFinancialDepartment, snapshot), MapICoaDetails_ErpAccount(info.ErpAccount, snapshot), MapICoaDetails_ErpPurpose(info.ErpPurpose, snapshot));
+            }
+
+            throw new global::System.ArgumentException("CoaDetailsResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.ICoaDetails_ErpEntity? MapICoaDetails_ErpEntity(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId is null)
+            {
+                return null;
+            }
+
+            if (entityId.Value.Name.Equals("ErpEntity", global::System.StringComparison.Ordinal))
+            {
+                return _coaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ErpEntityEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.ICoaDetails_ErpFund? MapICoaDetails_ErpFund(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId is null)
+            {
+                return null;
+            }
+
+            if (entityId.Value.Name.Equals("ErpFund", global::System.StringComparison.Ordinal))
+            {
+                return _coaDetails_ErpFund_ErpFundFromErpFundEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ErpFundEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.ICoaDetails_ErpFinancialDepartment? MapICoaDetails_ErpFinancialDepartment(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId is null)
+            {
+                return null;
+            }
+
+            if (entityId.Value.Name.Equals("ErpFinancialDepartment", global::System.StringComparison.Ordinal))
+            {
+                return _coaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.ICoaDetails_ErpAccount? MapICoaDetails_ErpAccount(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId is null)
+            {
+                return null;
+            }
+
+            if (entityId.Value.Name.Equals("ErpAccount", global::System.StringComparison.Ordinal))
+            {
+                return _coaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ErpAccountEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? MapICoaDetails_ErpPurpose(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId is null)
+            {
+                return null;
+            }
+
+            if (entityId.Value.Name.Equals("ErpPurpose", global::System.StringComparison.Ordinal))
+            {
+                return _coaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ErpPurposeEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetailsResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public CoaDetailsResultInfo(global::StrawberryShake.EntityId? erpEntity, global::StrawberryShake.EntityId? erpFund, global::StrawberryShake.EntityId? erpFinancialDepartment, global::StrawberryShake.EntityId? erpAccount, global::StrawberryShake.EntityId? erpPurpose, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            ErpEntity = erpEntity;
+            ErpFund = erpFund;
+            ErpFinancialDepartment = erpFinancialDepartment;
+            ErpAccount = erpAccount;
+            ErpPurpose = erpPurpose;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        public global::StrawberryShake.EntityId? ErpEntity { get; }
+
+        public global::StrawberryShake.EntityId? ErpFund { get; }
+
+        public global::StrawberryShake.EntityId? ErpFinancialDepartment { get; }
+
+        public global::StrawberryShake.EntityId? ErpAccount { get; }
+
+        public global::StrawberryShake.EntityId? ErpPurpose { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new CoaDetailsResultInfo(ErpEntity, ErpFund, ErpFinancialDepartment, ErpAccount, ErpPurpose, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpEntityEntity, CoaDetails_ErpEntity_ErpEntity>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public CoaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public CoaDetails_ErpEntity_ErpEntity Map(global::AggieEnterpriseApi.State.ErpEntityEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new CoaDetails_ErpEntity_ErpEntity(entity.Code, entity.Name);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetails_ErpFund_ErpFundFromErpFundEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, CoaDetails_ErpFund_ErpFund>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public CoaDetails_ErpFund_ErpFundFromErpFundEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public CoaDetails_ErpFund_ErpFund Map(global::AggieEnterpriseApi.State.ErpFundEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new CoaDetails_ErpFund_ErpFund(entity.Code, entity.Name);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity, CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public CoaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment Map(global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment(entity.Code, entity.Name, entity.FiscalOfficerName, entity.EligibleForUse);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpAccountEntity, CoaDetails_ErpAccount_ErpAccount>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public CoaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public CoaDetails_ErpAccount_ErpAccount Map(global::AggieEnterpriseApi.State.ErpAccountEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new CoaDetails_ErpAccount_ErpAccount(entity.Code, entity.Name);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpPurposeEntity, CoaDetails_ErpPurpose_ErpPurpose>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public CoaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public CoaDetails_ErpPurpose_ErpPurpose Map(global::AggieEnterpriseApi.State.ErpPurposeEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new CoaDetails_ErpPurpose_ErpPurpose(entity.Code, entity.Name);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentsValidateResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.PpmSegmentsValidateResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -8361,6 +8940,8 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsExternalSystemReferenceSet { get; }
 
         global::System.Boolean IsPpmCommentSet { get; }
+
+        global::System.Boolean IsGlideSet { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -8404,256 +8985,33 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class CoaDetailsBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.ICoaDetailsResult>
+    internal interface IGlideInputInfo
     {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
-        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ICoaDetailsResult> _resultDataFactory;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpEntityCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString240Parser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFundCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpDepartmentCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpAccountCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPurposeCodeParser;
-        public CoaDetailsBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ICoaDetailsResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
-            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
-            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
-            _erpEntityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpEntityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpEntityCode` found.");
-            _nonEmptyTrimmedString240Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString240") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString240` found.");
-            _erpFundCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFundCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpFundCode` found.");
-            _erpDepartmentCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpDepartmentCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpDepartmentCode` found.");
-            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
-            _erpAccountCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpAccountCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpAccountCode` found.");
-            _erpPurposeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPurposeCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPurposeCode` found.");
-        }
+        global::System.Boolean IsLineDescriptionSet { get; }
 
-        public global::StrawberryShake.IOperationResult<ICoaDetailsResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
-        {
-            (ICoaDetailsResult Result, CoaDetailsResultInfo Info)? data = null;
-            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
-            if (response.Exception is null)
-            {
-                try
-                {
-                    if (response.Body != null)
-                    {
-                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-                        {
-                            data = BuildData(dataElement);
-                        }
+        global::System.Boolean IsJournalLineNumberSet { get; }
 
-                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                        {
-                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                        }
-                    }
-                }
-                catch (global::System.Exception ex)
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
-            }
-            else
-            {
-                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                {
-                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                }
-                else
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
-            }
+        global::System.Boolean IsTransactionDateSet { get; }
 
-            return new global::StrawberryShake.OperationResult<ICoaDetailsResult>(data?.Result, data?.Info, _resultDataFactory, errors);
-        }
+        global::System.Boolean IsUdfNumeric1Set { get; }
 
-        private (ICoaDetailsResult, CoaDetailsResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
-        {
-            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
-            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
-            global::StrawberryShake.EntityId? erpEntityId = default !;
-            global::StrawberryShake.EntityId? erpFundId = default !;
-            global::StrawberryShake.EntityId? erpFinancialDepartmentId = default !;
-            global::StrawberryShake.EntityId? erpAccountId = default !;
-            global::StrawberryShake.EntityId? erpPurposeId = default !;
-            _entityStore.Update(session =>
-            {
-                erpEntityId = UpdateICoaDetails_ErpEntityEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpEntity"), entityIds);
-                erpFundId = UpdateICoaDetails_ErpFundEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpFund"), entityIds);
-                erpFinancialDepartmentId = UpdateICoaDetails_ErpFinancialDepartmentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpFinancialDepartment"), entityIds);
-                erpAccountId = UpdateICoaDetails_ErpAccountEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpAccount"), entityIds);
-                erpPurposeId = UpdateICoaDetails_ErpPurposeEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpPurpose"), entityIds);
-                snapshot = session.CurrentSnapshot;
-            });
-            var resultInfo = new CoaDetailsResultInfo(erpEntityId, erpFundId, erpFinancialDepartmentId, erpAccountId, erpPurposeId, entityIds, snapshot.Version);
-            return (_resultDataFactory.Create(resultInfo), resultInfo);
-        }
+        global::System.Boolean IsUdfNumeric2Set { get; }
 
-        private global::StrawberryShake.EntityId? UpdateICoaDetails_ErpEntityEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
+        global::System.Boolean IsUdfNumeric3Set { get; }
 
-            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
-            entityIds.Add(entityId);
-            if (entityId.Name.Equals("ErpEntity", global::System.StringComparison.Ordinal))
-            {
-                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpEntityEntity? entity))
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpEntityEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-                else
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpEntityEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
+        global::System.Boolean IsUdfDate1Set { get; }
 
-                return entityId;
-            }
+        global::System.Boolean IsUdfDate2Set { get; }
 
-            throw new global::System.NotSupportedException();
-        }
+        global::System.Boolean IsUdfString1Set { get; }
 
-        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
+        global::System.Boolean IsUdfString2Set { get; }
 
-            return _erpEntityCodeParser.Parse(obj.Value.GetString()!);
-        }
+        global::System.Boolean IsUdfString3Set { get; }
 
-        private global::StrawberryShake.EntityId? UpdateICoaDetails_ErpFundEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
+        global::System.Boolean IsUdfString4Set { get; }
 
-            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
-            entityIds.Add(entityId);
-            if (entityId.Name.Equals("ErpFund", global::System.StringComparison.Ordinal))
-            {
-                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFundEntity? entity))
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFundEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Budgeted, entity.EligibleForUse, entity.Enabled, entity.EndDate, entity.Id, entity.StartDate, entity.HierarchyDepth, entity.Parent));
-                }
-                else
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFundEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, default !, default !, default !, default !, default !, default !, default !));
-                }
-
-                return entityId;
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::StrawberryShake.EntityId? UpdateICoaDetails_ErpFinancialDepartmentEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
-            entityIds.Add(entityId);
-            if (entityId.Name.Equals("ErpFinancialDepartment", global::System.StringComparison.Ordinal))
-            {
-                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity? entity))
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fiscalOfficerName")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "eligibleForUse"))));
-                }
-                else
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fiscalOfficerName")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "eligibleForUse"))));
-                }
-
-                return entityId;
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            return _nonEmptyTrimmedString240Parser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _booleanParser.Parse(obj.Value.GetBoolean()!);
-        }
-
-        private global::StrawberryShake.EntityId? UpdateICoaDetails_ErpAccountEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
-            entityIds.Add(entityId);
-            if (entityId.Name.Equals("ErpAccount", global::System.StringComparison.Ordinal))
-            {
-                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpAccountEntity? entity))
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpAccountEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-                else
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpAccountEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-
-                return entityId;
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::StrawberryShake.EntityId? UpdateICoaDetails_ErpPurposeEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
-            entityIds.Add(entityId);
-            if (entityId.Name.Equals("ErpPurpose", global::System.StringComparison.Ordinal))
-            {
-                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpPurposeEntity? entity))
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpPurposeEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-                else
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpPurposeEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-
-                return entityId;
-            }
-
-            throw new global::System.NotSupportedException();
-        }
+        global::System.Boolean IsUdfString5Set { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -9043,9 +9401,11 @@ namespace AggieEnterpriseApi.State
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseTypeCodeParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmAwardNumberParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmFundingSourceNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Double, global::System.Double> _floatParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTime> _dateParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.Guid> _uUIDParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
         public GlJournalRequestBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
@@ -9081,9 +9441,11 @@ namespace AggieEnterpriseApi.State
             _ppmExpenseTypeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseTypeCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseTypeCode` found.");
             _ppmAwardNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmAwardNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmAwardNumber` found.");
             _ppmFundingSourceNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmFundingSourceNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmFundingSourceNumber` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _floatParser = serializerResolver.GetLeafValueParser<global::System.Double, global::System.Double>("Float") ?? throw new global::System.ArgumentException("No serializer for type `Float` found.");
+            _dateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTime>("Date") ?? throw new global::System.ArgumentException("No serializer for type `Date` found.");
             _uUIDParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.Guid>("UUID") ?? throw new global::System.ArgumentException("No serializer for type `UUID` found.");
             _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
-            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
         }
 
         public global::StrawberryShake.IOperationResult<IGlJournalRequestResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
@@ -9462,6 +9824,259 @@ namespace AggieEnterpriseApi.State
             }
 
             return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class CoaDetailsBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.ICoaDetailsResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ICoaDetailsResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpEntityCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString240Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFundCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpDepartmentCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpAccountCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPurposeCodeParser;
+        public CoaDetailsBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ICoaDetailsResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _erpEntityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpEntityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpEntityCode` found.");
+            _nonEmptyTrimmedString240Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString240") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString240` found.");
+            _erpFundCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFundCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpFundCode` found.");
+            _erpDepartmentCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpDepartmentCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpDepartmentCode` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _erpAccountCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpAccountCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpAccountCode` found.");
+            _erpPurposeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPurposeCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPurposeCode` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<ICoaDetailsResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (ICoaDetailsResult Result, CoaDetailsResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<ICoaDetailsResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (ICoaDetailsResult, CoaDetailsResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            global::StrawberryShake.EntityId? erpEntityId = default !;
+            global::StrawberryShake.EntityId? erpFundId = default !;
+            global::StrawberryShake.EntityId? erpFinancialDepartmentId = default !;
+            global::StrawberryShake.EntityId? erpAccountId = default !;
+            global::StrawberryShake.EntityId? erpPurposeId = default !;
+            _entityStore.Update(session =>
+            {
+                erpEntityId = UpdateICoaDetails_ErpEntityEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpEntity"), entityIds);
+                erpFundId = UpdateICoaDetails_ErpFundEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpFund"), entityIds);
+                erpFinancialDepartmentId = UpdateICoaDetails_ErpFinancialDepartmentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpFinancialDepartment"), entityIds);
+                erpAccountId = UpdateICoaDetails_ErpAccountEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpAccount"), entityIds);
+                erpPurposeId = UpdateICoaDetails_ErpPurposeEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpPurpose"), entityIds);
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new CoaDetailsResultInfo(erpEntityId, erpFundId, erpFinancialDepartmentId, erpAccountId, erpPurposeId, entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::StrawberryShake.EntityId? UpdateICoaDetails_ErpEntityEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("ErpEntity", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpEntityEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpEntityEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpEntityEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _erpEntityCodeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::StrawberryShake.EntityId? UpdateICoaDetails_ErpFundEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("ErpFund", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFundEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFundEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Budgeted, entity.EligibleForUse, entity.Enabled, entity.EndDate, entity.Id, entity.StartDate, entity.HierarchyDepth, entity.Parent));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFundEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, default !, default !, default !, default !, default !, default !, default !));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::StrawberryShake.EntityId? UpdateICoaDetails_ErpFinancialDepartmentEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("ErpFinancialDepartment", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fiscalOfficerName")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "eligibleForUse"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fiscalOfficerName")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "eligibleForUse"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _nonEmptyTrimmedString240Parser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+
+        private global::StrawberryShake.EntityId? UpdateICoaDetails_ErpAccountEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("ErpAccount", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpAccountEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpAccountEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpAccountEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::StrawberryShake.EntityId? UpdateICoaDetails_ErpPurposeEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("ErpPurpose", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpPurposeEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpPurposeEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpPurposeEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
         }
     }
 
@@ -10198,8 +10813,8 @@ namespace AggieEnterpriseApi.State
             global::System.String __typename = obj.GetProperty("__typename").GetString()!;
             return __typename switch
             {
-                "ErpEntity" => ParseErpEntityEntityId(obj, __typename),
                 "ErpFund" => ParseErpFundEntityId(obj, __typename),
+                "ErpEntity" => ParseErpEntityEntityId(obj, __typename),
                 "ErpFinancialDepartment" => ParseErpFinancialDepartmentEntityId(obj, __typename),
                 "ErpAccount" => ParseErpAccountEntityId(obj, __typename),
                 "ErpPurpose" => ParseErpPurposeEntityId(obj, __typename),
@@ -10210,20 +10825,20 @@ namespace AggieEnterpriseApi.State
         {
             return entityId.Name switch
             {
-                "ErpEntity" => FormatErpEntityEntityId(entityId),
                 "ErpFund" => FormatErpFundEntityId(entityId),
+                "ErpEntity" => FormatErpEntityEntityId(entityId),
                 "ErpFinancialDepartment" => FormatErpFinancialDepartmentEntityId(entityId),
                 "ErpAccount" => FormatErpAccountEntityId(entityId),
                 "ErpPurpose" => FormatErpPurposeEntityId(entityId),
                 _ => throw new global::System.NotSupportedException()};
         }
 
-        private global::StrawberryShake.EntityId ParseErpEntityEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
+        private global::StrawberryShake.EntityId ParseErpFundEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
         {
             return new global::StrawberryShake.EntityId(type, obj.GetProperty("id").GetInt64()!);
         }
 
-        private global::System.String FormatErpEntityEntityId(global::StrawberryShake.EntityId entityId)
+        private global::System.String FormatErpFundEntityId(global::StrawberryShake.EntityId entityId)
         {
             using var writer = new global::StrawberryShake.Internal.ArrayWriter();
             using var jsonWriter = new global::System.Text.Json.Utf8JsonWriter(writer, _options);
@@ -10235,12 +10850,12 @@ namespace AggieEnterpriseApi.State
             return global::System.Text.Encoding.UTF8.GetString(writer.GetInternalBuffer(), 0, writer.Length);
         }
 
-        private global::StrawberryShake.EntityId ParseErpFundEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
+        private global::StrawberryShake.EntityId ParseErpEntityEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
         {
             return new global::StrawberryShake.EntityId(type, obj.GetProperty("id").GetInt64()!);
         }
 
-        private global::System.String FormatErpFundEntityId(global::StrawberryShake.EntityId entityId)
+        private global::System.String FormatErpEntityEntityId(global::StrawberryShake.EntityId entityId)
         {
             using var writer = new global::StrawberryShake.Internal.ArrayWriter();
             using var jsonWriter = new global::System.Text.Json.Utf8JsonWriter(writer, _options);
@@ -10327,10 +10942,10 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::AggieEnterpriseApi.State.AggieEnterpriseClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.CoaDetailsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.FundParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.CoaDetailsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmSegmentsValidateQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartSegmentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartstringQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -10348,11 +10963,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 var clientFactory = global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Net.Http.IHttpClientFactory>(parentServices);
                 return new global::StrawberryShake.Transport.Http.HttpConnection(() => clientFactory.CreateClient("AggieEnterpriseClient"));
             });
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpEntityEntity, global::AggieEnterpriseApi.CoaDetails_ErpEntity_ErpEntity>, global::AggieEnterpriseApi.State.CoaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, global::AggieEnterpriseApi.CoaDetails_ErpFund_ErpFund>, global::AggieEnterpriseApi.State.CoaDetails_ErpFund_ErpFundFromErpFundEntityMapper>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity, global::AggieEnterpriseApi.CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment>, global::AggieEnterpriseApi.State.CoaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpAccountEntity, global::AggieEnterpriseApi.CoaDetails_ErpAccount_ErpAccount>, global::AggieEnterpriseApi.State.CoaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpPurposeEntity, global::AggieEnterpriseApi.CoaDetails_ErpPurpose_ErpPurpose>, global::AggieEnterpriseApi.State.CoaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, global::AggieEnterpriseApi.FundParents_ErpFund_ErpFund>, global::AggieEnterpriseApi.State.FundParents_ErpFund_ErpFundFromErpFundEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, global::AggieEnterpriseApi.FundParents_ErpFund_Parent_ErpFund>, global::AggieEnterpriseApi.State.FundParents_ErpFund_Parent_ErpFundFromErpFundEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, global::AggieEnterpriseApi.FundParents_ErpFund_Parent_Parent_ErpFund>, global::AggieEnterpriseApi.State.FundParents_ErpFund_Parent_Parent_ErpFundFromErpFundEntityMapper>(services);
@@ -10361,6 +10971,11 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, global::AggieEnterpriseApi.FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund>, global::AggieEnterpriseApi.State.FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFundFromErpFundEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, global::AggieEnterpriseApi.FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund>, global::AggieEnterpriseApi.State.FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFundFromErpFundEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, global::AggieEnterpriseApi.FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund>, global::AggieEnterpriseApi.State.FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFundFromErpFundEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpEntityEntity, global::AggieEnterpriseApi.CoaDetails_ErpEntity_ErpEntity>, global::AggieEnterpriseApi.State.CoaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, global::AggieEnterpriseApi.CoaDetails_ErpFund_ErpFund>, global::AggieEnterpriseApi.State.CoaDetails_ErpFund_ErpFundFromErpFundEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity, global::AggieEnterpriseApi.CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment>, global::AggieEnterpriseApi.State.CoaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpAccountEntity, global::AggieEnterpriseApi.CoaDetails_ErpAccount_ErpAccount>, global::AggieEnterpriseApi.State.CoaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpPurposeEntity, global::AggieEnterpriseApi.CoaDetails_ErpPurpose_ErpPurpose>, global::AggieEnterpriseApi.State.CoaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.RequestStatusSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.StringSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.BooleanSerializer>(services);
@@ -10378,12 +10993,8 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteArraySerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpEntityCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString240"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFundCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDepartmentCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpAccountCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpPurposeCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString240"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("LocalDate"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString80"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpNameField100"));
@@ -10394,6 +11005,10 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmSegmentString"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlReferenceField10"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlDescriptionField40"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpEntityCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDepartmentCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpAccountCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpPurposeCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpProjectCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpProgramCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpActivityCode"));
@@ -10412,14 +11027,8 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalLineInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlSegmentInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.PpmSegmentInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlideInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ICoaDetailsResult>, global::AggieEnterpriseApi.State.CoaDetailsResultFactory>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ICoaDetailsResult>>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ICoaDetailsQuery>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.ICoaDetailsResult>, global::AggieEnterpriseApi.State.CoaDetailsBuilder>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.ICoaDetailsResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.ICoaDetailsResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.ICoaDetailsResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.CoaDetailsQuery>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ICoaDetailsQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.CoaDetailsQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IFundParentsResult>, global::AggieEnterpriseApi.State.FundParentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IFundParentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IFundParentsQuery>(sp));
@@ -10441,6 +11050,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IGlJournalRequestStatusResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IGlJournalRequestStatusQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ICoaDetailsResult>, global::AggieEnterpriseApi.State.CoaDetailsResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ICoaDetailsResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ICoaDetailsQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.ICoaDetailsResult>, global::AggieEnterpriseApi.State.CoaDetailsBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.ICoaDetailsResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.ICoaDetailsResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.ICoaDetailsResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.CoaDetailsQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ICoaDetailsQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.CoaDetailsQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmSegmentsValidateResult>, global::AggieEnterpriseApi.State.PpmSegmentsValidateResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmSegmentsValidateResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IPpmSegmentsValidateQuery>(sp));

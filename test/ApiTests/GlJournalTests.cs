@@ -125,7 +125,7 @@ public class GlJournalTests : TestBase
         data.GlJournalRequest.ValidationResults.ErrorMessages[0].ShouldStartWith("Credits and debits of journal lines must balance to zero.");
         data.GlJournalRequest.ValidationResults.MessageProperties.ShouldNotBeNull();
         data.GlJournalRequest.ValidationResults.MessageProperties.Count.ShouldBe(1);
-        data.GlJournalRequest.ValidationResults.MessageProperties[0].ShouldBe("journalLines.[creditAmount | debitAmount]");
+        data.GlJournalRequest.ValidationResults.MessageProperties[0].ShouldBe("[creditAmount | debitAmount]");
         // data.GlJournalRequest.ValidationResults
     }
 }
