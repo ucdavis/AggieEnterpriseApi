@@ -36,12 +36,12 @@ public class PpmSegments
     /// <summary>
     /// Optional: Award for Sponsored projects only
     /// </summary>
-    public string Award { get; set; }
+    public string? Award { get; set; }
 
     /// <summary>
     /// Optional: Award funding source for Sponsored projects only
     /// </summary>
-    public string FundingSource { get; set; }
+    public string? FundingSource { get; set; }
 
     public string ToSegmentString()
     {
