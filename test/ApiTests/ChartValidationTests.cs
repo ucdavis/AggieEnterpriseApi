@@ -27,6 +27,15 @@ public class ChartValidationTests : TestBase
         data.GlValidateChartstring.Segments.Project.ShouldBe("0000000000");
         data.GlValidateChartstring.Segments.Program.ShouldBe("000");
         data.GlValidateChartstring.Segments.Activity.ShouldBe("000000");
+
+        data.GlValidateChartstring.SegmentNames.DepartmentName.ShouldBe("ADNO Deans Office Admin");
+        data.GlValidateChartstring.SegmentNames.FundName.ShouldBe("Unrestricted Other");
+        data.GlValidateChartstring.SegmentNames.ProjectName.ShouldBe("Default Project");
+        data.GlValidateChartstring.SegmentNames.AccountName.ShouldBe("External SalesandServices Revenues");
+        data.GlValidateChartstring.SegmentNames.ActivityName.ShouldBe("Activity Default Value");
+        data.GlValidateChartstring.SegmentNames.EntityName.ShouldBe("UC Davis Campus Excluding School of Health");
+        data.GlValidateChartstring.SegmentNames.PurposeName.ShouldBe("Academic Support");
+        data.GlValidateChartstring.SegmentNames.ProgramName.ShouldBe("Default Program Value");
     }
     
     [Fact]

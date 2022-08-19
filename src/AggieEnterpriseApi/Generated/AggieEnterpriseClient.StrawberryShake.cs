@@ -2945,12 +2945,15 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput>, IGlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput
     {
-        public GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput(global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_ValidationResponse validationResponse, global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Segments segments, global::System.String? completeChartstring, global::System.Int64? codeCombinationId)
+        public GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput(global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_ValidationResponse validationResponse, global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Segments segments, global::System.String? completeChartstring, global::System.Int64? codeCombinationId, global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_SegmentNames segmentNames, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Warnings>? warnings, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_EndDates>? endDates)
         {
             ValidationResponse = validationResponse;
             Segments = segments;
             CompleteChartstring = completeChartstring;
             CodeCombinationId = codeCombinationId;
+            SegmentNames = segmentNames;
+            Warnings = warnings;
+            EndDates = endDates;
         }
 
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_ValidationResponse ValidationResponse { get; }
@@ -2960,6 +2963,12 @@ namespace AggieEnterpriseApi
         public global::System.String? CompleteChartstring { get; }
 
         public global::System.Int64? CodeCombinationId { get; }
+
+        public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_SegmentNames SegmentNames { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Warnings>? Warnings { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_EndDates>? EndDates { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput? other)
         {
@@ -2978,7 +2987,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (ValidationResponse.Equals(other.ValidationResponse)) && Segments.Equals(other.Segments) && ((CompleteChartstring is null && other.CompleteChartstring is null) || CompleteChartstring != null && CompleteChartstring.Equals(other.CompleteChartstring)) && CodeCombinationId == other.CodeCombinationId;
+            return (ValidationResponse.Equals(other.ValidationResponse)) && Segments.Equals(other.Segments) && ((CompleteChartstring is null && other.CompleteChartstring is null) || CompleteChartstring != null && CompleteChartstring.Equals(other.CompleteChartstring)) && CodeCombinationId == other.CodeCombinationId && SegmentNames.Equals(other.SegmentNames) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Warnings, other.Warnings) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(EndDates, other.EndDates);
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -3016,6 +3025,23 @@ namespace AggieEnterpriseApi
                 if (CodeCombinationId != null)
                 {
                     hash ^= 397 * CodeCombinationId.GetHashCode();
+                }
+
+                hash ^= 397 * SegmentNames.GetHashCode();
+                if (Warnings != null)
+                {
+                    foreach (var Warnings_elm in Warnings)
+                    {
+                        hash ^= 397 * Warnings_elm.GetHashCode();
+                    }
+                }
+
+                if (EndDates != null)
+                {
+                    foreach (var EndDates_elm in EndDates)
+                    {
+                        hash ^= 397 * EndDates_elm.GetHashCode();
+                    }
                 }
 
                 return hash;
@@ -3228,6 +3254,257 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames>, IGlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames
+    {
+        public GlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames(global::System.String? entityName, global::System.String? fundName, global::System.String? departmentName, global::System.String? accountName, global::System.String? purposeName, global::System.String? projectName, global::System.String? programName, global::System.String? activityName)
+        {
+            EntityName = entityName;
+            FundName = fundName;
+            DepartmentName = departmentName;
+            AccountName = accountName;
+            PurposeName = purposeName;
+            ProjectName = projectName;
+            ProgramName = programName;
+            ActivityName = activityName;
+        }
+
+        public global::System.String? EntityName { get; }
+
+        public global::System.String? FundName { get; }
+
+        public global::System.String? DepartmentName { get; }
+
+        public global::System.String? AccountName { get; }
+
+        public global::System.String? PurposeName { get; }
+
+        public global::System.String? ProjectName { get; }
+
+        public global::System.String? ProgramName { get; }
+
+        public global::System.String? ActivityName { get; }
+
+        public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((EntityName is null && other.EntityName is null) || EntityName != null && EntityName.Equals(other.EntityName))) && ((FundName is null && other.FundName is null) || FundName != null && FundName.Equals(other.FundName)) && ((DepartmentName is null && other.DepartmentName is null) || DepartmentName != null && DepartmentName.Equals(other.DepartmentName)) && ((AccountName is null && other.AccountName is null) || AccountName != null && AccountName.Equals(other.AccountName)) && ((PurposeName is null && other.PurposeName is null) || PurposeName != null && PurposeName.Equals(other.PurposeName)) && ((ProjectName is null && other.ProjectName is null) || ProjectName != null && ProjectName.Equals(other.ProjectName)) && ((ProgramName is null && other.ProgramName is null) || ProgramName != null && ProgramName.Equals(other.ProgramName)) && ((ActivityName is null && other.ActivityName is null) || ActivityName != null && ActivityName.Equals(other.ActivityName));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (EntityName != null)
+                {
+                    hash ^= 397 * EntityName.GetHashCode();
+                }
+
+                if (FundName != null)
+                {
+                    hash ^= 397 * FundName.GetHashCode();
+                }
+
+                if (DepartmentName != null)
+                {
+                    hash ^= 397 * DepartmentName.GetHashCode();
+                }
+
+                if (AccountName != null)
+                {
+                    hash ^= 397 * AccountName.GetHashCode();
+                }
+
+                if (PurposeName != null)
+                {
+                    hash ^= 397 * PurposeName.GetHashCode();
+                }
+
+                if (ProjectName != null)
+                {
+                    hash ^= 397 * ProjectName.GetHashCode();
+                }
+
+                if (ProgramName != null)
+                {
+                    hash ^= 397 * ProgramName.GetHashCode();
+                }
+
+                if (ActivityName != null)
+                {
+                    hash ^= 397 * ActivityName.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning>, IGlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning
+    {
+        public GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning(global::System.String segmentName, global::System.String warning)
+        {
+            SegmentName = segmentName;
+            Warning = warning;
+        }
+
+        public global::System.String SegmentName { get; }
+
+        public global::System.String Warning { get; }
+
+        public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (SegmentName.Equals(other.SegmentName)) && Warning.Equals(other.Warning);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * SegmentName.GetHashCode();
+                hash ^= 397 * Warning.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate>, IGlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate
+    {
+        public GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate(global::System.String segmentName, global::System.String endDate)
+        {
+            SegmentName = segmentName;
+            EndDate = endDate;
+        }
+
+        public global::System.String SegmentName { get; }
+
+        public global::System.String EndDate { get; }
+
+        public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (SegmentName.Equals(other.SegmentName)) && EndDate.Equals(other.EndDate);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * SegmentName.GetHashCode();
+                hash ^= 397 * EndDate.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstringResult
     {
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring GlValidateChartstring { get; }
@@ -3243,6 +3520,12 @@ namespace AggieEnterpriseApi
         public global::System.String? CompleteChartstring { get; }
 
         public global::System.Int64? CodeCombinationId { get; }
+
+        public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_SegmentNames SegmentNames { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Warnings>? Warnings { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_EndDates>? EndDates { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -3287,6 +3570,57 @@ namespace AggieEnterpriseApi
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_Segments_GlSegments : IGlValidateChartstring_GlValidateChartstring_Segments
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartstring_GlValidateChartstring_SegmentNames
+    {
+        public global::System.String? EntityName { get; }
+
+        public global::System.String? FundName { get; }
+
+        public global::System.String? DepartmentName { get; }
+
+        public global::System.String? AccountName { get; }
+
+        public global::System.String? PurposeName { get; }
+
+        public global::System.String? ProjectName { get; }
+
+        public global::System.String? ProgramName { get; }
+
+        public global::System.String? ActivityName { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames : IGlValidateChartstring_GlValidateChartstring_SegmentNames
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartstring_GlValidateChartstring_Warnings
+    {
+        public global::System.String SegmentName { get; }
+
+        public global::System.String Warning { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning : IGlValidateChartstring_GlValidateChartstring_Warnings
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartstring_GlValidateChartstring_EndDates
+    {
+        public global::System.String SegmentName { get; }
+
+        public global::System.String EndDate { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate : IGlValidateChartstring_GlValidateChartstring_EndDates
     {
     }
 
@@ -7095,6 +7429,27 @@ namespace AggieEnterpriseApi
     ///     }
     ///     completeChartstring
     ///     codeCombinationId
+    ///     segmentNames {
+    ///       __typename
+    ///       entityName
+    ///       fundName
+    ///       departmentName
+    ///       accountName
+    ///       purposeName
+    ///       projectName
+    ///       programName
+    ///       activityName
+    ///     }
+    ///     warnings {
+    ///       __typename
+    ///       segmentName
+    ///       warning
+    ///     }
+    ///     endDates {
+    ///       __typename
+    ///       segmentName
+    ///       endDate
+    ///     }
     ///   }
     /// }
     /// </code>
@@ -7108,8 +7463,8 @@ namespace AggieEnterpriseApi
 
         public static GlValidateChartstringQueryDocument Instance { get; } = new GlValidateChartstringQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x6c, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x68, 0x61, 0x72, 0x74, 0x73, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x47, 0x6c, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x56, 0x52, 0x73, 0x3a, 0x20, 0x42, 0x6f, 0x6f, 0x6c, 0x65, 0x61, 0x6e, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x68, 0x61, 0x72, 0x74, 0x73, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x2c, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x56, 0x52, 0x73, 0x3a, 0x20, 0x24, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x56, 0x52, 0x73, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x20, 0x64, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x20, 0x66, 0x75, 0x6e, 0x64, 0x20, 0x70, 0x72, 0x6f, 0x67, 0x72, 0x61, 0x6d, 0x20, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x20, 0x7d, 0x20, 0x63, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x68, 0x61, 0x72, 0x74, 0x73, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x43, 0x6f, 0x6d, 0x62, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "622d17205f2c006b8053f25c80302f71");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x6c, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x68, 0x61, 0x72, 0x74, 0x73, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x47, 0x6c, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x56, 0x52, 0x73, 0x3a, 0x20, 0x42, 0x6f, 0x6f, 0x6c, 0x65, 0x61, 0x6e, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x68, 0x61, 0x72, 0x74, 0x73, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x2c, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x56, 0x52, 0x73, 0x3a, 0x20, 0x24, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x43, 0x56, 0x52, 0x73, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x20, 0x64, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x20, 0x66, 0x75, 0x6e, 0x64, 0x20, 0x70, 0x72, 0x6f, 0x67, 0x72, 0x61, 0x6d, 0x20, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x20, 0x7d, 0x20, 0x63, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x68, 0x61, 0x72, 0x74, 0x73, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x43, 0x6f, 0x6d, 0x62, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x20, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x66, 0x75, 0x6e, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x64, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x67, 0x72, 0x61, 0x6d, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x7d, 0x20, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x20, 0x7d, 0x20, 0x65, 0x6e, 0x64, 0x44, 0x61, 0x74, 0x65, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x6e, 0x64, 0x44, 0x61, 0x74, 0x65, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "42dbc0ccf2b93482ef425e94de8755b4");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -7145,6 +7500,27 @@ namespace AggieEnterpriseApi
     ///     }
     ///     completeChartstring
     ///     codeCombinationId
+    ///     segmentNames {
+    ///       __typename
+    ///       entityName
+    ///       fundName
+    ///       departmentName
+    ///       accountName
+    ///       purposeName
+    ///       projectName
+    ///       programName
+    ///       activityName
+    ///     }
+    ///     warnings {
+    ///       __typename
+    ///       segmentName
+    ///       warning
+    ///     }
+    ///     endDates {
+    ///       __typename
+    ///       segmentName
+    ///       endDate
+    ///     }
     ///   }
     /// }
     /// </code>
@@ -7241,6 +7617,27 @@ namespace AggieEnterpriseApi
     ///     }
     ///     completeChartstring
     ///     codeCombinationId
+    ///     segmentNames {
+    ///       __typename
+    ///       entityName
+    ///       fundName
+    ///       departmentName
+    ///       accountName
+    ///       purposeName
+    ///       projectName
+    ///       programName
+    ///       activityName
+    ///     }
+    ///     warnings {
+    ///       __typename
+    ///       segmentName
+    ///       warning
+    ///     }
+    ///     endDates {
+    ///       __typename
+    ///       segmentName
+    ///       endDate
+    ///     }
     ///   }
     /// }
     /// </code>
@@ -8808,7 +9205,7 @@ namespace AggieEnterpriseApi.State
             IGlValidateChartstring_GlValidateChartstring returnValue = default !;
             if (data.__typename.Equals("GlValidateChartSegmentsOutput", global::System.StringComparison.Ordinal))
             {
-                returnValue = new GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput(MapNonNullableIGlValidateChartstring_GlValidateChartstring_ValidationResponse(data.ValidationResponse ?? throw new global::System.ArgumentNullException(), snapshot), MapNonNullableIGlValidateChartstring_GlValidateChartstring_Segments(data.Segments ?? throw new global::System.ArgumentNullException(), snapshot), data.CompleteChartstring, data.CodeCombinationId);
+                returnValue = new GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput(MapNonNullableIGlValidateChartstring_GlValidateChartstring_ValidationResponse(data.ValidationResponse ?? throw new global::System.ArgumentNullException(), snapshot), MapNonNullableIGlValidateChartstring_GlValidateChartstring_Segments(data.Segments ?? throw new global::System.ArgumentNullException(), snapshot), data.CompleteChartstring, data.CodeCombinationId, MapNonNullableIGlValidateChartstring_GlValidateChartstring_SegmentNames(data.SegmentNames ?? throw new global::System.ArgumentNullException(), snapshot), MapIGlValidateChartstring_GlValidateChartstring_WarningsNonNullableArray(data.Warnings, snapshot), MapIGlValidateChartstring_GlValidateChartstring_EndDatesNonNullableArray(data.EndDates, snapshot));
             }
             else
             {
@@ -8839,6 +9236,83 @@ namespace AggieEnterpriseApi.State
             if (data.__typename.Equals("GlSegments", global::System.StringComparison.Ordinal))
             {
                 returnValue = new GlValidateChartstring_GlValidateChartstring_Segments_GlSegments(data.Account, data.Activity, data.Department, data.Entity, data.Fund, data.Program, data.Project, data.Purpose);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_SegmentNames MapNonNullableIGlValidateChartstring_GlValidateChartstring_SegmentNames(global::AggieEnterpriseApi.State.GlSegmentNamesData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlValidateChartstring_GlValidateChartstring_SegmentNames returnValue = default !;
+            if (data.__typename.Equals("GlSegmentNames", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames(data.EntityName, data.FundName, data.DepartmentName, data.AccountName, data.PurposeName, data.ProjectName, data.ProgramName, data.ActivityName);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Warnings>? MapIGlValidateChartstring_GlValidateChartstring_WarningsNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentWarningData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                return null;
+            }
+
+            var segmentWarnings = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Warnings>();
+            foreach (global::AggieEnterpriseApi.State.SegmentWarningData child in list)
+            {
+                segmentWarnings.Add(MapNonNullableIGlValidateChartstring_GlValidateChartstring_Warnings(child, snapshot));
+            }
+
+            return segmentWarnings;
+        }
+
+        private global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Warnings MapNonNullableIGlValidateChartstring_GlValidateChartstring_Warnings(global::AggieEnterpriseApi.State.SegmentWarningData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlValidateChartstring_GlValidateChartstring_Warnings returnValue = default !;
+            if (data.__typename.Equals("SegmentWarning", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning(data.SegmentName ?? throw new global::System.ArgumentNullException(), data.Warning ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_EndDates>? MapIGlValidateChartstring_GlValidateChartstring_EndDatesNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentEndDateData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                return null;
+            }
+
+            var segmentEndDates = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_EndDates>();
+            foreach (global::AggieEnterpriseApi.State.SegmentEndDateData child in list)
+            {
+                segmentEndDates.Add(MapNonNullableIGlValidateChartstring_GlValidateChartstring_EndDates(child, snapshot));
+            }
+
+            return segmentEndDates;
+        }
+
+        private global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_EndDates MapNonNullableIGlValidateChartstring_GlValidateChartstring_EndDates(global::AggieEnterpriseApi.State.SegmentEndDateData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlValidateChartstring_GlValidateChartstring_EndDates returnValue = default !;
+            if (data.__typename.Equals("SegmentEndDate", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate(data.SegmentName ?? throw new global::System.ArgumentNullException(), data.EndDate ?? throw new global::System.ArgumentNullException());
             }
             else
             {
@@ -10450,6 +10924,7 @@ namespace AggieEnterpriseApi.State
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProgramCodeParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProjectCodeParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPurposeCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _localDateParser;
         public GlValidateChartstringBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartstringResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
@@ -10467,6 +10942,7 @@ namespace AggieEnterpriseApi.State
             _erpProgramCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProgramCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProgramCode` found.");
             _erpProjectCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProjectCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProjectCode` found.");
             _erpPurposeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPurposeCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPurposeCode` found.");
+            _localDateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("LocalDate") ?? throw new global::System.ArgumentException("No serializer for type `LocalDate` found.");
         }
 
         public global::StrawberryShake.IOperationResult<IGlValidateChartstringResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
@@ -10532,7 +11008,7 @@ namespace AggieEnterpriseApi.State
             var typename = obj.Value.GetProperty("__typename").GetString();
             if (typename?.Equals("GlValidateChartSegmentsOutput", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::AggieEnterpriseApi.State.GlValidateChartSegmentsOutputData(typename, validationResponse: DeserializeNonNullableIGlValidateChartstring_GlValidateChartstring_ValidationResponse(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResponse")), segments: DeserializeNonNullableIGlValidateChartstring_GlValidateChartstring_Segments(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "segments")), completeChartstring: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "completeChartstring")), codeCombinationId: DeserializeInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "codeCombinationId")));
+                return new global::AggieEnterpriseApi.State.GlValidateChartSegmentsOutputData(typename, validationResponse: DeserializeNonNullableIGlValidateChartstring_GlValidateChartstring_ValidationResponse(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResponse")), segments: DeserializeNonNullableIGlValidateChartstring_GlValidateChartstring_Segments(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "segments")), completeChartstring: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "completeChartstring")), codeCombinationId: DeserializeInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "codeCombinationId")), segmentNames: DeserializeNonNullableIGlValidateChartstring_GlValidateChartstring_SegmentNames(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "segmentNames")), warnings: DeserializeIGlValidateChartstring_GlValidateChartstring_WarningsNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "warnings")), endDates: DeserializeIGlValidateChartstring_GlValidateChartstring_EndDatesNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "endDates")));
             }
 
             throw new global::System.NotSupportedException();
@@ -10624,6 +11100,86 @@ namespace AggieEnterpriseApi.State
             }
 
             return _longParser.Parse(obj.Value.GetInt64()!);
+        }
+
+        private global::AggieEnterpriseApi.State.GlSegmentNamesData DeserializeNonNullableIGlValidateChartstring_GlValidateChartstring_SegmentNames(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("GlSegmentNames", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.GlSegmentNamesData(typename, entityName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "entityName")), fundName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fundName")), departmentName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "departmentName")), accountName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "accountName")), purposeName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "purposeName")), projectName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "projectName")), programName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "programName")), activityName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "activityName")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentWarningData>? DeserializeIGlValidateChartstring_GlValidateChartstring_WarningsNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var segmentWarnings = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.SegmentWarningData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                segmentWarnings.Add(DeserializeNonNullableIGlValidateChartstring_GlValidateChartstring_Warnings(child));
+            }
+
+            return segmentWarnings;
+        }
+
+        private global::AggieEnterpriseApi.State.SegmentWarningData DeserializeNonNullableIGlValidateChartstring_GlValidateChartstring_Warnings(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("SegmentWarning", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.SegmentWarningData(typename, segmentName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "segmentName")), warning: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "warning")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentEndDateData>? DeserializeIGlValidateChartstring_GlValidateChartstring_EndDatesNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var segmentEndDates = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.SegmentEndDateData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                segmentEndDates.Add(DeserializeNonNullableIGlValidateChartstring_GlValidateChartstring_EndDates(child));
+            }
+
+            return segmentEndDates;
+        }
+
+        private global::AggieEnterpriseApi.State.SegmentEndDateData DeserializeNonNullableIGlValidateChartstring_GlValidateChartstring_EndDates(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("SegmentEndDate", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.SegmentEndDateData(typename, segmentName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "segmentName")), endDate: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "endDate")));
+            }
+
+            throw new global::System.NotSupportedException();
         }
     }
 
@@ -10748,13 +11304,16 @@ namespace AggieEnterpriseApi.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsOutputData
     {
-        public GlValidateChartSegmentsOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ValidationResponseData? validationResponse = default !, global::AggieEnterpriseApi.State.GlSegmentsData? segments = default !, global::System.String? completeChartstring = default !, global::System.Int64? codeCombinationId = default !)
+        public GlValidateChartSegmentsOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ValidationResponseData? validationResponse = default !, global::AggieEnterpriseApi.State.GlSegmentsData? segments = default !, global::System.String? completeChartstring = default !, global::System.Int64? codeCombinationId = default !, global::AggieEnterpriseApi.State.GlSegmentNamesData? segmentNames = default !, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentWarningData>? warnings = default !, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentEndDateData>? endDates = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             ValidationResponse = validationResponse;
             Segments = segments;
             CompleteChartstring = completeChartstring;
             CodeCombinationId = codeCombinationId;
+            SegmentNames = segmentNames;
+            Warnings = warnings;
+            EndDates = endDates;
         }
 
         public global::System.String __typename { get; }
@@ -10766,6 +11325,12 @@ namespace AggieEnterpriseApi.State
         public global::System.String? CompleteChartstring { get; }
 
         public global::System.Int64? CodeCombinationId { get; }
+
+        public global::AggieEnterpriseApi.State.GlSegmentNamesData? SegmentNames { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentWarningData>? Warnings { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentEndDateData>? EndDates { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -10801,6 +11366,75 @@ namespace AggieEnterpriseApi.State
         public global::System.String? Project { get; }
 
         public global::System.String? Purpose { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlSegmentNamesData
+    {
+        public GlSegmentNamesData(global::System.String __typename, global::System.String? entityName = default !, global::System.String? fundName = default !, global::System.String? departmentName = default !, global::System.String? accountName = default !, global::System.String? purposeName = default !, global::System.String? projectName = default !, global::System.String? programName = default !, global::System.String? activityName = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            EntityName = entityName;
+            FundName = fundName;
+            DepartmentName = departmentName;
+            AccountName = accountName;
+            PurposeName = purposeName;
+            ProjectName = projectName;
+            ProgramName = programName;
+            ActivityName = activityName;
+        }
+
+        public global::System.String __typename { get; }
+
+        public global::System.String? EntityName { get; }
+
+        public global::System.String? FundName { get; }
+
+        public global::System.String? DepartmentName { get; }
+
+        public global::System.String? AccountName { get; }
+
+        public global::System.String? PurposeName { get; }
+
+        public global::System.String? ProjectName { get; }
+
+        public global::System.String? ProgramName { get; }
+
+        public global::System.String? ActivityName { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class SegmentWarningData
+    {
+        public SegmentWarningData(global::System.String __typename, global::System.String? segmentName = default !, global::System.String? warning = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            SegmentName = segmentName;
+            Warning = warning;
+        }
+
+        public global::System.String __typename { get; }
+
+        public global::System.String? SegmentName { get; }
+
+        public global::System.String? Warning { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class SegmentEndDateData
+    {
+        public SegmentEndDateData(global::System.String __typename, global::System.String? segmentName = default !, global::System.String? endDate = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            SegmentName = segmentName;
+            EndDate = endDate;
+        }
+
+        public global::System.String __typename { get; }
+
+        public global::System.String? SegmentName { get; }
+
+        public global::System.String? EndDate { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
