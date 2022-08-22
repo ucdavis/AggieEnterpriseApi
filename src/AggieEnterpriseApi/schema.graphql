@@ -2829,14 +2829,11 @@ type PpmKeywordsSearchResults {
 # * Computer Science
 # * Plant Sciences
 type PpmOrganization {
-  # Organization ID: Unique identifier of the Organization.  Internal to Oracle.
-  id: Long!
+  # Organization Code: The code of the Organization.
+  code: String!
 
   # Organization Name: Name of the Organization
   name: NonEmptyTrimmedString100!
-
-  # Organization Code: The code of the Organization.
-  code: String!
 
   # Effective Start Date: Start date of Organization
   effectiveStartDate: LocalDate!
@@ -2844,25 +2841,26 @@ type PpmOrganization {
   # Effective End Date: End date of Organization
   effectiveEndDate: LocalDate
 
-  # The date when the organization was last updated.
-  lastUpdateDateTime: DateTime!
+  # Whether the expense organization allows costing transactions against it.
+  enabled: Boolean!
 
-  # The user that last updated the organization.
-  lastUpdatedBy: ErpUserId
+  # Organization ID: Unique identifier of the Organization.  Internal to Oracle.
+  id: Long!
 
   # Returns whether this PpmOrganization is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
   #
   # To be eligible for use, the PpmOrganization must:
   # * Have a effectiveStartDate and effectiveEndDate range which includes the given accountingDate
+  # * Be enabled
   eligibleForUse(accountingDate: LocalDate): Boolean!
 }
 
 # Data object used to run searches on PpmOrganization
 input PpmOrganizationFilterInput {
   searchCommon: SearchCommonInputs
-  id: StringFilterInput
+  code: StringFilterInput
   name: StringFilterInput
-  lastUpdateDateTime: DateFilterInput
+  enabled: BooleanFilterInput
 }
 
 # Wrapper object for search results for PpmOrganization
@@ -3165,6 +3163,9 @@ type PpmSegmentsValidateOutput {
 
   # Fully populated object with the PPM segments combination that was validated.
   segments: PpmSegments!
+
+  # PPM segment string matching the segments object.  Only populated if the validation passes.
+  segmentString: PpmSegmentString
 }
 
 # Nature of the payment for this one.  In general, all lines should be ITEM.
@@ -3279,9 +3280,6 @@ input ScmInvoicePaymentInput {
 type ScmInvoicePaymentRequestStatusOutput {
   # Status of the action request overall.
   requestStatus: ActionRequestStatus!
-
-  # The name of payment batch or quick payment identifier.
-  paymentProcessRequest: String
 
   # Validation errors of payload data
   validationResults: ValidationResponse
@@ -3413,14 +3411,8 @@ type ScmPurchaseRequisitionRequestStatusOutput {
   # Status of the action request overall.
   requestStatus: ActionRequestStatus!
 
-  # The name of payment batch or quick payment identifier.
-  paymentProcessRequest: String
-
   # Validation errors of payload data
   validationResults: ValidationResponse
-
-  # ERP-assigned requisition header ID for transactions posted to the requisition.  Only populated on subsequent status requests if the requisition was successfully processed.
-  requisitionHeaderId: Long
 }
 
 # The SCM purchasing category represent the type of item being paid for on an invoice payment.
@@ -3936,20 +3928,11 @@ type Query {
   # See the PpmKeywordsFilterInput type for options.
   ppmKeywordsSearch(filter: PpmKeywordsFilterInput!): PpmKeywordsSearchResults!
 
-  # Get a single PpmOrganization by id.  Returns undefined if does not exist
-  ppmOrganization(id: String!): PpmOrganization
-
-  # Gets PpmOrganizations by exact name.  Returns empty list if none are found
-  ppmOrganizationByName(name: String!): PpmOrganization
-
   # Get a single PpmOrganization by code.  Returns undefined if does not exist
-  ppmOrganizationByCode(code: String!): PpmOrganization
+  ppmOrganization(code: String!): PpmOrganization
 
-  # Gets PpmOrganizations by the associated GL Financial Department.  Returns undefined if none is found.
-  #
-  # PPM Expense Organization names will be the GL Financial Department number plus a description.  This full string must be used in file-based feeds.
-  # This method will allow you to obtain the exact string (in the name property) that needs to be included.
-  ppmOrganizationByDepartment(department: ErpDepartmentCode!): PpmOrganization
+  # Gets PpmOrganizations by exact name.  Returns undefined if does not exist
+  ppmOrganizationByName(name: String!): PpmOrganization
 
   # Search for PpmOrganization objects by multiple properties.
   # See
@@ -4022,10 +4005,7 @@ type Query {
   # If no date is passed, today's date will be assumed.
   #
   # This operation will return a fully populated set of segments.
-  ppmSegmentsValidate(
-    segments: PpmSegmentInput!
-    accountingDate: LocalDate
-  ): PpmSegmentsValidateOutput!
+  ppmSegmentsValidate(segments: PpmSegmentInput!): PpmSegmentsValidateOutput!
 
   # Validates that the given PPM chartstring is most likely valid for posting
   # to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
@@ -4038,7 +4018,6 @@ type Query {
   # This operation will return the validation result and the segments as parsed out into their component fields.
   ppmStringSegmentsValidate(
     segmentString: PpmSegmentString!
-    accountingDate: LocalDate
   ): PpmSegmentsValidateOutput!
 
   # Get the status of a previously submitted payable payment request by the API-assigned request ID.

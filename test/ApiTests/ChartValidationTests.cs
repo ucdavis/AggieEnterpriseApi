@@ -124,11 +124,12 @@ public class ChartValidationTests : TestBase
             FundingSource = "12345"
         };
 
-        var result = await client.PpmSegmentsValidate.ExecuteAsync(ppmSegments, accountingDate: null);
+        var result = await client.PpmSegmentsValidate.ExecuteAsync(ppmSegments);
         
         var data = result.ReadData();
         
         data.PpmSegmentsValidate.ValidationResponse.Valid.ShouldBeFalse("Response should be invalid");
+        data.PpmSegmentsValidate.SegmentString.ShouldBeNull();
     }
 
     [Fact]
@@ -144,11 +145,14 @@ public class ChartValidationTests : TestBase
             ExpenditureType = "770000",
         };
 
-        var result = await client.PpmSegmentsValidate.ExecuteAsync(ppmSegments, accountingDate: null);
+        var result = await client.PpmSegmentsValidate.ExecuteAsync(ppmSegments);
 
         var data = result.ReadData();
 
         data.PpmSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+        data.PpmSegmentsValidate.SegmentString.ShouldNotBeNull();
+        data.PpmSegmentsValidate.SegmentString.ShouldStartWith("K30APSD227-TASK01-APLS002-770000");
+        //data.PpmSegmentsValidate.SegmentString.ShouldBe("K30APSD227-TASK01-APLS002-770000-K381C99-27666"); //Do we care about the extra values returned?
     }
 
     [Fact]
@@ -166,11 +170,12 @@ public class ChartValidationTests : TestBase
             FundingSource = "27666"
         };
 
-        var result = await client.PpmSegmentsValidate.ExecuteAsync(ppmSegments, accountingDate: null);
+        var result = await client.PpmSegmentsValidate.ExecuteAsync(ppmSegments);
 
         var data = result.ReadData();
 
         data.PpmSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+        data.PpmSegmentsValidate.SegmentString.ShouldBe("K30APSD227-TASK01-APLS002-770000-K381C99-27666");
     }
 
     [Fact]
@@ -178,11 +183,14 @@ public class ChartValidationTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000", accountingDate: null);
+        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000");
 
         var data = result.ReadData();
 
         data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+        data.PpmStringSegmentsValidate.SegmentString.ShouldNotBeNull();
+        data.PpmStringSegmentsValidate.SegmentString.ShouldStartWith("K30APSD227-TASK01-APLS002-770000");
+        //data.PpmSegmentsValidate.SegmentString.ShouldBe("K30APSD227-TASK01-APLS002-770000-K381C99-27666"); //Do we care about the extra values returned?
     }
 
     [Fact]
@@ -190,7 +198,7 @@ public class ChartValidationTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-K381C99-27666", accountingDate: null);
+        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-K381C99-27666");
 
         var data = result.ReadData();
 
@@ -202,7 +210,7 @@ public class ChartValidationTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK99-APLS002-770000", accountingDate: null);
+        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK99-APLS002-770000");
 
         var data = result.ReadData();
 
@@ -210,14 +218,14 @@ public class ChartValidationTests : TestBase
     }
 
     [Fact]
-    public async Task InValidPPmStringLong()
+    public async Task IPPmStringLongWithDefaultValues()
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-0000000-00000", accountingDate: null);
+        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-0000000-00000");
 
         var data = result.ReadData();
 
-        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeFalse("Response should be Invalid");
+        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue();
     }
 }
