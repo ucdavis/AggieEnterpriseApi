@@ -1,5 +1,5 @@
-query ppmSegmentsValidate($segments: PpmSegmentInput!, $accountingDate: LocalDate) {
-  ppmSegmentsValidate(segments: $segments, accountingDate: $accountingDate) {
+query ppmSegmentsValidate($segments: PpmSegmentInput!) {
+  ppmSegmentsValidate(segments: $segments) {
     validationResponse {
         errorMessages
         messageProperties

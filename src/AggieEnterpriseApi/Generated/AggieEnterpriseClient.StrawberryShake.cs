@@ -7653,8 +7653,8 @@ namespace AggieEnterpriseApi
     /// <summary>
     /// Represents the operation service of the PpmStringSegmentsValidate GraphQL operation
     /// <code>
-    /// query PpmStringSegmentsValidate($segmentString: PpmSegmentString!, $accountingDate: LocalDate) {
-    ///   ppmStringSegmentsValidate(segmentString: $segmentString, accountingDate: $accountingDate) {
+    /// query PpmStringSegmentsValidate($segmentString: PpmSegmentString!) {
+    ///   ppmStringSegmentsValidate(segmentString: $segmentString) {
     ///     __typename
     ///     validationResponse {
     ///       __typename
@@ -7675,8 +7675,8 @@ namespace AggieEnterpriseApi
 
         public static PpmStringSegmentsValidateQueryDocument Instance { get; } = new PpmStringSegmentsValidateQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x44, 0x61, 0x74, 0x65, 0x3a, 0x20, 0x4c, 0x6f, 0x63, 0x61, 0x6c, 0x44, 0x61, 0x74, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x70, 0x70, 0x6d, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x2c, 0x20, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x44, 0x61, 0x74, 0x65, 0x3a, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x44, 0x61, 0x74, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "a70e795341577c477f7ab43bc7336c32");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x70, 0x70, 0x6d, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "d926c2ba817e08f0fe017e9bfb819cac");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -7690,8 +7690,8 @@ namespace AggieEnterpriseApi
     /// <summary>
     /// Represents the operation service of the PpmStringSegmentsValidate GraphQL operation
     /// <code>
-    /// query PpmStringSegmentsValidate($segmentString: PpmSegmentString!, $accountingDate: LocalDate) {
-    ///   ppmStringSegmentsValidate(segmentString: $segmentString, accountingDate: $accountingDate) {
+    /// query PpmStringSegmentsValidate($segmentString: PpmSegmentString!) {
+    ///   ppmStringSegmentsValidate(segmentString: $segmentString) {
     ///     __typename
     ///     validationResponse {
     ///       __typename
@@ -7708,32 +7708,29 @@ namespace AggieEnterpriseApi
     {
         private readonly global::StrawberryShake.IOperationExecutor<IPpmStringSegmentsValidateResult> _operationExecutor;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _ppmSegmentStringFormatter;
-        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _localDateFormatter;
         public PpmStringSegmentsValidateQuery(global::StrawberryShake.IOperationExecutor<IPpmStringSegmentsValidateResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
             _ppmSegmentStringFormatter = serializerResolver.GetInputValueFormatter("PpmSegmentString");
-            _localDateFormatter = serializerResolver.GetInputValueFormatter("LocalDate");
         }
 
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IPpmStringSegmentsValidateResult);
-        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmStringSegmentsValidateResult>> ExecuteAsync(global::System.String segmentString, global::System.String? accountingDate, global::System.Threading.CancellationToken cancellationToken = default)
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmStringSegmentsValidateResult>> ExecuteAsync(global::System.String segmentString, global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var request = CreateRequest(segmentString, accountingDate);
+            var request = CreateRequest(segmentString);
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmStringSegmentsValidateResult>> Watch(global::System.String segmentString, global::System.String? accountingDate, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmStringSegmentsValidateResult>> Watch(global::System.String segmentString, global::StrawberryShake.ExecutionStrategy? strategy = null)
         {
-            var request = CreateRequest(segmentString, accountingDate);
+            var request = CreateRequest(segmentString);
             return _operationExecutor.Watch(request, strategy);
         }
 
-        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String segmentString, global::System.String? accountingDate)
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String segmentString)
         {
             var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
             variables.Add("segmentString", FormatSegmentString(segmentString));
-            variables.Add("accountingDate", FormatAccountingDate(accountingDate));
             return CreateRequest(variables);
         }
 
@@ -7752,18 +7749,6 @@ namespace AggieEnterpriseApi
             return _ppmSegmentStringFormatter.Format(value);
         }
 
-        private global::System.Object? FormatAccountingDate(global::System.String? value)
-        {
-            if (value is null)
-            {
-                return value;
-            }
-            else
-            {
-                return _localDateFormatter.Format(value);
-            }
-        }
-
         global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
         {
             return CreateRequest(variables!);
@@ -7773,8 +7758,8 @@ namespace AggieEnterpriseApi
     /// <summary>
     /// Represents the operation service of the PpmStringSegmentsValidate GraphQL operation
     /// <code>
-    /// query PpmStringSegmentsValidate($segmentString: PpmSegmentString!, $accountingDate: LocalDate) {
-    ///   ppmStringSegmentsValidate(segmentString: $segmentString, accountingDate: $accountingDate) {
+    /// query PpmStringSegmentsValidate($segmentString: PpmSegmentString!) {
+    ///   ppmStringSegmentsValidate(segmentString: $segmentString) {
     ///     __typename
     ///     validationResponse {
     ///       __typename
@@ -7789,15 +7774,15 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmStringSegmentsValidateQuery : global::StrawberryShake.IOperationRequestFactory
     {
-        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmStringSegmentsValidateResult>> ExecuteAsync(global::System.String segmentString, global::System.String? accountingDate, global::System.Threading.CancellationToken cancellationToken = default);
-        global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmStringSegmentsValidateResult>> Watch(global::System.String segmentString, global::System.String? accountingDate, global::StrawberryShake.ExecutionStrategy? strategy = null);
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmStringSegmentsValidateResult>> ExecuteAsync(global::System.String segmentString, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmStringSegmentsValidateResult>> Watch(global::System.String segmentString, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
     /// Represents the operation service of the PpmSegmentsValidate GraphQL operation
     /// <code>
-    /// query PpmSegmentsValidate($segments: PpmSegmentInput!, $accountingDate: LocalDate) {
-    ///   ppmSegmentsValidate(segments: $segments, accountingDate: $accountingDate) {
+    /// query PpmSegmentsValidate($segments: PpmSegmentInput!) {
+    ///   ppmSegmentsValidate(segments: $segments) {
     ///     __typename
     ///     validationResponse {
     ///       __typename
@@ -7818,8 +7803,8 @@ namespace AggieEnterpriseApi
 
         public static PpmSegmentsValidateQueryDocument Instance { get; } = new PpmSegmentsValidateQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x2c, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x44, 0x61, 0x74, 0x65, 0x3a, 0x20, 0x4c, 0x6f, 0x63, 0x61, 0x6c, 0x44, 0x61, 0x74, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x70, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x2c, 0x20, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x44, 0x61, 0x74, 0x65, 0x3a, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x44, 0x61, 0x74, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "386626ca4bae336773dda2da79887ecd");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x70, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "50181e0faffb839da896fc6eea4e0a8e");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -7833,8 +7818,8 @@ namespace AggieEnterpriseApi
     /// <summary>
     /// Represents the operation service of the PpmSegmentsValidate GraphQL operation
     /// <code>
-    /// query PpmSegmentsValidate($segments: PpmSegmentInput!, $accountingDate: LocalDate) {
-    ///   ppmSegmentsValidate(segments: $segments, accountingDate: $accountingDate) {
+    /// query PpmSegmentsValidate($segments: PpmSegmentInput!) {
+    ///   ppmSegmentsValidate(segments: $segments) {
     ///     __typename
     ///     validationResponse {
     ///       __typename
@@ -7851,32 +7836,29 @@ namespace AggieEnterpriseApi
     {
         private readonly global::StrawberryShake.IOperationExecutor<IPpmSegmentsValidateResult> _operationExecutor;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _ppmSegmentInputFormatter;
-        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _localDateFormatter;
         public PpmSegmentsValidateQuery(global::StrawberryShake.IOperationExecutor<IPpmSegmentsValidateResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
             _ppmSegmentInputFormatter = serializerResolver.GetInputValueFormatter("PpmSegmentInput");
-            _localDateFormatter = serializerResolver.GetInputValueFormatter("LocalDate");
         }
 
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IPpmSegmentsValidateResult);
-        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> ExecuteAsync(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.String? accountingDate, global::System.Threading.CancellationToken cancellationToken = default)
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> ExecuteAsync(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var request = CreateRequest(segments, accountingDate);
+            var request = CreateRequest(segments);
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> Watch(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.String? accountingDate, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> Watch(global::AggieEnterpriseApi.PpmSegmentInput segments, global::StrawberryShake.ExecutionStrategy? strategy = null)
         {
-            var request = CreateRequest(segments, accountingDate);
+            var request = CreateRequest(segments);
             return _operationExecutor.Watch(request, strategy);
         }
 
-        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.String? accountingDate)
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.PpmSegmentInput segments)
         {
             var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
             variables.Add("segments", FormatSegments(segments));
-            variables.Add("accountingDate", FormatAccountingDate(accountingDate));
             return CreateRequest(variables);
         }
 
@@ -7895,18 +7877,6 @@ namespace AggieEnterpriseApi
             return _ppmSegmentInputFormatter.Format(value);
         }
 
-        private global::System.Object? FormatAccountingDate(global::System.String? value)
-        {
-            if (value is null)
-            {
-                return value;
-            }
-            else
-            {
-                return _localDateFormatter.Format(value);
-            }
-        }
-
         global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
         {
             return CreateRequest(variables!);
@@ -7916,8 +7886,8 @@ namespace AggieEnterpriseApi
     /// <summary>
     /// Represents the operation service of the PpmSegmentsValidate GraphQL operation
     /// <code>
-    /// query PpmSegmentsValidate($segments: PpmSegmentInput!, $accountingDate: LocalDate) {
-    ///   ppmSegmentsValidate(segments: $segments, accountingDate: $accountingDate) {
+    /// query PpmSegmentsValidate($segments: PpmSegmentInput!) {
+    ///   ppmSegmentsValidate(segments: $segments) {
     ///     __typename
     ///     validationResponse {
     ///       __typename
@@ -7932,8 +7902,8 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmSegmentsValidateQuery : global::StrawberryShake.IOperationRequestFactory
     {
-        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> ExecuteAsync(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.String? accountingDate, global::System.Threading.CancellationToken cancellationToken = default);
-        global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> Watch(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.String? accountingDate, global::StrawberryShake.ExecutionStrategy? strategy = null);
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> ExecuteAsync(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> Watch(global::AggieEnterpriseApi.PpmSegmentInput segments, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -11503,7 +11473,6 @@ namespace AggieEnterpriseApi.State
         private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
         private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmStringSegmentsValidateResult> _resultDataFactory;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmSegmentStringParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _localDateParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
         public PpmStringSegmentsValidateBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmStringSegmentsValidateResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
@@ -11512,7 +11481,6 @@ namespace AggieEnterpriseApi.State
             _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
             _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
             _ppmSegmentStringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmSegmentString") ?? throw new global::System.ArgumentException("No serializer for type `PpmSegmentString` found.");
-            _localDateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("LocalDate") ?? throw new global::System.ArgumentException("No serializer for type `LocalDate` found.");
             _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
             _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
         }
@@ -11651,7 +11619,6 @@ namespace AggieEnterpriseApi.State
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseTypeCodeParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmAwardNumberParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmFundingSourceNumberParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _localDateParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
         public PpmSegmentsValidateBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmSegmentsValidateResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
@@ -11665,7 +11632,6 @@ namespace AggieEnterpriseApi.State
             _ppmExpenseTypeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseTypeCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseTypeCode` found.");
             _ppmAwardNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmAwardNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmAwardNumber` found.");
             _ppmFundingSourceNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmFundingSourceNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmFundingSourceNumber` found.");
-            _localDateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("LocalDate") ?? throw new global::System.ArgumentException("No serializer for type `LocalDate` found.");
             _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
             _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
         }
