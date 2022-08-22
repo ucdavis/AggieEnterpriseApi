@@ -129,6 +129,7 @@ public class ChartValidationTests : TestBase
         var data = result.ReadData();
         
         data.PpmSegmentsValidate.ValidationResponse.Valid.ShouldBeFalse("Response should be invalid");
+        data.PpmSegmentsValidate.SegmentString.ShouldBeNull();
     }
 
     [Fact]
@@ -149,6 +150,9 @@ public class ChartValidationTests : TestBase
         var data = result.ReadData();
 
         data.PpmSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+        data.PpmSegmentsValidate.SegmentString.ShouldNotBeNull();
+        data.PpmSegmentsValidate.SegmentString.ShouldStartWith("K30APSD227-TASK01-APLS002-770000");
+        //data.PpmSegmentsValidate.SegmentString.ShouldBe("K30APSD227-TASK01-APLS002-770000-K381C99-27666"); //Do we care about the extra values returned?
     }
 
     [Fact]
@@ -171,6 +175,7 @@ public class ChartValidationTests : TestBase
         var data = result.ReadData();
 
         data.PpmSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+        data.PpmSegmentsValidate.SegmentString.ShouldBe("K30APSD227-TASK01-APLS002-770000-K381C99-27666");
     }
 
     [Fact]
@@ -183,6 +188,9 @@ public class ChartValidationTests : TestBase
         var data = result.ReadData();
 
         data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+        data.PpmStringSegmentsValidate.SegmentString.ShouldNotBeNull();
+        data.PpmStringSegmentsValidate.SegmentString.ShouldStartWith("K30APSD227-TASK01-APLS002-770000");
+        //data.PpmSegmentsValidate.SegmentString.ShouldBe("K30APSD227-TASK01-APLS002-770000-K381C99-27666"); //Do we care about the extra values returned?
     }
 
     [Fact]

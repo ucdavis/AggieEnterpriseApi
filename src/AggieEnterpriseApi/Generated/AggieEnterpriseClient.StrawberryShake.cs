@@ -2299,12 +2299,15 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput : global::System.IEquatable<PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput>, IPpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput
     {
-        public PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput(global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse validationResponse)
+        public PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput(global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse validationResponse, global::System.String? segmentString)
         {
             ValidationResponse = validationResponse;
+            SegmentString = segmentString;
         }
 
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse ValidationResponse { get; }
+
+        public global::System.String? SegmentString { get; }
 
         public virtual global::System.Boolean Equals(PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput? other)
         {
@@ -2323,7 +2326,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (ValidationResponse.Equals(other.ValidationResponse));
+            return (ValidationResponse.Equals(other.ValidationResponse)) && ((SegmentString is null && other.SegmentString is null) || SegmentString != null && SegmentString.Equals(other.SegmentString));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -2352,6 +2355,11 @@ namespace AggieEnterpriseApi
             {
                 int hash = 5;
                 hash ^= 397 * ValidationResponse.GetHashCode();
+                if (SegmentString != null)
+                {
+                    hash ^= 397 * SegmentString.GetHashCode();
+                }
+
                 return hash;
             }
         }
@@ -2450,6 +2458,8 @@ namespace AggieEnterpriseApi
     public partial interface IPpmStringSegmentsValidate_PpmStringSegmentsValidate
     {
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse ValidationResponse { get; }
+
+        public global::System.String? SegmentString { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -2536,12 +2546,15 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput : global::System.IEquatable<PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput>, IPpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput
     {
-        public PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput(global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse validationResponse)
+        public PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput(global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse validationResponse, global::System.String? segmentString)
         {
             ValidationResponse = validationResponse;
+            SegmentString = segmentString;
         }
 
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse ValidationResponse { get; }
+
+        public global::System.String? SegmentString { get; }
 
         public virtual global::System.Boolean Equals(PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput? other)
         {
@@ -2560,7 +2573,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (ValidationResponse.Equals(other.ValidationResponse));
+            return (ValidationResponse.Equals(other.ValidationResponse)) && ((SegmentString is null && other.SegmentString is null) || SegmentString != null && SegmentString.Equals(other.SegmentString));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -2589,6 +2602,11 @@ namespace AggieEnterpriseApi
             {
                 int hash = 5;
                 hash ^= 397 * ValidationResponse.GetHashCode();
+                if (SegmentString != null)
+                {
+                    hash ^= 397 * SegmentString.GetHashCode();
+                }
+
                 return hash;
             }
         }
@@ -2687,6 +2705,8 @@ namespace AggieEnterpriseApi
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate
     {
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse ValidationResponse { get; }
+
+        public global::System.String? SegmentString { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -7662,6 +7682,7 @@ namespace AggieEnterpriseApi
     ///       errorMessages
     ///       messageProperties
     ///     }
+    ///     segmentString
     ///   }
     /// }
     /// </code>
@@ -7675,8 +7696,8 @@ namespace AggieEnterpriseApi
 
         public static PpmStringSegmentsValidateQueryDocument Instance { get; } = new PpmStringSegmentsValidateQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x70, 0x70, 0x6d, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "d926c2ba817e08f0fe017e9bfb819cac");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x70, 0x70, 0x6d, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "3489db9235f7c8cb89eac3cac1eaf42f");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -7699,6 +7720,7 @@ namespace AggieEnterpriseApi
     ///       errorMessages
     ///       messageProperties
     ///     }
+    ///     segmentString
     ///   }
     /// }
     /// </code>
@@ -7767,6 +7789,7 @@ namespace AggieEnterpriseApi
     ///       errorMessages
     ///       messageProperties
     ///     }
+    ///     segmentString
     ///   }
     /// }
     /// </code>
@@ -7790,6 +7813,7 @@ namespace AggieEnterpriseApi
     ///       messageProperties
     ///       valid
     ///     }
+    ///     segmentString
     ///   }
     /// }
     /// </code>
@@ -7803,8 +7827,8 @@ namespace AggieEnterpriseApi
 
         public static PpmSegmentsValidateQueryDocument Instance { get; } = new PpmSegmentsValidateQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x70, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "50181e0faffb839da896fc6eea4e0a8e");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x50, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x70, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x28, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x20, 0x24, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x73, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "fe9fe1ba86f6eaa1e5afdc79fb13ddd9");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -7827,6 +7851,7 @@ namespace AggieEnterpriseApi
     ///       messageProperties
     ///       valid
     ///     }
+    ///     segmentString
     ///   }
     /// }
     /// </code>
@@ -7895,6 +7920,7 @@ namespace AggieEnterpriseApi
     ///       messageProperties
     ///       valid
     ///     }
+    ///     segmentString
     ///   }
     /// }
     /// </code>
@@ -9776,7 +9802,7 @@ namespace AggieEnterpriseApi.State
             IPpmStringSegmentsValidate_PpmStringSegmentsValidate returnValue = default !;
             if (data.__typename.Equals("PpmSegmentsValidateOutput", global::System.StringComparison.Ordinal))
             {
-                returnValue = new PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput(MapNonNullableIPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse(data.ValidationResponse ?? throw new global::System.ArgumentNullException(), snapshot));
+                returnValue = new PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput(MapNonNullableIPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse(data.ValidationResponse ?? throw new global::System.ArgumentNullException(), snapshot), data.SegmentString);
             }
             else
             {
@@ -9859,7 +9885,7 @@ namespace AggieEnterpriseApi.State
             IPpmSegmentsValidate_PpmSegmentsValidate returnValue = default !;
             if (data.__typename.Equals("PpmSegmentsValidateOutput", global::System.StringComparison.Ordinal))
             {
-                returnValue = new PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput(MapNonNullableIPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse(data.ValidationResponse ?? throw new global::System.ArgumentNullException(), snapshot));
+                returnValue = new PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput(MapNonNullableIPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse(data.ValidationResponse ?? throw new global::System.ArgumentNullException(), snapshot), data.SegmentString);
             }
             else
             {
@@ -11548,7 +11574,7 @@ namespace AggieEnterpriseApi.State
             var typename = obj.Value.GetProperty("__typename").GetString();
             if (typename?.Equals("PpmSegmentsValidateOutput", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData(typename, validationResponse: DeserializeNonNullableIPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResponse")));
+                return new global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData(typename, validationResponse: DeserializeNonNullableIPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResponse")), segmentString: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "segmentString")));
             }
 
             throw new global::System.NotSupportedException();
@@ -11605,6 +11631,16 @@ namespace AggieEnterpriseApi.State
 
             return _stringParser.Parse(obj.Value.GetString()!);
         }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _ppmSegmentStringParser.Parse(obj.Value.GetString()!);
+        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -11619,6 +11655,7 @@ namespace AggieEnterpriseApi.State
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseTypeCodeParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmAwardNumberParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmFundingSourceNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmSegmentStringParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
         public PpmSegmentsValidateBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmSegmentsValidateResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
@@ -11632,6 +11669,7 @@ namespace AggieEnterpriseApi.State
             _ppmExpenseTypeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseTypeCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseTypeCode` found.");
             _ppmAwardNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmAwardNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmAwardNumber` found.");
             _ppmFundingSourceNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmFundingSourceNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmFundingSourceNumber` found.");
+            _ppmSegmentStringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmSegmentString") ?? throw new global::System.ArgumentException("No serializer for type `PpmSegmentString` found.");
             _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
             _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
         }
@@ -11699,7 +11737,7 @@ namespace AggieEnterpriseApi.State
             var typename = obj.Value.GetProperty("__typename").GetString();
             if (typename?.Equals("PpmSegmentsValidateOutput", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData(typename, validationResponse: DeserializeNonNullableIPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResponse")));
+                return new global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData(typename, validationResponse: DeserializeNonNullableIPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResponse")), segmentString: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "segmentString")));
             }
 
             throw new global::System.NotSupportedException();
@@ -11755,6 +11793,16 @@ namespace AggieEnterpriseApi.State
             }
 
             return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _ppmSegmentStringParser.Parse(obj.Value.GetString()!);
         }
     }
 
@@ -12423,15 +12471,18 @@ namespace AggieEnterpriseApi.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentsValidateOutputData
     {
-        public PpmSegmentsValidateOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ValidationResponseData? validationResponse = default !)
+        public PpmSegmentsValidateOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ValidationResponseData? validationResponse = default !, global::System.String? segmentString = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             ValidationResponse = validationResponse;
+            SegmentString = segmentString;
         }
 
         public global::System.String __typename { get; }
 
         public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResponse { get; }
+
+        public global::System.String? SegmentString { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
