@@ -1,0 +1,38 @@
+query glJournalRequestStatusByConsumerTracking ($consumerTrackingId: String!) {
+    glJournalRequestStatusByConsumerTracking (consumerTrackingId: $consumerTrackingId) {
+        requestStatus {
+            requestId
+            consumerId
+            consumerTrackingId
+            consumerReferenceId
+            consumerNotes
+            boundaryApplicationName
+            operationName
+            requestDateTime
+            requestStatus
+            lastStatusDateTime
+            processedDateTime
+            errorMessages
+        }
+        processingResult {
+            status
+            requestDateTime
+            lastStatusCheckDateTime
+            processedDateTime
+            errorMessages
+            jobs {
+                jobId
+                jobStatus
+                assignedJobId
+                jobReport
+                failedRecords
+                completedDateTime
+            }
+        }
+        validationResults {
+            valid
+            errorMessages
+            messageProperties
+        }
+    }
+}

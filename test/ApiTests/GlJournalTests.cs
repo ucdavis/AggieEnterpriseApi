@@ -17,14 +17,30 @@ public class GlJournalTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        // TODO: get better example request that wasn't errored out
-        var result = await client.GlJournalRequestStatus.ExecuteAsync("22374301-0428-4356-847e-cb7ddaebf661");
+
+        var result = await client.GlJournalRequestStatus.ExecuteAsync("77484d1a-91ed-4476-aaff-f28fb139ccc8");
 
         var data = result.ReadData();
 
         data.GlJournalRequestStatus.ShouldNotBeNull();
-        data.GlJournalRequestStatus.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Error);
-        data.GlJournalRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("ORDER_12345");
+        data.GlJournalRequestStatus.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Complete);
+        data.GlJournalRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("CAES-Payments");
+    }
+
+    [Fact]
+    public async Task ValidJournalStatusBySlothTransactionId()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+
+        var result = await client.GlJournalRequestStatusByConsumerTracking.ExecuteAsync("AA314F00-C308-48XF-RF85-C8Ao7FD43199");
+
+        var data = result.ReadData();
+
+        data.GlJournalRequestStatusByConsumerTracking.ShouldNotBeNull();
+        data.GlJournalRequestStatusByConsumerTracking.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Complete);
+        data.GlJournalRequestStatusByConsumerTracking.RequestStatus.ConsumerReferenceId.ShouldBe("CAES-Payments");
+        data.GlJournalRequestStatusByConsumerTracking.ProcessingResult.Jobs[0].JobReport.ShouldStartWith("UCD Primary Ledger");
     }
 
     [Fact]
@@ -43,8 +59,8 @@ public class GlJournalTests : TestBase
             },
             Payload = new GlJournalInput
             {
-                JournalSourceName = "BOUNDARY_APP_1",
-                JournalCategoryName = "INTERCOMPANY_REVENUE",
+                JournalSourceName = "UCD SLOTH",
+                JournalCategoryName = "UCD Recharge",
                 JournalName = "Recharges July 2023",
                 JournalReference = "ORDER_12345",
                 JournalLines = new[]
@@ -90,8 +106,8 @@ public class GlJournalTests : TestBase
             },
             Payload = new GlJournalInput
             {
-                JournalSourceName = "BOUNDARY_APP_1",
-                JournalCategoryName = "INTERCOMPANY_REVENUE",
+                JournalSourceName = "UCD SLOTH",
+                JournalCategoryName = "UCD Recharge",
                 JournalName = "Recharges July 2023",
                 JournalReference = "ORDER_12345",
                 JournalLines = new[]
