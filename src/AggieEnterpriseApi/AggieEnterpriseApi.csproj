@@ -6,7 +6,8 @@
     <Authors>Scott Kirkland</Authors>
     <Company>UC Davis</Company>
     <Description>Aggie Enterprise API</Description>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	<LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
