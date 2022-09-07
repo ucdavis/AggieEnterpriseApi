@@ -7,7 +7,7 @@
     <Company>UC Davis</Company>
     <Description>Aggie Enterprise API</Description>
     <TargetFramework>netstandard2.0</TargetFramework>
-	<LangVersion>10</LangVersion>
+	<LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
