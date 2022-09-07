@@ -3,7 +3,7 @@
 
 namespace AggieEnterpriseApi
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParentsResult : global::System.IEquatable<FundParentsResult>, IFundParentsResult
     {
         public FundParentsResult(global::AggieEnterpriseApi.IFundParents_ErpFund? erpFund)
@@ -68,7 +68,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_ErpFund : global::System.IEquatable<FundParents_ErpFund_ErpFund>, IFundParents_ErpFund_ErpFund
     {
         public FundParents_ErpFund_ErpFund(global::System.String code, global::System.String name, global::System.Boolean? budgeted, global::System.Boolean eligibleForUse, global::System.Boolean enabled, global::System.String? endDate, global::System.Int64 id, global::System.String? startDate, global::System.Int32? hierarchyDepth, global::AggieEnterpriseApi.IFundParents_ErpFund_Parent? parent)
@@ -185,7 +185,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_ErpFund>, IFundParents_ErpFund_Parent_ErpFund
     {
         public FundParents_ErpFund_Parent_ErpFund(global::System.String code, global::System.String name, global::System.Int32? hierarchyDepth, global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent? parent)
@@ -266,7 +266,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_ErpFund
     {
         public FundParents_ErpFund_Parent_Parent_ErpFund(global::System.String code, global::System.String name, global::System.Int32? hierarchyDepth, global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent? parent)
@@ -347,7 +347,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_Parent_ErpFund
     {
         public FundParents_ErpFund_Parent_Parent_Parent_ErpFund(global::System.String code, global::System.String name, global::System.Int32? hierarchyDepth, global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent? parent)
@@ -428,7 +428,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFund
     {
         public FundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFund(global::System.String code, global::System.String name, global::System.Int32? hierarchyDepth, global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent? parent)
@@ -509,7 +509,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund
     {
         public FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund(global::System.String code, global::System.String name, global::System.Int32? hierarchyDepth, global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent? parent)
@@ -590,7 +590,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund
     {
         public FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund(global::System.String code, global::System.String name, global::System.Int32? hierarchyDepth, global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent? parent)
@@ -671,7 +671,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund
     {
         public FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund(global::System.String code, global::System.String name, global::System.Int32? hierarchyDepth)
@@ -744,13 +744,13 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParentsResult
     {
         public global::AggieEnterpriseApi.IFundParents_ErpFund? ErpFund { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund
     {
         public global::System.String Code { get; }
@@ -774,12 +774,12 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent? Parent { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_ErpFund : IFundParents_ErpFund
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent
     {
         public global::System.String Code { get; }
@@ -791,12 +791,12 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent? Parent { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_ErpFund : IFundParents_ErpFund_Parent
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent
     {
         public global::System.String Code { get; }
@@ -808,12 +808,12 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent? Parent { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent
     {
         public global::System.String Code { get; }
@@ -825,12 +825,12 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent_Parent
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent
     {
         public global::System.String Code { get; }
@@ -842,12 +842,12 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent_Parent_Parent
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent
     {
         public global::System.String Code { get; }
@@ -859,12 +859,12 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent
     {
         public global::System.String Code { get; }
@@ -876,12 +876,12 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent
     {
         public global::System.String Code { get; }
@@ -891,12 +891,12 @@ namespace AggieEnterpriseApi
         public global::System.Int32? HierarchyDepth { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestResult : global::System.IEquatable<GlJournalRequestResult>, IGlJournalRequestResult
     {
         public GlJournalRequestResult(global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest glJournalRequest)
@@ -957,7 +957,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput>, IGlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput
     {
         public GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput(global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus requestStatus, global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? validationResults)
@@ -1026,7 +1026,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus>, IGlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus
     {
         public GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus(global::System.Guid? requestId, global::System.String consumerId, global::System.DateTimeOffset requestDateTime, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.String operationName)
@@ -1107,7 +1107,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse : global::System.IEquatable<GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse>, IGlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse
     {
         public GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse(global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties)
@@ -1186,13 +1186,13 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestResult
     {
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest GlJournalRequest { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest
     {
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus RequestStatus { get; }
@@ -1200,12 +1200,12 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? ValidationResults { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput : IGlJournalRequest_GlJournalRequest
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_RequestStatus
     {
         public global::System.Guid? RequestId { get; }
@@ -1219,12 +1219,12 @@ namespace AggieEnterpriseApi
         public global::System.String OperationName { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus : IGlJournalRequest_GlJournalRequest_RequestStatus
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_ValidationResults
     {
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
@@ -1232,12 +1232,12 @@ namespace AggieEnterpriseApi
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse : IGlJournalRequest_GlJournalRequest_ValidationResults
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusByConsumerTrackingResult : global::System.IEquatable<GlJournalRequestStatusByConsumerTrackingResult>, IGlJournalRequestStatusByConsumerTrackingResult
     {
         public GlJournalRequestStatusByConsumerTrackingResult(global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking? glJournalRequestStatusByConsumerTracking)
@@ -1302,7 +1302,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput
     {
         public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput(global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus requestStatus, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult? processingResult, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults? validationResults)
@@ -1379,7 +1379,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus
     {
         public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus(global::System.Guid? requestId, global::System.String consumerId, global::System.String consumerTrackingId, global::System.String consumerReferenceId, global::System.String? consumerNotes, global::System.String boundaryApplicationName, global::System.String operationName, global::System.DateTimeOffset requestDateTime, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.DateTimeOffset lastStatusDateTime, global::System.DateTimeOffset? processedDateTime, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages)
@@ -1503,7 +1503,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult
     {
         public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult(global::System.String status, global::System.DateTimeOffset requestDateTime, global::System.DateTimeOffset? lastStatusCheckDateTime, global::System.DateTimeOffset? processedDateTime, global::System.String? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>? jobs)
@@ -1603,7 +1603,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse
     {
         public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse(global::System.Boolean valid, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties)
@@ -1686,7 +1686,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult
     {
         public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult(global::System.String jobId, global::System.String jobStatus, global::System.String? assignedJobId, global::System.String? jobReport, global::System.String? failedRecords, global::System.DateTimeOffset? completedDateTime)
@@ -1783,13 +1783,13 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTrackingResult
     {
         public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking? GlJournalRequestStatusByConsumerTracking { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking
     {
         public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus RequestStatus { get; }
@@ -1799,12 +1799,12 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults? ValidationResults { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus
     {
         public global::System.Guid? RequestId { get; }
@@ -1832,12 +1832,12 @@ namespace AggieEnterpriseApi
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult
     {
         public global::System.String Status { get; }
@@ -1853,12 +1853,12 @@ namespace AggieEnterpriseApi
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>? Jobs { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults
     {
         public global::System.Boolean Valid { get; }
@@ -1868,12 +1868,12 @@ namespace AggieEnterpriseApi
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs
     {
         public global::System.String JobId { get; }
@@ -1889,12 +1889,12 @@ namespace AggieEnterpriseApi
         public global::System.DateTimeOffset? CompletedDateTime { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusResult : global::System.IEquatable<GlJournalRequestStatusResult>, IGlJournalRequestStatusResult
     {
         public GlJournalRequestStatusResult(global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus? glJournalRequestStatus)
@@ -1959,7 +1959,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput>, IGlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput
     {
         public GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput(global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus requestStatus, global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult? processingResult, global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? validationResults)
@@ -2036,7 +2036,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus>, IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus
     {
         public GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus(global::System.String? statusRequestPayload, global::System.String operationName, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.DateTimeOffset requestDateTime, global::System.DateTimeOffset lastStatusDateTime, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.DateTimeOffset? processedDateTime, global::System.String boundaryApplicationName, global::System.String consumerId, global::System.String? consumerNotes, global::System.String consumerReferenceId)
@@ -2156,7 +2156,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult>, IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult
     {
         public GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult(global::System.String status, global::System.DateTimeOffset? processedDateTime)
@@ -2225,7 +2225,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse>, IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse
     {
         public GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse(global::System.Boolean valid, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages)
@@ -2297,13 +2297,13 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusResult
     {
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus? GlJournalRequestStatus { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus
     {
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus RequestStatus { get; }
@@ -2313,12 +2313,12 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? ValidationResults { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput : IGlJournalRequestStatus_GlJournalRequestStatus
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus
     {
         public global::System.String? StatusRequestPayload { get; }
@@ -2344,12 +2344,12 @@ namespace AggieEnterpriseApi
         public global::System.String ConsumerReferenceId { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus : IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult
     {
         public global::System.String Status { get; }
@@ -2357,12 +2357,12 @@ namespace AggieEnterpriseApi
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult : IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults
     {
         public global::System.Boolean Valid { get; }
@@ -2370,12 +2370,12 @@ namespace AggieEnterpriseApi
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse : IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetailsResult : global::System.IEquatable<CoaDetailsResult>, ICoaDetailsResult
     {
         public CoaDetailsResult(global::AggieEnterpriseApi.ICoaDetails_ErpEntity? erpEntity, global::AggieEnterpriseApi.ICoaDetails_ErpFund? erpFund, global::AggieEnterpriseApi.ICoaDetails_ErpFinancialDepartment? erpFinancialDepartment, global::AggieEnterpriseApi.ICoaDetails_ErpAccount? erpAccount, global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? erpPurpose)
@@ -2472,7 +2472,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetails_ErpEntity_ErpEntity : global::System.IEquatable<CoaDetails_ErpEntity_ErpEntity>, ICoaDetails_ErpEntity_ErpEntity
     {
         public CoaDetails_ErpEntity_ErpEntity(global::System.String code, global::System.String name)
@@ -2537,7 +2537,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetails_ErpFund_ErpFund : global::System.IEquatable<CoaDetails_ErpFund_ErpFund>, ICoaDetails_ErpFund_ErpFund
     {
         public CoaDetails_ErpFund_ErpFund(global::System.String code, global::System.String name)
@@ -2602,7 +2602,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment : global::System.IEquatable<CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment>, ICoaDetails_ErpFinancialDepartment_ErpFinancialDepartment
     {
         public CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment(global::System.String code, global::System.String name, global::System.String? fiscalOfficerName, global::System.Boolean eligibleForUse)
@@ -2679,7 +2679,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetails_ErpAccount_ErpAccount : global::System.IEquatable<CoaDetails_ErpAccount_ErpAccount>, ICoaDetails_ErpAccount_ErpAccount
     {
         public CoaDetails_ErpAccount_ErpAccount(global::System.String code, global::System.String name)
@@ -2744,7 +2744,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetails_ErpPurpose_ErpPurpose : global::System.IEquatable<CoaDetails_ErpPurpose_ErpPurpose>, ICoaDetails_ErpPurpose_ErpPurpose
     {
         public CoaDetails_ErpPurpose_ErpPurpose(global::System.String code, global::System.String name)
@@ -2809,7 +2809,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetailsResult
     {
         public global::AggieEnterpriseApi.ICoaDetails_ErpEntity? ErpEntity { get; }
@@ -2823,7 +2823,7 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? ErpPurpose { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetails_ErpEntity
     {
         public global::System.String Code { get; }
@@ -2831,12 +2831,12 @@ namespace AggieEnterpriseApi
         public global::System.String Name { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetails_ErpEntity_ErpEntity : ICoaDetails_ErpEntity
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetails_ErpFund
     {
         public global::System.String Code { get; }
@@ -2844,12 +2844,12 @@ namespace AggieEnterpriseApi
         public global::System.String Name { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetails_ErpFund_ErpFund : ICoaDetails_ErpFund
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetails_ErpFinancialDepartment
     {
         public global::System.String Code { get; }
@@ -2861,12 +2861,12 @@ namespace AggieEnterpriseApi
         public global::System.Boolean EligibleForUse { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetails_ErpFinancialDepartment_ErpFinancialDepartment : ICoaDetails_ErpFinancialDepartment
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetails_ErpAccount
     {
         public global::System.String Code { get; }
@@ -2874,12 +2874,12 @@ namespace AggieEnterpriseApi
         public global::System.String Name { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetails_ErpAccount_ErpAccount : ICoaDetails_ErpAccount
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetails_ErpPurpose
     {
         public global::System.String Code { get; }
@@ -2887,12 +2887,12 @@ namespace AggieEnterpriseApi
         public global::System.String Name { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetails_ErpPurpose_ErpPurpose : ICoaDetails_ErpPurpose
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmStringSegmentsValidateResult : global::System.IEquatable<PpmStringSegmentsValidateResult>, IPpmStringSegmentsValidateResult
     {
         public PpmStringSegmentsValidateResult(global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate ppmStringSegmentsValidate)
@@ -2953,7 +2953,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput : global::System.IEquatable<PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput>, IPpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput
     {
         public PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput(global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse validationResponse, global::System.String? segmentString)
@@ -3022,7 +3022,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse_ValidationResponse : global::System.IEquatable<PpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse_ValidationResponse>, IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse_ValidationResponse
     {
         public PpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse_ValidationResponse(global::System.Boolean valid, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties)
@@ -3105,13 +3105,13 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmStringSegmentsValidateResult
     {
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate PpmStringSegmentsValidate { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmStringSegmentsValidate_PpmStringSegmentsValidate
     {
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse ValidationResponse { get; }
@@ -3119,12 +3119,12 @@ namespace AggieEnterpriseApi
         public global::System.String? SegmentString { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput : IPpmStringSegmentsValidate_PpmStringSegmentsValidate
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse
     {
         public global::System.Boolean Valid { get; }
@@ -3134,12 +3134,12 @@ namespace AggieEnterpriseApi
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse_ValidationResponse : IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmSegmentsValidateResult : global::System.IEquatable<PpmSegmentsValidateResult>, IPpmSegmentsValidateResult
     {
         public PpmSegmentsValidateResult(global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate ppmSegmentsValidate)
@@ -3200,7 +3200,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput : global::System.IEquatable<PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput>, IPpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput
     {
         public PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput(global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse validationResponse, global::System.String? segmentString)
@@ -3269,7 +3269,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse : global::System.IEquatable<PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse>, IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse
     {
         public PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse(global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties, global::System.Boolean valid)
@@ -3352,13 +3352,13 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmSegmentsValidateResult
     {
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate PpmSegmentsValidate { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate
     {
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse ValidationResponse { get; }
@@ -3366,12 +3366,12 @@ namespace AggieEnterpriseApi
         public global::System.String? SegmentString { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput : IPpmSegmentsValidate_PpmSegmentsValidate
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse
     {
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
@@ -3381,12 +3381,12 @@ namespace AggieEnterpriseApi
         public global::System.Boolean Valid { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse : IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegmentsResult : global::System.IEquatable<GlValidateChartSegmentsResult>, IGlValidateChartSegmentsResult
     {
         public GlValidateChartSegmentsResult(global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments glValidateChartSegments)
@@ -3447,7 +3447,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput>, IGlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput
     {
         public GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput(global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse validationResponse, global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Segments segments, global::System.String? completeChartstring, global::System.Int64? codeCombinationId, global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_SegmentNames segmentNames, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Warnings>? warnings, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_EndDates>? endDates)
@@ -3554,7 +3554,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse>, IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse
     {
         public GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse(global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties, global::System.Boolean valid)
@@ -3637,7 +3637,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments>, IGlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments
     {
         public GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments(global::System.String? account, global::System.String? activity, global::System.String? department, global::System.String? entity, global::System.String? fund, global::System.String? program, global::System.String? project, global::System.String? purpose)
@@ -3758,7 +3758,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_SegmentNames_GlSegmentNames : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_SegmentNames_GlSegmentNames>, IGlValidateChartSegments_GlValidateChartSegments_SegmentNames_GlSegmentNames
     {
         public GlValidateChartSegments_GlValidateChartSegments_SegmentNames_GlSegmentNames(global::System.String? entityName, global::System.String? fundName, global::System.String? departmentName, global::System.String? accountName, global::System.String? purposeName, global::System.String? projectName, global::System.String? programName, global::System.String? activityName)
@@ -3879,7 +3879,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_Warnings_SegmentWarning : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_Warnings_SegmentWarning>, IGlValidateChartSegments_GlValidateChartSegments_Warnings_SegmentWarning
     {
         public GlValidateChartSegments_GlValidateChartSegments_Warnings_SegmentWarning(global::System.String segmentName, global::System.String warning)
@@ -3944,7 +3944,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_EndDates_SegmentEndDate : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_EndDates_SegmentEndDate>, IGlValidateChartSegments_GlValidateChartSegments_EndDates_SegmentEndDate
     {
         public GlValidateChartSegments_GlValidateChartSegments_EndDates_SegmentEndDate(global::System.String segmentName, global::System.String endDate)
@@ -4009,13 +4009,13 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegmentsResult
     {
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments GlValidateChartSegments { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments
     {
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse ValidationResponse { get; }
@@ -4033,12 +4033,12 @@ namespace AggieEnterpriseApi
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_EndDates>? EndDates { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput : IGlValidateChartSegments_GlValidateChartSegments
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse
     {
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
@@ -4048,12 +4048,12 @@ namespace AggieEnterpriseApi
         public global::System.Boolean Valid { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse : IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_Segments
     {
         public global::System.String? Account { get; }
@@ -4073,12 +4073,12 @@ namespace AggieEnterpriseApi
         public global::System.String? Purpose { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments : IGlValidateChartSegments_GlValidateChartSegments_Segments
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_SegmentNames
     {
         public global::System.String? EntityName { get; }
@@ -4098,12 +4098,12 @@ namespace AggieEnterpriseApi
         public global::System.String? ActivityName { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_SegmentNames_GlSegmentNames : IGlValidateChartSegments_GlValidateChartSegments_SegmentNames
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_Warnings
     {
         public global::System.String SegmentName { get; }
@@ -4111,12 +4111,12 @@ namespace AggieEnterpriseApi
         public global::System.String Warning { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_Warnings_SegmentWarning : IGlValidateChartSegments_GlValidateChartSegments_Warnings
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_EndDates
     {
         public global::System.String SegmentName { get; }
@@ -4124,12 +4124,12 @@ namespace AggieEnterpriseApi
         public global::System.String EndDate { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_EndDates_SegmentEndDate : IGlValidateChartSegments_GlValidateChartSegments_EndDates
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstringResult : global::System.IEquatable<GlValidateChartstringResult>, IGlValidateChartstringResult
     {
         public GlValidateChartstringResult(global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring glValidateChartstring)
@@ -4190,7 +4190,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput>, IGlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput
     {
         public GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput(global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_ValidationResponse validationResponse, global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Segments segments, global::System.String? completeChartstring, global::System.Int64? codeCombinationId, global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_SegmentNames segmentNames, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Warnings>? warnings, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_EndDates>? endDates)
@@ -4297,7 +4297,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse>, IGlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse
     {
         public GlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse(global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties, global::System.Boolean valid)
@@ -4380,7 +4380,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_Segments_GlSegments : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_Segments_GlSegments>, IGlValidateChartstring_GlValidateChartstring_Segments_GlSegments
     {
         public GlValidateChartstring_GlValidateChartstring_Segments_GlSegments(global::System.String? account, global::System.String? activity, global::System.String? department, global::System.String? entity, global::System.String? fund, global::System.String? program, global::System.String? project, global::System.String? purpose)
@@ -4501,7 +4501,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames>, IGlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames
     {
         public GlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames(global::System.String? entityName, global::System.String? fundName, global::System.String? departmentName, global::System.String? accountName, global::System.String? purposeName, global::System.String? projectName, global::System.String? programName, global::System.String? activityName)
@@ -4622,7 +4622,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning>, IGlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning
     {
         public GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning(global::System.String segmentName, global::System.String warning)
@@ -4687,7 +4687,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate>, IGlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate
     {
         public GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate(global::System.String segmentName, global::System.String endDate)
@@ -4752,13 +4752,13 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstringResult
     {
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring GlValidateChartstring { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring
     {
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_ValidationResponse ValidationResponse { get; }
@@ -4776,12 +4776,12 @@ namespace AggieEnterpriseApi
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_EndDates>? EndDates { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput : IGlValidateChartstring_GlValidateChartstring
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_ValidationResponse
     {
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
@@ -4791,12 +4791,12 @@ namespace AggieEnterpriseApi
         public global::System.Boolean Valid { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse : IGlValidateChartstring_GlValidateChartstring_ValidationResponse
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_Segments
     {
         public global::System.String? Account { get; }
@@ -4816,12 +4816,12 @@ namespace AggieEnterpriseApi
         public global::System.String? Purpose { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_Segments_GlSegments : IGlValidateChartstring_GlValidateChartstring_Segments
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_SegmentNames
     {
         public global::System.String? EntityName { get; }
@@ -4841,12 +4841,12 @@ namespace AggieEnterpriseApi
         public global::System.String? ActivityName { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_SegmentNames_GlSegmentNames : IGlValidateChartstring_GlValidateChartstring_SegmentNames
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_Warnings
     {
         public global::System.String SegmentName { get; }
@@ -4854,12 +4854,12 @@ namespace AggieEnterpriseApi
         public global::System.String Warning { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning : IGlValidateChartstring_GlValidateChartstring_Warnings
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_EndDates
     {
         public global::System.String SegmentName { get; }
@@ -4867,12 +4867,12 @@ namespace AggieEnterpriseApi
         public global::System.String EndDate { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate : IGlValidateChartstring_GlValidateChartstring_EndDates
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _actionRequestHeaderInputFormatter = default !;
@@ -4933,7 +4933,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestInput : global::AggieEnterpriseApi.State.IGlJournalRequestInputInfo, global::System.IEquatable<GlJournalRequestInput>
     {
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -5015,7 +5015,7 @@ namespace AggieEnterpriseApi
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalRequestInputInfo.IsPayloadSet => _set_payload;
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class ActionRequestHeaderInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString80Formatter = default !;
@@ -5144,7 +5144,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class ActionRequestHeaderInput : global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo, global::System.IEquatable<ActionRequestHeaderInput>
     {
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -5294,7 +5294,7 @@ namespace AggieEnterpriseApi
         global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsBatchRequestSet => _set_batchRequest;
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString80Formatter = default !;
@@ -5472,7 +5472,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalInput : global::AggieEnterpriseApi.State.IGlJournalInputInfo, global::System.IEquatable<GlJournalInput>
     {
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -5654,7 +5654,7 @@ namespace AggieEnterpriseApi
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalLinesSet => _set_journalLines;
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalLineInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _glSegmentInputFormatter = default !;
@@ -5867,7 +5867,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalLineInput : global::AggieEnterpriseApi.State.IGlJournalLineInputInfo, global::System.IEquatable<GlJournalLineInput>
     {
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -6097,7 +6097,7 @@ namespace AggieEnterpriseApi
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsGlideSet => _set_glide;
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlSegmentInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _erpEntityCodeFormatter = default !;
@@ -6306,7 +6306,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlSegmentInput : global::AggieEnterpriseApi.State.IGlSegmentInputInfo, global::System.IEquatable<GlSegmentInput>
     {
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -6524,7 +6524,7 @@ namespace AggieEnterpriseApi
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsFlex2Set => _set_flex2;
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmSegmentInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _ppmProjectNumberFormatter = default !;
@@ -6657,7 +6657,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmSegmentInput : global::AggieEnterpriseApi.State.IPpmSegmentInputInfo, global::System.IEquatable<PpmSegmentInput>
     {
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -6803,7 +6803,7 @@ namespace AggieEnterpriseApi
         global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsFundingSourceSet => _set_fundingSource;
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlideInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter = default !;
@@ -7057,7 +7057,7 @@ namespace AggieEnterpriseApi
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlideInput : global::AggieEnterpriseApi.State.IGlideInputInfo, global::System.IEquatable<GlideInput>
     {
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -7345,7 +7345,7 @@ namespace AggieEnterpriseApi
         global::System.Boolean global::AggieEnterpriseApi.State.IGlideInputInfo.IsUdfString5Set => _set_udfString5;
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public enum RequestStatus
     {
         Pending,
@@ -7357,7 +7357,7 @@ namespace AggieEnterpriseApi
         Rejected
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class RequestStatusSerializer : global::StrawberryShake.Serialization.IInputValueFormatter, global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, RequestStatus>
     {
         public global::System.String TypeName => "RequestStatus";
@@ -7475,7 +7475,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParentsQueryDocument : global::StrawberryShake.IDocument
     {
         private FundParentsQueryDocument()
@@ -7581,7 +7581,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParentsQuery : global::AggieEnterpriseApi.IFundParentsQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IFundParentsResult> _operationExecutor;
@@ -7718,7 +7718,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IFundParentsQuery : global::StrawberryShake.IOperationRequestFactory
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IFundParentsResult>> ExecuteAsync(global::System.String code, global::System.Threading.CancellationToken cancellationToken = default);
@@ -7748,7 +7748,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestMutationDocument : global::StrawberryShake.IDocument
     {
         private GlJournalRequestMutationDocument()
@@ -7792,7 +7792,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestMutation : global::AggieEnterpriseApi.IGlJournalRequestMutation
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGlJournalRequestResult> _operationExecutor;
@@ -7867,7 +7867,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestMutation : global::StrawberryShake.IOperationRequestFactory
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestResult>> ExecuteAsync(global::AggieEnterpriseApi.GlJournalRequestInput data, global::System.Threading.CancellationToken cancellationToken = default);
@@ -7922,7 +7922,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusByConsumerTrackingQueryDocument : global::StrawberryShake.IDocument
     {
         private GlJournalRequestStatusByConsumerTrackingQueryDocument()
@@ -7991,7 +7991,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusByConsumerTrackingQuery : global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGlJournalRequestStatusByConsumerTrackingResult> _operationExecutor;
@@ -8091,7 +8091,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusByConsumerTrackingQuery : global::StrawberryShake.IOperationRequestFactory
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusByConsumerTrackingResult>> ExecuteAsync(global::System.String consumerTrackingId, global::System.Threading.CancellationToken cancellationToken = default);
@@ -8132,7 +8132,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusQueryDocument : global::StrawberryShake.IDocument
     {
         private GlJournalRequestStatusQueryDocument()
@@ -8187,7 +8187,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusQuery : global::AggieEnterpriseApi.IGlJournalRequestStatusQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGlJournalRequestStatusResult> _operationExecutor;
@@ -8273,7 +8273,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlJournalRequestStatusQuery : global::StrawberryShake.IOperationRequestFactory
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusResult>> ExecuteAsync(global::System.String requestId, global::System.Threading.CancellationToken cancellationToken = default);
@@ -8329,7 +8329,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetailsQueryDocument : global::StrawberryShake.IDocument
     {
         private CoaDetailsQueryDocument()
@@ -8399,7 +8399,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetailsQuery : global::AggieEnterpriseApi.ICoaDetailsQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<ICoaDetailsResult> _operationExecutor;
@@ -8544,7 +8544,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface ICoaDetailsQuery : global::StrawberryShake.IOperationRequestFactory
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<ICoaDetailsResult>> ExecuteAsync(global::System.String entity, global::System.String fund, global::System.String dept, global::System.String account, global::System.String purpose, global::System.Threading.CancellationToken cancellationToken = default);
@@ -8568,7 +8568,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmStringSegmentsValidateQueryDocument : global::StrawberryShake.IDocument
     {
         private PpmStringSegmentsValidateQueryDocument()
@@ -8606,7 +8606,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmStringSegmentsValidateQuery : global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IPpmStringSegmentsValidateResult> _operationExecutor;
@@ -8675,7 +8675,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmStringSegmentsValidateQuery : global::StrawberryShake.IOperationRequestFactory
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmStringSegmentsValidateResult>> ExecuteAsync(global::System.String segmentString, global::System.Threading.CancellationToken cancellationToken = default);
@@ -8699,7 +8699,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmSegmentsValidateQueryDocument : global::StrawberryShake.IDocument
     {
         private PpmSegmentsValidateQueryDocument()
@@ -8737,7 +8737,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmSegmentsValidateQuery : global::AggieEnterpriseApi.IPpmSegmentsValidateQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IPpmSegmentsValidateResult> _operationExecutor;
@@ -8806,7 +8806,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IPpmSegmentsValidateQuery : global::StrawberryShake.IOperationRequestFactory
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmSegmentsValidateResult>> ExecuteAsync(global::AggieEnterpriseApi.PpmSegmentInput segments, global::System.Threading.CancellationToken cancellationToken = default);
@@ -8863,7 +8863,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegmentsQueryDocument : global::StrawberryShake.IDocument
     {
         private GlValidateChartSegmentsQueryDocument()
@@ -8934,7 +8934,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegmentsQuery : global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGlValidateChartSegmentsResult> _operationExecutor;
@@ -9051,7 +9051,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartSegmentsQuery : global::StrawberryShake.IOperationRequestFactory
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlValidateChartSegmentsResult>> ExecuteAsync(global::AggieEnterpriseApi.GlSegmentInput segments, global::System.Boolean? validateCVRs, global::System.Threading.CancellationToken cancellationToken = default);
@@ -9108,7 +9108,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstringQueryDocument : global::StrawberryShake.IDocument
     {
         private GlValidateChartstringQueryDocument()
@@ -9179,7 +9179,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstringQuery : global::AggieEnterpriseApi.IGlValidateChartstringQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGlValidateChartstringResult> _operationExecutor;
@@ -9296,7 +9296,7 @@ namespace AggieEnterpriseApi
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IGlValidateChartstringQuery : global::StrawberryShake.IOperationRequestFactory
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlValidateChartstringResult>> ExecuteAsync(global::System.String segmentString, global::System.Boolean? validateCVRs, global::System.Threading.CancellationToken cancellationToken = default);
@@ -9306,7 +9306,7 @@ namespace AggieEnterpriseApi
     /// <summary>
     /// Represents the AggieEnterpriseClient GraphQL client
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class AggieEnterpriseClient : global::AggieEnterpriseApi.IAggieEnterpriseClient
     {
         private readonly global::AggieEnterpriseApi.IFundParentsQuery _fundParents;
@@ -9346,7 +9346,7 @@ namespace AggieEnterpriseApi
     /// <summary>
     /// Represents the AggieEnterpriseClient GraphQL client
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial interface IAggieEnterpriseClient
     {
         global::AggieEnterpriseApi.IFundParentsQuery FundParents { get; }
@@ -9371,7 +9371,7 @@ namespace AggieEnterpriseApi
 
 namespace AggieEnterpriseApi.State
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class ErpFundEntity
     {
         public ErpFundEntity(global::System.String code = default !, global::System.String name = default !, global::System.Boolean? budgeted = default !, global::System.Boolean eligibleForUse = default !, global::System.Boolean enabled = default !, global::System.String? endDate = default !, global::System.Int64 id = default !, global::System.String? startDate = default !, global::System.Int32? hierarchyDepth = default !, global::StrawberryShake.EntityId? parent = default !)
@@ -9409,7 +9409,7 @@ namespace AggieEnterpriseApi.State
         public global::StrawberryShake.EntityId? Parent { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class ErpEntityEntity
     {
         public ErpEntityEntity(global::System.String code = default !, global::System.String name = default !)
@@ -9423,7 +9423,7 @@ namespace AggieEnterpriseApi.State
         public global::System.String Name { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class ErpFinancialDepartmentEntity
     {
         public ErpFinancialDepartmentEntity(global::System.String code = default !, global::System.String name = default !, global::System.String? fiscalOfficerName = default !, global::System.Boolean eligibleForUse = default !)
@@ -9443,7 +9443,7 @@ namespace AggieEnterpriseApi.State
         public global::System.Boolean EligibleForUse { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class ErpAccountEntity
     {
         public ErpAccountEntity(global::System.String code = default !, global::System.String name = default !)
@@ -9457,7 +9457,7 @@ namespace AggieEnterpriseApi.State
         public global::System.String Name { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class ErpPurposeEntity
     {
         public ErpPurposeEntity(global::System.String code = default !, global::System.String name = default !)
@@ -9471,7 +9471,7 @@ namespace AggieEnterpriseApi.State
         public global::System.String Name { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParentsResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.FundParentsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -9519,7 +9519,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParentsResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -9541,7 +9541,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_ErpFundFromErpFundEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, FundParents_ErpFund_ErpFund>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -9680,7 +9680,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_ErpFundFromErpFundEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, FundParents_ErpFund_Parent_ErpFund>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -9802,7 +9802,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_ErpFundFromErpFundEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, FundParents_ErpFund_Parent_Parent_ErpFund>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -9907,7 +9907,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_ErpFundFromErpFundEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, FundParents_ErpFund_Parent_Parent_Parent_ErpFund>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -9995,7 +9995,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFundFromErpFundEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, FundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFund>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10066,7 +10066,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFundFromErpFundEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10120,7 +10120,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFundFromErpFundEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10157,7 +10157,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFundFromErpFundEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10177,7 +10177,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlJournalRequestResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10258,7 +10258,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -10280,7 +10280,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusByConsumerTrackingResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlJournalRequestStatusByConsumerTrackingResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10417,7 +10417,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusByConsumerTrackingResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -10439,7 +10439,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlJournalRequestStatusResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10545,7 +10545,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -10567,7 +10567,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetailsResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.CoaDetailsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10683,7 +10683,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetailsResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -10717,7 +10717,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetails_ErpEntity_ErpEntityFromErpEntityEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpEntityEntity, CoaDetails_ErpEntity_ErpEntity>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10737,7 +10737,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetails_ErpFund_ErpFundFromErpFundEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFundEntity, CoaDetails_ErpFund_ErpFund>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10757,7 +10757,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity, CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10777,7 +10777,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpAccountEntity, CoaDetails_ErpAccount_ErpAccount>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10797,7 +10797,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpPurposeEntity, CoaDetails_ErpPurpose_ErpPurpose>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10817,7 +10817,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmStringSegmentsValidateResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.PpmStringSegmentsValidateResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10878,7 +10878,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmStringSegmentsValidateResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -10900,7 +10900,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmSegmentsValidateResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.PpmSegmentsValidateResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -10961,7 +10961,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmSegmentsValidateResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -10983,7 +10983,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegmentsResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlValidateChartSegmentsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -11136,7 +11136,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegmentsResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -11158,7 +11158,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstringResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlValidateChartstringResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -11311,7 +11311,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstringResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -11333,7 +11333,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     internal interface IGlJournalRequestInputInfo
     {
         global::System.Boolean IsHeaderSet { get; }
@@ -11341,7 +11341,7 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsPayloadSet { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     internal interface IActionRequestHeaderInputInfo
     {
         global::System.Boolean IsConsumerTrackingIdSet { get; }
@@ -11357,7 +11357,7 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsBatchRequestSet { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     internal interface IGlJournalInputInfo
     {
         global::System.Boolean IsJournalSourceNameSet { get; }
@@ -11377,7 +11377,7 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsJournalLinesSet { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     internal interface IGlJournalLineInputInfo
     {
         global::System.Boolean IsGlSegmentsSet { get; }
@@ -11401,7 +11401,7 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsGlideSet { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     internal interface IGlSegmentInputInfo
     {
         global::System.Boolean IsEntitySet { get; }
@@ -11425,7 +11425,7 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsFlex2Set { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     internal interface IPpmSegmentInputInfo
     {
         global::System.Boolean IsProjectSet { get; }
@@ -11441,7 +11441,7 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsFundingSourceSet { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     internal interface IGlideInputInfo
     {
         global::System.Boolean IsLineDescriptionSet { get; }
@@ -11471,7 +11471,7 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsUdfString5Set { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class FundParentsBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IFundParentsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -11822,7 +11822,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -12063,7 +12063,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusByConsumerTrackingBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -12326,7 +12326,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -12547,7 +12547,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class CoaDetailsBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.ICoaDetailsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -12800,7 +12800,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmStringSegmentsValidateBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmStringSegmentsValidateResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -12951,7 +12951,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmSegmentsValidateBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmSegmentsValidateResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -13114,7 +13114,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegmentsBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -13395,7 +13395,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartstringBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlValidateChartstringResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -13672,7 +13672,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlJournalRequestStatusOutputData
     {
         public GlJournalRequestStatusOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ActionRequestStatusData? requestStatus = default !, global::AggieEnterpriseApi.State.ValidationResponseData? validationResults = default !, global::AggieEnterpriseApi.State.ProcessingResultData? processingResult = default !)
@@ -13692,7 +13692,7 @@ namespace AggieEnterpriseApi.State
         public global::AggieEnterpriseApi.State.ProcessingResultData? ProcessingResult { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class ActionRequestStatusData
     {
         public ActionRequestStatusData(global::System.String __typename, global::System.Guid? requestId = default !, global::System.String? consumerId = default !, global::System.DateTimeOffset? requestDateTime = default !, global::AggieEnterpriseApi.RequestStatus? requestStatus = default !, global::System.String? operationName = default !, global::System.String? consumerTrackingId = default !, global::System.String? consumerReferenceId = default !, global::System.String? consumerNotes = default !, global::System.String? boundaryApplicationName = default !, global::System.DateTimeOffset? lastStatusDateTime = default !, global::System.DateTimeOffset? processedDateTime = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.String? statusRequestPayload = default !)
@@ -13742,7 +13742,7 @@ namespace AggieEnterpriseApi.State
         public global::System.String? StatusRequestPayload { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class ValidationResponseData
     {
         public ValidationResponseData(global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties = default !, global::System.Boolean? valid = default !)
@@ -13762,7 +13762,7 @@ namespace AggieEnterpriseApi.State
         public global::System.Boolean? Valid { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class ProcessingResultData
     {
         public ProcessingResultData(global::System.String __typename, global::System.String? status = default !, global::System.DateTimeOffset? requestDateTime = default !, global::System.DateTimeOffset? lastStatusCheckDateTime = default !, global::System.DateTimeOffset? processedDateTime = default !, global::System.String? errorMessages = default !, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? jobs = default !)
@@ -13791,7 +13791,7 @@ namespace AggieEnterpriseApi.State
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? Jobs { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class RequestJobResultData
     {
         public RequestJobResultData(global::System.String __typename, global::System.String? jobId = default !, global::System.String? jobStatus = default !, global::System.String? assignedJobId = default !, global::System.String? jobReport = default !, global::System.String? failedRecords = default !, global::System.DateTimeOffset? completedDateTime = default !)
@@ -13820,7 +13820,7 @@ namespace AggieEnterpriseApi.State
         public global::System.DateTimeOffset? CompletedDateTime { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class PpmSegmentsValidateOutputData
     {
         public PpmSegmentsValidateOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ValidationResponseData? validationResponse = default !, global::System.String? segmentString = default !)
@@ -13837,7 +13837,7 @@ namespace AggieEnterpriseApi.State
         public global::System.String? SegmentString { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlValidateChartSegmentsOutputData
     {
         public GlValidateChartSegmentsOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ValidationResponseData? validationResponse = default !, global::AggieEnterpriseApi.State.GlSegmentsData? segments = default !, global::System.String? completeChartstring = default !, global::System.Int64? codeCombinationId = default !, global::AggieEnterpriseApi.State.GlSegmentNamesData? segmentNames = default !, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentWarningData>? warnings = default !, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentEndDateData>? endDates = default !)
@@ -13869,7 +13869,7 @@ namespace AggieEnterpriseApi.State
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentEndDateData>? EndDates { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlSegmentsData
     {
         public GlSegmentsData(global::System.String __typename, global::System.String? account = default !, global::System.String? activity = default !, global::System.String? department = default !, global::System.String? entity = default !, global::System.String? fund = default !, global::System.String? program = default !, global::System.String? project = default !, global::System.String? purpose = default !)
@@ -13904,7 +13904,7 @@ namespace AggieEnterpriseApi.State
         public global::System.String? Purpose { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class GlSegmentNamesData
     {
         public GlSegmentNamesData(global::System.String __typename, global::System.String? entityName = default !, global::System.String? fundName = default !, global::System.String? departmentName = default !, global::System.String? accountName = default !, global::System.String? purposeName = default !, global::System.String? projectName = default !, global::System.String? programName = default !, global::System.String? activityName = default !)
@@ -13939,7 +13939,7 @@ namespace AggieEnterpriseApi.State
         public global::System.String? ActivityName { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class SegmentWarningData
     {
         public SegmentWarningData(global::System.String __typename, global::System.String? segmentName = default !, global::System.String? warning = default !)
@@ -13956,7 +13956,7 @@ namespace AggieEnterpriseApi.State
         public global::System.String? Warning { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class SegmentEndDateData
     {
         public SegmentEndDateData(global::System.String __typename, global::System.String? segmentName = default !, global::System.String? endDate = default !)
@@ -13973,7 +13973,7 @@ namespace AggieEnterpriseApi.State
         public global::System.String? EndDate { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class AggieEnterpriseClientEntityIdFactory : global::StrawberryShake.IEntityIdSerializer
     {
         private static readonly global::System.Text.Json.JsonWriterOptions _options = new global::System.Text.Json.JsonWriterOptions()
@@ -14089,7 +14089,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public partial class AggieEnterpriseClientStoreAccessor : global::StrawberryShake.StoreAccessor
     {
         public AggieEnterpriseClientStoreAccessor(global::StrawberryShake.IOperationStore operationStore, global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer entityIdSerializer, global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory> requestFactories, global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory> resultDataFactories) : base(operationStore, entityStore, entityIdSerializer, requestFactories, resultDataFactories)
@@ -14100,7 +14100,7 @@ namespace AggieEnterpriseApi.State
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.13.1.0")]
     public static partial class AggieEnterpriseClientServiceCollectionExtensions
     {
         public static global::StrawberryShake.IClientBuilder<global::AggieEnterpriseApi.State.AggieEnterpriseClientStoreAccessor> AddAggieEnterpriseClient(this global::Microsoft.Extensions.DependencyInjection.IServiceCollection services, global::StrawberryShake.ExecutionStrategy strategy = global::StrawberryShake.ExecutionStrategy.NetworkOnly)
