@@ -4,663 +4,6 @@
 namespace AggieEnterpriseApi
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatusByConsumerTrackingResult : global::System.IEquatable<GlJournalRequestStatusByConsumerTrackingResult>, IGlJournalRequestStatusByConsumerTrackingResult
-    {
-        public GlJournalRequestStatusByConsumerTrackingResult(global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking? glJournalRequestStatusByConsumerTracking)
-        {
-            GlJournalRequestStatusByConsumerTracking = glJournalRequestStatusByConsumerTracking;
-        }
-
-        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking? GlJournalRequestStatusByConsumerTracking { get; }
-
-        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTrackingResult? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (((GlJournalRequestStatusByConsumerTracking is null && other.GlJournalRequestStatusByConsumerTracking is null) || GlJournalRequestStatusByConsumerTracking != null && GlJournalRequestStatusByConsumerTracking.Equals(other.GlJournalRequestStatusByConsumerTracking)));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((GlJournalRequestStatusByConsumerTrackingResult)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (GlJournalRequestStatusByConsumerTracking != null)
-                {
-                    hash ^= 397 * GlJournalRequestStatusByConsumerTracking.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput
-    {
-        public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput(global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus requestStatus, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult? processingResult, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults? validationResults)
-        {
-            RequestStatus = requestStatus;
-            ProcessingResult = processingResult;
-            ValidationResults = validationResults;
-        }
-
-        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus RequestStatus { get; }
-
-        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult? ProcessingResult { get; }
-
-        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults? ValidationResults { get; }
-
-        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (RequestStatus.Equals(other.RequestStatus)) && ((ProcessingResult is null && other.ProcessingResult is null) || ProcessingResult != null && ProcessingResult.Equals(other.ProcessingResult)) && ((ValidationResults is null && other.ValidationResults is null) || ValidationResults != null && ValidationResults.Equals(other.ValidationResults));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * RequestStatus.GetHashCode();
-                if (ProcessingResult != null)
-                {
-                    hash ^= 397 * ProcessingResult.GetHashCode();
-                }
-
-                if (ValidationResults != null)
-                {
-                    hash ^= 397 * ValidationResults.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus
-    {
-        public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus(global::System.Guid? requestId, global::System.String consumerId, global::System.String consumerTrackingId, global::System.String consumerReferenceId, global::System.String? consumerNotes, global::System.String boundaryApplicationName, global::System.String operationName, global::System.DateTimeOffset requestDateTime, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.DateTimeOffset lastStatusDateTime, global::System.DateTimeOffset? processedDateTime, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages)
-        {
-            RequestId = requestId;
-            ConsumerId = consumerId;
-            ConsumerTrackingId = consumerTrackingId;
-            ConsumerReferenceId = consumerReferenceId;
-            ConsumerNotes = consumerNotes;
-            BoundaryApplicationName = boundaryApplicationName;
-            OperationName = operationName;
-            RequestDateTime = requestDateTime;
-            RequestStatus = requestStatus;
-            LastStatusDateTime = lastStatusDateTime;
-            ProcessedDateTime = processedDateTime;
-            ErrorMessages = errorMessages;
-        }
-
-        public global::System.Guid? RequestId { get; }
-
-        public global::System.String ConsumerId { get; }
-
-        public global::System.String ConsumerTrackingId { get; }
-
-        public global::System.String ConsumerReferenceId { get; }
-
-        public global::System.String? ConsumerNotes { get; }
-
-        public global::System.String BoundaryApplicationName { get; }
-
-        public global::System.String OperationName { get; }
-
-        public global::System.DateTimeOffset RequestDateTime { get; }
-
-        public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
-
-        public global::System.DateTimeOffset LastStatusDateTime { get; }
-
-        public global::System.DateTimeOffset? ProcessedDateTime { get; }
-
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
-
-        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (((RequestId is null && other.RequestId is null) || RequestId != null && RequestId.Equals(other.RequestId))) && ConsumerId.Equals(other.ConsumerId) && ConsumerTrackingId.Equals(other.ConsumerTrackingId) && ConsumerReferenceId.Equals(other.ConsumerReferenceId) && ((ConsumerNotes is null && other.ConsumerNotes is null) || ConsumerNotes != null && ConsumerNotes.Equals(other.ConsumerNotes)) && BoundaryApplicationName.Equals(other.BoundaryApplicationName) && OperationName.Equals(other.OperationName) && RequestDateTime.Equals(other.RequestDateTime) && RequestStatus.Equals(other.RequestStatus) && LastStatusDateTime.Equals(other.LastStatusDateTime) && ((ProcessedDateTime is null && other.ProcessedDateTime is null) || ProcessedDateTime != null && ProcessedDateTime.Equals(other.ProcessedDateTime)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (RequestId != null)
-                {
-                    hash ^= 397 * RequestId.GetHashCode();
-                }
-
-                hash ^= 397 * ConsumerId.GetHashCode();
-                hash ^= 397 * ConsumerTrackingId.GetHashCode();
-                hash ^= 397 * ConsumerReferenceId.GetHashCode();
-                if (ConsumerNotes != null)
-                {
-                    hash ^= 397 * ConsumerNotes.GetHashCode();
-                }
-
-                hash ^= 397 * BoundaryApplicationName.GetHashCode();
-                hash ^= 397 * OperationName.GetHashCode();
-                hash ^= 397 * RequestDateTime.GetHashCode();
-                hash ^= 397 * RequestStatus.GetHashCode();
-                hash ^= 397 * LastStatusDateTime.GetHashCode();
-                if (ProcessedDateTime != null)
-                {
-                    hash ^= 397 * ProcessedDateTime.GetHashCode();
-                }
-
-                if (ErrorMessages != null)
-                {
-                    foreach (var ErrorMessages_elm in ErrorMessages)
-                    {
-                        hash ^= 397 * ErrorMessages_elm.GetHashCode();
-                    }
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult
-    {
-        public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult(global::System.String status, global::System.DateTimeOffset requestDateTime, global::System.DateTimeOffset? lastStatusCheckDateTime, global::System.DateTimeOffset? processedDateTime, global::System.String? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>? jobs)
-        {
-            Status = status;
-            RequestDateTime = requestDateTime;
-            LastStatusCheckDateTime = lastStatusCheckDateTime;
-            ProcessedDateTime = processedDateTime;
-            ErrorMessages = errorMessages;
-            Jobs = jobs;
-        }
-
-        public global::System.String Status { get; }
-
-        public global::System.DateTimeOffset RequestDateTime { get; }
-
-        public global::System.DateTimeOffset? LastStatusCheckDateTime { get; }
-
-        public global::System.DateTimeOffset? ProcessedDateTime { get; }
-
-        public global::System.String? ErrorMessages { get; }
-
-        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>? Jobs { get; }
-
-        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Status.Equals(other.Status)) && RequestDateTime.Equals(other.RequestDateTime) && ((LastStatusCheckDateTime is null && other.LastStatusCheckDateTime is null) || LastStatusCheckDateTime != null && LastStatusCheckDateTime.Equals(other.LastStatusCheckDateTime)) && ((ProcessedDateTime is null && other.ProcessedDateTime is null) || ProcessedDateTime != null && ProcessedDateTime.Equals(other.ProcessedDateTime)) && ((ErrorMessages is null && other.ErrorMessages is null) || ErrorMessages != null && ErrorMessages.Equals(other.ErrorMessages)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Jobs, other.Jobs);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Status.GetHashCode();
-                hash ^= 397 * RequestDateTime.GetHashCode();
-                if (LastStatusCheckDateTime != null)
-                {
-                    hash ^= 397 * LastStatusCheckDateTime.GetHashCode();
-                }
-
-                if (ProcessedDateTime != null)
-                {
-                    hash ^= 397 * ProcessedDateTime.GetHashCode();
-                }
-
-                if (ErrorMessages != null)
-                {
-                    hash ^= 397 * ErrorMessages.GetHashCode();
-                }
-
-                if (Jobs != null)
-                {
-                    foreach (var Jobs_elm in Jobs)
-                    {
-                        hash ^= 397 * Jobs_elm.GetHashCode();
-                    }
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse
-    {
-        public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse(global::System.Boolean valid, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties)
-        {
-            Valid = valid;
-            ErrorMessages = errorMessages;
-            MessageProperties = messageProperties;
-        }
-
-        public global::System.Boolean Valid { get; }
-
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
-
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
-
-        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Valid == other.Valid) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(MessageProperties, other.MessageProperties);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Valid.GetHashCode();
-                if (ErrorMessages != null)
-                {
-                    foreach (var ErrorMessages_elm in ErrorMessages)
-                    {
-                        hash ^= 397 * ErrorMessages_elm.GetHashCode();
-                    }
-                }
-
-                if (MessageProperties != null)
-                {
-                    foreach (var MessageProperties_elm in MessageProperties)
-                    {
-                        hash ^= 397 * MessageProperties_elm.GetHashCode();
-                    }
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult
-    {
-        public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult(global::System.String jobId, global::System.String jobStatus, global::System.String? assignedJobId, global::System.String? jobReport, global::System.String? failedRecords, global::System.DateTimeOffset? completedDateTime)
-        {
-            JobId = jobId;
-            JobStatus = jobStatus;
-            AssignedJobId = assignedJobId;
-            JobReport = jobReport;
-            FailedRecords = failedRecords;
-            CompletedDateTime = completedDateTime;
-        }
-
-        public global::System.String JobId { get; }
-
-        public global::System.String JobStatus { get; }
-
-        public global::System.String? AssignedJobId { get; }
-
-        public global::System.String? JobReport { get; }
-
-        public global::System.String? FailedRecords { get; }
-
-        public global::System.DateTimeOffset? CompletedDateTime { get; }
-
-        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (JobId.Equals(other.JobId)) && JobStatus.Equals(other.JobStatus) && ((AssignedJobId is null && other.AssignedJobId is null) || AssignedJobId != null && AssignedJobId.Equals(other.AssignedJobId)) && ((JobReport is null && other.JobReport is null) || JobReport != null && JobReport.Equals(other.JobReport)) && ((FailedRecords is null && other.FailedRecords is null) || FailedRecords != null && FailedRecords.Equals(other.FailedRecords)) && ((CompletedDateTime is null && other.CompletedDateTime is null) || CompletedDateTime != null && CompletedDateTime.Equals(other.CompletedDateTime));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * JobId.GetHashCode();
-                hash ^= 397 * JobStatus.GetHashCode();
-                if (AssignedJobId != null)
-                {
-                    hash ^= 397 * AssignedJobId.GetHashCode();
-                }
-
-                if (JobReport != null)
-                {
-                    hash ^= 397 * JobReport.GetHashCode();
-                }
-
-                if (FailedRecords != null)
-                {
-                    hash ^= 397 * FailedRecords.GetHashCode();
-                }
-
-                if (CompletedDateTime != null)
-                {
-                    hash ^= 397 * CompletedDateTime.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTrackingResult
-    {
-        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking? GlJournalRequestStatusByConsumerTracking { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking
-    {
-        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus RequestStatus { get; }
-
-        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult? ProcessingResult { get; }
-
-        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults? ValidationResults { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus
-    {
-        public global::System.Guid? RequestId { get; }
-
-        public global::System.String ConsumerId { get; }
-
-        public global::System.String ConsumerTrackingId { get; }
-
-        public global::System.String ConsumerReferenceId { get; }
-
-        public global::System.String? ConsumerNotes { get; }
-
-        public global::System.String BoundaryApplicationName { get; }
-
-        public global::System.String OperationName { get; }
-
-        public global::System.DateTimeOffset RequestDateTime { get; }
-
-        public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
-
-        public global::System.DateTimeOffset LastStatusDateTime { get; }
-
-        public global::System.DateTimeOffset? ProcessedDateTime { get; }
-
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult
-    {
-        public global::System.String Status { get; }
-
-        public global::System.DateTimeOffset RequestDateTime { get; }
-
-        public global::System.DateTimeOffset? LastStatusCheckDateTime { get; }
-
-        public global::System.DateTimeOffset? ProcessedDateTime { get; }
-
-        public global::System.String? ErrorMessages { get; }
-
-        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>? Jobs { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults
-    {
-        public global::System.Boolean Valid { get; }
-
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
-
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs
-    {
-        public global::System.String JobId { get; }
-
-        public global::System.String JobStatus { get; }
-
-        public global::System.String? AssignedJobId { get; }
-
-        public global::System.String? JobReport { get; }
-
-        public global::System.String? FailedRecords { get; }
-
-        public global::System.DateTimeOffset? CompletedDateTime { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParentsResult : global::System.IEquatable<FundParentsResult>, IFundParentsResult
     {
         public FundParentsResult(global::AggieEnterpriseApi.IFundParents_ErpFund? erpFund)
@@ -1891,6 +1234,663 @@ namespace AggieEnterpriseApi
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse : IGlJournalRequest_GlJournalRequest_ValidationResults
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusByConsumerTrackingResult : global::System.IEquatable<GlJournalRequestStatusByConsumerTrackingResult>, IGlJournalRequestStatusByConsumerTrackingResult
+    {
+        public GlJournalRequestStatusByConsumerTrackingResult(global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking? glJournalRequestStatusByConsumerTracking)
+        {
+            GlJournalRequestStatusByConsumerTracking = glJournalRequestStatusByConsumerTracking;
+        }
+
+        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking? GlJournalRequestStatusByConsumerTracking { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTrackingResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((GlJournalRequestStatusByConsumerTracking is null && other.GlJournalRequestStatusByConsumerTracking is null) || GlJournalRequestStatusByConsumerTracking != null && GlJournalRequestStatusByConsumerTracking.Equals(other.GlJournalRequestStatusByConsumerTracking)));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatusByConsumerTrackingResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (GlJournalRequestStatusByConsumerTracking != null)
+                {
+                    hash ^= 397 * GlJournalRequestStatusByConsumerTracking.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput
+    {
+        public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput(global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus requestStatus, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult? processingResult, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults? validationResults)
+        {
+            RequestStatus = requestStatus;
+            ProcessingResult = processingResult;
+            ValidationResults = validationResults;
+        }
+
+        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus RequestStatus { get; }
+
+        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult? ProcessingResult { get; }
+
+        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults? ValidationResults { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (RequestStatus.Equals(other.RequestStatus)) && ((ProcessingResult is null && other.ProcessingResult is null) || ProcessingResult != null && ProcessingResult.Equals(other.ProcessingResult)) && ((ValidationResults is null && other.ValidationResults is null) || ValidationResults != null && ValidationResults.Equals(other.ValidationResults));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * RequestStatus.GetHashCode();
+                if (ProcessingResult != null)
+                {
+                    hash ^= 397 * ProcessingResult.GetHashCode();
+                }
+
+                if (ValidationResults != null)
+                {
+                    hash ^= 397 * ValidationResults.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus
+    {
+        public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus(global::System.Guid? requestId, global::System.String consumerId, global::System.String consumerTrackingId, global::System.String consumerReferenceId, global::System.String? consumerNotes, global::System.String boundaryApplicationName, global::System.String operationName, global::System.DateTimeOffset requestDateTime, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.DateTimeOffset lastStatusDateTime, global::System.DateTimeOffset? processedDateTime, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages)
+        {
+            RequestId = requestId;
+            ConsumerId = consumerId;
+            ConsumerTrackingId = consumerTrackingId;
+            ConsumerReferenceId = consumerReferenceId;
+            ConsumerNotes = consumerNotes;
+            BoundaryApplicationName = boundaryApplicationName;
+            OperationName = operationName;
+            RequestDateTime = requestDateTime;
+            RequestStatus = requestStatus;
+            LastStatusDateTime = lastStatusDateTime;
+            ProcessedDateTime = processedDateTime;
+            ErrorMessages = errorMessages;
+        }
+
+        public global::System.Guid? RequestId { get; }
+
+        public global::System.String ConsumerId { get; }
+
+        public global::System.String ConsumerTrackingId { get; }
+
+        public global::System.String ConsumerReferenceId { get; }
+
+        public global::System.String? ConsumerNotes { get; }
+
+        public global::System.String BoundaryApplicationName { get; }
+
+        public global::System.String OperationName { get; }
+
+        public global::System.DateTimeOffset RequestDateTime { get; }
+
+        public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
+
+        public global::System.DateTimeOffset LastStatusDateTime { get; }
+
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((RequestId is null && other.RequestId is null) || RequestId != null && RequestId.Equals(other.RequestId))) && ConsumerId.Equals(other.ConsumerId) && ConsumerTrackingId.Equals(other.ConsumerTrackingId) && ConsumerReferenceId.Equals(other.ConsumerReferenceId) && ((ConsumerNotes is null && other.ConsumerNotes is null) || ConsumerNotes != null && ConsumerNotes.Equals(other.ConsumerNotes)) && BoundaryApplicationName.Equals(other.BoundaryApplicationName) && OperationName.Equals(other.OperationName) && RequestDateTime.Equals(other.RequestDateTime) && RequestStatus.Equals(other.RequestStatus) && LastStatusDateTime.Equals(other.LastStatusDateTime) && ((ProcessedDateTime is null && other.ProcessedDateTime is null) || ProcessedDateTime != null && ProcessedDateTime.Equals(other.ProcessedDateTime)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (RequestId != null)
+                {
+                    hash ^= 397 * RequestId.GetHashCode();
+                }
+
+                hash ^= 397 * ConsumerId.GetHashCode();
+                hash ^= 397 * ConsumerTrackingId.GetHashCode();
+                hash ^= 397 * ConsumerReferenceId.GetHashCode();
+                if (ConsumerNotes != null)
+                {
+                    hash ^= 397 * ConsumerNotes.GetHashCode();
+                }
+
+                hash ^= 397 * BoundaryApplicationName.GetHashCode();
+                hash ^= 397 * OperationName.GetHashCode();
+                hash ^= 397 * RequestDateTime.GetHashCode();
+                hash ^= 397 * RequestStatus.GetHashCode();
+                hash ^= 397 * LastStatusDateTime.GetHashCode();
+                if (ProcessedDateTime != null)
+                {
+                    hash ^= 397 * ProcessedDateTime.GetHashCode();
+                }
+
+                if (ErrorMessages != null)
+                {
+                    foreach (var ErrorMessages_elm in ErrorMessages)
+                    {
+                        hash ^= 397 * ErrorMessages_elm.GetHashCode();
+                    }
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult
+    {
+        public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult(global::System.String status, global::System.DateTimeOffset requestDateTime, global::System.DateTimeOffset? lastStatusCheckDateTime, global::System.DateTimeOffset? processedDateTime, global::System.String? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>? jobs)
+        {
+            Status = status;
+            RequestDateTime = requestDateTime;
+            LastStatusCheckDateTime = lastStatusCheckDateTime;
+            ProcessedDateTime = processedDateTime;
+            ErrorMessages = errorMessages;
+            Jobs = jobs;
+        }
+
+        public global::System.String Status { get; }
+
+        public global::System.DateTimeOffset RequestDateTime { get; }
+
+        public global::System.DateTimeOffset? LastStatusCheckDateTime { get; }
+
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
+
+        public global::System.String? ErrorMessages { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>? Jobs { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Status.Equals(other.Status)) && RequestDateTime.Equals(other.RequestDateTime) && ((LastStatusCheckDateTime is null && other.LastStatusCheckDateTime is null) || LastStatusCheckDateTime != null && LastStatusCheckDateTime.Equals(other.LastStatusCheckDateTime)) && ((ProcessedDateTime is null && other.ProcessedDateTime is null) || ProcessedDateTime != null && ProcessedDateTime.Equals(other.ProcessedDateTime)) && ((ErrorMessages is null && other.ErrorMessages is null) || ErrorMessages != null && ErrorMessages.Equals(other.ErrorMessages)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Jobs, other.Jobs);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Status.GetHashCode();
+                hash ^= 397 * RequestDateTime.GetHashCode();
+                if (LastStatusCheckDateTime != null)
+                {
+                    hash ^= 397 * LastStatusCheckDateTime.GetHashCode();
+                }
+
+                if (ProcessedDateTime != null)
+                {
+                    hash ^= 397 * ProcessedDateTime.GetHashCode();
+                }
+
+                if (ErrorMessages != null)
+                {
+                    hash ^= 397 * ErrorMessages.GetHashCode();
+                }
+
+                if (Jobs != null)
+                {
+                    foreach (var Jobs_elm in Jobs)
+                    {
+                        hash ^= 397 * Jobs_elm.GetHashCode();
+                    }
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse
+    {
+        public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse(global::System.Boolean valid, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties)
+        {
+            Valid = valid;
+            ErrorMessages = errorMessages;
+            MessageProperties = messageProperties;
+        }
+
+        public global::System.Boolean Valid { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Valid == other.Valid) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(MessageProperties, other.MessageProperties);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Valid.GetHashCode();
+                if (ErrorMessages != null)
+                {
+                    foreach (var ErrorMessages_elm in ErrorMessages)
+                    {
+                        hash ^= 397 * ErrorMessages_elm.GetHashCode();
+                    }
+                }
+
+                if (MessageProperties != null)
+                {
+                    foreach (var MessageProperties_elm in MessageProperties)
+                    {
+                        hash ^= 397 * MessageProperties_elm.GetHashCode();
+                    }
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult : global::System.IEquatable<GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult>, IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult
+    {
+        public GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult(global::System.String jobId, global::System.String jobStatus, global::System.String? assignedJobId, global::System.String? jobReport, global::System.String? failedRecords, global::System.DateTimeOffset? completedDateTime)
+        {
+            JobId = jobId;
+            JobStatus = jobStatus;
+            AssignedJobId = assignedJobId;
+            JobReport = jobReport;
+            FailedRecords = failedRecords;
+            CompletedDateTime = completedDateTime;
+        }
+
+        public global::System.String JobId { get; }
+
+        public global::System.String JobStatus { get; }
+
+        public global::System.String? AssignedJobId { get; }
+
+        public global::System.String? JobReport { get; }
+
+        public global::System.String? FailedRecords { get; }
+
+        public global::System.DateTimeOffset? CompletedDateTime { get; }
+
+        public virtual global::System.Boolean Equals(GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (JobId.Equals(other.JobId)) && JobStatus.Equals(other.JobStatus) && ((AssignedJobId is null && other.AssignedJobId is null) || AssignedJobId != null && AssignedJobId.Equals(other.AssignedJobId)) && ((JobReport is null && other.JobReport is null) || JobReport != null && JobReport.Equals(other.JobReport)) && ((FailedRecords is null && other.FailedRecords is null) || FailedRecords != null && FailedRecords.Equals(other.FailedRecords)) && ((CompletedDateTime is null && other.CompletedDateTime is null) || CompletedDateTime != null && CompletedDateTime.Equals(other.CompletedDateTime));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * JobId.GetHashCode();
+                hash ^= 397 * JobStatus.GetHashCode();
+                if (AssignedJobId != null)
+                {
+                    hash ^= 397 * AssignedJobId.GetHashCode();
+                }
+
+                if (JobReport != null)
+                {
+                    hash ^= 397 * JobReport.GetHashCode();
+                }
+
+                if (FailedRecords != null)
+                {
+                    hash ^= 397 * FailedRecords.GetHashCode();
+                }
+
+                if (CompletedDateTime != null)
+                {
+                    hash ^= 397 * CompletedDateTime.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTrackingResult
+    {
+        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking? GlJournalRequestStatusByConsumerTracking { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking
+    {
+        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus RequestStatus { get; }
+
+        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult? ProcessingResult { get; }
+
+        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults? ValidationResults { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus
+    {
+        public global::System.Guid? RequestId { get; }
+
+        public global::System.String ConsumerId { get; }
+
+        public global::System.String ConsumerTrackingId { get; }
+
+        public global::System.String ConsumerReferenceId { get; }
+
+        public global::System.String? ConsumerNotes { get; }
+
+        public global::System.String BoundaryApplicationName { get; }
+
+        public global::System.String OperationName { get; }
+
+        public global::System.DateTimeOffset RequestDateTime { get; }
+
+        public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
+
+        public global::System.DateTimeOffset LastStatusDateTime { get; }
+
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult
+    {
+        public global::System.String Status { get; }
+
+        public global::System.DateTimeOffset RequestDateTime { get; }
+
+        public global::System.DateTimeOffset? LastStatusCheckDateTime { get; }
+
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
+
+        public global::System.String? ErrorMessages { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>? Jobs { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults
+    {
+        public global::System.Boolean Valid { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs
+    {
+        public global::System.String JobId { get; }
+
+        public global::System.String JobStatus { get; }
+
+        public global::System.String? AssignedJobId { get; }
+
+        public global::System.String? JobReport { get; }
+
+        public global::System.String? FailedRecords { get; }
+
+        public global::System.DateTimeOffset? CompletedDateTime { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult : IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs
     {
     }
 
@@ -7391,230 +7391,6 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
-    /// Represents the operation service of the GlJournalRequestStatusByConsumerTracking GraphQL operation
-    /// <code>
-    /// query GlJournalRequestStatusByConsumerTracking($consumerTrackingId: String!) {
-    ///   glJournalRequestStatusByConsumerTracking(consumerTrackingId: $consumerTrackingId) {
-    ///     __typename
-    ///     requestStatus {
-    ///       __typename
-    ///       requestId
-    ///       consumerId
-    ///       consumerTrackingId
-    ///       consumerReferenceId
-    ///       consumerNotes
-    ///       boundaryApplicationName
-    ///       operationName
-    ///       requestDateTime
-    ///       requestStatus
-    ///       lastStatusDateTime
-    ///       processedDateTime
-    ///       errorMessages
-    ///     }
-    ///     processingResult {
-    ///       __typename
-    ///       status
-    ///       requestDateTime
-    ///       lastStatusCheckDateTime
-    ///       processedDateTime
-    ///       errorMessages
-    ///       jobs {
-    ///         __typename
-    ///         jobId
-    ///         jobStatus
-    ///         assignedJobId
-    ///         jobReport
-    ///         failedRecords
-    ///         completedDateTime
-    ///       }
-    ///     }
-    ///     validationResults {
-    ///       __typename
-    ///       valid
-    ///       errorMessages
-    ///       messageProperties
-    ///     }
-    ///   }
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatusByConsumerTrackingQueryDocument : global::StrawberryShake.IDocument
-    {
-        private GlJournalRequestStatusByConsumerTrackingQueryDocument()
-        {
-        }
-
-        public static GlJournalRequestStatusByConsumerTrackingQueryDocument Instance { get; } = new GlJournalRequestStatusByConsumerTrackingQueryDocument();
-        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x42, 0x79, 0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x28, 0x24, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x49, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x42, 0x79, 0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x28, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x49, 0x64, 0x3a, 0x20, 0x24, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x49, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x4e, 0x6f, 0x74, 0x65, 0x73, 0x20, 0x62, 0x6f, 0x75, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6a, 0x6f, 0x62, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6a, 0x6f, 0x62, 0x49, 0x64, 0x20, 0x6a, 0x6f, 0x62, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x61, 0x73, 0x73, 0x69, 0x67, 0x6e, 0x65, 0x64, 0x4a, 0x6f, 0x62, 0x49, 0x64, 0x20, 0x6a, 0x6f, 0x62, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x20, 0x66, 0x61, 0x69, 0x6c, 0x65, 0x64, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x20, 0x63, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "377a6c33f0e4682343205f3eaabed360");
-        public override global::System.String ToString()
-        {
-#if NETSTANDARD2_0
-        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
-#else
-            return global::System.Text.Encoding.UTF8.GetString(Body);
-#endif
-        }
-    }
-
-    /// <summary>
-    /// Represents the operation service of the GlJournalRequestStatusByConsumerTracking GraphQL operation
-    /// <code>
-    /// query GlJournalRequestStatusByConsumerTracking($consumerTrackingId: String!) {
-    ///   glJournalRequestStatusByConsumerTracking(consumerTrackingId: $consumerTrackingId) {
-    ///     __typename
-    ///     requestStatus {
-    ///       __typename
-    ///       requestId
-    ///       consumerId
-    ///       consumerTrackingId
-    ///       consumerReferenceId
-    ///       consumerNotes
-    ///       boundaryApplicationName
-    ///       operationName
-    ///       requestDateTime
-    ///       requestStatus
-    ///       lastStatusDateTime
-    ///       processedDateTime
-    ///       errorMessages
-    ///     }
-    ///     processingResult {
-    ///       __typename
-    ///       status
-    ///       requestDateTime
-    ///       lastStatusCheckDateTime
-    ///       processedDateTime
-    ///       errorMessages
-    ///       jobs {
-    ///         __typename
-    ///         jobId
-    ///         jobStatus
-    ///         assignedJobId
-    ///         jobReport
-    ///         failedRecords
-    ///         completedDateTime
-    ///       }
-    ///     }
-    ///     validationResults {
-    ///       __typename
-    ///       valid
-    ///       errorMessages
-    ///       messageProperties
-    ///     }
-    ///   }
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatusByConsumerTrackingQuery : global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery
-    {
-        private readonly global::StrawberryShake.IOperationExecutor<IGlJournalRequestStatusByConsumerTrackingResult> _operationExecutor;
-        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
-        public GlJournalRequestStatusByConsumerTrackingQuery(global::StrawberryShake.IOperationExecutor<IGlJournalRequestStatusByConsumerTrackingResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
-            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
-        }
-
-        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGlJournalRequestStatusByConsumerTrackingResult);
-        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusByConsumerTrackingResult>> ExecuteAsync(global::System.String consumerTrackingId, global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var request = CreateRequest(consumerTrackingId);
-            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
-        }
-
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusByConsumerTrackingResult>> Watch(global::System.String consumerTrackingId, global::StrawberryShake.ExecutionStrategy? strategy = null)
-        {
-            var request = CreateRequest(consumerTrackingId);
-            return _operationExecutor.Watch(request, strategy);
-        }
-
-        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String consumerTrackingId)
-        {
-            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
-            variables.Add("consumerTrackingId", FormatConsumerTrackingId(consumerTrackingId));
-            return CreateRequest(variables);
-        }
-
-        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
-        {
-            return new global::StrawberryShake.OperationRequest(id: GlJournalRequestStatusByConsumerTrackingQueryDocument.Instance.Hash.Value, name: "GlJournalRequestStatusByConsumerTracking", document: GlJournalRequestStatusByConsumerTrackingQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
-        }
-
-        private global::System.Object? FormatConsumerTrackingId(global::System.String value)
-        {
-            if (value is null)
-            {
-                throw new global::System.ArgumentNullException(nameof(value));
-            }
-
-            return _stringFormatter.Format(value);
-        }
-
-        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
-        {
-            return CreateRequest(variables!);
-        }
-    }
-
-    /// <summary>
-    /// Represents the operation service of the GlJournalRequestStatusByConsumerTracking GraphQL operation
-    /// <code>
-    /// query GlJournalRequestStatusByConsumerTracking($consumerTrackingId: String!) {
-    ///   glJournalRequestStatusByConsumerTracking(consumerTrackingId: $consumerTrackingId) {
-    ///     __typename
-    ///     requestStatus {
-    ///       __typename
-    ///       requestId
-    ///       consumerId
-    ///       consumerTrackingId
-    ///       consumerReferenceId
-    ///       consumerNotes
-    ///       boundaryApplicationName
-    ///       operationName
-    ///       requestDateTime
-    ///       requestStatus
-    ///       lastStatusDateTime
-    ///       processedDateTime
-    ///       errorMessages
-    ///     }
-    ///     processingResult {
-    ///       __typename
-    ///       status
-    ///       requestDateTime
-    ///       lastStatusCheckDateTime
-    ///       processedDateTime
-    ///       errorMessages
-    ///       jobs {
-    ///         __typename
-    ///         jobId
-    ///         jobStatus
-    ///         assignedJobId
-    ///         jobReport
-    ///         failedRecords
-    ///         completedDateTime
-    ///       }
-    ///     }
-    ///     validationResults {
-    ///       __typename
-    ///       valid
-    ///       errorMessages
-    ///       messageProperties
-    ///     }
-    ///   }
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IGlJournalRequestStatusByConsumerTrackingQuery : global::StrawberryShake.IOperationRequestFactory
-    {
-        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusByConsumerTrackingResult>> ExecuteAsync(global::System.String consumerTrackingId, global::System.Threading.CancellationToken cancellationToken = default);
-        global::System.IObservable<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusByConsumerTrackingResult>> Watch(global::System.String consumerTrackingId, global::StrawberryShake.ExecutionStrategy? strategy = null);
-    }
-
-    /// <summary>
     /// Represents the operation service of the FundParents GraphQL operation
     /// <code>
     /// query FundParents($code: String!) {
@@ -8096,6 +7872,230 @@ namespace AggieEnterpriseApi
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestResult>> ExecuteAsync(global::AggieEnterpriseApi.GlJournalRequestInput data, global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IGlJournalRequestResult>> Watch(global::AggieEnterpriseApi.GlJournalRequestInput data, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlJournalRequestStatusByConsumerTracking GraphQL operation
+    /// <code>
+    /// query GlJournalRequestStatusByConsumerTracking($consumerTrackingId: String!) {
+    ///   glJournalRequestStatusByConsumerTracking(consumerTrackingId: $consumerTrackingId) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       requestId
+    ///       consumerId
+    ///       consumerTrackingId
+    ///       consumerReferenceId
+    ///       consumerNotes
+    ///       boundaryApplicationName
+    ///       operationName
+    ///       requestDateTime
+    ///       requestStatus
+    ///       lastStatusDateTime
+    ///       processedDateTime
+    ///       errorMessages
+    ///     }
+    ///     processingResult {
+    ///       __typename
+    ///       status
+    ///       requestDateTime
+    ///       lastStatusCheckDateTime
+    ///       processedDateTime
+    ///       errorMessages
+    ///       jobs {
+    ///         __typename
+    ///         jobId
+    ///         jobStatus
+    ///         assignedJobId
+    ///         jobReport
+    ///         failedRecords
+    ///         completedDateTime
+    ///       }
+    ///     }
+    ///     validationResults {
+    ///       __typename
+    ///       valid
+    ///       errorMessages
+    ///       messageProperties
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusByConsumerTrackingQueryDocument : global::StrawberryShake.IDocument
+    {
+        private GlJournalRequestStatusByConsumerTrackingQueryDocument()
+        {
+        }
+
+        public static GlJournalRequestStatusByConsumerTrackingQueryDocument Instance { get; } = new GlJournalRequestStatusByConsumerTrackingQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x42, 0x79, 0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x28, 0x24, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x49, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x4a, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x42, 0x79, 0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x28, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x49, 0x64, 0x3a, 0x20, 0x24, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x49, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x54, 0x72, 0x61, 0x63, 0x6b, 0x69, 0x6e, 0x67, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x49, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x72, 0x4e, 0x6f, 0x74, 0x65, 0x73, 0x20, 0x62, 0x6f, 0x75, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6a, 0x6f, 0x62, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6a, 0x6f, 0x62, 0x49, 0x64, 0x20, 0x6a, 0x6f, 0x62, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x61, 0x73, 0x73, 0x69, 0x67, 0x6e, 0x65, 0x64, 0x4a, 0x6f, 0x62, 0x49, 0x64, 0x20, 0x6a, 0x6f, 0x62, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x20, 0x66, 0x61, 0x69, 0x6c, 0x65, 0x64, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x20, 0x63, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "377a6c33f0e4682343205f3eaabed360");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlJournalRequestStatusByConsumerTracking GraphQL operation
+    /// <code>
+    /// query GlJournalRequestStatusByConsumerTracking($consumerTrackingId: String!) {
+    ///   glJournalRequestStatusByConsumerTracking(consumerTrackingId: $consumerTrackingId) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       requestId
+    ///       consumerId
+    ///       consumerTrackingId
+    ///       consumerReferenceId
+    ///       consumerNotes
+    ///       boundaryApplicationName
+    ///       operationName
+    ///       requestDateTime
+    ///       requestStatus
+    ///       lastStatusDateTime
+    ///       processedDateTime
+    ///       errorMessages
+    ///     }
+    ///     processingResult {
+    ///       __typename
+    ///       status
+    ///       requestDateTime
+    ///       lastStatusCheckDateTime
+    ///       processedDateTime
+    ///       errorMessages
+    ///       jobs {
+    ///         __typename
+    ///         jobId
+    ///         jobStatus
+    ///         assignedJobId
+    ///         jobReport
+    ///         failedRecords
+    ///         completedDateTime
+    ///       }
+    ///     }
+    ///     validationResults {
+    ///       __typename
+    ///       valid
+    ///       errorMessages
+    ///       messageProperties
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusByConsumerTrackingQuery : global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IGlJournalRequestStatusByConsumerTrackingResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        public GlJournalRequestStatusByConsumerTrackingQuery(global::StrawberryShake.IOperationExecutor<IGlJournalRequestStatusByConsumerTrackingResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGlJournalRequestStatusByConsumerTrackingResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusByConsumerTrackingResult>> ExecuteAsync(global::System.String consumerTrackingId, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(consumerTrackingId);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusByConsumerTrackingResult>> Watch(global::System.String consumerTrackingId, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(consumerTrackingId);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String consumerTrackingId)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("consumerTrackingId", FormatConsumerTrackingId(consumerTrackingId));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: GlJournalRequestStatusByConsumerTrackingQueryDocument.Instance.Hash.Value, name: "GlJournalRequestStatusByConsumerTracking", document: GlJournalRequestStatusByConsumerTrackingQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatConsumerTrackingId(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GlJournalRequestStatusByConsumerTracking GraphQL operation
+    /// <code>
+    /// query GlJournalRequestStatusByConsumerTracking($consumerTrackingId: String!) {
+    ///   glJournalRequestStatusByConsumerTracking(consumerTrackingId: $consumerTrackingId) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       requestId
+    ///       consumerId
+    ///       consumerTrackingId
+    ///       consumerReferenceId
+    ///       consumerNotes
+    ///       boundaryApplicationName
+    ///       operationName
+    ///       requestDateTime
+    ///       requestStatus
+    ///       lastStatusDateTime
+    ///       processedDateTime
+    ///       errorMessages
+    ///     }
+    ///     processingResult {
+    ///       __typename
+    ///       status
+    ///       requestDateTime
+    ///       lastStatusCheckDateTime
+    ///       processedDateTime
+    ///       errorMessages
+    ///       jobs {
+    ///         __typename
+    ///         jobId
+    ///         jobStatus
+    ///         assignedJobId
+    ///         jobReport
+    ///         failedRecords
+    ///         completedDateTime
+    ///       }
+    ///     }
+    ///     validationResults {
+    ///       __typename
+    ///       valid
+    ///       errorMessages
+    ///       messageProperties
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IGlJournalRequestStatusByConsumerTrackingQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusByConsumerTrackingResult>> ExecuteAsync(global::System.String consumerTrackingId, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IGlJournalRequestStatusByConsumerTrackingResult>> Watch(global::System.String consumerTrackingId, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -9309,20 +9309,20 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class AggieEnterpriseClient : global::AggieEnterpriseApi.IAggieEnterpriseClient
     {
-        private readonly global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery _glJournalRequestStatusByConsumerTracking;
         private readonly global::AggieEnterpriseApi.IFundParentsQuery _fundParents;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestMutation _glJournalRequest;
+        private readonly global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery _glJournalRequestStatusByConsumerTracking;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestStatusQuery _glJournalRequestStatus;
         private readonly global::AggieEnterpriseApi.ICoaDetailsQuery _coaDetails;
         private readonly global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery _ppmStringSegmentsValidate;
         private readonly global::AggieEnterpriseApi.IPpmSegmentsValidateQuery _ppmSegmentsValidate;
         private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery glJournalRequestStatusByConsumerTracking, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery glJournalRequestStatusByConsumerTracking, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
-            _glJournalRequestStatusByConsumerTracking = glJournalRequestStatusByConsumerTracking ?? throw new global::System.ArgumentNullException(nameof(glJournalRequestStatusByConsumerTracking));
             _fundParents = fundParents ?? throw new global::System.ArgumentNullException(nameof(fundParents));
             _glJournalRequest = glJournalRequest ?? throw new global::System.ArgumentNullException(nameof(glJournalRequest));
+            _glJournalRequestStatusByConsumerTracking = glJournalRequestStatusByConsumerTracking ?? throw new global::System.ArgumentNullException(nameof(glJournalRequestStatusByConsumerTracking));
             _glJournalRequestStatus = glJournalRequestStatus ?? throw new global::System.ArgumentNullException(nameof(glJournalRequestStatus));
             _coaDetails = coaDetails ?? throw new global::System.ArgumentNullException(nameof(coaDetails));
             _ppmStringSegmentsValidate = ppmStringSegmentsValidate ?? throw new global::System.ArgumentNullException(nameof(ppmStringSegmentsValidate));
@@ -9332,9 +9332,9 @@ namespace AggieEnterpriseApi
         }
 
         public static global::System.String ClientName => "AggieEnterpriseClient";
-        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery GlJournalRequestStatusByConsumerTracking => _glJournalRequestStatusByConsumerTracking;
         public global::AggieEnterpriseApi.IFundParentsQuery FundParents => _fundParents;
         public global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest => _glJournalRequest;
+        public global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery GlJournalRequestStatusByConsumerTracking => _glJournalRequestStatusByConsumerTracking;
         public global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus => _glJournalRequestStatus;
         public global::AggieEnterpriseApi.ICoaDetailsQuery CoaDetails => _coaDetails;
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery PpmStringSegmentsValidate => _ppmStringSegmentsValidate;
@@ -9349,11 +9349,11 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IAggieEnterpriseClient
     {
-        global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery GlJournalRequestStatusByConsumerTracking { get; }
-
         global::AggieEnterpriseApi.IFundParentsQuery FundParents { get; }
 
         global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest { get; }
+
+        global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery GlJournalRequestStatusByConsumerTracking { get; }
 
         global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus { get; }
 
@@ -9469,165 +9469,6 @@ namespace AggieEnterpriseApi.State
         public global::System.String Code { get; }
 
         public global::System.String Name { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatusByConsumerTrackingResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlJournalRequestStatusByConsumerTrackingResult>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public GlJournalRequestStatusByConsumerTrackingResultFactory(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult);
-        public GlJournalRequestStatusByConsumerTrackingResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            if (dataInfo is GlJournalRequestStatusByConsumerTrackingResultInfo info)
-            {
-                return new GlJournalRequestStatusByConsumerTrackingResult(MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking(info.GlJournalRequestStatusByConsumerTracking, snapshot));
-            }
-
-            throw new global::System.ArgumentException("GlJournalRequestStatusByConsumerTrackingResultInfo expected.");
-        }
-
-        private global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking? MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking(global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (data is null)
-            {
-                return null;
-            }
-
-            IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking returnValue = default !;
-            if (data?.__typename.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal) ?? false)
-            {
-                returnValue = new GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput(MapNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus(data.RequestStatus ?? throw new global::System.ArgumentNullException(), snapshot), MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult(data.ProcessingResult, snapshot), MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults(data.ValidationResults, snapshot));
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        private global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus MapNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus(global::AggieEnterpriseApi.State.ActionRequestStatusData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus returnValue = default !;
-            if (data.__typename.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal))
-            {
-                returnValue = new GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus(data.RequestId, data.ConsumerId ?? throw new global::System.ArgumentNullException(), data.ConsumerTrackingId ?? throw new global::System.ArgumentNullException(), data.ConsumerReferenceId ?? throw new global::System.ArgumentNullException(), data.ConsumerNotes, data.BoundaryApplicationName ?? throw new global::System.ArgumentNullException(), data.OperationName ?? throw new global::System.ArgumentNullException(), data.RequestDateTime ?? throw new global::System.ArgumentNullException(), data.RequestStatus ?? throw new global::System.ArgumentNullException(), data.LastStatusDateTime ?? throw new global::System.ArgumentNullException(), data.ProcessedDateTime, data.ErrorMessages);
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        private global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult? MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult(global::AggieEnterpriseApi.State.ProcessingResultData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (data is null)
-            {
-                return null;
-            }
-
-            IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult returnValue = default !;
-            if (data?.__typename.Equals("ProcessingResult", global::System.StringComparison.Ordinal) ?? false)
-            {
-                returnValue = new GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult(data.Status ?? throw new global::System.ArgumentNullException(), data.RequestDateTime ?? throw new global::System.ArgumentNullException(), data.LastStatusCheckDateTime, data.ProcessedDateTime, data.ErrorMessages, MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_JobsNonNullableArray(data.Jobs, snapshot));
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>? MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_JobsNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (list is null)
-            {
-                return null;
-            }
-
-            var requestJobResults = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>();
-            foreach (global::AggieEnterpriseApi.State.RequestJobResultData child in list)
-            {
-                requestJobResults.Add(MapNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs(child, snapshot));
-            }
-
-            return requestJobResults;
-        }
-
-        private global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs MapNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs(global::AggieEnterpriseApi.State.RequestJobResultData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs returnValue = default !;
-            if (data.__typename.Equals("RequestJobResult", global::System.StringComparison.Ordinal))
-            {
-                returnValue = new GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult(data.JobId ?? throw new global::System.ArgumentNullException(), data.JobStatus ?? throw new global::System.ArgumentNullException(), data.AssignedJobId, data.JobReport, data.FailedRecords, data.CompletedDateTime);
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        private global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults? MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults(global::AggieEnterpriseApi.State.ValidationResponseData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (data is null)
-            {
-                return null;
-            }
-
-            IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults returnValue = default !;
-            if (data?.__typename.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
-            {
-                returnValue = new GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse(data.Valid ?? throw new global::System.ArgumentNullException(), data.ErrorMessages, data.MessageProperties);
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
-        {
-            return Create(dataInfo, snapshot);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatusByConsumerTrackingResultInfo : global::StrawberryShake.IOperationResultDataInfo
-    {
-        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
-        private readonly global::System.UInt64 _version;
-        public GlJournalRequestStatusByConsumerTrackingResultInfo(global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? glJournalRequestStatusByConsumerTracking, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
-        {
-            GlJournalRequestStatusByConsumerTracking = glJournalRequestStatusByConsumerTracking;
-            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
-            _version = version;
-        }
-
-        public global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? GlJournalRequestStatusByConsumerTracking { get; }
-
-        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
-        public global::System.UInt64 Version => _version;
-        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
-        {
-            return new GlJournalRequestStatusByConsumerTrackingResultInfo(GlJournalRequestStatusByConsumerTracking, _entityIds, version);
-        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -10436,6 +10277,165 @@ namespace AggieEnterpriseApi.State
         public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
         {
             return new GlJournalRequestResultInfo(GlJournalRequest, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusByConsumerTrackingResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlJournalRequestStatusByConsumerTrackingResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public GlJournalRequestStatusByConsumerTrackingResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult);
+        public GlJournalRequestStatusByConsumerTrackingResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is GlJournalRequestStatusByConsumerTrackingResultInfo info)
+            {
+                return new GlJournalRequestStatusByConsumerTrackingResult(MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking(info.GlJournalRequestStatusByConsumerTracking, snapshot));
+            }
+
+            throw new global::System.ArgumentException("GlJournalRequestStatusByConsumerTrackingResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking? MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking(global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking returnValue = default !;
+            if (data?.__typename.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusOutput(MapNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus(data.RequestStatus ?? throw new global::System.ArgumentNullException(), snapshot), MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult(data.ProcessingResult, snapshot), MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults(data.ValidationResults, snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus MapNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus(global::AggieEnterpriseApi.State.ActionRequestStatusData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus returnValue = default !;
+            if (data.__typename.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus_ActionRequestStatus(data.RequestId, data.ConsumerId ?? throw new global::System.ArgumentNullException(), data.ConsumerTrackingId ?? throw new global::System.ArgumentNullException(), data.ConsumerReferenceId ?? throw new global::System.ArgumentNullException(), data.ConsumerNotes, data.BoundaryApplicationName ?? throw new global::System.ArgumentNullException(), data.OperationName ?? throw new global::System.ArgumentNullException(), data.RequestDateTime ?? throw new global::System.ArgumentNullException(), data.RequestStatus ?? throw new global::System.ArgumentNullException(), data.LastStatusDateTime ?? throw new global::System.ArgumentNullException(), data.ProcessedDateTime, data.ErrorMessages);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult? MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult(global::AggieEnterpriseApi.State.ProcessingResultData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult returnValue = default !;
+            if (data?.__typename.Equals("ProcessingResult", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_ProcessingResult(data.Status ?? throw new global::System.ArgumentNullException(), data.RequestDateTime ?? throw new global::System.ArgumentNullException(), data.LastStatusCheckDateTime, data.ProcessedDateTime, data.ErrorMessages, MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_JobsNonNullableArray(data.Jobs, snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>? MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_JobsNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                return null;
+            }
+
+            var requestJobResults = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs>();
+            foreach (global::AggieEnterpriseApi.State.RequestJobResultData child in list)
+            {
+                requestJobResults.Add(MapNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs(child, snapshot));
+            }
+
+            return requestJobResults;
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs MapNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs(global::AggieEnterpriseApi.State.RequestJobResultData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs returnValue = default !;
+            if (data.__typename.Equals("RequestJobResult", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs_RequestJobResult(data.JobId ?? throw new global::System.ArgumentNullException(), data.JobStatus ?? throw new global::System.ArgumentNullException(), data.AssignedJobId, data.JobReport, data.FailedRecords, data.CompletedDateTime);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults? MapIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults(global::AggieEnterpriseApi.State.ValidationResponseData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults returnValue = default !;
+            if (data?.__typename.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults_ValidationResponse(data.Valid ?? throw new global::System.ArgumentNullException(), data.ErrorMessages, data.MessageProperties);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusByConsumerTrackingResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public GlJournalRequestStatusByConsumerTrackingResultInfo(global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? glJournalRequestStatusByConsumerTracking, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            GlJournalRequestStatusByConsumerTracking = glJournalRequestStatusByConsumerTracking;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        public global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? GlJournalRequestStatusByConsumerTracking { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new GlJournalRequestStatusByConsumerTrackingResultInfo(GlJournalRequestStatusByConsumerTracking, _entityIds, version);
         }
     }
 
@@ -11472,269 +11472,6 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlJournalRequestStatusByConsumerTrackingBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
-        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult> _resultDataFactory;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::AggieEnterpriseApi.RequestStatus> _requestStatusParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.Guid> _uUIDParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString80Parser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString240Parser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
-        public GlJournalRequestStatusByConsumerTrackingBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
-            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
-            _requestStatusParser = serializerResolver.GetLeafValueParser<global::System.String, global::AggieEnterpriseApi.RequestStatus>("RequestStatus") ?? throw new global::System.ArgumentException("No serializer for type `RequestStatus` found.");
-            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
-            _uUIDParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.Guid>("UUID") ?? throw new global::System.ArgumentException("No serializer for type `UUID` found.");
-            _nonEmptyTrimmedString80Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString80") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString80` found.");
-            _nonEmptyTrimmedString240Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString240") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString240` found.");
-            _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
-            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
-        }
-
-        public global::StrawberryShake.IOperationResult<IGlJournalRequestStatusByConsumerTrackingResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
-        {
-            (IGlJournalRequestStatusByConsumerTrackingResult Result, GlJournalRequestStatusByConsumerTrackingResultInfo Info)? data = null;
-            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
-            if (response.Exception is null)
-            {
-                try
-                {
-                    if (response.Body != null)
-                    {
-                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-                        {
-                            data = BuildData(dataElement);
-                        }
-
-                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                        {
-                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                        }
-                    }
-                }
-                catch (global::System.Exception ex)
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
-            }
-            else
-            {
-                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                {
-                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                }
-                else
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
-            }
-
-            return new global::StrawberryShake.OperationResult<IGlJournalRequestStatusByConsumerTrackingResult>(data?.Result, data?.Info, _resultDataFactory, errors);
-        }
-
-        private (IGlJournalRequestStatusByConsumerTrackingResult, GlJournalRequestStatusByConsumerTrackingResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
-        {
-            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
-            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
-            _entityStore.Update(session =>
-            {
-                snapshot = session.CurrentSnapshot;
-            });
-            var resultInfo = new GlJournalRequestStatusByConsumerTrackingResultInfo(DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "glJournalRequestStatusByConsumerTracking")), entityIds, snapshot.Version);
-            return (_resultDataFactory.Create(resultInfo), resultInfo);
-        }
-
-        private global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData(typename, requestStatus: DeserializeNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), processingResult: DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processingResult")), validationResults: DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResults")));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::AggieEnterpriseApi.State.ActionRequestStatusData DeserializeNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.ActionRequestStatusData(typename, requestId: DeserializeGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestId")), consumerId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerId")), consumerTrackingId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerTrackingId")), consumerReferenceId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerReferenceId")), consumerNotes: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerNotes")), boundaryApplicationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "boundaryApplicationName")), operationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "operationName")), requestDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestDateTime")), requestStatus: DeserializeNonNullableRequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), lastStatusDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastStatusDateTime")), processedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processedDateTime")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Guid? DeserializeGuid(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            return _uUIDParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _nonEmptyTrimmedString80Parser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            return _nonEmptyTrimmedString240Parser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::System.DateTimeOffset DeserializeNonNullableDateTimeOffset(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _dateTimeParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::AggieEnterpriseApi.RequestStatus DeserializeNonNullableRequestStatus(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _requestStatusParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::System.DateTimeOffset? DeserializeDateTimeOffset(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            return _dateTimeParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            var @strings = new global::System.Collections.Generic.List<global::System.String>();
-            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
-            {
-                @strings.Add(DeserializeNonNullableString(child));
-            }
-
-            return @strings;
-        }
-
-        private global::AggieEnterpriseApi.State.ProcessingResultData? DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("ProcessingResult", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.ProcessingResultData(typename, status: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "status")), requestDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestDateTime")), lastStatusCheckDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastStatusCheckDateTime")), processedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processedDateTime")), errorMessages: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), jobs: DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_JobsNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobs")));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_JobsNonNullableArray(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            var requestJobResults = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.RequestJobResultData>();
-            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
-            {
-                requestJobResults.Add(DeserializeNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs(child));
-            }
-
-            return requestJobResults;
-        }
-
-        private global::AggieEnterpriseApi.State.RequestJobResultData DeserializeNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("RequestJobResult", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.RequestJobResultData(typename, jobId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobId")), jobStatus: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobStatus")), assignedJobId: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "assignedJobId")), jobReport: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobReport")), failedRecords: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "failedRecords")), completedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "completedDateTime")));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::AggieEnterpriseApi.State.ValidationResponseData? DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.ValidationResponseData(typename, valid: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "valid")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), messageProperties: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "messageProperties")));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _booleanParser.Parse(obj.Value.GetBoolean()!);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParentsBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IFundParentsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -12323,6 +12060,269 @@ namespace AggieEnterpriseApi.State
             }
 
             return @strings;
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlJournalRequestStatusByConsumerTrackingBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::AggieEnterpriseApi.RequestStatus> _requestStatusParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.Guid> _uUIDParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString80Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString240Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        public GlJournalRequestStatusByConsumerTrackingBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _requestStatusParser = serializerResolver.GetLeafValueParser<global::System.String, global::AggieEnterpriseApi.RequestStatus>("RequestStatus") ?? throw new global::System.ArgumentException("No serializer for type `RequestStatus` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _uUIDParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.Guid>("UUID") ?? throw new global::System.ArgumentException("No serializer for type `UUID` found.");
+            _nonEmptyTrimmedString80Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString80") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString80` found.");
+            _nonEmptyTrimmedString240Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString240") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString240` found.");
+            _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IGlJournalRequestStatusByConsumerTrackingResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IGlJournalRequestStatusByConsumerTrackingResult Result, GlJournalRequestStatusByConsumerTrackingResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IGlJournalRequestStatusByConsumerTrackingResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IGlJournalRequestStatusByConsumerTrackingResult, GlJournalRequestStatusByConsumerTrackingResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new GlJournalRequestStatusByConsumerTrackingResultInfo(DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "glJournalRequestStatusByConsumerTracking")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("GlJournalRequestStatusOutput", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData(typename, requestStatus: DeserializeNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), processingResult: DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processingResult")), validationResults: DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResults")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.ActionRequestStatusData DeserializeNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_RequestStatus(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ActionRequestStatusData(typename, requestId: DeserializeGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestId")), consumerId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerId")), consumerTrackingId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerTrackingId")), consumerReferenceId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerReferenceId")), consumerNotes: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "consumerNotes")), boundaryApplicationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "boundaryApplicationName")), operationName: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "operationName")), requestDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestDateTime")), requestStatus: DeserializeNonNullableRequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), lastStatusDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastStatusDateTime")), processedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processedDateTime")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Guid? DeserializeGuid(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _uUIDParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _nonEmptyTrimmedString80Parser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _nonEmptyTrimmedString240Parser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.DateTimeOffset DeserializeNonNullableDateTimeOffset(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _dateTimeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::AggieEnterpriseApi.RequestStatus DeserializeNonNullableRequestStatus(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _requestStatusParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.DateTimeOffset? DeserializeDateTimeOffset(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _dateTimeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
+        }
+
+        private global::AggieEnterpriseApi.State.ProcessingResultData? DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ProcessingResult", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ProcessingResultData(typename, status: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "status")), requestDateTime: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestDateTime")), lastStatusCheckDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastStatusCheckDateTime")), processedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processedDateTime")), errorMessages: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), jobs: DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_JobsNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobs")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_JobsNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var requestJobResults = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.RequestJobResultData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                requestJobResults.Add(DeserializeNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs(child));
+            }
+
+            return requestJobResults;
+        }
+
+        private global::AggieEnterpriseApi.State.RequestJobResultData DeserializeNonNullableIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ProcessingResult_Jobs(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("RequestJobResult", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.RequestJobResultData(typename, jobId: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobId")), jobStatus: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobStatus")), assignedJobId: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "assignedJobId")), jobReport: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "jobReport")), failedRecords: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "failedRecords")), completedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "completedDateTime")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.ValidationResponseData? DeserializeIGlJournalRequestStatusByConsumerTracking_GlJournalRequestStatusByConsumerTracking_ValidationResults(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ValidationResponseData(typename, valid: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "valid")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), messageProperties: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "messageProperties")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
         }
     }
 
@@ -13675,38 +13675,38 @@ namespace AggieEnterpriseApi.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatusOutputData
     {
-        public GlJournalRequestStatusOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ActionRequestStatusData? requestStatus = default !, global::AggieEnterpriseApi.State.ProcessingResultData? processingResult = default !, global::AggieEnterpriseApi.State.ValidationResponseData? validationResults = default !)
+        public GlJournalRequestStatusOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ActionRequestStatusData? requestStatus = default !, global::AggieEnterpriseApi.State.ValidationResponseData? validationResults = default !, global::AggieEnterpriseApi.State.ProcessingResultData? processingResult = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             RequestStatus = requestStatus;
-            ProcessingResult = processingResult;
             ValidationResults = validationResults;
+            ProcessingResult = processingResult;
         }
 
         public global::System.String __typename { get; }
 
         public global::AggieEnterpriseApi.State.ActionRequestStatusData? RequestStatus { get; }
 
-        public global::AggieEnterpriseApi.State.ProcessingResultData? ProcessingResult { get; }
-
         public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResults { get; }
+
+        public global::AggieEnterpriseApi.State.ProcessingResultData? ProcessingResult { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ActionRequestStatusData
     {
-        public ActionRequestStatusData(global::System.String __typename, global::System.Guid? requestId = default !, global::System.String? consumerId = default !, global::System.String? consumerTrackingId = default !, global::System.String? consumerReferenceId = default !, global::System.String? consumerNotes = default !, global::System.String? boundaryApplicationName = default !, global::System.String? operationName = default !, global::System.DateTimeOffset? requestDateTime = default !, global::AggieEnterpriseApi.RequestStatus? requestStatus = default !, global::System.DateTimeOffset? lastStatusDateTime = default !, global::System.DateTimeOffset? processedDateTime = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.String? statusRequestPayload = default !)
+        public ActionRequestStatusData(global::System.String __typename, global::System.Guid? requestId = default !, global::System.String? consumerId = default !, global::System.DateTimeOffset? requestDateTime = default !, global::AggieEnterpriseApi.RequestStatus? requestStatus = default !, global::System.String? operationName = default !, global::System.String? consumerTrackingId = default !, global::System.String? consumerReferenceId = default !, global::System.String? consumerNotes = default !, global::System.String? boundaryApplicationName = default !, global::System.DateTimeOffset? lastStatusDateTime = default !, global::System.DateTimeOffset? processedDateTime = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.String? statusRequestPayload = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             RequestId = requestId;
             ConsumerId = consumerId;
+            RequestDateTime = requestDateTime;
+            RequestStatus = requestStatus;
+            OperationName = operationName;
             ConsumerTrackingId = consumerTrackingId;
             ConsumerReferenceId = consumerReferenceId;
             ConsumerNotes = consumerNotes;
             BoundaryApplicationName = boundaryApplicationName;
-            OperationName = operationName;
-            RequestDateTime = requestDateTime;
-            RequestStatus = requestStatus;
             LastStatusDateTime = lastStatusDateTime;
             ProcessedDateTime = processedDateTime;
             ErrorMessages = errorMessages;
@@ -13719,6 +13719,12 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String? ConsumerId { get; }
 
+        public global::System.DateTimeOffset? RequestDateTime { get; }
+
+        public global::AggieEnterpriseApi.RequestStatus? RequestStatus { get; }
+
+        public global::System.String? OperationName { get; }
+
         public global::System.String? ConsumerTrackingId { get; }
 
         public global::System.String? ConsumerReferenceId { get; }
@@ -13727,12 +13733,6 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String? BoundaryApplicationName { get; }
 
-        public global::System.String? OperationName { get; }
-
-        public global::System.DateTimeOffset? RequestDateTime { get; }
-
-        public global::AggieEnterpriseApi.RequestStatus? RequestStatus { get; }
-
         public global::System.DateTimeOffset? LastStatusDateTime { get; }
 
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
@@ -13740,6 +13740,26 @@ namespace AggieEnterpriseApi.State
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
         public global::System.String? StatusRequestPayload { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ValidationResponseData
+    {
+        public ValidationResponseData(global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties = default !, global::System.Boolean? valid = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            ErrorMessages = errorMessages;
+            MessageProperties = messageProperties;
+            Valid = valid;
+        }
+
+        public global::System.String __typename { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+
+        public global::System.Boolean? Valid { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -13769,26 +13789,6 @@ namespace AggieEnterpriseApi.State
         public global::System.String? ErrorMessages { get; }
 
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.RequestJobResultData>? Jobs { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ValidationResponseData
-    {
-        public ValidationResponseData(global::System.String __typename, global::System.Boolean? valid = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties = default !)
-        {
-            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
-            Valid = valid;
-            ErrorMessages = errorMessages;
-            MessageProperties = messageProperties;
-        }
-
-        public global::System.String __typename { get; }
-
-        public global::System.Boolean? Valid { get; }
-
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
-
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -14112,9 +14112,9 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::AggieEnterpriseApi.State.AggieEnterpriseClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusByConsumerTrackingQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.FundParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusByConsumerTrackingQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.CoaDetailsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmStringSegmentsValidateQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -14165,10 +14165,10 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteArraySerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString80"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString240"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFundCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString240"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("LocalDate"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString80"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpNameField100"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDescriptionField240"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlReferenceField25"));
@@ -14201,13 +14201,6 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.PpmSegmentInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlideInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>, global::AggieEnterpriseApi.State.GlJournalRequestStatusByConsumerTrackingResultFactory>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>, global::AggieEnterpriseApi.State.GlJournalRequestStatusByConsumerTrackingBuilder>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.GlJournalRequestStatusByConsumerTrackingQuery>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusByConsumerTrackingQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IFundParentsResult>, global::AggieEnterpriseApi.State.FundParentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IFundParentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IFundParentsQuery>(sp));
@@ -14222,6 +14215,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IGlJournalRequestResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.GlJournalRequestMutation>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IGlJournalRequestMutation>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestMutation>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>, global::AggieEnterpriseApi.State.GlJournalRequestStatusByConsumerTrackingResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>, global::AggieEnterpriseApi.State.GlJournalRequestStatusByConsumerTrackingBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.GlJournalRequestStatusByConsumerTrackingQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IGlJournalRequestStatusByConsumerTrackingQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusByConsumerTrackingQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusResult>, global::AggieEnterpriseApi.State.GlJournalRequestStatusResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlJournalRequestStatusResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IGlJournalRequestStatusQuery>(sp));
