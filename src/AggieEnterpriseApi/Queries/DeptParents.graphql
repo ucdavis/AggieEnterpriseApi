@@ -1,0 +1,35 @@
+query DeptParents($code: String!) {
+  erpFinancialDepartment(code: $code) {
+    code
+    name
+    enabled
+    parent {
+      code
+      name
+      parent{
+          code
+          name
+          parent{
+              code
+              name
+              parent {
+                code
+                name
+                parent{
+                    code
+                    name
+                    parent{
+                        code
+                        name
+                        parent{
+                            code
+                            name
+                        }
+                    }
+                }
+            }
+         }
+      }
+    }
+  }
+}

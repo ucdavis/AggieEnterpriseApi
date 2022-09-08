@@ -65,7 +65,7 @@ namespace AggieEnterpriseApi.Validation
             {
                 return false;
             }
-            if (fund.Parent.Parent.Parent.Parent.Parent.HierarchyDepth == level && fund.Parent.Parent.Parent.Parent.Code == expectedCode)
+            if (fund.Parent.Parent.Parent.Parent.Parent.HierarchyDepth == level && fund.Parent.Parent.Parent.Parent.Parent.Code == expectedCode)
             {
                 return true;
             }
@@ -74,7 +74,7 @@ namespace AggieEnterpriseApi.Validation
             {
                 return false;
             }
-            if (fund.Parent.Parent.Parent.Parent.Parent.Parent.HierarchyDepth == level && fund.Parent.Parent.Parent.Parent.Code == expectedCode)
+            if (fund.Parent.Parent.Parent.Parent.Parent.Parent.HierarchyDepth == level && fund.Parent.Parent.Parent.Parent.Parent.Parent.Code == expectedCode)
             {
                 return true;
             }
@@ -83,7 +83,7 @@ namespace AggieEnterpriseApi.Validation
             {
                 return false;
             }
-            if (fund.Parent.Parent.Parent.Parent.Parent.Parent.Parent.HierarchyDepth == level && fund.Parent.Parent.Parent.Parent.Code == expectedCode)
+            if (fund.Parent.Parent.Parent.Parent.Parent.Parent.Parent.HierarchyDepth == level && fund.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Code == expectedCode)
             {
                 return true;
             }
