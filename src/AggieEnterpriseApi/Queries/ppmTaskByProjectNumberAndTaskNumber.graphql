@@ -1,0 +1,13 @@
+query ppmTaskByProjectNumberAndTaskNumber($projectNumber: PpmProjectNumber!, $taskNumber: PpmTaskNumber!) {
+  ppmTaskByProjectNumberAndTaskNumber(projectNumber: $projectNumber, taskNumber: $taskNumber) {
+    taskNumber
+    name
+    billable
+    chargeable
+    eligibleForUse
+    glPostingProgramCode
+    glPostingPurposeCode
+    glPostingFundCode
+    glPostingActivityCode
+  }
+}
