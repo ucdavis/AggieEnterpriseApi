@@ -1999,8 +1999,8 @@ input GlJournalLineInput {
 
   Must be populated with either the 4 required segments, or all 6 segments.  (Project-Task Number-Expense Organization-Expense Type-Award Number-Funding Source)
 
-  * Format Pattern (Required Only): \`SP00000001-0001-0000000-000000\`
-  * Format Pattern (Sponsored Projects): \`CP00000001-0001-0000000-000000-0000000-00000\`
+  * Format Pattern (Required Only): `SP00000001-0001-0000000-000000`
+  * Format Pattern (Sponsored Projects): `CP00000001-0001-0000000-000000-0000000-00000`
 
   For more information, see the description of the [PpmSegmentString scalar]({{Types.PpmSegmentString}})
   """
