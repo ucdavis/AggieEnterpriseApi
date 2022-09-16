@@ -10,7 +10,6 @@ query CoaDetails($entity: String!, $fund: String!, $dept: String!, $account: Str
  erpFinancialDepartment(code: $dept) {
     code
     name
-    fiscalOfficerName
     eligibleForUse
   }
     erpAccount(code: $account) {
