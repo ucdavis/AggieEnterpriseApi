@@ -11,6 +11,9 @@ namespace AggieEnterpriseApi
             ErpFinancialDepartment = erpFinancialDepartment;
         }
 
+        /// <summary>
+        /// Get a single ErpFinancialDepartment by code.  Returns undefined if does not exist.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment? ErpFinancialDepartment { get; }
 
         public virtual global::System.Boolean Equals(DeptParentsResult? other)
@@ -68,6 +71,19 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DeptParents_ErpFinancialDepartment_ErpFinancialDepartment : global::System.IEquatable<DeptParents_ErpFinancialDepartment_ErpFinancialDepartment>, IDeptParents_ErpFinancialDepartment_ErpFinancialDepartment
     {
@@ -79,12 +95,25 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Whether this ErpFinancialDepartment is presently enabled for use.
+        /// </summary>
         public global::System.Boolean Enabled { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(DeptParents_ErpFinancialDepartment_ErpFinancialDepartment? other)
@@ -145,6 +174,19 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DeptParents_ErpFinancialDepartment_Parent_ErpFinancialDepartment : global::System.IEquatable<DeptParents_ErpFinancialDepartment_Parent_ErpFinancialDepartment>, IDeptParents_ErpFinancialDepartment_Parent_ErpFinancialDepartment
     {
@@ -155,10 +197,20 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(DeptParents_ErpFinancialDepartment_Parent_ErpFinancialDepartment? other)
@@ -218,6 +270,19 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DeptParents_ErpFinancialDepartment_Parent_Parent_ErpFinancialDepartment : global::System.IEquatable<DeptParents_ErpFinancialDepartment_Parent_Parent_ErpFinancialDepartment>, IDeptParents_ErpFinancialDepartment_Parent_Parent_ErpFinancialDepartment
     {
@@ -228,10 +293,20 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(DeptParents_ErpFinancialDepartment_Parent_Parent_ErpFinancialDepartment? other)
@@ -291,6 +366,19 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_ErpFinancialDepartment : global::System.IEquatable<DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_ErpFinancialDepartment>, IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_ErpFinancialDepartment
     {
@@ -301,10 +389,20 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_ErpFinancialDepartment? other)
@@ -364,6 +462,19 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_ErpFinancialDepartment : global::System.IEquatable<DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_ErpFinancialDepartment>, IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_ErpFinancialDepartment
     {
@@ -374,10 +485,20 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_ErpFinancialDepartment? other)
@@ -437,6 +558,19 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment : global::System.IEquatable<DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment>, IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment
     {
@@ -447,10 +581,20 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment? other)
@@ -510,6 +654,19 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment : global::System.IEquatable<DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment>, IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment
     {
@@ -520,10 +677,20 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment? other)
@@ -583,6 +750,19 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment : global::System.IEquatable<DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment>, IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment
     {
@@ -592,8 +772,14 @@ namespace AggieEnterpriseApi
             Name = name;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
         public virtual global::System.Boolean Equals(DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment? other)
@@ -651,124 +837,414 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParentsResult
     {
+        /// <summary>
+        /// Get a single ErpFinancialDepartment by code.  Returns undefined if does not exist.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment? ErpFinancialDepartment { get; }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment
     {
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Whether this ErpFinancialDepartment is presently enabled for use.
+        /// </summary>
         public global::System.Boolean Enabled { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_ErpFinancialDepartment : IDeptParents_ErpFinancialDepartment
     {
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_ErpFinancialDepartment : IDeptParents_ErpFinancialDepartment_Parent
     {
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_ErpFinancialDepartment : IDeptParents_ErpFinancialDepartment_Parent_Parent
     {
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_ErpFinancialDepartment : IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent
     {
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_ErpFinancialDepartment : IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent
     {
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment : IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent
     {
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// The ErpFinancialDepartment which is the immediate parent of this one.
+        /// Will be undefined if the ErpFinancialDepartment has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment : IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent
     {
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment : IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent
     {
@@ -782,6 +1258,9 @@ namespace AggieEnterpriseApi
             ErpFund = erpFund;
         }
 
+        /// <summary>
+        /// Get a single ErpFund by code.  Returns undefined if does not exist
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund? ErpFund { get; }
 
         public virtual global::System.Boolean Equals(FundParentsResult? other)
@@ -839,6 +1318,16 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParents_ErpFund_ErpFund : global::System.IEquatable<FundParents_ErpFund_ErpFund>, IFundParents_ErpFund_ErpFund
     {
@@ -856,24 +1345,60 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Whether this fund is used for budgeting purposes.
+        /// </summary>
         public global::System.Boolean? Budgeted { get; }
 
+        /// <summary>
+        /// Returns whether this ErpFund is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
+        /// 
+        /// To be eligible for use, the ErpFund must:
+        /// * Be enabled
+        /// * Not be summaryOnly
+        /// * Have a startDate and endDate range which includes the given accountingDate
+        /// </summary>
         public global::System.Boolean EligibleForUse { get; }
 
+        /// <summary>
+        /// Whether this ErpFund is presently enabled for use.
+        /// </summary>
         public global::System.Boolean Enabled { get; }
 
+        /// <summary>
+        /// The date till which the value is available for use.
+        /// </summary>
         public global::System.String? EndDate { get; }
 
+        /// <summary>
+        /// Internal numeric identifier of an ErpFund
+        /// </summary>
         public global::System.Int64 Id { get; }
 
+        /// <summary>
+        /// The date from when the value is available for use.
+        /// </summary>
         public global::System.String? StartDate { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(FundParents_ErpFund_ErpFund? other)
@@ -956,6 +1481,16 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParents_ErpFund_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_ErpFund>, IFundParents_ErpFund_Parent_ErpFund
     {
@@ -967,12 +1502,25 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(FundParents_ErpFund_Parent_ErpFund? other)
@@ -1037,6 +1585,16 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_ErpFund
     {
@@ -1048,12 +1606,25 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(FundParents_ErpFund_Parent_Parent_ErpFund? other)
@@ -1118,6 +1689,16 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_Parent_ErpFund
     {
@@ -1129,12 +1710,25 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(FundParents_ErpFund_Parent_Parent_Parent_ErpFund? other)
@@ -1199,6 +1793,16 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFund
     {
@@ -1210,12 +1814,25 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(FundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFund? other)
@@ -1280,6 +1897,16 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund
     {
@@ -1291,12 +1918,25 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund? other)
@@ -1361,6 +2001,16 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund
     {
@@ -1372,12 +2022,25 @@ namespace AggieEnterpriseApi
             Parent = parent;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent? Parent { get; }
 
         public virtual global::System.Boolean Equals(FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund? other)
@@ -1442,6 +2105,16 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund : global::System.IEquatable<FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund>, IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund
     {
@@ -1452,10 +2125,19 @@ namespace AggieEnterpriseApi
             HierarchyDepth = hierarchyDepth;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
         public virtual global::System.Boolean Equals(FundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund? other)
@@ -1518,150 +2200,436 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParentsResult
     {
+        /// <summary>
+        /// Get a single ErpFund by code.  Returns undefined if does not exist
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund? ErpFund { get; }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund
     {
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Whether this fund is used for budgeting purposes.
+        /// </summary>
         public global::System.Boolean? Budgeted { get; }
 
+        /// <summary>
+        /// Returns whether this ErpFund is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
+        /// 
+        /// To be eligible for use, the ErpFund must:
+        /// * Be enabled
+        /// * Not be summaryOnly
+        /// * Have a startDate and endDate range which includes the given accountingDate
+        /// </summary>
         public global::System.Boolean EligibleForUse { get; }
 
+        /// <summary>
+        /// Whether this ErpFund is presently enabled for use.
+        /// </summary>
         public global::System.Boolean Enabled { get; }
 
+        /// <summary>
+        /// The date till which the value is available for use.
+        /// </summary>
         public global::System.String? EndDate { get; }
 
+        /// <summary>
+        /// Internal numeric identifier of an ErpFund
+        /// </summary>
         public global::System.Int64 Id { get; }
 
+        /// <summary>
+        /// The date from when the value is available for use.
+        /// </summary>
         public global::System.String? StartDate { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_ErpFund : IFundParents_ErpFund
     {
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_ErpFund : IFundParents_ErpFund_Parent
     {
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent
     {
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent_Parent
     {
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent_Parent_Parent
     {
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent
     {
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        /// <summary>
+        /// The ErpFund which is the immediate parent of this one.
+        /// Will be undefined if the ErpFund has no parent.
+        /// </summary>
         public global::AggieEnterpriseApi.IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent? Parent { get; }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent
     {
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent
     {
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Level below the top for a ErpFund that is part of a reporting hierarchy.
+        /// </summary>
         public global::System.Int32? HierarchyDepth { get; }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFund : IFundParents_ErpFund_Parent_Parent_Parent_Parent_Parent_Parent_Parent
     {
@@ -1675,6 +2643,82 @@ namespace AggieEnterpriseApi
             GlJournalRequest = glJournalRequest;
         }
 
+        /// <summary>
+        /// Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
+        /// 
+        /// The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
+        /// 
+        /// This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
+        /// 
+        /// The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
+        /// 
+        /// Please see below in this document for examples of payloads into this API.
+        /// 
+        /// #### Supporting Operations
+        /// 
+        /// Other operations which should be used to pre-validate chartstring segments are below.  Please see <https: / / financeandbusiness.ucdavis.edu / aggie-enterprise / chart-of-accounts / redesign> for information about each of these segments.
+        /// 
+        /// * [`erpEntity`]({{Queries.erpEntity}})
+        /// * [`erpFund`]({{Queries.erpFund}})
+        /// * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
+        /// * [`erpAccount`]({{Queries.erpAccount}})
+        /// * [`erpPurpose`]({{Queries.erpPurpose}})
+        /// * [`erpProject`]({{Queries.erpProject}})
+        /// * [`erpProgram`]({{Queries.erpProgram}})
+        /// * [`erpActivity`]({{Queries.erpActivity}})
+        /// 
+        /// For validating combinations, the following two operations are provided, differing only in their input format.
+        /// 
+        /// * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
+        /// * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
+        /// 
+        /// #### Managed Project Cost Entries (PPM/POET)
+        /// 
+        /// In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
+        /// 
+        /// For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
+        /// 
+        /// For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
+        /// 
+        /// * `p`roject
+        /// * `o`rganization (same values as `ErpFinancialDepartment`)
+        /// * `e`xpenditureType (same values as `ErpAccount`)
+        /// * `t`ask
+        /// 
+        /// Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
+        /// 
+        /// There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
+        /// 
+        /// * award (only for sponsored projects)
+        /// * fundingSource (only for sponsored projects)
+        /// 
+        /// As with the GL segments, the API provides the operations below for lookups and validation:
+        /// 
+        /// * [`ppmProject`]({{Queries.ppmProject}})
+        /// * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
+        /// * [`ppmOrganization`]({{Queries.ppmOrganization}})
+        /// * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
+        /// 
+        /// #### Volume of Data
+        /// 
+        /// Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
+        /// 
+        /// #### Journal Balancing
+        /// 
+        /// As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
+        /// 
+        /// While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
+        /// 
+        /// #### Basic Use
+        /// 
+        /// 1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
+        /// 2. GraphQL Server will validate content format and reject if invalid.
+        /// 3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
+        /// 4. A failure in either of these initial validations will result in an error response with no request being generated.
+        /// 5. Passing validation will save the request to allow for pickup by the integration platform for processing.
+        /// 6. A request tracking ID will be generated and returned to allow for the consumer to check on the status of the request and obtain results when completed.
+        /// 7. At a later time, use the generated request tracking ID against the [`glJournalRequestStatus`]({{Queries.glJournalRequestStatus}}) operation to determine if the request was processed successfully
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest GlJournalRequest { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestResult? other)
@@ -1728,6 +2772,11 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput>, IGlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput
     {
@@ -1737,8 +2786,14 @@ namespace AggieEnterpriseApi
             ValidationResults = validationResults;
         }
 
+        /// <summary>
+        /// Overall status of the action request
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus RequestStatus { get; }
 
+        /// <summary>
+        /// Errors found when validating the payload data.  These must be corrected before the request will be accepted.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? ValidationResults { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput? other)
@@ -1797,6 +2852,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus>, IGlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus
     {
@@ -1809,14 +2867,23 @@ namespace AggieEnterpriseApi
             OperationName = operationName;
         }
 
+        /// <summary>
+        /// Unique identifier assigned to the request
+        /// </summary>
         public global::System.Guid? RequestId { get; }
 
+        /// <summary>
+        /// ID of the consumer who made the request extracted from the service authentication data
+        /// </summary>
         public global::System.String ConsumerId { get; }
 
         public global::System.DateTimeOffset RequestDateTime { get; }
 
         public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
 
+        /// <summary>
+        /// Name of the operation called.
+        /// </summary>
         public global::System.String OperationName { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus? other)
@@ -1878,6 +2945,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse : global::System.IEquatable<GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse>, IGlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse
     {
@@ -1887,8 +2957,14 @@ namespace AggieEnterpriseApi
             MessageProperties = messageProperties;
         }
 
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse? other)
@@ -1960,49 +3036,168 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestResult
     {
+        /// <summary>
+        /// Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
+        /// 
+        /// The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
+        /// 
+        /// This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
+        /// 
+        /// The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
+        /// 
+        /// Please see below in this document for examples of payloads into this API.
+        /// 
+        /// #### Supporting Operations
+        /// 
+        /// Other operations which should be used to pre-validate chartstring segments are below.  Please see <https: / / financeandbusiness.ucdavis.edu / aggie-enterprise / chart-of-accounts / redesign> for information about each of these segments.
+        /// 
+        /// * [`erpEntity`]({{Queries.erpEntity}})
+        /// * [`erpFund`]({{Queries.erpFund}})
+        /// * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
+        /// * [`erpAccount`]({{Queries.erpAccount}})
+        /// * [`erpPurpose`]({{Queries.erpPurpose}})
+        /// * [`erpProject`]({{Queries.erpProject}})
+        /// * [`erpProgram`]({{Queries.erpProgram}})
+        /// * [`erpActivity`]({{Queries.erpActivity}})
+        /// 
+        /// For validating combinations, the following two operations are provided, differing only in their input format.
+        /// 
+        /// * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
+        /// * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
+        /// 
+        /// #### Managed Project Cost Entries (PPM/POET)
+        /// 
+        /// In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
+        /// 
+        /// For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
+        /// 
+        /// For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
+        /// 
+        /// * `p`roject
+        /// * `o`rganization (same values as `ErpFinancialDepartment`)
+        /// * `e`xpenditureType (same values as `ErpAccount`)
+        /// * `t`ask
+        /// 
+        /// Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
+        /// 
+        /// There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
+        /// 
+        /// * award (only for sponsored projects)
+        /// * fundingSource (only for sponsored projects)
+        /// 
+        /// As with the GL segments, the API provides the operations below for lookups and validation:
+        /// 
+        /// * [`ppmProject`]({{Queries.ppmProject}})
+        /// * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
+        /// * [`ppmOrganization`]({{Queries.ppmOrganization}})
+        /// * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
+        /// 
+        /// #### Volume of Data
+        /// 
+        /// Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
+        /// 
+        /// #### Journal Balancing
+        /// 
+        /// As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
+        /// 
+        /// While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
+        /// 
+        /// #### Basic Use
+        /// 
+        /// 1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
+        /// 2. GraphQL Server will validate content format and reject if invalid.
+        /// 3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
+        /// 4. A failure in either of these initial validations will result in an error response with no request being generated.
+        /// 5. Passing validation will save the request to allow for pickup by the integration platform for processing.
+        /// 6. A request tracking ID will be generated and returned to allow for the consumer to check on the status of the request and obtain results when completed.
+        /// 7. At a later time, use the generated request tracking ID against the [`glJournalRequestStatus`]({{Queries.glJournalRequestStatus}}) operation to determine if the request was processed successfully
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest GlJournalRequest { get; }
     }
 
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest
     {
+        /// <summary>
+        /// Overall status of the action request
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_RequestStatus RequestStatus { get; }
 
+        /// <summary>
+        /// Errors found when validating the payload data.  These must be corrected before the request will be accepted.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequest_GlJournalRequest_ValidationResults? ValidationResults { get; }
     }
 
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_GlJournalRequestStatusOutput : IGlJournalRequest_GlJournalRequest
     {
     }
 
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_RequestStatus
     {
+        /// <summary>
+        /// Unique identifier assigned to the request
+        /// </summary>
         public global::System.Guid? RequestId { get; }
 
+        /// <summary>
+        /// ID of the consumer who made the request extracted from the service authentication data
+        /// </summary>
         public global::System.String ConsumerId { get; }
 
         public global::System.DateTimeOffset RequestDateTime { get; }
 
         public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
 
+        /// <summary>
+        /// Name of the operation called.
+        /// </summary>
         public global::System.String OperationName { get; }
     }
 
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_RequestStatus_ActionRequestStatus : IGlJournalRequest_GlJournalRequest_RequestStatus
     {
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_ValidationResults
     {
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequest_GlJournalRequest_ValidationResults_ValidationResponse : IGlJournalRequest_GlJournalRequest_ValidationResults
     {
@@ -2016,6 +3211,9 @@ namespace AggieEnterpriseApi
             GlJournalRequestStatus = glJournalRequestStatus;
         }
 
+        /// <summary>
+        /// Get the status of a previously submitted journal voucher request by the API-assigned request ID.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus? GlJournalRequestStatus { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestStatusResult? other)
@@ -2073,6 +3271,11 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput>, IGlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput
     {
@@ -2083,10 +3286,19 @@ namespace AggieEnterpriseApi
             ValidationResults = validationResults;
         }
 
+        /// <summary>
+        /// Overall status of the action request
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus RequestStatus { get; }
 
+        /// <summary>
+        /// Results of the Job or Jobs required to submit this request to the ERP.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult? ProcessingResult { get; }
 
+        /// <summary>
+        /// Errors found when validating the payload data.  These must be corrected before the request will be accepted.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? ValidationResults { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput? other)
@@ -2150,6 +3362,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus>, IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus
     {
@@ -2168,26 +3383,53 @@ namespace AggieEnterpriseApi
             ConsumerReferenceId = consumerReferenceId;
         }
 
+        /// <summary>
+        /// GraphQL Payload to post back to this server to check on the status of the request.
+        /// </summary>
         public global::System.String? StatusRequestPayload { get; }
 
+        /// <summary>
+        /// Name of the operation called.
+        /// </summary>
         public global::System.String OperationName { get; }
 
         public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
 
         public global::System.DateTimeOffset RequestDateTime { get; }
 
+        /// <summary>
+        /// When the status last changed
+        /// </summary>
         public global::System.DateTimeOffset LastStatusDateTime { get; }
 
+        /// <summary>
+        /// Error information if the request failed during processing.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// When the request was processed by the ERP system
+        /// </summary>
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
 
+        /// <summary>
+        /// Identifier for the boundary application originating the request.
+        /// </summary>
         public global::System.String BoundaryApplicationName { get; }
 
+        /// <summary>
+        /// ID of the consumer who made the request extracted from the service authentication data
+        /// </summary>
         public global::System.String ConsumerId { get; }
 
+        /// <summary>
+        /// Any notes to include with the request, this is stored as metadata to provide context to the request.
+        /// </summary>
         public global::System.String? ConsumerNotes { get; }
 
+        /// <summary>
+        /// Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.
+        /// </summary>
         public global::System.String ConsumerReferenceId { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus? other)
@@ -2270,6 +3512,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Result of the attempt to process the action request in the destination system
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult>, IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult
     {
@@ -2281,6 +3526,9 @@ namespace AggieEnterpriseApi
 
         public global::System.String Status { get; }
 
+        /// <summary>
+        /// Time the request was noted as completed processing, whether successful or not.
+        /// </summary>
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult? other)
@@ -2339,6 +3587,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse : global::System.IEquatable<GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse>, IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse
     {
@@ -2348,8 +3599,14 @@ namespace AggieEnterpriseApi
             ErrorMessages = errorMessages;
         }
 
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
         public global::System.Boolean Valid { get; }
 
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
         public virtual global::System.Boolean Equals(GlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse? other)
@@ -2414,76 +3671,152 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatusResult
     {
+        /// <summary>
+        /// Get the status of a previously submitted journal voucher request by the API-assigned request ID.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus? GlJournalRequestStatus { get; }
     }
 
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus
     {
+        /// <summary>
+        /// Overall status of the action request
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus RequestStatus { get; }
 
+        /// <summary>
+        /// Results of the Job or Jobs required to submit this request to the ERP.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult? ProcessingResult { get; }
 
+        /// <summary>
+        /// Errors found when validating the payload data.  These must be corrected before the request will be accepted.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults? ValidationResults { get; }
     }
 
+    /// <summary>
+    /// Output type for GLJournal requests and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_GlJournalRequestStatusOutput : IGlJournalRequestStatus_GlJournalRequestStatus
     {
     }
 
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus
     {
+        /// <summary>
+        /// GraphQL Payload to post back to this server to check on the status of the request.
+        /// </summary>
         public global::System.String? StatusRequestPayload { get; }
 
+        /// <summary>
+        /// Name of the operation called.
+        /// </summary>
         public global::System.String OperationName { get; }
 
         public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
 
         public global::System.DateTimeOffset RequestDateTime { get; }
 
+        /// <summary>
+        /// When the status last changed
+        /// </summary>
         public global::System.DateTimeOffset LastStatusDateTime { get; }
 
+        /// <summary>
+        /// Error information if the request failed during processing.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// When the request was processed by the ERP system
+        /// </summary>
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
 
+        /// <summary>
+        /// Identifier for the boundary application originating the request.
+        /// </summary>
         public global::System.String BoundaryApplicationName { get; }
 
+        /// <summary>
+        /// ID of the consumer who made the request extracted from the service authentication data
+        /// </summary>
         public global::System.String ConsumerId { get; }
 
+        /// <summary>
+        /// Any notes to include with the request, this is stored as metadata to provide context to the request.
+        /// </summary>
         public global::System.String? ConsumerNotes { get; }
 
+        /// <summary>
+        /// Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.
+        /// </summary>
         public global::System.String ConsumerReferenceId { get; }
     }
 
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus_ActionRequestStatus : IGlJournalRequestStatus_GlJournalRequestStatus_RequestStatus
     {
     }
 
+    /// <summary>
+    /// Result of the attempt to process the action request in the destination system
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult
     {
         public global::System.String Status { get; }
 
+        /// <summary>
+        /// Time the request was noted as completed processing, whether successful or not.
+        /// </summary>
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
     }
 
+    /// <summary>
+    /// Result of the attempt to process the action request in the destination system
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult_ProcessingResult : IGlJournalRequestStatus_GlJournalRequestStatus_ProcessingResult
     {
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults
     {
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
         public global::System.Boolean Valid { get; }
 
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults_ValidationResponse : IGlJournalRequestStatus_GlJournalRequestStatus_ValidationResults
     {
@@ -2501,14 +3834,29 @@ namespace AggieEnterpriseApi
             ErpPurpose = erpPurpose;
         }
 
+        /// <summary>
+        /// Get a single ErpEntity by code.  Returns undefined if does not exist
+        /// </summary>
         public global::AggieEnterpriseApi.ICoaDetails_ErpEntity? ErpEntity { get; }
 
+        /// <summary>
+        /// Get a single ErpFund by code.  Returns undefined if does not exist
+        /// </summary>
         public global::AggieEnterpriseApi.ICoaDetails_ErpFund? ErpFund { get; }
 
+        /// <summary>
+        /// Get a single ErpFinancialDepartment by code.  Returns undefined if does not exist.
+        /// </summary>
         public global::AggieEnterpriseApi.ICoaDetails_ErpFinancialDepartment? ErpFinancialDepartment { get; }
 
+        /// <summary>
+        /// Get a single ErpAccount by code.  Returns undefined if does not exist
+        /// </summary>
         public global::AggieEnterpriseApi.ICoaDetails_ErpAccount? ErpAccount { get; }
 
+        /// <summary>
+        /// Get a single ErpPurpose by code.  Returns undefined if does not exist
+        /// </summary>
         public global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? ErpPurpose { get; }
 
         public virtual global::System.Boolean Equals(CoaDetailsResult? other)
@@ -2586,6 +3934,16 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// The Entity segment identifies the major UC system organizational units. These units generally require their own complete, separately audited financial statements to comply with external, regulatory reporting requirements (e.g., external audits, tax reporting), which cannot achieve compliance by using the audited financial statements issued by the Office of the President. Entity, however, will also provide high level management and operational reports.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Entity level.
+    /// 
+    /// Entities at all levels have unique reporting and/or external auditing needs that can only be met with an Entity level designation (e.g., UC Davis Health).
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Entity segment most closely aligns with the KFS Chart (e.g. 3, H, L, P).
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class CoaDetails_ErpEntity_ErpEntity : global::System.IEquatable<CoaDetails_ErpEntity_ErpEntity>, ICoaDetails_ErpEntity_ErpEntity
     {
@@ -2595,8 +3953,14 @@ namespace AggieEnterpriseApi
             Name = name;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpEntity
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpEntity
+        /// </summary>
         public global::System.String Name { get; }
 
         public virtual global::System.Boolean Equals(CoaDetails_ErpEntity_ErpEntity? other)
@@ -2651,6 +4015,16 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class CoaDetails_ErpFund_ErpFund : global::System.IEquatable<CoaDetails_ErpFund_ErpFund>, ICoaDetails_ErpFund_ErpFund
     {
@@ -2660,8 +4034,14 @@ namespace AggieEnterpriseApi
             Name = name;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
 
         public virtual global::System.Boolean Equals(CoaDetails_ErpFund_ErpFund? other)
@@ -2716,23 +4096,47 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment : global::System.IEquatable<CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment>, ICoaDetails_ErpFinancialDepartment_ErpFinancialDepartment
     {
-        public CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment(global::System.String code, global::System.String name, global::System.String? fiscalOfficerName, global::System.Boolean eligibleForUse)
+        public CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment(global::System.String code, global::System.String name, global::System.Boolean eligibleForUse)
         {
             Code = code;
             Name = name;
-            FiscalOfficerName = fiscalOfficerName;
             EligibleForUse = eligibleForUse;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
-        public global::System.String? FiscalOfficerName { get; }
-
+        /// <summary>
+        /// Returns whether this ErpFinancialDepartment is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
+        /// 
+        /// To be eligible for use, the ErpFinancialDepartment must:
+        /// * Be enabled
+        /// * Not be summaryOnly
+        /// * Have a startDate and endDate range which includes the given accountingDate
+        /// </summary>
         public global::System.Boolean EligibleForUse { get; }
 
         public virtual global::System.Boolean Equals(CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment? other)
@@ -2752,7 +4156,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (Code.Equals(other.Code)) && Name.Equals(other.Name) && ((FiscalOfficerName is null && other.FiscalOfficerName is null) || FiscalOfficerName != null && FiscalOfficerName.Equals(other.FiscalOfficerName)) && EligibleForUse == other.EligibleForUse;
+            return (Code.Equals(other.Code)) && Name.Equals(other.Name) && EligibleForUse == other.EligibleForUse;
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -2782,17 +4186,23 @@ namespace AggieEnterpriseApi
                 int hash = 5;
                 hash ^= 397 * Code.GetHashCode();
                 hash ^= 397 * Name.GetHashCode();
-                if (FiscalOfficerName != null)
-                {
-                    hash ^= 397 * FiscalOfficerName.GetHashCode();
-                }
-
                 hash ^= 397 * EligibleForUse.GetHashCode();
                 return hash;
             }
         }
     }
 
+    /// <summary>
+    /// For clarity between the CoA Account segment and the current KFS Account, we will refer to the CoA segment as "Natural Account", a commonly used accounting term.
+    /// 
+    /// The (Natural) Account segment categorizes the nature of the transaction being recorded. The transaction is either revenue-producing, an expenditure, an asset that is owned, or a liability that is owed. Additionally, Account maintains Net Position for Entities and Funds.
+    /// 
+    /// (Natural) Account values will generally be shared across Financial Departments to provide consistency in operational and management reporting for UC Davis.
+    /// 
+    /// **FAU Value Comparison:**
+    /// 
+    /// The (Natural) Account segment most closely aligns with the KFS Object Code.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class CoaDetails_ErpAccount_ErpAccount : global::System.IEquatable<CoaDetails_ErpAccount_ErpAccount>, ICoaDetails_ErpAccount_ErpAccount
     {
@@ -2802,8 +4212,14 @@ namespace AggieEnterpriseApi
             Name = name;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpAccount
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpAccount
+        /// </summary>
         public global::System.String Name { get; }
 
         public virtual global::System.Boolean Equals(CoaDetails_ErpAccount_ErpAccount? other)
@@ -2858,6 +4274,15 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// The Purpose segment tracks the purpose of the transaction, such as NACUBO-defined functional expense classification and mission.
+    /// 
+    /// NACUBO classification data is utilized for far-reaching external reporting (e.g., institution ranking). This field is also essential for compliance with federal cost principles and financial statement reporting requiring expenditures be displayed by functional class.
+    /// 
+    /// **FAU Value Comparison:**
+    /// 
+    /// The Purpose segment most closely aligns with the HEFC (Higher Ed. Function Code) attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class CoaDetails_ErpPurpose_ErpPurpose : global::System.IEquatable<CoaDetails_ErpPurpose_ErpPurpose>, ICoaDetails_ErpPurpose_ErpPurpose
     {
@@ -2867,8 +4292,14 @@ namespace AggieEnterpriseApi
             Name = name;
         }
 
+        /// <summary>
+        /// Unique identifier of an ErpPurpose
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpPurpose
+        /// </summary>
         public global::System.String Name { get; }
 
         public virtual global::System.Boolean Equals(CoaDetails_ErpPurpose_ErpPurpose? other)
@@ -2926,81 +4357,238 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface ICoaDetailsResult
     {
+        /// <summary>
+        /// Get a single ErpEntity by code.  Returns undefined if does not exist
+        /// </summary>
         public global::AggieEnterpriseApi.ICoaDetails_ErpEntity? ErpEntity { get; }
 
+        /// <summary>
+        /// Get a single ErpFund by code.  Returns undefined if does not exist
+        /// </summary>
         public global::AggieEnterpriseApi.ICoaDetails_ErpFund? ErpFund { get; }
 
+        /// <summary>
+        /// Get a single ErpFinancialDepartment by code.  Returns undefined if does not exist.
+        /// </summary>
         public global::AggieEnterpriseApi.ICoaDetails_ErpFinancialDepartment? ErpFinancialDepartment { get; }
 
+        /// <summary>
+        /// Get a single ErpAccount by code.  Returns undefined if does not exist
+        /// </summary>
         public global::AggieEnterpriseApi.ICoaDetails_ErpAccount? ErpAccount { get; }
 
+        /// <summary>
+        /// Get a single ErpPurpose by code.  Returns undefined if does not exist
+        /// </summary>
         public global::AggieEnterpriseApi.ICoaDetails_ErpPurpose? ErpPurpose { get; }
     }
 
+    /// <summary>
+    /// The Entity segment identifies the major UC system organizational units. These units generally require their own complete, separately audited financial statements to comply with external, regulatory reporting requirements (e.g., external audits, tax reporting), which cannot achieve compliance by using the audited financial statements issued by the Office of the President. Entity, however, will also provide high level management and operational reports.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Entity level.
+    /// 
+    /// Entities at all levels have unique reporting and/or external auditing needs that can only be met with an Entity level designation (e.g., UC Davis Health).
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Entity segment most closely aligns with the KFS Chart (e.g. 3, H, L, P).
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface ICoaDetails_ErpEntity
     {
+        /// <summary>
+        /// Unique identifier of an ErpEntity
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpEntity
+        /// </summary>
         public global::System.String Name { get; }
     }
 
+    /// <summary>
+    /// The Entity segment identifies the major UC system organizational units. These units generally require their own complete, separately audited financial statements to comply with external, regulatory reporting requirements (e.g., external audits, tax reporting), which cannot achieve compliance by using the audited financial statements issued by the Office of the President. Entity, however, will also provide high level management and operational reports.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Entity level.
+    /// 
+    /// Entities at all levels have unique reporting and/or external auditing needs that can only be met with an Entity level designation (e.g., UC Davis Health).
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Entity segment most closely aligns with the KFS Chart (e.g. 3, H, L, P).
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface ICoaDetails_ErpEntity_ErpEntity : ICoaDetails_ErpEntity
     {
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface ICoaDetails_ErpFund
     {
+        /// <summary>
+        /// Unique identifier of an ErpFund
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFund
+        /// </summary>
         public global::System.String Name { get; }
     }
 
+    /// <summary>
+    /// Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.
+    /// 
+    /// The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.
+    /// 
+    /// In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.
+    /// 
+    /// **FAU Value Comparison:**
+    /// The Fund segment most closely aligns with the fund attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface ICoaDetails_ErpFund_ErpFund : ICoaDetails_ErpFund
     {
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface ICoaDetails_ErpFinancialDepartment
     {
+        /// <summary>
+        /// Unique identifier of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpFinancialDepartment
+        /// </summary>
         public global::System.String Name { get; }
 
-        public global::System.String? FiscalOfficerName { get; }
-
+        /// <summary>
+        /// Returns whether this ErpFinancialDepartment is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
+        /// 
+        /// To be eligible for use, the ErpFinancialDepartment must:
+        /// * Be enabled
+        /// * Not be summaryOnly
+        /// * Have a startDate and endDate range which includes the given accountingDate
+        /// </summary>
         public global::System.Boolean EligibleForUse { get; }
     }
 
+    /// <summary>
+    /// Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.
+    /// 
+    /// **Financial Departments have:**
+    /// - An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)
+    /// 
+    /// - Identifiable, permanently funded employees and generally an allocation of physical space
+    /// 
+    /// **FAU Value Comparison:**
+    /// Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.
+    /// 
+    /// **Access Roles: erp:reader-refdata**
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface ICoaDetails_ErpFinancialDepartment_ErpFinancialDepartment : ICoaDetails_ErpFinancialDepartment
     {
     }
 
+    /// <summary>
+    /// For clarity between the CoA Account segment and the current KFS Account, we will refer to the CoA segment as "Natural Account", a commonly used accounting term.
+    /// 
+    /// The (Natural) Account segment categorizes the nature of the transaction being recorded. The transaction is either revenue-producing, an expenditure, an asset that is owned, or a liability that is owed. Additionally, Account maintains Net Position for Entities and Funds.
+    /// 
+    /// (Natural) Account values will generally be shared across Financial Departments to provide consistency in operational and management reporting for UC Davis.
+    /// 
+    /// **FAU Value Comparison:**
+    /// 
+    /// The (Natural) Account segment most closely aligns with the KFS Object Code.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface ICoaDetails_ErpAccount
     {
+        /// <summary>
+        /// Unique identifier of an ErpAccount
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpAccount
+        /// </summary>
         public global::System.String Name { get; }
     }
 
+    /// <summary>
+    /// For clarity between the CoA Account segment and the current KFS Account, we will refer to the CoA segment as "Natural Account", a commonly used accounting term.
+    /// 
+    /// The (Natural) Account segment categorizes the nature of the transaction being recorded. The transaction is either revenue-producing, an expenditure, an asset that is owned, or a liability that is owed. Additionally, Account maintains Net Position for Entities and Funds.
+    /// 
+    /// (Natural) Account values will generally be shared across Financial Departments to provide consistency in operational and management reporting for UC Davis.
+    /// 
+    /// **FAU Value Comparison:**
+    /// 
+    /// The (Natural) Account segment most closely aligns with the KFS Object Code.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface ICoaDetails_ErpAccount_ErpAccount : ICoaDetails_ErpAccount
     {
     }
 
+    /// <summary>
+    /// The Purpose segment tracks the purpose of the transaction, such as NACUBO-defined functional expense classification and mission.
+    /// 
+    /// NACUBO classification data is utilized for far-reaching external reporting (e.g., institution ranking). This field is also essential for compliance with federal cost principles and financial statement reporting requiring expenditures be displayed by functional class.
+    /// 
+    /// **FAU Value Comparison:**
+    /// 
+    /// The Purpose segment most closely aligns with the HEFC (Higher Ed. Function Code) attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface ICoaDetails_ErpPurpose
     {
+        /// <summary>
+        /// Unique identifier of an ErpPurpose
+        /// </summary>
         public global::System.String Code { get; }
 
+        /// <summary>
+        /// Descriptive name of an ErpPurpose
+        /// </summary>
         public global::System.String Name { get; }
     }
 
+    /// <summary>
+    /// The Purpose segment tracks the purpose of the transaction, such as NACUBO-defined functional expense classification and mission.
+    /// 
+    /// NACUBO classification data is utilized for far-reaching external reporting (e.g., institution ranking). This field is also essential for compliance with federal cost principles and financial statement reporting requiring expenditures be displayed by functional class.
+    /// 
+    /// **FAU Value Comparison:**
+    /// 
+    /// The Purpose segment most closely aligns with the HEFC (Higher Ed. Function Code) attribute of the KFS Account.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface ICoaDetails_ErpPurpose_ErpPurpose : ICoaDetails_ErpPurpose
     {
@@ -3014,6 +4602,17 @@ namespace AggieEnterpriseApi
             PpmStringSegmentsValidate = ppmStringSegmentsValidate;
         }
 
+        /// <summary>
+        /// Validates that the given PPM chartstring is most likely valid for posting
+        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If no date is passed, today's date will be assumed.
+        /// 
+        /// This operation will return a fully populated set of segments.
+        /// 
+        /// This operation will return the validation result and the segments as parsed out into their component fields.
+        /// </summary>
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate PpmStringSegmentsValidate { get; }
 
         public virtual global::System.Boolean Equals(PpmStringSegmentsValidateResult? other)
@@ -3067,6 +4666,13 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of PPM segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput : global::System.IEquatable<PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput>, IPpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput
     {
@@ -3076,8 +4682,14 @@ namespace AggieEnterpriseApi
             SegmentString = segmentString;
         }
 
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse ValidationResponse { get; }
 
+        /// <summary>
+        /// PPM segment string matching the segments object.  Only populated if the validation passes.
+        /// </summary>
         public global::System.String? SegmentString { get; }
 
         public virtual global::System.Boolean Equals(PpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput? other)
@@ -3136,6 +4748,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse_ValidationResponse : global::System.IEquatable<PpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse_ValidationResponse>, IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse_ValidationResponse
     {
@@ -3146,10 +4761,19 @@ namespace AggieEnterpriseApi
             MessageProperties = messageProperties;
         }
 
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
         public global::System.Boolean Valid { get; }
 
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
         public virtual global::System.Boolean Equals(PpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse_ValidationResponse? other)
@@ -3222,32 +4846,78 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmStringSegmentsValidateResult
     {
+        /// <summary>
+        /// Validates that the given PPM chartstring is most likely valid for posting
+        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If no date is passed, today's date will be assumed.
+        /// 
+        /// This operation will return a fully populated set of segments.
+        /// 
+        /// This operation will return the validation result and the segments as parsed out into their component fields.
+        /// </summary>
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate PpmStringSegmentsValidate { get; }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of PPM segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmStringSegmentsValidate_PpmStringSegmentsValidate
     {
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse ValidationResponse { get; }
 
+        /// <summary>
+        /// PPM segment string matching the segments object.  Only populated if the validation passes.
+        /// </summary>
         public global::System.String? SegmentString { get; }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of PPM segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmStringSegmentsValidate_PpmStringSegmentsValidate_PpmSegmentsValidateOutput : IPpmStringSegmentsValidate_PpmStringSegmentsValidate
     {
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse
     {
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
         public global::System.Boolean Valid { get; }
 
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse_ValidationResponse : IPpmStringSegmentsValidate_PpmStringSegmentsValidate_ValidationResponse
     {
@@ -3261,6 +4931,15 @@ namespace AggieEnterpriseApi
             PpmSegmentsValidate = ppmSegmentsValidate;
         }
 
+        /// <summary>
+        /// Validates that the given set of PPM segments are most likely valid for posting
+        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If no date is passed, today's date will be assumed.
+        /// 
+        /// This operation will return a fully populated set of segments.
+        /// </summary>
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate PpmSegmentsValidate { get; }
 
         public virtual global::System.Boolean Equals(PpmSegmentsValidateResult? other)
@@ -3314,6 +4993,13 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of PPM segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput : global::System.IEquatable<PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput>, IPpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput
     {
@@ -3323,8 +5009,14 @@ namespace AggieEnterpriseApi
             SegmentString = segmentString;
         }
 
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse ValidationResponse { get; }
 
+        /// <summary>
+        /// PPM segment string matching the segments object.  Only populated if the validation passes.
+        /// </summary>
         public global::System.String? SegmentString { get; }
 
         public virtual global::System.Boolean Equals(PpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput? other)
@@ -3383,6 +5075,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse : global::System.IEquatable<PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse>, IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse
     {
@@ -3393,10 +5088,19 @@ namespace AggieEnterpriseApi
             Valid = valid;
         }
 
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
         public global::System.Boolean Valid { get; }
 
         public virtual global::System.Boolean Equals(PpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse? other)
@@ -3469,32 +5173,76 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmSegmentsValidateResult
     {
+        /// <summary>
+        /// Validates that the given set of PPM segments are most likely valid for posting
+        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If no date is passed, today's date will be assumed.
+        /// 
+        /// This operation will return a fully populated set of segments.
+        /// </summary>
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate PpmSegmentsValidate { get; }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of PPM segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate
     {
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
         public global::AggieEnterpriseApi.IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse ValidationResponse { get; }
 
+        /// <summary>
+        /// PPM segment string matching the segments object.  Only populated if the validation passes.
+        /// </summary>
         public global::System.String? SegmentString { get; }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of PPM segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_PpmSegmentsValidateOutput : IPpmSegmentsValidate_PpmSegmentsValidate
     {
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse
     {
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
         public global::System.Boolean Valid { get; }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse_ValidationResponse : IPpmSegmentsValidate_PpmSegmentsValidate_ValidationResponse
     {
@@ -3508,6 +5256,9 @@ namespace AggieEnterpriseApi
             PpmTaskByProjectNumberAndTaskNumber = ppmTaskByProjectNumberAndTaskNumber;
         }
 
+        /// <summary>
+        /// Gets PpmTasks by projectNumber and taskNumber.  Returns undefined if not found
+        /// </summary>
         public global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber? PpmTaskByProjectNumberAndTaskNumber { get; }
 
         public virtual global::System.Boolean Equals(PpmTaskByProjectNumberAndTaskNumberResult? other)
@@ -3565,6 +5316,20 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// The Task identifies the activities used to further breakdown a PPM project. Every project MUST have at least one Task.  The number of tasks will vary by type of project.
+    /// 
+    /// **Roll-up relationship to the new Chart of Accounts in the General Ledger:**
+    /// 
+    /// * The Task value will NOT roll up to the Chart of Accounts. Task values will only be used in the PPM module.
+    /// * Internal rules within the Oracle PPM module will be used to map the task to components of the GL Chart of Accounts which are not directly mapped to other components of the POET(AF) segments.
+    /// 
+    /// **Examples:**
+    /// 
+    /// * Design
+    /// * Construction
+    /// * Data Gathering & Analysis
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber_PpmTask : global::System.IEquatable<PpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber_PpmTask>, IPpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber_PpmTask
     {
@@ -3581,22 +5346,54 @@ namespace AggieEnterpriseApi
             GlPostingActivityCode = glPostingActivityCode;
         }
 
+        /// <summary>
+        /// Task Number: The number of a task.
+        /// </summary>
         public global::System.String TaskNumber { get; }
 
+        /// <summary>
+        /// Task Name: The name of the task. A task is a subdivision of the project work. Each project can have a set of top tasks and a hierarchy of subtasks below each top task.
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Billable: Indicates that transactions charged to that task can be billed to customers.
+        /// </summary>
         public global::System.Boolean Billable { get; }
 
+        /// <summary>
+        /// Chargeable: Indicates that something is eligible to be charged to a task.
+        /// </summary>
         public global::System.Boolean Chargeable { get; }
 
+        /// <summary>
+        /// Returns whether this PpmTask is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
+        /// 
+        /// To be eligible for use, the PpmTask must:
+        /// * Be chargeable
+        /// * Be a lowestLevelTask
+        /// * Have a taskStartDate and taskFinishDate range which includes the given accountingDate
+        /// </summary>
         public global::System.Boolean EligibleForUse { get; }
 
+        /// <summary>
+        /// GL Program used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+        /// </summary>
         public global::System.String? GlPostingProgramCode { get; }
 
+        /// <summary>
+        /// GL Purpose  used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+        /// </summary>
         public global::System.String? GlPostingPurposeCode { get; }
 
+        /// <summary>
+        /// GL Fund used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+        /// </summary>
         public global::System.String? GlPostingFundCode { get; }
 
+        /// <summary>
+        /// GL Activity used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+        /// </summary>
         public global::System.String? GlPostingActivityCode { get; }
 
         public virtual global::System.Boolean Equals(PpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber_PpmTask? other)
@@ -3677,31 +5474,94 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmTaskByProjectNumberAndTaskNumberResult
     {
+        /// <summary>
+        /// Gets PpmTasks by projectNumber and taskNumber.  Returns undefined if not found
+        /// </summary>
         public global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber? PpmTaskByProjectNumberAndTaskNumber { get; }
     }
 
+    /// <summary>
+    /// The Task identifies the activities used to further breakdown a PPM project. Every project MUST have at least one Task.  The number of tasks will vary by type of project.
+    /// 
+    /// **Roll-up relationship to the new Chart of Accounts in the General Ledger:**
+    /// 
+    /// * The Task value will NOT roll up to the Chart of Accounts. Task values will only be used in the PPM module.
+    /// * Internal rules within the Oracle PPM module will be used to map the task to components of the GL Chart of Accounts which are not directly mapped to other components of the POET(AF) segments.
+    /// 
+    /// **Examples:**
+    /// 
+    /// * Design
+    /// * Construction
+    /// * Data Gathering & Analysis
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber
     {
+        /// <summary>
+        /// Task Number: The number of a task.
+        /// </summary>
         public global::System.String TaskNumber { get; }
 
+        /// <summary>
+        /// Task Name: The name of the task. A task is a subdivision of the project work. Each project can have a set of top tasks and a hierarchy of subtasks below each top task.
+        /// </summary>
         public global::System.String Name { get; }
 
+        /// <summary>
+        /// Billable: Indicates that transactions charged to that task can be billed to customers.
+        /// </summary>
         public global::System.Boolean Billable { get; }
 
+        /// <summary>
+        /// Chargeable: Indicates that something is eligible to be charged to a task.
+        /// </summary>
         public global::System.Boolean Chargeable { get; }
 
+        /// <summary>
+        /// Returns whether this PpmTask is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
+        /// 
+        /// To be eligible for use, the PpmTask must:
+        /// * Be chargeable
+        /// * Be a lowestLevelTask
+        /// * Have a taskStartDate and taskFinishDate range which includes the given accountingDate
+        /// </summary>
         public global::System.Boolean EligibleForUse { get; }
 
+        /// <summary>
+        /// GL Program used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+        /// </summary>
         public global::System.String? GlPostingProgramCode { get; }
 
+        /// <summary>
+        /// GL Purpose  used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+        /// </summary>
         public global::System.String? GlPostingPurposeCode { get; }
 
+        /// <summary>
+        /// GL Fund used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+        /// </summary>
         public global::System.String? GlPostingFundCode { get; }
 
+        /// <summary>
+        /// GL Activity used during subledger accounting jobs to post GL entries when costs are recorded against this task.
+        /// </summary>
         public global::System.String? GlPostingActivityCode { get; }
     }
 
+    /// <summary>
+    /// The Task identifies the activities used to further breakdown a PPM project. Every project MUST have at least one Task.  The number of tasks will vary by type of project.
+    /// 
+    /// **Roll-up relationship to the new Chart of Accounts in the General Ledger:**
+    /// 
+    /// * The Task value will NOT roll up to the Chart of Accounts. Task values will only be used in the PPM module.
+    /// * Internal rules within the Oracle PPM module will be used to map the task to components of the GL Chart of Accounts which are not directly mapped to other components of the POET(AF) segments.
+    /// 
+    /// **Examples:**
+    /// 
+    /// * Design
+    /// * Construction
+    /// * Data Gathering & Analysis
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IPpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber_PpmTask : IPpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber
     {
@@ -3715,6 +5575,18 @@ namespace AggieEnterpriseApi
             GlValidateChartSegments = glValidateChartSegments;
         }
 
+        /// <summary>
+        /// Validates that the given set of GL chartstring segments are most likely valid for posting
+        /// to the financial system general ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If validateCVRs is true, certain combinations of attributes will be sanity checked.
+        /// 
+        /// This operation will return a fully populated set of segments, including defaults in
+        /// both individual segment and full chartstring form.
+        /// 
+        /// If the combination was previously known/used in the financial system, its unique ID will be included.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments GlValidateChartSegments { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartSegmentsResult? other)
@@ -3768,6 +5640,13 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of GL segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput>, IGlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput
     {
@@ -3782,18 +5661,41 @@ namespace AggieEnterpriseApi
             EndDates = endDates;
         }
 
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse ValidationResponse { get; }
 
+        /// <summary>
+        /// Fully populated object with the GL segments combination that was validated.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Segments Segments { get; }
 
+        /// <summary>
+        /// Full chartstring with the GL segments combination that was validated.
+        /// </summary>
         public global::System.String? CompleteChartstring { get; }
 
+        /// <summary>
+        /// The "codeCombinationId" is an informational property only.  If populated, it
+        /// indicates that the validated combination of segment values was previously
+        /// known to the financial system.  Validity still needs to be checked, as
+        /// chartstrings can be disabled or expire.  However, segments which match an
+        /// existing valid combination can not fail validation when posted to the
+        /// financial system.
+        /// </summary>
         public global::System.Int64? CodeCombinationId { get; }
 
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_SegmentNames SegmentNames { get; }
 
+        /// <summary>
+        /// Warnings, if any, related to segments validated during this operation.  The segmentName will be the same as the property name in the GlSegments object.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Warnings>? Warnings { get; }
 
+        /// <summary>
+        /// End Dates, if defined, after which a given segment will no longer be accepted for processing.  The segmentName will be the same as the property name in the GlSegments type.  Only segments which have defined end dates will be included in this list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_EndDates>? EndDates { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput? other)
@@ -3875,6 +5777,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse>, IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse
     {
@@ -3885,10 +5790,19 @@ namespace AggieEnterpriseApi
             Valid = valid;
         }
 
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
         public global::System.Boolean Valid { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse? other)
@@ -3958,6 +5872,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// GL segment values as separate fields.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments>, IGlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments
     {
@@ -3973,20 +5890,44 @@ namespace AggieEnterpriseApi
             Purpose = purpose;
         }
 
+        /// <summary>
+        /// Required: Nature of the transaction, expense, income, liability, etc...
+        /// </summary>
         public global::System.String? Account { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Activity { get; }
 
+        /// <summary>
+        /// Required: Financial department to which to charge a transaction.
+        /// </summary>
         public global::System.String? Department { get; }
 
+        /// <summary>
+        /// Required: Entity to which to charge a transaction.
+        /// </summary>
         public global::System.String? Entity { get; }
 
+        /// <summary>
+        /// Required: Funding source to which to charge a transaction.
+        /// </summary>
         public global::System.String? Fund { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Program { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Project { get; }
 
+        /// <summary>
+        /// Required for Expenses: Functional purpose of the expense.
+        /// </summary>
         public global::System.String? Purpose { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments? other)
@@ -4200,6 +6141,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Warning issued when validating a given segment.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_Warnings_SegmentWarning : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_Warnings_SegmentWarning>, IGlValidateChartSegments_GlValidateChartSegments_Warnings_SegmentWarning
     {
@@ -4209,8 +6153,14 @@ namespace AggieEnterpriseApi
             Warning = warning;
         }
 
+        /// <summary>
+        /// Name of the segment per the property name in the GlSegments or PpmSegments types.
+        /// </summary>
         public global::System.String SegmentName { get; }
 
+        /// <summary>
+        /// Warning message associated with the use of the given segment.
+        /// </summary>
         public global::System.String Warning { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartSegments_GlValidateChartSegments_Warnings_SegmentWarning? other)
@@ -4265,6 +6215,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Valid end date for a given segment in a GL or PPM chartstring.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegments_GlValidateChartSegments_EndDates_SegmentEndDate : global::System.IEquatable<GlValidateChartSegments_GlValidateChartSegments_EndDates_SegmentEndDate>, IGlValidateChartSegments_GlValidateChartSegments_EndDates_SegmentEndDate
     {
@@ -4274,8 +6227,14 @@ namespace AggieEnterpriseApi
             EndDate = endDate;
         }
 
+        /// <summary>
+        /// Name of the segment per the property name in the GlSegments or PpmSegments types.
+        /// </summary>
         public global::System.String SegmentName { get; }
 
+        /// <summary>
+        /// End date of the given segment as defined in the associated table.
+        /// </summary>
         public global::System.String EndDate { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartSegments_GlValidateChartSegments_EndDates_SegmentEndDate? other)
@@ -4333,67 +6292,161 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegmentsResult
     {
+        /// <summary>
+        /// Validates that the given set of GL chartstring segments are most likely valid for posting
+        /// to the financial system general ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If validateCVRs is true, certain combinations of attributes will be sanity checked.
+        /// 
+        /// This operation will return a fully populated set of segments, including defaults in
+        /// both individual segment and full chartstring form.
+        /// 
+        /// If the combination was previously known/used in the financial system, its unique ID will be included.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments GlValidateChartSegments { get; }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of GL segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments
     {
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse ValidationResponse { get; }
 
+        /// <summary>
+        /// Fully populated object with the GL segments combination that was validated.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Segments Segments { get; }
 
+        /// <summary>
+        /// Full chartstring with the GL segments combination that was validated.
+        /// </summary>
         public global::System.String? CompleteChartstring { get; }
 
+        /// <summary>
+        /// The "codeCombinationId" is an informational property only.  If populated, it
+        /// indicates that the validated combination of segment values was previously
+        /// known to the financial system.  Validity still needs to be checked, as
+        /// chartstrings can be disabled or expire.  However, segments which match an
+        /// existing valid combination can not fail validation when posted to the
+        /// financial system.
+        /// </summary>
         public global::System.Int64? CodeCombinationId { get; }
 
         public global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_SegmentNames SegmentNames { get; }
 
+        /// <summary>
+        /// Warnings, if any, related to segments validated during this operation.  The segmentName will be the same as the property name in the GlSegments object.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_Warnings>? Warnings { get; }
 
+        /// <summary>
+        /// End Dates, if defined, after which a given segment will no longer be accepted for processing.  The segmentName will be the same as the property name in the GlSegments type.  Only segments which have defined end dates will be included in this list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments_EndDates>? EndDates { get; }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of GL segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_GlValidateChartSegmentsOutput : IGlValidateChartSegments_GlValidateChartSegments
     {
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse
     {
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
         public global::System.Boolean Valid { get; }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse_ValidationResponse : IGlValidateChartSegments_GlValidateChartSegments_ValidationResponse
     {
     }
 
+    /// <summary>
+    /// GL segment values as separate fields.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_Segments
     {
+        /// <summary>
+        /// Required: Nature of the transaction, expense, income, liability, etc...
+        /// </summary>
         public global::System.String? Account { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Activity { get; }
 
+        /// <summary>
+        /// Required: Financial department to which to charge a transaction.
+        /// </summary>
         public global::System.String? Department { get; }
 
+        /// <summary>
+        /// Required: Entity to which to charge a transaction.
+        /// </summary>
         public global::System.String? Entity { get; }
 
+        /// <summary>
+        /// Required: Funding source to which to charge a transaction.
+        /// </summary>
         public global::System.String? Fund { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Program { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Project { get; }
 
+        /// <summary>
+        /// Required for Expenses: Functional purpose of the expense.
+        /// </summary>
         public global::System.String? Purpose { get; }
     }
 
+    /// <summary>
+    /// GL segment values as separate fields.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_Segments_GlSegments : IGlValidateChartSegments_GlValidateChartSegments_Segments
     {
@@ -4424,27 +6477,51 @@ namespace AggieEnterpriseApi
     {
     }
 
+    /// <summary>
+    /// Warning issued when validating a given segment.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_Warnings
     {
+        /// <summary>
+        /// Name of the segment per the property name in the GlSegments or PpmSegments types.
+        /// </summary>
         public global::System.String SegmentName { get; }
 
+        /// <summary>
+        /// Warning message associated with the use of the given segment.
+        /// </summary>
         public global::System.String Warning { get; }
     }
 
+    /// <summary>
+    /// Warning issued when validating a given segment.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_Warnings_SegmentWarning : IGlValidateChartSegments_GlValidateChartSegments_Warnings
     {
     }
 
+    /// <summary>
+    /// Valid end date for a given segment in a GL or PPM chartstring.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_EndDates
     {
+        /// <summary>
+        /// Name of the segment per the property name in the GlSegments or PpmSegments types.
+        /// </summary>
         public global::System.String SegmentName { get; }
 
+        /// <summary>
+        /// End date of the given segment as defined in the associated table.
+        /// </summary>
         public global::System.String EndDate { get; }
     }
 
+    /// <summary>
+    /// Valid end date for a given segment in a GL or PPM chartstring.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartSegments_GlValidateChartSegments_EndDates_SegmentEndDate : IGlValidateChartSegments_GlValidateChartSegments_EndDates
     {
@@ -4458,6 +6535,18 @@ namespace AggieEnterpriseApi
             GlValidateChartstring = glValidateChartstring;
         }
 
+        /// <summary>
+        /// Validates that the given GL chartstring is most likely valid for posting
+        /// to the financial system general ledger.  The input string format is strongly typed
+        /// and will reject the call if not structured properly.  Please see the definition of the
+        /// [GlSegmentString]({{Types.GlSegmentString}}) for format information.
+        /// 
+        /// If validateCVRs is true, certain combinations of attributes will be sanity checked if the string format is accepted.
+        /// 
+        /// This operation will return the validation result and the segments as parsed out into their component fields.
+        /// 
+        /// If the combination was previously known/used in the financial system, its unique ID will be included.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring GlValidateChartstring { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartstringResult? other)
@@ -4511,6 +6600,13 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of GL segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput>, IGlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput
     {
@@ -4525,18 +6621,41 @@ namespace AggieEnterpriseApi
             EndDates = endDates;
         }
 
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_ValidationResponse ValidationResponse { get; }
 
+        /// <summary>
+        /// Fully populated object with the GL segments combination that was validated.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Segments Segments { get; }
 
+        /// <summary>
+        /// Full chartstring with the GL segments combination that was validated.
+        /// </summary>
         public global::System.String? CompleteChartstring { get; }
 
+        /// <summary>
+        /// The "codeCombinationId" is an informational property only.  If populated, it
+        /// indicates that the validated combination of segment values was previously
+        /// known to the financial system.  Validity still needs to be checked, as
+        /// chartstrings can be disabled or expire.  However, segments which match an
+        /// existing valid combination can not fail validation when posted to the
+        /// financial system.
+        /// </summary>
         public global::System.Int64? CodeCombinationId { get; }
 
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_SegmentNames SegmentNames { get; }
 
+        /// <summary>
+        /// Warnings, if any, related to segments validated during this operation.  The segmentName will be the same as the property name in the GlSegments object.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Warnings>? Warnings { get; }
 
+        /// <summary>
+        /// End Dates, if defined, after which a given segment will no longer be accepted for processing.  The segmentName will be the same as the property name in the GlSegments type.  Only segments which have defined end dates will be included in this list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_EndDates>? EndDates { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput? other)
@@ -4618,6 +6737,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse>, IGlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse
     {
@@ -4628,10 +6750,19 @@ namespace AggieEnterpriseApi
             Valid = valid;
         }
 
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
         public global::System.Boolean Valid { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse? other)
@@ -4701,6 +6832,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// GL segment values as separate fields.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_Segments_GlSegments : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_Segments_GlSegments>, IGlValidateChartstring_GlValidateChartstring_Segments_GlSegments
     {
@@ -4716,20 +6850,44 @@ namespace AggieEnterpriseApi
             Purpose = purpose;
         }
 
+        /// <summary>
+        /// Required: Nature of the transaction, expense, income, liability, etc...
+        /// </summary>
         public global::System.String? Account { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Activity { get; }
 
+        /// <summary>
+        /// Required: Financial department to which to charge a transaction.
+        /// </summary>
         public global::System.String? Department { get; }
 
+        /// <summary>
+        /// Required: Entity to which to charge a transaction.
+        /// </summary>
         public global::System.String? Entity { get; }
 
+        /// <summary>
+        /// Required: Funding source to which to charge a transaction.
+        /// </summary>
         public global::System.String? Fund { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Program { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Project { get; }
 
+        /// <summary>
+        /// Required for Expenses: Functional purpose of the expense.
+        /// </summary>
         public global::System.String? Purpose { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_Segments_GlSegments? other)
@@ -4943,6 +7101,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Warning issued when validating a given segment.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning>, IGlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning
     {
@@ -4952,8 +7113,14 @@ namespace AggieEnterpriseApi
             Warning = warning;
         }
 
+        /// <summary>
+        /// Name of the segment per the property name in the GlSegments or PpmSegments types.
+        /// </summary>
         public global::System.String SegmentName { get; }
 
+        /// <summary>
+        /// Warning message associated with the use of the given segment.
+        /// </summary>
         public global::System.String Warning { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning? other)
@@ -5008,6 +7175,9 @@ namespace AggieEnterpriseApi
         }
     }
 
+    /// <summary>
+    /// Valid end date for a given segment in a GL or PPM chartstring.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate : global::System.IEquatable<GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate>, IGlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate
     {
@@ -5017,8 +7187,14 @@ namespace AggieEnterpriseApi
             EndDate = endDate;
         }
 
+        /// <summary>
+        /// Name of the segment per the property name in the GlSegments or PpmSegments types.
+        /// </summary>
         public global::System.String SegmentName { get; }
 
+        /// <summary>
+        /// End date of the given segment as defined in the associated table.
+        /// </summary>
         public global::System.String EndDate { get; }
 
         public virtual global::System.Boolean Equals(GlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate? other)
@@ -5076,67 +7252,161 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstringResult
     {
+        /// <summary>
+        /// Validates that the given GL chartstring is most likely valid for posting
+        /// to the financial system general ledger.  The input string format is strongly typed
+        /// and will reject the call if not structured properly.  Please see the definition of the
+        /// [GlSegmentString]({{Types.GlSegmentString}}) for format information.
+        /// 
+        /// If validateCVRs is true, certain combinations of attributes will be sanity checked if the string format is accepted.
+        /// 
+        /// This operation will return the validation result and the segments as parsed out into their component fields.
+        /// 
+        /// If the combination was previously known/used in the financial system, its unique ID will be included.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring GlValidateChartstring { get; }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of GL segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring
     {
+        /// <summary>
+        /// Validation result and error messages, if any.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_ValidationResponse ValidationResponse { get; }
 
+        /// <summary>
+        /// Fully populated object with the GL segments combination that was validated.
+        /// </summary>
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Segments Segments { get; }
 
+        /// <summary>
+        /// Full chartstring with the GL segments combination that was validated.
+        /// </summary>
         public global::System.String? CompleteChartstring { get; }
 
+        /// <summary>
+        /// The "codeCombinationId" is an informational property only.  If populated, it
+        /// indicates that the validated combination of segment values was previously
+        /// known to the financial system.  Validity still needs to be checked, as
+        /// chartstrings can be disabled or expire.  However, segments which match an
+        /// existing valid combination can not fail validation when posted to the
+        /// financial system.
+        /// </summary>
         public global::System.Int64? CodeCombinationId { get; }
 
         public global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_SegmentNames SegmentNames { get; }
 
+        /// <summary>
+        /// Warnings, if any, related to segments validated during this operation.  The segmentName will be the same as the property name in the GlSegments object.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_Warnings>? Warnings { get; }
 
+        /// <summary>
+        /// End Dates, if defined, after which a given segment will no longer be accepted for processing.  The segmentName will be the same as the property name in the GlSegments type.  Only segments which have defined end dates will be included in this list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IGlValidateChartstring_GlValidateChartstring_EndDates>? EndDates { get; }
     }
 
+    /// <summary>
+    /// Return data structure when validating a set of GL segment values.
+    /// 
+    /// The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.
+    /// 
+    /// The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_GlValidateChartSegmentsOutput : IGlValidateChartstring_GlValidateChartstring
     {
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_ValidationResponse
     {
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
         public global::System.Boolean Valid { get; }
     }
 
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_ValidationResponse_ValidationResponse : IGlValidateChartstring_GlValidateChartstring_ValidationResponse
     {
     }
 
+    /// <summary>
+    /// GL segment values as separate fields.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_Segments
     {
+        /// <summary>
+        /// Required: Nature of the transaction, expense, income, liability, etc...
+        /// </summary>
         public global::System.String? Account { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Activity { get; }
 
+        /// <summary>
+        /// Required: Financial department to which to charge a transaction.
+        /// </summary>
         public global::System.String? Department { get; }
 
+        /// <summary>
+        /// Required: Entity to which to charge a transaction.
+        /// </summary>
         public global::System.String? Entity { get; }
 
+        /// <summary>
+        /// Required: Funding source to which to charge a transaction.
+        /// </summary>
         public global::System.String? Fund { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Program { get; }
 
+        /// <summary>
+        /// Optional: 
+        /// </summary>
         public global::System.String? Project { get; }
 
+        /// <summary>
+        /// Required for Expenses: Functional purpose of the expense.
+        /// </summary>
         public global::System.String? Purpose { get; }
     }
 
+    /// <summary>
+    /// GL segment values as separate fields.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_Segments_GlSegments : IGlValidateChartstring_GlValidateChartstring_Segments
     {
@@ -5167,27 +7437,51 @@ namespace AggieEnterpriseApi
     {
     }
 
+    /// <summary>
+    /// Warning issued when validating a given segment.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_Warnings
     {
+        /// <summary>
+        /// Name of the segment per the property name in the GlSegments or PpmSegments types.
+        /// </summary>
         public global::System.String SegmentName { get; }
 
+        /// <summary>
+        /// Warning message associated with the use of the given segment.
+        /// </summary>
         public global::System.String Warning { get; }
     }
 
+    /// <summary>
+    /// Warning issued when validating a given segment.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_Warnings_SegmentWarning : IGlValidateChartstring_GlValidateChartstring_Warnings
     {
     }
 
+    /// <summary>
+    /// Valid end date for a given segment in a GL or PPM chartstring.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_EndDates
     {
+        /// <summary>
+        /// Name of the segment per the property name in the GlSegments or PpmSegments types.
+        /// </summary>
         public global::System.String SegmentName { get; }
 
+        /// <summary>
+        /// End date of the given segment as defined in the associated table.
+        /// </summary>
         public global::System.String EndDate { get; }
     }
 
+    /// <summary>
+    /// Valid end date for a given segment in a GL or PPM chartstring.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate : IGlValidateChartstring_GlValidateChartstring_EndDates
     {
@@ -5254,6 +7548,7 @@ namespace AggieEnterpriseApi
         }
     }
 
+    ///<summary>GL/PPM Combined journal input type.  Contains the standard request header information and journal data payload for creating journal and/or PPM costs in Oracle Financials.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestInput : global::AggieEnterpriseApi.State.IGlJournalRequestInputInfo, global::System.IEquatable<GlJournalRequestInput>
     {
@@ -5312,6 +7607,7 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_header;
         private global::AggieEnterpriseApi.GlJournalInput _value_payload = default !;
         private global::System.Boolean _set_payload;
+        ///<summary>Request-level header information common to all action requests.</summary>
         public global::AggieEnterpriseApi.ActionRequestHeaderInput Header
         {
             get => _value_header;
@@ -5323,6 +7619,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalRequestInputInfo.IsHeaderSet => _set_header;
+        ///<summary>Main operation data.</summary>
         public global::AggieEnterpriseApi.GlJournalInput Payload
         {
             get => _value_payload;
@@ -5465,6 +7762,7 @@ namespace AggieEnterpriseApi
         }
     }
 
+    ///<summary>Fields common to all action requests.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ActionRequestHeaderInput : global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo, global::System.IEquatable<ActionRequestHeaderInput>
     {
@@ -5547,6 +7845,7 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_consumerId;
         private global::System.Boolean? _value_batchRequest;
         private global::System.Boolean _set_batchRequest;
+        ///<summary>Identifier provided by the consumer to track requests internally.  It is recommended that this be a globally unique identfier tracked in their system.  Can be used to match up data in the caller's system.</summary>
         public global::System.String ConsumerTrackingId
         {
             get => _value_consumerTrackingId;
@@ -5558,6 +7857,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerTrackingIdSet => _set_consumerTrackingId;
+        ///<summary>Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.</summary>
         public global::System.String ConsumerReferenceId
         {
             get => _value_consumerReferenceId;
@@ -5569,6 +7869,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerReferenceIdSet => _set_consumerReferenceId;
+        ///<summary>Any notes to include with the request, this is stored as metadata to provide context to the request.</summary>
         public global::System.String? ConsumerNotes
         {
             get => _value_consumerNotes;
@@ -5580,6 +7881,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerNotesSet => _set_consumerNotes;
+        ///<summary>Identifier for the boundary application originating the request.</summary>
         public global::System.String BoundaryApplicationName
         {
             get => _value_boundaryApplicationName;
@@ -5591,6 +7893,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsBoundaryApplicationNameSet => _set_boundaryApplicationName;
+        ///<summary>ID of the consumer which must match the authentication data.  Not required for API calls as will be filled in by the server.</summary>
         public global::System.String? ConsumerId
         {
             get => _value_consumerId;
@@ -5602,6 +7905,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IActionRequestHeaderInputInfo.IsConsumerIdSet => _set_consumerId;
+        ///<summary>If set to true, allows processing of this request to be delayed and combined with other compatible requests if supported by the request type.  It will be ignored if not supported.  Length of delay and pickup time is determined during integration processing.</summary>
         public global::System.Boolean? BatchRequest
         {
             get => _value_batchRequest;
@@ -5793,6 +8097,7 @@ namespace AggieEnterpriseApi
         }
     }
 
+    ///<summary>Main payload object for a `glJournalRequest`.  See operation documentation for more info.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalInput : global::AggieEnterpriseApi.State.IGlJournalInputInfo, global::System.IEquatable<GlJournalInput>
     {
@@ -5885,6 +8190,7 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_accountingPeriodName;
         private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.GlJournalLineInput> _value_journalLines = default !;
         private global::System.Boolean _set_journalLines;
+        ///<summary>Centrally assigned source name for your boundary application.</summary>
         public global::System.String JournalSourceName
         {
             get => _value_journalSourceName;
@@ -5896,6 +8202,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalSourceNameSet => _set_journalSourceName;
+        ///<summary>Centrally assigned category name for your boundary application's feed.</summary>
         public global::System.String JournalCategoryName
         {
             get => _value_journalCategoryName;
@@ -5907,6 +8214,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalCategoryNameSet => _set_journalCategoryName;
+        ///<summary>Name which will appear on the journal header.</summary>
         public global::System.String JournalName
         {
             get => _value_journalName;
@@ -5918,6 +8226,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalNameSet => _set_journalName;
+        ///<summary>Longer description of the journal if needed.</summary>
         public global::System.String? JournalDescription
         {
             get => _value_journalDescription;
@@ -5929,6 +8238,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalDescriptionSet => _set_journalDescription;
+        ///<summary>Reference number for the journal.  Should be meaningful to the feeding system.</summary>
         public global::System.String JournalReference
         {
             get => _value_journalReference;
@@ -5940,6 +8250,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsJournalReferenceSet => _set_journalReference;
+        ///<summary>Accounting Date: The accounting date of the journal.  Will be defaulted to today's date if not provided.</summary>
         public global::System.String? AccountingDate
         {
             get => _value_accountingDate;
@@ -5951,6 +8262,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsAccountingDateSet => _set_accountingDate;
+        ///<summary>Accounting Period: The accounting period of the journal.  If not specified, the API will add the current open period.</summary>
         public global::System.String? AccountingPeriodName
         {
             get => _value_accountingPeriodName;
@@ -5962,6 +8274,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalInputInfo.IsAccountingPeriodNameSet => _set_accountingPeriodName;
+        ///<summary>List of journal lines to include.</summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.GlJournalLineInput> JournalLines
         {
             get => _value_journalLines;
@@ -6188,6 +8501,7 @@ namespace AggieEnterpriseApi
         }
     }
 
+    ///<summary>A single line representing a GL Journal Entry or PPM Cost.  A line must have only one of the two types of segments specified.* `ppmSegments`, when provided will override any `glXxxxxx` segment values.* For the GL segments, there are three options.  Only provide one of them.  Providing multiple will result in a rejection of the payload.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalLineInput : global::AggieEnterpriseApi.State.IGlJournalLineInputInfo, global::System.IEquatable<GlJournalLineInput>
     {
@@ -6306,6 +8620,7 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_ppmComment;
         private global::AggieEnterpriseApi.GlideInput? _value_glide;
         private global::System.Boolean _set_glide;
+        ///<summary>GL Segment fields</summary>
         public global::AggieEnterpriseApi.GlSegmentInput? GlSegments
         {
             get => _value_glSegments;
@@ -6317,6 +8632,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsGlSegmentsSet => _set_glSegments;
+        ///<summary>Delimited complete GL segment string.  All fields of the GL Accounting Key must be provided.</summary>
         public global::System.String? GlSegmentString
         {
             get => _value_glSegmentString;
@@ -6328,6 +8644,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsGlSegmentStringSet => _set_glSegmentString;
+        ///<summary>PPM POET segment values.  If provided, this will override any provided GL segments.</summary>
         public global::AggieEnterpriseApi.PpmSegmentInput? PpmSegments
         {
             get => _value_ppmSegments;
@@ -6339,6 +8656,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsPpmSegmentsSet => _set_ppmSegments;
+        ///<summary>Hyphen-Delimited PPM segment stringMust be populated with either the 4 required segments, or all 6 segments.  (Project-Task Number-Expense Organization-Expense Type-Award Number-Funding Source)* Format Pattern (Required Only): `SP00000001-0001-0000000-000000`* Format Pattern (Sponsored Projects): `CP00000001-0001-0000000-000000-0000000-00000`For more information, see the description of the [PpmSegmentString scalar]({{Types.PpmSegmentString}})</summary>
         public global::System.String? PpmSegmentString
         {
             get => _value_ppmSegmentString;
@@ -6350,6 +8668,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsPpmSegmentStringSet => _set_ppmSegmentString;
+        ///<summary>Debit amount of the GL transaction or PPM Cost.  Only one of debitAmount and creditAmount may be specified on a line.</summary>
         public global::System.Decimal? DebitAmount
         {
             get => _value_debitAmount;
@@ -6361,6 +8680,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsDebitAmountSet => _set_debitAmount;
+        ///<summary>Credit amount of the GL transaction or PPM Cost.  Only one of debitAmount and creditAmount may be specified on a line.</summary>
         public global::System.Decimal? CreditAmount
         {
             get => _value_creditAmount;
@@ -6372,6 +8692,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsCreditAmountSet => _set_creditAmount;
+        ///<summary>This 10-character field is intended to aid with linking boundary systems transactions to Oracle Cloud summarized journal entries for the purposes of reconciliation.</summary>
         public global::System.String ExternalSystemIdentifier
         {
             get => _value_externalSystemIdentifier;
@@ -6383,6 +8704,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsExternalSystemIdentifierSet => _set_externalSystemIdentifier;
+        ///<summary>This 25-character field is intended to aid in additional linking of boundary systems transactions, as needed, to Oracle Cloud summarized journal entries for the purposes of reconciliation.</summary>
         public global::System.String? ExternalSystemReference
         {
             get => _value_externalSystemReference;
@@ -6394,6 +8716,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsExternalSystemReferenceSet => _set_externalSystemReference;
+        ///<summary>Expenditure comment for PPM transactions.  Will be ignored for GL transactions.</summary>
         public global::System.String? PpmComment
         {
             get => _value_ppmComment;
@@ -6405,6 +8728,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlJournalLineInputInfo.IsPpmCommentSet => _set_ppmComment;
+        ///<summary>GLIDe fields. These fields are optional.</summary>
         public global::AggieEnterpriseApi.GlideInput? Glide
         {
             get => _value_glide;
@@ -6627,6 +8951,7 @@ namespace AggieEnterpriseApi
         }
     }
 
+    ///<summary>Input structure for specifying GL segment values as separate fields.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlSegmentInput : global::AggieEnterpriseApi.State.IGlSegmentInputInfo, global::System.IEquatable<GlSegmentInput>
     {
@@ -6733,6 +9058,7 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_flex1;
         private global::System.String? _value_flex2;
         private global::System.Boolean _set_flex2;
+        ///<summary>Required: Entity to which to charge a transaction.</summary>
         public global::System.String Entity
         {
             get => _value_entity;
@@ -6744,6 +9070,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsEntitySet => _set_entity;
+        ///<summary>Required: Funding source to which to charge a transaction.</summary>
         public global::System.String Fund
         {
             get => _value_fund;
@@ -6755,6 +9082,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsFundSet => _set_fund;
+        ///<summary>Required: Financial department to which to charge a transaction.</summary>
         public global::System.String Department
         {
             get => _value_department;
@@ -6766,6 +9094,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsDepartmentSet => _set_department;
+        ///<summary>Required: Nature of the transaction, expense, income, liability, etc...</summary>
         public global::System.String Account
         {
             get => _value_account;
@@ -6777,6 +9106,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsAccountSet => _set_account;
+        ///<summary>Required for Expenses: Functional purpose of the expense.</summary>
         public global::System.String? Purpose
         {
             get => _value_purpose;
@@ -6788,6 +9118,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsPurposeSet => _set_purpose;
+        ///<summary>Optional: </summary>
         public global::System.String? Project
         {
             get => _value_project;
@@ -6799,6 +9130,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsProjectSet => _set_project;
+        ///<summary>Optional: </summary>
         public global::System.String? Program
         {
             get => _value_program;
@@ -6810,6 +9142,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsProgramSet => _set_program;
+        ///<summary>Optional: </summary>
         public global::System.String? Activity
         {
             get => _value_activity;
@@ -6821,6 +9154,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsActivitySet => _set_activity;
+        ///<summary>Unused: For future UCOP Reporting Requirements.  Always 000000.</summary>
         public global::System.String? Flex1
         {
             get => _value_flex1;
@@ -6832,6 +9166,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IGlSegmentInputInfo.IsFlex1Set => _set_flex1;
+        ///<summary>Unused: For future UCOP Reporting Requirements.  Always 000000.</summary>
         public global::System.String? Flex2
         {
             get => _value_flex2;
@@ -6978,6 +9313,7 @@ namespace AggieEnterpriseApi
         }
     }
 
+    ///<summary>Input structure for specifying POET/PPM segment values.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentInput : global::AggieEnterpriseApi.State.IPpmSegmentInputInfo, global::System.IEquatable<PpmSegmentInput>
     {
@@ -7056,6 +9392,7 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_award;
         private global::System.String? _value_fundingSource;
         private global::System.Boolean _set_fundingSource;
+        ///<summary>Required: Managed Project Number</summary>
         public global::System.String Project
         {
             get => _value_project;
@@ -7067,6 +9404,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsProjectSet => _set_project;
+        ///<summary>Required: Task ID.  Must belong to Project and be a chargeable task</summary>
         public global::System.String Task
         {
             get => _value_task;
@@ -7078,6 +9416,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsTaskSet => _set_task;
+        ///<summary>Required: Organization for which the expense is being incurred.  Aligns with the GL Financial Department segment.</summary>
         public global::System.String Organization
         {
             get => _value_organization;
@@ -7089,6 +9428,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsOrganizationSet => _set_organization;
+        ///<summary>Required: Type of expense being charged to the project.  Aligns with the GL Account segment.</summary>
         public global::System.String ExpenditureType
         {
             get => _value_expenditureType;
@@ -7100,6 +9440,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsExpenditureTypeSet => _set_expenditureType;
+        ///<summary>Award for Sponsored projects only**API Users, do not provide.  The valid value will be derived from the project if necessary.**</summary>
         public global::System.String? Award
         {
             get => _value_award;
@@ -7111,6 +9452,7 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IPpmSegmentInputInfo.IsAwardSet => _set_award;
+        ///<summary>Award funding source for Sponsored projects only**API Users, do not provide.  The valid value will be derived from the project if necessary.**</summary>
         public global::System.String? FundingSource
         {
             get => _value_fundingSource;
@@ -7378,6 +9720,7 @@ namespace AggieEnterpriseApi
         }
     }
 
+    ///<summary>GLIDe fields are part of the GL/PPM Combined journal. These fields are optional.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlideInput : global::AggieEnterpriseApi.State.IGlideInputInfo, global::System.IEquatable<GlideInput>
     {
@@ -7669,12 +10012,33 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public enum RequestStatus
     {
+        /// <summary>
+        /// Request has been submitted to the server, but not validated or processed.
+        /// </summary>
         Pending,
+        /// <summary>
+        /// Request has been picked up for processing.
+        /// </summary>
         Inprocess,
+        /// <summary>
+        /// There was an error processing the request after it was picked up.
+        /// </summary>
         Error,
+        /// <summary>
+        /// Request has been processed, but the callback has not been completed.
+        /// </summary>
         Processed,
+        /// <summary>
+        /// If Callback URL Provided: Request has been processed, and the callback was successfully contacted.  Or, request has been processed, and no callback URL was provided.
+        /// </summary>
         Complete,
+        /// <summary>
+        /// If Callback URL Provided: Request has been processed, but repeated attempts to contact the callback have failed and no more will be tried.
+        /// </summary>
         Stale,
+        /// <summary>
+        /// There was a validation error in the request payload data.
+        /// </summary>
         Rejected
     }
 
@@ -8697,7 +11061,6 @@ namespace AggieEnterpriseApi
     ///     __typename
     ///     code
     ///     name
-    ///     fiscalOfficerName
     ///     eligibleForUse
     ///     ... on ErpFinancialDepartment {
     ///       id
@@ -8731,8 +11094,8 @@ namespace AggieEnterpriseApi
 
         public static CoaDetailsQueryDocument Instance { get; } = new CoaDetailsQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x43, 0x6f, 0x61, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x28, 0x24, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x66, 0x75, 0x6e, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x64, 0x65, 0x70, 0x74, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x72, 0x70, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x46, 0x75, 0x6e, 0x64, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x66, 0x75, 0x6e, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x46, 0x75, 0x6e, 0x64, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x46, 0x69, 0x6e, 0x61, 0x6e, 0x63, 0x69, 0x61, 0x6c, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x64, 0x65, 0x70, 0x74, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x66, 0x69, 0x73, 0x63, 0x61, 0x6c, 0x4f, 0x66, 0x66, 0x69, 0x63, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x6c, 0x69, 0x67, 0x69, 0x62, 0x6c, 0x65, 0x46, 0x6f, 0x72, 0x55, 0x73, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x46, 0x69, 0x6e, 0x61, 0x6e, 0x63, 0x69, 0x61, 0x6c, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x50, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x50, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "52e1db2ee41cb011d8d9cfe82128f1d5");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x43, 0x6f, 0x61, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x28, 0x24, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x66, 0x75, 0x6e, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x64, 0x65, 0x70, 0x74, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x72, 0x70, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x46, 0x75, 0x6e, 0x64, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x66, 0x75, 0x6e, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x46, 0x75, 0x6e, 0x64, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x46, 0x69, 0x6e, 0x61, 0x6e, 0x63, 0x69, 0x61, 0x6c, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x64, 0x65, 0x70, 0x74, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x6c, 0x69, 0x67, 0x69, 0x62, 0x6c, 0x65, 0x46, 0x6f, 0x72, 0x55, 0x73, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x46, 0x69, 0x6e, 0x61, 0x6e, 0x63, 0x69, 0x61, 0x6c, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x65, 0x72, 0x70, 0x50, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x72, 0x70, 0x50, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "165d58f4436bea811ce2209fa9b64dc6");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -8767,7 +11130,6 @@ namespace AggieEnterpriseApi
     ///     __typename
     ///     code
     ///     name
-    ///     fiscalOfficerName
     ///     eligibleForUse
     ///     ... on ErpFinancialDepartment {
     ///       id
@@ -8912,7 +11274,6 @@ namespace AggieEnterpriseApi
     ///     __typename
     ///     code
     ///     name
-    ///     fiscalOfficerName
     ///     eligibleForUse
     ///     ... on ErpFinancialDepartment {
     ///       id
@@ -9928,32 +12289,36 @@ namespace AggieEnterpriseApi
 
 namespace AggieEnterpriseApi.State
 {
+    ///<summary>Financial Department is often known as the "cost center" or "department". This field records, tracks and retains the Financial Department's financial transactions. There are several levels of Financial Departments within the CoA hierarchy. The mid-level hierarchy aligns with the UCPath HR Departments.**Financial Departments have:**- An ongoing business objective and operational function with no planned end date (enabling historical trend analysis + long-range planning)- Identifiable, permanently funded employees and generally an allocation of physical space**FAU Value Comparison:**Due to significant variations in departments' financial structure in KFS, it is not possible to align the Financial Department segment with  specific KFS values.**Access Roles: erp:reader-refdata**</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ErpFinancialDepartmentEntity
     {
-        public ErpFinancialDepartmentEntity(global::System.String code = default !, global::System.String name = default !, global::System.Boolean enabled = default !, global::StrawberryShake.EntityId? parent = default !, global::System.String? fiscalOfficerName = default !, global::System.Boolean eligibleForUse = default !)
+        public ErpFinancialDepartmentEntity(global::System.String code = default !, global::System.String name = default !, global::System.Boolean enabled = default !, global::StrawberryShake.EntityId? parent = default !, global::System.Boolean eligibleForUse = default !)
         {
             Code = code;
             Name = name;
             Enabled = enabled;
             Parent = parent;
-            FiscalOfficerName = fiscalOfficerName;
             EligibleForUse = eligibleForUse;
         }
 
+        ///<summary>Unique identifier of an ErpFinancialDepartment</summary>
         public global::System.String Code { get; }
 
+        ///<summary>Descriptive name of an ErpFinancialDepartment</summary>
         public global::System.String Name { get; }
 
+        ///<summary>Whether this ErpFinancialDepartment is presently enabled for use.</summary>
         public global::System.Boolean Enabled { get; }
 
+        ///<summary>The ErpFinancialDepartment which is the immediate parent of this one.Will be undefined if the ErpFinancialDepartment has no parent.</summary>
         public global::StrawberryShake.EntityId? Parent { get; }
 
-        public global::System.String? FiscalOfficerName { get; }
-
+        ///<summary>Returns whether this ErpFinancialDepartment is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.To be eligible for use, the ErpFinancialDepartment must:* Be enabled* Not be summaryOnly* Have a startDate and endDate range which includes the given accountingDate</summary>
         public global::System.Boolean EligibleForUse { get; }
     }
 
+    ///<summary>Funds provide a method of tracking funding resources whose use is limited by donors, granting agencies, regulations and other external individuals or entities, or by governing boards. A Fund is maintained for each specific funding type (e.g., Unrestricted, Restricted-Expendable, Capital) which supports the compilation of GASB audited financial statements.The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Fund level.In most cases, Fund activity will be presented in the general ledger in summary and the Fund values will be shared amongst Financial Departments. For example, all Financial Departments will share one Restricted Expendable Federal Contracts fund. The detailed transactional information related to each federally sponsored project within this fund will be tracked using the PPM module.**FAU Value Comparison:**The Fund segment most closely aligns with the fund attribute of the KFS Account.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ErpFundEntity
     {
@@ -9971,27 +12336,38 @@ namespace AggieEnterpriseApi.State
             Parent = parent;
         }
 
+        ///<summary>Unique identifier of an ErpFund</summary>
         public global::System.String Code { get; }
 
+        ///<summary>Descriptive name of an ErpFund</summary>
         public global::System.String Name { get; }
 
+        ///<summary>Whether this fund is used for budgeting purposes.</summary>
         public global::System.Boolean? Budgeted { get; }
 
+        ///<summary>Returns whether this ErpFund is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.To be eligible for use, the ErpFund must:* Be enabled* Not be summaryOnly* Have a startDate and endDate range which includes the given accountingDate</summary>
         public global::System.Boolean EligibleForUse { get; }
 
+        ///<summary>Whether this ErpFund is presently enabled for use.</summary>
         public global::System.Boolean Enabled { get; }
 
+        ///<summary>The date till which the value is available for use.</summary>
         public global::System.String? EndDate { get; }
 
+        ///<summary>Internal numeric identifier of an ErpFund</summary>
         public global::System.Int64 Id { get; }
 
+        ///<summary>The date from when the value is available for use.</summary>
         public global::System.String? StartDate { get; }
 
+        ///<summary>Level below the top for a ErpFund that is part of a reporting hierarchy.</summary>
         public global::System.Int32? HierarchyDepth { get; }
 
+        ///<summary>The ErpFund which is the immediate parent of this one.Will be undefined if the ErpFund has no parent.</summary>
         public global::StrawberryShake.EntityId? Parent { get; }
     }
 
+    ///<summary>The Entity segment identifies the major UC system organizational units. These units generally require their own complete, separately audited financial statements to comply with external, regulatory reporting requirements (e.g., external audits, tax reporting), which cannot achieve compliance by using the audited financial statements issued by the Office of the President. Entity, however, will also provide high level management and operational reports.The balancing segment designation in Oracle Financials Cloud allows for net position (e.g., fund balance) to be calculated at the Entity level.Entities at all levels have unique reporting and/or external auditing needs that can only be met with an Entity level designation (e.g., UC Davis Health).**FAU Value Comparison:**The Entity segment most closely aligns with the KFS Chart (e.g. 3, H, L, P).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ErpEntityEntity
     {
@@ -10001,11 +12377,14 @@ namespace AggieEnterpriseApi.State
             Name = name;
         }
 
+        ///<summary>Unique identifier of an ErpEntity</summary>
         public global::System.String Code { get; }
 
+        ///<summary>Descriptive name of an ErpEntity</summary>
         public global::System.String Name { get; }
     }
 
+    ///<summary>For clarity between the CoA Account segment and the current KFS Account, we will refer to the CoA segment as "Natural Account", a commonly used accounting term.The (Natural) Account segment categorizes the nature of the transaction being recorded. The transaction is either revenue-producing, an expenditure, an asset that is owned, or a liability that is owed. Additionally, Account maintains Net Position for Entities and Funds.(Natural) Account values will generally be shared across Financial Departments to provide consistency in operational and management reporting for UC Davis.**FAU Value Comparison:**The (Natural) Account segment most closely aligns with the KFS Object Code.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ErpAccountEntity
     {
@@ -10015,11 +12394,14 @@ namespace AggieEnterpriseApi.State
             Name = name;
         }
 
+        ///<summary>Unique identifier of an ErpAccount</summary>
         public global::System.String Code { get; }
 
+        ///<summary>Descriptive name of an ErpAccount</summary>
         public global::System.String Name { get; }
     }
 
+    ///<summary>The Purpose segment tracks the purpose of the transaction, such as NACUBO-defined functional expense classification and mission.NACUBO classification data is utilized for far-reaching external reporting (e.g., institution ranking). This field is also essential for compliance with federal cost principles and financial statement reporting requiring expenditures be displayed by functional class.**FAU Value Comparison:**The Purpose segment most closely aligns with the HEFC (Higher Ed. Function Code) attribute of the KFS Account.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ErpPurposeEntity
     {
@@ -10029,11 +12411,14 @@ namespace AggieEnterpriseApi.State
             Name = name;
         }
 
+        ///<summary>Unique identifier of an ErpPurpose</summary>
         public global::System.String Code { get; }
 
+        ///<summary>Descriptive name of an ErpPurpose</summary>
         public global::System.String Name { get; }
     }
 
+    ///<summary>The Task identifies the activities used to further breakdown a PPM project. Every project MUST have at least one Task.  The number of tasks will vary by type of project.**Roll-up relationship to the new Chart of Accounts in the General Ledger:*** The Task value will NOT roll up to the Chart of Accounts. Task values will only be used in the PPM module.* Internal rules within the Oracle PPM module will be used to map the task to components of the GL Chart of Accounts which are not directly mapped to other components of the POET(AF) segments.**Examples:*** Design* Construction* Data Gathering &amp; Analysis</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmTaskEntity
     {
@@ -10050,22 +12435,31 @@ namespace AggieEnterpriseApi.State
             GlPostingActivityCode = glPostingActivityCode;
         }
 
+        ///<summary>Task Number: The number of a task.</summary>
         public global::System.String TaskNumber { get; }
 
+        ///<summary>Task Name: The name of the task. A task is a subdivision of the project work. Each project can have a set of top tasks and a hierarchy of subtasks below each top task.</summary>
         public global::System.String Name { get; }
 
+        ///<summary>Billable: Indicates that transactions charged to that task can be billed to customers.</summary>
         public global::System.Boolean Billable { get; }
 
+        ///<summary>Chargeable: Indicates that something is eligible to be charged to a task.</summary>
         public global::System.Boolean Chargeable { get; }
 
+        ///<summary>Returns whether this PpmTask is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.To be eligible for use, the PpmTask must:* Be chargeable* Be a lowestLevelTask* Have a taskStartDate and taskFinishDate range which includes the given accountingDate</summary>
         public global::System.Boolean EligibleForUse { get; }
 
+        ///<summary>GL Program used during subledger accounting jobs to post GL entries when costs are recorded against this task.</summary>
         public global::System.String? GlPostingProgramCode { get; }
 
+        ///<summary>GL Purpose  used during subledger accounting jobs to post GL entries when costs are recorded against this task.</summary>
         public global::System.String? GlPostingPurposeCode { get; }
 
+        ///<summary>GL Fund used during subledger accounting jobs to post GL entries when costs are recorded against this task.</summary>
         public global::System.String? GlPostingFundCode { get; }
 
+        ///<summary>GL Activity used during subledger accounting jobs to post GL entries when costs are recorded against this task.</summary>
         public global::System.String? GlPostingActivityCode { get; }
     }
 
@@ -10129,6 +12523,9 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
+        /// <summary>
+        /// Get a single ErpFinancialDepartment by code.  Returns undefined if does not exist.
+        /// </summary>
         public global::StrawberryShake.EntityId? ErpFinancialDepartment { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -10835,6 +13232,9 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
+        /// <summary>
+        /// Get a single ErpFund by code.  Returns undefined if does not exist
+        /// </summary>
         public global::StrawberryShake.EntityId? ErpFund { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -11574,6 +13974,82 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
+        /// <summary>
+        /// Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
+        /// 
+        /// The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
+        /// 
+        /// This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
+        /// 
+        /// The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
+        /// 
+        /// Please see below in this document for examples of payloads into this API.
+        /// 
+        /// #### Supporting Operations
+        /// 
+        /// Other operations which should be used to pre-validate chartstring segments are below.  Please see <https: / / financeandbusiness.ucdavis.edu / aggie-enterprise / chart-of-accounts / redesign> for information about each of these segments.
+        /// 
+        /// * [`erpEntity`]({{Queries.erpEntity}})
+        /// * [`erpFund`]({{Queries.erpFund}})
+        /// * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
+        /// * [`erpAccount`]({{Queries.erpAccount}})
+        /// * [`erpPurpose`]({{Queries.erpPurpose}})
+        /// * [`erpProject`]({{Queries.erpProject}})
+        /// * [`erpProgram`]({{Queries.erpProgram}})
+        /// * [`erpActivity`]({{Queries.erpActivity}})
+        /// 
+        /// For validating combinations, the following two operations are provided, differing only in their input format.
+        /// 
+        /// * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
+        /// * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
+        /// 
+        /// #### Managed Project Cost Entries (PPM/POET)
+        /// 
+        /// In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
+        /// 
+        /// For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
+        /// 
+        /// For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
+        /// 
+        /// * `p`roject
+        /// * `o`rganization (same values as `ErpFinancialDepartment`)
+        /// * `e`xpenditureType (same values as `ErpAccount`)
+        /// * `t`ask
+        /// 
+        /// Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
+        /// 
+        /// There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
+        /// 
+        /// * award (only for sponsored projects)
+        /// * fundingSource (only for sponsored projects)
+        /// 
+        /// As with the GL segments, the API provides the operations below for lookups and validation:
+        /// 
+        /// * [`ppmProject`]({{Queries.ppmProject}})
+        /// * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
+        /// * [`ppmOrganization`]({{Queries.ppmOrganization}})
+        /// * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
+        /// 
+        /// #### Volume of Data
+        /// 
+        /// Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
+        /// 
+        /// #### Journal Balancing
+        /// 
+        /// As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
+        /// 
+        /// While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
+        /// 
+        /// #### Basic Use
+        /// 
+        /// 1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
+        /// 2. GraphQL Server will validate content format and reject if invalid.
+        /// 3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
+        /// 4. A failure in either of these initial validations will result in an error response with no request being generated.
+        /// 5. Passing validation will save the request to allow for pickup by the integration platform for processing.
+        /// 6. A request tracking ID will be generated and returned to allow for the consumer to check on the status of the request and obtain results when completed.
+        /// 7. At a later time, use the generated request tracking ID against the [`glJournalRequestStatus`]({{Queries.glJournalRequestStatus}}) operation to determine if the request was processed successfully
+        /// </summary>
         public global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData GlJournalRequest { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -11702,6 +14178,9 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
+        /// <summary>
+        /// Get the status of a previously submitted journal voucher request by the API-assigned request ID.
+        /// </summary>
         public global::AggieEnterpriseApi.State.GlJournalRequestStatusOutputData? GlJournalRequestStatus { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -11844,14 +14323,29 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
+        /// <summary>
+        /// Get a single ErpEntity by code.  Returns undefined if does not exist
+        /// </summary>
         public global::StrawberryShake.EntityId? ErpEntity { get; }
 
+        /// <summary>
+        /// Get a single ErpFund by code.  Returns undefined if does not exist
+        /// </summary>
         public global::StrawberryShake.EntityId? ErpFund { get; }
 
+        /// <summary>
+        /// Get a single ErpFinancialDepartment by code.  Returns undefined if does not exist.
+        /// </summary>
         public global::StrawberryShake.EntityId? ErpFinancialDepartment { get; }
 
+        /// <summary>
+        /// Get a single ErpAccount by code.  Returns undefined if does not exist
+        /// </summary>
         public global::StrawberryShake.EntityId? ErpAccount { get; }
 
+        /// <summary>
+        /// Get a single ErpPurpose by code.  Returns undefined if does not exist
+        /// </summary>
         public global::StrawberryShake.EntityId? ErpPurpose { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -11918,7 +14412,7 @@ namespace AggieEnterpriseApi.State
                 snapshot = _entityStore.CurrentSnapshot;
             }
 
-            return new CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment(entity.Code, entity.Name, entity.FiscalOfficerName, entity.EligibleForUse);
+            return new CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment(entity.Code, entity.Name, entity.EligibleForUse);
         }
     }
 
@@ -12035,6 +14529,17 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
+        /// <summary>
+        /// Validates that the given PPM chartstring is most likely valid for posting
+        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If no date is passed, today's date will be assumed.
+        /// 
+        /// This operation will return a fully populated set of segments.
+        /// 
+        /// This operation will return the validation result and the segments as parsed out into their component fields.
+        /// </summary>
         public global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData PpmStringSegmentsValidate { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -12118,6 +14623,15 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
+        /// <summary>
+        /// Validates that the given set of PPM segments are most likely valid for posting
+        /// to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If no date is passed, today's date will be assumed.
+        /// 
+        /// This operation will return a fully populated set of segments.
+        /// </summary>
         public global::AggieEnterpriseApi.State.PpmSegmentsValidateOutputData PpmSegmentsValidate { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -12188,6 +14702,9 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
+        /// <summary>
+        /// Gets PpmTasks by projectNumber and taskNumber.  Returns undefined if not found
+        /// </summary>
         public global::StrawberryShake.EntityId? PpmTaskByProjectNumberAndTaskNumber { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -12383,6 +14900,18 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
+        /// <summary>
+        /// Validates that the given set of GL chartstring segments are most likely valid for posting
+        /// to the financial system general ledger.  Individual non-blank elements will be checked
+        /// for current validity.
+        /// 
+        /// If validateCVRs is true, certain combinations of attributes will be sanity checked.
+        /// 
+        /// This operation will return a fully populated set of segments, including defaults in
+        /// both individual segment and full chartstring form.
+        /// 
+        /// If the combination was previously known/used in the financial system, its unique ID will be included.
+        /// </summary>
         public global::AggieEnterpriseApi.State.GlValidateChartSegmentsOutputData GlValidateChartSegments { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -12558,6 +15087,18 @@ namespace AggieEnterpriseApi.State
             _version = version;
         }
 
+        /// <summary>
+        /// Validates that the given GL chartstring is most likely valid for posting
+        /// to the financial system general ledger.  The input string format is strongly typed
+        /// and will reject the call if not structured properly.  Please see the definition of the
+        /// [GlSegmentString]({{Types.GlSegmentString}}) for format information.
+        /// 
+        /// If validateCVRs is true, certain combinations of attributes will be sanity checked if the string format is accepted.
+        /// 
+        /// This operation will return the validation result and the segments as parsed out into their component fields.
+        /// 
+        /// If the combination was previously known/used in the financial system, its unique ID will be included.
+        /// </summary>
         public global::AggieEnterpriseApi.State.GlValidateChartSegmentsOutputData GlValidateChartstring { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
@@ -12795,11 +15336,11 @@ namespace AggieEnterpriseApi.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), UpdateIDeptParents_ErpFinancialDepartment_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.FiscalOfficerName, entity.EligibleForUse));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), UpdateIDeptParents_ErpFinancialDepartment_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.EligibleForUse));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), UpdateIDeptParents_ErpFinancialDepartment_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !, default !));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), UpdateIDeptParents_ErpFinancialDepartment_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !));
                 }
 
                 return entityId;
@@ -12841,11 +15382,11 @@ namespace AggieEnterpriseApi.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.FiscalOfficerName, entity.EligibleForUse));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.EligibleForUse));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !, default !));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !));
                 }
 
                 return entityId;
@@ -12867,11 +15408,11 @@ namespace AggieEnterpriseApi.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.FiscalOfficerName, entity.EligibleForUse));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.EligibleForUse));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !, default !));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !));
                 }
 
                 return entityId;
@@ -12893,11 +15434,11 @@ namespace AggieEnterpriseApi.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.FiscalOfficerName, entity.EligibleForUse));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.EligibleForUse));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !, default !));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !));
                 }
 
                 return entityId;
@@ -12919,11 +15460,11 @@ namespace AggieEnterpriseApi.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.FiscalOfficerName, entity.EligibleForUse));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.EligibleForUse));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !, default !));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !));
                 }
 
                 return entityId;
@@ -12945,11 +15486,11 @@ namespace AggieEnterpriseApi.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.FiscalOfficerName, entity.EligibleForUse));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.EligibleForUse));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !, default !));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !));
                 }
 
                 return entityId;
@@ -12971,11 +15512,11 @@ namespace AggieEnterpriseApi.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.FiscalOfficerName, entity.EligibleForUse));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), entity.EligibleForUse));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !, default !));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, UpdateIDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_ParentEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "parent"), entityIds), default !));
                 }
 
                 return entityId;
@@ -12997,11 +15538,11 @@ namespace AggieEnterpriseApi.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, entity.Parent, entity.FiscalOfficerName, entity.EligibleForUse));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, entity.Parent, entity.EligibleForUse));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, default !, default !, default !));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, default !, default !));
                 }
 
                 return entityId;
@@ -13991,27 +16532,17 @@ namespace AggieEnterpriseApi.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, entity.Parent, DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fiscalOfficerName")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "eligibleForUse"))));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), entity.Enabled, entity.Parent, DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "eligibleForUse"))));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, default !, DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fiscalOfficerName")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "eligibleForUse"))));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), default !, default !, DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "eligibleForUse"))));
                 }
 
                 return entityId;
             }
 
             throw new global::System.NotSupportedException();
-        }
-
-        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            return _nonEmptyTrimmedString240Parser.Parse(obj.Value.GetString()!);
         }
 
         private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
@@ -15092,6 +17623,7 @@ namespace AggieEnterpriseApi.State
         }
     }
 
+    ///<summary>Output type for GLJournal requests and follow-up status updates.Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatusOutputData
     {
@@ -15105,13 +17637,17 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
+        ///<summary>Overall status of the action request</summary>
         public global::AggieEnterpriseApi.State.ActionRequestStatusData? RequestStatus { get; }
 
+        ///<summary>Errors found when validating the payload data.  These must be corrected before the request will be accepted.</summary>
         public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResults { get; }
 
+        ///<summary>Results of the Job or Jobs required to submit this request to the ERP.</summary>
         public global::AggieEnterpriseApi.State.ProcessingResultData? ProcessingResult { get; }
     }
 
+    ///<summary>Fields common to all action status requests.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ActionRequestStatusData
     {
@@ -15134,31 +17670,42 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
+        ///<summary>Unique identifier assigned to the request</summary>
         public global::System.Guid? RequestId { get; }
 
+        ///<summary>ID of the consumer who made the request extracted from the service authentication data</summary>
         public global::System.String? ConsumerId { get; }
 
         public global::System.DateTimeOffset? RequestDateTime { get; }
 
         public global::AggieEnterpriseApi.RequestStatus? RequestStatus { get; }
 
+        ///<summary>Name of the operation called.</summary>
         public global::System.String? OperationName { get; }
 
+        ///<summary>GraphQL Payload to post back to this server to check on the status of the request.</summary>
         public global::System.String? StatusRequestPayload { get; }
 
+        ///<summary>When the status last changed</summary>
         public global::System.DateTimeOffset? LastStatusDateTime { get; }
 
+        ///<summary>Error information if the request failed during processing.</summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        ///<summary>When the request was processed by the ERP system</summary>
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
 
+        ///<summary>Identifier for the boundary application originating the request.</summary>
         public global::System.String? BoundaryApplicationName { get; }
 
+        ///<summary>Any notes to include with the request, this is stored as metadata to provide context to the request.</summary>
         public global::System.String? ConsumerNotes { get; }
 
+        ///<summary>Identifier provided by the consumer which usually references the source record within their system.  Does not need to be unique.</summary>
         public global::System.String? ConsumerReferenceId { get; }
     }
 
+    ///<summary>Contains the validation overall status and any error messages and the properties they belong to.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ValidationResponseData
     {
@@ -15172,13 +17719,17 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
+        ///<summary>Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.</summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
 
+        ///<summary>Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.</summary>
         public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
 
+        ///<summary>Whether the overall validation succeeded or failed.</summary>
         public global::System.Boolean? Valid { get; }
     }
 
+    ///<summary>Result of the attempt to process the action request in the destination system</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ProcessingResultData
     {
@@ -15193,9 +17744,11 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String? Status { get; }
 
+        ///<summary>Time the request was noted as completed processing, whether successful or not.</summary>
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
     }
 
+    ///<summary>Return data structure when validating a set of PPM segment values.The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentsValidateOutputData
     {
@@ -15208,11 +17761,14 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
+        ///<summary>Validation result and error messages, if any.</summary>
         public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResponse { get; }
 
+        ///<summary>PPM segment string matching the segments object.  Only populated if the validation passes.</summary>
         public global::System.String? SegmentString { get; }
     }
 
+    ///<summary>Return data structure when validating a set of GL segment values.The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsOutputData
     {
@@ -15230,21 +17786,28 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
+        ///<summary>Validation result and error messages, if any.</summary>
         public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResponse { get; }
 
+        ///<summary>Fully populated object with the GL segments combination that was validated.</summary>
         public global::AggieEnterpriseApi.State.GlSegmentsData? Segments { get; }
 
+        ///<summary>Full chartstring with the GL segments combination that was validated.</summary>
         public global::System.String? CompleteChartstring { get; }
 
+        ///<summary>The "codeCombinationId" is an informational property only.  If populated, itindicates that the validated combination of segment values was previouslyknown to the financial system.  Validity still needs to be checked, aschartstrings can be disabled or expire.  However, segments which match anexisting valid combination can not fail validation when posted to thefinancial system.</summary>
         public global::System.Int64? CodeCombinationId { get; }
 
         public global::AggieEnterpriseApi.State.GlSegmentNamesData? SegmentNames { get; }
 
+        ///<summary>Warnings, if any, related to segments validated during this operation.  The segmentName will be the same as the property name in the GlSegments object.</summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentWarningData>? Warnings { get; }
 
+        ///<summary>End Dates, if defined, after which a given segment will no longer be accepted for processing.  The segmentName will be the same as the property name in the GlSegments type.  Only segments which have defined end dates will be included in this list.</summary>
         public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.SegmentEndDateData>? EndDates { get; }
     }
 
+    ///<summary>GL segment values as separate fields.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlSegmentsData
     {
@@ -15263,20 +17826,28 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
+        ///<summary>Required: Nature of the transaction, expense, income, liability, etc...</summary>
         public global::System.String? Account { get; }
 
+        ///<summary>Optional: </summary>
         public global::System.String? Activity { get; }
 
+        ///<summary>Required: Financial department to which to charge a transaction.</summary>
         public global::System.String? Department { get; }
 
+        ///<summary>Required: Entity to which to charge a transaction.</summary>
         public global::System.String? Entity { get; }
 
+        ///<summary>Required: Funding source to which to charge a transaction.</summary>
         public global::System.String? Fund { get; }
 
+        ///<summary>Optional: </summary>
         public global::System.String? Program { get; }
 
+        ///<summary>Optional: </summary>
         public global::System.String? Project { get; }
 
+        ///<summary>Required for Expenses: Functional purpose of the expense.</summary>
         public global::System.String? Purpose { get; }
     }
 
@@ -15315,6 +17886,7 @@ namespace AggieEnterpriseApi.State
         public global::System.String? ActivityName { get; }
     }
 
+    ///<summary>Warning issued when validating a given segment.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class SegmentWarningData
     {
@@ -15327,11 +17899,14 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
+        ///<summary>Name of the segment per the property name in the GlSegments or PpmSegments types.</summary>
         public global::System.String? SegmentName { get; }
 
+        ///<summary>Warning message associated with the use of the given segment.</summary>
         public global::System.String? Warning { get; }
     }
 
+    ///<summary>Valid end date for a given segment in a GL or PPM chartstring.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class SegmentEndDateData
     {
@@ -15344,8 +17919,10 @@ namespace AggieEnterpriseApi.State
 
         public global::System.String __typename { get; }
 
+        ///<summary>Name of the segment per the property name in the GlSegments or PpmSegments types.</summary>
         public global::System.String? SegmentName { get; }
 
+        ///<summary>End date of the given segment as defined in the associated table.</summary>
         public global::System.String? EndDate { get; }
     }
 
