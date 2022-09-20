@@ -5568,6 +5568,445 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionCreateResult : global::System.IEquatable<ScmPurchaseRequisitionCreateResult>, IScmPurchaseRequisitionCreateResult
+    {
+        public ScmPurchaseRequisitionCreateResult(global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate scmPurchaseRequisitionCreate)
+        {
+            ScmPurchaseRequisitionCreate = scmPurchaseRequisitionCreate;
+        }
+
+        /// <summary>
+        /// Requests that a Purchase Requisition be uploaded to Oracle.
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate ScmPurchaseRequisitionCreate { get; }
+
+        public virtual global::System.Boolean Equals(ScmPurchaseRequisitionCreateResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (ScmPurchaseRequisitionCreate.Equals(other.ScmPurchaseRequisitionCreate));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchaseRequisitionCreateResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * ScmPurchaseRequisitionCreate.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Output type for ScmPurchaseRequisition creation and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the document, will also contain the Oracle Financials assigned ID.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionRequestStatusOutput : global::System.IEquatable<ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionRequestStatusOutput>, IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionRequestStatusOutput
+    {
+        public ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionRequestStatusOutput(global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus requestStatus, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults? validationResults)
+        {
+            RequestStatus = requestStatus;
+            ValidationResults = validationResults;
+        }
+
+        /// <summary>
+        /// Status of the action request overall.
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus RequestStatus { get; }
+
+        /// <summary>
+        /// Validation errors of payload data
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults? ValidationResults { get; }
+
+        public virtual global::System.Boolean Equals(ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionRequestStatusOutput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (RequestStatus.Equals(other.RequestStatus)) && ((ValidationResults is null && other.ValidationResults is null) || ValidationResults != null && ValidationResults.Equals(other.ValidationResults));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionRequestStatusOutput)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * RequestStatus.GetHashCode();
+                if (ValidationResults != null)
+                {
+                    hash ^= 397 * ValidationResults.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus_ActionRequestStatus : global::System.IEquatable<ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus_ActionRequestStatus>, IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus_ActionRequestStatus
+    {
+        public ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus_ActionRequestStatus(global::System.Guid? requestId, global::AggieEnterpriseApi.RequestStatus requestStatus, global::System.DateTimeOffset? processedDateTime, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages)
+        {
+            RequestId = requestId;
+            RequestStatus = requestStatus;
+            ProcessedDateTime = processedDateTime;
+            ErrorMessages = errorMessages;
+        }
+
+        /// <summary>
+        /// Unique identifier assigned to the request
+        /// </summary>
+        public global::System.Guid? RequestId { get; }
+
+        public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
+
+        /// <summary>
+        /// When the request was processed by the ERP system
+        /// </summary>
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
+
+        /// <summary>
+        /// Error information if the request failed during processing.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        public virtual global::System.Boolean Equals(ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus_ActionRequestStatus? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((RequestId is null && other.RequestId is null) || RequestId != null && RequestId.Equals(other.RequestId))) && RequestStatus.Equals(other.RequestStatus) && ((ProcessedDateTime is null && other.ProcessedDateTime is null) || ProcessedDateTime != null && ProcessedDateTime.Equals(other.ProcessedDateTime)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus_ActionRequestStatus)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (RequestId != null)
+                {
+                    hash ^= 397 * RequestId.GetHashCode();
+                }
+
+                hash ^= 397 * RequestStatus.GetHashCode();
+                if (ProcessedDateTime != null)
+                {
+                    hash ^= 397 * ProcessedDateTime.GetHashCode();
+                }
+
+                if (ErrorMessages != null)
+                {
+                    foreach (var ErrorMessages_elm in ErrorMessages)
+                    {
+                        hash ^= 397 * ErrorMessages_elm.GetHashCode();
+                    }
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults_ValidationResponse : global::System.IEquatable<ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults_ValidationResponse>, IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults_ValidationResponse
+    {
+        public ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults_ValidationResponse(global::System.Boolean valid, global::System.Collections.Generic.IReadOnlyList<global::System.String>? errorMessages, global::System.Collections.Generic.IReadOnlyList<global::System.String>? messageProperties)
+        {
+            Valid = valid;
+            ErrorMessages = errorMessages;
+            MessageProperties = messageProperties;
+        }
+
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
+        public global::System.Boolean Valid { get; }
+
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+
+        public virtual global::System.Boolean Equals(ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults_ValidationResponse? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Valid == other.Valid) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ErrorMessages, other.ErrorMessages) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(MessageProperties, other.MessageProperties);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults_ValidationResponse)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Valid.GetHashCode();
+                if (ErrorMessages != null)
+                {
+                    foreach (var ErrorMessages_elm in ErrorMessages)
+                    {
+                        hash ^= 397 * ErrorMessages_elm.GetHashCode();
+                    }
+                }
+
+                if (MessageProperties != null)
+                {
+                    foreach (var MessageProperties_elm in MessageProperties)
+                    {
+                        hash ^= 397 * MessageProperties_elm.GetHashCode();
+                    }
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchaseRequisitionCreateResult
+    {
+        /// <summary>
+        /// Requests that a Purchase Requisition be uploaded to Oracle.
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate ScmPurchaseRequisitionCreate { get; }
+    }
+
+    /// <summary>
+    /// Output type for ScmPurchaseRequisition creation and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the document, will also contain the Oracle Financials assigned ID.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate
+    {
+        /// <summary>
+        /// Status of the action request overall.
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus RequestStatus { get; }
+
+        /// <summary>
+        /// Validation errors of payload data
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults? ValidationResults { get; }
+    }
+
+    /// <summary>
+    /// Output type for ScmPurchaseRequisition creation and follow-up status updates.
+    /// 
+    /// Contains the overall request status.  After a successful creation of the document, will also contain the Oracle Financials assigned ID.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionRequestStatusOutput : IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate
+    {
+    }
+
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus
+    {
+        /// <summary>
+        /// Unique identifier assigned to the request
+        /// </summary>
+        public global::System.Guid? RequestId { get; }
+
+        public global::AggieEnterpriseApi.RequestStatus RequestStatus { get; }
+
+        /// <summary>
+        /// When the request was processed by the ERP system
+        /// </summary>
+        public global::System.DateTimeOffset? ProcessedDateTime { get; }
+
+        /// <summary>
+        /// Error information if the request failed during processing.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+    }
+
+    /// <summary>
+    /// Fields common to all action status requests.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus_ActionRequestStatus : IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus
+    {
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults
+    {
+        /// <summary>
+        /// Whether the overall validation succeeded or failed.
+        /// </summary>
+        public global::System.Boolean Valid { get; }
+
+        /// <summary>
+        /// Array of all errors found during validation.  The failed property is in the matching index in the `messageProperties` list.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? ErrorMessages { get; }
+
+        /// <summary>
+        /// Property names which failed validation.  May be blank if the validation applies to the entire payload or no particular property.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? MessageProperties { get; }
+    }
+
+    /// <summary>
+    /// Contains the validation overall status and any error messages and the properties they belong to.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults_ValidationResponse : IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsResult : global::System.IEquatable<GlValidateChartSegmentsResult>, IGlValidateChartSegmentsResult
     {
         public GlValidateChartSegmentsResult(global::AggieEnterpriseApi.IGlValidateChartSegments_GlValidateChartSegments glValidateChartSegments)
@@ -10010,6 +10449,1295 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionRequestInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _actionRequestHeaderInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _scmPurchaseRequisitionInputFormatter = default !;
+        public global::System.String TypeName => "ScmPurchaseRequisitionRequestInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _actionRequestHeaderInputFormatter = serializerResolver.GetInputValueFormatter("ActionRequestHeaderInput");
+            _scmPurchaseRequisitionInputFormatter = serializerResolver.GetInputValueFormatter("ScmPurchaseRequisitionInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.ScmPurchaseRequisitionRequestInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IScmPurchaseRequisitionRequestInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsHeaderSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("header", FormatHeader(input.Header)));
+            }
+
+            if (inputInfo.IsPayloadSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("payload", FormatPayload(input.Payload)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatHeader(global::AggieEnterpriseApi.ActionRequestHeaderInput input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _actionRequestHeaderInputFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatPayload(global::AggieEnterpriseApi.ScmPurchaseRequisitionInput input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _scmPurchaseRequisitionInputFormatter.Format(input);
+        }
+    }
+
+    ///<summary>scm Purchase Requisition input type.  Contains the standard request header information and requisition data payload for creating requisition in Oracle Financials.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionRequestInput : global::AggieEnterpriseApi.State.IScmPurchaseRequisitionRequestInputInfo, global::System.IEquatable<ScmPurchaseRequisitionRequestInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchaseRequisitionRequestInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(ScmPurchaseRequisitionRequestInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Header.Equals(other.Header)) && Payload.Equals(other.Payload);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Header.GetHashCode();
+                hash ^= 397 * Payload.GetHashCode();
+                return hash;
+            }
+        }
+
+        private global::AggieEnterpriseApi.ActionRequestHeaderInput _value_header = default !;
+        private global::System.Boolean _set_header;
+        private global::AggieEnterpriseApi.ScmPurchaseRequisitionInput _value_payload = default !;
+        private global::System.Boolean _set_payload;
+        ///<summary>Request-level header information common to all action requests.</summary>
+        public global::AggieEnterpriseApi.ActionRequestHeaderInput Header
+        {
+            get => _value_header;
+            set
+            {
+                _set_header = true;
+                _value_header = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionRequestInputInfo.IsHeaderSet => _set_header;
+        ///<summary>ScmInvoicePayment data</summary>
+        public global::AggieEnterpriseApi.ScmPurchaseRequisitionInput Payload
+        {
+            get => _value_payload;
+            set
+            {
+                _set_payload = true;
+                _value_payload = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionRequestInputInfo.IsPayloadSet => _set_payload;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString30Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _emailAddressFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString240Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString1000Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _localDateFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _scmPurchaseRequisitionLineInputFormatter = default !;
+        public global::System.String TypeName => "ScmPurchaseRequisitionInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _nonEmptyTrimmedString30Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString30");
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+            _emailAddressFormatter = serializerResolver.GetInputValueFormatter("EmailAddress");
+            _nonEmptyTrimmedString240Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString240");
+            _nonEmptyTrimmedString1000Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString1000");
+            _localDateFormatter = serializerResolver.GetInputValueFormatter("LocalDate");
+            _scmPurchaseRequisitionLineInputFormatter = serializerResolver.GetInputValueFormatter("ScmPurchaseRequisitionLineInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.ScmPurchaseRequisitionInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IScmPurchaseRequisitionInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsRequisitionSourceNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("requisitionSourceName", FormatRequisitionSourceName(input.RequisitionSourceName)));
+            }
+
+            if (inputInfo.IsSupplierNumberSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("supplierNumber", FormatSupplierNumber(input.SupplierNumber)));
+            }
+
+            if (inputInfo.IsSupplierSiteCodeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("supplierSiteCode", FormatSupplierSiteCode(input.SupplierSiteCode)));
+            }
+
+            if (inputInfo.IsRequesterEmailAddressSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("requesterEmailAddress", FormatRequesterEmailAddress(input.RequesterEmailAddress)));
+            }
+
+            if (inputInfo.IsDescriptionSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("description", FormatDescription(input.Description)));
+            }
+
+            if (inputInfo.IsJustificationSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("justification", FormatJustification(input.Justification)));
+            }
+
+            if (inputInfo.IsTransactionDateSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("transactionDate", FormatTransactionDate(input.TransactionDate)));
+            }
+
+            if (inputInfo.IsLinesSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lines", FormatLines(input.Lines)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatRequisitionSourceName(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _nonEmptyTrimmedString30Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatSupplierNumber(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _nonEmptyTrimmedString30Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatSupplierSiteCode(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _stringFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatRequesterEmailAddress(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _emailAddressFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatDescription(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _nonEmptyTrimmedString240Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatJustification(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _nonEmptyTrimmedString1000Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatTransactionDate(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _localDateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLines(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.ScmPurchaseRequisitionLineInput> input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+            foreach (var input_elm in input)
+            {
+                if (input_elm is null)
+                {
+                    throw new global::System.ArgumentNullException(nameof(input_elm));
+                }
+
+                input_list.Add(_scmPurchaseRequisitionLineInputFormatter.Format(input_elm));
+            }
+
+            return input_list;
+        }
+    }
+
+    ///<summary>Main payload object for a `scmPurchaseRequisitionRequest`.  See operation documentation for more info.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionInput : global::AggieEnterpriseApi.State.IScmPurchaseRequisitionInputInfo, global::System.IEquatable<ScmPurchaseRequisitionInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchaseRequisitionInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(ScmPurchaseRequisitionInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (RequisitionSourceName.Equals(other.RequisitionSourceName)) && SupplierNumber.Equals(other.SupplierNumber) && SupplierSiteCode.Equals(other.SupplierSiteCode) && RequesterEmailAddress.Equals(other.RequesterEmailAddress) && Description.Equals(other.Description) && Justification.Equals(other.Justification) && ((TransactionDate is null && other.TransactionDate is null) || TransactionDate != null && TransactionDate.Equals(other.TransactionDate)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Lines, other.Lines);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * RequisitionSourceName.GetHashCode();
+                hash ^= 397 * SupplierNumber.GetHashCode();
+                hash ^= 397 * SupplierSiteCode.GetHashCode();
+                hash ^= 397 * RequesterEmailAddress.GetHashCode();
+                hash ^= 397 * Description.GetHashCode();
+                hash ^= 397 * Justification.GetHashCode();
+                if (TransactionDate != null)
+                {
+                    hash ^= 397 * TransactionDate.GetHashCode();
+                }
+
+                foreach (var Lines_elm in Lines)
+                {
+                    hash ^= 397 * Lines_elm.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.String _value_requisitionSourceName = default !;
+        private global::System.Boolean _set_requisitionSourceName;
+        private global::System.String _value_supplierNumber = default !;
+        private global::System.Boolean _set_supplierNumber;
+        private global::System.String _value_supplierSiteCode = default !;
+        private global::System.Boolean _set_supplierSiteCode;
+        private global::System.String _value_requesterEmailAddress = default !;
+        private global::System.Boolean _set_requesterEmailAddress;
+        private global::System.String _value_description = default !;
+        private global::System.Boolean _set_description;
+        private global::System.String _value_justification = default !;
+        private global::System.Boolean _set_justification;
+        private global::System.String? _value_transactionDate;
+        private global::System.Boolean _set_transactionDate;
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.ScmPurchaseRequisitionLineInput> _value_lines = default !;
+        private global::System.Boolean _set_lines;
+        ///<summary>Centrally assigned source name for your boundary application.</summary>
+        public global::System.String RequisitionSourceName
+        {
+            get => _value_requisitionSourceName;
+            set
+            {
+                _set_requisitionSourceName = true;
+                _value_requisitionSourceName = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionInputInfo.IsRequisitionSourceNameSet => _set_requisitionSourceName;
+        public global::System.String SupplierNumber
+        {
+            get => _value_supplierNumber;
+            set
+            {
+                _set_supplierNumber = true;
+                _value_supplierNumber = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionInputInfo.IsSupplierNumberSet => _set_supplierNumber;
+        ///<summary>Value that uniquely identifies the supplier site.</summary>
+        public global::System.String SupplierSiteCode
+        {
+            get => _value_supplierSiteCode;
+            set
+            {
+                _set_supplierSiteCode = true;
+                _value_supplierSiteCode = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionInputInfo.IsSupplierSiteCodeSet => _set_supplierSiteCode;
+        ///<summary>Email address of the person to whom questions should be directed if needed by Supply Chain Management.  Must be the email address of a valid user in Oracle Financials.</summary>
+        public global::System.String RequesterEmailAddress
+        {
+            get => _value_requesterEmailAddress;
+            set
+            {
+                _set_requesterEmailAddress = true;
+                _value_requesterEmailAddress = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionInputInfo.IsRequesterEmailAddressSet => _set_requesterEmailAddress;
+        ///<summary>Description of the requisition</summary>
+        public global::System.String Description
+        {
+            get => _value_description;
+            set
+            {
+                _set_description = true;
+                _value_description = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionInputInfo.IsDescriptionSet => _set_description;
+        ///<summary>Reason for creating the requisition.</summary>
+        public global::System.String Justification
+        {
+            get => _value_justification;
+            set
+            {
+                _set_justification = true;
+                _value_justification = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionInputInfo.IsJustificationSet => _set_justification;
+        public global::System.String? TransactionDate
+        {
+            get => _value_transactionDate;
+            set
+            {
+                _set_transactionDate = true;
+                _value_transactionDate = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionInputInfo.IsTransactionDateSet => _set_transactionDate;
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.ScmPurchaseRequisitionLineInput> Lines
+        {
+            get => _value_lines;
+            set
+            {
+                _set_lines = true;
+                _value_lines = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionInputInfo.IsLinesSet => _set_lines;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionLineInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonNegativeFloatFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString25Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString240Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString1000Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonEmptyTrimmedString60Formatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _localDateFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _scmPurchaseRequisitionDistributionInputFormatter = default !;
+        public global::System.String TypeName => "ScmPurchaseRequisitionLineInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _nonNegativeFloatFormatter = serializerResolver.GetInputValueFormatter("NonNegativeFloat");
+            _nonEmptyTrimmedString25Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString25");
+            _nonEmptyTrimmedString240Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString240");
+            _nonEmptyTrimmedString1000Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString1000");
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+            _nonEmptyTrimmedString60Formatter = serializerResolver.GetInputValueFormatter("NonEmptyTrimmedString60");
+            _localDateFormatter = serializerResolver.GetInputValueFormatter("LocalDate");
+            _scmPurchaseRequisitionDistributionInputFormatter = serializerResolver.GetInputValueFormatter("ScmPurchaseRequisitionDistributionInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.ScmPurchaseRequisitionLineInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsAmountSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("amount", FormatAmount(input.Amount)));
+            }
+
+            if (inputInfo.IsQuantitySet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("quantity", FormatQuantity(input.Quantity)));
+            }
+
+            if (inputInfo.IsUnitOfMeasureSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("unitOfMeasure", FormatUnitOfMeasure(input.UnitOfMeasure)));
+            }
+
+            if (inputInfo.IsItemDescriptionSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("itemDescription", FormatItemDescription(input.ItemDescription)));
+            }
+
+            if (inputInfo.IsNoteToBuyerSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("noteToBuyer", FormatNoteToBuyer(input.NoteToBuyer)));
+            }
+
+            if (inputInfo.IsPurchasingCategoryNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("purchasingCategoryName", FormatPurchasingCategoryName(input.PurchasingCategoryName)));
+            }
+
+            if (inputInfo.IsUnitPriceSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("unitPrice", FormatUnitPrice(input.UnitPrice)));
+            }
+
+            if (inputInfo.IsDeliverToTypeCodeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("deliverToTypeCode", FormatDeliverToTypeCode(input.DeliverToTypeCode)));
+            }
+
+            if (inputInfo.IsDeliveryToLocationCodeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("deliveryToLocationCode", FormatDeliveryToLocationCode(input.DeliveryToLocationCode)));
+            }
+
+            if (inputInfo.IsRequestedDeliveryDateSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("requestedDeliveryDate", FormatRequestedDeliveryDate(input.RequestedDeliveryDate)));
+            }
+
+            if (inputInfo.IsDistributionsSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("distributions", FormatDistributions(input.Distributions)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatAmount(global::System.Decimal input)
+        {
+            return _nonNegativeFloatFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatQuantity(global::System.Decimal input)
+        {
+            return _nonNegativeFloatFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatUnitOfMeasure(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _nonEmptyTrimmedString25Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatItemDescription(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _nonEmptyTrimmedString240Formatter.Format(input);
+        }
+
+        private global::System.Object? FormatNoteToBuyer(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonEmptyTrimmedString1000Formatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatPurchasingCategoryName(global::System.String input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            return _stringFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatUnitPrice(global::System.Decimal input)
+        {
+            return _nonNegativeFloatFormatter.Format(input);
+        }
+
+        private global::System.Object? FormatDeliverToTypeCode(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatDeliveryToLocationCode(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonEmptyTrimmedString60Formatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatRequestedDeliveryDate(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _localDateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatDistributions(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.ScmPurchaseRequisitionDistributionInput> input)
+        {
+            if (input is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(input));
+            }
+
+            var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+            foreach (var input_elm in input)
+            {
+                if (input_elm is null)
+                {
+                    throw new global::System.ArgumentNullException(nameof(input_elm));
+                }
+
+                input_list.Add(_scmPurchaseRequisitionDistributionInputFormatter.Format(input_elm));
+            }
+
+            return input_list;
+        }
+    }
+
+    ///<summary>A single line representing a Requisition Line Item.  A line must have only one of the two types of segments specified.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionLineInput : global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo, global::System.IEquatable<ScmPurchaseRequisitionLineInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchaseRequisitionLineInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(ScmPurchaseRequisitionLineInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Amount == other.Amount) && Quantity == other.Quantity && UnitOfMeasure.Equals(other.UnitOfMeasure) && ItemDescription.Equals(other.ItemDescription) && ((NoteToBuyer is null && other.NoteToBuyer is null) || NoteToBuyer != null && NoteToBuyer.Equals(other.NoteToBuyer)) && PurchasingCategoryName.Equals(other.PurchasingCategoryName) && UnitPrice == other.UnitPrice && ((DeliverToTypeCode is null && other.DeliverToTypeCode is null) || DeliverToTypeCode != null && DeliverToTypeCode.Equals(other.DeliverToTypeCode)) && ((DeliveryToLocationCode is null && other.DeliveryToLocationCode is null) || DeliveryToLocationCode != null && DeliveryToLocationCode.Equals(other.DeliveryToLocationCode)) && ((RequestedDeliveryDate is null && other.RequestedDeliveryDate is null) || RequestedDeliveryDate != null && RequestedDeliveryDate.Equals(other.RequestedDeliveryDate)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Distributions, other.Distributions);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Amount.GetHashCode();
+                hash ^= 397 * Quantity.GetHashCode();
+                hash ^= 397 * UnitOfMeasure.GetHashCode();
+                hash ^= 397 * ItemDescription.GetHashCode();
+                if (NoteToBuyer != null)
+                {
+                    hash ^= 397 * NoteToBuyer.GetHashCode();
+                }
+
+                hash ^= 397 * PurchasingCategoryName.GetHashCode();
+                hash ^= 397 * UnitPrice.GetHashCode();
+                if (DeliverToTypeCode != null)
+                {
+                    hash ^= 397 * DeliverToTypeCode.GetHashCode();
+                }
+
+                if (DeliveryToLocationCode != null)
+                {
+                    hash ^= 397 * DeliveryToLocationCode.GetHashCode();
+                }
+
+                if (RequestedDeliveryDate != null)
+                {
+                    hash ^= 397 * RequestedDeliveryDate.GetHashCode();
+                }
+
+                foreach (var Distributions_elm in Distributions)
+                {
+                    hash ^= 397 * Distributions_elm.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.Decimal _value_amount;
+        private global::System.Boolean _set_amount;
+        private global::System.Decimal _value_quantity;
+        private global::System.Boolean _set_quantity;
+        private global::System.String _value_unitOfMeasure = default !;
+        private global::System.Boolean _set_unitOfMeasure;
+        private global::System.String _value_itemDescription = default !;
+        private global::System.Boolean _set_itemDescription;
+        private global::System.String? _value_noteToBuyer;
+        private global::System.Boolean _set_noteToBuyer;
+        private global::System.String _value_purchasingCategoryName = default !;
+        private global::System.Boolean _set_purchasingCategoryName;
+        private global::System.Decimal _value_unitPrice;
+        private global::System.Boolean _set_unitPrice;
+        private global::System.String? _value_deliverToTypeCode;
+        private global::System.Boolean _set_deliverToTypeCode;
+        private global::System.String? _value_deliveryToLocationCode;
+        private global::System.Boolean _set_deliveryToLocationCode;
+        private global::System.String? _value_requestedDeliveryDate;
+        private global::System.Boolean _set_requestedDeliveryDate;
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.ScmPurchaseRequisitionDistributionInput> _value_distributions = default !;
+        private global::System.Boolean _set_distributions;
+        ///<summary>Total amount of the requested items in USD.</summary>
+        public global::System.Decimal Amount
+        {
+            get => _value_amount;
+            set
+            {
+                _set_amount = true;
+                _value_amount = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsAmountSet => _set_amount;
+        ///<summary>Quantity of the goods being purchased.</summary>
+        public global::System.Decimal Quantity
+        {
+            get => _value_quantity;
+            set
+            {
+                _set_quantity = true;
+                _value_quantity = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsQuantitySet => _set_quantity;
+        ///<summary>The unit of measure name for the quantity.</summary>
+        public global::System.String UnitOfMeasure
+        {
+            get => _value_unitOfMeasure;
+            set
+            {
+                _set_unitOfMeasure = true;
+                _value_unitOfMeasure = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsUnitOfMeasureSet => _set_unitOfMeasure;
+        ///<summary>Description of the goods or services being purchased.</summary>
+        public global::System.String ItemDescription
+        {
+            get => _value_itemDescription;
+            set
+            {
+                _set_itemDescription = true;
+                _value_itemDescription = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsItemDescriptionSet => _set_itemDescription;
+        ///<summary>Note to the buyer who will be processing the request.</summary>
+        public global::System.String? NoteToBuyer
+        {
+            get => _value_noteToBuyer;
+            set
+            {
+                _set_noteToBuyer = true;
+                _value_noteToBuyer = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsNoteToBuyerSet => _set_noteToBuyer;
+        ///<summary>Name of the purchasing category that is used for classifying the purchase being made by using this order line.</summary>
+        public global::System.String PurchasingCategoryName
+        {
+            get => _value_purchasingCategoryName;
+            set
+            {
+                _set_purchasingCategoryName = true;
+                _value_purchasingCategoryName = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsPurchasingCategoryNameSet => _set_purchasingCategoryName;
+        ///<summary>Price of the requested item in USD.</summary>
+        public global::System.Decimal UnitPrice
+        {
+            get => _value_unitPrice;
+            set
+            {
+                _set_unitPrice = true;
+                _value_unitPrice = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsUnitPriceSet => _set_unitPrice;
+        public global::System.String? DeliverToTypeCode
+        {
+            get => _value_deliverToTypeCode;
+            set
+            {
+                _set_deliverToTypeCode = true;
+                _value_deliverToTypeCode = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsDeliverToTypeCodeSet => _set_deliverToTypeCode;
+        ///<summary>Abbreviation that identifies the final location where the buying company should deliver the goods previously received from a supplier.</summary>
+        public global::System.String? DeliveryToLocationCode
+        {
+            get => _value_deliveryToLocationCode;
+            set
+            {
+                _set_deliveryToLocationCode = true;
+                _value_deliveryToLocationCode = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsDeliveryToLocationCodeSet => _set_deliveryToLocationCode;
+        public global::System.String? RequestedDeliveryDate
+        {
+            get => _value_requestedDeliveryDate;
+            set
+            {
+                _set_requestedDeliveryDate = true;
+                _value_requestedDeliveryDate = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsRequestedDeliveryDateSet => _set_requestedDeliveryDate;
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.ScmPurchaseRequisitionDistributionInput> Distributions
+        {
+            get => _value_distributions;
+            set
+            {
+                _set_distributions = true;
+                _value_distributions = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsDistributionsSet => _set_distributions;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionDistributionInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonNegativeFloatFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _glSegmentInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _glSegmentStringFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _ppmSegmentInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _ppmSegmentStringFormatter = default !;
+        public global::System.String TypeName => "ScmPurchaseRequisitionDistributionInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _nonNegativeFloatFormatter = serializerResolver.GetInputValueFormatter("NonNegativeFloat");
+            _glSegmentInputFormatter = serializerResolver.GetInputValueFormatter("GlSegmentInput");
+            _glSegmentStringFormatter = serializerResolver.GetInputValueFormatter("GlSegmentString");
+            _ppmSegmentInputFormatter = serializerResolver.GetInputValueFormatter("PpmSegmentInput");
+            _ppmSegmentStringFormatter = serializerResolver.GetInputValueFormatter("PpmSegmentString");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.ScmPurchaseRequisitionDistributionInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IScmPurchaseRequisitionDistributionInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsAmountSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("amount", FormatAmount(input.Amount)));
+            }
+
+            if (inputInfo.IsPercentSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("percent", FormatPercent(input.Percent)));
+            }
+
+            if (inputInfo.IsQuantitySet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("quantity", FormatQuantity(input.Quantity)));
+            }
+
+            if (inputInfo.IsGlSegmentsSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("glSegments", FormatGlSegments(input.GlSegments)));
+            }
+
+            if (inputInfo.IsGlSegmentStringSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("glSegmentString", FormatGlSegmentString(input.GlSegmentString)));
+            }
+
+            if (inputInfo.IsPpmSegmentsSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ppmSegments", FormatPpmSegments(input.PpmSegments)));
+            }
+
+            if (inputInfo.IsPpmSegmentStringSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ppmSegmentString", FormatPpmSegmentString(input.PpmSegmentString)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatAmount(global::System.Decimal? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonNegativeFloatFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatPercent(global::System.Decimal? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonNegativeFloatFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatQuantity(global::System.Decimal? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonNegativeFloatFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGlSegments(global::AggieEnterpriseApi.GlSegmentInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _glSegmentInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGlSegmentString(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _glSegmentStringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatPpmSegments(global::AggieEnterpriseApi.PpmSegmentInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _ppmSegmentInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatPpmSegmentString(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _ppmSegmentStringFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>A single line representing a GL Journal Entry or PPM Cost.  A line must have only one of the two types of expense location specified.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionDistributionInput : global::AggieEnterpriseApi.State.IScmPurchaseRequisitionDistributionInputInfo, global::System.IEquatable<ScmPurchaseRequisitionDistributionInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchaseRequisitionDistributionInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(ScmPurchaseRequisitionDistributionInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Amount == other.Amount) && Percent == other.Percent && Quantity == other.Quantity && ((GlSegments is null && other.GlSegments is null) || GlSegments != null && GlSegments.Equals(other.GlSegments)) && ((GlSegmentString is null && other.GlSegmentString is null) || GlSegmentString != null && GlSegmentString.Equals(other.GlSegmentString)) && ((PpmSegments is null && other.PpmSegments is null) || PpmSegments != null && PpmSegments.Equals(other.PpmSegments)) && ((PpmSegmentString is null && other.PpmSegmentString is null) || PpmSegmentString != null && PpmSegmentString.Equals(other.PpmSegmentString));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Amount != null)
+                {
+                    hash ^= 397 * Amount.GetHashCode();
+                }
+
+                if (Percent != null)
+                {
+                    hash ^= 397 * Percent.GetHashCode();
+                }
+
+                if (Quantity != null)
+                {
+                    hash ^= 397 * Quantity.GetHashCode();
+                }
+
+                if (GlSegments != null)
+                {
+                    hash ^= 397 * GlSegments.GetHashCode();
+                }
+
+                if (GlSegmentString != null)
+                {
+                    hash ^= 397 * GlSegmentString.GetHashCode();
+                }
+
+                if (PpmSegments != null)
+                {
+                    hash ^= 397 * PpmSegments.GetHashCode();
+                }
+
+                if (PpmSegmentString != null)
+                {
+                    hash ^= 397 * PpmSegmentString.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.Decimal? _value_amount;
+        private global::System.Boolean _set_amount;
+        private global::System.Decimal? _value_percent;
+        private global::System.Boolean _set_percent;
+        private global::System.Decimal? _value_quantity;
+        private global::System.Boolean _set_quantity;
+        private global::AggieEnterpriseApi.GlSegmentInput? _value_glSegments;
+        private global::System.Boolean _set_glSegments;
+        private global::System.String? _value_glSegmentString;
+        private global::System.Boolean _set_glSegmentString;
+        private global::AggieEnterpriseApi.PpmSegmentInput? _value_ppmSegments;
+        private global::System.Boolean _set_ppmSegments;
+        private global::System.String? _value_ppmSegmentString;
+        private global::System.Boolean _set_ppmSegmentString;
+        public global::System.Decimal? Amount
+        {
+            get => _value_amount;
+            set
+            {
+                _set_amount = true;
+                _value_amount = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionDistributionInputInfo.IsAmountSet => _set_amount;
+        public global::System.Decimal? Percent
+        {
+            get => _value_percent;
+            set
+            {
+                _set_percent = true;
+                _value_percent = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionDistributionInputInfo.IsPercentSet => _set_percent;
+        public global::System.Decimal? Quantity
+        {
+            get => _value_quantity;
+            set
+            {
+                _set_quantity = true;
+                _value_quantity = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionDistributionInputInfo.IsQuantitySet => _set_quantity;
+        public global::AggieEnterpriseApi.GlSegmentInput? GlSegments
+        {
+            get => _value_glSegments;
+            set
+            {
+                _set_glSegments = true;
+                _value_glSegments = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionDistributionInputInfo.IsGlSegmentsSet => _set_glSegments;
+        ///<summary>Delimited complete GL segment string.  All fields of the GL Accounting Key must be provided.</summary>
+        public global::System.String? GlSegmentString
+        {
+            get => _value_glSegmentString;
+            set
+            {
+                _set_glSegmentString = true;
+                _value_glSegmentString = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionDistributionInputInfo.IsGlSegmentStringSet => _set_glSegmentString;
+        ///<summary>PPM POET segment values.  If provided, this will override any provided or default GL segments.</summary>
+        public global::AggieEnterpriseApi.PpmSegmentInput? PpmSegments
+        {
+            get => _value_ppmSegments;
+            set
+            {
+                _set_ppmSegments = true;
+                _value_ppmSegments = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionDistributionInputInfo.IsPpmSegmentsSet => _set_ppmSegments;
+        ///<summary>PPM POET segment values.  If provided, this will override any provided or default GL segments.</summary>
+        public global::System.String? PpmSegmentString
+        {
+            get => _value_ppmSegmentString;
+            set
+            {
+                _set_ppmSegmentString = true;
+                _value_ppmSegmentString = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionDistributionInputInfo.IsPpmSegmentStringSet => _set_ppmSegmentString;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public enum RequestStatus
     {
         /// <summary>
@@ -11727,6 +13455,155 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
+    /// Represents the operation service of the ScmPurchaseRequisitionCreate GraphQL operation
+    /// <code>
+    /// mutation ScmPurchaseRequisitionCreate($data: ScmPurchaseRequisitionRequestInput!) {
+    ///   scmPurchaseRequisitionCreate(data: $data) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       requestId
+    ///       requestStatus
+    ///       processedDateTime
+    ///       errorMessages
+    ///     }
+    ///     validationResults {
+    ///       __typename
+    ///       valid
+    ///       errorMessages
+    ///       messageProperties
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionCreateMutationDocument : global::StrawberryShake.IDocument
+    {
+        private ScmPurchaseRequisitionCreateMutationDocument()
+        {
+        }
+
+        public static ScmPurchaseRequisitionCreateMutationDocument Instance { get; } = new ScmPurchaseRequisitionCreateMutationDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Mutation;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x6d, 0x75, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x28, 0x24, 0x64, 0x61, 0x74, 0x61, 0x3a, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x73, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x65, 0x52, 0x65, 0x71, 0x75, 0x69, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x28, 0x64, 0x61, 0x74, 0x61, 0x3a, 0x20, 0x24, 0x64, 0x61, 0x74, 0x61, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x64, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x65, 0x64, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "1d051002f2d08841a74789e46dd187e8");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ScmPurchaseRequisitionCreate GraphQL operation
+    /// <code>
+    /// mutation ScmPurchaseRequisitionCreate($data: ScmPurchaseRequisitionRequestInput!) {
+    ///   scmPurchaseRequisitionCreate(data: $data) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       requestId
+    ///       requestStatus
+    ///       processedDateTime
+    ///       errorMessages
+    ///     }
+    ///     validationResults {
+    ///       __typename
+    ///       valid
+    ///       errorMessages
+    ///       messageProperties
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionCreateMutation : global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IScmPurchaseRequisitionCreateResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _scmPurchaseRequisitionRequestInputFormatter;
+        public ScmPurchaseRequisitionCreateMutation(global::StrawberryShake.IOperationExecutor<IScmPurchaseRequisitionCreateResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _scmPurchaseRequisitionRequestInputFormatter = serializerResolver.GetInputValueFormatter("ScmPurchaseRequisitionRequestInput");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IScmPurchaseRequisitionCreateResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IScmPurchaseRequisitionCreateResult>> ExecuteAsync(global::AggieEnterpriseApi.ScmPurchaseRequisitionRequestInput data, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(data);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IScmPurchaseRequisitionCreateResult>> Watch(global::AggieEnterpriseApi.ScmPurchaseRequisitionRequestInput data, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(data);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.ScmPurchaseRequisitionRequestInput data)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("data", FormatData(data));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: ScmPurchaseRequisitionCreateMutationDocument.Instance.Hash.Value, name: "ScmPurchaseRequisitionCreate", document: ScmPurchaseRequisitionCreateMutationDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatData(global::AggieEnterpriseApi.ScmPurchaseRequisitionRequestInput value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _scmPurchaseRequisitionRequestInputFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ScmPurchaseRequisitionCreate GraphQL operation
+    /// <code>
+    /// mutation ScmPurchaseRequisitionCreate($data: ScmPurchaseRequisitionRequestInput!) {
+    ///   scmPurchaseRequisitionCreate(data: $data) {
+    ///     __typename
+    ///     requestStatus {
+    ///       __typename
+    ///       requestId
+    ///       requestStatus
+    ///       processedDateTime
+    ///       errorMessages
+    ///     }
+    ///     validationResults {
+    ///       __typename
+    ///       valid
+    ///       errorMessages
+    ///       messageProperties
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchaseRequisitionCreateMutation : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IScmPurchaseRequisitionCreateResult>> ExecuteAsync(global::AggieEnterpriseApi.ScmPurchaseRequisitionRequestInput data, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IScmPurchaseRequisitionCreateResult>> Watch(global::AggieEnterpriseApi.ScmPurchaseRequisitionRequestInput data, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the operation service of the GlValidateChartSegments GraphQL operation
     /// <code>
     /// query GlValidateChartSegments($segments: GlSegmentInput!, $validateCVRs: Boolean) {
@@ -12230,9 +14107,10 @@ namespace AggieEnterpriseApi
         private readonly global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery _ppmStringSegmentsValidate;
         private readonly global::AggieEnterpriseApi.IPpmSegmentsValidateQuery _ppmSegmentsValidate;
         private readonly global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery _ppmTaskByProjectNumberAndTaskNumber;
+        private readonly global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation _scmPurchaseRequisitionCreate;
         private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
             _deptParents = deptParents ?? throw new global::System.ArgumentNullException(nameof(deptParents));
             _fundParents = fundParents ?? throw new global::System.ArgumentNullException(nameof(fundParents));
@@ -12242,6 +14120,7 @@ namespace AggieEnterpriseApi
             _ppmStringSegmentsValidate = ppmStringSegmentsValidate ?? throw new global::System.ArgumentNullException(nameof(ppmStringSegmentsValidate));
             _ppmSegmentsValidate = ppmSegmentsValidate ?? throw new global::System.ArgumentNullException(nameof(ppmSegmentsValidate));
             _ppmTaskByProjectNumberAndTaskNumber = ppmTaskByProjectNumberAndTaskNumber ?? throw new global::System.ArgumentNullException(nameof(ppmTaskByProjectNumberAndTaskNumber));
+            _scmPurchaseRequisitionCreate = scmPurchaseRequisitionCreate ?? throw new global::System.ArgumentNullException(nameof(scmPurchaseRequisitionCreate));
             _glValidateChartSegments = glValidateChartSegments ?? throw new global::System.ArgumentNullException(nameof(glValidateChartSegments));
             _glValidateChartstring = glValidateChartstring ?? throw new global::System.ArgumentNullException(nameof(glValidateChartstring));
         }
@@ -12255,6 +14134,7 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery PpmStringSegmentsValidate => _ppmStringSegmentsValidate;
         public global::AggieEnterpriseApi.IPpmSegmentsValidateQuery PpmSegmentsValidate => _ppmSegmentsValidate;
         public global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery PpmTaskByProjectNumberAndTaskNumber => _ppmTaskByProjectNumberAndTaskNumber;
+        public global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation ScmPurchaseRequisitionCreate => _scmPurchaseRequisitionCreate;
         public global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments => _glValidateChartSegments;
         public global::AggieEnterpriseApi.IGlValidateChartstringQuery GlValidateChartstring => _glValidateChartstring;
     }
@@ -12280,6 +14160,8 @@ namespace AggieEnterpriseApi
         global::AggieEnterpriseApi.IPpmSegmentsValidateQuery PpmSegmentsValidate { get; }
 
         global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery PpmTaskByProjectNumberAndTaskNumber { get; }
+
+        global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation ScmPurchaseRequisitionCreate { get; }
 
         global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments { get; }
 
@@ -14736,6 +16618,112 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionCreateResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ScmPurchaseRequisitionCreateResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public ScmPurchaseRequisitionCreateResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult);
+        public ScmPurchaseRequisitionCreateResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is ScmPurchaseRequisitionCreateResultInfo info)
+            {
+                return new ScmPurchaseRequisitionCreateResult(MapNonNullableIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate(info.ScmPurchaseRequisitionCreate, snapshot));
+            }
+
+            throw new global::System.ArgumentException("ScmPurchaseRequisitionCreateResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate MapNonNullableIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate(global::AggieEnterpriseApi.State.ScmPurchaseRequisitionRequestStatusOutputData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate returnValue = default !;
+            if (data.__typename.Equals("ScmPurchaseRequisitionRequestStatusOutput", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionRequestStatusOutput(MapNonNullableIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus(data.RequestStatus ?? throw new global::System.ArgumentNullException(), snapshot), MapIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults(data.ValidationResults, snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus MapNonNullableIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus(global::AggieEnterpriseApi.State.ActionRequestStatusData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus returnValue = default !;
+            if (data.__typename.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus_ActionRequestStatus(data.RequestId, data.RequestStatus ?? throw new global::System.ArgumentNullException(), data.ProcessedDateTime, data.ErrorMessages);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults? MapIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults(global::AggieEnterpriseApi.State.ValidationResponseData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults returnValue = default !;
+            if (data?.__typename.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new ScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults_ValidationResponse(data.Valid ?? throw new global::System.ArgumentNullException(), data.ErrorMessages, data.MessageProperties);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionCreateResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public ScmPurchaseRequisitionCreateResultInfo(global::AggieEnterpriseApi.State.ScmPurchaseRequisitionRequestStatusOutputData scmPurchaseRequisitionCreate, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            ScmPurchaseRequisitionCreate = scmPurchaseRequisitionCreate;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Requests that a Purchase Requisition be uploaded to Oracle.
+        /// </summary>
+        public global::AggieEnterpriseApi.State.ScmPurchaseRequisitionRequestStatusOutputData ScmPurchaseRequisitionCreate { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new ScmPurchaseRequisitionCreateResultInfo(ScmPurchaseRequisitionCreate, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.GlValidateChartSegmentsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -15245,6 +17233,78 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsUdfString4Set { get; }
 
         global::System.Boolean IsUdfString5Set { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IScmPurchaseRequisitionRequestInputInfo
+    {
+        global::System.Boolean IsHeaderSet { get; }
+
+        global::System.Boolean IsPayloadSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IScmPurchaseRequisitionInputInfo
+    {
+        global::System.Boolean IsRequisitionSourceNameSet { get; }
+
+        global::System.Boolean IsSupplierNumberSet { get; }
+
+        global::System.Boolean IsSupplierSiteCodeSet { get; }
+
+        global::System.Boolean IsRequesterEmailAddressSet { get; }
+
+        global::System.Boolean IsDescriptionSet { get; }
+
+        global::System.Boolean IsJustificationSet { get; }
+
+        global::System.Boolean IsTransactionDateSet { get; }
+
+        global::System.Boolean IsLinesSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IScmPurchaseRequisitionLineInputInfo
+    {
+        global::System.Boolean IsAmountSet { get; }
+
+        global::System.Boolean IsQuantitySet { get; }
+
+        global::System.Boolean IsUnitOfMeasureSet { get; }
+
+        global::System.Boolean IsItemDescriptionSet { get; }
+
+        global::System.Boolean IsNoteToBuyerSet { get; }
+
+        global::System.Boolean IsPurchasingCategoryNameSet { get; }
+
+        global::System.Boolean IsUnitPriceSet { get; }
+
+        global::System.Boolean IsDeliverToTypeCodeSet { get; }
+
+        global::System.Boolean IsDeliveryToLocationCodeSet { get; }
+
+        global::System.Boolean IsRequestedDeliveryDateSet { get; }
+
+        global::System.Boolean IsDistributionsSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IScmPurchaseRequisitionDistributionInputInfo
+    {
+        global::System.Boolean IsAmountSet { get; }
+
+        global::System.Boolean IsPercentSet { get; }
+
+        global::System.Boolean IsQuantitySet { get; }
+
+        global::System.Boolean IsGlSegmentsSet { get; }
+
+        global::System.Boolean IsGlSegmentStringSet { get; }
+
+        global::System.Boolean IsPpmSegmentsSet { get; }
+
+        global::System.Boolean IsPpmSegmentStringSet { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -17066,6 +19126,251 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionCreateBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::AggieEnterpriseApi.RequestStatus> _requestStatusParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString80Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString240Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString30Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _emailAddressParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString1000Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _localDateParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Decimal, global::System.Decimal> _nonNegativeFloatParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString25Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString60Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _glSegmentStringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmSegmentStringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpEntityCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFundCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpDepartmentCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpAccountCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPurposeCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProjectCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProgramCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpActivityCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFlex1CodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFlex2CodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmProjectNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmTaskNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseOrganizationCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseTypeCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmAwardNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmFundingSourceNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.Guid> _uUIDParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
+        public ScmPurchaseRequisitionCreateBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _requestStatusParser = serializerResolver.GetLeafValueParser<global::System.String, global::AggieEnterpriseApi.RequestStatus>("RequestStatus") ?? throw new global::System.ArgumentException("No serializer for type `RequestStatus` found.");
+            _nonEmptyTrimmedString80Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString80") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString80` found.");
+            _nonEmptyTrimmedString240Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString240") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString240` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _nonEmptyTrimmedString30Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString30") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString30` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _emailAddressParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("EmailAddress") ?? throw new global::System.ArgumentException("No serializer for type `EmailAddress` found.");
+            _nonEmptyTrimmedString1000Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString1000") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString1000` found.");
+            _localDateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("LocalDate") ?? throw new global::System.ArgumentException("No serializer for type `LocalDate` found.");
+            _nonNegativeFloatParser = serializerResolver.GetLeafValueParser<global::System.Decimal, global::System.Decimal>("NonNegativeFloat") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeFloat` found.");
+            _nonEmptyTrimmedString25Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString25") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString25` found.");
+            _nonEmptyTrimmedString60Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString60") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString60` found.");
+            _glSegmentStringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("GlSegmentString") ?? throw new global::System.ArgumentException("No serializer for type `GlSegmentString` found.");
+            _ppmSegmentStringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmSegmentString") ?? throw new global::System.ArgumentException("No serializer for type `PpmSegmentString` found.");
+            _erpEntityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpEntityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpEntityCode` found.");
+            _erpFundCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFundCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpFundCode` found.");
+            _erpDepartmentCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpDepartmentCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpDepartmentCode` found.");
+            _erpAccountCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpAccountCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpAccountCode` found.");
+            _erpPurposeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPurposeCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPurposeCode` found.");
+            _erpProjectCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProjectCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProjectCode` found.");
+            _erpProgramCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProgramCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProgramCode` found.");
+            _erpActivityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpActivityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpActivityCode` found.");
+            _erpFlex1CodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFlex1Code") ?? throw new global::System.ArgumentException("No serializer for type `ErpFlex1Code` found.");
+            _erpFlex2CodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFlex2Code") ?? throw new global::System.ArgumentException("No serializer for type `ErpFlex2Code` found.");
+            _ppmProjectNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmProjectNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmProjectNumber` found.");
+            _ppmTaskNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmTaskNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmTaskNumber` found.");
+            _ppmExpenseOrganizationCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseOrganizationCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseOrganizationCode` found.");
+            _ppmExpenseTypeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseTypeCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseTypeCode` found.");
+            _ppmAwardNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmAwardNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmAwardNumber` found.");
+            _ppmFundingSourceNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmFundingSourceNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmFundingSourceNumber` found.");
+            _uUIDParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.Guid>("UUID") ?? throw new global::System.ArgumentException("No serializer for type `UUID` found.");
+            _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IScmPurchaseRequisitionCreateResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IScmPurchaseRequisitionCreateResult Result, ScmPurchaseRequisitionCreateResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IScmPurchaseRequisitionCreateResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IScmPurchaseRequisitionCreateResult, ScmPurchaseRequisitionCreateResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new ScmPurchaseRequisitionCreateResultInfo(DeserializeNonNullableIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "scmPurchaseRequisitionCreate")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.ScmPurchaseRequisitionRequestStatusOutputData DeserializeNonNullableIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ScmPurchaseRequisitionRequestStatusOutput", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ScmPurchaseRequisitionRequestStatusOutputData(typename, requestStatus: DeserializeNonNullableIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), validationResults: DeserializeIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "validationResults")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.ActionRequestStatusData DeserializeNonNullableIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_RequestStatus(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ActionRequestStatus", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ActionRequestStatusData(typename, requestId: DeserializeGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestId")), requestStatus: DeserializeNonNullableRequestStatus(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "requestStatus")), processedDateTime: DeserializeDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "processedDateTime")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Guid? DeserializeGuid(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _uUIDParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::AggieEnterpriseApi.RequestStatus DeserializeNonNullableRequestStatus(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _requestStatusParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.DateTimeOffset? DeserializeDateTimeOffset(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _dateTimeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::AggieEnterpriseApi.State.ValidationResponseData? DeserializeIScmPurchaseRequisitionCreate_ScmPurchaseRequisitionCreate_ValidationResults(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ValidationResponse", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ValidationResponseData(typename, valid: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "valid")), errorMessages: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "errorMessages")), messageProperties: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "messageProperties")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -17768,6 +20073,26 @@ namespace AggieEnterpriseApi.State
         public global::System.String? SegmentString { get; }
     }
 
+    ///<summary>Output type for ScmPurchaseRequisition creation and follow-up status updates.Contains the overall request status.  After a successful creation of the document, will also contain the Oracle Financials assigned ID.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchaseRequisitionRequestStatusOutputData
+    {
+        public ScmPurchaseRequisitionRequestStatusOutputData(global::System.String __typename, global::AggieEnterpriseApi.State.ActionRequestStatusData? requestStatus = default !, global::AggieEnterpriseApi.State.ValidationResponseData? validationResults = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            RequestStatus = requestStatus;
+            ValidationResults = validationResults;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Status of the action request overall.</summary>
+        public global::AggieEnterpriseApi.State.ActionRequestStatusData? RequestStatus { get; }
+
+        ///<summary>Validation errors of payload data</summary>
+        public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResults { get; }
+    }
+
     ///<summary>Return data structure when validating a set of GL segment values.The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlValidateChartSegmentsOutputData
@@ -18092,6 +20417,7 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmStringSegmentsValidateQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmSegmentsValidateQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmTaskByProjectNumberAndTaskNumberQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmPurchaseRequisitionCreateMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartSegmentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartstringQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.AggieEnterpriseClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -18176,6 +20502,11 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmFundingSourceNumber"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("JSON"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString100"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString30"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("EmailAddress"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString1000"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString25"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString60"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalRequestInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ActionRequestHeaderInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalInputInputValueFormatter>(services);
@@ -18183,6 +20514,10 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlSegmentInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.PpmSegmentInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlideInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionRequestInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionLineInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionDistributionInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>, global::AggieEnterpriseApi.State.DeptParentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>>(sp));
@@ -18240,6 +20575,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.PpmTaskByProjectNumberAndTaskNumberQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmTaskByProjectNumberAndTaskNumberQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult>, global::AggieEnterpriseApi.State.ScmPurchaseRequisitionCreateResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult>, global::AggieEnterpriseApi.State.ScmPurchaseRequisitionCreateBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ScmPurchaseRequisitionCreateMutation>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmPurchaseRequisitionCreateMutation>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>, global::AggieEnterpriseApi.State.GlValidateChartSegmentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery>(sp));

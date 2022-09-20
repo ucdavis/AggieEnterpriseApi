@@ -1,0 +1,15 @@
+mutation scmPurchaseRequisitionCreate ($data: ScmPurchaseRequisitionRequestInput!) {
+    scmPurchaseRequisitionCreate (data: $data) {
+        requestStatus {
+            requestId
+            requestStatus
+            processedDateTime
+            errorMessages
+        }
+        validationResults {
+            valid
+            errorMessages
+            messageProperties
+        }
+    }
+}
