@@ -1,0 +1,21 @@
+query ScmSupplierSearch($filter: ScmSupplierFilterInput!) {
+       scmSupplierSearch(filter: $filter) {
+         data {
+           name
+           supplierNumber
+           sites{
+            supplierSiteCode
+
+            location{
+              addressLine1
+              addressLine2
+              addressLine3
+              addressLine4
+              city
+              state
+              postalCode
+            }
+          }
+         }
+       }
+     }

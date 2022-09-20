@@ -4,21 +4,20 @@
 namespace AggieEnterpriseApi
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class KfsConvertAccountResult : global::System.IEquatable<KfsConvertAccountResult>, IKfsConvertAccountResult
+    public partial class ScmSupplierSearchResult : global::System.IEquatable<ScmSupplierSearchResult>, IScmSupplierSearchResult
     {
-        public KfsConvertAccountResult(global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount kfsConvertAccount)
+        public ScmSupplierSearchResult(global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch scmSupplierSearch)
         {
-            KfsConvertAccount = kfsConvertAccount;
+            ScmSupplierSearch = scmSupplierSearch;
         }
 
         /// <summary>
-        /// Accepts a chart and account (and optionally a sub account and/or project code) which was converted as part of cutover and returns the cost center portion with matching GL or POET segments needed to record a transaction.  If no match is found when a sub account or project code is provided, the conversion will revert to only using the chart and account.  The attributes used for the returned converted values will be included in the response.
-        /// 
-        /// In the case of a POET segment response, an array of tasks will be returned.  The data conversion mapping does not contain that information.  At cutover, there will be only one task per project.  However, additional tasks will be added as part of use after go-live.
+        /// Search for ScmSupplier objects by multiple properties.
+        /// See the ScmSupplierFilterInput type for options.
         /// </summary>
-        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount KfsConvertAccount { get; }
+        public global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch ScmSupplierSearch { get; }
 
-        public virtual global::System.Boolean Equals(KfsConvertAccountResult? other)
+        public virtual global::System.Boolean Equals(ScmSupplierSearchResult? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -35,7 +34,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (KfsConvertAccount.Equals(other.KfsConvertAccount));
+            return (ScmSupplierSearch.Equals(other.ScmSupplierSearch));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -55,7 +54,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return Equals((KfsConvertAccountResult)obj);
+            return Equals((ScmSupplierSearchResult)obj);
         }
 
         public override global::System.Int32 GetHashCode()
@@ -63,41 +62,29 @@ namespace AggieEnterpriseApi
             unchecked
             {
                 int hash = 5;
-                hash ^= 397 * KfsConvertAccount.GetHashCode();
+                hash ^= 397 * ScmSupplierSearch.GetHashCode();
                 return hash;
             }
         }
     }
 
     /// <summary>
-    /// Return type when requesting conversion of a KFS Account to the Oracle costing segments.
+    /// Search results object for ScmSupplier
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput : global::System.IEquatable<KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput>, IKfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput
+    public partial class ScmSupplierSearch_ScmSupplierSearch_ScmSupplierSearchResults : global::System.IEquatable<ScmSupplierSearch_ScmSupplierSearch_ScmSupplierSearchResults>, IScmSupplierSearch_ScmSupplierSearch_ScmSupplierSearchResults
     {
-        public KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput(global::System.Boolean mappingFound, global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_GlSegments? glSegments, global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_PpmSegments? ppmSegments)
+        public ScmSupplierSearch_ScmSupplierSearch_ScmSupplierSearchResults(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data> data)
         {
-            MappingFound = mappingFound;
-            GlSegments = glSegments;
-            PpmSegments = ppmSegments;
+            Data = data;
         }
 
         /// <summary>
-        /// Whether the account was found in the mapping table
+        /// Results of the search
         /// </summary>
-        public global::System.Boolean MappingFound { get; }
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data> Data { get; }
 
-        /// <summary>
-        /// If a GL cost center, the segments which could be derived from the given chart-account.
-        /// </summary>
-        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_GlSegments? GlSegments { get; }
-
-        /// <summary>
-        /// If a POET cost center, the segments which could be derived from the given chart-account.
-        /// </summary>
-        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_PpmSegments? PpmSegments { get; }
-
-        public virtual global::System.Boolean Equals(KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput? other)
+        public virtual global::System.Boolean Equals(ScmSupplierSearch_ScmSupplierSearch_ScmSupplierSearchResults? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -114,7 +101,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (MappingFound == other.MappingFound) && ((GlSegments is null && other.GlSegments is null) || GlSegments != null && GlSegments.Equals(other.GlSegments)) && ((PpmSegments is null && other.PpmSegments is null) || PpmSegments != null && PpmSegments.Equals(other.PpmSegments));
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Data, other.Data));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -134,7 +121,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return Equals((KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput)obj);
+            return Equals((ScmSupplierSearch_ScmSupplierSearch_ScmSupplierSearchResults)obj);
         }
 
         public override global::System.Int32 GetHashCode()
@@ -142,15 +129,9 @@ namespace AggieEnterpriseApi
             unchecked
             {
                 int hash = 5;
-                hash ^= 397 * MappingFound.GetHashCode();
-                if (GlSegments != null)
+                foreach (var Data_elm in Data)
                 {
-                    hash ^= 397 * GlSegments.GetHashCode();
-                }
-
-                if (PpmSegments != null)
-                {
-                    hash ^= 397 * PpmSegments.GetHashCode();
+                    hash ^= 397 * Data_elm.GetHashCode();
                 }
 
                 return hash;
@@ -159,37 +140,38 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
-    /// Cost-center components of Oracle GL Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// A defined supplier of goods or services in the ERP system.
+    /// 
+    /// Each supplier may have multiple sites at which they do business.  It is necessary to identify both the supplier and site when submitting a payment.
+    /// 
+    /// Supplier in Oracle replaces Vendor in KFS.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments : global::System.IEquatable<KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments>, IKfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments
+    public partial class ScmSupplierSearch_ScmSupplierSearch_Data_ScmSupplier : global::System.IEquatable<ScmSupplierSearch_ScmSupplierSearch_Data_ScmSupplier>, IScmSupplierSearch_ScmSupplierSearch_Data_ScmSupplier
     {
-        public KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments(global::System.String entity, global::System.String fund, global::System.String department, global::System.String? purpose, global::System.String? project, global::System.String? program, global::System.String? activity)
+        public ScmSupplierSearch_ScmSupplierSearch_Data_ScmSupplier(global::System.String name, global::System.Int64 supplierNumber, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data_Sites> sites)
         {
-            Entity = entity;
-            Fund = fund;
-            Department = department;
-            Purpose = purpose;
-            Project = project;
-            Program = program;
-            Activity = activity;
+            Name = name;
+            SupplierNumber = supplierNumber;
+            Sites = sites;
         }
 
-        public global::System.String Entity { get; }
+        /// <summary>
+        /// Supplier: Name of the supplier.
+        /// </summary>
+        public global::System.String Name { get; }
 
-        public global::System.String Fund { get; }
+        /// <summary>
+        /// Unique ID for the supplier used to reference it within the UI and in interfaces.  This largely corresponds to the Vendor ID in KFS.
+        /// </summary>
+        public global::System.Int64 SupplierNumber { get; }
 
-        public global::System.String Department { get; }
+        /// <summary>
+        /// Supplier business locations referenced when making orders or payments to the supplier.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data_Sites> Sites { get; }
 
-        public global::System.String? Purpose { get; }
-
-        public global::System.String? Project { get; }
-
-        public global::System.String? Program { get; }
-
-        public global::System.String? Activity { get; }
-
-        public virtual global::System.Boolean Equals(KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments? other)
+        public virtual global::System.Boolean Equals(ScmSupplierSearch_ScmSupplierSearch_Data_ScmSupplier? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -206,7 +188,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (Entity.Equals(other.Entity)) && Fund.Equals(other.Fund) && Department.Equals(other.Department) && ((Purpose is null && other.Purpose is null) || Purpose != null && Purpose.Equals(other.Purpose)) && ((Project is null && other.Project is null) || Project != null && Project.Equals(other.Project)) && ((Program is null && other.Program is null) || Program != null && Program.Equals(other.Program)) && ((Activity is null && other.Activity is null) || Activity != null && Activity.Equals(other.Activity));
+            return (Name.Equals(other.Name)) && SupplierNumber == other.SupplierNumber && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Sites, other.Sites);
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -226,7 +208,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return Equals((KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments)obj);
+            return Equals((ScmSupplierSearch_ScmSupplierSearch_Data_ScmSupplier)obj);
         }
 
         public override global::System.Int32 GetHashCode()
@@ -234,27 +216,11 @@ namespace AggieEnterpriseApi
             unchecked
             {
                 int hash = 5;
-                hash ^= 397 * Entity.GetHashCode();
-                hash ^= 397 * Fund.GetHashCode();
-                hash ^= 397 * Department.GetHashCode();
-                if (Purpose != null)
+                hash ^= 397 * Name.GetHashCode();
+                hash ^= 397 * SupplierNumber.GetHashCode();
+                foreach (var Sites_elm in Sites)
                 {
-                    hash ^= 397 * Purpose.GetHashCode();
-                }
-
-                if (Project != null)
-                {
-                    hash ^= 397 * Project.GetHashCode();
-                }
-
-                if (Program != null)
-                {
-                    hash ^= 397 * Program.GetHashCode();
-                }
-
-                if (Activity != null)
-                {
-                    hash ^= 397 * Activity.GetHashCode();
+                    hash ^= 397 * Sites_elm.GetHashCode();
                 }
 
                 return hash;
@@ -263,31 +229,28 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
-    /// Cost-center components of the POET Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// Supplier Site represents a business location referenced when making orders or payments to the supplier.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments : global::System.IEquatable<KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments>, IKfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments
+    public partial class ScmSupplierSearch_ScmSupplierSearch_Data_Sites_ScmSupplierSite : global::System.IEquatable<ScmSupplierSearch_ScmSupplierSearch_Data_Sites_ScmSupplierSite>, IScmSupplierSearch_ScmSupplierSearch_Data_Sites_ScmSupplierSite
     {
-        public KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments(global::System.String project, global::System.String organization, global::System.Collections.Generic.IReadOnlyList<global::System.String> task, global::System.String? award, global::System.String? fundingSource)
+        public ScmSupplierSearch_ScmSupplierSearch_Data_Sites_ScmSupplierSite(global::System.String supplierSiteCode, global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location? location)
         {
-            Project = project;
-            Organization = organization;
-            Task = task;
-            Award = award;
-            FundingSource = fundingSource;
+            SupplierSiteCode = supplierSiteCode;
+            Location = location;
         }
 
-        public global::System.String Project { get; }
+        /// <summary>
+        /// Code used to identify the site on the UI and in interfaces.
+        /// </summary>
+        public global::System.String SupplierSiteCode { get; }
 
-        public global::System.String Organization { get; }
+        /// <summary>
+        /// Physical address of the site.
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location? Location { get; }
 
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String> Task { get; }
-
-        public global::System.String? Award { get; }
-
-        public global::System.String? FundingSource { get; }
-
-        public virtual global::System.Boolean Equals(KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments? other)
+        public virtual global::System.Boolean Equals(ScmSupplierSearch_ScmSupplierSearch_Data_Sites_ScmSupplierSite? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -304,7 +267,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (Project.Equals(other.Project)) && Organization.Equals(other.Organization) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Task, other.Task) && ((Award is null && other.Award is null) || Award != null && Award.Equals(other.Award)) && ((FundingSource is null && other.FundingSource is null) || FundingSource != null && FundingSource.Equals(other.FundingSource));
+            return (SupplierSiteCode.Equals(other.SupplierSiteCode)) && ((Location is null && other.Location is null) || Location != null && Location.Equals(other.Location));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -324,7 +287,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return Equals((KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments)obj);
+            return Equals((ScmSupplierSearch_ScmSupplierSearch_Data_Sites_ScmSupplierSite)obj);
         }
 
         public override global::System.Int32 GetHashCode()
@@ -332,21 +295,147 @@ namespace AggieEnterpriseApi
             unchecked
             {
                 int hash = 5;
-                hash ^= 397 * Project.GetHashCode();
-                hash ^= 397 * Organization.GetHashCode();
-                foreach (var Task_elm in Task)
+                hash ^= 397 * SupplierSiteCode.GetHashCode();
+                if (Location != null)
                 {
-                    hash ^= 397 * Task_elm.GetHashCode();
+                    hash ^= 397 * Location.GetHashCode();
                 }
 
-                if (Award != null)
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Locations referenced by Supplier and AR Customer Sites
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location_ErpLocation : global::System.IEquatable<ScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location_ErpLocation>, IScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location_ErpLocation
+    {
+        public ScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location_ErpLocation(global::System.String? addressLine1, global::System.String? addressLine2, global::System.String? addressLine3, global::System.String? addressLine4, global::System.String? city, global::System.String? state, global::System.String? postalCode)
+        {
+            AddressLine1 = addressLine1;
+            AddressLine2 = addressLine2;
+            AddressLine3 = addressLine3;
+            AddressLine4 = addressLine4;
+            City = city;
+            State = state;
+            PostalCode = postalCode;
+        }
+
+        /// <summary>
+        /// Address Line 1
+        /// </summary>
+        public global::System.String? AddressLine1 { get; }
+
+        /// <summary>
+        /// Address Line 2
+        /// </summary>
+        public global::System.String? AddressLine2 { get; }
+
+        /// <summary>
+        /// Address Line 3
+        /// </summary>
+        public global::System.String? AddressLine3 { get; }
+
+        /// <summary>
+        /// Address Line 4
+        /// </summary>
+        public global::System.String? AddressLine4 { get; }
+
+        /// <summary>
+        /// City of the supplier address
+        /// </summary>
+        public global::System.String? City { get; }
+
+        /// <summary>
+        /// State of the supplier address
+        /// </summary>
+        public global::System.String? State { get; }
+
+        /// <summary>
+        /// Postal code of the supplier address
+        /// </summary>
+        public global::System.String? PostalCode { get; }
+
+        public virtual global::System.Boolean Equals(ScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location_ErpLocation? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((AddressLine1 is null && other.AddressLine1 is null) || AddressLine1 != null && AddressLine1.Equals(other.AddressLine1))) && ((AddressLine2 is null && other.AddressLine2 is null) || AddressLine2 != null && AddressLine2.Equals(other.AddressLine2)) && ((AddressLine3 is null && other.AddressLine3 is null) || AddressLine3 != null && AddressLine3.Equals(other.AddressLine3)) && ((AddressLine4 is null && other.AddressLine4 is null) || AddressLine4 != null && AddressLine4.Equals(other.AddressLine4)) && ((City is null && other.City is null) || City != null && City.Equals(other.City)) && ((State is null && other.State is null) || State != null && State.Equals(other.State)) && ((PostalCode is null && other.PostalCode is null) || PostalCode != null && PostalCode.Equals(other.PostalCode));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location_ErpLocation)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (AddressLine1 != null)
                 {
-                    hash ^= 397 * Award.GetHashCode();
+                    hash ^= 397 * AddressLine1.GetHashCode();
                 }
 
-                if (FundingSource != null)
+                if (AddressLine2 != null)
                 {
-                    hash ^= 397 * FundingSource.GetHashCode();
+                    hash ^= 397 * AddressLine2.GetHashCode();
+                }
+
+                if (AddressLine3 != null)
+                {
+                    hash ^= 397 * AddressLine3.GetHashCode();
+                }
+
+                if (AddressLine4 != null)
+                {
+                    hash ^= 397 * AddressLine4.GetHashCode();
+                }
+
+                if (City != null)
+                {
+                    hash ^= 397 * City.GetHashCode();
+                }
+
+                if (State != null)
+                {
+                    hash ^= 397 * State.GetHashCode();
+                }
+
+                if (PostalCode != null)
+                {
+                    hash ^= 397 * PostalCode.GetHashCode();
                 }
 
                 return hash;
@@ -355,97 +444,145 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IKfsConvertAccountResult
+    public partial interface IScmSupplierSearchResult
     {
         /// <summary>
-        /// Accepts a chart and account (and optionally a sub account and/or project code) which was converted as part of cutover and returns the cost center portion with matching GL or POET segments needed to record a transaction.  If no match is found when a sub account or project code is provided, the conversion will revert to only using the chart and account.  The attributes used for the returned converted values will be included in the response.
-        /// 
-        /// In the case of a POET segment response, an array of tasks will be returned.  The data conversion mapping does not contain that information.  At cutover, there will be only one task per project.  However, additional tasks will be added as part of use after go-live.
+        /// Search for ScmSupplier objects by multiple properties.
+        /// See the ScmSupplierFilterInput type for options.
         /// </summary>
-        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount KfsConvertAccount { get; }
+        public global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch ScmSupplierSearch { get; }
     }
 
     /// <summary>
-    /// Return type when requesting conversion of a KFS Account to the Oracle costing segments.
+    /// Search results object for ScmSupplier
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IKfsConvertAccount_KfsConvertAccount
+    public partial interface IScmSupplierSearch_ScmSupplierSearch
     {
         /// <summary>
-        /// Whether the account was found in the mapping table
+        /// Results of the search
         /// </summary>
-        public global::System.Boolean MappingFound { get; }
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data> Data { get; }
+    }
+
+    /// <summary>
+    /// Search results object for ScmSupplier
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmSupplierSearch_ScmSupplierSearch_ScmSupplierSearchResults : IScmSupplierSearch_ScmSupplierSearch
+    {
+    }
+
+    /// <summary>
+    /// A defined supplier of goods or services in the ERP system.
+    /// 
+    /// Each supplier may have multiple sites at which they do business.  It is necessary to identify both the supplier and site when submitting a payment.
+    /// 
+    /// Supplier in Oracle replaces Vendor in KFS.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmSupplierSearch_ScmSupplierSearch_Data
+    {
+        /// <summary>
+        /// Supplier: Name of the supplier.
+        /// </summary>
+        public global::System.String Name { get; }
 
         /// <summary>
-        /// If a GL cost center, the segments which could be derived from the given chart-account.
+        /// Unique ID for the supplier used to reference it within the UI and in interfaces.  This largely corresponds to the Vendor ID in KFS.
         /// </summary>
-        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_GlSegments? GlSegments { get; }
+        public global::System.Int64 SupplierNumber { get; }
 
         /// <summary>
-        /// If a POET cost center, the segments which could be derived from the given chart-account.
+        /// Supplier business locations referenced when making orders or payments to the supplier.
         /// </summary>
-        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_PpmSegments? PpmSegments { get; }
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data_Sites> Sites { get; }
     }
 
     /// <summary>
-    /// Return type when requesting conversion of a KFS Account to the Oracle costing segments.
+    /// A defined supplier of goods or services in the ERP system.
+    /// 
+    /// Each supplier may have multiple sites at which they do business.  It is necessary to identify both the supplier and site when submitting a payment.
+    /// 
+    /// Supplier in Oracle replaces Vendor in KFS.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IKfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput : IKfsConvertAccount_KfsConvertAccount
+    public partial interface IScmSupplierSearch_ScmSupplierSearch_Data_ScmSupplier : IScmSupplierSearch_ScmSupplierSearch_Data
     {
     }
 
     /// <summary>
-    /// Cost-center components of Oracle GL Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// Supplier Site represents a business location referenced when making orders or payments to the supplier.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IKfsConvertAccount_KfsConvertAccount_GlSegments
+    public partial interface IScmSupplierSearch_ScmSupplierSearch_Data_Sites
     {
-        public global::System.String Entity { get; }
+        /// <summary>
+        /// Code used to identify the site on the UI and in interfaces.
+        /// </summary>
+        public global::System.String SupplierSiteCode { get; }
 
-        public global::System.String Fund { get; }
-
-        public global::System.String Department { get; }
-
-        public global::System.String? Purpose { get; }
-
-        public global::System.String? Project { get; }
-
-        public global::System.String? Program { get; }
-
-        public global::System.String? Activity { get; }
+        /// <summary>
+        /// Physical address of the site.
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location? Location { get; }
     }
 
     /// <summary>
-    /// Cost-center components of Oracle GL Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// Supplier Site represents a business location referenced when making orders or payments to the supplier.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IKfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments : IKfsConvertAccount_KfsConvertAccount_GlSegments
+    public partial interface IScmSupplierSearch_ScmSupplierSearch_Data_Sites_ScmSupplierSite : IScmSupplierSearch_ScmSupplierSearch_Data_Sites
     {
     }
 
     /// <summary>
-    /// Cost-center components of the POET Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// Locations referenced by Supplier and AR Customer Sites
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IKfsConvertAccount_KfsConvertAccount_PpmSegments
+    public partial interface IScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location
     {
-        public global::System.String Project { get; }
+        /// <summary>
+        /// Address Line 1
+        /// </summary>
+        public global::System.String? AddressLine1 { get; }
 
-        public global::System.String Organization { get; }
+        /// <summary>
+        /// Address Line 2
+        /// </summary>
+        public global::System.String? AddressLine2 { get; }
 
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String> Task { get; }
+        /// <summary>
+        /// Address Line 3
+        /// </summary>
+        public global::System.String? AddressLine3 { get; }
 
-        public global::System.String? Award { get; }
+        /// <summary>
+        /// Address Line 4
+        /// </summary>
+        public global::System.String? AddressLine4 { get; }
 
-        public global::System.String? FundingSource { get; }
+        /// <summary>
+        /// City of the supplier address
+        /// </summary>
+        public global::System.String? City { get; }
+
+        /// <summary>
+        /// State of the supplier address
+        /// </summary>
+        public global::System.String? State { get; }
+
+        /// <summary>
+        /// Postal code of the supplier address
+        /// </summary>
+        public global::System.String? PostalCode { get; }
     }
 
     /// <summary>
-    /// Cost-center components of the POET Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// Locations referenced by Supplier and AR Customer Sites
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IKfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments : IKfsConvertAccount_KfsConvertAccount_PpmSegments
+    public partial interface IScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location_ErpLocation : IScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location
     {
     }
 
@@ -5041,6 +5178,452 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class KfsConvertAccountResult : global::System.IEquatable<KfsConvertAccountResult>, IKfsConvertAccountResult
+    {
+        public KfsConvertAccountResult(global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount kfsConvertAccount)
+        {
+            KfsConvertAccount = kfsConvertAccount;
+        }
+
+        /// <summary>
+        /// Accepts a chart and account (and optionally a sub account and/or project code) which was converted as part of cutover and returns the cost center portion with matching GL or POET segments needed to record a transaction.  If no match is found when a sub account or project code is provided, the conversion will revert to only using the chart and account.  The attributes used for the returned converted values will be included in the response.
+        /// 
+        /// In the case of a POET segment response, an array of tasks will be returned.  The data conversion mapping does not contain that information.  At cutover, there will be only one task per project.  However, additional tasks will be added as part of use after go-live.
+        /// </summary>
+        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount KfsConvertAccount { get; }
+
+        public virtual global::System.Boolean Equals(KfsConvertAccountResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (KfsConvertAccount.Equals(other.KfsConvertAccount));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((KfsConvertAccountResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * KfsConvertAccount.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Return type when requesting conversion of a KFS Account to the Oracle costing segments.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput : global::System.IEquatable<KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput>, IKfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput
+    {
+        public KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput(global::System.Boolean mappingFound, global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_GlSegments? glSegments, global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_PpmSegments? ppmSegments)
+        {
+            MappingFound = mappingFound;
+            GlSegments = glSegments;
+            PpmSegments = ppmSegments;
+        }
+
+        /// <summary>
+        /// Whether the account was found in the mapping table
+        /// </summary>
+        public global::System.Boolean MappingFound { get; }
+
+        /// <summary>
+        /// If a GL cost center, the segments which could be derived from the given chart-account.
+        /// </summary>
+        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_GlSegments? GlSegments { get; }
+
+        /// <summary>
+        /// If a POET cost center, the segments which could be derived from the given chart-account.
+        /// </summary>
+        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_PpmSegments? PpmSegments { get; }
+
+        public virtual global::System.Boolean Equals(KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (MappingFound == other.MappingFound) && ((GlSegments is null && other.GlSegments is null) || GlSegments != null && GlSegments.Equals(other.GlSegments)) && ((PpmSegments is null && other.PpmSegments is null) || PpmSegments != null && PpmSegments.Equals(other.PpmSegments));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * MappingFound.GetHashCode();
+                if (GlSegments != null)
+                {
+                    hash ^= 397 * GlSegments.GetHashCode();
+                }
+
+                if (PpmSegments != null)
+                {
+                    hash ^= 397 * PpmSegments.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Cost-center components of Oracle GL Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments : global::System.IEquatable<KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments>, IKfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments
+    {
+        public KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments(global::System.String entity, global::System.String fund, global::System.String department, global::System.String? purpose, global::System.String? project, global::System.String? program, global::System.String? activity)
+        {
+            Entity = entity;
+            Fund = fund;
+            Department = department;
+            Purpose = purpose;
+            Project = project;
+            Program = program;
+            Activity = activity;
+        }
+
+        public global::System.String Entity { get; }
+
+        public global::System.String Fund { get; }
+
+        public global::System.String Department { get; }
+
+        public global::System.String? Purpose { get; }
+
+        public global::System.String? Project { get; }
+
+        public global::System.String? Program { get; }
+
+        public global::System.String? Activity { get; }
+
+        public virtual global::System.Boolean Equals(KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Entity.Equals(other.Entity)) && Fund.Equals(other.Fund) && Department.Equals(other.Department) && ((Purpose is null && other.Purpose is null) || Purpose != null && Purpose.Equals(other.Purpose)) && ((Project is null && other.Project is null) || Project != null && Project.Equals(other.Project)) && ((Program is null && other.Program is null) || Program != null && Program.Equals(other.Program)) && ((Activity is null && other.Activity is null) || Activity != null && Activity.Equals(other.Activity));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Entity.GetHashCode();
+                hash ^= 397 * Fund.GetHashCode();
+                hash ^= 397 * Department.GetHashCode();
+                if (Purpose != null)
+                {
+                    hash ^= 397 * Purpose.GetHashCode();
+                }
+
+                if (Project != null)
+                {
+                    hash ^= 397 * Project.GetHashCode();
+                }
+
+                if (Program != null)
+                {
+                    hash ^= 397 * Program.GetHashCode();
+                }
+
+                if (Activity != null)
+                {
+                    hash ^= 397 * Activity.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Cost-center components of the POET Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments : global::System.IEquatable<KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments>, IKfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments
+    {
+        public KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments(global::System.String project, global::System.String organization, global::System.Collections.Generic.IReadOnlyList<global::System.String> task, global::System.String? award, global::System.String? fundingSource)
+        {
+            Project = project;
+            Organization = organization;
+            Task = task;
+            Award = award;
+            FundingSource = fundingSource;
+        }
+
+        public global::System.String Project { get; }
+
+        public global::System.String Organization { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String> Task { get; }
+
+        public global::System.String? Award { get; }
+
+        public global::System.String? FundingSource { get; }
+
+        public virtual global::System.Boolean Equals(KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Project.Equals(other.Project)) && Organization.Equals(other.Organization) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Task, other.Task) && ((Award is null && other.Award is null) || Award != null && Award.Equals(other.Award)) && ((FundingSource is null && other.FundingSource is null) || FundingSource != null && FundingSource.Equals(other.FundingSource));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Project.GetHashCode();
+                hash ^= 397 * Organization.GetHashCode();
+                foreach (var Task_elm in Task)
+                {
+                    hash ^= 397 * Task_elm.GetHashCode();
+                }
+
+                if (Award != null)
+                {
+                    hash ^= 397 * Award.GetHashCode();
+                }
+
+                if (FundingSource != null)
+                {
+                    hash ^= 397 * FundingSource.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IKfsConvertAccountResult
+    {
+        /// <summary>
+        /// Accepts a chart and account (and optionally a sub account and/or project code) which was converted as part of cutover and returns the cost center portion with matching GL or POET segments needed to record a transaction.  If no match is found when a sub account or project code is provided, the conversion will revert to only using the chart and account.  The attributes used for the returned converted values will be included in the response.
+        /// 
+        /// In the case of a POET segment response, an array of tasks will be returned.  The data conversion mapping does not contain that information.  At cutover, there will be only one task per project.  However, additional tasks will be added as part of use after go-live.
+        /// </summary>
+        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount KfsConvertAccount { get; }
+    }
+
+    /// <summary>
+    /// Return type when requesting conversion of a KFS Account to the Oracle costing segments.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IKfsConvertAccount_KfsConvertAccount
+    {
+        /// <summary>
+        /// Whether the account was found in the mapping table
+        /// </summary>
+        public global::System.Boolean MappingFound { get; }
+
+        /// <summary>
+        /// If a GL cost center, the segments which could be derived from the given chart-account.
+        /// </summary>
+        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_GlSegments? GlSegments { get; }
+
+        /// <summary>
+        /// If a POET cost center, the segments which could be derived from the given chart-account.
+        /// </summary>
+        public global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_PpmSegments? PpmSegments { get; }
+    }
+
+    /// <summary>
+    /// Return type when requesting conversion of a KFS Account to the Oracle costing segments.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IKfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput : IKfsConvertAccount_KfsConvertAccount
+    {
+    }
+
+    /// <summary>
+    /// Cost-center components of Oracle GL Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IKfsConvertAccount_KfsConvertAccount_GlSegments
+    {
+        public global::System.String Entity { get; }
+
+        public global::System.String Fund { get; }
+
+        public global::System.String Department { get; }
+
+        public global::System.String? Purpose { get; }
+
+        public global::System.String? Project { get; }
+
+        public global::System.String? Program { get; }
+
+        public global::System.String? Activity { get; }
+    }
+
+    /// <summary>
+    /// Cost-center components of Oracle GL Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IKfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments : IKfsConvertAccount_KfsConvertAccount_GlSegments
+    {
+    }
+
+    /// <summary>
+    /// Cost-center components of the POET Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IKfsConvertAccount_KfsConvertAccount_PpmSegments
+    {
+        public global::System.String Project { get; }
+
+        public global::System.String Organization { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String> Task { get; }
+
+        public global::System.String? Award { get; }
+
+        public global::System.String? FundingSource { get; }
+    }
+
+    /// <summary>
+    /// Cost-center components of the POET Segments which can be derived from the KFS Chart-Account-Sub Account-Project.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IKfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments : IKfsConvertAccount_KfsConvertAccount_PpmSegments
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmStringSegmentsValidateResult : global::System.IEquatable<PpmStringSegmentsValidateResult>, IPpmStringSegmentsValidateResult
     {
         public PpmStringSegmentsValidateResult(global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate ppmStringSegmentsValidate)
@@ -8370,6 +8953,1481 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IGlValidateChartstring_GlValidateChartstring_EndDates_SegmentEndDate : IGlValidateChartstring_GlValidateChartstring_EndDates
     {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmSupplierFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _searchCommonInputsFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFilterInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _dateFilterInputFormatter = default !;
+        public global::System.String TypeName => "ScmSupplierFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _searchCommonInputsFormatter = serializerResolver.GetInputValueFormatter("SearchCommonInputs");
+            _stringFilterInputFormatter = serializerResolver.GetInputValueFormatter("StringFilterInput");
+            _dateFilterInputFormatter = serializerResolver.GetInputValueFormatter("DateFilterInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.ScmSupplierFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsSearchCommonSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("searchCommon", FormatSearchCommon(input.SearchCommon)));
+            }
+
+            if (inputInfo.IsNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("name", FormatName(input.Name)));
+            }
+
+            if (inputInfo.IsAliasNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("aliasName", FormatAliasName(input.AliasName)));
+            }
+
+            if (inputInfo.IsAlternateNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("alternateName", FormatAlternateName(input.AlternateName)));
+            }
+
+            if (inputInfo.IsSupplierIdSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("supplierId", FormatSupplierId(input.SupplierId)));
+            }
+
+            if (inputInfo.IsSupplierNumberSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("supplierNumber", FormatSupplierNumber(input.SupplierNumber)));
+            }
+
+            if (inputInfo.IsLastUpdateDateTimeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lastUpdateDateTime", FormatLastUpdateDateTime(input.LastUpdateDateTime)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatSearchCommon(global::AggieEnterpriseApi.SearchCommonInputs? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _searchCommonInputsFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatName(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatAliasName(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatAlternateName(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatSupplierId(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatSupplierNumber(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLastUpdateDateTime(global::AggieEnterpriseApi.DateFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFilterInputFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Input object used to run searches on ScmSupplier</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmSupplierFilterInput : global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo, global::System.IEquatable<ScmSupplierFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmSupplierFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(ScmSupplierFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((SearchCommon is null && other.SearchCommon is null) || SearchCommon != null && SearchCommon.Equals(other.SearchCommon))) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && ((AliasName is null && other.AliasName is null) || AliasName != null && AliasName.Equals(other.AliasName)) && ((AlternateName is null && other.AlternateName is null) || AlternateName != null && AlternateName.Equals(other.AlternateName)) && ((SupplierId is null && other.SupplierId is null) || SupplierId != null && SupplierId.Equals(other.SupplierId)) && ((SupplierNumber is null && other.SupplierNumber is null) || SupplierNumber != null && SupplierNumber.Equals(other.SupplierNumber)) && ((LastUpdateDateTime is null && other.LastUpdateDateTime is null) || LastUpdateDateTime != null && LastUpdateDateTime.Equals(other.LastUpdateDateTime));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (SearchCommon != null)
+                {
+                    hash ^= 397 * SearchCommon.GetHashCode();
+                }
+
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                if (AliasName != null)
+                {
+                    hash ^= 397 * AliasName.GetHashCode();
+                }
+
+                if (AlternateName != null)
+                {
+                    hash ^= 397 * AlternateName.GetHashCode();
+                }
+
+                if (SupplierId != null)
+                {
+                    hash ^= 397 * SupplierId.GetHashCode();
+                }
+
+                if (SupplierNumber != null)
+                {
+                    hash ^= 397 * SupplierNumber.GetHashCode();
+                }
+
+                if (LastUpdateDateTime != null)
+                {
+                    hash ^= 397 * LastUpdateDateTime.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::AggieEnterpriseApi.SearchCommonInputs? _value_searchCommon;
+        private global::System.Boolean _set_searchCommon;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_name;
+        private global::System.Boolean _set_name;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_aliasName;
+        private global::System.Boolean _set_aliasName;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_alternateName;
+        private global::System.Boolean _set_alternateName;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_supplierId;
+        private global::System.Boolean _set_supplierId;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_supplierNumber;
+        private global::System.Boolean _set_supplierNumber;
+        private global::AggieEnterpriseApi.DateFilterInput? _value_lastUpdateDateTime;
+        private global::System.Boolean _set_lastUpdateDateTime;
+        public global::AggieEnterpriseApi.SearchCommonInputs? SearchCommon
+        {
+            get => _value_searchCommon;
+            set
+            {
+                _set_searchCommon = true;
+                _value_searchCommon = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsSearchCommonSet => _set_searchCommon;
+        public global::AggieEnterpriseApi.StringFilterInput? Name
+        {
+            get => _value_name;
+            set
+            {
+                _set_name = true;
+                _value_name = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsNameSet => _set_name;
+        public global::AggieEnterpriseApi.StringFilterInput? AliasName
+        {
+            get => _value_aliasName;
+            set
+            {
+                _set_aliasName = true;
+                _value_aliasName = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsAliasNameSet => _set_aliasName;
+        public global::AggieEnterpriseApi.StringFilterInput? AlternateName
+        {
+            get => _value_alternateName;
+            set
+            {
+                _set_alternateName = true;
+                _value_alternateName = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsAlternateNameSet => _set_alternateName;
+        public global::AggieEnterpriseApi.StringFilterInput? SupplierId
+        {
+            get => _value_supplierId;
+            set
+            {
+                _set_supplierId = true;
+                _value_supplierId = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsSupplierIdSet => _set_supplierId;
+        public global::AggieEnterpriseApi.StringFilterInput? SupplierNumber
+        {
+            get => _value_supplierNumber;
+            set
+            {
+                _set_supplierNumber = true;
+                _value_supplierNumber = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsSupplierNumberSet => _set_supplierNumber;
+        public global::AggieEnterpriseApi.DateFilterInput? LastUpdateDateTime
+        {
+            get => _value_lastUpdateDateTime;
+            set
+            {
+                _set_lastUpdateDateTime = true;
+                _value_lastUpdateDateTime = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsLastUpdateDateTimeSet => _set_lastUpdateDateTime;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class SearchCommonInputsInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _positiveIntFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonNegativeIntFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _booleanFormatter = default !;
+        public global::System.String TypeName => "SearchCommonInputs";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+            _positiveIntFormatter = serializerResolver.GetInputValueFormatter("PositiveInt");
+            _nonNegativeIntFormatter = serializerResolver.GetInputValueFormatter("NonNegativeInt");
+            _booleanFormatter = serializerResolver.GetInputValueFormatter("Boolean");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.SearchCommonInputs;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.ISearchCommonInputsInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsSortSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("sort", FormatSort(input.Sort)));
+            }
+
+            if (inputInfo.IsLimitSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("limit", FormatLimit(input.Limit)));
+            }
+
+            if (inputInfo.IsStartIndexSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("startIndex", FormatStartIndex(input.StartIndex)));
+            }
+
+            if (inputInfo.IsIncludeTotalResultCountSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("includeTotalResultCount", FormatIncludeTotalResultCount(input.IncludeTotalResultCount)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatSort(global::System.Collections.Generic.IReadOnlyList<global::System.String>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        throw new global::System.ArgumentNullException(nameof(input_elm));
+                    }
+
+                    input_list.Add(_stringFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatLimit(global::System.Int32? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _positiveIntFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatStartIndex(global::System.Int32? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonNegativeIntFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatIncludeTotalResultCount(global::System.Boolean? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Special properties common to all common search operations.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class SearchCommonInputs : global::AggieEnterpriseApi.State.ISearchCommonInputsInfo, global::System.IEquatable<SearchCommonInputs>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((SearchCommonInputs)obj);
+        }
+
+        public virtual global::System.Boolean Equals(SearchCommonInputs? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Sort, other.Sort)) && Limit == other.Limit && StartIndex == other.StartIndex && IncludeTotalResultCount == other.IncludeTotalResultCount;
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Sort != null)
+                {
+                    foreach (var Sort_elm in Sort)
+                    {
+                        hash ^= 397 * Sort_elm.GetHashCode();
+                    }
+                }
+
+                if (Limit != null)
+                {
+                    hash ^= 397 * Limit.GetHashCode();
+                }
+
+                if (StartIndex != null)
+                {
+                    hash ^= 397 * StartIndex.GetHashCode();
+                }
+
+                if (IncludeTotalResultCount != null)
+                {
+                    hash ^= 397 * IncludeTotalResultCount.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? _value_sort;
+        private global::System.Boolean _set_sort;
+        private global::System.Int32? _value_limit;
+        private global::System.Boolean _set_limit;
+        private global::System.Int32? _value_startIndex;
+        private global::System.Boolean _set_startIndex;
+        private global::System.Boolean? _value_includeTotalResultCount;
+        private global::System.Boolean _set_includeTotalResultCount;
+        ///<summary>Array of property names to sort on</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort
+        {
+            get => _value_sort;
+            set
+            {
+                _set_sort = true;
+                _value_sort = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsSortSet => _set_sort;
+        ///<summary>maximum number of records to retrieve</summary>
+        public global::System.Int32? Limit
+        {
+            get => _value_limit;
+            set
+            {
+                _set_limit = true;
+                _value_limit = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsLimitSet => _set_limit;
+        ///<summary>Record number to start with</summary>
+        public global::System.Int32? StartIndex
+        {
+            get => _value_startIndex;
+            set
+            {
+                _set_startIndex = true;
+                _value_startIndex = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsStartIndexSet => _set_startIndex;
+        ///<summary>Whether to include a count of all records to be returned by this search.  Will increase search time.</summary>
+        public global::System.Boolean? IncludeTotalResultCount
+        {
+            get => _value_includeTotalResultCount;
+            set
+            {
+                _set_includeTotalResultCount = true;
+                _value_includeTotalResultCount = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsIncludeTotalResultCountSet => _set_includeTotalResultCount;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class StringFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter = default !;
+        public global::System.String TypeName => "StringFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.StringFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IStringFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsEqSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("eq", FormatEq(input.Eq)));
+            }
+
+            if (inputInfo.IsNeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ne", FormatNe(input.Ne)));
+            }
+
+            if (inputInfo.IsLeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("le", FormatLe(input.Le)));
+            }
+
+            if (inputInfo.IsLtSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lt", FormatLt(input.Lt)));
+            }
+
+            if (inputInfo.IsGeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ge", FormatGe(input.Ge)));
+            }
+
+            if (inputInfo.IsGtSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("gt", FormatGt(input.Gt)));
+            }
+
+            if (inputInfo.IsBeginsWithSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("beginsWith", FormatBeginsWith(input.BeginsWith)));
+            }
+
+            if (inputInfo.IsEndsWithSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("endsWith", FormatEndsWith(input.EndsWith)));
+            }
+
+            if (inputInfo.IsContainsSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("contains", FormatContains(input.Contains)));
+            }
+
+            if (inputInfo.IsNotContainsSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("notContains", FormatNotContains(input.NotContains)));
+            }
+
+            if (inputInfo.IsBetweenSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("between", FormatBetween(input.Between)));
+            }
+
+            if (inputInfo.IsInSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("in", FormatIn(input.In)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatEq(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNe(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLe(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLt(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGe(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGt(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatBeginsWith(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatEndsWith(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatContains(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNotContains(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatBetween(global::System.Collections.Generic.IReadOnlyList<global::System.String>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        throw new global::System.ArgumentNullException(nameof(input_elm));
+                    }
+
+                    input_list.Add(_stringFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatIn(global::System.Collections.Generic.IReadOnlyList<global::System.String?>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        input_list.Add(input_elm);
+                    }
+                    else
+                    {
+                        input_list.Add(_stringFormatter.Format(input_elm));
+                    }
+                }
+
+                return input_list;
+            }
+        }
+    }
+
+    ///<summary>String filter criteria object, only one of this object's properties should be set.  Except as noted in the properties below, all comparisons are case-sensitive.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class StringFilterInput : global::AggieEnterpriseApi.State.IStringFilterInputInfo, global::System.IEquatable<StringFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((StringFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(StringFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((Eq is null && other.Eq is null) || Eq != null && Eq.Equals(other.Eq))) && ((Ne is null && other.Ne is null) || Ne != null && Ne.Equals(other.Ne)) && ((Le is null && other.Le is null) || Le != null && Le.Equals(other.Le)) && ((Lt is null && other.Lt is null) || Lt != null && Lt.Equals(other.Lt)) && ((Ge is null && other.Ge is null) || Ge != null && Ge.Equals(other.Ge)) && ((Gt is null && other.Gt is null) || Gt != null && Gt.Equals(other.Gt)) && ((BeginsWith is null && other.BeginsWith is null) || BeginsWith != null && BeginsWith.Equals(other.BeginsWith)) && ((EndsWith is null && other.EndsWith is null) || EndsWith != null && EndsWith.Equals(other.EndsWith)) && ((Contains is null && other.Contains is null) || Contains != null && Contains.Equals(other.Contains)) && ((NotContains is null && other.NotContains is null) || NotContains != null && NotContains.Equals(other.NotContains)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Between, other.Between) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(In, other.In);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Eq != null)
+                {
+                    hash ^= 397 * Eq.GetHashCode();
+                }
+
+                if (Ne != null)
+                {
+                    hash ^= 397 * Ne.GetHashCode();
+                }
+
+                if (Le != null)
+                {
+                    hash ^= 397 * Le.GetHashCode();
+                }
+
+                if (Lt != null)
+                {
+                    hash ^= 397 * Lt.GetHashCode();
+                }
+
+                if (Ge != null)
+                {
+                    hash ^= 397 * Ge.GetHashCode();
+                }
+
+                if (Gt != null)
+                {
+                    hash ^= 397 * Gt.GetHashCode();
+                }
+
+                if (BeginsWith != null)
+                {
+                    hash ^= 397 * BeginsWith.GetHashCode();
+                }
+
+                if (EndsWith != null)
+                {
+                    hash ^= 397 * EndsWith.GetHashCode();
+                }
+
+                if (Contains != null)
+                {
+                    hash ^= 397 * Contains.GetHashCode();
+                }
+
+                if (NotContains != null)
+                {
+                    hash ^= 397 * NotContains.GetHashCode();
+                }
+
+                if (Between != null)
+                {
+                    foreach (var Between_elm in Between)
+                    {
+                        hash ^= 397 * Between_elm.GetHashCode();
+                    }
+                }
+
+                if (In != null)
+                {
+                    foreach (var In_elm in In)
+                    {
+                        if (In_elm != null)
+                        {
+                            hash ^= 397 * In_elm.GetHashCode();
+                        }
+                    }
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.String? _value_eq;
+        private global::System.Boolean _set_eq;
+        private global::System.String? _value_ne;
+        private global::System.Boolean _set_ne;
+        private global::System.String? _value_le;
+        private global::System.Boolean _set_le;
+        private global::System.String? _value_lt;
+        private global::System.Boolean _set_lt;
+        private global::System.String? _value_ge;
+        private global::System.Boolean _set_ge;
+        private global::System.String? _value_gt;
+        private global::System.Boolean _set_gt;
+        private global::System.String? _value_beginsWith;
+        private global::System.Boolean _set_beginsWith;
+        private global::System.String? _value_endsWith;
+        private global::System.Boolean _set_endsWith;
+        private global::System.String? _value_contains;
+        private global::System.Boolean _set_contains;
+        private global::System.String? _value_notContains;
+        private global::System.Boolean _set_notContains;
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? _value_between;
+        private global::System.Boolean _set_between;
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String?>? _value_in;
+        private global::System.Boolean _set_in;
+        ///<summary>Test if property is equal to the given value</summary>
+        public global::System.String? Eq
+        {
+            get => _value_eq;
+            set
+            {
+                _set_eq = true;
+                _value_eq = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsEqSet => _set_eq;
+        ///<summary>Test if property is NOT equal to the given value</summary>
+        public global::System.String? Ne
+        {
+            get => _value_ne;
+            set
+            {
+                _set_ne = true;
+                _value_ne = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsNeSet => _set_ne;
+        ///<summary>Test if property is less than or equal to the given value</summary>
+        public global::System.String? Le
+        {
+            get => _value_le;
+            set
+            {
+                _set_le = true;
+                _value_le = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsLeSet => _set_le;
+        ///<summary>Test if property is less than the given value</summary>
+        public global::System.String? Lt
+        {
+            get => _value_lt;
+            set
+            {
+                _set_lt = true;
+                _value_lt = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsLtSet => _set_lt;
+        ///<summary>Test if property is greater than or equal to the given value</summary>
+        public global::System.String? Ge
+        {
+            get => _value_ge;
+            set
+            {
+                _set_ge = true;
+                _value_ge = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsGeSet => _set_ge;
+        ///<summary>Test if property is greater than the given value</summary>
+        public global::System.String? Gt
+        {
+            get => _value_gt;
+            set
+            {
+                _set_gt = true;
+                _value_gt = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsGtSet => _set_gt;
+        ///<summary>Test if property begins with the given value.  Case-insensitive.</summary>
+        public global::System.String? BeginsWith
+        {
+            get => _value_beginsWith;
+            set
+            {
+                _set_beginsWith = true;
+                _value_beginsWith = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsBeginsWithSet => _set_beginsWith;
+        ///<summary>Test if property ends with the given value.  Case-insensitive.</summary>
+        public global::System.String? EndsWith
+        {
+            get => _value_endsWith;
+            set
+            {
+                _set_endsWith = true;
+                _value_endsWith = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsEndsWithSet => _set_endsWith;
+        ///<summary>Test if property contains the given value.  Case-insensitive.</summary>
+        public global::System.String? Contains
+        {
+            get => _value_contains;
+            set
+            {
+                _set_contains = true;
+                _value_contains = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsContainsSet => _set_contains;
+        ///<summary>Test if property does not contain the given value.  Case-insensitive.</summary>
+        public global::System.String? NotContains
+        {
+            get => _value_notContains;
+            set
+            {
+                _set_notContains = true;
+                _value_notContains = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsNotContainsSet => _set_notContains;
+        ///<summary>Test if property is between the first 2 elements in the array</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Between
+        {
+            get => _value_between;
+            set
+            {
+                _set_between = true;
+                _value_between = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsBetweenSet => _set_between;
+        ///<summary>Test if property is equal to one of the given values</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String?>? In
+        {
+            get => _value_in;
+            set
+            {
+                _set_in = true;
+                _value_in = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsInSet => _set_in;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class DateFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _dateFormatter = default !;
+        public global::System.String TypeName => "DateFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _dateFormatter = serializerResolver.GetInputValueFormatter("Date");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.DateFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IDateFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsEqSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("eq", FormatEq(input.Eq)));
+            }
+
+            if (inputInfo.IsNeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ne", FormatNe(input.Ne)));
+            }
+
+            if (inputInfo.IsLeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("le", FormatLe(input.Le)));
+            }
+
+            if (inputInfo.IsLtSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lt", FormatLt(input.Lt)));
+            }
+
+            if (inputInfo.IsGeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ge", FormatGe(input.Ge)));
+            }
+
+            if (inputInfo.IsGtSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("gt", FormatGt(input.Gt)));
+            }
+
+            if (inputInfo.IsBetweenSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("between", FormatBetween(input.Between)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatEq(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNe(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLe(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLt(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGe(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGt(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatBetween(global::System.Collections.Generic.IReadOnlyList<global::System.DateTime>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    input_list.Add(_dateFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+    }
+
+    ///<summary>Generic date filter criteria object, only one of these properties should be set</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class DateFilterInput : global::AggieEnterpriseApi.State.IDateFilterInputInfo, global::System.IEquatable<DateFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((DateFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(DateFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((Eq is null && other.Eq is null) || Eq != null && Eq.Equals(other.Eq))) && ((Ne is null && other.Ne is null) || Ne != null && Ne.Equals(other.Ne)) && ((Le is null && other.Le is null) || Le != null && Le.Equals(other.Le)) && ((Lt is null && other.Lt is null) || Lt != null && Lt.Equals(other.Lt)) && ((Ge is null && other.Ge is null) || Ge != null && Ge.Equals(other.Ge)) && ((Gt is null && other.Gt is null) || Gt != null && Gt.Equals(other.Gt)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Between, other.Between);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Eq != null)
+                {
+                    hash ^= 397 * Eq.GetHashCode();
+                }
+
+                if (Ne != null)
+                {
+                    hash ^= 397 * Ne.GetHashCode();
+                }
+
+                if (Le != null)
+                {
+                    hash ^= 397 * Le.GetHashCode();
+                }
+
+                if (Lt != null)
+                {
+                    hash ^= 397 * Lt.GetHashCode();
+                }
+
+                if (Ge != null)
+                {
+                    hash ^= 397 * Ge.GetHashCode();
+                }
+
+                if (Gt != null)
+                {
+                    hash ^= 397 * Gt.GetHashCode();
+                }
+
+                if (Between != null)
+                {
+                    foreach (var Between_elm in Between)
+                    {
+                        hash ^= 397 * Between_elm.GetHashCode();
+                    }
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.DateTime? _value_eq;
+        private global::System.Boolean _set_eq;
+        private global::System.DateTime? _value_ne;
+        private global::System.Boolean _set_ne;
+        private global::System.DateTime? _value_le;
+        private global::System.Boolean _set_le;
+        private global::System.DateTime? _value_lt;
+        private global::System.Boolean _set_lt;
+        private global::System.DateTime? _value_ge;
+        private global::System.Boolean _set_ge;
+        private global::System.DateTime? _value_gt;
+        private global::System.Boolean _set_gt;
+        private global::System.Collections.Generic.IReadOnlyList<global::System.DateTime>? _value_between;
+        private global::System.Boolean _set_between;
+        ///<summary>Test if property is equal to the given value</summary>
+        public global::System.DateTime? Eq
+        {
+            get => _value_eq;
+            set
+            {
+                _set_eq = true;
+                _value_eq = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsEqSet => _set_eq;
+        ///<summary>Test if property is NOT equal to the given value</summary>
+        public global::System.DateTime? Ne
+        {
+            get => _value_ne;
+            set
+            {
+                _set_ne = true;
+                _value_ne = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsNeSet => _set_ne;
+        ///<summary>Test if property is less than or equal to the given value</summary>
+        public global::System.DateTime? Le
+        {
+            get => _value_le;
+            set
+            {
+                _set_le = true;
+                _value_le = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsLeSet => _set_le;
+        ///<summary>Test if property is less than the given value</summary>
+        public global::System.DateTime? Lt
+        {
+            get => _value_lt;
+            set
+            {
+                _set_lt = true;
+                _value_lt = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsLtSet => _set_lt;
+        ///<summary>Test if property is greater than or equal to the given value</summary>
+        public global::System.DateTime? Ge
+        {
+            get => _value_ge;
+            set
+            {
+                _set_ge = true;
+                _value_ge = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsGeSet => _set_ge;
+        ///<summary>Test if property is greater than the given value</summary>
+        public global::System.DateTime? Gt
+        {
+            get => _value_gt;
+            set
+            {
+                _set_gt = true;
+                _value_gt = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsGtSet => _set_gt;
+        ///<summary>Test if property is between the first 2 elements in the array</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.DateTime>? Between
+        {
+            get => _value_between;
+            set
+            {
+                _set_between = true;
+                _value_between = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsBetweenSet => _set_between;
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -12250,45 +14308,45 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
-    /// Represents the operation service of the KfsConvertAccount GraphQL operation
+    /// Represents the operation service of the ScmSupplierSearch GraphQL operation
     /// <code>
-    /// query KfsConvertAccount($chart: KfsChartCode!, $account: KfsAccountNumber!, $subAccount: KfsSubAccountNumber) {
-    ///   kfsConvertAccount(chart: $chart, account: $account, subAccount: $subAccount) {
+    /// query ScmSupplierSearch($filter: ScmSupplierFilterInput!) {
+    ///   scmSupplierSearch(filter: $filter) {
     ///     __typename
-    ///     mappingFound
-    ///     glSegments {
+    ///     data {
     ///       __typename
-    ///       entity
-    ///       fund
-    ///       department
-    ///       purpose
-    ///       project
-    ///       program
-    ///       activity
-    ///     }
-    ///     ppmSegments {
-    ///       __typename
-    ///       project
-    ///       organization
-    ///       task
-    ///       award
-    ///       fundingSource
+    ///       name
+    ///       supplierNumber
+    ///       sites {
+    ///         __typename
+    ///         supplierSiteCode
+    ///         location {
+    ///           __typename
+    ///           addressLine1
+    ///           addressLine2
+    ///           addressLine3
+    ///           addressLine4
+    ///           city
+    ///           state
+    ///           postalCode
+    ///         }
+    ///       }
     ///     }
     ///   }
     /// }
     /// </code>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class KfsConvertAccountQueryDocument : global::StrawberryShake.IDocument
+    public partial class ScmSupplierSearchQueryDocument : global::StrawberryShake.IDocument
     {
-        private KfsConvertAccountQueryDocument()
+        private ScmSupplierSearchQueryDocument()
         {
         }
 
-        public static KfsConvertAccountQueryDocument Instance { get; } = new KfsConvertAccountQueryDocument();
+        public static ScmSupplierSearchQueryDocument Instance { get; } = new ScmSupplierSearchQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x4b, 0x66, 0x73, 0x43, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x74, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x28, 0x24, 0x63, 0x68, 0x61, 0x72, 0x74, 0x3a, 0x20, 0x4b, 0x66, 0x73, 0x43, 0x68, 0x61, 0x72, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x21, 0x2c, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x4b, 0x66, 0x73, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x21, 0x2c, 0x20, 0x24, 0x73, 0x75, 0x62, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x4b, 0x66, 0x73, 0x53, 0x75, 0x62, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x6b, 0x66, 0x73, 0x43, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x74, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x28, 0x63, 0x68, 0x61, 0x72, 0x74, 0x3a, 0x20, 0x24, 0x63, 0x68, 0x61, 0x72, 0x74, 0x2c, 0x20, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2c, 0x20, 0x73, 0x75, 0x62, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x24, 0x73, 0x75, 0x62, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x61, 0x70, 0x70, 0x69, 0x6e, 0x67, 0x46, 0x6f, 0x75, 0x6e, 0x64, 0x20, 0x67, 0x6c, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x20, 0x66, 0x75, 0x6e, 0x64, 0x20, 0x64, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x70, 0x72, 0x6f, 0x67, 0x72, 0x61, 0x6d, 0x20, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x20, 0x7d, 0x20, 0x70, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x6f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x74, 0x61, 0x73, 0x6b, 0x20, 0x61, 0x77, 0x61, 0x72, 0x64, 0x20, 0x66, 0x75, 0x6e, 0x64, 0x69, 0x6e, 0x67, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "9d3668c9b48b934d72c301e5c176ecec");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x53, 0x63, 0x6d, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x69, 0x65, 0x72, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x53, 0x63, 0x6d, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x69, 0x65, 0x72, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x73, 0x63, 0x6d, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x69, 0x65, 0x72, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x75, 0x70, 0x70, 0x6c, 0x69, 0x65, 0x72, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x20, 0x73, 0x69, 0x74, 0x65, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x75, 0x70, 0x70, 0x6c, 0x69, 0x65, 0x72, 0x53, 0x69, 0x74, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x31, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x32, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x33, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x34, 0x20, 0x63, 0x69, 0x74, 0x79, 0x20, 0x73, 0x74, 0x61, 0x74, 0x65, 0x20, 0x70, 0x6f, 0x73, 0x74, 0x61, 0x6c, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "aacfc80a3d7d46c42a2584fed73cea04");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -12300,106 +14358,78 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
-    /// Represents the operation service of the KfsConvertAccount GraphQL operation
+    /// Represents the operation service of the ScmSupplierSearch GraphQL operation
     /// <code>
-    /// query KfsConvertAccount($chart: KfsChartCode!, $account: KfsAccountNumber!, $subAccount: KfsSubAccountNumber) {
-    ///   kfsConvertAccount(chart: $chart, account: $account, subAccount: $subAccount) {
+    /// query ScmSupplierSearch($filter: ScmSupplierFilterInput!) {
+    ///   scmSupplierSearch(filter: $filter) {
     ///     __typename
-    ///     mappingFound
-    ///     glSegments {
+    ///     data {
     ///       __typename
-    ///       entity
-    ///       fund
-    ///       department
-    ///       purpose
-    ///       project
-    ///       program
-    ///       activity
-    ///     }
-    ///     ppmSegments {
-    ///       __typename
-    ///       project
-    ///       organization
-    ///       task
-    ///       award
-    ///       fundingSource
+    ///       name
+    ///       supplierNumber
+    ///       sites {
+    ///         __typename
+    ///         supplierSiteCode
+    ///         location {
+    ///           __typename
+    ///           addressLine1
+    ///           addressLine2
+    ///           addressLine3
+    ///           addressLine4
+    ///           city
+    ///           state
+    ///           postalCode
+    ///         }
+    ///       }
     ///     }
     ///   }
     /// }
     /// </code>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class KfsConvertAccountQuery : global::AggieEnterpriseApi.IKfsConvertAccountQuery
+    public partial class ScmSupplierSearchQuery : global::AggieEnterpriseApi.IScmSupplierSearchQuery
     {
-        private readonly global::StrawberryShake.IOperationExecutor<IKfsConvertAccountResult> _operationExecutor;
-        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _kfsChartCodeFormatter;
-        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _kfsAccountNumberFormatter;
-        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _kfsSubAccountNumberFormatter;
-        public KfsConvertAccountQuery(global::StrawberryShake.IOperationExecutor<IKfsConvertAccountResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        private readonly global::StrawberryShake.IOperationExecutor<IScmSupplierSearchResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _scmSupplierFilterInputFormatter;
+        public ScmSupplierSearchQuery(global::StrawberryShake.IOperationExecutor<IScmSupplierSearchResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
-            _kfsChartCodeFormatter = serializerResolver.GetInputValueFormatter("KfsChartCode");
-            _kfsAccountNumberFormatter = serializerResolver.GetInputValueFormatter("KfsAccountNumber");
-            _kfsSubAccountNumberFormatter = serializerResolver.GetInputValueFormatter("KfsSubAccountNumber");
+            _scmSupplierFilterInputFormatter = serializerResolver.GetInputValueFormatter("ScmSupplierFilterInput");
         }
 
-        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IKfsConvertAccountResult);
-        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IKfsConvertAccountResult>> ExecuteAsync(global::System.String chart, global::System.String account, global::System.String? subAccount, global::System.Threading.CancellationToken cancellationToken = default)
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IScmSupplierSearchResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IScmSupplierSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ScmSupplierFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var request = CreateRequest(chart, account, subAccount);
+            var request = CreateRequest(filter);
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<IKfsConvertAccountResult>> Watch(global::System.String chart, global::System.String account, global::System.String? subAccount, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IScmSupplierSearchResult>> Watch(global::AggieEnterpriseApi.ScmSupplierFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null)
         {
-            var request = CreateRequest(chart, account, subAccount);
+            var request = CreateRequest(filter);
             return _operationExecutor.Watch(request, strategy);
         }
 
-        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String chart, global::System.String account, global::System.String? subAccount)
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.ScmSupplierFilterInput filter)
         {
             var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
-            variables.Add("chart", FormatChart(chart));
-            variables.Add("account", FormatAccount(account));
-            variables.Add("subAccount", FormatSubAccount(subAccount));
+            variables.Add("filter", FormatFilter(filter));
             return CreateRequest(variables);
         }
 
         private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
         {
-            return new global::StrawberryShake.OperationRequest(id: KfsConvertAccountQueryDocument.Instance.Hash.Value, name: "KfsConvertAccount", document: KfsConvertAccountQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+            return new global::StrawberryShake.OperationRequest(id: ScmSupplierSearchQueryDocument.Instance.Hash.Value, name: "ScmSupplierSearch", document: ScmSupplierSearchQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
         }
 
-        private global::System.Object? FormatChart(global::System.String value)
+        private global::System.Object? FormatFilter(global::AggieEnterpriseApi.ScmSupplierFilterInput value)
         {
             if (value is null)
             {
                 throw new global::System.ArgumentNullException(nameof(value));
             }
 
-            return _kfsChartCodeFormatter.Format(value);
-        }
-
-        private global::System.Object? FormatAccount(global::System.String value)
-        {
-            if (value is null)
-            {
-                throw new global::System.ArgumentNullException(nameof(value));
-            }
-
-            return _kfsAccountNumberFormatter.Format(value);
-        }
-
-        private global::System.Object? FormatSubAccount(global::System.String? value)
-        {
-            if (value is null)
-            {
-                return value;
-            }
-            else
-            {
-                return _kfsSubAccountNumberFormatter.Format(value);
-            }
+            return _scmSupplierFilterInputFormatter.Format(value);
         }
 
         global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
@@ -12409,39 +14439,39 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
-    /// Represents the operation service of the KfsConvertAccount GraphQL operation
+    /// Represents the operation service of the ScmSupplierSearch GraphQL operation
     /// <code>
-    /// query KfsConvertAccount($chart: KfsChartCode!, $account: KfsAccountNumber!, $subAccount: KfsSubAccountNumber) {
-    ///   kfsConvertAccount(chart: $chart, account: $account, subAccount: $subAccount) {
+    /// query ScmSupplierSearch($filter: ScmSupplierFilterInput!) {
+    ///   scmSupplierSearch(filter: $filter) {
     ///     __typename
-    ///     mappingFound
-    ///     glSegments {
+    ///     data {
     ///       __typename
-    ///       entity
-    ///       fund
-    ///       department
-    ///       purpose
-    ///       project
-    ///       program
-    ///       activity
-    ///     }
-    ///     ppmSegments {
-    ///       __typename
-    ///       project
-    ///       organization
-    ///       task
-    ///       award
-    ///       fundingSource
+    ///       name
+    ///       supplierNumber
+    ///       sites {
+    ///         __typename
+    ///         supplierSiteCode
+    ///         location {
+    ///           __typename
+    ///           addressLine1
+    ///           addressLine2
+    ///           addressLine3
+    ///           addressLine4
+    ///           city
+    ///           state
+    ///           postalCode
+    ///         }
+    ///       }
     ///     }
     ///   }
     /// }
     /// </code>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IKfsConvertAccountQuery : global::StrawberryShake.IOperationRequestFactory
+    public partial interface IScmSupplierSearchQuery : global::StrawberryShake.IOperationRequestFactory
     {
-        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IKfsConvertAccountResult>> ExecuteAsync(global::System.String chart, global::System.String account, global::System.String? subAccount, global::System.Threading.CancellationToken cancellationToken = default);
-        global::System.IObservable<global::StrawberryShake.IOperationResult<IKfsConvertAccountResult>> Watch(global::System.String chart, global::System.String account, global::System.String? subAccount, global::StrawberryShake.ExecutionStrategy? strategy = null);
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IScmSupplierSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ScmSupplierFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IScmSupplierSearchResult>> Watch(global::AggieEnterpriseApi.ScmSupplierFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -13675,6 +15705,201 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
+    /// Represents the operation service of the KfsConvertAccount GraphQL operation
+    /// <code>
+    /// query KfsConvertAccount($chart: KfsChartCode!, $account: KfsAccountNumber!, $subAccount: KfsSubAccountNumber) {
+    ///   kfsConvertAccount(chart: $chart, account: $account, subAccount: $subAccount) {
+    ///     __typename
+    ///     mappingFound
+    ///     glSegments {
+    ///       __typename
+    ///       entity
+    ///       fund
+    ///       department
+    ///       purpose
+    ///       project
+    ///       program
+    ///       activity
+    ///     }
+    ///     ppmSegments {
+    ///       __typename
+    ///       project
+    ///       organization
+    ///       task
+    ///       award
+    ///       fundingSource
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class KfsConvertAccountQueryDocument : global::StrawberryShake.IDocument
+    {
+        private KfsConvertAccountQueryDocument()
+        {
+        }
+
+        public static KfsConvertAccountQueryDocument Instance { get; } = new KfsConvertAccountQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x4b, 0x66, 0x73, 0x43, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x74, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x28, 0x24, 0x63, 0x68, 0x61, 0x72, 0x74, 0x3a, 0x20, 0x4b, 0x66, 0x73, 0x43, 0x68, 0x61, 0x72, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x21, 0x2c, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x4b, 0x66, 0x73, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x21, 0x2c, 0x20, 0x24, 0x73, 0x75, 0x62, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x4b, 0x66, 0x73, 0x53, 0x75, 0x62, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x6b, 0x66, 0x73, 0x43, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x74, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x28, 0x63, 0x68, 0x61, 0x72, 0x74, 0x3a, 0x20, 0x24, 0x63, 0x68, 0x61, 0x72, 0x74, 0x2c, 0x20, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x24, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2c, 0x20, 0x73, 0x75, 0x62, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x20, 0x24, 0x73, 0x75, 0x62, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x61, 0x70, 0x70, 0x69, 0x6e, 0x67, 0x46, 0x6f, 0x75, 0x6e, 0x64, 0x20, 0x67, 0x6c, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x20, 0x66, 0x75, 0x6e, 0x64, 0x20, 0x64, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x70, 0x72, 0x6f, 0x67, 0x72, 0x61, 0x6d, 0x20, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x20, 0x7d, 0x20, 0x70, 0x70, 0x6d, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x6f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x74, 0x61, 0x73, 0x6b, 0x20, 0x61, 0x77, 0x61, 0x72, 0x64, 0x20, 0x66, 0x75, 0x6e, 0x64, 0x69, 0x6e, 0x67, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "9d3668c9b48b934d72c301e5c176ecec");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the KfsConvertAccount GraphQL operation
+    /// <code>
+    /// query KfsConvertAccount($chart: KfsChartCode!, $account: KfsAccountNumber!, $subAccount: KfsSubAccountNumber) {
+    ///   kfsConvertAccount(chart: $chart, account: $account, subAccount: $subAccount) {
+    ///     __typename
+    ///     mappingFound
+    ///     glSegments {
+    ///       __typename
+    ///       entity
+    ///       fund
+    ///       department
+    ///       purpose
+    ///       project
+    ///       program
+    ///       activity
+    ///     }
+    ///     ppmSegments {
+    ///       __typename
+    ///       project
+    ///       organization
+    ///       task
+    ///       award
+    ///       fundingSource
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class KfsConvertAccountQuery : global::AggieEnterpriseApi.IKfsConvertAccountQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IKfsConvertAccountResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _kfsChartCodeFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _kfsAccountNumberFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _kfsSubAccountNumberFormatter;
+        public KfsConvertAccountQuery(global::StrawberryShake.IOperationExecutor<IKfsConvertAccountResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _kfsChartCodeFormatter = serializerResolver.GetInputValueFormatter("KfsChartCode");
+            _kfsAccountNumberFormatter = serializerResolver.GetInputValueFormatter("KfsAccountNumber");
+            _kfsSubAccountNumberFormatter = serializerResolver.GetInputValueFormatter("KfsSubAccountNumber");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IKfsConvertAccountResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IKfsConvertAccountResult>> ExecuteAsync(global::System.String chart, global::System.String account, global::System.String? subAccount, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(chart, account, subAccount);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IKfsConvertAccountResult>> Watch(global::System.String chart, global::System.String account, global::System.String? subAccount, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(chart, account, subAccount);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String chart, global::System.String account, global::System.String? subAccount)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("chart", FormatChart(chart));
+            variables.Add("account", FormatAccount(account));
+            variables.Add("subAccount", FormatSubAccount(subAccount));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: KfsConvertAccountQueryDocument.Instance.Hash.Value, name: "KfsConvertAccount", document: KfsConvertAccountQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatChart(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _kfsChartCodeFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatAccount(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _kfsAccountNumberFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatSubAccount(global::System.String? value)
+        {
+            if (value is null)
+            {
+                return value;
+            }
+            else
+            {
+                return _kfsSubAccountNumberFormatter.Format(value);
+            }
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the KfsConvertAccount GraphQL operation
+    /// <code>
+    /// query KfsConvertAccount($chart: KfsChartCode!, $account: KfsAccountNumber!, $subAccount: KfsSubAccountNumber) {
+    ///   kfsConvertAccount(chart: $chart, account: $account, subAccount: $subAccount) {
+    ///     __typename
+    ///     mappingFound
+    ///     glSegments {
+    ///       __typename
+    ///       entity
+    ///       fund
+    ///       department
+    ///       purpose
+    ///       project
+    ///       program
+    ///       activity
+    ///     }
+    ///     ppmSegments {
+    ///       __typename
+    ///       project
+    ///       organization
+    ///       task
+    ///       award
+    ///       fundingSource
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IKfsConvertAccountQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IKfsConvertAccountResult>> ExecuteAsync(global::System.String chart, global::System.String account, global::System.String? subAccount, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IKfsConvertAccountResult>> Watch(global::System.String chart, global::System.String account, global::System.String? subAccount, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the operation service of the PpmStringSegmentsValidate GraphQL operation
     /// <code>
     /// query PpmStringSegmentsValidate($segmentString: PpmSegmentString!) {
@@ -14740,26 +16965,28 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class AggieEnterpriseClient : global::AggieEnterpriseApi.IAggieEnterpriseClient
     {
-        private readonly global::AggieEnterpriseApi.IKfsConvertAccountQuery _kfsConvertAccount;
+        private readonly global::AggieEnterpriseApi.IScmSupplierSearchQuery _scmSupplierSearch;
         private readonly global::AggieEnterpriseApi.IDeptParentsQuery _deptParents;
         private readonly global::AggieEnterpriseApi.IFundParentsQuery _fundParents;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestMutation _glJournalRequest;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestStatusQuery _glJournalRequestStatus;
         private readonly global::AggieEnterpriseApi.ICoaDetailsQuery _coaDetails;
+        private readonly global::AggieEnterpriseApi.IKfsConvertAccountQuery _kfsConvertAccount;
         private readonly global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery _ppmStringSegmentsValidate;
         private readonly global::AggieEnterpriseApi.IPpmSegmentsValidateQuery _ppmSegmentsValidate;
         private readonly global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery _ppmTaskByProjectNumberAndTaskNumber;
         private readonly global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation _scmPurchaseRequisitionCreate;
         private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IScmSupplierSearchQuery scmSupplierSearch, global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
-            _kfsConvertAccount = kfsConvertAccount ?? throw new global::System.ArgumentNullException(nameof(kfsConvertAccount));
+            _scmSupplierSearch = scmSupplierSearch ?? throw new global::System.ArgumentNullException(nameof(scmSupplierSearch));
             _deptParents = deptParents ?? throw new global::System.ArgumentNullException(nameof(deptParents));
             _fundParents = fundParents ?? throw new global::System.ArgumentNullException(nameof(fundParents));
             _glJournalRequest = glJournalRequest ?? throw new global::System.ArgumentNullException(nameof(glJournalRequest));
             _glJournalRequestStatus = glJournalRequestStatus ?? throw new global::System.ArgumentNullException(nameof(glJournalRequestStatus));
             _coaDetails = coaDetails ?? throw new global::System.ArgumentNullException(nameof(coaDetails));
+            _kfsConvertAccount = kfsConvertAccount ?? throw new global::System.ArgumentNullException(nameof(kfsConvertAccount));
             _ppmStringSegmentsValidate = ppmStringSegmentsValidate ?? throw new global::System.ArgumentNullException(nameof(ppmStringSegmentsValidate));
             _ppmSegmentsValidate = ppmSegmentsValidate ?? throw new global::System.ArgumentNullException(nameof(ppmSegmentsValidate));
             _ppmTaskByProjectNumberAndTaskNumber = ppmTaskByProjectNumberAndTaskNumber ?? throw new global::System.ArgumentNullException(nameof(ppmTaskByProjectNumberAndTaskNumber));
@@ -14769,12 +16996,13 @@ namespace AggieEnterpriseApi
         }
 
         public static global::System.String ClientName => "AggieEnterpriseClient";
-        public global::AggieEnterpriseApi.IKfsConvertAccountQuery KfsConvertAccount => _kfsConvertAccount;
+        public global::AggieEnterpriseApi.IScmSupplierSearchQuery ScmSupplierSearch => _scmSupplierSearch;
         public global::AggieEnterpriseApi.IDeptParentsQuery DeptParents => _deptParents;
         public global::AggieEnterpriseApi.IFundParentsQuery FundParents => _fundParents;
         public global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest => _glJournalRequest;
         public global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus => _glJournalRequestStatus;
         public global::AggieEnterpriseApi.ICoaDetailsQuery CoaDetails => _coaDetails;
+        public global::AggieEnterpriseApi.IKfsConvertAccountQuery KfsConvertAccount => _kfsConvertAccount;
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery PpmStringSegmentsValidate => _ppmStringSegmentsValidate;
         public global::AggieEnterpriseApi.IPpmSegmentsValidateQuery PpmSegmentsValidate => _ppmSegmentsValidate;
         public global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery PpmTaskByProjectNumberAndTaskNumber => _ppmTaskByProjectNumberAndTaskNumber;
@@ -14789,7 +17017,7 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IAggieEnterpriseClient
     {
-        global::AggieEnterpriseApi.IKfsConvertAccountQuery KfsConvertAccount { get; }
+        global::AggieEnterpriseApi.IScmSupplierSearchQuery ScmSupplierSearch { get; }
 
         global::AggieEnterpriseApi.IDeptParentsQuery DeptParents { get; }
 
@@ -14800,6 +17028,8 @@ namespace AggieEnterpriseApi
         global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus { get; }
 
         global::AggieEnterpriseApi.ICoaDetailsQuery CoaDetails { get; }
+
+        global::AggieEnterpriseApi.IKfsConvertAccountQuery KfsConvertAccount { get; }
 
         global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery PpmStringSegmentsValidate { get; }
 
@@ -14992,36 +17222,36 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class KfsConvertAccountResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.KfsConvertAccountResult>
+    public partial class ScmSupplierSearchResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ScmSupplierSearchResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public KfsConvertAccountResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        public ScmSupplierSearchResultFactory(global::StrawberryShake.IEntityStore entityStore)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
         }
 
-        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IKfsConvertAccountResult);
-        public KfsConvertAccountResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IScmSupplierSearchResult);
+        public ScmSupplierSearchResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
         {
             if (snapshot is null)
             {
                 snapshot = _entityStore.CurrentSnapshot;
             }
 
-            if (dataInfo is KfsConvertAccountResultInfo info)
+            if (dataInfo is ScmSupplierSearchResultInfo info)
             {
-                return new KfsConvertAccountResult(MapNonNullableIKfsConvertAccount_KfsConvertAccount(info.KfsConvertAccount, snapshot));
+                return new ScmSupplierSearchResult(MapNonNullableIScmSupplierSearch_ScmSupplierSearch(info.ScmSupplierSearch, snapshot));
             }
 
-            throw new global::System.ArgumentException("KfsConvertAccountResultInfo expected.");
+            throw new global::System.ArgumentException("ScmSupplierSearchResultInfo expected.");
         }
 
-        private global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount MapNonNullableIKfsConvertAccount_KfsConvertAccount(global::AggieEnterpriseApi.State.KfsConvertAccountOutputData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        private global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch MapNonNullableIScmSupplierSearch_ScmSupplierSearch(global::AggieEnterpriseApi.State.ScmSupplierSearchResultsData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
         {
-            IKfsConvertAccount_KfsConvertAccount returnValue = default !;
-            if (data.__typename.Equals("KfsConvertAccountOutput", global::System.StringComparison.Ordinal))
+            IScmSupplierSearch_ScmSupplierSearch returnValue = default !;
+            if (data.__typename.Equals("ScmSupplierSearchResults", global::System.StringComparison.Ordinal))
             {
-                returnValue = new KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput(data.MappingFound ?? throw new global::System.ArgumentNullException(), MapIKfsConvertAccount_KfsConvertAccount_GlSegments(data.GlSegments, snapshot), MapIKfsConvertAccount_KfsConvertAccount_PpmSegments(data.PpmSegments, snapshot));
+                returnValue = new ScmSupplierSearch_ScmSupplierSearch_ScmSupplierSearchResults(MapNonNullableIScmSupplierSearch_ScmSupplierSearch_DataNonNullableArray(data.Data ?? throw new global::System.ArgumentNullException(), snapshot));
             }
             else
             {
@@ -15031,17 +17261,28 @@ namespace AggieEnterpriseApi.State
             return returnValue;
         }
 
-        private global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_GlSegments? MapIKfsConvertAccount_KfsConvertAccount_GlSegments(global::AggieEnterpriseApi.State.GlCostCenterSegmentsData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data> MapNonNullableIScmSupplierSearch_ScmSupplierSearch_DataNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ScmSupplierData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
         {
-            if (data is null)
+            if (list is null)
             {
-                return null;
+                throw new global::System.ArgumentNullException();
             }
 
-            IKfsConvertAccount_KfsConvertAccount_GlSegments returnValue = default !;
-            if (data?.__typename.Equals("GlCostCenterSegments", global::System.StringComparison.Ordinal) ?? false)
+            var scmSuppliers = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data>();
+            foreach (global::AggieEnterpriseApi.State.ScmSupplierData child in list)
             {
-                returnValue = new KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments(data.Entity ?? throw new global::System.ArgumentNullException(), data.Fund ?? throw new global::System.ArgumentNullException(), data.Department ?? throw new global::System.ArgumentNullException(), data.Purpose, data.Project, data.Program, data.Activity);
+                scmSuppliers.Add(MapNonNullableIScmSupplierSearch_ScmSupplierSearch_Data(child, snapshot));
+            }
+
+            return scmSuppliers;
+        }
+
+        private global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data MapNonNullableIScmSupplierSearch_ScmSupplierSearch_Data(global::AggieEnterpriseApi.State.ScmSupplierData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IScmSupplierSearch_ScmSupplierSearch_Data returnValue = default !;
+            if (data.__typename.Equals("ScmSupplier", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ScmSupplierSearch_ScmSupplierSearch_Data_ScmSupplier(data.Name ?? throw new global::System.ArgumentNullException(), data.SupplierNumber ?? throw new global::System.ArgumentNullException(), MapNonNullableIScmSupplierSearch_ScmSupplierSearch_Data_SitesNonNullableArray(data.Sites ?? throw new global::System.ArgumentNullException(), snapshot));
             }
             else
             {
@@ -15051,17 +17292,48 @@ namespace AggieEnterpriseApi.State
             return returnValue;
         }
 
-        private global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_PpmSegments? MapIKfsConvertAccount_KfsConvertAccount_PpmSegments(global::AggieEnterpriseApi.State.PpmCostCenterSegmentsData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data_Sites> MapNonNullableIScmSupplierSearch_ScmSupplierSearch_Data_SitesNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ScmSupplierSiteData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var scmSupplierSites = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data_Sites>();
+            foreach (global::AggieEnterpriseApi.State.ScmSupplierSiteData child in list)
+            {
+                scmSupplierSites.Add(MapNonNullableIScmSupplierSearch_ScmSupplierSearch_Data_Sites(child, snapshot));
+            }
+
+            return scmSupplierSites;
+        }
+
+        private global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data_Sites MapNonNullableIScmSupplierSearch_ScmSupplierSearch_Data_Sites(global::AggieEnterpriseApi.State.ScmSupplierSiteData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IScmSupplierSearch_ScmSupplierSearch_Data_Sites returnValue = default !;
+            if (data.__typename.Equals("ScmSupplierSite", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ScmSupplierSearch_ScmSupplierSearch_Data_Sites_ScmSupplierSite(data.SupplierSiteCode ?? throw new global::System.ArgumentNullException(), MapIScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location(data.Location, snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location? MapIScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location(global::AggieEnterpriseApi.State.ErpLocationData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
         {
             if (data is null)
             {
                 return null;
             }
 
-            IKfsConvertAccount_KfsConvertAccount_PpmSegments returnValue = default !;
-            if (data?.__typename.Equals("PpmCostCenterSegments", global::System.StringComparison.Ordinal) ?? false)
+            IScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location returnValue = default !;
+            if (data?.__typename.Equals("ErpLocation", global::System.StringComparison.Ordinal) ?? false)
             {
-                returnValue = new KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments(data.Project ?? throw new global::System.ArgumentNullException(), data.Organization ?? throw new global::System.ArgumentNullException(), data.Task ?? throw new global::System.ArgumentNullException(), data.Award, data.FundingSource);
+                returnValue = new ScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location_ErpLocation(data.AddressLine1, data.AddressLine2, data.AddressLine3, data.AddressLine4, data.City, data.State, data.PostalCode);
             }
             else
             {
@@ -15078,29 +17350,28 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class KfsConvertAccountResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    public partial class ScmSupplierSearchResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
         private readonly global::System.UInt64 _version;
-        public KfsConvertAccountResultInfo(global::AggieEnterpriseApi.State.KfsConvertAccountOutputData kfsConvertAccount, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        public ScmSupplierSearchResultInfo(global::AggieEnterpriseApi.State.ScmSupplierSearchResultsData scmSupplierSearch, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
         {
-            KfsConvertAccount = kfsConvertAccount;
+            ScmSupplierSearch = scmSupplierSearch;
             _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
             _version = version;
         }
 
         /// <summary>
-        /// Accepts a chart and account (and optionally a sub account and/or project code) which was converted as part of cutover and returns the cost center portion with matching GL or POET segments needed to record a transaction.  If no match is found when a sub account or project code is provided, the conversion will revert to only using the chart and account.  The attributes used for the returned converted values will be included in the response.
-        /// 
-        /// In the case of a POET segment response, an array of tasks will be returned.  The data conversion mapping does not contain that information.  At cutover, there will be only one task per project.  However, additional tasks will be added as part of use after go-live.
+        /// Search for ScmSupplier objects by multiple properties.
+        /// See the ScmSupplierFilterInput type for options.
         /// </summary>
-        public global::AggieEnterpriseApi.State.KfsConvertAccountOutputData KfsConvertAccount { get; }
+        public global::AggieEnterpriseApi.State.ScmSupplierSearchResultsData ScmSupplierSearch { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
         public global::System.UInt64 Version => _version;
         public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
         {
-            return new KfsConvertAccountResultInfo(KfsConvertAccount, _entityIds, version);
+            return new ScmSupplierSearchResultInfo(ScmSupplierSearch, _entityIds, version);
         }
     }
 
@@ -17098,6 +19369,119 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class KfsConvertAccountResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.KfsConvertAccountResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public KfsConvertAccountResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IKfsConvertAccountResult);
+        public KfsConvertAccountResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is KfsConvertAccountResultInfo info)
+            {
+                return new KfsConvertAccountResult(MapNonNullableIKfsConvertAccount_KfsConvertAccount(info.KfsConvertAccount, snapshot));
+            }
+
+            throw new global::System.ArgumentException("KfsConvertAccountResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount MapNonNullableIKfsConvertAccount_KfsConvertAccount(global::AggieEnterpriseApi.State.KfsConvertAccountOutputData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IKfsConvertAccount_KfsConvertAccount returnValue = default !;
+            if (data.__typename.Equals("KfsConvertAccountOutput", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new KfsConvertAccount_KfsConvertAccount_KfsConvertAccountOutput(data.MappingFound ?? throw new global::System.ArgumentNullException(), MapIKfsConvertAccount_KfsConvertAccount_GlSegments(data.GlSegments, snapshot), MapIKfsConvertAccount_KfsConvertAccount_PpmSegments(data.PpmSegments, snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_GlSegments? MapIKfsConvertAccount_KfsConvertAccount_GlSegments(global::AggieEnterpriseApi.State.GlCostCenterSegmentsData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IKfsConvertAccount_KfsConvertAccount_GlSegments returnValue = default !;
+            if (data?.__typename.Equals("GlCostCenterSegments", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new KfsConvertAccount_KfsConvertAccount_GlSegments_GlCostCenterSegments(data.Entity ?? throw new global::System.ArgumentNullException(), data.Fund ?? throw new global::System.ArgumentNullException(), data.Department ?? throw new global::System.ArgumentNullException(), data.Purpose, data.Project, data.Program, data.Activity);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IKfsConvertAccount_KfsConvertAccount_PpmSegments? MapIKfsConvertAccount_KfsConvertAccount_PpmSegments(global::AggieEnterpriseApi.State.PpmCostCenterSegmentsData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IKfsConvertAccount_KfsConvertAccount_PpmSegments returnValue = default !;
+            if (data?.__typename.Equals("PpmCostCenterSegments", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new KfsConvertAccount_KfsConvertAccount_PpmSegments_PpmCostCenterSegments(data.Project ?? throw new global::System.ArgumentNullException(), data.Organization ?? throw new global::System.ArgumentNullException(), data.Task ?? throw new global::System.ArgumentNullException(), data.Award, data.FundingSource);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class KfsConvertAccountResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public KfsConvertAccountResultInfo(global::AggieEnterpriseApi.State.KfsConvertAccountOutputData kfsConvertAccount, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            KfsConvertAccount = kfsConvertAccount;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Accepts a chart and account (and optionally a sub account and/or project code) which was converted as part of cutover and returns the cost center portion with matching GL or POET segments needed to record a transaction.  If no match is found when a sub account or project code is provided, the conversion will revert to only using the chart and account.  The attributes used for the returned converted values will be included in the response.
+        /// 
+        /// In the case of a POET segment response, an array of tasks will be returned.  The data conversion mapping does not contain that information.  At cutover, there will be only one task per project.  However, additional tasks will be added as part of use after go-live.
+        /// </summary>
+        public global::AggieEnterpriseApi.State.KfsConvertAccountOutputData KfsConvertAccount { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new KfsConvertAccountResultInfo(KfsConvertAccount, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmStringSegmentsValidateResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.PpmStringSegmentsValidateResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -17857,6 +20241,82 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IScmSupplierFilterInputInfo
+    {
+        global::System.Boolean IsSearchCommonSet { get; }
+
+        global::System.Boolean IsNameSet { get; }
+
+        global::System.Boolean IsAliasNameSet { get; }
+
+        global::System.Boolean IsAlternateNameSet { get; }
+
+        global::System.Boolean IsSupplierIdSet { get; }
+
+        global::System.Boolean IsSupplierNumberSet { get; }
+
+        global::System.Boolean IsLastUpdateDateTimeSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface ISearchCommonInputsInfo
+    {
+        global::System.Boolean IsSortSet { get; }
+
+        global::System.Boolean IsLimitSet { get; }
+
+        global::System.Boolean IsStartIndexSet { get; }
+
+        global::System.Boolean IsIncludeTotalResultCountSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IStringFilterInputInfo
+    {
+        global::System.Boolean IsEqSet { get; }
+
+        global::System.Boolean IsNeSet { get; }
+
+        global::System.Boolean IsLeSet { get; }
+
+        global::System.Boolean IsLtSet { get; }
+
+        global::System.Boolean IsGeSet { get; }
+
+        global::System.Boolean IsGtSet { get; }
+
+        global::System.Boolean IsBeginsWithSet { get; }
+
+        global::System.Boolean IsEndsWithSet { get; }
+
+        global::System.Boolean IsContainsSet { get; }
+
+        global::System.Boolean IsNotContainsSet { get; }
+
+        global::System.Boolean IsBetweenSet { get; }
+
+        global::System.Boolean IsInSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IDateFilterInputInfo
+    {
+        global::System.Boolean IsEqSet { get; }
+
+        global::System.Boolean IsNeSet { get; }
+
+        global::System.Boolean IsLeSet { get; }
+
+        global::System.Boolean IsLtSet { get; }
+
+        global::System.Boolean IsGeSet { get; }
+
+        global::System.Boolean IsGtSet { get; }
+
+        global::System.Boolean IsBetweenSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     internal interface IGlJournalRequestInputInfo
     {
         global::System.Boolean IsHeaderSet { get; }
@@ -18067,53 +20527,45 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class KfsConvertAccountBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IKfsConvertAccountResult>
+    public partial class ScmSupplierSearchBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmSupplierSearchResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
         private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
-        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IKfsConvertAccountResult> _resultDataFactory;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _kfsChartCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _kfsAccountNumberParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _kfsSubAccountNumberParser;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmSupplierSearchResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _positiveIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _nonNegativeIntParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpEntityCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFundCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpDepartmentCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPurposeCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProjectCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProgramCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpActivityCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmProjectNumberParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseOrganizationCodeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmTaskNumberParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmAwardNumberParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmFundingSourceNumberParser;
-        public KfsConvertAccountBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IKfsConvertAccountResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTime> _dateParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString360Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int64, global::System.Int64> _longParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString15Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _scmAddressLineParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _cityNameParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString60Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPostalCodeParser;
+        public ScmSupplierSearchBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmSupplierSearchResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
             _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
             _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
-            _kfsChartCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("KfsChartCode") ?? throw new global::System.ArgumentException("No serializer for type `KfsChartCode` found.");
-            _kfsAccountNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("KfsAccountNumber") ?? throw new global::System.ArgumentException("No serializer for type `KfsAccountNumber` found.");
-            _kfsSubAccountNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("KfsSubAccountNumber") ?? throw new global::System.ArgumentException("No serializer for type `KfsSubAccountNumber` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _positiveIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("PositiveInt") ?? throw new global::System.ArgumentException("No serializer for type `PositiveInt` found.");
+            _nonNegativeIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("NonNegativeInt") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeInt` found.");
             _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
-            _erpEntityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpEntityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpEntityCode` found.");
-            _erpFundCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFundCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpFundCode` found.");
-            _erpDepartmentCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpDepartmentCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpDepartmentCode` found.");
-            _erpPurposeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPurposeCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPurposeCode` found.");
-            _erpProjectCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProjectCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProjectCode` found.");
-            _erpProgramCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProgramCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProgramCode` found.");
-            _erpActivityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpActivityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpActivityCode` found.");
-            _ppmProjectNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmProjectNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmProjectNumber` found.");
-            _ppmExpenseOrganizationCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseOrganizationCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseOrganizationCode` found.");
-            _ppmTaskNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmTaskNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmTaskNumber` found.");
-            _ppmAwardNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmAwardNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmAwardNumber` found.");
-            _ppmFundingSourceNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmFundingSourceNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmFundingSourceNumber` found.");
+            _dateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTime>("Date") ?? throw new global::System.ArgumentException("No serializer for type `Date` found.");
+            _nonEmptyTrimmedString360Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString360") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString360` found.");
+            _longParser = serializerResolver.GetLeafValueParser<global::System.Int64, global::System.Int64>("Long") ?? throw new global::System.ArgumentException("No serializer for type `Long` found.");
+            _nonEmptyTrimmedString15Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString15") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString15` found.");
+            _scmAddressLineParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ScmAddressLine") ?? throw new global::System.ArgumentException("No serializer for type `ScmAddressLine` found.");
+            _cityNameParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("CityName") ?? throw new global::System.ArgumentException("No serializer for type `CityName` found.");
+            _nonEmptyTrimmedString60Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString60") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString60` found.");
+            _erpPostalCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPostalCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPostalCode` found.");
         }
 
-        public global::StrawberryShake.IOperationResult<IKfsConvertAccountResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        public global::StrawberryShake.IOperationResult<IScmSupplierSearchResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
         {
-            (IKfsConvertAccountResult Result, KfsConvertAccountResultInfo Info)? data = null;
+            (IScmSupplierSearchResult Result, ScmSupplierSearchResultInfo Info)? data = null;
             global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
             if (response.Exception is null)
             {
@@ -18149,10 +20601,10 @@ namespace AggieEnterpriseApi.State
                 }
             }
 
-            return new global::StrawberryShake.OperationResult<IKfsConvertAccountResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+            return new global::StrawberryShake.OperationResult<IScmSupplierSearchResult>(data?.Result, data?.Info, _resultDataFactory, errors);
         }
 
-        private (IKfsConvertAccountResult, KfsConvertAccountResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        private (IScmSupplierSearchResult, ScmSupplierSearchResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
         {
             var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
             global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
@@ -18160,11 +20612,11 @@ namespace AggieEnterpriseApi.State
             {
                 snapshot = session.CurrentSnapshot;
             });
-            var resultInfo = new KfsConvertAccountResultInfo(DeserializeNonNullableIKfsConvertAccount_KfsConvertAccount(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "kfsConvertAccount")), entityIds, snapshot.Version);
+            var resultInfo = new ScmSupplierSearchResultInfo(DeserializeNonNullableIScmSupplierSearch_ScmSupplierSearch(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "scmSupplierSearch")), entityIds, snapshot.Version);
             return (_resultDataFactory.Create(resultInfo), resultInfo);
         }
 
-        private global::AggieEnterpriseApi.State.KfsConvertAccountOutputData DeserializeNonNullableIKfsConvertAccount_KfsConvertAccount(global::System.Text.Json.JsonElement? obj)
+        private global::AggieEnterpriseApi.State.ScmSupplierSearchResultsData DeserializeNonNullableIScmSupplierSearch_ScmSupplierSearch(global::System.Text.Json.JsonElement? obj)
         {
             if (!obj.HasValue)
             {
@@ -18172,35 +20624,41 @@ namespace AggieEnterpriseApi.State
             }
 
             var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("KfsConvertAccountOutput", global::System.StringComparison.Ordinal) ?? false)
+            if (typename?.Equals("ScmSupplierSearchResults", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::AggieEnterpriseApi.State.KfsConvertAccountOutputData(typename, mappingFound: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "mappingFound")), glSegments: DeserializeIKfsConvertAccount_KfsConvertAccount_GlSegments(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "glSegments")), ppmSegments: DeserializeIKfsConvertAccount_KfsConvertAccount_PpmSegments(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "ppmSegments")));
+                return new global::AggieEnterpriseApi.State.ScmSupplierSearchResultsData(typename, data: DeserializeNonNullableIScmSupplierSearch_ScmSupplierSearch_DataNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "data")));
             }
 
             throw new global::System.NotSupportedException();
         }
 
-        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ScmSupplierData> DeserializeNonNullableIScmSupplierSearch_ScmSupplierSearch_DataNonNullableArray(global::System.Text.Json.JsonElement? obj)
         {
             if (!obj.HasValue)
             {
                 throw new global::System.ArgumentNullException();
             }
 
-            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+            var scmSuppliers = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.ScmSupplierData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                scmSuppliers.Add(DeserializeNonNullableIScmSupplierSearch_ScmSupplierSearch_Data(child));
+            }
+
+            return scmSuppliers;
         }
 
-        private global::AggieEnterpriseApi.State.GlCostCenterSegmentsData? DeserializeIKfsConvertAccount_KfsConvertAccount_GlSegments(global::System.Text.Json.JsonElement? obj)
+        private global::AggieEnterpriseApi.State.ScmSupplierData DeserializeNonNullableIScmSupplierSearch_ScmSupplierSearch_Data(global::System.Text.Json.JsonElement? obj)
         {
             if (!obj.HasValue)
             {
-                return null;
+                throw new global::System.ArgumentNullException();
             }
 
             var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("GlCostCenterSegments", global::System.StringComparison.Ordinal) ?? false)
+            if (typename?.Equals("ScmSupplier", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::AggieEnterpriseApi.State.GlCostCenterSegmentsData(typename, entity: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "entity")), fund: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fund")), department: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "department")), purpose: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "purpose")), project: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "project")), program: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "program")), activity: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "activity")));
+                return new global::AggieEnterpriseApi.State.ScmSupplierData(typename, name: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), supplierNumber: DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "supplierNumber")), sites: DeserializeNonNullableIScmSupplierSearch_ScmSupplierSearch_Data_SitesNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "sites")));
             }
 
             throw new global::System.NotSupportedException();
@@ -18213,7 +20671,65 @@ namespace AggieEnterpriseApi.State
                 throw new global::System.ArgumentNullException();
             }
 
-            return _erpEntityCodeParser.Parse(obj.Value.GetString()!);
+            return _nonEmptyTrimmedString360Parser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Int64 DeserializeNonNullableInt64(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _longParser.Parse(obj.Value.GetInt64()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ScmSupplierSiteData> DeserializeNonNullableIScmSupplierSearch_ScmSupplierSearch_Data_SitesNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var scmSupplierSites = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.ScmSupplierSiteData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                scmSupplierSites.Add(DeserializeNonNullableIScmSupplierSearch_ScmSupplierSearch_Data_Sites(child));
+            }
+
+            return scmSupplierSites;
+        }
+
+        private global::AggieEnterpriseApi.State.ScmSupplierSiteData DeserializeNonNullableIScmSupplierSearch_ScmSupplierSearch_Data_Sites(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ScmSupplierSite", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ScmSupplierSiteData(typename, supplierSiteCode: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "supplierSiteCode")), location: DeserializeIScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "location")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.ErpLocationData? DeserializeIScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ErpLocation", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ErpLocationData(typename, addressLine1: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine1")), addressLine2: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine2")), addressLine3: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine3")), addressLine4: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine4")), city: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "city")), state: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "state")), postalCode: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "postalCode")));
+            }
+
+            throw new global::System.NotSupportedException();
         }
 
         private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
@@ -18223,39 +20739,7 @@ namespace AggieEnterpriseApi.State
                 return null;
             }
 
-            return _erpPurposeCodeParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::AggieEnterpriseApi.State.PpmCostCenterSegmentsData? DeserializeIKfsConvertAccount_KfsConvertAccount_PpmSegments(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("PpmCostCenterSegments", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.PpmCostCenterSegmentsData(typename, project: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "project")), organization: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "organization")), task: DeserializeNonNullableStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "task")), award: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "award")), fundingSource: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fundingSource")));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::System.String> DeserializeNonNullableStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var ppmTaskNumbers = new global::System.Collections.Generic.List<global::System.String>();
-            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
-            {
-                ppmTaskNumbers.Add(DeserializeNonNullableString(child));
-            }
-
-            return ppmTaskNumbers;
+            return _scmAddressLineParser.Parse(obj.Value.GetString()!);
         }
     }
 
@@ -19621,6 +22105,199 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class KfsConvertAccountBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IKfsConvertAccountResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IKfsConvertAccountResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _kfsChartCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _kfsAccountNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _kfsSubAccountNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpEntityCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpFundCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpDepartmentCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPurposeCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProjectCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpProgramCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpActivityCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmProjectNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmExpenseOrganizationCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmTaskNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmAwardNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmFundingSourceNumberParser;
+        public KfsConvertAccountBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IKfsConvertAccountResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _kfsChartCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("KfsChartCode") ?? throw new global::System.ArgumentException("No serializer for type `KfsChartCode` found.");
+            _kfsAccountNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("KfsAccountNumber") ?? throw new global::System.ArgumentException("No serializer for type `KfsAccountNumber` found.");
+            _kfsSubAccountNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("KfsSubAccountNumber") ?? throw new global::System.ArgumentException("No serializer for type `KfsSubAccountNumber` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _erpEntityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpEntityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpEntityCode` found.");
+            _erpFundCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpFundCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpFundCode` found.");
+            _erpDepartmentCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpDepartmentCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpDepartmentCode` found.");
+            _erpPurposeCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPurposeCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPurposeCode` found.");
+            _erpProjectCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProjectCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProjectCode` found.");
+            _erpProgramCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpProgramCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpProgramCode` found.");
+            _erpActivityCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpActivityCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpActivityCode` found.");
+            _ppmProjectNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmProjectNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmProjectNumber` found.");
+            _ppmExpenseOrganizationCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmExpenseOrganizationCode") ?? throw new global::System.ArgumentException("No serializer for type `PpmExpenseOrganizationCode` found.");
+            _ppmTaskNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmTaskNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmTaskNumber` found.");
+            _ppmAwardNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmAwardNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmAwardNumber` found.");
+            _ppmFundingSourceNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmFundingSourceNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmFundingSourceNumber` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IKfsConvertAccountResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IKfsConvertAccountResult Result, KfsConvertAccountResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IKfsConvertAccountResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IKfsConvertAccountResult, KfsConvertAccountResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new KfsConvertAccountResultInfo(DeserializeNonNullableIKfsConvertAccount_KfsConvertAccount(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "kfsConvertAccount")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.KfsConvertAccountOutputData DeserializeNonNullableIKfsConvertAccount_KfsConvertAccount(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("KfsConvertAccountOutput", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.KfsConvertAccountOutputData(typename, mappingFound: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "mappingFound")), glSegments: DeserializeIKfsConvertAccount_KfsConvertAccount_GlSegments(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "glSegments")), ppmSegments: DeserializeIKfsConvertAccount_KfsConvertAccount_PpmSegments(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "ppmSegments")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+
+        private global::AggieEnterpriseApi.State.GlCostCenterSegmentsData? DeserializeIKfsConvertAccount_KfsConvertAccount_GlSegments(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("GlCostCenterSegments", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.GlCostCenterSegmentsData(typename, entity: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "entity")), fund: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fund")), department: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "department")), purpose: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "purpose")), project: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "project")), program: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "program")), activity: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "activity")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _erpEntityCodeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _erpPurposeCodeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::AggieEnterpriseApi.State.PpmCostCenterSegmentsData? DeserializeIKfsConvertAccount_KfsConvertAccount_PpmSegments(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("PpmCostCenterSegments", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.PpmCostCenterSegmentsData(typename, project: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "project")), organization: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "organization")), task: DeserializeNonNullableStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "task")), award: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "award")), fundingSource: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "fundingSource")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String> DeserializeNonNullableStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var ppmTaskNumbers = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                ppmTaskNumbers.Add(DeserializeNonNullableString(child));
+            }
+
+            return ppmTaskNumbers;
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmStringSegmentsValidateBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmStringSegmentsValidateResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -20880,88 +23557,104 @@ namespace AggieEnterpriseApi.State
         }
     }
 
-    ///<summary>Return type when requesting conversion of a KFS Account to the Oracle costing segments.</summary>
+    ///<summary>Search results object for ScmSupplier</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class KfsConvertAccountOutputData
+    public partial class ScmSupplierSearchResultsData
     {
-        public KfsConvertAccountOutputData(global::System.String __typename, global::System.Boolean? mappingFound = default !, global::AggieEnterpriseApi.State.GlCostCenterSegmentsData? glSegments = default !, global::AggieEnterpriseApi.State.PpmCostCenterSegmentsData? ppmSegments = default !)
+        public ScmSupplierSearchResultsData(global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ScmSupplierData>? data = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
-            MappingFound = mappingFound;
-            GlSegments = glSegments;
-            PpmSegments = ppmSegments;
+            Data = data;
         }
 
         public global::System.String __typename { get; }
 
-        ///<summary>Whether the account was found in the mapping table</summary>
-        public global::System.Boolean? MappingFound { get; }
-
-        ///<summary>If a GL cost center, the segments which could be derived from the given chart-account.</summary>
-        public global::AggieEnterpriseApi.State.GlCostCenterSegmentsData? GlSegments { get; }
-
-        ///<summary>If a POET cost center, the segments which could be derived from the given chart-account.</summary>
-        public global::AggieEnterpriseApi.State.PpmCostCenterSegmentsData? PpmSegments { get; }
+        ///<summary>Results of the search</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ScmSupplierData>? Data { get; }
     }
 
-    ///<summary>Cost-center components of Oracle GL Segments which can be derived from the KFS Chart-Account-Sub Account-Project.</summary>
+    ///<summary>A defined supplier of goods or services in the ERP system.Each supplier may have multiple sites at which they do business.  It is necessary to identify both the supplier and site when submitting a payment.Supplier in Oracle replaces Vendor in KFS.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class GlCostCenterSegmentsData
+    public partial class ScmSupplierData
     {
-        public GlCostCenterSegmentsData(global::System.String __typename, global::System.String? entity = default !, global::System.String? fund = default !, global::System.String? department = default !, global::System.String? purpose = default !, global::System.String? project = default !, global::System.String? program = default !, global::System.String? activity = default !)
+        public ScmSupplierData(global::System.String __typename, global::System.String? name = default !, global::System.Int64? supplierNumber = default !, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ScmSupplierSiteData>? sites = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
-            Entity = entity;
-            Fund = fund;
-            Department = department;
-            Purpose = purpose;
-            Project = project;
-            Program = program;
-            Activity = activity;
+            Name = name;
+            SupplierNumber = supplierNumber;
+            Sites = sites;
         }
 
         public global::System.String __typename { get; }
 
-        public global::System.String? Entity { get; }
+        ///<summary>Supplier: Name of the supplier.</summary>
+        public global::System.String? Name { get; }
 
-        public global::System.String? Fund { get; }
+        ///<summary>Unique ID for the supplier used to reference it within the UI and in interfaces.  This largely corresponds to the Vendor ID in KFS.</summary>
+        public global::System.Int64? SupplierNumber { get; }
 
-        public global::System.String? Department { get; }
-
-        public global::System.String? Purpose { get; }
-
-        public global::System.String? Project { get; }
-
-        public global::System.String? Program { get; }
-
-        public global::System.String? Activity { get; }
+        ///<summary>Supplier business locations referenced when making orders or payments to the supplier.</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ScmSupplierSiteData>? Sites { get; }
     }
 
-    ///<summary>Cost-center components of the POET Segments which can be derived from the KFS Chart-Account-Sub Account-Project.</summary>
+    ///<summary>Supplier Site represents a business location referenced when making orders or payments to the supplier.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmCostCenterSegmentsData
+    public partial class ScmSupplierSiteData
     {
-        public PpmCostCenterSegmentsData(global::System.String __typename, global::System.String? project = default !, global::System.String? organization = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? task = default !, global::System.String? award = default !, global::System.String? fundingSource = default !)
+        public ScmSupplierSiteData(global::System.String __typename, global::System.String? supplierSiteCode = default !, global::AggieEnterpriseApi.State.ErpLocationData? location = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
-            Project = project;
-            Organization = organization;
-            Task = task;
-            Award = award;
-            FundingSource = fundingSource;
+            SupplierSiteCode = supplierSiteCode;
+            Location = location;
         }
 
         public global::System.String __typename { get; }
 
-        public global::System.String? Project { get; }
+        ///<summary>Code used to identify the site on the UI and in interfaces.</summary>
+        public global::System.String? SupplierSiteCode { get; }
 
-        public global::System.String? Organization { get; }
+        ///<summary>Physical address of the site.</summary>
+        public global::AggieEnterpriseApi.State.ErpLocationData? Location { get; }
+    }
 
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Task { get; }
+    ///<summary>Locations referenced by Supplier and AR Customer Sites</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpLocationData
+    {
+        public ErpLocationData(global::System.String __typename, global::System.String? addressLine1 = default !, global::System.String? addressLine2 = default !, global::System.String? addressLine3 = default !, global::System.String? addressLine4 = default !, global::System.String? city = default !, global::System.String? state = default !, global::System.String? postalCode = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            AddressLine1 = addressLine1;
+            AddressLine2 = addressLine2;
+            AddressLine3 = addressLine3;
+            AddressLine4 = addressLine4;
+            City = city;
+            State = state;
+            PostalCode = postalCode;
+        }
 
-        public global::System.String? Award { get; }
+        public global::System.String __typename { get; }
 
-        public global::System.String? FundingSource { get; }
+        ///<summary>Address Line 1</summary>
+        public global::System.String? AddressLine1 { get; }
+
+        ///<summary>Address Line 2</summary>
+        public global::System.String? AddressLine2 { get; }
+
+        ///<summary>Address Line 3</summary>
+        public global::System.String? AddressLine3 { get; }
+
+        ///<summary>Address Line 4</summary>
+        public global::System.String? AddressLine4 { get; }
+
+        ///<summary>City of the supplier address</summary>
+        public global::System.String? City { get; }
+
+        ///<summary>State of the supplier address</summary>
+        public global::System.String? State { get; }
+
+        ///<summary>Postal code of the supplier address</summary>
+        public global::System.String? PostalCode { get; }
     }
 
     ///<summary>Output type for GLJournal requests and follow-up status updates.Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.</summary>
@@ -21087,6 +23780,90 @@ namespace AggieEnterpriseApi.State
 
         ///<summary>Time the request was noted as completed processing, whether successful or not.</summary>
         public global::System.DateTimeOffset? ProcessedDateTime { get; }
+    }
+
+    ///<summary>Return type when requesting conversion of a KFS Account to the Oracle costing segments.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class KfsConvertAccountOutputData
+    {
+        public KfsConvertAccountOutputData(global::System.String __typename, global::System.Boolean? mappingFound = default !, global::AggieEnterpriseApi.State.GlCostCenterSegmentsData? glSegments = default !, global::AggieEnterpriseApi.State.PpmCostCenterSegmentsData? ppmSegments = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            MappingFound = mappingFound;
+            GlSegments = glSegments;
+            PpmSegments = ppmSegments;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Whether the account was found in the mapping table</summary>
+        public global::System.Boolean? MappingFound { get; }
+
+        ///<summary>If a GL cost center, the segments which could be derived from the given chart-account.</summary>
+        public global::AggieEnterpriseApi.State.GlCostCenterSegmentsData? GlSegments { get; }
+
+        ///<summary>If a POET cost center, the segments which could be derived from the given chart-account.</summary>
+        public global::AggieEnterpriseApi.State.PpmCostCenterSegmentsData? PpmSegments { get; }
+    }
+
+    ///<summary>Cost-center components of Oracle GL Segments which can be derived from the KFS Chart-Account-Sub Account-Project.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class GlCostCenterSegmentsData
+    {
+        public GlCostCenterSegmentsData(global::System.String __typename, global::System.String? entity = default !, global::System.String? fund = default !, global::System.String? department = default !, global::System.String? purpose = default !, global::System.String? project = default !, global::System.String? program = default !, global::System.String? activity = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            Entity = entity;
+            Fund = fund;
+            Department = department;
+            Purpose = purpose;
+            Project = project;
+            Program = program;
+            Activity = activity;
+        }
+
+        public global::System.String __typename { get; }
+
+        public global::System.String? Entity { get; }
+
+        public global::System.String? Fund { get; }
+
+        public global::System.String? Department { get; }
+
+        public global::System.String? Purpose { get; }
+
+        public global::System.String? Project { get; }
+
+        public global::System.String? Program { get; }
+
+        public global::System.String? Activity { get; }
+    }
+
+    ///<summary>Cost-center components of the POET Segments which can be derived from the KFS Chart-Account-Sub Account-Project.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmCostCenterSegmentsData
+    {
+        public PpmCostCenterSegmentsData(global::System.String __typename, global::System.String? project = default !, global::System.String? organization = default !, global::System.Collections.Generic.IReadOnlyList<global::System.String>? task = default !, global::System.String? award = default !, global::System.String? fundingSource = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            Project = project;
+            Organization = organization;
+            Task = task;
+            Award = award;
+            FundingSource = fundingSource;
+        }
+
+        public global::System.String __typename { get; }
+
+        public global::System.String? Project { get; }
+
+        public global::System.String? Organization { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Task { get; }
+
+        public global::System.String? Award { get; }
+
+        public global::System.String? FundingSource { get; }
     }
 
     ///<summary>Return data structure when validating a set of PPM segment values.The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.</summary>
@@ -21445,12 +24222,13 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::AggieEnterpriseApi.State.AggieEnterpriseClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.KfsConvertAccountQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmSupplierSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.DeptParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.FundParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.CoaDetailsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.KfsConvertAccountQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmStringSegmentsValidateQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmSegmentsValidateQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmTaskByProjectNumberAndTaskNumberQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -21510,43 +24288,51 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteArraySerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("KfsChartCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("KfsAccountNumber"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("KfsSubAccountNumber"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpEntityCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFundCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString360"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString15"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ScmAddressLine"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("CityName"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString60"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpPostalCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDepartmentCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpPurposeCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpProjectCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpProgramCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpActivityCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmProjectNumber"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmExpenseOrganizationCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmTaskNumber"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmAwardNumber"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmFundingSourceNumber"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString240"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFundCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("LocalDate"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString80"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpNameField100"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDescriptionField240"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlReferenceField25"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString15"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlSegmentString"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmSegmentString"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlReferenceField10"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("GlDescriptionField40"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpEntityCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpAccountCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpPurposeCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpProjectCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpProgramCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpActivityCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFlex1Code"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFlex2Code"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmProjectNumber"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmTaskNumber"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmExpenseOrganizationCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmExpenseTypeCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmAwardNumber"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("PpmFundingSourceNumber"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("JSON"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("KfsChartCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("KfsAccountNumber"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("KfsSubAccountNumber"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString100"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString30"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("EmailAddress"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString1000"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString25"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString60"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmSupplierFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.SearchCommonInputsInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.StringFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.DateFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalRequestInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ActionRequestHeaderInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalInputInputValueFormatter>(services);
@@ -21559,13 +24345,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionLineInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionDistributionInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IKfsConvertAccountResult>, global::AggieEnterpriseApi.State.KfsConvertAccountResultFactory>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IKfsConvertAccountResult>>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IKfsConvertAccountQuery>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IKfsConvertAccountResult>, global::AggieEnterpriseApi.State.KfsConvertAccountBuilder>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IKfsConvertAccountResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IKfsConvertAccountResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IKfsConvertAccountResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.KfsConvertAccountQuery>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IKfsConvertAccountQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.KfsConvertAccountQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmSupplierSearchResult>, global::AggieEnterpriseApi.State.ScmSupplierSearchResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmSupplierSearchResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IScmSupplierSearchQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmSupplierSearchResult>, global::AggieEnterpriseApi.State.ScmSupplierSearchBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IScmSupplierSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmSupplierSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmSupplierSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ScmSupplierSearchQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IScmSupplierSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmSupplierSearchQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>, global::AggieEnterpriseApi.State.DeptParentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IDeptParentsQuery>(sp));
@@ -21601,6 +24387,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.ICoaDetailsResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.ICoaDetailsResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.ICoaDetailsResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.CoaDetailsQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ICoaDetailsQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.CoaDetailsQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IKfsConvertAccountResult>, global::AggieEnterpriseApi.State.KfsConvertAccountResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IKfsConvertAccountResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IKfsConvertAccountQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IKfsConvertAccountResult>, global::AggieEnterpriseApi.State.KfsConvertAccountBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IKfsConvertAccountResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IKfsConvertAccountResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IKfsConvertAccountResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.KfsConvertAccountQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IKfsConvertAccountQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.KfsConvertAccountQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmStringSegmentsValidateResult>, global::AggieEnterpriseApi.State.PpmStringSegmentsValidateResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmStringSegmentsValidateResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery>(sp));
