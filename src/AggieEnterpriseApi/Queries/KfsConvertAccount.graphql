@@ -1,0 +1,21 @@
+query kfsConvertAccount ($chart: KfsChartCode!, $account: KfsAccountNumber!, $subAccount: KfsSubAccountNumber) {
+    kfsConvertAccount (chart: $chart, account: $account, subAccount: $subAccount) {
+        mappingFound
+        glSegments {
+            entity
+            fund
+            department
+            purpose
+            project
+            program
+            activity
+        }
+        ppmSegments {
+            project
+            organization
+            task
+            award
+            fundingSource
+        }
+    }
+}

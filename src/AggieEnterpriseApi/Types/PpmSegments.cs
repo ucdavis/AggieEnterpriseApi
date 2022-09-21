@@ -12,6 +12,15 @@ public class PpmSegments
         Award = award;
         FundingSource = fundingSource;
     }
+    public PpmSegments(IKfsConvertAccount_KfsConvertAccount_PpmSegments segments)
+    {
+        Project = segments.Project;
+        Task = segments.Task.FirstOrDefault() ?? "TASK01";
+        Organization = segments.Organization;
+        ExpenditureType = "000000";
+        Award = segments.Award;
+        FundingSource = segments.FundingSource;
+    }
 
     /// <summary>
     /// Required: Managed Project Number

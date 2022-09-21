@@ -19,6 +19,22 @@ public class GlSegments
         Flex2 = flex2;
     }
 
+    public GlSegments(IKfsConvertAccount_KfsConvertAccount_GlSegments segments)
+    {
+        Account = "000000";
+        Activity = segments.Activity ?? "000000";
+        Department = segments.Department;
+        Entity = segments.Entity;
+        Fund = segments.Fund;
+        Program = segments.Program ?? "000";
+        Project = segments.Project ?? "0000000000";
+        Purpose = segments.Purpose ?? "00";
+
+        InterEntity = "0000";
+        Flex1 = "000000";
+        Flex2 = "000000";
+    }
+
     /// <summary>
     /// Required: Nature of the transaction, expense, income, liability, etc...
     /// </summary>
