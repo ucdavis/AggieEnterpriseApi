@@ -59,11 +59,13 @@ public class PrePurchasingTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
+        var saveId = Guid.NewGuid().ToString();
+
         var inputOrder = new ScmPurchaseRequisitionRequestInput
         {
             Header = new ActionRequestHeaderInput
             {
-                ConsumerTrackingId = Guid.NewGuid().ToString(),
+                ConsumerTrackingId = saveId,
                 ConsumerReferenceId = "ACRU-EHIT218 - TEST",
                 ConsumerNotes = "Workgroup: CRU Internal Workgroup",
                 BoundaryApplicationName = "PrePurchasing",
@@ -92,13 +94,6 @@ public class PrePurchasingTests : TestBase
         {
             segmentString = new GlSegments(distributionData.KfsConvertAccount.GlSegments).ToSegmentString();
         }
-        var distributions = new List<ScmPurchaseRequisitionDistributionInput>();
-
-        distributions.Add(new ScmPurchaseRequisitionDistributionInput
-        {
-            Amount = 102.99m,
-            GlSegmentString = segmentString,
-        });
 
         var Line1 = new ScmPurchaseRequisitionLineInput
         {
@@ -108,17 +103,73 @@ public class PrePurchasingTests : TestBase
             ItemDescription = "Dell 2155cnd Black Toner",
             PurchasingCategoryName = "15000FAC", //Completely faked
             UnitPrice = 102.99m,
-            Distributions = distributions,
+            Distributions = new[]
+            {
+                new ScmPurchaseRequisitionDistributionInput
+                {
+                    Amount = 102.99m,
+                    GlSegmentString = segmentString, 
+                }
+            },
         };
+
+        var Line2 = new ScmPurchaseRequisitionLineInput
+        {
+            Amount = 83.99m,
+            Quantity = 1,
+            UnitOfMeasure = "Each",
+            ItemDescription = "Dell 2155cdn Cyan Toner",
+            PurchasingCategoryName = "15000FAC", //Completely faked
+            UnitPrice = 83.99m,
+            Distributions = new[]
+            {
+                new ScmPurchaseRequisitionDistributionInput
+                {
+                    Amount = 83.99m,
+                    GlSegmentString = segmentString,
+                }
+            },
+        };
+
+        var Line3 = new ScmPurchaseRequisitionLineInput
+        {
+            Amount = 101.99m,
+            Quantity = 1,
+            UnitOfMeasure = "Each",
+            ItemDescription = "Dell 2155cdn Magenta Toner",
+            PurchasingCategoryName = "15000FAC", //Completely faked
+            UnitPrice = 101.99m,
+            Distributions = new[]
+            {
+                new ScmPurchaseRequisitionDistributionInput
+                {
+                    Amount = 101.99m,
+                    GlSegmentString = segmentString,
+                }
+            },
+        };
+
+        var Lines = new List<ScmPurchaseRequisitionLineInput>(3);
+        Lines.Add(Line1);
+        Lines.Add(Line2);
+        Lines.Add(Line3);
+
+        inputOrder.Payload.Lines = Lines;
+
 
 
         var NewOrderRequsition = await client.ScmPurchaseRequisitionCreate.ExecuteAsync(inputOrder);
 
-        //var data = newJournalEntry.ReadData();
+        var data = NewOrderRequsition.ReadData();
 
-        //// newly created journal goes right into pending status
-        //data.GlJournalRequest.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Pending);
-        //data.GlJournalRequest.ValidationResults.ShouldBeNull(); // shouldn't be any errors
+        data.ScmPurchaseRequisitionCreate.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionCreate.RequestStatus.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionCreate.RequestStatus.RequestId.ShouldNotBeNull();
+        //data.ScmPurchaseRequisitionCreate.RequestStatus.RequestStatus.ToString().ShouldBe("PENDING");
+        data.ScmPurchaseRequisitionCreate.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Pending);
+        data.ScmPurchaseRequisitionCreate.ValidationResults.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionCreate.ValidationResults.Valid.ShouldBeTrue();
+
     }
 
 
