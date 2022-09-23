@@ -32,6 +32,28 @@ public class PrePurchasingTests : TestBase
     }
 
     [Fact]
+    public async Task SearchLocation()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var searchParms = new ErpInstitutionLocationFilterInput();
+        searchParms.SearchCommon = new SearchCommonInputs();
+        searchParms.SearchCommon.IncludeTotalResultCount = true;
+        
+        searchParms.LocationCode = new StringFilterInput { Contains = "Mrak%38" };
+
+        var result = await client.ErpInstitutionLocationSearch.ExecuteAsync(searchParms);
+        var data = result.ReadData();
+        data.ErpInstitutionLocationSearch.ShouldNotBeNull();
+        data.ErpInstitutionLocationSearch.Metadata.ShouldNotBeNull();
+        data.ErpInstitutionLocationSearch.Metadata.TotalResultCount.ShouldBe(2);
+
+        data.ErpInstitutionLocationSearch.Data[1].LocationId.ShouldBe(300000008957706);
+        data.ErpInstitutionLocationSearch.Data[1].LocationCode.ShouldBe("Mrak Hall, Room 38");
+
+    }
+
+    [Fact]
     public async Task LookupKfsVendor()
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);

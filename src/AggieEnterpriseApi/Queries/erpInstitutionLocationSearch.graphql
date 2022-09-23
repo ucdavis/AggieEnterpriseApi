@@ -1,0 +1,27 @@
+query erpInstitutionLocationSearch ($filter: ErpInstitutionLocationFilterInput!) {
+    erpInstitutionLocationSearch (filter: $filter) {
+        metadata {
+            sort
+            limit
+            returnedResultCount
+            startIndex
+            nextStartIndex
+            totalResultCount
+        }
+        data {
+            locationId
+            locationCode
+            addressLine1
+            addressLine2
+            addressLine3
+            addressLine4
+            city
+            state
+            postalCode
+            receivingSite
+            deliverySite
+            enabled
+        
+        }
+    }
+}
