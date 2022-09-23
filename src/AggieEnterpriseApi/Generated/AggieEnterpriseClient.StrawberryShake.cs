@@ -4,595 +4,6 @@
 namespace AggieEnterpriseApi
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ErpInstitutionLocationSearchResult : global::System.IEquatable<ErpInstitutionLocationSearchResult>, IErpInstitutionLocationSearchResult
-    {
-        public ErpInstitutionLocationSearchResult(global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch erpInstitutionLocationSearch)
-        {
-            ErpInstitutionLocationSearch = erpInstitutionLocationSearch;
-        }
-
-        /// <summary>
-        /// Search for ErpInstitutionLocation objects by multiple properties.
-        /// See the ErpInstitutionLocationFilterInput type for options.
-        /// </summary>
-        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch ErpInstitutionLocationSearch { get; }
-
-        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearchResult? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (ErpInstitutionLocationSearch.Equals(other.ErpInstitutionLocationSearch));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((ErpInstitutionLocationSearchResult)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * ErpInstitutionLocationSearch.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    /// <summary>
-    /// Wrapper object for search results for ErpInstitutionLocation
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults : global::System.IEquatable<ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults>, IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults
-    {
-        public ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults(global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata metadata, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> data)
-        {
-            Metadata = metadata;
-            Data = data;
-        }
-
-        /// <summary>
-        /// Information about the search results returned.
-        /// </summary>
-        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata Metadata { get; }
-
-        /// <summary>
-        /// Results of the search
-        /// </summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> Data { get; }
-
-        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Metadata.Equals(other.Metadata)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Data, other.Data);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Metadata.GetHashCode();
-                foreach (var Data_elm in Data)
-                {
-                    hash ^= 397 * Data_elm.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    /// <summary>
-    /// Metadata about the search results returned in a given response.
-    /// Used to provide metrics of the results and the information necessary
-    /// to pull in the next set of records.
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata : global::System.IEquatable<ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata>, IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata
-    {
-        public ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata(global::System.Collections.Generic.IReadOnlyList<global::System.String>? sort, global::System.Int32? limit, global::System.Int32 returnedResultCount, global::System.Int32 startIndex, global::System.Int32? nextStartIndex, global::System.Int32? totalResultCount)
-        {
-            Sort = sort;
-            Limit = limit;
-            ReturnedResultCount = returnedResultCount;
-            StartIndex = startIndex;
-            NextStartIndex = nextStartIndex;
-            TotalResultCount = totalResultCount;
-        }
-
-        /// <summary>
-        /// Array of property names used to sort the results
-        /// </summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
-
-        /// <summary>
-        /// requested limit to the number of records to retrieve
-        /// </summary>
-        public global::System.Int32? Limit { get; }
-
-        /// <summary>
-        /// Results returned in the data property.
-        /// </summary>
-        public global::System.Int32 ReturnedResultCount { get; }
-
-        /// <summary>
-        /// Starting index for the current result set.
-        /// </summary>
-        public global::System.Int32 StartIndex { get; }
-
-        /// <summary>
-        /// Start index for getting the next page of results.  Unset if there are no more results.
-        /// </summary>
-        public global::System.Int32? NextStartIndex { get; }
-
-        /// <summary>
-        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
-        /// </summary>
-        public global::System.Int32? TotalResultCount { get; }
-
-        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Sort, other.Sort)) && Limit == other.Limit && ReturnedResultCount == other.ReturnedResultCount && StartIndex == other.StartIndex && NextStartIndex == other.NextStartIndex && TotalResultCount == other.TotalResultCount;
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (Sort != null)
-                {
-                    foreach (var Sort_elm in Sort)
-                    {
-                        hash ^= 397 * Sort_elm.GetHashCode();
-                    }
-                }
-
-                if (Limit != null)
-                {
-                    hash ^= 397 * Limit.GetHashCode();
-                }
-
-                hash ^= 397 * ReturnedResultCount.GetHashCode();
-                hash ^= 397 * StartIndex.GetHashCode();
-                if (NextStartIndex != null)
-                {
-                    hash ^= 397 * NextStartIndex.GetHashCode();
-                }
-
-                if (TotalResultCount != null)
-                {
-                    hash ^= 397 * TotalResultCount.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    /// <summary>
-    /// UC Davis locations that can be used for delivery or receiving locations.
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation : global::System.IEquatable<ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation>, IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation
-    {
-        public ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation(global::System.Int64 locationId, global::System.String locationCode, global::System.String addressLine1, global::System.String? addressLine2, global::System.String? addressLine3, global::System.String? addressLine4, global::System.String city, global::System.String? state, global::System.String? postalCode, global::System.Boolean receivingSite, global::System.Boolean deliverySite, global::System.Boolean enabled)
-        {
-            LocationId = locationId;
-            LocationCode = locationCode;
-            AddressLine1 = addressLine1;
-            AddressLine2 = addressLine2;
-            AddressLine3 = addressLine3;
-            AddressLine4 = addressLine4;
-            City = city;
-            State = state;
-            PostalCode = postalCode;
-            ReceivingSite = receivingSite;
-            DeliverySite = deliverySite;
-            Enabled = enabled;
-        }
-
-        /// <summary>
-        /// Value that uniquely identifies the supplier site internally to Oracle.
-        /// </summary>
-        public global::System.Int64 LocationId { get; }
-
-        /// <summary>
-        /// Value that uniquely identifies the supplier site for use on interfaces and in the Oracle UI.
-        /// </summary>
-        public global::System.String LocationCode { get; }
-
-        /// <summary>
-        /// Address Line 1
-        /// </summary>
-        public global::System.String AddressLine1 { get; }
-
-        /// <summary>
-        /// Address Line 2
-        /// </summary>
-        public global::System.String? AddressLine2 { get; }
-
-        /// <summary>
-        /// Address Line 3
-        /// </summary>
-        public global::System.String? AddressLine3 { get; }
-
-        /// <summary>
-        /// Address Line 4
-        /// </summary>
-        public global::System.String? AddressLine4 { get; }
-
-        /// <summary>
-        /// City Name
-        /// </summary>
-        public global::System.String City { get; }
-
-        /// <summary>
-        /// State Code
-        /// </summary>
-        public global::System.String? State { get; }
-
-        /// <summary>
-        /// Postal code
-        /// </summary>
-        public global::System.String? PostalCode { get; }
-
-        /// <summary>
-        /// Whether the location can be used as the receiving address for a purchase order.
-        /// </summary>
-        public global::System.Boolean ReceivingSite { get; }
-
-        /// <summary>
-        /// Whether the location can be used as the delivery address for a requisition.
-        /// </summary>
-        public global::System.Boolean DeliverySite { get; }
-
-        /// <summary>
-        /// Whether this address is enabled for current use.
-        /// </summary>
-        public global::System.Boolean Enabled { get; }
-
-        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (LocationId == other.LocationId) && LocationCode.Equals(other.LocationCode) && AddressLine1.Equals(other.AddressLine1) && ((AddressLine2 is null && other.AddressLine2 is null) || AddressLine2 != null && AddressLine2.Equals(other.AddressLine2)) && ((AddressLine3 is null && other.AddressLine3 is null) || AddressLine3 != null && AddressLine3.Equals(other.AddressLine3)) && ((AddressLine4 is null && other.AddressLine4 is null) || AddressLine4 != null && AddressLine4.Equals(other.AddressLine4)) && City.Equals(other.City) && ((State is null && other.State is null) || State != null && State.Equals(other.State)) && ((PostalCode is null && other.PostalCode is null) || PostalCode != null && PostalCode.Equals(other.PostalCode)) && ReceivingSite == other.ReceivingSite && DeliverySite == other.DeliverySite && Enabled == other.Enabled;
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * LocationId.GetHashCode();
-                hash ^= 397 * LocationCode.GetHashCode();
-                hash ^= 397 * AddressLine1.GetHashCode();
-                if (AddressLine2 != null)
-                {
-                    hash ^= 397 * AddressLine2.GetHashCode();
-                }
-
-                if (AddressLine3 != null)
-                {
-                    hash ^= 397 * AddressLine3.GetHashCode();
-                }
-
-                if (AddressLine4 != null)
-                {
-                    hash ^= 397 * AddressLine4.GetHashCode();
-                }
-
-                hash ^= 397 * City.GetHashCode();
-                if (State != null)
-                {
-                    hash ^= 397 * State.GetHashCode();
-                }
-
-                if (PostalCode != null)
-                {
-                    hash ^= 397 * PostalCode.GetHashCode();
-                }
-
-                hash ^= 397 * ReceivingSite.GetHashCode();
-                hash ^= 397 * DeliverySite.GetHashCode();
-                hash ^= 397 * Enabled.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IErpInstitutionLocationSearchResult
-    {
-        /// <summary>
-        /// Search for ErpInstitutionLocation objects by multiple properties.
-        /// See the ErpInstitutionLocationFilterInput type for options.
-        /// </summary>
-        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch ErpInstitutionLocationSearch { get; }
-    }
-
-    /// <summary>
-    /// Wrapper object for search results for ErpInstitutionLocation
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch
-    {
-        /// <summary>
-        /// Information about the search results returned.
-        /// </summary>
-        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata Metadata { get; }
-
-        /// <summary>
-        /// Results of the search
-        /// </summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> Data { get; }
-    }
-
-    /// <summary>
-    /// Wrapper object for search results for ErpInstitutionLocation
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults : IErpInstitutionLocationSearch_ErpInstitutionLocationSearch
-    {
-    }
-
-    /// <summary>
-    /// Metadata about the search results returned in a given response.
-    /// Used to provide metrics of the results and the information necessary
-    /// to pull in the next set of records.
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata
-    {
-        /// <summary>
-        /// Array of property names used to sort the results
-        /// </summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
-
-        /// <summary>
-        /// requested limit to the number of records to retrieve
-        /// </summary>
-        public global::System.Int32? Limit { get; }
-
-        /// <summary>
-        /// Results returned in the data property.
-        /// </summary>
-        public global::System.Int32 ReturnedResultCount { get; }
-
-        /// <summary>
-        /// Starting index for the current result set.
-        /// </summary>
-        public global::System.Int32 StartIndex { get; }
-
-        /// <summary>
-        /// Start index for getting the next page of results.  Unset if there are no more results.
-        /// </summary>
-        public global::System.Int32? NextStartIndex { get; }
-
-        /// <summary>
-        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
-        /// </summary>
-        public global::System.Int32? TotalResultCount { get; }
-    }
-
-    /// <summary>
-    /// Metadata about the search results returned in a given response.
-    /// Used to provide metrics of the results and the information necessary
-    /// to pull in the next set of records.
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata : IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata
-    {
-    }
-
-    /// <summary>
-    /// UC Davis locations that can be used for delivery or receiving locations.
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data
-    {
-        /// <summary>
-        /// Value that uniquely identifies the supplier site internally to Oracle.
-        /// </summary>
-        public global::System.Int64 LocationId { get; }
-
-        /// <summary>
-        /// Value that uniquely identifies the supplier site for use on interfaces and in the Oracle UI.
-        /// </summary>
-        public global::System.String LocationCode { get; }
-
-        /// <summary>
-        /// Address Line 1
-        /// </summary>
-        public global::System.String AddressLine1 { get; }
-
-        /// <summary>
-        /// Address Line 2
-        /// </summary>
-        public global::System.String? AddressLine2 { get; }
-
-        /// <summary>
-        /// Address Line 3
-        /// </summary>
-        public global::System.String? AddressLine3 { get; }
-
-        /// <summary>
-        /// Address Line 4
-        /// </summary>
-        public global::System.String? AddressLine4 { get; }
-
-        /// <summary>
-        /// City Name
-        /// </summary>
-        public global::System.String City { get; }
-
-        /// <summary>
-        /// State Code
-        /// </summary>
-        public global::System.String? State { get; }
-
-        /// <summary>
-        /// Postal code
-        /// </summary>
-        public global::System.String? PostalCode { get; }
-
-        /// <summary>
-        /// Whether the location can be used as the receiving address for a purchase order.
-        /// </summary>
-        public global::System.Boolean ReceivingSite { get; }
-
-        /// <summary>
-        /// Whether the location can be used as the delivery address for a requisition.
-        /// </summary>
-        public global::System.Boolean DeliverySite { get; }
-
-        /// <summary>
-        /// Whether this address is enabled for current use.
-        /// </summary>
-        public global::System.Boolean Enabled { get; }
-    }
-
-    /// <summary>
-    /// UC Davis locations that can be used for delivery or receiving locations.
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation : IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DeptParentsResult : global::System.IEquatable<DeptParentsResult>, IDeptParentsResult
     {
         public DeptParentsResult(global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment? erpFinancialDepartment)
@@ -1836,6 +1247,595 @@ namespace AggieEnterpriseApi
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment : IDeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchResult : global::System.IEquatable<ErpInstitutionLocationSearchResult>, IErpInstitutionLocationSearchResult
+    {
+        public ErpInstitutionLocationSearchResult(global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch erpInstitutionLocationSearch)
+        {
+            ErpInstitutionLocationSearch = erpInstitutionLocationSearch;
+        }
+
+        /// <summary>
+        /// Search for ErpInstitutionLocation objects by multiple properties.
+        /// See the ErpInstitutionLocationFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch ErpInstitutionLocationSearch { get; }
+
+        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearchResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (ErpInstitutionLocationSearch.Equals(other.ErpInstitutionLocationSearch));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpInstitutionLocationSearchResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * ErpInstitutionLocationSearch.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpInstitutionLocation
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults : global::System.IEquatable<ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults>, IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults
+    {
+        public ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults(global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata metadata, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> data)
+        {
+            Metadata = metadata;
+            Data = data;
+        }
+
+        /// <summary>
+        /// Information about the search results returned.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata Metadata { get; }
+
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> Data { get; }
+
+        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Metadata.Equals(other.Metadata)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Data, other.Data);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Metadata.GetHashCode();
+                foreach (var Data_elm in Data)
+                {
+                    hash ^= 397 * Data_elm.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata : global::System.IEquatable<ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata>, IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata
+    {
+        public ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata(global::System.Collections.Generic.IReadOnlyList<global::System.String>? sort, global::System.Int32? limit, global::System.Int32 returnedResultCount, global::System.Int32 startIndex, global::System.Int32? nextStartIndex, global::System.Int32? totalResultCount)
+        {
+            Sort = sort;
+            Limit = limit;
+            ReturnedResultCount = returnedResultCount;
+            StartIndex = startIndex;
+            NextStartIndex = nextStartIndex;
+            TotalResultCount = totalResultCount;
+        }
+
+        /// <summary>
+        /// Array of property names used to sort the results
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
+
+        /// <summary>
+        /// requested limit to the number of records to retrieve
+        /// </summary>
+        public global::System.Int32? Limit { get; }
+
+        /// <summary>
+        /// Results returned in the data property.
+        /// </summary>
+        public global::System.Int32 ReturnedResultCount { get; }
+
+        /// <summary>
+        /// Starting index for the current result set.
+        /// </summary>
+        public global::System.Int32 StartIndex { get; }
+
+        /// <summary>
+        /// Start index for getting the next page of results.  Unset if there are no more results.
+        /// </summary>
+        public global::System.Int32? NextStartIndex { get; }
+
+        /// <summary>
+        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
+        /// </summary>
+        public global::System.Int32? TotalResultCount { get; }
+
+        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Sort, other.Sort)) && Limit == other.Limit && ReturnedResultCount == other.ReturnedResultCount && StartIndex == other.StartIndex && NextStartIndex == other.NextStartIndex && TotalResultCount == other.TotalResultCount;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Sort != null)
+                {
+                    foreach (var Sort_elm in Sort)
+                    {
+                        hash ^= 397 * Sort_elm.GetHashCode();
+                    }
+                }
+
+                if (Limit != null)
+                {
+                    hash ^= 397 * Limit.GetHashCode();
+                }
+
+                hash ^= 397 * ReturnedResultCount.GetHashCode();
+                hash ^= 397 * StartIndex.GetHashCode();
+                if (NextStartIndex != null)
+                {
+                    hash ^= 397 * NextStartIndex.GetHashCode();
+                }
+
+                if (TotalResultCount != null)
+                {
+                    hash ^= 397 * TotalResultCount.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// UC Davis locations that can be used for delivery or receiving locations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation : global::System.IEquatable<ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation>, IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation
+    {
+        public ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation(global::System.Int64 locationId, global::System.String locationCode, global::System.String addressLine1, global::System.String? addressLine2, global::System.String? addressLine3, global::System.String? addressLine4, global::System.String city, global::System.String? state, global::System.String? postalCode, global::System.Boolean receivingSite, global::System.Boolean deliverySite, global::System.Boolean enabled)
+        {
+            LocationId = locationId;
+            LocationCode = locationCode;
+            AddressLine1 = addressLine1;
+            AddressLine2 = addressLine2;
+            AddressLine3 = addressLine3;
+            AddressLine4 = addressLine4;
+            City = city;
+            State = state;
+            PostalCode = postalCode;
+            ReceivingSite = receivingSite;
+            DeliverySite = deliverySite;
+            Enabled = enabled;
+        }
+
+        /// <summary>
+        /// Value that uniquely identifies the supplier site internally to Oracle.
+        /// </summary>
+        public global::System.Int64 LocationId { get; }
+
+        /// <summary>
+        /// Value that uniquely identifies the supplier site for use on interfaces and in the Oracle UI.
+        /// </summary>
+        public global::System.String LocationCode { get; }
+
+        /// <summary>
+        /// Address Line 1
+        /// </summary>
+        public global::System.String AddressLine1 { get; }
+
+        /// <summary>
+        /// Address Line 2
+        /// </summary>
+        public global::System.String? AddressLine2 { get; }
+
+        /// <summary>
+        /// Address Line 3
+        /// </summary>
+        public global::System.String? AddressLine3 { get; }
+
+        /// <summary>
+        /// Address Line 4
+        /// </summary>
+        public global::System.String? AddressLine4 { get; }
+
+        /// <summary>
+        /// City Name
+        /// </summary>
+        public global::System.String City { get; }
+
+        /// <summary>
+        /// State Code
+        /// </summary>
+        public global::System.String? State { get; }
+
+        /// <summary>
+        /// Postal code
+        /// </summary>
+        public global::System.String? PostalCode { get; }
+
+        /// <summary>
+        /// Whether the location can be used as the receiving address for a purchase order.
+        /// </summary>
+        public global::System.Boolean ReceivingSite { get; }
+
+        /// <summary>
+        /// Whether the location can be used as the delivery address for a requisition.
+        /// </summary>
+        public global::System.Boolean DeliverySite { get; }
+
+        /// <summary>
+        /// Whether this address is enabled for current use.
+        /// </summary>
+        public global::System.Boolean Enabled { get; }
+
+        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (LocationId == other.LocationId) && LocationCode.Equals(other.LocationCode) && AddressLine1.Equals(other.AddressLine1) && ((AddressLine2 is null && other.AddressLine2 is null) || AddressLine2 != null && AddressLine2.Equals(other.AddressLine2)) && ((AddressLine3 is null && other.AddressLine3 is null) || AddressLine3 != null && AddressLine3.Equals(other.AddressLine3)) && ((AddressLine4 is null && other.AddressLine4 is null) || AddressLine4 != null && AddressLine4.Equals(other.AddressLine4)) && City.Equals(other.City) && ((State is null && other.State is null) || State != null && State.Equals(other.State)) && ((PostalCode is null && other.PostalCode is null) || PostalCode != null && PostalCode.Equals(other.PostalCode)) && ReceivingSite == other.ReceivingSite && DeliverySite == other.DeliverySite && Enabled == other.Enabled;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * LocationId.GetHashCode();
+                hash ^= 397 * LocationCode.GetHashCode();
+                hash ^= 397 * AddressLine1.GetHashCode();
+                if (AddressLine2 != null)
+                {
+                    hash ^= 397 * AddressLine2.GetHashCode();
+                }
+
+                if (AddressLine3 != null)
+                {
+                    hash ^= 397 * AddressLine3.GetHashCode();
+                }
+
+                if (AddressLine4 != null)
+                {
+                    hash ^= 397 * AddressLine4.GetHashCode();
+                }
+
+                hash ^= 397 * City.GetHashCode();
+                if (State != null)
+                {
+                    hash ^= 397 * State.GetHashCode();
+                }
+
+                if (PostalCode != null)
+                {
+                    hash ^= 397 * PostalCode.GetHashCode();
+                }
+
+                hash ^= 397 * ReceivingSite.GetHashCode();
+                hash ^= 397 * DeliverySite.GetHashCode();
+                hash ^= 397 * Enabled.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearchResult
+    {
+        /// <summary>
+        /// Search for ErpInstitutionLocation objects by multiple properties.
+        /// See the ErpInstitutionLocationFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch ErpInstitutionLocationSearch { get; }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpInstitutionLocation
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch
+    {
+        /// <summary>
+        /// Information about the search results returned.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata Metadata { get; }
+
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> Data { get; }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpInstitutionLocation
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults : IErpInstitutionLocationSearch_ErpInstitutionLocationSearch
+    {
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata
+    {
+        /// <summary>
+        /// Array of property names used to sort the results
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
+
+        /// <summary>
+        /// requested limit to the number of records to retrieve
+        /// </summary>
+        public global::System.Int32? Limit { get; }
+
+        /// <summary>
+        /// Results returned in the data property.
+        /// </summary>
+        public global::System.Int32 ReturnedResultCount { get; }
+
+        /// <summary>
+        /// Starting index for the current result set.
+        /// </summary>
+        public global::System.Int32 StartIndex { get; }
+
+        /// <summary>
+        /// Start index for getting the next page of results.  Unset if there are no more results.
+        /// </summary>
+        public global::System.Int32? NextStartIndex { get; }
+
+        /// <summary>
+        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
+        /// </summary>
+        public global::System.Int32? TotalResultCount { get; }
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata : IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata
+    {
+    }
+
+    /// <summary>
+    /// UC Davis locations that can be used for delivery or receiving locations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data
+    {
+        /// <summary>
+        /// Value that uniquely identifies the supplier site internally to Oracle.
+        /// </summary>
+        public global::System.Int64 LocationId { get; }
+
+        /// <summary>
+        /// Value that uniquely identifies the supplier site for use on interfaces and in the Oracle UI.
+        /// </summary>
+        public global::System.String LocationCode { get; }
+
+        /// <summary>
+        /// Address Line 1
+        /// </summary>
+        public global::System.String AddressLine1 { get; }
+
+        /// <summary>
+        /// Address Line 2
+        /// </summary>
+        public global::System.String? AddressLine2 { get; }
+
+        /// <summary>
+        /// Address Line 3
+        /// </summary>
+        public global::System.String? AddressLine3 { get; }
+
+        /// <summary>
+        /// Address Line 4
+        /// </summary>
+        public global::System.String? AddressLine4 { get; }
+
+        /// <summary>
+        /// City Name
+        /// </summary>
+        public global::System.String City { get; }
+
+        /// <summary>
+        /// State Code
+        /// </summary>
+        public global::System.String? State { get; }
+
+        /// <summary>
+        /// Postal code
+        /// </summary>
+        public global::System.String? PostalCode { get; }
+
+        /// <summary>
+        /// Whether the location can be used as the receiving address for a purchase order.
+        /// </summary>
+        public global::System.Boolean ReceivingSite { get; }
+
+        /// <summary>
+        /// Whether the location can be used as the delivery address for a requisition.
+        /// </summary>
+        public global::System.Boolean DeliverySite { get; }
+
+        /// <summary>
+        /// Whether this address is enabled for current use.
+        /// </summary>
+        public global::System.Boolean Enabled { get; }
+    }
+
+    /// <summary>
+    /// UC Davis locations that can be used for delivery or receiving locations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation : IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data
     {
     }
 
@@ -15456,188 +15456,6 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
-    /// Represents the operation service of the ErpInstitutionLocationSearch GraphQL operation
-    /// <code>
-    /// query ErpInstitutionLocationSearch($filter: ErpInstitutionLocationFilterInput!) {
-    ///   erpInstitutionLocationSearch(filter: $filter) {
-    ///     __typename
-    ///     metadata {
-    ///       __typename
-    ///       sort
-    ///       limit
-    ///       returnedResultCount
-    ///       startIndex
-    ///       nextStartIndex
-    ///       totalResultCount
-    ///     }
-    ///     data {
-    ///       __typename
-    ///       locationId
-    ///       locationCode
-    ///       addressLine1
-    ///       addressLine2
-    ///       addressLine3
-    ///       addressLine4
-    ///       city
-    ///       state
-    ///       postalCode
-    ///       receivingSite
-    ///       deliverySite
-    ///       enabled
-    ///     }
-    ///   }
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ErpInstitutionLocationSearchQueryDocument : global::StrawberryShake.IDocument
-    {
-        private ErpInstitutionLocationSearchQueryDocument()
-        {
-        }
-
-        public static ErpInstitutionLocationSearchQueryDocument Instance { get; } = new ErpInstitutionLocationSearchQueryDocument();
-        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x45, 0x72, 0x70, 0x49, 0x6e, 0x73, 0x74, 0x69, 0x74, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x45, 0x72, 0x70, 0x49, 0x6e, 0x73, 0x74, 0x69, 0x74, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x72, 0x70, 0x49, 0x6e, 0x73, 0x74, 0x69, 0x74, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x20, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x31, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x32, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x33, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x34, 0x20, 0x63, 0x69, 0x74, 0x79, 0x20, 0x73, 0x74, 0x61, 0x74, 0x65, 0x20, 0x70, 0x6f, 0x73, 0x74, 0x61, 0x6c, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x72, 0x65, 0x63, 0x65, 0x69, 0x76, 0x69, 0x6e, 0x67, 0x53, 0x69, 0x74, 0x65, 0x20, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x53, 0x69, 0x74, 0x65, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "755557f91a4a6ac04ca3c974f36b3d2b");
-        public override global::System.String ToString()
-        {
-#if NETSTANDARD2_0
-        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
-#else
-            return global::System.Text.Encoding.UTF8.GetString(Body);
-#endif
-        }
-    }
-
-    /// <summary>
-    /// Represents the operation service of the ErpInstitutionLocationSearch GraphQL operation
-    /// <code>
-    /// query ErpInstitutionLocationSearch($filter: ErpInstitutionLocationFilterInput!) {
-    ///   erpInstitutionLocationSearch(filter: $filter) {
-    ///     __typename
-    ///     metadata {
-    ///       __typename
-    ///       sort
-    ///       limit
-    ///       returnedResultCount
-    ///       startIndex
-    ///       nextStartIndex
-    ///       totalResultCount
-    ///     }
-    ///     data {
-    ///       __typename
-    ///       locationId
-    ///       locationCode
-    ///       addressLine1
-    ///       addressLine2
-    ///       addressLine3
-    ///       addressLine4
-    ///       city
-    ///       state
-    ///       postalCode
-    ///       receivingSite
-    ///       deliverySite
-    ///       enabled
-    ///     }
-    ///   }
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ErpInstitutionLocationSearchQuery : global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery
-    {
-        private readonly global::StrawberryShake.IOperationExecutor<IErpInstitutionLocationSearchResult> _operationExecutor;
-        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _erpInstitutionLocationFilterInputFormatter;
-        public ErpInstitutionLocationSearchQuery(global::StrawberryShake.IOperationExecutor<IErpInstitutionLocationSearchResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
-            _erpInstitutionLocationFilterInputFormatter = serializerResolver.GetInputValueFormatter("ErpInstitutionLocationFilterInput");
-        }
-
-        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IErpInstitutionLocationSearchResult);
-        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var request = CreateRequest(filter);
-            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
-        }
-
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> Watch(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null)
-        {
-            var request = CreateRequest(filter);
-            return _operationExecutor.Watch(request, strategy);
-        }
-
-        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter)
-        {
-            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
-            variables.Add("filter", FormatFilter(filter));
-            return CreateRequest(variables);
-        }
-
-        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
-        {
-            return new global::StrawberryShake.OperationRequest(id: ErpInstitutionLocationSearchQueryDocument.Instance.Hash.Value, name: "ErpInstitutionLocationSearch", document: ErpInstitutionLocationSearchQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
-        }
-
-        private global::System.Object? FormatFilter(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput value)
-        {
-            if (value is null)
-            {
-                throw new global::System.ArgumentNullException(nameof(value));
-            }
-
-            return _erpInstitutionLocationFilterInputFormatter.Format(value);
-        }
-
-        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
-        {
-            return CreateRequest(variables!);
-        }
-    }
-
-    /// <summary>
-    /// Represents the operation service of the ErpInstitutionLocationSearch GraphQL operation
-    /// <code>
-    /// query ErpInstitutionLocationSearch($filter: ErpInstitutionLocationFilterInput!) {
-    ///   erpInstitutionLocationSearch(filter: $filter) {
-    ///     __typename
-    ///     metadata {
-    ///       __typename
-    ///       sort
-    ///       limit
-    ///       returnedResultCount
-    ///       startIndex
-    ///       nextStartIndex
-    ///       totalResultCount
-    ///     }
-    ///     data {
-    ///       __typename
-    ///       locationId
-    ///       locationCode
-    ///       addressLine1
-    ///       addressLine2
-    ///       addressLine3
-    ///       addressLine4
-    ///       city
-    ///       state
-    ///       postalCode
-    ///       receivingSite
-    ///       deliverySite
-    ///       enabled
-    ///     }
-    ///   }
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IErpInstitutionLocationSearchQuery : global::StrawberryShake.IOperationRequestFactory
-    {
-        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default);
-        global::System.IObservable<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> Watch(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null);
-    }
-
-    /// <summary>
     /// Represents the operation service of the DeptParents GraphQL operation
     /// <code>
     /// query DeptParents($code: String!) {
@@ -15931,6 +15749,188 @@ namespace AggieEnterpriseApi
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IDeptParentsResult>> ExecuteAsync(global::System.String code, global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IDeptParentsResult>> Watch(global::System.String code, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ErpInstitutionLocationSearch GraphQL operation
+    /// <code>
+    /// query ErpInstitutionLocationSearch($filter: ErpInstitutionLocationFilterInput!) {
+    ///   erpInstitutionLocationSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       locationId
+    ///       locationCode
+    ///       addressLine1
+    ///       addressLine2
+    ///       addressLine3
+    ///       addressLine4
+    ///       city
+    ///       state
+    ///       postalCode
+    ///       receivingSite
+    ///       deliverySite
+    ///       enabled
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchQueryDocument : global::StrawberryShake.IDocument
+    {
+        private ErpInstitutionLocationSearchQueryDocument()
+        {
+        }
+
+        public static ErpInstitutionLocationSearchQueryDocument Instance { get; } = new ErpInstitutionLocationSearchQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x45, 0x72, 0x70, 0x49, 0x6e, 0x73, 0x74, 0x69, 0x74, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x45, 0x72, 0x70, 0x49, 0x6e, 0x73, 0x74, 0x69, 0x74, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x72, 0x70, 0x49, 0x6e, 0x73, 0x74, 0x69, 0x74, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x20, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x31, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x32, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x33, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x34, 0x20, 0x63, 0x69, 0x74, 0x79, 0x20, 0x73, 0x74, 0x61, 0x74, 0x65, 0x20, 0x70, 0x6f, 0x73, 0x74, 0x61, 0x6c, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x72, 0x65, 0x63, 0x65, 0x69, 0x76, 0x69, 0x6e, 0x67, 0x53, 0x69, 0x74, 0x65, 0x20, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x53, 0x69, 0x74, 0x65, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "755557f91a4a6ac04ca3c974f36b3d2b");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ErpInstitutionLocationSearch GraphQL operation
+    /// <code>
+    /// query ErpInstitutionLocationSearch($filter: ErpInstitutionLocationFilterInput!) {
+    ///   erpInstitutionLocationSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       locationId
+    ///       locationCode
+    ///       addressLine1
+    ///       addressLine2
+    ///       addressLine3
+    ///       addressLine4
+    ///       city
+    ///       state
+    ///       postalCode
+    ///       receivingSite
+    ///       deliverySite
+    ///       enabled
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchQuery : global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IErpInstitutionLocationSearchResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _erpInstitutionLocationFilterInputFormatter;
+        public ErpInstitutionLocationSearchQuery(global::StrawberryShake.IOperationExecutor<IErpInstitutionLocationSearchResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _erpInstitutionLocationFilterInputFormatter = serializerResolver.GetInputValueFormatter("ErpInstitutionLocationFilterInput");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IErpInstitutionLocationSearchResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(filter);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> Watch(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(filter);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("filter", FormatFilter(filter));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: ErpInstitutionLocationSearchQueryDocument.Instance.Hash.Value, name: "ErpInstitutionLocationSearch", document: ErpInstitutionLocationSearchQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatFilter(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _erpInstitutionLocationFilterInputFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ErpInstitutionLocationSearch GraphQL operation
+    /// <code>
+    /// query ErpInstitutionLocationSearch($filter: ErpInstitutionLocationFilterInput!) {
+    ///   erpInstitutionLocationSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       locationId
+    ///       locationCode
+    ///       addressLine1
+    ///       addressLine2
+    ///       addressLine3
+    ///       addressLine4
+    ///       city
+    ///       state
+    ///       postalCode
+    ///       receivingSite
+    ///       deliverySite
+    ///       enabled
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearchQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> Watch(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -18295,8 +18295,8 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class AggieEnterpriseClient : global::AggieEnterpriseApi.IAggieEnterpriseClient
     {
-        private readonly global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery _erpInstitutionLocationSearch;
         private readonly global::AggieEnterpriseApi.IDeptParentsQuery _deptParents;
+        private readonly global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery _erpInstitutionLocationSearch;
         private readonly global::AggieEnterpriseApi.IFundParentsQuery _fundParents;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestMutation _glJournalRequest;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestStatusQuery _glJournalRequestStatus;
@@ -18309,10 +18309,10 @@ namespace AggieEnterpriseApi
         private readonly global::AggieEnterpriseApi.IScmSupplierSearchQuery _scmSupplierSearch;
         private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery erpInstitutionLocationSearch, global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IScmSupplierSearchQuery scmSupplierSearch, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery erpInstitutionLocationSearch, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IScmSupplierSearchQuery scmSupplierSearch, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
-            _erpInstitutionLocationSearch = erpInstitutionLocationSearch ?? throw new global::System.ArgumentNullException(nameof(erpInstitutionLocationSearch));
             _deptParents = deptParents ?? throw new global::System.ArgumentNullException(nameof(deptParents));
+            _erpInstitutionLocationSearch = erpInstitutionLocationSearch ?? throw new global::System.ArgumentNullException(nameof(erpInstitutionLocationSearch));
             _fundParents = fundParents ?? throw new global::System.ArgumentNullException(nameof(fundParents));
             _glJournalRequest = glJournalRequest ?? throw new global::System.ArgumentNullException(nameof(glJournalRequest));
             _glJournalRequestStatus = glJournalRequestStatus ?? throw new global::System.ArgumentNullException(nameof(glJournalRequestStatus));
@@ -18328,8 +18328,8 @@ namespace AggieEnterpriseApi
         }
 
         public static global::System.String ClientName => "AggieEnterpriseClient";
-        public global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery ErpInstitutionLocationSearch => _erpInstitutionLocationSearch;
         public global::AggieEnterpriseApi.IDeptParentsQuery DeptParents => _deptParents;
+        public global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery ErpInstitutionLocationSearch => _erpInstitutionLocationSearch;
         public global::AggieEnterpriseApi.IFundParentsQuery FundParents => _fundParents;
         public global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest => _glJournalRequest;
         public global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus => _glJournalRequestStatus;
@@ -18350,9 +18350,9 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IAggieEnterpriseClient
     {
-        global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery ErpInstitutionLocationSearch { get; }
-
         global::AggieEnterpriseApi.IDeptParentsQuery DeptParents { get; }
+
+        global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery ErpInstitutionLocationSearch { get; }
 
         global::AggieEnterpriseApi.IFundParentsQuery FundParents { get; }
 
@@ -18554,124 +18554,6 @@ namespace AggieEnterpriseApi.State
 
         ///<summary>GL Activity used during subledger accounting jobs to post GL entries when costs are recorded against this task.</summary>
         public global::System.String? GlPostingActivityCode { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ErpInstitutionLocationSearchResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ErpInstitutionLocationSearchResult>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public ErpInstitutionLocationSearchResultFactory(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult);
-        public ErpInstitutionLocationSearchResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            if (dataInfo is ErpInstitutionLocationSearchResultInfo info)
-            {
-                return new ErpInstitutionLocationSearchResult(MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(info.ErpInstitutionLocationSearch, snapshot));
-            }
-
-            throw new global::System.ArgumentException("ErpInstitutionLocationSearchResultInfo expected.");
-        }
-
-        private global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            IErpInstitutionLocationSearch_ErpInstitutionLocationSearch returnValue = default !;
-            if (data.__typename.Equals("ErpInstitutionLocationSearchResults", global::System.StringComparison.Ordinal))
-            {
-                returnValue = new ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults(MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(data.Metadata ?? throw new global::System.ArgumentNullException(), snapshot), MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(data.Data ?? throw new global::System.ArgumentNullException(), snapshot));
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        private global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(global::AggieEnterpriseApi.State.SearchResultMetadataData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata returnValue = default !;
-            if (data.__typename.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal))
-            {
-                returnValue = new ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata(data.Sort, data.Limit, data.ReturnedResultCount ?? throw new global::System.ArgumentNullException(), data.StartIndex ?? throw new global::System.ArgumentNullException(), data.NextStartIndex, data.TotalResultCount);
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpInstitutionLocationData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (list is null)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var erpInstitutionLocations = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data>();
-            foreach (global::AggieEnterpriseApi.State.ErpInstitutionLocationData child in list)
-            {
-                erpInstitutionLocations.Add(MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(child, snapshot));
-            }
-
-            return erpInstitutionLocations;
-        }
-
-        private global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(global::AggieEnterpriseApi.State.ErpInstitutionLocationData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data returnValue = default !;
-            if (data.__typename.Equals("ErpInstitutionLocation", global::System.StringComparison.Ordinal))
-            {
-                returnValue = new ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation(data.LocationId ?? throw new global::System.ArgumentNullException(), data.LocationCode ?? throw new global::System.ArgumentNullException(), data.AddressLine1 ?? throw new global::System.ArgumentNullException(), data.AddressLine2, data.AddressLine3, data.AddressLine4, data.City ?? throw new global::System.ArgumentNullException(), data.State, data.PostalCode, data.ReceivingSite ?? throw new global::System.ArgumentNullException(), data.DeliverySite ?? throw new global::System.ArgumentNullException(), data.Enabled ?? throw new global::System.ArgumentNullException());
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
-        {
-            return Create(dataInfo, snapshot);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ErpInstitutionLocationSearchResultInfo : global::StrawberryShake.IOperationResultDataInfo
-    {
-        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
-        private readonly global::System.UInt64 _version;
-        public ErpInstitutionLocationSearchResultInfo(global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData erpInstitutionLocationSearch, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
-        {
-            ErpInstitutionLocationSearch = erpInstitutionLocationSearch;
-            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
-            _version = version;
-        }
-
-        /// <summary>
-        /// Search for ErpInstitutionLocation objects by multiple properties.
-        /// See the ErpInstitutionLocationFilterInput type for options.
-        /// </summary>
-        public global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData ErpInstitutionLocationSearch { get; }
-
-        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
-        public global::System.UInt64 Version => _version;
-        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
-        {
-            return new ErpInstitutionLocationSearchResultInfo(ErpInstitutionLocationSearch, _entityIds, version);
-        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -19380,6 +19262,124 @@ namespace AggieEnterpriseApi.State
             }
 
             return new DeptParents_ErpFinancialDepartment_Parent_Parent_Parent_Parent_Parent_Parent_Parent_ErpFinancialDepartment(entity.Code, entity.Name);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ErpInstitutionLocationSearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public ErpInstitutionLocationSearchResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult);
+        public ErpInstitutionLocationSearchResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is ErpInstitutionLocationSearchResultInfo info)
+            {
+                return new ErpInstitutionLocationSearchResult(MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(info.ErpInstitutionLocationSearch, snapshot));
+            }
+
+            throw new global::System.ArgumentException("ErpInstitutionLocationSearchResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpInstitutionLocationSearch_ErpInstitutionLocationSearch returnValue = default !;
+            if (data.__typename.Equals("ErpInstitutionLocationSearchResults", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults(MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(data.Metadata ?? throw new global::System.ArgumentNullException(), snapshot), MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(data.Data ?? throw new global::System.ArgumentNullException(), snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(global::AggieEnterpriseApi.State.SearchResultMetadataData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata returnValue = default !;
+            if (data.__typename.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata(data.Sort, data.Limit, data.ReturnedResultCount ?? throw new global::System.ArgumentNullException(), data.StartIndex ?? throw new global::System.ArgumentNullException(), data.NextStartIndex, data.TotalResultCount);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpInstitutionLocationData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var erpInstitutionLocations = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data>();
+            foreach (global::AggieEnterpriseApi.State.ErpInstitutionLocationData child in list)
+            {
+                erpInstitutionLocations.Add(MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(child, snapshot));
+            }
+
+            return erpInstitutionLocations;
+        }
+
+        private global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(global::AggieEnterpriseApi.State.ErpInstitutionLocationData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data returnValue = default !;
+            if (data.__typename.Equals("ErpInstitutionLocation", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation(data.LocationId ?? throw new global::System.ArgumentNullException(), data.LocationCode ?? throw new global::System.ArgumentNullException(), data.AddressLine1 ?? throw new global::System.ArgumentNullException(), data.AddressLine2, data.AddressLine3, data.AddressLine4, data.City ?? throw new global::System.ArgumentNullException(), data.State, data.PostalCode, data.ReceivingSite ?? throw new global::System.ArgumentNullException(), data.DeliverySite ?? throw new global::System.ArgumentNullException(), data.Enabled ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public ErpInstitutionLocationSearchResultInfo(global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData erpInstitutionLocationSearch, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            ErpInstitutionLocationSearch = erpInstitutionLocationSearch;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Search for ErpInstitutionLocation objects by multiple properties.
+        /// See the ErpInstitutionLocationFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData ErpInstitutionLocationSearch { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new ErpInstitutionLocationSearchResultInfo(ErpInstitutionLocationSearch, _entityIds, version);
         }
     }
 
@@ -22010,231 +22010,6 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ErpInstitutionLocationSearchBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
-        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult> _resultDataFactory;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _positiveIntParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _nonNegativeIntParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int64, global::System.Int64> _longParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _scmAddressLineParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _cityNameParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString60Parser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPostalCodeParser;
-        public ErpInstitutionLocationSearchBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
-            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
-            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
-            _positiveIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("PositiveInt") ?? throw new global::System.ArgumentException("No serializer for type `PositiveInt` found.");
-            _nonNegativeIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("NonNegativeInt") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeInt` found.");
-            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
-            _longParser = serializerResolver.GetLeafValueParser<global::System.Int64, global::System.Int64>("Long") ?? throw new global::System.ArgumentException("No serializer for type `Long` found.");
-            _scmAddressLineParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ScmAddressLine") ?? throw new global::System.ArgumentException("No serializer for type `ScmAddressLine` found.");
-            _cityNameParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("CityName") ?? throw new global::System.ArgumentException("No serializer for type `CityName` found.");
-            _nonEmptyTrimmedString60Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString60") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString60` found.");
-            _erpPostalCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPostalCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPostalCode` found.");
-        }
-
-        public global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
-        {
-            (IErpInstitutionLocationSearchResult Result, ErpInstitutionLocationSearchResultInfo Info)? data = null;
-            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
-            if (response.Exception is null)
-            {
-                try
-                {
-                    if (response.Body != null)
-                    {
-                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-                        {
-                            data = BuildData(dataElement);
-                        }
-
-                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                        {
-                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                        }
-                    }
-                }
-                catch (global::System.Exception ex)
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
-            }
-            else
-            {
-                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                {
-                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                }
-                else
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
-            }
-
-            return new global::StrawberryShake.OperationResult<IErpInstitutionLocationSearchResult>(data?.Result, data?.Info, _resultDataFactory, errors);
-        }
-
-        private (IErpInstitutionLocationSearchResult, ErpInstitutionLocationSearchResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
-        {
-            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
-            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
-            _entityStore.Update(session =>
-            {
-                snapshot = session.CurrentSnapshot;
-            });
-            var resultInfo = new ErpInstitutionLocationSearchResultInfo(DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpInstitutionLocationSearch")), entityIds, snapshot.Version);
-            return (_resultDataFactory.Create(resultInfo), resultInfo);
-        }
-
-        private global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("ErpInstitutionLocationSearchResults", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData(typename, metadata: DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "metadata")), data: DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "data")));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::AggieEnterpriseApi.State.SearchResultMetadataData DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.SearchResultMetadataData(typename, sort: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "sort")), limit: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "limit")), returnedResultCount: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "returnedResultCount")), startIndex: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startIndex")), nextStartIndex: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "nextStartIndex")), totalResultCount: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "totalResultCount")));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            var @strings = new global::System.Collections.Generic.List<global::System.String>();
-            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
-            {
-                @strings.Add(DeserializeNonNullableString(child));
-            }
-
-            return @strings;
-        }
-
-        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _stringParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::System.Int32? DeserializeInt32(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            return _positiveIntParser.Parse(obj.Value.GetInt32()!);
-        }
-
-        private global::System.Int32 DeserializeNonNullableInt32(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _nonNegativeIntParser.Parse(obj.Value.GetInt32()!);
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpInstitutionLocationData> DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var erpInstitutionLocations = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.ErpInstitutionLocationData>();
-            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
-            {
-                erpInstitutionLocations.Add(DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(child));
-            }
-
-            return erpInstitutionLocations;
-        }
-
-        private global::AggieEnterpriseApi.State.ErpInstitutionLocationData DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("ErpInstitutionLocation", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.ErpInstitutionLocationData(typename, locationId: DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "locationId")), locationCode: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "locationCode")), addressLine1: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine1")), addressLine2: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine2")), addressLine3: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine3")), addressLine4: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine4")), city: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "city")), state: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "state")), postalCode: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "postalCode")), receivingSite: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "receivingSite")), deliverySite: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "deliverySite")), enabled: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Int64 DeserializeNonNullableInt64(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _longParser.Parse(obj.Value.GetInt64()!);
-        }
-
-        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            return _scmAddressLineParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _booleanParser.Parse(obj.Value.GetBoolean()!);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DeptParentsBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IDeptParentsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -22536,6 +22311,231 @@ namespace AggieEnterpriseApi.State
             }
 
             throw new global::System.NotSupportedException();
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _positiveIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _nonNegativeIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int64, global::System.Int64> _longParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _scmAddressLineParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _cityNameParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString60Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPostalCodeParser;
+        public ErpInstitutionLocationSearchBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _positiveIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("PositiveInt") ?? throw new global::System.ArgumentException("No serializer for type `PositiveInt` found.");
+            _nonNegativeIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("NonNegativeInt") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeInt` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _longParser = serializerResolver.GetLeafValueParser<global::System.Int64, global::System.Int64>("Long") ?? throw new global::System.ArgumentException("No serializer for type `Long` found.");
+            _scmAddressLineParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ScmAddressLine") ?? throw new global::System.ArgumentException("No serializer for type `ScmAddressLine` found.");
+            _cityNameParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("CityName") ?? throw new global::System.ArgumentException("No serializer for type `CityName` found.");
+            _nonEmptyTrimmedString60Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString60") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString60` found.");
+            _erpPostalCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPostalCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPostalCode` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IErpInstitutionLocationSearchResult Result, ErpInstitutionLocationSearchResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IErpInstitutionLocationSearchResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IErpInstitutionLocationSearchResult, ErpInstitutionLocationSearchResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new ErpInstitutionLocationSearchResultInfo(DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpInstitutionLocationSearch")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ErpInstitutionLocationSearchResults", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData(typename, metadata: DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "metadata")), data: DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "data")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.SearchResultMetadataData DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.SearchResultMetadataData(typename, sort: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "sort")), limit: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "limit")), returnedResultCount: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "returnedResultCount")), startIndex: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startIndex")), nextStartIndex: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "nextStartIndex")), totalResultCount: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "totalResultCount")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Int32? DeserializeInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _positiveIntParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::System.Int32 DeserializeNonNullableInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _nonNegativeIntParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpInstitutionLocationData> DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var erpInstitutionLocations = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.ErpInstitutionLocationData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                erpInstitutionLocations.Add(DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(child));
+            }
+
+            return erpInstitutionLocations;
+        }
+
+        private global::AggieEnterpriseApi.State.ErpInstitutionLocationData DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ErpInstitutionLocation", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ErpInstitutionLocationData(typename, locationId: DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "locationId")), locationCode: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "locationCode")), addressLine1: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine1")), addressLine2: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine2")), addressLine3: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine3")), addressLine4: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine4")), city: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "city")), state: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "state")), postalCode: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "postalCode")), receivingSite: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "receivingSite")), deliverySite: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "deliverySite")), enabled: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Int64 DeserializeNonNullableInt64(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _longParser.Parse(obj.Value.GetInt64()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _scmAddressLineParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
         }
     }
 
@@ -26046,8 +26046,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::AggieEnterpriseApi.State.AggieEnterpriseClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.DeptParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.FundParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -26113,12 +26113,12 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteArraySerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDepartmentCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString240"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ScmAddressLine"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("CityName"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString60"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpPostalCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDepartmentCode"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString240"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFundCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("LocalDate"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString80"));
@@ -26172,13 +26172,6 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmSupplierFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.DateFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>, global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultFactory>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>, global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchBuilder>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>, global::AggieEnterpriseApi.State.DeptParentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IDeptParentsQuery>(sp));
@@ -26186,6 +26179,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IDeptParentsResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IDeptParentsResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IDeptParentsResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.DeptParentsQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IDeptParentsQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.DeptParentsQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>, global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>, global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IFundParentsResult>, global::AggieEnterpriseApi.State.FundParentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IFundParentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IFundParentsQuery>(sp));
