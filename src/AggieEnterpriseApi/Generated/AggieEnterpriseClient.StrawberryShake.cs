@@ -4,6 +4,595 @@
 namespace AggieEnterpriseApi
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchResult : global::System.IEquatable<ErpInstitutionLocationSearchResult>, IErpInstitutionLocationSearchResult
+    {
+        public ErpInstitutionLocationSearchResult(global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch erpInstitutionLocationSearch)
+        {
+            ErpInstitutionLocationSearch = erpInstitutionLocationSearch;
+        }
+
+        /// <summary>
+        /// Search for ErpInstitutionLocation objects by multiple properties.
+        /// See the ErpInstitutionLocationFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch ErpInstitutionLocationSearch { get; }
+
+        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearchResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (ErpInstitutionLocationSearch.Equals(other.ErpInstitutionLocationSearch));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpInstitutionLocationSearchResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * ErpInstitutionLocationSearch.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpInstitutionLocation
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults : global::System.IEquatable<ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults>, IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults
+    {
+        public ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults(global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata metadata, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> data)
+        {
+            Metadata = metadata;
+            Data = data;
+        }
+
+        /// <summary>
+        /// Information about the search results returned.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata Metadata { get; }
+
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> Data { get; }
+
+        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Metadata.Equals(other.Metadata)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Data, other.Data);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Metadata.GetHashCode();
+                foreach (var Data_elm in Data)
+                {
+                    hash ^= 397 * Data_elm.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata : global::System.IEquatable<ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata>, IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata
+    {
+        public ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata(global::System.Collections.Generic.IReadOnlyList<global::System.String>? sort, global::System.Int32? limit, global::System.Int32 returnedResultCount, global::System.Int32 startIndex, global::System.Int32? nextStartIndex, global::System.Int32? totalResultCount)
+        {
+            Sort = sort;
+            Limit = limit;
+            ReturnedResultCount = returnedResultCount;
+            StartIndex = startIndex;
+            NextStartIndex = nextStartIndex;
+            TotalResultCount = totalResultCount;
+        }
+
+        /// <summary>
+        /// Array of property names used to sort the results
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
+
+        /// <summary>
+        /// requested limit to the number of records to retrieve
+        /// </summary>
+        public global::System.Int32? Limit { get; }
+
+        /// <summary>
+        /// Results returned in the data property.
+        /// </summary>
+        public global::System.Int32 ReturnedResultCount { get; }
+
+        /// <summary>
+        /// Starting index for the current result set.
+        /// </summary>
+        public global::System.Int32 StartIndex { get; }
+
+        /// <summary>
+        /// Start index for getting the next page of results.  Unset if there are no more results.
+        /// </summary>
+        public global::System.Int32? NextStartIndex { get; }
+
+        /// <summary>
+        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
+        /// </summary>
+        public global::System.Int32? TotalResultCount { get; }
+
+        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Sort, other.Sort)) && Limit == other.Limit && ReturnedResultCount == other.ReturnedResultCount && StartIndex == other.StartIndex && NextStartIndex == other.NextStartIndex && TotalResultCount == other.TotalResultCount;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Sort != null)
+                {
+                    foreach (var Sort_elm in Sort)
+                    {
+                        hash ^= 397 * Sort_elm.GetHashCode();
+                    }
+                }
+
+                if (Limit != null)
+                {
+                    hash ^= 397 * Limit.GetHashCode();
+                }
+
+                hash ^= 397 * ReturnedResultCount.GetHashCode();
+                hash ^= 397 * StartIndex.GetHashCode();
+                if (NextStartIndex != null)
+                {
+                    hash ^= 397 * NextStartIndex.GetHashCode();
+                }
+
+                if (TotalResultCount != null)
+                {
+                    hash ^= 397 * TotalResultCount.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// UC Davis locations that can be used for delivery or receiving locations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation : global::System.IEquatable<ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation>, IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation
+    {
+        public ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation(global::System.Int64 locationId, global::System.String locationCode, global::System.String addressLine1, global::System.String? addressLine2, global::System.String? addressLine3, global::System.String? addressLine4, global::System.String city, global::System.String? state, global::System.String? postalCode, global::System.Boolean receivingSite, global::System.Boolean deliverySite, global::System.Boolean enabled)
+        {
+            LocationId = locationId;
+            LocationCode = locationCode;
+            AddressLine1 = addressLine1;
+            AddressLine2 = addressLine2;
+            AddressLine3 = addressLine3;
+            AddressLine4 = addressLine4;
+            City = city;
+            State = state;
+            PostalCode = postalCode;
+            ReceivingSite = receivingSite;
+            DeliverySite = deliverySite;
+            Enabled = enabled;
+        }
+
+        /// <summary>
+        /// Value that uniquely identifies the supplier site internally to Oracle.
+        /// </summary>
+        public global::System.Int64 LocationId { get; }
+
+        /// <summary>
+        /// Value that uniquely identifies the supplier site for use on interfaces and in the Oracle UI.
+        /// </summary>
+        public global::System.String LocationCode { get; }
+
+        /// <summary>
+        /// Address Line 1
+        /// </summary>
+        public global::System.String AddressLine1 { get; }
+
+        /// <summary>
+        /// Address Line 2
+        /// </summary>
+        public global::System.String? AddressLine2 { get; }
+
+        /// <summary>
+        /// Address Line 3
+        /// </summary>
+        public global::System.String? AddressLine3 { get; }
+
+        /// <summary>
+        /// Address Line 4
+        /// </summary>
+        public global::System.String? AddressLine4 { get; }
+
+        /// <summary>
+        /// City Name
+        /// </summary>
+        public global::System.String City { get; }
+
+        /// <summary>
+        /// State Code
+        /// </summary>
+        public global::System.String? State { get; }
+
+        /// <summary>
+        /// Postal code
+        /// </summary>
+        public global::System.String? PostalCode { get; }
+
+        /// <summary>
+        /// Whether the location can be used as the receiving address for a purchase order.
+        /// </summary>
+        public global::System.Boolean ReceivingSite { get; }
+
+        /// <summary>
+        /// Whether the location can be used as the delivery address for a requisition.
+        /// </summary>
+        public global::System.Boolean DeliverySite { get; }
+
+        /// <summary>
+        /// Whether this address is enabled for current use.
+        /// </summary>
+        public global::System.Boolean Enabled { get; }
+
+        public virtual global::System.Boolean Equals(ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (LocationId == other.LocationId) && LocationCode.Equals(other.LocationCode) && AddressLine1.Equals(other.AddressLine1) && ((AddressLine2 is null && other.AddressLine2 is null) || AddressLine2 != null && AddressLine2.Equals(other.AddressLine2)) && ((AddressLine3 is null && other.AddressLine3 is null) || AddressLine3 != null && AddressLine3.Equals(other.AddressLine3)) && ((AddressLine4 is null && other.AddressLine4 is null) || AddressLine4 != null && AddressLine4.Equals(other.AddressLine4)) && City.Equals(other.City) && ((State is null && other.State is null) || State != null && State.Equals(other.State)) && ((PostalCode is null && other.PostalCode is null) || PostalCode != null && PostalCode.Equals(other.PostalCode)) && ReceivingSite == other.ReceivingSite && DeliverySite == other.DeliverySite && Enabled == other.Enabled;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * LocationId.GetHashCode();
+                hash ^= 397 * LocationCode.GetHashCode();
+                hash ^= 397 * AddressLine1.GetHashCode();
+                if (AddressLine2 != null)
+                {
+                    hash ^= 397 * AddressLine2.GetHashCode();
+                }
+
+                if (AddressLine3 != null)
+                {
+                    hash ^= 397 * AddressLine3.GetHashCode();
+                }
+
+                if (AddressLine4 != null)
+                {
+                    hash ^= 397 * AddressLine4.GetHashCode();
+                }
+
+                hash ^= 397 * City.GetHashCode();
+                if (State != null)
+                {
+                    hash ^= 397 * State.GetHashCode();
+                }
+
+                if (PostalCode != null)
+                {
+                    hash ^= 397 * PostalCode.GetHashCode();
+                }
+
+                hash ^= 397 * ReceivingSite.GetHashCode();
+                hash ^= 397 * DeliverySite.GetHashCode();
+                hash ^= 397 * Enabled.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearchResult
+    {
+        /// <summary>
+        /// Search for ErpInstitutionLocation objects by multiple properties.
+        /// See the ErpInstitutionLocationFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch ErpInstitutionLocationSearch { get; }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpInstitutionLocation
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch
+    {
+        /// <summary>
+        /// Information about the search results returned.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata Metadata { get; }
+
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> Data { get; }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpInstitutionLocation
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults : IErpInstitutionLocationSearch_ErpInstitutionLocationSearch
+    {
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata
+    {
+        /// <summary>
+        /// Array of property names used to sort the results
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
+
+        /// <summary>
+        /// requested limit to the number of records to retrieve
+        /// </summary>
+        public global::System.Int32? Limit { get; }
+
+        /// <summary>
+        /// Results returned in the data property.
+        /// </summary>
+        public global::System.Int32 ReturnedResultCount { get; }
+
+        /// <summary>
+        /// Starting index for the current result set.
+        /// </summary>
+        public global::System.Int32 StartIndex { get; }
+
+        /// <summary>
+        /// Start index for getting the next page of results.  Unset if there are no more results.
+        /// </summary>
+        public global::System.Int32? NextStartIndex { get; }
+
+        /// <summary>
+        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
+        /// </summary>
+        public global::System.Int32? TotalResultCount { get; }
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata : IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata
+    {
+    }
+
+    /// <summary>
+    /// UC Davis locations that can be used for delivery or receiving locations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data
+    {
+        /// <summary>
+        /// Value that uniquely identifies the supplier site internally to Oracle.
+        /// </summary>
+        public global::System.Int64 LocationId { get; }
+
+        /// <summary>
+        /// Value that uniquely identifies the supplier site for use on interfaces and in the Oracle UI.
+        /// </summary>
+        public global::System.String LocationCode { get; }
+
+        /// <summary>
+        /// Address Line 1
+        /// </summary>
+        public global::System.String AddressLine1 { get; }
+
+        /// <summary>
+        /// Address Line 2
+        /// </summary>
+        public global::System.String? AddressLine2 { get; }
+
+        /// <summary>
+        /// Address Line 3
+        /// </summary>
+        public global::System.String? AddressLine3 { get; }
+
+        /// <summary>
+        /// Address Line 4
+        /// </summary>
+        public global::System.String? AddressLine4 { get; }
+
+        /// <summary>
+        /// City Name
+        /// </summary>
+        public global::System.String City { get; }
+
+        /// <summary>
+        /// State Code
+        /// </summary>
+        public global::System.String? State { get; }
+
+        /// <summary>
+        /// Postal code
+        /// </summary>
+        public global::System.String? PostalCode { get; }
+
+        /// <summary>
+        /// Whether the location can be used as the receiving address for a purchase order.
+        /// </summary>
+        public global::System.Boolean ReceivingSite { get; }
+
+        /// <summary>
+        /// Whether the location can be used as the delivery address for a requisition.
+        /// </summary>
+        public global::System.Boolean DeliverySite { get; }
+
+        /// <summary>
+        /// Whether this address is enabled for current use.
+        /// </summary>
+        public global::System.Boolean Enabled { get; }
+    }
+
+    /// <summary>
+    /// UC Davis locations that can be used for delivery or receiving locations.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation : IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DeptParentsResult : global::System.IEquatable<DeptParentsResult>, IDeptParentsResult
     {
         public DeptParentsResult(global::AggieEnterpriseApi.IDeptParents_ErpFinancialDepartment? erpFinancialDepartment)
@@ -8956,6 +9545,1397 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _searchCommonInputsFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFilterInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _booleanFilterInputFormatter = default !;
+        public global::System.String TypeName => "ErpInstitutionLocationFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _searchCommonInputsFormatter = serializerResolver.GetInputValueFormatter("SearchCommonInputs");
+            _stringFilterInputFormatter = serializerResolver.GetInputValueFormatter("StringFilterInput");
+            _booleanFilterInputFormatter = serializerResolver.GetInputValueFormatter("BooleanFilterInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsSearchCommonSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("searchCommon", FormatSearchCommon(input.SearchCommon)));
+            }
+
+            if (inputInfo.IsLocationCodeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("locationCode", FormatLocationCode(input.LocationCode)));
+            }
+
+            if (inputInfo.IsAddressLine1Set)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("addressLine1", FormatAddressLine1(input.AddressLine1)));
+            }
+
+            if (inputInfo.IsCitySet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("city", FormatCity(input.City)));
+            }
+
+            if (inputInfo.IsStateSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("state", FormatState(input.State)));
+            }
+
+            if (inputInfo.IsPostalCodeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("postalCode", FormatPostalCode(input.PostalCode)));
+            }
+
+            if (inputInfo.IsCountryCodeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("countryCode", FormatCountryCode(input.CountryCode)));
+            }
+
+            if (inputInfo.IsDeliverySiteSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("deliverySite", FormatDeliverySite(input.DeliverySite)));
+            }
+
+            if (inputInfo.IsReceivingSiteSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("receivingSite", FormatReceivingSite(input.ReceivingSite)));
+            }
+
+            if (inputInfo.IsEnabledSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("enabled", FormatEnabled(input.Enabled)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatSearchCommon(global::AggieEnterpriseApi.SearchCommonInputs? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _searchCommonInputsFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLocationCode(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatAddressLine1(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatCity(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatState(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatPostalCode(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatCountryCode(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatDeliverySite(global::AggieEnterpriseApi.BooleanFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatReceivingSite(global::AggieEnterpriseApi.BooleanFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatEnabled(global::AggieEnterpriseApi.BooleanFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFilterInputFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Data object used to run searches on ErpInstitutionLocation</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationFilterInput : global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo, global::System.IEquatable<ErpInstitutionLocationFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpInstitutionLocationFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(ErpInstitutionLocationFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((SearchCommon is null && other.SearchCommon is null) || SearchCommon != null && SearchCommon.Equals(other.SearchCommon))) && ((LocationCode is null && other.LocationCode is null) || LocationCode != null && LocationCode.Equals(other.LocationCode)) && ((AddressLine1 is null && other.AddressLine1 is null) || AddressLine1 != null && AddressLine1.Equals(other.AddressLine1)) && ((City is null && other.City is null) || City != null && City.Equals(other.City)) && ((State is null && other.State is null) || State != null && State.Equals(other.State)) && ((PostalCode is null && other.PostalCode is null) || PostalCode != null && PostalCode.Equals(other.PostalCode)) && ((CountryCode is null && other.CountryCode is null) || CountryCode != null && CountryCode.Equals(other.CountryCode)) && ((DeliverySite is null && other.DeliverySite is null) || DeliverySite != null && DeliverySite.Equals(other.DeliverySite)) && ((ReceivingSite is null && other.ReceivingSite is null) || ReceivingSite != null && ReceivingSite.Equals(other.ReceivingSite)) && ((Enabled is null && other.Enabled is null) || Enabled != null && Enabled.Equals(other.Enabled));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (SearchCommon != null)
+                {
+                    hash ^= 397 * SearchCommon.GetHashCode();
+                }
+
+                if (LocationCode != null)
+                {
+                    hash ^= 397 * LocationCode.GetHashCode();
+                }
+
+                if (AddressLine1 != null)
+                {
+                    hash ^= 397 * AddressLine1.GetHashCode();
+                }
+
+                if (City != null)
+                {
+                    hash ^= 397 * City.GetHashCode();
+                }
+
+                if (State != null)
+                {
+                    hash ^= 397 * State.GetHashCode();
+                }
+
+                if (PostalCode != null)
+                {
+                    hash ^= 397 * PostalCode.GetHashCode();
+                }
+
+                if (CountryCode != null)
+                {
+                    hash ^= 397 * CountryCode.GetHashCode();
+                }
+
+                if (DeliverySite != null)
+                {
+                    hash ^= 397 * DeliverySite.GetHashCode();
+                }
+
+                if (ReceivingSite != null)
+                {
+                    hash ^= 397 * ReceivingSite.GetHashCode();
+                }
+
+                if (Enabled != null)
+                {
+                    hash ^= 397 * Enabled.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::AggieEnterpriseApi.SearchCommonInputs? _value_searchCommon;
+        private global::System.Boolean _set_searchCommon;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_locationCode;
+        private global::System.Boolean _set_locationCode;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_addressLine1;
+        private global::System.Boolean _set_addressLine1;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_city;
+        private global::System.Boolean _set_city;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_state;
+        private global::System.Boolean _set_state;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_postalCode;
+        private global::System.Boolean _set_postalCode;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_countryCode;
+        private global::System.Boolean _set_countryCode;
+        private global::AggieEnterpriseApi.BooleanFilterInput? _value_deliverySite;
+        private global::System.Boolean _set_deliverySite;
+        private global::AggieEnterpriseApi.BooleanFilterInput? _value_receivingSite;
+        private global::System.Boolean _set_receivingSite;
+        private global::AggieEnterpriseApi.BooleanFilterInput? _value_enabled;
+        private global::System.Boolean _set_enabled;
+        public global::AggieEnterpriseApi.SearchCommonInputs? SearchCommon
+        {
+            get => _value_searchCommon;
+            set
+            {
+                _set_searchCommon = true;
+                _value_searchCommon = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo.IsSearchCommonSet => _set_searchCommon;
+        public global::AggieEnterpriseApi.StringFilterInput? LocationCode
+        {
+            get => _value_locationCode;
+            set
+            {
+                _set_locationCode = true;
+                _value_locationCode = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo.IsLocationCodeSet => _set_locationCode;
+        public global::AggieEnterpriseApi.StringFilterInput? AddressLine1
+        {
+            get => _value_addressLine1;
+            set
+            {
+                _set_addressLine1 = true;
+                _value_addressLine1 = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo.IsAddressLine1Set => _set_addressLine1;
+        public global::AggieEnterpriseApi.StringFilterInput? City
+        {
+            get => _value_city;
+            set
+            {
+                _set_city = true;
+                _value_city = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo.IsCitySet => _set_city;
+        public global::AggieEnterpriseApi.StringFilterInput? State
+        {
+            get => _value_state;
+            set
+            {
+                _set_state = true;
+                _value_state = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo.IsStateSet => _set_state;
+        public global::AggieEnterpriseApi.StringFilterInput? PostalCode
+        {
+            get => _value_postalCode;
+            set
+            {
+                _set_postalCode = true;
+                _value_postalCode = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo.IsPostalCodeSet => _set_postalCode;
+        public global::AggieEnterpriseApi.StringFilterInput? CountryCode
+        {
+            get => _value_countryCode;
+            set
+            {
+                _set_countryCode = true;
+                _value_countryCode = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo.IsCountryCodeSet => _set_countryCode;
+        public global::AggieEnterpriseApi.BooleanFilterInput? DeliverySite
+        {
+            get => _value_deliverySite;
+            set
+            {
+                _set_deliverySite = true;
+                _value_deliverySite = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo.IsDeliverySiteSet => _set_deliverySite;
+        public global::AggieEnterpriseApi.BooleanFilterInput? ReceivingSite
+        {
+            get => _value_receivingSite;
+            set
+            {
+                _set_receivingSite = true;
+                _value_receivingSite = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo.IsReceivingSiteSet => _set_receivingSite;
+        public global::AggieEnterpriseApi.BooleanFilterInput? Enabled
+        {
+            get => _value_enabled;
+            set
+            {
+                _set_enabled = true;
+                _value_enabled = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpInstitutionLocationFilterInputInfo.IsEnabledSet => _set_enabled;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class SearchCommonInputsInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _positiveIntFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _nonNegativeIntFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _booleanFormatter = default !;
+        public global::System.String TypeName => "SearchCommonInputs";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+            _positiveIntFormatter = serializerResolver.GetInputValueFormatter("PositiveInt");
+            _nonNegativeIntFormatter = serializerResolver.GetInputValueFormatter("NonNegativeInt");
+            _booleanFormatter = serializerResolver.GetInputValueFormatter("Boolean");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.SearchCommonInputs;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.ISearchCommonInputsInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsSortSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("sort", FormatSort(input.Sort)));
+            }
+
+            if (inputInfo.IsLimitSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("limit", FormatLimit(input.Limit)));
+            }
+
+            if (inputInfo.IsStartIndexSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("startIndex", FormatStartIndex(input.StartIndex)));
+            }
+
+            if (inputInfo.IsIncludeTotalResultCountSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("includeTotalResultCount", FormatIncludeTotalResultCount(input.IncludeTotalResultCount)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatSort(global::System.Collections.Generic.IReadOnlyList<global::System.String>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        throw new global::System.ArgumentNullException(nameof(input_elm));
+                    }
+
+                    input_list.Add(_stringFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatLimit(global::System.Int32? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _positiveIntFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatStartIndex(global::System.Int32? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _nonNegativeIntFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatIncludeTotalResultCount(global::System.Boolean? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Special properties common to all common search operations.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class SearchCommonInputs : global::AggieEnterpriseApi.State.ISearchCommonInputsInfo, global::System.IEquatable<SearchCommonInputs>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((SearchCommonInputs)obj);
+        }
+
+        public virtual global::System.Boolean Equals(SearchCommonInputs? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Sort, other.Sort)) && Limit == other.Limit && StartIndex == other.StartIndex && IncludeTotalResultCount == other.IncludeTotalResultCount;
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Sort != null)
+                {
+                    foreach (var Sort_elm in Sort)
+                    {
+                        hash ^= 397 * Sort_elm.GetHashCode();
+                    }
+                }
+
+                if (Limit != null)
+                {
+                    hash ^= 397 * Limit.GetHashCode();
+                }
+
+                if (StartIndex != null)
+                {
+                    hash ^= 397 * StartIndex.GetHashCode();
+                }
+
+                if (IncludeTotalResultCount != null)
+                {
+                    hash ^= 397 * IncludeTotalResultCount.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? _value_sort;
+        private global::System.Boolean _set_sort;
+        private global::System.Int32? _value_limit;
+        private global::System.Boolean _set_limit;
+        private global::System.Int32? _value_startIndex;
+        private global::System.Boolean _set_startIndex;
+        private global::System.Boolean? _value_includeTotalResultCount;
+        private global::System.Boolean _set_includeTotalResultCount;
+        ///<summary>Array of property names to sort on</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort
+        {
+            get => _value_sort;
+            set
+            {
+                _set_sort = true;
+                _value_sort = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsSortSet => _set_sort;
+        ///<summary>maximum number of records to retrieve</summary>
+        public global::System.Int32? Limit
+        {
+            get => _value_limit;
+            set
+            {
+                _set_limit = true;
+                _value_limit = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsLimitSet => _set_limit;
+        ///<summary>Record number to start with</summary>
+        public global::System.Int32? StartIndex
+        {
+            get => _value_startIndex;
+            set
+            {
+                _set_startIndex = true;
+                _value_startIndex = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsStartIndexSet => _set_startIndex;
+        ///<summary>Whether to include a count of all records to be returned by this search.  Will increase search time.</summary>
+        public global::System.Boolean? IncludeTotalResultCount
+        {
+            get => _value_includeTotalResultCount;
+            set
+            {
+                _set_includeTotalResultCount = true;
+                _value_includeTotalResultCount = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsIncludeTotalResultCountSet => _set_includeTotalResultCount;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class StringFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter = default !;
+        public global::System.String TypeName => "StringFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.StringFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IStringFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsEqSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("eq", FormatEq(input.Eq)));
+            }
+
+            if (inputInfo.IsNeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ne", FormatNe(input.Ne)));
+            }
+
+            if (inputInfo.IsLeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("le", FormatLe(input.Le)));
+            }
+
+            if (inputInfo.IsLtSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lt", FormatLt(input.Lt)));
+            }
+
+            if (inputInfo.IsGeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ge", FormatGe(input.Ge)));
+            }
+
+            if (inputInfo.IsGtSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("gt", FormatGt(input.Gt)));
+            }
+
+            if (inputInfo.IsBeginsWithSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("beginsWith", FormatBeginsWith(input.BeginsWith)));
+            }
+
+            if (inputInfo.IsEndsWithSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("endsWith", FormatEndsWith(input.EndsWith)));
+            }
+
+            if (inputInfo.IsContainsSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("contains", FormatContains(input.Contains)));
+            }
+
+            if (inputInfo.IsNotContainsSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("notContains", FormatNotContains(input.NotContains)));
+            }
+
+            if (inputInfo.IsBetweenSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("between", FormatBetween(input.Between)));
+            }
+
+            if (inputInfo.IsInSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("in", FormatIn(input.In)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatEq(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNe(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLe(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLt(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGe(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGt(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatBeginsWith(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatEndsWith(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatContains(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNotContains(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatBetween(global::System.Collections.Generic.IReadOnlyList<global::System.String>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        throw new global::System.ArgumentNullException(nameof(input_elm));
+                    }
+
+                    input_list.Add(_stringFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatIn(global::System.Collections.Generic.IReadOnlyList<global::System.String?>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        input_list.Add(input_elm);
+                    }
+                    else
+                    {
+                        input_list.Add(_stringFormatter.Format(input_elm));
+                    }
+                }
+
+                return input_list;
+            }
+        }
+    }
+
+    ///<summary>String filter criteria object, only one of this object's properties should be set.  Except as noted in the properties below, all comparisons are case-sensitive.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class StringFilterInput : global::AggieEnterpriseApi.State.IStringFilterInputInfo, global::System.IEquatable<StringFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((StringFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(StringFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((Eq is null && other.Eq is null) || Eq != null && Eq.Equals(other.Eq))) && ((Ne is null && other.Ne is null) || Ne != null && Ne.Equals(other.Ne)) && ((Le is null && other.Le is null) || Le != null && Le.Equals(other.Le)) && ((Lt is null && other.Lt is null) || Lt != null && Lt.Equals(other.Lt)) && ((Ge is null && other.Ge is null) || Ge != null && Ge.Equals(other.Ge)) && ((Gt is null && other.Gt is null) || Gt != null && Gt.Equals(other.Gt)) && ((BeginsWith is null && other.BeginsWith is null) || BeginsWith != null && BeginsWith.Equals(other.BeginsWith)) && ((EndsWith is null && other.EndsWith is null) || EndsWith != null && EndsWith.Equals(other.EndsWith)) && ((Contains is null && other.Contains is null) || Contains != null && Contains.Equals(other.Contains)) && ((NotContains is null && other.NotContains is null) || NotContains != null && NotContains.Equals(other.NotContains)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Between, other.Between) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(In, other.In);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Eq != null)
+                {
+                    hash ^= 397 * Eq.GetHashCode();
+                }
+
+                if (Ne != null)
+                {
+                    hash ^= 397 * Ne.GetHashCode();
+                }
+
+                if (Le != null)
+                {
+                    hash ^= 397 * Le.GetHashCode();
+                }
+
+                if (Lt != null)
+                {
+                    hash ^= 397 * Lt.GetHashCode();
+                }
+
+                if (Ge != null)
+                {
+                    hash ^= 397 * Ge.GetHashCode();
+                }
+
+                if (Gt != null)
+                {
+                    hash ^= 397 * Gt.GetHashCode();
+                }
+
+                if (BeginsWith != null)
+                {
+                    hash ^= 397 * BeginsWith.GetHashCode();
+                }
+
+                if (EndsWith != null)
+                {
+                    hash ^= 397 * EndsWith.GetHashCode();
+                }
+
+                if (Contains != null)
+                {
+                    hash ^= 397 * Contains.GetHashCode();
+                }
+
+                if (NotContains != null)
+                {
+                    hash ^= 397 * NotContains.GetHashCode();
+                }
+
+                if (Between != null)
+                {
+                    foreach (var Between_elm in Between)
+                    {
+                        hash ^= 397 * Between_elm.GetHashCode();
+                    }
+                }
+
+                if (In != null)
+                {
+                    foreach (var In_elm in In)
+                    {
+                        if (In_elm != null)
+                        {
+                            hash ^= 397 * In_elm.GetHashCode();
+                        }
+                    }
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.String? _value_eq;
+        private global::System.Boolean _set_eq;
+        private global::System.String? _value_ne;
+        private global::System.Boolean _set_ne;
+        private global::System.String? _value_le;
+        private global::System.Boolean _set_le;
+        private global::System.String? _value_lt;
+        private global::System.Boolean _set_lt;
+        private global::System.String? _value_ge;
+        private global::System.Boolean _set_ge;
+        private global::System.String? _value_gt;
+        private global::System.Boolean _set_gt;
+        private global::System.String? _value_beginsWith;
+        private global::System.Boolean _set_beginsWith;
+        private global::System.String? _value_endsWith;
+        private global::System.Boolean _set_endsWith;
+        private global::System.String? _value_contains;
+        private global::System.Boolean _set_contains;
+        private global::System.String? _value_notContains;
+        private global::System.Boolean _set_notContains;
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? _value_between;
+        private global::System.Boolean _set_between;
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String?>? _value_in;
+        private global::System.Boolean _set_in;
+        ///<summary>Test if property is equal to the given value</summary>
+        public global::System.String? Eq
+        {
+            get => _value_eq;
+            set
+            {
+                _set_eq = true;
+                _value_eq = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsEqSet => _set_eq;
+        ///<summary>Test if property is NOT equal to the given value</summary>
+        public global::System.String? Ne
+        {
+            get => _value_ne;
+            set
+            {
+                _set_ne = true;
+                _value_ne = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsNeSet => _set_ne;
+        ///<summary>Test if property is less than or equal to the given value</summary>
+        public global::System.String? Le
+        {
+            get => _value_le;
+            set
+            {
+                _set_le = true;
+                _value_le = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsLeSet => _set_le;
+        ///<summary>Test if property is less than the given value</summary>
+        public global::System.String? Lt
+        {
+            get => _value_lt;
+            set
+            {
+                _set_lt = true;
+                _value_lt = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsLtSet => _set_lt;
+        ///<summary>Test if property is greater than or equal to the given value</summary>
+        public global::System.String? Ge
+        {
+            get => _value_ge;
+            set
+            {
+                _set_ge = true;
+                _value_ge = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsGeSet => _set_ge;
+        ///<summary>Test if property is greater than the given value</summary>
+        public global::System.String? Gt
+        {
+            get => _value_gt;
+            set
+            {
+                _set_gt = true;
+                _value_gt = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsGtSet => _set_gt;
+        ///<summary>Test if property begins with the given value.  Case-insensitive.</summary>
+        public global::System.String? BeginsWith
+        {
+            get => _value_beginsWith;
+            set
+            {
+                _set_beginsWith = true;
+                _value_beginsWith = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsBeginsWithSet => _set_beginsWith;
+        ///<summary>Test if property ends with the given value.  Case-insensitive.</summary>
+        public global::System.String? EndsWith
+        {
+            get => _value_endsWith;
+            set
+            {
+                _set_endsWith = true;
+                _value_endsWith = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsEndsWithSet => _set_endsWith;
+        ///<summary>Test if property contains the given value.  Case-insensitive.</summary>
+        public global::System.String? Contains
+        {
+            get => _value_contains;
+            set
+            {
+                _set_contains = true;
+                _value_contains = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsContainsSet => _set_contains;
+        ///<summary>Test if property does not contain the given value.  Case-insensitive.</summary>
+        public global::System.String? NotContains
+        {
+            get => _value_notContains;
+            set
+            {
+                _set_notContains = true;
+                _value_notContains = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsNotContainsSet => _set_notContains;
+        ///<summary>Test if property is between the first 2 elements in the array</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Between
+        {
+            get => _value_between;
+            set
+            {
+                _set_between = true;
+                _value_between = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsBetweenSet => _set_between;
+        ///<summary>Test if property is equal to one of the given values</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String?>? In
+        {
+            get => _value_in;
+            set
+            {
+                _set_in = true;
+                _value_in = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsInSet => _set_in;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class BooleanFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _booleanFormatter = default !;
+        public global::System.String TypeName => "BooleanFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _booleanFormatter = serializerResolver.GetInputValueFormatter("Boolean");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.BooleanFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IBooleanFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsEqSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("eq", FormatEq(input.Eq)));
+            }
+
+            if (inputInfo.IsNeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ne", FormatNe(input.Ne)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatEq(global::System.Boolean? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNe(global::System.Boolean? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Generic boolean filter criteria object, only one of these properties should be set</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class BooleanFilterInput : global::AggieEnterpriseApi.State.IBooleanFilterInputInfo, global::System.IEquatable<BooleanFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((BooleanFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(BooleanFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Eq == other.Eq) && Ne == other.Ne;
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Eq != null)
+                {
+                    hash ^= 397 * Eq.GetHashCode();
+                }
+
+                if (Ne != null)
+                {
+                    hash ^= 397 * Ne.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.Boolean? _value_eq;
+        private global::System.Boolean _set_eq;
+        private global::System.Boolean? _value_ne;
+        private global::System.Boolean _set_ne;
+        ///<summary>Test if property is equal to the given value</summary>
+        public global::System.Boolean? Eq
+        {
+            get => _value_eq;
+            set
+            {
+                _set_eq = true;
+                _value_eq = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IBooleanFilterInputInfo.IsEqSet => _set_eq;
+        ///<summary>Test if property is NOT equal to the given value</summary>
+        public global::System.Boolean? Ne
+        {
+            get => _value_ne;
+            set
+            {
+                _set_ne = true;
+                _value_ne = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IBooleanFilterInputInfo.IsNeSet => _set_ne;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _actionRequestHeaderInputFormatter = default !;
@@ -12051,11 +14031,6 @@ namespace AggieEnterpriseApi
                 fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("unitPrice", FormatUnitPrice(input.UnitPrice)));
             }
 
-            if (inputInfo.IsDeliverToTypeCodeSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("deliverToTypeCode", FormatDeliverToTypeCode(input.DeliverToTypeCode)));
-            }
-
             if (inputInfo.IsDeliveryToLocationCodeSet)
             {
                 fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("deliveryToLocationCode", FormatDeliveryToLocationCode(input.DeliveryToLocationCode)));
@@ -12129,18 +14104,6 @@ namespace AggieEnterpriseApi
         private global::System.Object? FormatUnitPrice(global::System.Decimal input)
         {
             return _nonNegativeFloatFormatter.Format(input);
-        }
-
-        private global::System.Object? FormatDeliverToTypeCode(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFormatter.Format(input);
-            }
         }
 
         private global::System.Object? FormatDeliveryToLocationCode(global::System.String? input)
@@ -12230,7 +14193,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (Amount == other.Amount) && Quantity == other.Quantity && UnitOfMeasure.Equals(other.UnitOfMeasure) && ItemDescription.Equals(other.ItemDescription) && ((NoteToBuyer is null && other.NoteToBuyer is null) || NoteToBuyer != null && NoteToBuyer.Equals(other.NoteToBuyer)) && PurchasingCategoryName.Equals(other.PurchasingCategoryName) && UnitPrice == other.UnitPrice && ((DeliverToTypeCode is null && other.DeliverToTypeCode is null) || DeliverToTypeCode != null && DeliverToTypeCode.Equals(other.DeliverToTypeCode)) && ((DeliveryToLocationCode is null && other.DeliveryToLocationCode is null) || DeliveryToLocationCode != null && DeliveryToLocationCode.Equals(other.DeliveryToLocationCode)) && ((RequestedDeliveryDate is null && other.RequestedDeliveryDate is null) || RequestedDeliveryDate != null && RequestedDeliveryDate.Equals(other.RequestedDeliveryDate)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Distributions, other.Distributions);
+            return (Amount == other.Amount) && Quantity == other.Quantity && UnitOfMeasure.Equals(other.UnitOfMeasure) && ItemDescription.Equals(other.ItemDescription) && ((NoteToBuyer is null && other.NoteToBuyer is null) || NoteToBuyer != null && NoteToBuyer.Equals(other.NoteToBuyer)) && PurchasingCategoryName.Equals(other.PurchasingCategoryName) && UnitPrice == other.UnitPrice && ((DeliveryToLocationCode is null && other.DeliveryToLocationCode is null) || DeliveryToLocationCode != null && DeliveryToLocationCode.Equals(other.DeliveryToLocationCode)) && ((RequestedDeliveryDate is null && other.RequestedDeliveryDate is null) || RequestedDeliveryDate != null && RequestedDeliveryDate.Equals(other.RequestedDeliveryDate)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Distributions, other.Distributions);
         }
 
         public override global::System.Int32 GetHashCode()
@@ -12249,11 +14212,6 @@ namespace AggieEnterpriseApi
 
                 hash ^= 397 * PurchasingCategoryName.GetHashCode();
                 hash ^= 397 * UnitPrice.GetHashCode();
-                if (DeliverToTypeCode != null)
-                {
-                    hash ^= 397 * DeliverToTypeCode.GetHashCode();
-                }
-
                 if (DeliveryToLocationCode != null)
                 {
                     hash ^= 397 * DeliveryToLocationCode.GetHashCode();
@@ -12287,8 +14245,6 @@ namespace AggieEnterpriseApi
         private global::System.Boolean _set_purchasingCategoryName;
         private global::System.Decimal _value_unitPrice;
         private global::System.Boolean _set_unitPrice;
-        private global::System.String? _value_deliverToTypeCode;
-        private global::System.Boolean _set_deliverToTypeCode;
         private global::System.String? _value_deliveryToLocationCode;
         private global::System.Boolean _set_deliveryToLocationCode;
         private global::System.String? _value_requestedDeliveryDate;
@@ -12379,17 +14335,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsUnitPriceSet => _set_unitPrice;
-        public global::System.String? DeliverToTypeCode
-        {
-            get => _value_deliverToTypeCode;
-            set
-            {
-                _set_deliverToTypeCode = true;
-                _value_deliverToTypeCode = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchaseRequisitionLineInputInfo.IsDeliverToTypeCodeSet => _set_deliverToTypeCode;
         ///<summary>Abbreviation that identifies the final location where the buying company should deliver the goods previously received from a supplier.</summary>
         public global::System.String? DeliveryToLocationCode
         {
@@ -13100,803 +15045,6 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class SearchCommonInputsInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
-    {
-        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter = default !;
-        private global::StrawberryShake.Serialization.IInputValueFormatter _positiveIntFormatter = default !;
-        private global::StrawberryShake.Serialization.IInputValueFormatter _nonNegativeIntFormatter = default !;
-        private global::StrawberryShake.Serialization.IInputValueFormatter _booleanFormatter = default !;
-        public global::System.String TypeName => "SearchCommonInputs";
-        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
-            _positiveIntFormatter = serializerResolver.GetInputValueFormatter("PositiveInt");
-            _nonNegativeIntFormatter = serializerResolver.GetInputValueFormatter("NonNegativeInt");
-            _booleanFormatter = serializerResolver.GetInputValueFormatter("Boolean");
-        }
-
-        public global::System.Object? Format(global::System.Object? runtimeValue)
-        {
-            if (runtimeValue is null)
-            {
-                return null;
-            }
-
-            var input = runtimeValue as global::AggieEnterpriseApi.SearchCommonInputs;
-            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.ISearchCommonInputsInfo;
-            if (input is null || inputInfo is null)
-            {
-                throw new global::System.ArgumentException(nameof(runtimeValue));
-            }
-
-            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
-            if (inputInfo.IsSortSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("sort", FormatSort(input.Sort)));
-            }
-
-            if (inputInfo.IsLimitSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("limit", FormatLimit(input.Limit)));
-            }
-
-            if (inputInfo.IsStartIndexSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("startIndex", FormatStartIndex(input.StartIndex)));
-            }
-
-            if (inputInfo.IsIncludeTotalResultCountSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("includeTotalResultCount", FormatIncludeTotalResultCount(input.IncludeTotalResultCount)));
-            }
-
-            return fields;
-        }
-
-        private global::System.Object? FormatSort(global::System.Collections.Generic.IReadOnlyList<global::System.String>? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
-                foreach (var input_elm in input)
-                {
-                    if (input_elm is null)
-                    {
-                        throw new global::System.ArgumentNullException(nameof(input_elm));
-                    }
-
-                    input_list.Add(_stringFormatter.Format(input_elm));
-                }
-
-                return input_list;
-            }
-        }
-
-        private global::System.Object? FormatLimit(global::System.Int32? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _positiveIntFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatStartIndex(global::System.Int32? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _nonNegativeIntFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatIncludeTotalResultCount(global::System.Boolean? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _booleanFormatter.Format(input);
-            }
-        }
-    }
-
-    ///<summary>Special properties common to all common search operations.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class SearchCommonInputs : global::AggieEnterpriseApi.State.ISearchCommonInputsInfo, global::System.IEquatable<SearchCommonInputs>
-    {
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((SearchCommonInputs)obj);
-        }
-
-        public virtual global::System.Boolean Equals(SearchCommonInputs? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Sort, other.Sort)) && Limit == other.Limit && StartIndex == other.StartIndex && IncludeTotalResultCount == other.IncludeTotalResultCount;
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (Sort != null)
-                {
-                    foreach (var Sort_elm in Sort)
-                    {
-                        hash ^= 397 * Sort_elm.GetHashCode();
-                    }
-                }
-
-                if (Limit != null)
-                {
-                    hash ^= 397 * Limit.GetHashCode();
-                }
-
-                if (StartIndex != null)
-                {
-                    hash ^= 397 * StartIndex.GetHashCode();
-                }
-
-                if (IncludeTotalResultCount != null)
-                {
-                    hash ^= 397 * IncludeTotalResultCount.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? _value_sort;
-        private global::System.Boolean _set_sort;
-        private global::System.Int32? _value_limit;
-        private global::System.Boolean _set_limit;
-        private global::System.Int32? _value_startIndex;
-        private global::System.Boolean _set_startIndex;
-        private global::System.Boolean? _value_includeTotalResultCount;
-        private global::System.Boolean _set_includeTotalResultCount;
-        ///<summary>Array of property names to sort on</summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort
-        {
-            get => _value_sort;
-            set
-            {
-                _set_sort = true;
-                _value_sort = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsSortSet => _set_sort;
-        ///<summary>maximum number of records to retrieve</summary>
-        public global::System.Int32? Limit
-        {
-            get => _value_limit;
-            set
-            {
-                _set_limit = true;
-                _value_limit = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsLimitSet => _set_limit;
-        ///<summary>Record number to start with</summary>
-        public global::System.Int32? StartIndex
-        {
-            get => _value_startIndex;
-            set
-            {
-                _set_startIndex = true;
-                _value_startIndex = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsStartIndexSet => _set_startIndex;
-        ///<summary>Whether to include a count of all records to be returned by this search.  Will increase search time.</summary>
-        public global::System.Boolean? IncludeTotalResultCount
-        {
-            get => _value_includeTotalResultCount;
-            set
-            {
-                _set_includeTotalResultCount = true;
-                _value_includeTotalResultCount = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.ISearchCommonInputsInfo.IsIncludeTotalResultCountSet => _set_includeTotalResultCount;
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class StringFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
-    {
-        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter = default !;
-        public global::System.String TypeName => "StringFilterInput";
-        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
-        }
-
-        public global::System.Object? Format(global::System.Object? runtimeValue)
-        {
-            if (runtimeValue is null)
-            {
-                return null;
-            }
-
-            var input = runtimeValue as global::AggieEnterpriseApi.StringFilterInput;
-            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IStringFilterInputInfo;
-            if (input is null || inputInfo is null)
-            {
-                throw new global::System.ArgumentException(nameof(runtimeValue));
-            }
-
-            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
-            if (inputInfo.IsEqSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("eq", FormatEq(input.Eq)));
-            }
-
-            if (inputInfo.IsNeSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ne", FormatNe(input.Ne)));
-            }
-
-            if (inputInfo.IsLeSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("le", FormatLe(input.Le)));
-            }
-
-            if (inputInfo.IsLtSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lt", FormatLt(input.Lt)));
-            }
-
-            if (inputInfo.IsGeSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ge", FormatGe(input.Ge)));
-            }
-
-            if (inputInfo.IsGtSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("gt", FormatGt(input.Gt)));
-            }
-
-            if (inputInfo.IsBeginsWithSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("beginsWith", FormatBeginsWith(input.BeginsWith)));
-            }
-
-            if (inputInfo.IsEndsWithSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("endsWith", FormatEndsWith(input.EndsWith)));
-            }
-
-            if (inputInfo.IsContainsSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("contains", FormatContains(input.Contains)));
-            }
-
-            if (inputInfo.IsNotContainsSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("notContains", FormatNotContains(input.NotContains)));
-            }
-
-            if (inputInfo.IsBetweenSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("between", FormatBetween(input.Between)));
-            }
-
-            if (inputInfo.IsInSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("in", FormatIn(input.In)));
-            }
-
-            return fields;
-        }
-
-        private global::System.Object? FormatEq(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatNe(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatLe(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatLt(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatGe(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatGt(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatBeginsWith(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatEndsWith(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatContains(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatNotContains(global::System.String? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatBetween(global::System.Collections.Generic.IReadOnlyList<global::System.String>? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
-                foreach (var input_elm in input)
-                {
-                    if (input_elm is null)
-                    {
-                        throw new global::System.ArgumentNullException(nameof(input_elm));
-                    }
-
-                    input_list.Add(_stringFormatter.Format(input_elm));
-                }
-
-                return input_list;
-            }
-        }
-
-        private global::System.Object? FormatIn(global::System.Collections.Generic.IReadOnlyList<global::System.String?>? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
-                foreach (var input_elm in input)
-                {
-                    if (input_elm is null)
-                    {
-                        input_list.Add(input_elm);
-                    }
-                    else
-                    {
-                        input_list.Add(_stringFormatter.Format(input_elm));
-                    }
-                }
-
-                return input_list;
-            }
-        }
-    }
-
-    ///<summary>String filter criteria object, only one of this object's properties should be set.  Except as noted in the properties below, all comparisons are case-sensitive.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class StringFilterInput : global::AggieEnterpriseApi.State.IStringFilterInputInfo, global::System.IEquatable<StringFilterInput>
-    {
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((StringFilterInput)obj);
-        }
-
-        public virtual global::System.Boolean Equals(StringFilterInput? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (((Eq is null && other.Eq is null) || Eq != null && Eq.Equals(other.Eq))) && ((Ne is null && other.Ne is null) || Ne != null && Ne.Equals(other.Ne)) && ((Le is null && other.Le is null) || Le != null && Le.Equals(other.Le)) && ((Lt is null && other.Lt is null) || Lt != null && Lt.Equals(other.Lt)) && ((Ge is null && other.Ge is null) || Ge != null && Ge.Equals(other.Ge)) && ((Gt is null && other.Gt is null) || Gt != null && Gt.Equals(other.Gt)) && ((BeginsWith is null && other.BeginsWith is null) || BeginsWith != null && BeginsWith.Equals(other.BeginsWith)) && ((EndsWith is null && other.EndsWith is null) || EndsWith != null && EndsWith.Equals(other.EndsWith)) && ((Contains is null && other.Contains is null) || Contains != null && Contains.Equals(other.Contains)) && ((NotContains is null && other.NotContains is null) || NotContains != null && NotContains.Equals(other.NotContains)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Between, other.Between) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(In, other.In);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (Eq != null)
-                {
-                    hash ^= 397 * Eq.GetHashCode();
-                }
-
-                if (Ne != null)
-                {
-                    hash ^= 397 * Ne.GetHashCode();
-                }
-
-                if (Le != null)
-                {
-                    hash ^= 397 * Le.GetHashCode();
-                }
-
-                if (Lt != null)
-                {
-                    hash ^= 397 * Lt.GetHashCode();
-                }
-
-                if (Ge != null)
-                {
-                    hash ^= 397 * Ge.GetHashCode();
-                }
-
-                if (Gt != null)
-                {
-                    hash ^= 397 * Gt.GetHashCode();
-                }
-
-                if (BeginsWith != null)
-                {
-                    hash ^= 397 * BeginsWith.GetHashCode();
-                }
-
-                if (EndsWith != null)
-                {
-                    hash ^= 397 * EndsWith.GetHashCode();
-                }
-
-                if (Contains != null)
-                {
-                    hash ^= 397 * Contains.GetHashCode();
-                }
-
-                if (NotContains != null)
-                {
-                    hash ^= 397 * NotContains.GetHashCode();
-                }
-
-                if (Between != null)
-                {
-                    foreach (var Between_elm in Between)
-                    {
-                        hash ^= 397 * Between_elm.GetHashCode();
-                    }
-                }
-
-                if (In != null)
-                {
-                    foreach (var In_elm in In)
-                    {
-                        if (In_elm != null)
-                        {
-                            hash ^= 397 * In_elm.GetHashCode();
-                        }
-                    }
-                }
-
-                return hash;
-            }
-        }
-
-        private global::System.String? _value_eq;
-        private global::System.Boolean _set_eq;
-        private global::System.String? _value_ne;
-        private global::System.Boolean _set_ne;
-        private global::System.String? _value_le;
-        private global::System.Boolean _set_le;
-        private global::System.String? _value_lt;
-        private global::System.Boolean _set_lt;
-        private global::System.String? _value_ge;
-        private global::System.Boolean _set_ge;
-        private global::System.String? _value_gt;
-        private global::System.Boolean _set_gt;
-        private global::System.String? _value_beginsWith;
-        private global::System.Boolean _set_beginsWith;
-        private global::System.String? _value_endsWith;
-        private global::System.Boolean _set_endsWith;
-        private global::System.String? _value_contains;
-        private global::System.Boolean _set_contains;
-        private global::System.String? _value_notContains;
-        private global::System.Boolean _set_notContains;
-        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? _value_between;
-        private global::System.Boolean _set_between;
-        private global::System.Collections.Generic.IReadOnlyList<global::System.String?>? _value_in;
-        private global::System.Boolean _set_in;
-        ///<summary>Test if property is equal to the given value</summary>
-        public global::System.String? Eq
-        {
-            get => _value_eq;
-            set
-            {
-                _set_eq = true;
-                _value_eq = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsEqSet => _set_eq;
-        ///<summary>Test if property is NOT equal to the given value</summary>
-        public global::System.String? Ne
-        {
-            get => _value_ne;
-            set
-            {
-                _set_ne = true;
-                _value_ne = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsNeSet => _set_ne;
-        ///<summary>Test if property is less than or equal to the given value</summary>
-        public global::System.String? Le
-        {
-            get => _value_le;
-            set
-            {
-                _set_le = true;
-                _value_le = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsLeSet => _set_le;
-        ///<summary>Test if property is less than the given value</summary>
-        public global::System.String? Lt
-        {
-            get => _value_lt;
-            set
-            {
-                _set_lt = true;
-                _value_lt = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsLtSet => _set_lt;
-        ///<summary>Test if property is greater than or equal to the given value</summary>
-        public global::System.String? Ge
-        {
-            get => _value_ge;
-            set
-            {
-                _set_ge = true;
-                _value_ge = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsGeSet => _set_ge;
-        ///<summary>Test if property is greater than the given value</summary>
-        public global::System.String? Gt
-        {
-            get => _value_gt;
-            set
-            {
-                _set_gt = true;
-                _value_gt = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsGtSet => _set_gt;
-        ///<summary>Test if property begins with the given value.  Case-insensitive.</summary>
-        public global::System.String? BeginsWith
-        {
-            get => _value_beginsWith;
-            set
-            {
-                _set_beginsWith = true;
-                _value_beginsWith = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsBeginsWithSet => _set_beginsWith;
-        ///<summary>Test if property ends with the given value.  Case-insensitive.</summary>
-        public global::System.String? EndsWith
-        {
-            get => _value_endsWith;
-            set
-            {
-                _set_endsWith = true;
-                _value_endsWith = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsEndsWithSet => _set_endsWith;
-        ///<summary>Test if property contains the given value.  Case-insensitive.</summary>
-        public global::System.String? Contains
-        {
-            get => _value_contains;
-            set
-            {
-                _set_contains = true;
-                _value_contains = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsContainsSet => _set_contains;
-        ///<summary>Test if property does not contain the given value.  Case-insensitive.</summary>
-        public global::System.String? NotContains
-        {
-            get => _value_notContains;
-            set
-            {
-                _set_notContains = true;
-                _value_notContains = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsNotContainsSet => _set_notContains;
-        ///<summary>Test if property is between the first 2 elements in the array</summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Between
-        {
-            get => _value_between;
-            set
-            {
-                _set_between = true;
-                _value_between = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsBetweenSet => _set_between;
-        ///<summary>Test if property is equal to one of the given values</summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::System.String?>? In
-        {
-            get => _value_in;
-            set
-            {
-                _set_in = true;
-                _value_in = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IStringFilterInputInfo.IsInSet => _set_in;
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class DateFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _dateFormatter = default !;
@@ -14305,6 +15453,188 @@ namespace AggieEnterpriseApi
                 RequestStatus.Rejected => "REJECTED",
                 _ => throw new global::StrawberryShake.GraphQLClientException()};
         }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ErpInstitutionLocationSearch GraphQL operation
+    /// <code>
+    /// query ErpInstitutionLocationSearch($filter: ErpInstitutionLocationFilterInput!) {
+    ///   erpInstitutionLocationSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       locationId
+    ///       locationCode
+    ///       addressLine1
+    ///       addressLine2
+    ///       addressLine3
+    ///       addressLine4
+    ///       city
+    ///       state
+    ///       postalCode
+    ///       receivingSite
+    ///       deliverySite
+    ///       enabled
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchQueryDocument : global::StrawberryShake.IDocument
+    {
+        private ErpInstitutionLocationSearchQueryDocument()
+        {
+        }
+
+        public static ErpInstitutionLocationSearchQueryDocument Instance { get; } = new ErpInstitutionLocationSearchQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x45, 0x72, 0x70, 0x49, 0x6e, 0x73, 0x74, 0x69, 0x74, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x45, 0x72, 0x70, 0x49, 0x6e, 0x73, 0x74, 0x69, 0x74, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x72, 0x70, 0x49, 0x6e, 0x73, 0x74, 0x69, 0x74, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x20, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x31, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x32, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x33, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x4c, 0x69, 0x6e, 0x65, 0x34, 0x20, 0x63, 0x69, 0x74, 0x79, 0x20, 0x73, 0x74, 0x61, 0x74, 0x65, 0x20, 0x70, 0x6f, 0x73, 0x74, 0x61, 0x6c, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x72, 0x65, 0x63, 0x65, 0x69, 0x76, 0x69, 0x6e, 0x67, 0x53, 0x69, 0x74, 0x65, 0x20, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x53, 0x69, 0x74, 0x65, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "755557f91a4a6ac04ca3c974f36b3d2b");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ErpInstitutionLocationSearch GraphQL operation
+    /// <code>
+    /// query ErpInstitutionLocationSearch($filter: ErpInstitutionLocationFilterInput!) {
+    ///   erpInstitutionLocationSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       locationId
+    ///       locationCode
+    ///       addressLine1
+    ///       addressLine2
+    ///       addressLine3
+    ///       addressLine4
+    ///       city
+    ///       state
+    ///       postalCode
+    ///       receivingSite
+    ///       deliverySite
+    ///       enabled
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchQuery : global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IErpInstitutionLocationSearchResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _erpInstitutionLocationFilterInputFormatter;
+        public ErpInstitutionLocationSearchQuery(global::StrawberryShake.IOperationExecutor<IErpInstitutionLocationSearchResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _erpInstitutionLocationFilterInputFormatter = serializerResolver.GetInputValueFormatter("ErpInstitutionLocationFilterInput");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IErpInstitutionLocationSearchResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(filter);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> Watch(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(filter);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("filter", FormatFilter(filter));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: ErpInstitutionLocationSearchQueryDocument.Instance.Hash.Value, name: "ErpInstitutionLocationSearch", document: ErpInstitutionLocationSearchQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatFilter(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _erpInstitutionLocationFilterInputFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ErpInstitutionLocationSearch GraphQL operation
+    /// <code>
+    /// query ErpInstitutionLocationSearch($filter: ErpInstitutionLocationFilterInput!) {
+    ///   erpInstitutionLocationSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       locationId
+    ///       locationCode
+    ///       addressLine1
+    ///       addressLine2
+    ///       addressLine3
+    ///       addressLine4
+    ///       city
+    ///       state
+    ///       postalCode
+    ///       receivingSite
+    ///       deliverySite
+    ///       enabled
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpInstitutionLocationSearchQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> Watch(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -16965,6 +18295,7 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class AggieEnterpriseClient : global::AggieEnterpriseApi.IAggieEnterpriseClient
     {
+        private readonly global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery _erpInstitutionLocationSearch;
         private readonly global::AggieEnterpriseApi.IDeptParentsQuery _deptParents;
         private readonly global::AggieEnterpriseApi.IFundParentsQuery _fundParents;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestMutation _glJournalRequest;
@@ -16978,8 +18309,9 @@ namespace AggieEnterpriseApi
         private readonly global::AggieEnterpriseApi.IScmSupplierSearchQuery _scmSupplierSearch;
         private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IScmSupplierSearchQuery scmSupplierSearch, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery erpInstitutionLocationSearch, global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IScmSupplierSearchQuery scmSupplierSearch, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
+            _erpInstitutionLocationSearch = erpInstitutionLocationSearch ?? throw new global::System.ArgumentNullException(nameof(erpInstitutionLocationSearch));
             _deptParents = deptParents ?? throw new global::System.ArgumentNullException(nameof(deptParents));
             _fundParents = fundParents ?? throw new global::System.ArgumentNullException(nameof(fundParents));
             _glJournalRequest = glJournalRequest ?? throw new global::System.ArgumentNullException(nameof(glJournalRequest));
@@ -16996,6 +18328,7 @@ namespace AggieEnterpriseApi
         }
 
         public static global::System.String ClientName => "AggieEnterpriseClient";
+        public global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery ErpInstitutionLocationSearch => _erpInstitutionLocationSearch;
         public global::AggieEnterpriseApi.IDeptParentsQuery DeptParents => _deptParents;
         public global::AggieEnterpriseApi.IFundParentsQuery FundParents => _fundParents;
         public global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest => _glJournalRequest;
@@ -17017,6 +18350,8 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IAggieEnterpriseClient
     {
+        global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery ErpInstitutionLocationSearch { get; }
+
         global::AggieEnterpriseApi.IDeptParentsQuery DeptParents { get; }
 
         global::AggieEnterpriseApi.IFundParentsQuery FundParents { get; }
@@ -17219,6 +18554,124 @@ namespace AggieEnterpriseApi.State
 
         ///<summary>GL Activity used during subledger accounting jobs to post GL entries when costs are recorded against this task.</summary>
         public global::System.String? GlPostingActivityCode { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ErpInstitutionLocationSearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public ErpInstitutionLocationSearchResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult);
+        public ErpInstitutionLocationSearchResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is ErpInstitutionLocationSearchResultInfo info)
+            {
+                return new ErpInstitutionLocationSearchResult(MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(info.ErpInstitutionLocationSearch, snapshot));
+            }
+
+            throw new global::System.ArgumentException("ErpInstitutionLocationSearchResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpInstitutionLocationSearch_ErpInstitutionLocationSearch returnValue = default !;
+            if (data.__typename.Equals("ErpInstitutionLocationSearchResults", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_ErpInstitutionLocationSearchResults(MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(data.Metadata ?? throw new global::System.ArgumentNullException(), snapshot), MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(data.Data ?? throw new global::System.ArgumentNullException(), snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(global::AggieEnterpriseApi.State.SearchResultMetadataData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata returnValue = default !;
+            if (data.__typename.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata_SearchResultMetadata(data.Sort, data.Limit, data.ReturnedResultCount ?? throw new global::System.ArgumentNullException(), data.StartIndex ?? throw new global::System.ArgumentNullException(), data.NextStartIndex, data.TotalResultCount);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data> MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpInstitutionLocationData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var erpInstitutionLocations = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data>();
+            foreach (global::AggieEnterpriseApi.State.ErpInstitutionLocationData child in list)
+            {
+                erpInstitutionLocations.Add(MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(child, snapshot));
+            }
+
+            return erpInstitutionLocations;
+        }
+
+        private global::AggieEnterpriseApi.IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data MapNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(global::AggieEnterpriseApi.State.ErpInstitutionLocationData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data returnValue = default !;
+            if (data.__typename.Equals("ErpInstitutionLocation", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data_ErpInstitutionLocation(data.LocationId ?? throw new global::System.ArgumentNullException(), data.LocationCode ?? throw new global::System.ArgumentNullException(), data.AddressLine1 ?? throw new global::System.ArgumentNullException(), data.AddressLine2, data.AddressLine3, data.AddressLine4, data.City ?? throw new global::System.ArgumentNullException(), data.State, data.PostalCode, data.ReceivingSite ?? throw new global::System.ArgumentNullException(), data.DeliverySite ?? throw new global::System.ArgumentNullException(), data.Enabled ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public ErpInstitutionLocationSearchResultInfo(global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData erpInstitutionLocationSearch, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            ErpInstitutionLocationSearch = erpInstitutionLocationSearch;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Search for ErpInstitutionLocation objects by multiple properties.
+        /// See the ErpInstitutionLocationFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData ErpInstitutionLocationSearch { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new ErpInstitutionLocationSearchResultInfo(ErpInstitutionLocationSearch, _entityIds, version);
+        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -20241,6 +21694,78 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IErpInstitutionLocationFilterInputInfo
+    {
+        global::System.Boolean IsSearchCommonSet { get; }
+
+        global::System.Boolean IsLocationCodeSet { get; }
+
+        global::System.Boolean IsAddressLine1Set { get; }
+
+        global::System.Boolean IsCitySet { get; }
+
+        global::System.Boolean IsStateSet { get; }
+
+        global::System.Boolean IsPostalCodeSet { get; }
+
+        global::System.Boolean IsCountryCodeSet { get; }
+
+        global::System.Boolean IsDeliverySiteSet { get; }
+
+        global::System.Boolean IsReceivingSiteSet { get; }
+
+        global::System.Boolean IsEnabledSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface ISearchCommonInputsInfo
+    {
+        global::System.Boolean IsSortSet { get; }
+
+        global::System.Boolean IsLimitSet { get; }
+
+        global::System.Boolean IsStartIndexSet { get; }
+
+        global::System.Boolean IsIncludeTotalResultCountSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IStringFilterInputInfo
+    {
+        global::System.Boolean IsEqSet { get; }
+
+        global::System.Boolean IsNeSet { get; }
+
+        global::System.Boolean IsLeSet { get; }
+
+        global::System.Boolean IsLtSet { get; }
+
+        global::System.Boolean IsGeSet { get; }
+
+        global::System.Boolean IsGtSet { get; }
+
+        global::System.Boolean IsBeginsWithSet { get; }
+
+        global::System.Boolean IsEndsWithSet { get; }
+
+        global::System.Boolean IsContainsSet { get; }
+
+        global::System.Boolean IsNotContainsSet { get; }
+
+        global::System.Boolean IsBetweenSet { get; }
+
+        global::System.Boolean IsInSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IBooleanFilterInputInfo
+    {
+        global::System.Boolean IsEqSet { get; }
+
+        global::System.Boolean IsNeSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     internal interface IGlJournalRequestInputInfo
     {
         global::System.Boolean IsHeaderSet { get; }
@@ -20423,8 +21948,6 @@ namespace AggieEnterpriseApi.State
 
         global::System.Boolean IsUnitPriceSet { get; }
 
-        global::System.Boolean IsDeliverToTypeCodeSet { get; }
-
         global::System.Boolean IsDeliveryToLocationCodeSet { get; }
 
         global::System.Boolean IsRequestedDeliveryDateSet { get; }
@@ -20469,46 +21992,6 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    internal interface ISearchCommonInputsInfo
-    {
-        global::System.Boolean IsSortSet { get; }
-
-        global::System.Boolean IsLimitSet { get; }
-
-        global::System.Boolean IsStartIndexSet { get; }
-
-        global::System.Boolean IsIncludeTotalResultCountSet { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    internal interface IStringFilterInputInfo
-    {
-        global::System.Boolean IsEqSet { get; }
-
-        global::System.Boolean IsNeSet { get; }
-
-        global::System.Boolean IsLeSet { get; }
-
-        global::System.Boolean IsLtSet { get; }
-
-        global::System.Boolean IsGeSet { get; }
-
-        global::System.Boolean IsGtSet { get; }
-
-        global::System.Boolean IsBeginsWithSet { get; }
-
-        global::System.Boolean IsEndsWithSet { get; }
-
-        global::System.Boolean IsContainsSet { get; }
-
-        global::System.Boolean IsNotContainsSet { get; }
-
-        global::System.Boolean IsBetweenSet { get; }
-
-        global::System.Boolean IsInSet { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     internal interface IDateFilterInputInfo
     {
         global::System.Boolean IsEqSet { get; }
@@ -20524,6 +22007,231 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsGtSet { get; }
 
         global::System.Boolean IsBetweenSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _positiveIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _nonNegativeIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int64, global::System.Int64> _longParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _scmAddressLineParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _cityNameParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString60Parser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpPostalCodeParser;
+        public ErpInstitutionLocationSearchBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _positiveIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("PositiveInt") ?? throw new global::System.ArgumentException("No serializer for type `PositiveInt` found.");
+            _nonNegativeIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("NonNegativeInt") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeInt` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _longParser = serializerResolver.GetLeafValueParser<global::System.Int64, global::System.Int64>("Long") ?? throw new global::System.ArgumentException("No serializer for type `Long` found.");
+            _scmAddressLineParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ScmAddressLine") ?? throw new global::System.ArgumentException("No serializer for type `ScmAddressLine` found.");
+            _cityNameParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("CityName") ?? throw new global::System.ArgumentException("No serializer for type `CityName` found.");
+            _nonEmptyTrimmedString60Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString60") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString60` found.");
+            _erpPostalCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpPostalCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpPostalCode` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IErpInstitutionLocationSearchResult Result, ErpInstitutionLocationSearchResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IErpInstitutionLocationSearchResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IErpInstitutionLocationSearchResult, ErpInstitutionLocationSearchResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new ErpInstitutionLocationSearchResultInfo(DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpInstitutionLocationSearch")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ErpInstitutionLocationSearchResults", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultsData(typename, metadata: DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "metadata")), data: DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "data")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.SearchResultMetadataData DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Metadata(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.SearchResultMetadataData(typename, sort: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "sort")), limit: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "limit")), returnedResultCount: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "returnedResultCount")), startIndex: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startIndex")), nextStartIndex: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "nextStartIndex")), totalResultCount: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "totalResultCount")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Int32? DeserializeInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _positiveIntParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::System.Int32 DeserializeNonNullableInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _nonNegativeIntParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpInstitutionLocationData> DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_DataNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var erpInstitutionLocations = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.ErpInstitutionLocationData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                erpInstitutionLocations.Add(DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(child));
+            }
+
+            return erpInstitutionLocations;
+        }
+
+        private global::AggieEnterpriseApi.State.ErpInstitutionLocationData DeserializeNonNullableIErpInstitutionLocationSearch_ErpInstitutionLocationSearch_Data(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ErpInstitutionLocation", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ErpInstitutionLocationData(typename, locationId: DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "locationId")), locationCode: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "locationCode")), addressLine1: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine1")), addressLine2: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine2")), addressLine3: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine3")), addressLine4: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "addressLine4")), city: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "city")), state: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "state")), postalCode: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "postalCode")), receivingSite: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "receivingSite")), deliverySite: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "deliverySite")), enabled: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Int64 DeserializeNonNullableInt64(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _longParser.Parse(obj.Value.GetInt64()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _scmAddressLineParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -23557,6 +25265,122 @@ namespace AggieEnterpriseApi.State
         }
     }
 
+    ///<summary>Wrapper object for search results for ErpInstitutionLocation</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationSearchResultsData
+    {
+        public ErpInstitutionLocationSearchResultsData(global::System.String __typename, global::AggieEnterpriseApi.State.SearchResultMetadataData? metadata = default !, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpInstitutionLocationData>? data = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            Metadata = metadata;
+            Data = data;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Information about the search results returned.</summary>
+        public global::AggieEnterpriseApi.State.SearchResultMetadataData? Metadata { get; }
+
+        ///<summary>Results of the search</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpInstitutionLocationData>? Data { get; }
+    }
+
+    ///<summary>Metadata about the search results returned in a given response.Used to provide metrics of the results and the information necessaryto pull in the next set of records.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class SearchResultMetadataData
+    {
+        public SearchResultMetadataData(global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::System.String>? sort = default !, global::System.Int32? limit = default !, global::System.Int32? returnedResultCount = default !, global::System.Int32? startIndex = default !, global::System.Int32? nextStartIndex = default !, global::System.Int32? totalResultCount = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            Sort = sort;
+            Limit = limit;
+            ReturnedResultCount = returnedResultCount;
+            StartIndex = startIndex;
+            NextStartIndex = nextStartIndex;
+            TotalResultCount = totalResultCount;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Array of property names used to sort the results</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
+
+        ///<summary>requested limit to the number of records to retrieve</summary>
+        public global::System.Int32? Limit { get; }
+
+        ///<summary>Results returned in the data property.</summary>
+        public global::System.Int32? ReturnedResultCount { get; }
+
+        ///<summary>Starting index for the current result set.</summary>
+        public global::System.Int32? StartIndex { get; }
+
+        ///<summary>Start index for getting the next page of results.  Unset if there are no more results.</summary>
+        public global::System.Int32? NextStartIndex { get; }
+
+        ///<summary>Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.</summary>
+        public global::System.Int32? TotalResultCount { get; }
+    }
+
+    ///<summary>UC Davis locations that can be used for delivery or receiving locations.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpInstitutionLocationData
+    {
+        public ErpInstitutionLocationData(global::System.String __typename, global::System.Int64? locationId = default !, global::System.String? locationCode = default !, global::System.String? addressLine1 = default !, global::System.String? addressLine2 = default !, global::System.String? addressLine3 = default !, global::System.String? addressLine4 = default !, global::System.String? city = default !, global::System.String? state = default !, global::System.String? postalCode = default !, global::System.Boolean? receivingSite = default !, global::System.Boolean? deliverySite = default !, global::System.Boolean? enabled = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            LocationId = locationId;
+            LocationCode = locationCode;
+            AddressLine1 = addressLine1;
+            AddressLine2 = addressLine2;
+            AddressLine3 = addressLine3;
+            AddressLine4 = addressLine4;
+            City = city;
+            State = state;
+            PostalCode = postalCode;
+            ReceivingSite = receivingSite;
+            DeliverySite = deliverySite;
+            Enabled = enabled;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Value that uniquely identifies the supplier site internally to Oracle.</summary>
+        public global::System.Int64? LocationId { get; }
+
+        ///<summary>Value that uniquely identifies the supplier site for use on interfaces and in the Oracle UI.</summary>
+        public global::System.String? LocationCode { get; }
+
+        ///<summary>Address Line 1</summary>
+        public global::System.String? AddressLine1 { get; }
+
+        ///<summary>Address Line 2</summary>
+        public global::System.String? AddressLine2 { get; }
+
+        ///<summary>Address Line 3</summary>
+        public global::System.String? AddressLine3 { get; }
+
+        ///<summary>Address Line 4</summary>
+        public global::System.String? AddressLine4 { get; }
+
+        ///<summary>City Name</summary>
+        public global::System.String? City { get; }
+
+        ///<summary>State Code</summary>
+        public global::System.String? State { get; }
+
+        ///<summary>Postal code</summary>
+        public global::System.String? PostalCode { get; }
+
+        ///<summary>Whether the location can be used as the receiving address for a purchase order.</summary>
+        public global::System.Boolean? ReceivingSite { get; }
+
+        ///<summary>Whether the location can be used as the delivery address for a requisition.</summary>
+        public global::System.Boolean? DeliverySite { get; }
+
+        ///<summary>Whether this address is enabled for current use.</summary>
+        public global::System.Boolean? Enabled { get; }
+    }
+
     ///<summary>Output type for GLJournal requests and follow-up status updates.Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatusOutputData
@@ -24222,6 +26046,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::AggieEnterpriseApi.State.AggieEnterpriseClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.DeptParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.FundParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -24288,6 +26113,10 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteArraySerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ScmAddressLine"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("CityName"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString60"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpPostalCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpDepartmentCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString240"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFundCode"));
@@ -24324,11 +26153,11 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("EmailAddress"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString1000"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString25"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString60"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString360"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ScmAddressLine"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("CityName"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpPostalCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ErpInstitutionLocationFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.SearchCommonInputsInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.StringFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.BooleanFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalRequestInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ActionRequestHeaderInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalInputInputValueFormatter>(services);
@@ -24341,10 +26170,15 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionLineInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionDistributionInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmSupplierFilterInputInputValueFormatter>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.SearchCommonInputsInputValueFormatter>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.StringFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.DateFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>, global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>, global::AggieEnterpriseApi.State.ErpInstitutionLocationSearchBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>, global::AggieEnterpriseApi.State.DeptParentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IDeptParentsQuery>(sp));
