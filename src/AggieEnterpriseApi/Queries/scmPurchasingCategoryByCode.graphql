@@ -1,0 +1,14 @@
+query scmPurchasingCategoryByCode ($code: String!) {
+    scmPurchasingCategoryByCode (code: $code) {
+        id
+        code
+        name
+        description
+        categoryContentCode
+        startDateActive
+        endDateActive
+        enabled
+        lastUpdateDateTime
+        lastUpdateUserId
+    }
+}

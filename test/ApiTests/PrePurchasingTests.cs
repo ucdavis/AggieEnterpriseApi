@@ -54,6 +54,41 @@ public class PrePurchasingTests : TestBase
     }
 
     [Fact]
+    public async Task SearchCategory()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var searchParms = new ScmPurchasingCategoryFilterInput();
+        searchParms.SearchCommon = new SearchCommonInputs();
+        searchParms.SearchCommon.IncludeTotalResultCount = true;
+
+        searchParms.Name = new StringFilterInput { Contains = "paper%prod" };
+
+        var result = await client.ScmPurchasingCategorySearch.ExecuteAsync(searchParms);
+        var data = result.ReadData();
+        data.ScmPurchasingCategorySearch.ShouldNotBeNull();
+        data.ScmPurchasingCategorySearch.Metadata.ShouldNotBeNull();
+        data.ScmPurchasingCategorySearch.Metadata.TotalResultCount.ShouldBe(1);
+
+        data.ScmPurchasingCategorySearch.Data[0].Name.ShouldBe("Paper products");
+        data.ScmPurchasingCategorySearch.Data[0].Code.ShouldBe("14110000");
+
+    }
+
+    [Fact]
+    public async Task CategoryCode()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var result = await client.ScmPurchasingCategoryByCode.ExecuteAsync("14110000");
+        var data = result.ReadData();
+        data.ScmPurchasingCategoryByCode.ShouldNotBeNull();
+        data.ScmPurchasingCategoryByCode.Name.ShouldBe("Paper products");
+        data.ScmPurchasingCategoryByCode.Code.ShouldBe("14110000");
+
+    }
+
+    [Fact]
     public async Task LookupKfsVendor()
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
@@ -91,7 +126,6 @@ public class PrePurchasingTests : TestBase
                 ConsumerReferenceId = "ACRU-EHIT218 - TEST",
                 ConsumerNotes = "Workgroup: CRU Internal Workgroup",
                 BoundaryApplicationName = "PrePurchasing",
-                ConsumerId = "UCD Giving Service", //Remove after fixed 9/23/2022
             }
         };
 
@@ -210,7 +244,6 @@ public class PrePurchasingTests : TestBase
                 ConsumerReferenceId = "ACRU-EHIT218 - TEST",
                 ConsumerNotes = "Workgroup: CRU Internal Workgroup",
                 BoundaryApplicationName = "PrePurchasing",
-                ConsumerId = "UCD Giving Service", //Remove after fixed 9/23/2022
             }
         };
 

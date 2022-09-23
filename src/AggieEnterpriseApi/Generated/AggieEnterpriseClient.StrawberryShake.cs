@@ -7042,6 +7042,815 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategoryByCodeResult : global::System.IEquatable<ScmPurchasingCategoryByCodeResult>, IScmPurchasingCategoryByCodeResult
+    {
+        public ScmPurchasingCategoryByCodeResult(global::AggieEnterpriseApi.IScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode? scmPurchasingCategoryByCode)
+        {
+            ScmPurchasingCategoryByCode = scmPurchasingCategoryByCode;
+        }
+
+        /// <summary>
+        /// Get a single ScmPurchasingCategory by category code.  Returns undefined if does not exist
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode? ScmPurchasingCategoryByCode { get; }
+
+        public virtual global::System.Boolean Equals(ScmPurchasingCategoryByCodeResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((ScmPurchasingCategoryByCode is null && other.ScmPurchasingCategoryByCode is null) || ScmPurchasingCategoryByCode != null && ScmPurchasingCategoryByCode.Equals(other.ScmPurchasingCategoryByCode)));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchasingCategoryByCodeResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (ScmPurchasingCategoryByCode != null)
+                {
+                    hash ^= 397 * ScmPurchasingCategoryByCode.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// The SCM purchasing category represent the type of item being paid for on an invoice payment.
+    /// 
+    /// The Oracle Purchasing category is the conceptual replacement for the KFS Commodity Code.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory : global::System.IEquatable<ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory>, IScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory
+    {
+        public ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory(global::System.Int64 id, global::System.String code, global::System.String name, global::System.String? description, global::System.String? categoryContentCode, global::System.DateTime? startDateActive, global::System.DateTime? endDateActive, global::System.Boolean enabled, global::System.DateTimeOffset lastUpdateDateTime, global::System.String? lastUpdateUserId)
+        {
+            Id = id;
+            Code = code;
+            Name = name;
+            Description = description;
+            CategoryContentCode = categoryContentCode;
+            StartDateActive = startDateActive;
+            EndDateActive = endDateActive;
+            Enabled = enabled;
+            LastUpdateDateTime = lastUpdateDateTime;
+            LastUpdateUserId = lastUpdateUserId;
+        }
+
+        /// <summary>
+        /// Unique identifier of the Category Code
+        /// </summary>
+        public global::System.Int64 Id { get; }
+
+        /// <summary>
+        /// A category is used to manage the catalog hierarchy. Items are assigned to categories in the catalog.
+        /// </summary>
+        public global::System.String Code { get; }
+
+        /// <summary>
+        /// Name of the purchasing category.  This is used on the SCM Requisition interface.
+        /// </summary>
+        public global::System.String Name { get; }
+
+        /// <summary>
+        /// Description of the purchasing category.
+        /// </summary>
+        public global::System.String? Description { get; }
+
+        /// <summary>
+        /// Category Content Code.
+        /// </summary>
+        public global::System.String? CategoryContentCode { get; }
+
+        /// <summary>
+        /// The date from when the value is available for use.
+        /// </summary>
+        public global::System.DateTime? StartDateActive { get; }
+
+        /// <summary>
+        /// The date till which the value is available for use.
+        /// </summary>
+        public global::System.DateTime? EndDateActive { get; }
+
+        /// <summary>
+        /// Indicates that the Category is enabled.
+        /// </summary>
+        public global::System.Boolean Enabled { get; }
+
+        /// <summary>
+        /// Timestamp this record was last updated in the financial system.
+        /// </summary>
+        public global::System.DateTimeOffset LastUpdateDateTime { get; }
+
+        /// <summary>
+        /// User ID of the person who last updated this record.
+        /// </summary>
+        public global::System.String? LastUpdateUserId { get; }
+
+        public virtual global::System.Boolean Equals(ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Id == other.Id) && Code.Equals(other.Code) && Name.Equals(other.Name) && ((Description is null && other.Description is null) || Description != null && Description.Equals(other.Description)) && ((CategoryContentCode is null && other.CategoryContentCode is null) || CategoryContentCode != null && CategoryContentCode.Equals(other.CategoryContentCode)) && ((StartDateActive is null && other.StartDateActive is null) || StartDateActive != null && StartDateActive.Equals(other.StartDateActive)) && ((EndDateActive is null && other.EndDateActive is null) || EndDateActive != null && EndDateActive.Equals(other.EndDateActive)) && Enabled == other.Enabled && LastUpdateDateTime.Equals(other.LastUpdateDateTime) && ((LastUpdateUserId is null && other.LastUpdateUserId is null) || LastUpdateUserId != null && LastUpdateUserId.Equals(other.LastUpdateUserId));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Id.GetHashCode();
+                hash ^= 397 * Code.GetHashCode();
+                hash ^= 397 * Name.GetHashCode();
+                if (Description != null)
+                {
+                    hash ^= 397 * Description.GetHashCode();
+                }
+
+                if (CategoryContentCode != null)
+                {
+                    hash ^= 397 * CategoryContentCode.GetHashCode();
+                }
+
+                if (StartDateActive != null)
+                {
+                    hash ^= 397 * StartDateActive.GetHashCode();
+                }
+
+                if (EndDateActive != null)
+                {
+                    hash ^= 397 * EndDateActive.GetHashCode();
+                }
+
+                hash ^= 397 * Enabled.GetHashCode();
+                hash ^= 397 * LastUpdateDateTime.GetHashCode();
+                if (LastUpdateUserId != null)
+                {
+                    hash ^= 397 * LastUpdateUserId.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategoryByCodeResult
+    {
+        /// <summary>
+        /// Get a single ScmPurchasingCategory by category code.  Returns undefined if does not exist
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode? ScmPurchasingCategoryByCode { get; }
+    }
+
+    /// <summary>
+    /// The SCM purchasing category represent the type of item being paid for on an invoice payment.
+    /// 
+    /// The Oracle Purchasing category is the conceptual replacement for the KFS Commodity Code.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode
+    {
+        /// <summary>
+        /// Unique identifier of the Category Code
+        /// </summary>
+        public global::System.Int64 Id { get; }
+
+        /// <summary>
+        /// A category is used to manage the catalog hierarchy. Items are assigned to categories in the catalog.
+        /// </summary>
+        public global::System.String Code { get; }
+
+        /// <summary>
+        /// Name of the purchasing category.  This is used on the SCM Requisition interface.
+        /// </summary>
+        public global::System.String Name { get; }
+
+        /// <summary>
+        /// Description of the purchasing category.
+        /// </summary>
+        public global::System.String? Description { get; }
+
+        /// <summary>
+        /// Category Content Code.
+        /// </summary>
+        public global::System.String? CategoryContentCode { get; }
+
+        /// <summary>
+        /// The date from when the value is available for use.
+        /// </summary>
+        public global::System.DateTime? StartDateActive { get; }
+
+        /// <summary>
+        /// The date till which the value is available for use.
+        /// </summary>
+        public global::System.DateTime? EndDateActive { get; }
+
+        /// <summary>
+        /// Indicates that the Category is enabled.
+        /// </summary>
+        public global::System.Boolean Enabled { get; }
+
+        /// <summary>
+        /// Timestamp this record was last updated in the financial system.
+        /// </summary>
+        public global::System.DateTimeOffset LastUpdateDateTime { get; }
+
+        /// <summary>
+        /// User ID of the person who last updated this record.
+        /// </summary>
+        public global::System.String? LastUpdateUserId { get; }
+    }
+
+    /// <summary>
+    /// The SCM purchasing category represent the type of item being paid for on an invoice payment.
+    /// 
+    /// The Oracle Purchasing category is the conceptual replacement for the KFS Commodity Code.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory : IScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategorySearchResult : global::System.IEquatable<ScmPurchasingCategorySearchResult>, IScmPurchasingCategorySearchResult
+    {
+        public ScmPurchasingCategorySearchResult(global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch scmPurchasingCategorySearch)
+        {
+            ScmPurchasingCategorySearch = scmPurchasingCategorySearch;
+        }
+
+        /// <summary>
+        /// Search for ScmPurchasingCategory objects by multiple properties.
+        /// See the ScmPurchasingCategoryFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch ScmPurchasingCategorySearch { get; }
+
+        public virtual global::System.Boolean Equals(ScmPurchasingCategorySearchResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (ScmPurchasingCategorySearch.Equals(other.ScmPurchasingCategorySearch));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchasingCategorySearchResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * ScmPurchasingCategorySearch.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ScmPurchasingCategory
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_ScmPurchasingCategorySearchResults : global::System.IEquatable<ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_ScmPurchasingCategorySearchResults>, IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_ScmPurchasingCategorySearchResults
+    {
+        public ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_ScmPurchasingCategorySearchResults(global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata metadata, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data> data)
+        {
+            Metadata = metadata;
+            Data = data;
+        }
+
+        /// <summary>
+        /// Information about the search results returned.
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata Metadata { get; }
+
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data> Data { get; }
+
+        public virtual global::System.Boolean Equals(ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_ScmPurchasingCategorySearchResults? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Metadata.Equals(other.Metadata)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Data, other.Data);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_ScmPurchasingCategorySearchResults)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Metadata.GetHashCode();
+                foreach (var Data_elm in Data)
+                {
+                    hash ^= 397 * Data_elm.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata_SearchResultMetadata : global::System.IEquatable<ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata_SearchResultMetadata>, IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata_SearchResultMetadata
+    {
+        public ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata_SearchResultMetadata(global::System.Collections.Generic.IReadOnlyList<global::System.String>? sort, global::System.Int32? limit, global::System.Int32 returnedResultCount, global::System.Int32 startIndex, global::System.Int32? nextStartIndex, global::System.Int32? totalResultCount)
+        {
+            Sort = sort;
+            Limit = limit;
+            ReturnedResultCount = returnedResultCount;
+            StartIndex = startIndex;
+            NextStartIndex = nextStartIndex;
+            TotalResultCount = totalResultCount;
+        }
+
+        /// <summary>
+        /// Array of property names used to sort the results
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
+
+        /// <summary>
+        /// requested limit to the number of records to retrieve
+        /// </summary>
+        public global::System.Int32? Limit { get; }
+
+        /// <summary>
+        /// Results returned in the data property.
+        /// </summary>
+        public global::System.Int32 ReturnedResultCount { get; }
+
+        /// <summary>
+        /// Starting index for the current result set.
+        /// </summary>
+        public global::System.Int32 StartIndex { get; }
+
+        /// <summary>
+        /// Start index for getting the next page of results.  Unset if there are no more results.
+        /// </summary>
+        public global::System.Int32? NextStartIndex { get; }
+
+        /// <summary>
+        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
+        /// </summary>
+        public global::System.Int32? TotalResultCount { get; }
+
+        public virtual global::System.Boolean Equals(ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata_SearchResultMetadata? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Sort, other.Sort)) && Limit == other.Limit && ReturnedResultCount == other.ReturnedResultCount && StartIndex == other.StartIndex && NextStartIndex == other.NextStartIndex && TotalResultCount == other.TotalResultCount;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata_SearchResultMetadata)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Sort != null)
+                {
+                    foreach (var Sort_elm in Sort)
+                    {
+                        hash ^= 397 * Sort_elm.GetHashCode();
+                    }
+                }
+
+                if (Limit != null)
+                {
+                    hash ^= 397 * Limit.GetHashCode();
+                }
+
+                hash ^= 397 * ReturnedResultCount.GetHashCode();
+                hash ^= 397 * StartIndex.GetHashCode();
+                if (NextStartIndex != null)
+                {
+                    hash ^= 397 * NextStartIndex.GetHashCode();
+                }
+
+                if (TotalResultCount != null)
+                {
+                    hash ^= 397 * TotalResultCount.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// The SCM purchasing category represent the type of item being paid for on an invoice payment.
+    /// 
+    /// The Oracle Purchasing category is the conceptual replacement for the KFS Commodity Code.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory : global::System.IEquatable<ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory>, IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory
+    {
+        public ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory(global::System.Int64 id, global::System.String code, global::System.String name, global::System.String? description, global::System.String? categoryContentCode, global::System.Boolean enabled)
+        {
+            Id = id;
+            Code = code;
+            Name = name;
+            Description = description;
+            CategoryContentCode = categoryContentCode;
+            Enabled = enabled;
+        }
+
+        /// <summary>
+        /// Unique identifier of the Category Code
+        /// </summary>
+        public global::System.Int64 Id { get; }
+
+        /// <summary>
+        /// A category is used to manage the catalog hierarchy. Items are assigned to categories in the catalog.
+        /// </summary>
+        public global::System.String Code { get; }
+
+        /// <summary>
+        /// Name of the purchasing category.  This is used on the SCM Requisition interface.
+        /// </summary>
+        public global::System.String Name { get; }
+
+        /// <summary>
+        /// Description of the purchasing category.
+        /// </summary>
+        public global::System.String? Description { get; }
+
+        /// <summary>
+        /// Category Content Code.
+        /// </summary>
+        public global::System.String? CategoryContentCode { get; }
+
+        /// <summary>
+        /// Indicates that the Category is enabled.
+        /// </summary>
+        public global::System.Boolean Enabled { get; }
+
+        public virtual global::System.Boolean Equals(ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Id == other.Id) && Code.Equals(other.Code) && Name.Equals(other.Name) && ((Description is null && other.Description is null) || Description != null && Description.Equals(other.Description)) && ((CategoryContentCode is null && other.CategoryContentCode is null) || CategoryContentCode != null && CategoryContentCode.Equals(other.CategoryContentCode)) && Enabled == other.Enabled;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Id.GetHashCode();
+                hash ^= 397 * Code.GetHashCode();
+                hash ^= 397 * Name.GetHashCode();
+                if (Description != null)
+                {
+                    hash ^= 397 * Description.GetHashCode();
+                }
+
+                if (CategoryContentCode != null)
+                {
+                    hash ^= 397 * CategoryContentCode.GetHashCode();
+                }
+
+                hash ^= 397 * Enabled.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategorySearchResult
+    {
+        /// <summary>
+        /// Search for ScmPurchasingCategory objects by multiple properties.
+        /// See the ScmPurchasingCategoryFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch ScmPurchasingCategorySearch { get; }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ScmPurchasingCategory
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategorySearch_ScmPurchasingCategorySearch
+    {
+        /// <summary>
+        /// Information about the search results returned.
+        /// </summary>
+        public global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata Metadata { get; }
+
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data> Data { get; }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ScmPurchasingCategory
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_ScmPurchasingCategorySearchResults : IScmPurchasingCategorySearch_ScmPurchasingCategorySearch
+    {
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata
+    {
+        /// <summary>
+        /// Array of property names used to sort the results
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
+
+        /// <summary>
+        /// requested limit to the number of records to retrieve
+        /// </summary>
+        public global::System.Int32? Limit { get; }
+
+        /// <summary>
+        /// Results returned in the data property.
+        /// </summary>
+        public global::System.Int32 ReturnedResultCount { get; }
+
+        /// <summary>
+        /// Starting index for the current result set.
+        /// </summary>
+        public global::System.Int32 StartIndex { get; }
+
+        /// <summary>
+        /// Start index for getting the next page of results.  Unset if there are no more results.
+        /// </summary>
+        public global::System.Int32? NextStartIndex { get; }
+
+        /// <summary>
+        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
+        /// </summary>
+        public global::System.Int32? TotalResultCount { get; }
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata_SearchResultMetadata : IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata
+    {
+    }
+
+    /// <summary>
+    /// The SCM purchasing category represent the type of item being paid for on an invoice payment.
+    /// 
+    /// The Oracle Purchasing category is the conceptual replacement for the KFS Commodity Code.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data
+    {
+        /// <summary>
+        /// Unique identifier of the Category Code
+        /// </summary>
+        public global::System.Int64 Id { get; }
+
+        /// <summary>
+        /// A category is used to manage the catalog hierarchy. Items are assigned to categories in the catalog.
+        /// </summary>
+        public global::System.String Code { get; }
+
+        /// <summary>
+        /// Name of the purchasing category.  This is used on the SCM Requisition interface.
+        /// </summary>
+        public global::System.String Name { get; }
+
+        /// <summary>
+        /// Description of the purchasing category.
+        /// </summary>
+        public global::System.String? Description { get; }
+
+        /// <summary>
+        /// Category Content Code.
+        /// </summary>
+        public global::System.String? CategoryContentCode { get; }
+
+        /// <summary>
+        /// Indicates that the Category is enabled.
+        /// </summary>
+        public global::System.Boolean Enabled { get; }
+    }
+
+    /// <summary>
+    /// The SCM purchasing category represent the type of item being paid for on an invoice payment.
+    /// 
+    /// The Oracle Purchasing category is the conceptual replacement for the KFS Commodity Code.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory : IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ScmSupplierSearchResult : global::System.IEquatable<ScmSupplierSearchResult>, IScmSupplierSearchResult
     {
         public ScmSupplierSearchResult(global::AggieEnterpriseApi.IScmSupplierSearch_ScmSupplierSearch scmSupplierSearch)
@@ -14712,16 +15521,18 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ScmSupplierFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    public partial class ScmPurchasingCategoryFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _searchCommonInputsFormatter = default !;
         private global::StrawberryShake.Serialization.IInputValueFormatter _stringFilterInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _booleanFilterInputFormatter = default !;
         private global::StrawberryShake.Serialization.IInputValueFormatter _dateFilterInputFormatter = default !;
-        public global::System.String TypeName => "ScmSupplierFilterInput";
+        public global::System.String TypeName => "ScmPurchasingCategoryFilterInput";
         public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _searchCommonInputsFormatter = serializerResolver.GetInputValueFormatter("SearchCommonInputs");
             _stringFilterInputFormatter = serializerResolver.GetInputValueFormatter("StringFilterInput");
+            _booleanFilterInputFormatter = serializerResolver.GetInputValueFormatter("BooleanFilterInput");
             _dateFilterInputFormatter = serializerResolver.GetInputValueFormatter("DateFilterInput");
         }
 
@@ -14732,8 +15543,8 @@ namespace AggieEnterpriseApi
                 return null;
             }
 
-            var input = runtimeValue as global::AggieEnterpriseApi.ScmSupplierFilterInput;
-            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo;
+            var input = runtimeValue as global::AggieEnterpriseApi.ScmPurchasingCategoryFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IScmPurchasingCategoryFilterInputInfo;
             if (input is null || inputInfo is null)
             {
                 throw new global::System.ArgumentException(nameof(runtimeValue));
@@ -14745,29 +15556,24 @@ namespace AggieEnterpriseApi
                 fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("searchCommon", FormatSearchCommon(input.SearchCommon)));
             }
 
+            if (inputInfo.IsCodeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("code", FormatCode(input.Code)));
+            }
+
             if (inputInfo.IsNameSet)
             {
                 fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("name", FormatName(input.Name)));
             }
 
-            if (inputInfo.IsAliasNameSet)
+            if (inputInfo.IsDescriptionSet)
             {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("aliasName", FormatAliasName(input.AliasName)));
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("description", FormatDescription(input.Description)));
             }
 
-            if (inputInfo.IsAlternateNameSet)
+            if (inputInfo.IsEnabledSet)
             {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("alternateName", FormatAlternateName(input.AlternateName)));
-            }
-
-            if (inputInfo.IsSupplierIdSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("supplierId", FormatSupplierId(input.SupplierId)));
-            }
-
-            if (inputInfo.IsSupplierNumberSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("supplierNumber", FormatSupplierNumber(input.SupplierNumber)));
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("enabled", FormatEnabled(input.Enabled)));
             }
 
             if (inputInfo.IsLastUpdateDateTimeSet)
@@ -14790,6 +15596,18 @@ namespace AggieEnterpriseApi
             }
         }
 
+        private global::System.Object? FormatCode(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
         private global::System.Object? FormatName(global::AggieEnterpriseApi.StringFilterInput? input)
         {
             if (input is null)
@@ -14802,7 +15620,7 @@ namespace AggieEnterpriseApi
             }
         }
 
-        private global::System.Object? FormatAliasName(global::AggieEnterpriseApi.StringFilterInput? input)
+        private global::System.Object? FormatDescription(global::AggieEnterpriseApi.StringFilterInput? input)
         {
             if (input is null)
             {
@@ -14814,7 +15632,7 @@ namespace AggieEnterpriseApi
             }
         }
 
-        private global::System.Object? FormatAlternateName(global::AggieEnterpriseApi.StringFilterInput? input)
+        private global::System.Object? FormatEnabled(global::AggieEnterpriseApi.BooleanFilterInput? input)
         {
             if (input is null)
             {
@@ -14822,31 +15640,7 @@ namespace AggieEnterpriseApi
             }
             else
             {
-                return _stringFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatSupplierId(global::AggieEnterpriseApi.StringFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatSupplierNumber(global::AggieEnterpriseApi.StringFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFilterInputFormatter.Format(input);
+                return _booleanFilterInputFormatter.Format(input);
             }
         }
 
@@ -14863,9 +15657,9 @@ namespace AggieEnterpriseApi
         }
     }
 
-    ///<summary>Input object used to run searches on ScmSupplier</summary>
+    ///<summary>Data object used to run searches on ScmPurchasingCategory</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class ScmSupplierFilterInput : global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo, global::System.IEquatable<ScmSupplierFilterInput>
+    public partial class ScmPurchasingCategoryFilterInput : global::AggieEnterpriseApi.State.IScmPurchasingCategoryFilterInputInfo, global::System.IEquatable<ScmPurchasingCategoryFilterInput>
     {
         public override global::System.Boolean Equals(global::System.Object? obj)
         {
@@ -14884,10 +15678,10 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return Equals((ScmSupplierFilterInput)obj);
+            return Equals((ScmPurchasingCategoryFilterInput)obj);
         }
 
-        public virtual global::System.Boolean Equals(ScmSupplierFilterInput? other)
+        public virtual global::System.Boolean Equals(ScmPurchasingCategoryFilterInput? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -14904,7 +15698,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (((SearchCommon is null && other.SearchCommon is null) || SearchCommon != null && SearchCommon.Equals(other.SearchCommon))) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && ((AliasName is null && other.AliasName is null) || AliasName != null && AliasName.Equals(other.AliasName)) && ((AlternateName is null && other.AlternateName is null) || AlternateName != null && AlternateName.Equals(other.AlternateName)) && ((SupplierId is null && other.SupplierId is null) || SupplierId != null && SupplierId.Equals(other.SupplierId)) && ((SupplierNumber is null && other.SupplierNumber is null) || SupplierNumber != null && SupplierNumber.Equals(other.SupplierNumber)) && ((LastUpdateDateTime is null && other.LastUpdateDateTime is null) || LastUpdateDateTime != null && LastUpdateDateTime.Equals(other.LastUpdateDateTime));
+            return (((SearchCommon is null && other.SearchCommon is null) || SearchCommon != null && SearchCommon.Equals(other.SearchCommon))) && ((Code is null && other.Code is null) || Code != null && Code.Equals(other.Code)) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && ((Description is null && other.Description is null) || Description != null && Description.Equals(other.Description)) && ((Enabled is null && other.Enabled is null) || Enabled != null && Enabled.Equals(other.Enabled)) && ((LastUpdateDateTime is null && other.LastUpdateDateTime is null) || LastUpdateDateTime != null && LastUpdateDateTime.Equals(other.LastUpdateDateTime));
         }
 
         public override global::System.Int32 GetHashCode()
@@ -14917,29 +15711,24 @@ namespace AggieEnterpriseApi
                     hash ^= 397 * SearchCommon.GetHashCode();
                 }
 
+                if (Code != null)
+                {
+                    hash ^= 397 * Code.GetHashCode();
+                }
+
                 if (Name != null)
                 {
                     hash ^= 397 * Name.GetHashCode();
                 }
 
-                if (AliasName != null)
+                if (Description != null)
                 {
-                    hash ^= 397 * AliasName.GetHashCode();
+                    hash ^= 397 * Description.GetHashCode();
                 }
 
-                if (AlternateName != null)
+                if (Enabled != null)
                 {
-                    hash ^= 397 * AlternateName.GetHashCode();
-                }
-
-                if (SupplierId != null)
-                {
-                    hash ^= 397 * SupplierId.GetHashCode();
-                }
-
-                if (SupplierNumber != null)
-                {
-                    hash ^= 397 * SupplierNumber.GetHashCode();
+                    hash ^= 397 * Enabled.GetHashCode();
                 }
 
                 if (LastUpdateDateTime != null)
@@ -14953,16 +15742,14 @@ namespace AggieEnterpriseApi
 
         private global::AggieEnterpriseApi.SearchCommonInputs? _value_searchCommon;
         private global::System.Boolean _set_searchCommon;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_code;
+        private global::System.Boolean _set_code;
         private global::AggieEnterpriseApi.StringFilterInput? _value_name;
         private global::System.Boolean _set_name;
-        private global::AggieEnterpriseApi.StringFilterInput? _value_aliasName;
-        private global::System.Boolean _set_aliasName;
-        private global::AggieEnterpriseApi.StringFilterInput? _value_alternateName;
-        private global::System.Boolean _set_alternateName;
-        private global::AggieEnterpriseApi.StringFilterInput? _value_supplierId;
-        private global::System.Boolean _set_supplierId;
-        private global::AggieEnterpriseApi.StringFilterInput? _value_supplierNumber;
-        private global::System.Boolean _set_supplierNumber;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_description;
+        private global::System.Boolean _set_description;
+        private global::AggieEnterpriseApi.BooleanFilterInput? _value_enabled;
+        private global::System.Boolean _set_enabled;
         private global::AggieEnterpriseApi.DateFilterInput? _value_lastUpdateDateTime;
         private global::System.Boolean _set_lastUpdateDateTime;
         public global::AggieEnterpriseApi.SearchCommonInputs? SearchCommon
@@ -14975,7 +15762,18 @@ namespace AggieEnterpriseApi
             }
         }
 
-        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsSearchCommonSet => _set_searchCommon;
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchasingCategoryFilterInputInfo.IsSearchCommonSet => _set_searchCommon;
+        public global::AggieEnterpriseApi.StringFilterInput? Code
+        {
+            get => _value_code;
+            set
+            {
+                _set_code = true;
+                _value_code = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchasingCategoryFilterInputInfo.IsCodeSet => _set_code;
         public global::AggieEnterpriseApi.StringFilterInput? Name
         {
             get => _value_name;
@@ -14986,51 +15784,29 @@ namespace AggieEnterpriseApi
             }
         }
 
-        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsNameSet => _set_name;
-        public global::AggieEnterpriseApi.StringFilterInput? AliasName
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchasingCategoryFilterInputInfo.IsNameSet => _set_name;
+        public global::AggieEnterpriseApi.StringFilterInput? Description
         {
-            get => _value_aliasName;
+            get => _value_description;
             set
             {
-                _set_aliasName = true;
-                _value_aliasName = value;
+                _set_description = true;
+                _value_description = value;
             }
         }
 
-        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsAliasNameSet => _set_aliasName;
-        public global::AggieEnterpriseApi.StringFilterInput? AlternateName
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchasingCategoryFilterInputInfo.IsDescriptionSet => _set_description;
+        public global::AggieEnterpriseApi.BooleanFilterInput? Enabled
         {
-            get => _value_alternateName;
+            get => _value_enabled;
             set
             {
-                _set_alternateName = true;
-                _value_alternateName = value;
+                _set_enabled = true;
+                _value_enabled = value;
             }
         }
 
-        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsAlternateNameSet => _set_alternateName;
-        public global::AggieEnterpriseApi.StringFilterInput? SupplierId
-        {
-            get => _value_supplierId;
-            set
-            {
-                _set_supplierId = true;
-                _value_supplierId = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsSupplierIdSet => _set_supplierId;
-        public global::AggieEnterpriseApi.StringFilterInput? SupplierNumber
-        {
-            get => _value_supplierNumber;
-            set
-            {
-                _set_supplierNumber = true;
-                _value_supplierNumber = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsSupplierNumberSet => _set_supplierNumber;
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchasingCategoryFilterInputInfo.IsEnabledSet => _set_enabled;
         public global::AggieEnterpriseApi.DateFilterInput? LastUpdateDateTime
         {
             get => _value_lastUpdateDateTime;
@@ -15041,7 +15817,7 @@ namespace AggieEnterpriseApi
             }
         }
 
-        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsLastUpdateDateTimeSet => _set_lastUpdateDateTime;
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmPurchasingCategoryFilterInputInfo.IsLastUpdateDateTimeSet => _set_lastUpdateDateTime;
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -15387,6 +16163,339 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsBetweenSet => _set_between;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmSupplierFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _searchCommonInputsFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFilterInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _dateFilterInputFormatter = default !;
+        public global::System.String TypeName => "ScmSupplierFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _searchCommonInputsFormatter = serializerResolver.GetInputValueFormatter("SearchCommonInputs");
+            _stringFilterInputFormatter = serializerResolver.GetInputValueFormatter("StringFilterInput");
+            _dateFilterInputFormatter = serializerResolver.GetInputValueFormatter("DateFilterInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.ScmSupplierFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsSearchCommonSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("searchCommon", FormatSearchCommon(input.SearchCommon)));
+            }
+
+            if (inputInfo.IsNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("name", FormatName(input.Name)));
+            }
+
+            if (inputInfo.IsAliasNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("aliasName", FormatAliasName(input.AliasName)));
+            }
+
+            if (inputInfo.IsAlternateNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("alternateName", FormatAlternateName(input.AlternateName)));
+            }
+
+            if (inputInfo.IsSupplierIdSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("supplierId", FormatSupplierId(input.SupplierId)));
+            }
+
+            if (inputInfo.IsSupplierNumberSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("supplierNumber", FormatSupplierNumber(input.SupplierNumber)));
+            }
+
+            if (inputInfo.IsLastUpdateDateTimeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lastUpdateDateTime", FormatLastUpdateDateTime(input.LastUpdateDateTime)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatSearchCommon(global::AggieEnterpriseApi.SearchCommonInputs? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _searchCommonInputsFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatName(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatAliasName(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatAlternateName(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatSupplierId(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatSupplierNumber(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLastUpdateDateTime(global::AggieEnterpriseApi.DateFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFilterInputFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Input object used to run searches on ScmSupplier</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmSupplierFilterInput : global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo, global::System.IEquatable<ScmSupplierFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ScmSupplierFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(ScmSupplierFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((SearchCommon is null && other.SearchCommon is null) || SearchCommon != null && SearchCommon.Equals(other.SearchCommon))) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && ((AliasName is null && other.AliasName is null) || AliasName != null && AliasName.Equals(other.AliasName)) && ((AlternateName is null && other.AlternateName is null) || AlternateName != null && AlternateName.Equals(other.AlternateName)) && ((SupplierId is null && other.SupplierId is null) || SupplierId != null && SupplierId.Equals(other.SupplierId)) && ((SupplierNumber is null && other.SupplierNumber is null) || SupplierNumber != null && SupplierNumber.Equals(other.SupplierNumber)) && ((LastUpdateDateTime is null && other.LastUpdateDateTime is null) || LastUpdateDateTime != null && LastUpdateDateTime.Equals(other.LastUpdateDateTime));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (SearchCommon != null)
+                {
+                    hash ^= 397 * SearchCommon.GetHashCode();
+                }
+
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                if (AliasName != null)
+                {
+                    hash ^= 397 * AliasName.GetHashCode();
+                }
+
+                if (AlternateName != null)
+                {
+                    hash ^= 397 * AlternateName.GetHashCode();
+                }
+
+                if (SupplierId != null)
+                {
+                    hash ^= 397 * SupplierId.GetHashCode();
+                }
+
+                if (SupplierNumber != null)
+                {
+                    hash ^= 397 * SupplierNumber.GetHashCode();
+                }
+
+                if (LastUpdateDateTime != null)
+                {
+                    hash ^= 397 * LastUpdateDateTime.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::AggieEnterpriseApi.SearchCommonInputs? _value_searchCommon;
+        private global::System.Boolean _set_searchCommon;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_name;
+        private global::System.Boolean _set_name;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_aliasName;
+        private global::System.Boolean _set_aliasName;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_alternateName;
+        private global::System.Boolean _set_alternateName;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_supplierId;
+        private global::System.Boolean _set_supplierId;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_supplierNumber;
+        private global::System.Boolean _set_supplierNumber;
+        private global::AggieEnterpriseApi.DateFilterInput? _value_lastUpdateDateTime;
+        private global::System.Boolean _set_lastUpdateDateTime;
+        public global::AggieEnterpriseApi.SearchCommonInputs? SearchCommon
+        {
+            get => _value_searchCommon;
+            set
+            {
+                _set_searchCommon = true;
+                _value_searchCommon = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsSearchCommonSet => _set_searchCommon;
+        public global::AggieEnterpriseApi.StringFilterInput? Name
+        {
+            get => _value_name;
+            set
+            {
+                _set_name = true;
+                _value_name = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsNameSet => _set_name;
+        public global::AggieEnterpriseApi.StringFilterInput? AliasName
+        {
+            get => _value_aliasName;
+            set
+            {
+                _set_aliasName = true;
+                _value_aliasName = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsAliasNameSet => _set_aliasName;
+        public global::AggieEnterpriseApi.StringFilterInput? AlternateName
+        {
+            get => _value_alternateName;
+            set
+            {
+                _set_alternateName = true;
+                _value_alternateName = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsAlternateNameSet => _set_alternateName;
+        public global::AggieEnterpriseApi.StringFilterInput? SupplierId
+        {
+            get => _value_supplierId;
+            set
+            {
+                _set_supplierId = true;
+                _value_supplierId = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsSupplierIdSet => _set_supplierId;
+        public global::AggieEnterpriseApi.StringFilterInput? SupplierNumber
+        {
+            get => _value_supplierNumber;
+            set
+            {
+                _set_supplierNumber = true;
+                _value_supplierNumber = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsSupplierNumberSet => _set_supplierNumber;
+        public global::AggieEnterpriseApi.DateFilterInput? LastUpdateDateTime
+        {
+            get => _value_lastUpdateDateTime;
+            set
+            {
+                _set_lastUpdateDateTime = true;
+                _value_lastUpdateDateTime = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsLastUpdateDateTimeSet => _set_lastUpdateDateTime;
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -17633,6 +18742,328 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
+    /// Represents the operation service of the ScmPurchasingCategoryByCode GraphQL operation
+    /// <code>
+    /// query ScmPurchasingCategoryByCode($code: String!) {
+    ///   scmPurchasingCategoryByCode(code: $code) {
+    ///     __typename
+    ///     id
+    ///     code
+    ///     name
+    ///     description
+    ///     categoryContentCode
+    ///     startDateActive
+    ///     endDateActive
+    ///     enabled
+    ///     lastUpdateDateTime
+    ///     lastUpdateUserId
+    ///     ... on ScmPurchasingCategory {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategoryByCodeQueryDocument : global::StrawberryShake.IDocument
+    {
+        private ScmPurchasingCategoryByCodeQueryDocument()
+        {
+        }
+
+        public static ScmPurchasingCategoryByCodeQueryDocument Instance { get; } = new ScmPurchasingCategoryByCodeQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x42, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x28, 0x24, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x73, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x42, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x28, 0x63, 0x6f, 0x64, 0x65, 0x3a, 0x20, 0x24, 0x63, 0x6f, 0x64, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x44, 0x61, 0x74, 0x65, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x20, 0x65, 0x6e, 0x64, 0x44, 0x61, 0x74, 0x65, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x44, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x49, 0x64, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "a8f53f04eaf1500d3cb9ad04d8105519");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ScmPurchasingCategoryByCode GraphQL operation
+    /// <code>
+    /// query ScmPurchasingCategoryByCode($code: String!) {
+    ///   scmPurchasingCategoryByCode(code: $code) {
+    ///     __typename
+    ///     id
+    ///     code
+    ///     name
+    ///     description
+    ///     categoryContentCode
+    ///     startDateActive
+    ///     endDateActive
+    ///     enabled
+    ///     lastUpdateDateTime
+    ///     lastUpdateUserId
+    ///     ... on ScmPurchasingCategory {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategoryByCodeQuery : global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IScmPurchasingCategoryByCodeResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        public ScmPurchasingCategoryByCodeQuery(global::StrawberryShake.IOperationExecutor<IScmPurchasingCategoryByCodeResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IScmPurchasingCategoryByCodeResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IScmPurchasingCategoryByCodeResult>> ExecuteAsync(global::System.String code, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(code);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IScmPurchasingCategoryByCodeResult>> Watch(global::System.String code, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(code);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String code)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("code", FormatCode(code));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: ScmPurchasingCategoryByCodeQueryDocument.Instance.Hash.Value, name: "ScmPurchasingCategoryByCode", document: ScmPurchasingCategoryByCodeQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatCode(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ScmPurchasingCategoryByCode GraphQL operation
+    /// <code>
+    /// query ScmPurchasingCategoryByCode($code: String!) {
+    ///   scmPurchasingCategoryByCode(code: $code) {
+    ///     __typename
+    ///     id
+    ///     code
+    ///     name
+    ///     description
+    ///     categoryContentCode
+    ///     startDateActive
+    ///     endDateActive
+    ///     enabled
+    ///     lastUpdateDateTime
+    ///     lastUpdateUserId
+    ///     ... on ScmPurchasingCategory {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategoryByCodeQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IScmPurchasingCategoryByCodeResult>> ExecuteAsync(global::System.String code, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IScmPurchasingCategoryByCodeResult>> Watch(global::System.String code, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ScmPurchasingCategorySearch GraphQL operation
+    /// <code>
+    /// query ScmPurchasingCategorySearch($filter: ScmPurchasingCategoryFilterInput!) {
+    ///   scmPurchasingCategorySearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       id
+    ///       code
+    ///       name
+    ///       description
+    ///       categoryContentCode
+    ///       enabled
+    ///       ... on ScmPurchasingCategory {
+    ///         id
+    ///       }
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategorySearchQueryDocument : global::StrawberryShake.IDocument
+    {
+        private ScmPurchasingCategorySearchQueryDocument()
+        {
+        }
+
+        public static ScmPurchasingCategorySearchQueryDocument Instance { get; } = new ScmPurchasingCategorySearchQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x73, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "194fe6003a8c3c166c31e16e8eeb9ac6");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ScmPurchasingCategorySearch GraphQL operation
+    /// <code>
+    /// query ScmPurchasingCategorySearch($filter: ScmPurchasingCategoryFilterInput!) {
+    ///   scmPurchasingCategorySearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       id
+    ///       code
+    ///       name
+    ///       description
+    ///       categoryContentCode
+    ///       enabled
+    ///       ... on ScmPurchasingCategory {
+    ///         id
+    ///       }
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategorySearchQuery : global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IScmPurchasingCategorySearchResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _scmPurchasingCategoryFilterInputFormatter;
+        public ScmPurchasingCategorySearchQuery(global::StrawberryShake.IOperationExecutor<IScmPurchasingCategorySearchResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _scmPurchasingCategoryFilterInputFormatter = serializerResolver.GetInputValueFormatter("ScmPurchasingCategoryFilterInput");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IScmPurchasingCategorySearchResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IScmPurchasingCategorySearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ScmPurchasingCategoryFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(filter);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IScmPurchasingCategorySearchResult>> Watch(global::AggieEnterpriseApi.ScmPurchasingCategoryFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(filter);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.ScmPurchasingCategoryFilterInput filter)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("filter", FormatFilter(filter));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: ScmPurchasingCategorySearchQueryDocument.Instance.Hash.Value, name: "ScmPurchasingCategorySearch", document: ScmPurchasingCategorySearchQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatFilter(global::AggieEnterpriseApi.ScmPurchasingCategoryFilterInput value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _scmPurchasingCategoryFilterInputFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ScmPurchasingCategorySearch GraphQL operation
+    /// <code>
+    /// query ScmPurchasingCategorySearch($filter: ScmPurchasingCategoryFilterInput!) {
+    ///   scmPurchasingCategorySearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       id
+    ///       code
+    ///       name
+    ///       description
+    ///       categoryContentCode
+    ///       enabled
+    ///       ... on ScmPurchasingCategory {
+    ///         id
+    ///       }
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IScmPurchasingCategorySearchQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IScmPurchasingCategorySearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ScmPurchasingCategoryFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IScmPurchasingCategorySearchResult>> Watch(global::AggieEnterpriseApi.ScmPurchasingCategoryFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the operation service of the ScmSupplierSearch GraphQL operation
     /// <code>
     /// query ScmSupplierSearch($filter: ScmSupplierFilterInput!) {
@@ -18306,10 +19737,12 @@ namespace AggieEnterpriseApi
         private readonly global::AggieEnterpriseApi.IPpmSegmentsValidateQuery _ppmSegmentsValidate;
         private readonly global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery _ppmTaskByProjectNumberAndTaskNumber;
         private readonly global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation _scmPurchaseRequisitionCreate;
+        private readonly global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery _scmPurchasingCategoryByCode;
+        private readonly global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery _scmPurchasingCategorySearch;
         private readonly global::AggieEnterpriseApi.IScmSupplierSearchQuery _scmSupplierSearch;
         private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery erpInstitutionLocationSearch, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IScmSupplierSearchQuery scmSupplierSearch, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery erpInstitutionLocationSearch, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery scmPurchasingCategoryByCode, global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery scmPurchasingCategorySearch, global::AggieEnterpriseApi.IScmSupplierSearchQuery scmSupplierSearch, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
             _deptParents = deptParents ?? throw new global::System.ArgumentNullException(nameof(deptParents));
             _erpInstitutionLocationSearch = erpInstitutionLocationSearch ?? throw new global::System.ArgumentNullException(nameof(erpInstitutionLocationSearch));
@@ -18322,6 +19755,8 @@ namespace AggieEnterpriseApi
             _ppmSegmentsValidate = ppmSegmentsValidate ?? throw new global::System.ArgumentNullException(nameof(ppmSegmentsValidate));
             _ppmTaskByProjectNumberAndTaskNumber = ppmTaskByProjectNumberAndTaskNumber ?? throw new global::System.ArgumentNullException(nameof(ppmTaskByProjectNumberAndTaskNumber));
             _scmPurchaseRequisitionCreate = scmPurchaseRequisitionCreate ?? throw new global::System.ArgumentNullException(nameof(scmPurchaseRequisitionCreate));
+            _scmPurchasingCategoryByCode = scmPurchasingCategoryByCode ?? throw new global::System.ArgumentNullException(nameof(scmPurchasingCategoryByCode));
+            _scmPurchasingCategorySearch = scmPurchasingCategorySearch ?? throw new global::System.ArgumentNullException(nameof(scmPurchasingCategorySearch));
             _scmSupplierSearch = scmSupplierSearch ?? throw new global::System.ArgumentNullException(nameof(scmSupplierSearch));
             _glValidateChartSegments = glValidateChartSegments ?? throw new global::System.ArgumentNullException(nameof(glValidateChartSegments));
             _glValidateChartstring = glValidateChartstring ?? throw new global::System.ArgumentNullException(nameof(glValidateChartstring));
@@ -18339,6 +19774,8 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IPpmSegmentsValidateQuery PpmSegmentsValidate => _ppmSegmentsValidate;
         public global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery PpmTaskByProjectNumberAndTaskNumber => _ppmTaskByProjectNumberAndTaskNumber;
         public global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation ScmPurchaseRequisitionCreate => _scmPurchaseRequisitionCreate;
+        public global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery ScmPurchasingCategoryByCode => _scmPurchasingCategoryByCode;
+        public global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery ScmPurchasingCategorySearch => _scmPurchasingCategorySearch;
         public global::AggieEnterpriseApi.IScmSupplierSearchQuery ScmSupplierSearch => _scmSupplierSearch;
         public global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments => _glValidateChartSegments;
         public global::AggieEnterpriseApi.IGlValidateChartstringQuery GlValidateChartstring => _glValidateChartstring;
@@ -18371,6 +19808,10 @@ namespace AggieEnterpriseApi
         global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery PpmTaskByProjectNumberAndTaskNumber { get; }
 
         global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation ScmPurchaseRequisitionCreate { get; }
+
+        global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery ScmPurchasingCategoryByCode { get; }
+
+        global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery ScmPurchasingCategorySearch { get; }
 
         global::AggieEnterpriseApi.IScmSupplierSearchQuery ScmSupplierSearch { get; }
 
@@ -18554,6 +19995,55 @@ namespace AggieEnterpriseApi.State
 
         ///<summary>GL Activity used during subledger accounting jobs to post GL entries when costs are recorded against this task.</summary>
         public global::System.String? GlPostingActivityCode { get; }
+    }
+
+    ///<summary>The SCM purchasing category represent the type of item being paid for on an invoice payment.The Oracle Purchasing category is the conceptual replacement for the KFS Commodity Code.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategoryEntity
+    {
+        public ScmPurchasingCategoryEntity(global::System.Int64 id = default !, global::System.String code = default !, global::System.String name = default !, global::System.String? description = default !, global::System.String? categoryContentCode = default !, global::System.DateTime? startDateActive = default !, global::System.DateTime? endDateActive = default !, global::System.Boolean enabled = default !, global::System.DateTimeOffset lastUpdateDateTime = default !, global::System.String? lastUpdateUserId = default !)
+        {
+            Id = id;
+            Code = code;
+            Name = name;
+            Description = description;
+            CategoryContentCode = categoryContentCode;
+            StartDateActive = startDateActive;
+            EndDateActive = endDateActive;
+            Enabled = enabled;
+            LastUpdateDateTime = lastUpdateDateTime;
+            LastUpdateUserId = lastUpdateUserId;
+        }
+
+        ///<summary>Unique identifier of the Category Code</summary>
+        public global::System.Int64 Id { get; }
+
+        ///<summary>A category is used to manage the catalog hierarchy. Items are assigned to categories in the catalog.</summary>
+        public global::System.String Code { get; }
+
+        ///<summary>Name of the purchasing category.  This is used on the SCM Requisition interface.</summary>
+        public global::System.String Name { get; }
+
+        ///<summary>Description of the purchasing category.</summary>
+        public global::System.String? Description { get; }
+
+        ///<summary>Category Content Code.</summary>
+        public global::System.String? CategoryContentCode { get; }
+
+        ///<summary>The date from when the value is available for use.</summary>
+        public global::System.DateTime? StartDateActive { get; }
+
+        ///<summary>The date till which the value is available for use.</summary>
+        public global::System.DateTime? EndDateActive { get; }
+
+        ///<summary>Indicates that the Category is enabled.</summary>
+        public global::System.Boolean Enabled { get; }
+
+        ///<summary>Timestamp this record was last updated in the financial system.</summary>
+        public global::System.DateTimeOffset LastUpdateDateTime { get; }
+
+        ///<summary>User ID of the person who last updated this record.</summary>
+        public global::System.String? LastUpdateUserId { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -21166,6 +22656,234 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategoryByCodeResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ScmPurchasingCategoryByCodeResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity, ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory> _scmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper;
+        public ScmPurchasingCategoryByCodeResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity, ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory> scmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _scmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper = scmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper ?? throw new global::System.ArgumentNullException(nameof(scmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeResult);
+        public ScmPurchasingCategoryByCodeResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is ScmPurchasingCategoryByCodeResultInfo info)
+            {
+                return new ScmPurchasingCategoryByCodeResult(MapIScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode(info.ScmPurchasingCategoryByCode, snapshot));
+            }
+
+            throw new global::System.ArgumentException("ScmPurchasingCategoryByCodeResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode? MapIScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId is null)
+            {
+                return null;
+            }
+
+            if (entityId.Value.Name.Equals("ScmPurchasingCategory", global::System.StringComparison.Ordinal))
+            {
+                return _scmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategoryByCodeResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public ScmPurchasingCategoryByCodeResultInfo(global::StrawberryShake.EntityId? scmPurchasingCategoryByCode, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            ScmPurchasingCategoryByCode = scmPurchasingCategoryByCode;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Get a single ScmPurchasingCategory by category code.  Returns undefined if does not exist
+        /// </summary>
+        public global::StrawberryShake.EntityId? ScmPurchasingCategoryByCode { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new ScmPurchasingCategoryByCodeResultInfo(ScmPurchasingCategoryByCode, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity, ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory Map(global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory(entity.Id, entity.Code, entity.Name, entity.Description, entity.CategoryContentCode, entity.StartDateActive, entity.EndDateActive, entity.Enabled, entity.LastUpdateDateTime, entity.LastUpdateUserId);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategorySearchResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ScmPurchasingCategorySearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity, ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory> _scmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper;
+        public ScmPurchasingCategorySearchResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity, ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory> scmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _scmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper = scmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper ?? throw new global::System.ArgumentNullException(nameof(scmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IScmPurchasingCategorySearchResult);
+        public ScmPurchasingCategorySearchResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is ScmPurchasingCategorySearchResultInfo info)
+            {
+                return new ScmPurchasingCategorySearchResult(MapNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch(info.ScmPurchasingCategorySearch, snapshot));
+            }
+
+            throw new global::System.ArgumentException("ScmPurchasingCategorySearchResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch MapNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch(global::AggieEnterpriseApi.State.ScmPurchasingCategorySearchResultsData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IScmPurchasingCategorySearch_ScmPurchasingCategorySearch returnValue = default !;
+            if (data.__typename.Equals("ScmPurchasingCategorySearchResults", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_ScmPurchasingCategorySearchResults(MapNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata(data.Metadata ?? throw new global::System.ArgumentNullException(), snapshot), MapNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_DataNonNullableArray(data.Data ?? throw new global::System.ArgumentNullException(), snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata MapNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata(global::AggieEnterpriseApi.State.SearchResultMetadataData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata returnValue = default !;
+            if (data.__typename.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata_SearchResultMetadata(data.Sort, data.Limit, data.ReturnedResultCount ?? throw new global::System.ArgumentNullException(), data.StartIndex ?? throw new global::System.ArgumentNullException(), data.NextStartIndex, data.TotalResultCount);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data> MapNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_DataNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var scmPurchasingCategorys = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data>();
+            foreach (global::StrawberryShake.EntityId child in list)
+            {
+                scmPurchasingCategorys.Add(MapNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data(child, snapshot));
+            }
+
+            return scmPurchasingCategorys;
+        }
+
+        private global::AggieEnterpriseApi.IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data MapNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data(global::StrawberryShake.EntityId entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId.Name.Equals("ScmPurchasingCategory", global::System.StringComparison.Ordinal))
+            {
+                return _scmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity>(entityId) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategorySearchResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public ScmPurchasingCategorySearchResultInfo(global::AggieEnterpriseApi.State.ScmPurchasingCategorySearchResultsData scmPurchasingCategorySearch, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            ScmPurchasingCategorySearch = scmPurchasingCategorySearch;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Search for ScmPurchasingCategory objects by multiple properties.
+        /// See the ScmPurchasingCategoryFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.State.ScmPurchasingCategorySearchResultsData ScmPurchasingCategorySearch { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new ScmPurchasingCategorySearchResultInfo(ScmPurchasingCategorySearch, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity, ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory Map(global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory(entity.Id, entity.Code, entity.Name, entity.Description, entity.CategoryContentCode, entity.Enabled);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ScmSupplierSearchResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ScmSupplierSearchResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -21974,19 +23692,17 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    internal interface IScmSupplierFilterInputInfo
+    internal interface IScmPurchasingCategoryFilterInputInfo
     {
         global::System.Boolean IsSearchCommonSet { get; }
 
+        global::System.Boolean IsCodeSet { get; }
+
         global::System.Boolean IsNameSet { get; }
 
-        global::System.Boolean IsAliasNameSet { get; }
+        global::System.Boolean IsDescriptionSet { get; }
 
-        global::System.Boolean IsAlternateNameSet { get; }
-
-        global::System.Boolean IsSupplierIdSet { get; }
-
-        global::System.Boolean IsSupplierNumberSet { get; }
+        global::System.Boolean IsEnabledSet { get; }
 
         global::System.Boolean IsLastUpdateDateTimeSet { get; }
     }
@@ -22007,6 +23723,24 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsGtSet { get; }
 
         global::System.Boolean IsBetweenSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IScmSupplierFilterInputInfo
+    {
+        global::System.Boolean IsSearchCommonSet { get; }
+
+        global::System.Boolean IsNameSet { get; }
+
+        global::System.Boolean IsAliasNameSet { get; }
+
+        global::System.Boolean IsAlternateNameSet { get; }
+
+        global::System.Boolean IsSupplierIdSet { get; }
+
+        global::System.Boolean IsSupplierNumberSet { get; }
+
+        global::System.Boolean IsLastUpdateDateTimeSet { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -24491,6 +26225,404 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategoryByCodeBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int64, global::System.Int64> _longParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTime> _dateParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpUserIdParser;
+        public ScmPurchasingCategoryByCodeBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _longParser = serializerResolver.GetLeafValueParser<global::System.Int64, global::System.Int64>("Long") ?? throw new global::System.ArgumentException("No serializer for type `Long` found.");
+            _dateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTime>("Date") ?? throw new global::System.ArgumentException("No serializer for type `Date` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
+            _erpUserIdParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpUserId") ?? throw new global::System.ArgumentException("No serializer for type `ErpUserId` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IScmPurchasingCategoryByCodeResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IScmPurchasingCategoryByCodeResult Result, ScmPurchasingCategoryByCodeResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IScmPurchasingCategoryByCodeResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IScmPurchasingCategoryByCodeResult, ScmPurchasingCategoryByCodeResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            global::StrawberryShake.EntityId? scmPurchasingCategoryByCodeId = default !;
+            _entityStore.Update(session =>
+            {
+                scmPurchasingCategoryByCodeId = UpdateIScmPurchasingCategoryByCode_ScmPurchasingCategoryByCodeEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "scmPurchasingCategoryByCode"), entityIds);
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new ScmPurchasingCategoryByCodeResultInfo(scmPurchasingCategoryByCodeId, entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::StrawberryShake.EntityId? UpdateIScmPurchasingCategoryByCode_ScmPurchasingCategoryByCodeEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("ScmPurchasingCategory", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startDateActive")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "endDateActive")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastUpdateDateTime")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastUpdateUserId"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startDateActive")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "endDateActive")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastUpdateDateTime")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastUpdateUserId"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Int64 DeserializeNonNullableInt64(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _longParser.Parse(obj.Value.GetInt64()!);
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.DateTime? DeserializeDateTime(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _dateParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+
+        private global::System.DateTimeOffset DeserializeNonNullableDateTimeOffset(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _dateTimeParser.Parse(obj.Value.GetString()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategorySearchBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchasingCategorySearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchasingCategorySearchResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _positiveIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _nonNegativeIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTime> _dateParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int64, global::System.Int64> _longParser;
+        public ScmPurchasingCategorySearchBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchasingCategorySearchResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _positiveIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("PositiveInt") ?? throw new global::System.ArgumentException("No serializer for type `PositiveInt` found.");
+            _nonNegativeIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("NonNegativeInt") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeInt` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _dateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTime>("Date") ?? throw new global::System.ArgumentException("No serializer for type `Date` found.");
+            _longParser = serializerResolver.GetLeafValueParser<global::System.Int64, global::System.Int64>("Long") ?? throw new global::System.ArgumentException("No serializer for type `Long` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IScmPurchasingCategorySearchResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IScmPurchasingCategorySearchResult Result, ScmPurchasingCategorySearchResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IScmPurchasingCategorySearchResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IScmPurchasingCategorySearchResult, ScmPurchasingCategorySearchResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            global::AggieEnterpriseApi.State.ScmPurchasingCategorySearchResultsData scmPurchasingCategorySearchId = default !;
+            _entityStore.Update(session =>
+            {
+                scmPurchasingCategorySearchId = DeserializeNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "scmPurchasingCategorySearch"), entityIds);
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new ScmPurchasingCategorySearchResultInfo(scmPurchasingCategorySearchId, entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.ScmPurchasingCategorySearchResultsData DeserializeNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ScmPurchasingCategorySearchResults", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ScmPurchasingCategorySearchResultsData(typename, metadata: DeserializeNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "metadata")), data: UpdateNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_DataEntityNonNullableArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "data"), entityIds));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.SearchResultMetadataData DeserializeNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Metadata(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.SearchResultMetadataData(typename, sort: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "sort")), limit: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "limit")), returnedResultCount: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "returnedResultCount")), startIndex: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startIndex")), nextStartIndex: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "nextStartIndex")), totalResultCount: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "totalResultCount")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Int32? DeserializeInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _positiveIntParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::System.Int32 DeserializeNonNullableInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _nonNegativeIntParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> UpdateNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_DataEntityNonNullableArray(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var scmPurchasingCategorys = new global::System.Collections.Generic.List<global::StrawberryShake.EntityId>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                scmPurchasingCategorys.Add(UpdateNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_DataEntity(session, child, entityIds));
+            }
+
+            return scmPurchasingCategorys;
+        }
+
+        private global::StrawberryShake.EntityId UpdateNonNullableIScmPurchasingCategorySearch_ScmPurchasingCategorySearch_DataEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("ScmPurchasingCategory", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), entity.StartDateActive, entity.EndDateActive, DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), entity.LastUpdateDateTime, entity.LastUpdateUserId));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), default !, default !, DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), default !, default !));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Int64 DeserializeNonNullableInt64(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _longParser.Parse(obj.Value.GetInt64()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ScmSupplierSearchBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmSupplierSearchResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -25630,6 +27762,26 @@ namespace AggieEnterpriseApi.State
         public global::AggieEnterpriseApi.State.ValidationResponseData? ValidationResults { get; }
     }
 
+    ///<summary>Wrapper object for search results for ScmPurchasingCategory</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ScmPurchasingCategorySearchResultsData
+    {
+        public ScmPurchasingCategorySearchResultsData(global::System.String __typename, global::AggieEnterpriseApi.State.SearchResultMetadataData? metadata = default !, global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? data = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            Metadata = metadata;
+            Data = data;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Information about the search results returned.</summary>
+        public global::AggieEnterpriseApi.State.SearchResultMetadataData? Metadata { get; }
+
+        ///<summary>Results of the search</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? Data { get; }
+    }
+
     ///<summary>Search results object for ScmSupplier</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ScmSupplierSearchResultsData
@@ -25904,6 +28056,7 @@ namespace AggieEnterpriseApi.State
                 "ErpAccount" => ParseErpAccountEntityId(obj, __typename),
                 "ErpPurpose" => ParseErpPurposeEntityId(obj, __typename),
                 "PpmTask" => ParsePpmTaskEntityId(obj, __typename),
+                "ScmPurchasingCategory" => ParseScmPurchasingCategoryEntityId(obj, __typename),
                 _ => throw new global::System.NotSupportedException()};
         }
 
@@ -25917,6 +28070,7 @@ namespace AggieEnterpriseApi.State
                 "ErpAccount" => FormatErpAccountEntityId(entityId),
                 "ErpPurpose" => FormatErpPurposeEntityId(entityId),
                 "PpmTask" => FormatPpmTaskEntityId(entityId),
+                "ScmPurchasingCategory" => FormatScmPurchasingCategoryEntityId(entityId),
                 _ => throw new global::System.NotSupportedException()};
         }
 
@@ -26021,6 +28175,23 @@ namespace AggieEnterpriseApi.State
             jsonWriter.Flush();
             return global::System.Text.Encoding.UTF8.GetString(writer.GetInternalBuffer(), 0, writer.Length);
         }
+
+        private global::StrawberryShake.EntityId ParseScmPurchasingCategoryEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
+        {
+            return new global::StrawberryShake.EntityId(type, obj.GetProperty("id").GetInt64()!);
+        }
+
+        private global::System.String FormatScmPurchasingCategoryEntityId(global::StrawberryShake.EntityId entityId)
+        {
+            using var writer = new global::StrawberryShake.Internal.ArrayWriter();
+            using var jsonWriter = new global::System.Text.Json.Utf8JsonWriter(writer, _options);
+            jsonWriter.WriteStartObject();
+            jsonWriter.WriteString("__typename", entityId.Name);
+            jsonWriter.WriteNumber("id", (global::System.Int64)entityId.Value);
+            jsonWriter.WriteEndObject();
+            jsonWriter.Flush();
+            return global::System.Text.Encoding.UTF8.GetString(writer.GetInternalBuffer(), 0, writer.Length);
+        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -26057,6 +28228,8 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmSegmentsValidateQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmTaskByProjectNumberAndTaskNumberQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmPurchaseRequisitionCreateMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmPurchasingCategoryByCodeQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmPurchasingCategorySearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmSupplierSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartSegmentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartstringQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -26096,6 +28269,8 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpAccountEntity, global::AggieEnterpriseApi.CoaDetails_ErpAccount_ErpAccount>, global::AggieEnterpriseApi.State.CoaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpPurposeEntity, global::AggieEnterpriseApi.CoaDetails_ErpPurpose_ErpPurpose>, global::AggieEnterpriseApi.State.CoaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmTaskEntity, global::AggieEnterpriseApi.PpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber_PpmTask>, global::AggieEnterpriseApi.State.PpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber_PpmTaskFromPpmTaskEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity, global::AggieEnterpriseApi.ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory>, global::AggieEnterpriseApi.State.ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity, global::AggieEnterpriseApi.ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory>, global::AggieEnterpriseApi.State.ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.RequestStatusSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.StringSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.BooleanSerializer>(services);
@@ -26153,6 +28328,7 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("EmailAddress"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString1000"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString25"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpUserId"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString360"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ErpInstitutionLocationFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.SearchCommonInputsInputValueFormatter>(services);
@@ -26169,8 +28345,9 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionLineInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionDistributionInputInputValueFormatter>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmSupplierFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchasingCategoryFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.DateFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmSupplierFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>, global::AggieEnterpriseApi.State.DeptParentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>>(sp));
@@ -26249,6 +28426,20 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ScmPurchaseRequisitionCreateMutation>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmPurchaseRequisitionCreateMutation>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeResult>, global::AggieEnterpriseApi.State.ScmPurchasingCategoryByCodeResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeResult>, global::AggieEnterpriseApi.State.ScmPurchasingCategoryByCodeBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ScmPurchasingCategoryByCodeQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmPurchasingCategoryByCodeQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchasingCategorySearchResult>, global::AggieEnterpriseApi.State.ScmPurchasingCategorySearchResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmPurchasingCategorySearchResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchasingCategorySearchResult>, global::AggieEnterpriseApi.State.ScmPurchasingCategorySearchBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IScmPurchasingCategorySearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchasingCategorySearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmPurchasingCategorySearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ScmPurchasingCategorySearchQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmPurchasingCategorySearchQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmSupplierSearchResult>, global::AggieEnterpriseApi.State.ScmSupplierSearchResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IScmSupplierSearchResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IScmSupplierSearchQuery>(sp));
