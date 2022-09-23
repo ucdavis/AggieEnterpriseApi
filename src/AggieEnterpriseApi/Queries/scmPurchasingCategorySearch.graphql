@@ -1,0 +1,20 @@
+query scmPurchasingCategorySearch ($filter: ScmPurchasingCategoryFilterInput!) {
+    scmPurchasingCategorySearch (filter: $filter) {
+        metadata {
+            sort
+            limit
+            returnedResultCount
+            startIndex
+            nextStartIndex
+            totalResultCount
+        }
+        data {
+            id
+            code
+            name
+            description
+            categoryContentCode
+            enabled
+        }
+    }
+}
