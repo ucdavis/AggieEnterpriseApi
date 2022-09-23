@@ -126,7 +126,6 @@ public class PrePurchasingTests : TestBase
                 ConsumerReferenceId = "ACRU-EHIT218 - TEST",
                 ConsumerNotes = "Workgroup: CRU Internal Workgroup",
                 BoundaryApplicationName = "PrePurchasing",
-                ConsumerId = "UCD Giving Service", //Remove after fixed 9/23/2022
             }
         };
 
@@ -245,7 +244,6 @@ public class PrePurchasingTests : TestBase
                 ConsumerReferenceId = "ACRU-EHIT218 - TEST",
                 ConsumerNotes = "Workgroup: CRU Internal Workgroup",
                 BoundaryApplicationName = "PrePurchasing",
-                ConsumerId = "UCD Giving Service", //Remove after fixed 9/23/2022
             }
         };
 
