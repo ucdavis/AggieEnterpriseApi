@@ -347,4 +347,25 @@ public class PrePurchasingTests : TestBase
         data.ScmPurchaseRequisitionCreate.ValidationResults.ErrorMessages.First().ShouldBe("Line amount (102.99) is not sum of distributions (302.99).");
 
     }
+
+    [Fact]
+    public async Task LookupStatus()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var saveId = Guid.NewGuid().ToString();
+
+        var result = await client.ScmPurchaseRequisitionRequestStatus.ExecuteAsync("e54836a7-5171-4f9c-96c1-5d70c5612ae9");
+
+        var data = result.ReadData();
+
+        data.ScmPurchaseRequisitionRequestStatus.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Pending);
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("ACRU-EHIT218");
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ConsumerTrackingId.ShouldBe("219e65a1-94aa-45f3-a60b-76cd930d567c");
+        data.ScmPurchaseRequisitionRequestStatus.ValidationResults.ShouldBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ErrorMessages.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ErrorMessages.Count.ShouldBe(0);
+
+    }
 }
