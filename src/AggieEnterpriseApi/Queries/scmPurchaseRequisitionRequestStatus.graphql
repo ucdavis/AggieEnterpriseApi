@@ -1,0 +1,20 @@
+query scmPurchaseRequisitionRequestStatus($requestId: String!) {
+  scmPurchaseRequisitionRequestStatus(requestId: $requestId) {
+    requestStatus {
+            requestId
+            consumerTrackingId
+            consumerReferenceId
+            consumerNotes
+            requestDateTime
+            requestStatus
+            lastStatusDateTime
+            processedDateTime
+            errorMessages
+        }
+        validationResults {
+            valid
+            errorMessages
+            messageProperties
+        }
+  }
+}
