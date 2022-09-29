@@ -1,0 +1,16 @@
+query PpmProjectSearch($filter: PpmProjectFilterInput!, $projectNumber: String!) {
+      # pull single project back by number
+      ppmProjectByNumber(projectNumber: $projectNumber) {
+          id
+          projectNumber
+          name
+      }
+      # query projects by filter
+      ppmProjectSearch(filter: $filter) {
+        data {
+          id
+          projectNumber
+          name
+        }
+      }
+    }
