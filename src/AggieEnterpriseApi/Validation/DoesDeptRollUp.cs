@@ -70,25 +70,25 @@ namespace AggieEnterpriseApi.Validation
             {
                 return false;
             }
-            if (dept.Parent.Parent.Parent.Parent.Parent.Code == expectedCode)
+            if (dept.Parent.Parent.Parent.Parent.Parent?.Code == expectedCode)
             {
                 return true;
             }
 
-            if (dept.Parent.Parent.Parent.Parent.Parent.Parent == null)
+            if (dept.Parent.Parent.Parent.Parent.Parent?.Parent == null)
             {
                 return false;
             }
-            if (dept.Parent.Parent.Parent.Parent.Parent.Parent.Code == expectedCode)
+            if (dept.Parent.Parent.Parent.Parent.Parent?.Parent?.Code == expectedCode)
             {
                 return true;
             }
 
-            if (dept.Parent.Parent.Parent.Parent.Parent.Parent.Parent == null)
+            if (dept.Parent.Parent.Parent.Parent.Parent?.Parent?.Parent == null)
             {
                 return false;
             }
-            if (dept.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Code == expectedCode)
+            if (dept.Parent.Parent.Parent.Parent.Parent?.Parent?.Parent?.Code == expectedCode)
             {
                 return true;
             }
