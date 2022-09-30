@@ -54,7 +54,7 @@ public class PrePurchasingTests : TestBase
     }
 
     [Fact]
-    public async Task SearchCategory()
+    public async Task SearchCategory1()
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
@@ -73,6 +73,29 @@ public class PrePurchasingTests : TestBase
         data.ScmPurchasingCategorySearch.Data[0].Name.ShouldBe("Paper products");
         data.ScmPurchasingCategorySearch.Data[0].Code.ShouldBe("14110000");
 
+    }
+
+    [Fact]
+    public async Task SearchCategory2()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var searchParms = new ScmPurchasingCategoryFilterInput();
+        searchParms.SearchCommon = new SearchCommonInputs();
+        searchParms.SearchCommon.IncludeTotalResultCount = true;
+
+        searchParms.Name = new StringFilterInput { Contains = "Test%123" };
+
+        var result = await client.ScmPurchasingCategorySearch.ExecuteAsync(searchParms);
+        var data = result.ReadData();
+        data.ScmPurchasingCategorySearch.ShouldNotBeNull();
+        data.ScmPurchasingCategorySearch.Metadata.ShouldNotBeNull();
+        data.ScmPurchasingCategorySearch.Metadata.TotalResultCount.ShouldBe(1);
+
+        data.ScmPurchasingCategorySearch.Data[0].Name.ShouldBe("Test 123");
+        data.ScmPurchasingCategorySearch.Data[0].Code.ShouldBe("Test 123");
+        data.ScmPurchasingCategorySearch.Data[0].StartDateActive.ShouldNotBeNull();
+        data.ScmPurchasingCategorySearch.Data[0].EndDateActive.ShouldNotBeNull();
     }
 
     [Fact]
