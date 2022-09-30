@@ -8586,7 +8586,7 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory : global::System.IEquatable<ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory>, IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory
     {
-        public ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory(global::System.Int64 id, global::System.String code, global::System.String name, global::System.String? description, global::System.String? categoryContentCode, global::System.Boolean enabled)
+        public ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory(global::System.Int64 id, global::System.String code, global::System.String name, global::System.String? description, global::System.String? categoryContentCode, global::System.Boolean enabled, global::System.DateTime? startDateActive, global::System.DateTime? endDateActive)
         {
             Id = id;
             Code = code;
@@ -8594,6 +8594,8 @@ namespace AggieEnterpriseApi
             Description = description;
             CategoryContentCode = categoryContentCode;
             Enabled = enabled;
+            StartDateActive = startDateActive;
+            EndDateActive = endDateActive;
         }
 
         /// <summary>
@@ -8626,6 +8628,16 @@ namespace AggieEnterpriseApi
         /// </summary>
         public global::System.Boolean Enabled { get; }
 
+        /// <summary>
+        /// The date from when the value is available for use.
+        /// </summary>
+        public global::System.DateTime? StartDateActive { get; }
+
+        /// <summary>
+        /// The date till which the value is available for use.
+        /// </summary>
+        public global::System.DateTime? EndDateActive { get; }
+
         public virtual global::System.Boolean Equals(ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory? other)
         {
             if (ReferenceEquals(null, other))
@@ -8643,7 +8655,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (Id == other.Id) && Code.Equals(other.Code) && Name.Equals(other.Name) && ((Description is null && other.Description is null) || Description != null && Description.Equals(other.Description)) && ((CategoryContentCode is null && other.CategoryContentCode is null) || CategoryContentCode != null && CategoryContentCode.Equals(other.CategoryContentCode)) && Enabled == other.Enabled;
+            return (Id == other.Id) && Code.Equals(other.Code) && Name.Equals(other.Name) && ((Description is null && other.Description is null) || Description != null && Description.Equals(other.Description)) && ((CategoryContentCode is null && other.CategoryContentCode is null) || CategoryContentCode != null && CategoryContentCode.Equals(other.CategoryContentCode)) && Enabled == other.Enabled && ((StartDateActive is null && other.StartDateActive is null) || StartDateActive != null && StartDateActive.Equals(other.StartDateActive)) && ((EndDateActive is null && other.EndDateActive is null) || EndDateActive != null && EndDateActive.Equals(other.EndDateActive));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -8685,6 +8697,16 @@ namespace AggieEnterpriseApi
                 }
 
                 hash ^= 397 * Enabled.GetHashCode();
+                if (StartDateActive != null)
+                {
+                    hash ^= 397 * StartDateActive.GetHashCode();
+                }
+
+                if (EndDateActive != null)
+                {
+                    hash ^= 397 * EndDateActive.GetHashCode();
+                }
+
                 return hash;
             }
         }
@@ -8811,6 +8833,16 @@ namespace AggieEnterpriseApi
         /// Indicates that the Category is enabled.
         /// </summary>
         public global::System.Boolean Enabled { get; }
+
+        /// <summary>
+        /// The date from when the value is available for use.
+        /// </summary>
+        public global::System.DateTime? StartDateActive { get; }
+
+        /// <summary>
+        /// The date till which the value is available for use.
+        /// </summary>
+        public global::System.DateTime? EndDateActive { get; }
     }
 
     /// <summary>
@@ -20737,6 +20769,8 @@ namespace AggieEnterpriseApi
     ///       description
     ///       categoryContentCode
     ///       enabled
+    ///       startDateActive
+    ///       endDateActive
     ///       ... on ScmPurchasingCategory {
     ///         id
     ///       }
@@ -20754,8 +20788,8 @@ namespace AggieEnterpriseApi
 
         public static ScmPurchasingCategorySearchQueryDocument Instance { get; } = new ScmPurchasingCategorySearchQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x73, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "194fe6003a8c3c166c31e16e8eeb9ac6");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x73, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x44, 0x61, 0x74, 0x65, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x20, 0x65, 0x6e, 0x64, 0x44, 0x61, 0x74, 0x65, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "1dbdad9f629a900d2e39cc2ab2de6c97");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -20789,6 +20823,8 @@ namespace AggieEnterpriseApi
     ///       description
     ///       categoryContentCode
     ///       enabled
+    ///       startDateActive
+    ///       endDateActive
     ///       ... on ScmPurchasingCategory {
     ///         id
     ///       }
@@ -20872,6 +20908,8 @@ namespace AggieEnterpriseApi
     ///       description
     ///       categoryContentCode
     ///       enabled
+    ///       startDateActive
+    ///       endDateActive
     ///       ... on ScmPurchasingCategory {
     ///         id
     ///       }
@@ -25009,7 +25047,7 @@ namespace AggieEnterpriseApi.State
                 snapshot = _entityStore.CurrentSnapshot;
             }
 
-            return new ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory(entity.Id, entity.Code, entity.Name, entity.Description, entity.CategoryContentCode, entity.Enabled);
+            return new ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory(entity.Id, entity.Code, entity.Name, entity.Description, entity.CategoryContentCode, entity.Enabled, entity.StartDateActive, entity.EndDateActive);
         }
     }
 
@@ -29142,11 +29180,11 @@ namespace AggieEnterpriseApi.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), entity.StartDateActive, entity.EndDateActive, DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), entity.LastUpdateDateTime, entity.LastUpdateUserId));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startDateActive")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "endDateActive")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), entity.LastUpdateDateTime, entity.LastUpdateUserId));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), default !, default !, DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), default !, default !));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startDateActive")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "endDateActive")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), default !, default !));
                 }
 
                 return entityId;
@@ -29183,6 +29221,16 @@ namespace AggieEnterpriseApi.State
             }
 
             return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+
+        private global::System.DateTime? DeserializeDateTime(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _dateParser.Parse(obj.Value.GetString()!);
         }
     }
 
