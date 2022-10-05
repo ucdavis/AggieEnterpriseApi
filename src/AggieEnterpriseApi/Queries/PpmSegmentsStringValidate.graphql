@@ -5,6 +5,14 @@ query ppmStringSegmentsValidate ($segmentString: PpmSegmentString!) {
             errorMessages
             messageProperties
         }
+        segments {
+            project
+            task
+            organization
+            expenditureType
+            award
+            fundingSource
+        }
 		segmentString
     }
 }
