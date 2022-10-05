@@ -1,0 +1,17 @@
+query erpUnitOfMeasureSearch ($filter: ErpUnitOfMeasureFilterInput!) {
+    erpUnitOfMeasureSearch (filter: $filter) {
+        metadata {
+            sort
+            limit
+            returnedResultCount
+            startIndex
+            nextStartIndex
+            totalResultCount
+        }
+        data {
+            uomCode
+            name
+            baseUOM
+        }
+    }
+}

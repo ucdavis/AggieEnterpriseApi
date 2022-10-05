@@ -1840,6 +1840,466 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchResult : global::System.IEquatable<ErpUnitOfMeasureSearchResult>, IErpUnitOfMeasureSearchResult
+    {
+        public ErpUnitOfMeasureSearchResult(global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch erpUnitOfMeasureSearch)
+        {
+            ErpUnitOfMeasureSearch = erpUnitOfMeasureSearch;
+        }
+
+        /// <summary>
+        /// Search for ErpUnitOfMeasure objects by multiple properties.
+        /// See the ErpUnitOfMeasureFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch ErpUnitOfMeasureSearch { get; }
+
+        public virtual global::System.Boolean Equals(ErpUnitOfMeasureSearchResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (ErpUnitOfMeasureSearch.Equals(other.ErpUnitOfMeasureSearch));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpUnitOfMeasureSearchResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * ErpUnitOfMeasureSearch.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpUnitOfMeasure
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults : global::System.IEquatable<ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults>, IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults
+    {
+        public ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults(global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata metadata, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data> data)
+        {
+            Metadata = metadata;
+            Data = data;
+        }
+
+        /// <summary>
+        /// Information about the search results returned.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata Metadata { get; }
+
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data> Data { get; }
+
+        public virtual global::System.Boolean Equals(ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Metadata.Equals(other.Metadata)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Data, other.Data);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Metadata.GetHashCode();
+                foreach (var Data_elm in Data)
+                {
+                    hash ^= 397 * Data_elm.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata : global::System.IEquatable<ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata>, IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata
+    {
+        public ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata(global::System.Collections.Generic.IReadOnlyList<global::System.String>? sort, global::System.Int32? limit, global::System.Int32 returnedResultCount, global::System.Int32 startIndex, global::System.Int32? nextStartIndex, global::System.Int32? totalResultCount)
+        {
+            Sort = sort;
+            Limit = limit;
+            ReturnedResultCount = returnedResultCount;
+            StartIndex = startIndex;
+            NextStartIndex = nextStartIndex;
+            TotalResultCount = totalResultCount;
+        }
+
+        /// <summary>
+        /// Array of property names used to sort the results
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
+
+        /// <summary>
+        /// requested limit to the number of records to retrieve
+        /// </summary>
+        public global::System.Int32? Limit { get; }
+
+        /// <summary>
+        /// Results returned in the data property.
+        /// </summary>
+        public global::System.Int32 ReturnedResultCount { get; }
+
+        /// <summary>
+        /// Starting index for the current result set.
+        /// </summary>
+        public global::System.Int32 StartIndex { get; }
+
+        /// <summary>
+        /// Start index for getting the next page of results.  Unset if there are no more results.
+        /// </summary>
+        public global::System.Int32? NextStartIndex { get; }
+
+        /// <summary>
+        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
+        /// </summary>
+        public global::System.Int32? TotalResultCount { get; }
+
+        public virtual global::System.Boolean Equals(ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Sort, other.Sort)) && Limit == other.Limit && ReturnedResultCount == other.ReturnedResultCount && StartIndex == other.StartIndex && NextStartIndex == other.NextStartIndex && TotalResultCount == other.TotalResultCount;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Sort != null)
+                {
+                    foreach (var Sort_elm in Sort)
+                    {
+                        hash ^= 397 * Sort_elm.GetHashCode();
+                    }
+                }
+
+                if (Limit != null)
+                {
+                    hash ^= 397 * Limit.GetHashCode();
+                }
+
+                hash ^= 397 * ReturnedResultCount.GetHashCode();
+                hash ^= 397 * StartIndex.GetHashCode();
+                if (NextStartIndex != null)
+                {
+                    hash ^= 397 * NextStartIndex.GetHashCode();
+                }
+
+                if (TotalResultCount != null)
+                {
+                    hash ^= 397 * TotalResultCount.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure : global::System.IEquatable<ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure>, IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure
+    {
+        public ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure(global::System.String? uomCode, global::System.String? name, global::System.Boolean baseUOM)
+        {
+            UomCode = uomCode;
+            Name = name;
+            BaseUOM = baseUOM;
+        }
+
+        /// <summary>
+        /// Unique short code assigned to a Unit of Measure (UOM)
+        /// </summary>
+        public global::System.String? UomCode { get; }
+
+        /// <summary>
+        /// Translatable Unit of Measure (UOM) name
+        /// </summary>
+        public global::System.String? Name { get; }
+
+        /// <summary>
+        /// Base Unit of Measure (UOM) flag.
+        /// </summary>
+        public global::System.Boolean BaseUOM { get; }
+
+        public virtual global::System.Boolean Equals(ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((UomCode is null && other.UomCode is null) || UomCode != null && UomCode.Equals(other.UomCode))) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && BaseUOM == other.BaseUOM;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (UomCode != null)
+                {
+                    hash ^= 397 * UomCode.GetHashCode();
+                }
+
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                hash ^= 397 * BaseUOM.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearchResult
+    {
+        /// <summary>
+        /// Search for ErpUnitOfMeasure objects by multiple properties.
+        /// See the ErpUnitOfMeasureFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch ErpUnitOfMeasureSearch { get; }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpUnitOfMeasure
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch
+    {
+        /// <summary>
+        /// Information about the search results returned.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata Metadata { get; }
+
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data> Data { get; }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpUnitOfMeasure
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults : IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch
+    {
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata
+    {
+        /// <summary>
+        /// Array of property names used to sort the results
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
+
+        /// <summary>
+        /// requested limit to the number of records to retrieve
+        /// </summary>
+        public global::System.Int32? Limit { get; }
+
+        /// <summary>
+        /// Results returned in the data property.
+        /// </summary>
+        public global::System.Int32 ReturnedResultCount { get; }
+
+        /// <summary>
+        /// Starting index for the current result set.
+        /// </summary>
+        public global::System.Int32 StartIndex { get; }
+
+        /// <summary>
+        /// Start index for getting the next page of results.  Unset if there are no more results.
+        /// </summary>
+        public global::System.Int32? NextStartIndex { get; }
+
+        /// <summary>
+        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
+        /// </summary>
+        public global::System.Int32? TotalResultCount { get; }
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata : IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data
+    {
+        /// <summary>
+        /// Unique short code assigned to a Unit of Measure (UOM)
+        /// </summary>
+        public global::System.String? UomCode { get; }
+
+        /// <summary>
+        /// Translatable Unit of Measure (UOM) name
+        /// </summary>
+        public global::System.String? Name { get; }
+
+        /// <summary>
+        /// Base Unit of Measure (UOM) flag.
+        /// </summary>
+        public global::System.Boolean BaseUOM { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure : IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParentsResult : global::System.IEquatable<FundParentsResult>, IFundParentsResult
     {
         public FundParentsResult(global::AggieEnterpriseApi.IFundParents_ErpFund? erpFund)
@@ -12750,6 +13210,232 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _searchCommonInputsFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFilterInputFormatter = default !;
+        public global::System.String TypeName => "ErpUnitOfMeasureFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _searchCommonInputsFormatter = serializerResolver.GetInputValueFormatter("SearchCommonInputs");
+            _stringFilterInputFormatter = serializerResolver.GetInputValueFormatter("StringFilterInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsSearchCommonSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("searchCommon", FormatSearchCommon(input.SearchCommon)));
+            }
+
+            if (inputInfo.IsNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("name", FormatName(input.Name)));
+            }
+
+            if (inputInfo.IsUnitOfMeasureIdSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("unitOfMeasureId", FormatUnitOfMeasureId(input.UnitOfMeasureId)));
+            }
+
+            if (inputInfo.IsUomCodeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("uomCode", FormatUomCode(input.UomCode)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatSearchCommon(global::AggieEnterpriseApi.SearchCommonInputs? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _searchCommonInputsFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatName(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUnitOfMeasureId(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUomCode(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Data object used to run searches on ErpUnitOfMeasure</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureFilterInput : global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo, global::System.IEquatable<ErpUnitOfMeasureFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpUnitOfMeasureFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(ErpUnitOfMeasureFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((SearchCommon is null && other.SearchCommon is null) || SearchCommon != null && SearchCommon.Equals(other.SearchCommon))) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && ((UnitOfMeasureId is null && other.UnitOfMeasureId is null) || UnitOfMeasureId != null && UnitOfMeasureId.Equals(other.UnitOfMeasureId)) && ((UomCode is null && other.UomCode is null) || UomCode != null && UomCode.Equals(other.UomCode));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (SearchCommon != null)
+                {
+                    hash ^= 397 * SearchCommon.GetHashCode();
+                }
+
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                if (UnitOfMeasureId != null)
+                {
+                    hash ^= 397 * UnitOfMeasureId.GetHashCode();
+                }
+
+                if (UomCode != null)
+                {
+                    hash ^= 397 * UomCode.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::AggieEnterpriseApi.SearchCommonInputs? _value_searchCommon;
+        private global::System.Boolean _set_searchCommon;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_name;
+        private global::System.Boolean _set_name;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_unitOfMeasureId;
+        private global::System.Boolean _set_unitOfMeasureId;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_uomCode;
+        private global::System.Boolean _set_uomCode;
+        public global::AggieEnterpriseApi.SearchCommonInputs? SearchCommon
+        {
+            get => _value_searchCommon;
+            set
+            {
+                _set_searchCommon = true;
+                _value_searchCommon = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo.IsSearchCommonSet => _set_searchCommon;
+        public global::AggieEnterpriseApi.StringFilterInput? Name
+        {
+            get => _value_name;
+            set
+            {
+                _set_name = true;
+                _value_name = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo.IsNameSet => _set_name;
+        public global::AggieEnterpriseApi.StringFilterInput? UnitOfMeasureId
+        {
+            get => _value_unitOfMeasureId;
+            set
+            {
+                _set_unitOfMeasureId = true;
+                _value_unitOfMeasureId = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo.IsUnitOfMeasureIdSet => _set_unitOfMeasureId;
+        public global::AggieEnterpriseApi.StringFilterInput? UomCode
+        {
+            get => _value_uomCode;
+            set
+            {
+                _set_uomCode = true;
+                _value_uomCode = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo.IsUomCodeSet => _set_uomCode;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _actionRequestHeaderInputFormatter = default !;
@@ -18558,6 +19244,161 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
+    /// Represents the operation service of the ErpUnitOfMeasureSearch GraphQL operation
+    /// <code>
+    /// query ErpUnitOfMeasureSearch($filter: ErpUnitOfMeasureFilterInput!) {
+    ///   erpUnitOfMeasureSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       uomCode
+    ///       name
+    ///       baseUOM
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchQueryDocument : global::StrawberryShake.IDocument
+    {
+        private ErpUnitOfMeasureSearchQueryDocument()
+        {
+        }
+
+        public static ErpUnitOfMeasureSearchQueryDocument Instance { get; } = new ErpUnitOfMeasureSearchQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x45, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x45, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x75, 0x6f, 0x6d, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x62, 0x61, 0x73, 0x65, 0x55, 0x4f, 0x4d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "0dca42a4dac3b12763825907db57f549");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ErpUnitOfMeasureSearch GraphQL operation
+    /// <code>
+    /// query ErpUnitOfMeasureSearch($filter: ErpUnitOfMeasureFilterInput!) {
+    ///   erpUnitOfMeasureSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       uomCode
+    ///       name
+    ///       baseUOM
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchQuery : global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IErpUnitOfMeasureSearchResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _erpUnitOfMeasureFilterInputFormatter;
+        public ErpUnitOfMeasureSearchQuery(global::StrawberryShake.IOperationExecutor<IErpUnitOfMeasureSearchResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _erpUnitOfMeasureFilterInputFormatter = serializerResolver.GetInputValueFormatter("ErpUnitOfMeasureFilterInput");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IErpUnitOfMeasureSearchResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IErpUnitOfMeasureSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(filter);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IErpUnitOfMeasureSearchResult>> Watch(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(filter);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput filter)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("filter", FormatFilter(filter));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: ErpUnitOfMeasureSearchQueryDocument.Instance.Hash.Value, name: "ErpUnitOfMeasureSearch", document: ErpUnitOfMeasureSearchQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatFilter(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _erpUnitOfMeasureFilterInputFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ErpUnitOfMeasureSearch GraphQL operation
+    /// <code>
+    /// query ErpUnitOfMeasureSearch($filter: ErpUnitOfMeasureFilterInput!) {
+    ///   erpUnitOfMeasureSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       uomCode
+    ///       name
+    ///       baseUOM
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearchQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IErpUnitOfMeasureSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IErpUnitOfMeasureSearchResult>> Watch(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the operation service of the FundParents GraphQL operation
     /// <code>
     /// query FundParents($code: String!) {
@@ -21590,6 +22431,7 @@ namespace AggieEnterpriseApi
     {
         private readonly global::AggieEnterpriseApi.IDeptParentsQuery _deptParents;
         private readonly global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery _erpInstitutionLocationSearch;
+        private readonly global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery _erpUnitOfMeasureSearch;
         private readonly global::AggieEnterpriseApi.IFundParentsQuery _fundParents;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestMutation _glJournalRequest;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestStatusQuery _glJournalRequestStatus;
@@ -21606,10 +22448,11 @@ namespace AggieEnterpriseApi
         private readonly global::AggieEnterpriseApi.IScmSupplierSearchQuery _scmSupplierSearch;
         private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery erpInstitutionLocationSearch, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IPpmProjectSearchQuery ppmProjectSearch, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IScmPurchaseRequisitionRequestStatusQuery scmPurchaseRequisitionRequestStatus, global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery scmPurchasingCategoryByCode, global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery scmPurchasingCategorySearch, global::AggieEnterpriseApi.IScmSupplierSearchQuery scmSupplierSearch, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery erpInstitutionLocationSearch, global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery erpUnitOfMeasureSearch, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IPpmProjectSearchQuery ppmProjectSearch, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IScmPurchaseRequisitionRequestStatusQuery scmPurchaseRequisitionRequestStatus, global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery scmPurchasingCategoryByCode, global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery scmPurchasingCategorySearch, global::AggieEnterpriseApi.IScmSupplierSearchQuery scmSupplierSearch, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
             _deptParents = deptParents ?? throw new global::System.ArgumentNullException(nameof(deptParents));
             _erpInstitutionLocationSearch = erpInstitutionLocationSearch ?? throw new global::System.ArgumentNullException(nameof(erpInstitutionLocationSearch));
+            _erpUnitOfMeasureSearch = erpUnitOfMeasureSearch ?? throw new global::System.ArgumentNullException(nameof(erpUnitOfMeasureSearch));
             _fundParents = fundParents ?? throw new global::System.ArgumentNullException(nameof(fundParents));
             _glJournalRequest = glJournalRequest ?? throw new global::System.ArgumentNullException(nameof(glJournalRequest));
             _glJournalRequestStatus = glJournalRequestStatus ?? throw new global::System.ArgumentNullException(nameof(glJournalRequestStatus));
@@ -21631,6 +22474,7 @@ namespace AggieEnterpriseApi
         public static global::System.String ClientName => "AggieEnterpriseClient";
         public global::AggieEnterpriseApi.IDeptParentsQuery DeptParents => _deptParents;
         public global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery ErpInstitutionLocationSearch => _erpInstitutionLocationSearch;
+        public global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery ErpUnitOfMeasureSearch => _erpUnitOfMeasureSearch;
         public global::AggieEnterpriseApi.IFundParentsQuery FundParents => _fundParents;
         public global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest => _glJournalRequest;
         public global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus => _glJournalRequestStatus;
@@ -21658,6 +22502,8 @@ namespace AggieEnterpriseApi
         global::AggieEnterpriseApi.IDeptParentsQuery DeptParents { get; }
 
         global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery ErpInstitutionLocationSearch { get; }
+
+        global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery ErpUnitOfMeasureSearch { get; }
 
         global::AggieEnterpriseApi.IFundParentsQuery FundParents { get; }
 
@@ -22763,6 +23609,124 @@ namespace AggieEnterpriseApi.State
         public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
         {
             return new ErpInstitutionLocationSearchResultInfo(ErpInstitutionLocationSearch, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ErpUnitOfMeasureSearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public ErpUnitOfMeasureSearchResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult);
+        public ErpUnitOfMeasureSearchResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is ErpUnitOfMeasureSearchResultInfo info)
+            {
+                return new ErpUnitOfMeasureSearchResult(MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch(info.ErpUnitOfMeasureSearch, snapshot));
+            }
+
+            throw new global::System.ArgumentException("ErpUnitOfMeasureSearchResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch(global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultsData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch returnValue = default !;
+            if (data.__typename.Equals("ErpUnitOfMeasureSearchResults", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults(MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata(data.Metadata ?? throw new global::System.ArgumentNullException(), snapshot), MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_DataNonNullableArray(data.Data ?? throw new global::System.ArgumentNullException(), snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata(global::AggieEnterpriseApi.State.SearchResultMetadataData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata returnValue = default !;
+            if (data.__typename.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata(data.Sort, data.Limit, data.ReturnedResultCount ?? throw new global::System.ArgumentNullException(), data.StartIndex ?? throw new global::System.ArgumentNullException(), data.NextStartIndex, data.TotalResultCount);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data> MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_DataNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpUnitOfMeasureData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var erpUnitOfMeasures = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data>();
+            foreach (global::AggieEnterpriseApi.State.ErpUnitOfMeasureData child in list)
+            {
+                erpUnitOfMeasures.Add(MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data(child, snapshot));
+            }
+
+            return erpUnitOfMeasures;
+        }
+
+        private global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data(global::AggieEnterpriseApi.State.ErpUnitOfMeasureData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data returnValue = default !;
+            if (data.__typename.Equals("ErpUnitOfMeasure", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure(data.UomCode, data.Name, data.BaseUOM ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public ErpUnitOfMeasureSearchResultInfo(global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultsData erpUnitOfMeasureSearch, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            ErpUnitOfMeasureSearch = erpUnitOfMeasureSearch;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Search for ErpUnitOfMeasure objects by multiple properties.
+        /// See the ErpUnitOfMeasureFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultsData ErpUnitOfMeasureSearch { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new ErpUnitOfMeasureSearchResultInfo(ErpUnitOfMeasureSearch, _entityIds, version);
         }
     }
 
@@ -25652,6 +26616,18 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IErpUnitOfMeasureFilterInputInfo
+    {
+        global::System.Boolean IsSearchCommonSet { get; }
+
+        global::System.Boolean IsNameSet { get; }
+
+        global::System.Boolean IsUnitOfMeasureIdSet { get; }
+
+        global::System.Boolean IsUomCodeSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     internal interface IGlJournalRequestInputInfo
     {
         global::System.Boolean IsHeaderSet { get; }
@@ -26456,6 +27432,215 @@ namespace AggieEnterpriseApi.State
             }
 
             return _scmAddressLineParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _positiveIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _nonNegativeIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpUnitOfMeasureCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString25Parser;
+        public ErpUnitOfMeasureSearchBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _positiveIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("PositiveInt") ?? throw new global::System.ArgumentException("No serializer for type `PositiveInt` found.");
+            _nonNegativeIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("NonNegativeInt") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeInt` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _erpUnitOfMeasureCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpUnitOfMeasureCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpUnitOfMeasureCode` found.");
+            _nonEmptyTrimmedString25Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString25") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString25` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IErpUnitOfMeasureSearchResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IErpUnitOfMeasureSearchResult Result, ErpUnitOfMeasureSearchResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IErpUnitOfMeasureSearchResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IErpUnitOfMeasureSearchResult, ErpUnitOfMeasureSearchResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new ErpUnitOfMeasureSearchResultInfo(DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpUnitOfMeasureSearch")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultsData DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ErpUnitOfMeasureSearchResults", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultsData(typename, metadata: DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "metadata")), data: DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_DataNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "data")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.SearchResultMetadataData DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.SearchResultMetadataData(typename, sort: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "sort")), limit: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "limit")), returnedResultCount: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "returnedResultCount")), startIndex: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startIndex")), nextStartIndex: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "nextStartIndex")), totalResultCount: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "totalResultCount")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Int32? DeserializeInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _positiveIntParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::System.Int32 DeserializeNonNullableInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _nonNegativeIntParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpUnitOfMeasureData> DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_DataNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var erpUnitOfMeasures = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.ErpUnitOfMeasureData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                erpUnitOfMeasures.Add(DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data(child));
+            }
+
+            return erpUnitOfMeasures;
+        }
+
+        private global::AggieEnterpriseApi.State.ErpUnitOfMeasureData DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ErpUnitOfMeasure", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ErpUnitOfMeasureData(typename, uomCode: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "uomCode")), name: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), baseUOM: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "baseUOM")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _erpUnitOfMeasureCodeParser.Parse(obj.Value.GetString()!);
         }
 
         private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
@@ -30125,6 +31310,49 @@ namespace AggieEnterpriseApi.State
         public global::System.Boolean? Enabled { get; }
     }
 
+    ///<summary>Wrapper object for search results for ErpUnitOfMeasure</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchResultsData
+    {
+        public ErpUnitOfMeasureSearchResultsData(global::System.String __typename, global::AggieEnterpriseApi.State.SearchResultMetadataData? metadata = default !, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpUnitOfMeasureData>? data = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            Metadata = metadata;
+            Data = data;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Information about the search results returned.</summary>
+        public global::AggieEnterpriseApi.State.SearchResultMetadataData? Metadata { get; }
+
+        ///<summary>Results of the search</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpUnitOfMeasureData>? Data { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureData
+    {
+        public ErpUnitOfMeasureData(global::System.String __typename, global::System.String? uomCode = default !, global::System.String? name = default !, global::System.Boolean? baseUOM = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            UomCode = uomCode;
+            Name = name;
+            BaseUOM = baseUOM;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Unique short code assigned to a Unit of Measure (UOM)</summary>
+        public global::System.String? UomCode { get; }
+
+        ///<summary>Translatable Unit of Measure (UOM) name</summary>
+        public global::System.String? Name { get; }
+
+        ///<summary>Base Unit of Measure (UOM) flag.</summary>
+        public global::System.Boolean? BaseUOM { get; }
+    }
+
     ///<summary>Output type for GLJournal requests and follow-up status updates.Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatusOutputData
@@ -30870,6 +32098,7 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::AggieEnterpriseApi.State.AggieEnterpriseClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.DeptParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpUnitOfMeasureSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.FundParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -30949,6 +32178,8 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("CityName"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString60"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpPostalCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpUnitOfMeasureCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString25"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFundCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("LocalDate"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString80"));
@@ -30982,13 +32213,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString30"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("EmailAddress"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString1000"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString25"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpUserId"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString360"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ErpInstitutionLocationFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.SearchCommonInputsInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.StringFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.BooleanFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalRequestInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ActionRequestHeaderInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalInputInputValueFormatter>(services);
@@ -31019,6 +32250,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>, global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>, global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ErpUnitOfMeasureSearchQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpUnitOfMeasureSearchQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IFundParentsResult>, global::AggieEnterpriseApi.State.FundParentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IFundParentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IFundParentsQuery>(sp));

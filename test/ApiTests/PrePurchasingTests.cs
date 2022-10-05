@@ -391,4 +391,28 @@ public class PrePurchasingTests : TestBase
         data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ErrorMessages.Count.ShouldBe(0);
 
     }
+
+    [Fact]
+    public async Task SearchUnitOfMeasure()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var searchParms = new ErpUnitOfMeasureFilterInput();
+        searchParms.SearchCommon = new SearchCommonInputs();
+        searchParms.SearchCommon.IncludeTotalResultCount = true;
+        searchParms.SearchCommon.Limit = 200;
+
+        searchParms.Name = new StringFilterInput { Contains = "%" }; //Grab them all
+
+        var result = await client.ErpUnitOfMeasureSearch.ExecuteAsync(searchParms);
+        var data = result.ReadData();
+        data.ErpUnitOfMeasureSearch.ShouldNotBeNull();
+        data.ErpUnitOfMeasureSearch.Metadata.ShouldNotBeNull();
+        data.ErpUnitOfMeasureSearch.Metadata.TotalResultCount.ShouldBe(148);
+        data.ErpUnitOfMeasureSearch.Metadata.NextStartIndex.ShouldBeNull();
+
+        data.ErpUnitOfMeasureSearch.Data[0].Name.ShouldBe("Each");
+        data.ErpUnitOfMeasureSearch.Data[0].UomCode.ShouldBe("EA");
+
+    }
 }
