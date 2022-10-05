@@ -2108,11 +2108,10 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure : global::System.IEquatable<ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure>, IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure
     {
-        public ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure(global::System.String? uomCode, global::System.String? name, global::System.Boolean baseUOM)
+        public ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure(global::System.String? uomCode, global::System.String? name)
         {
             UomCode = uomCode;
             Name = name;
-            BaseUOM = baseUOM;
         }
 
         /// <summary>
@@ -2124,11 +2123,6 @@ namespace AggieEnterpriseApi
         /// Translatable Unit of Measure (UOM) name
         /// </summary>
         public global::System.String? Name { get; }
-
-        /// <summary>
-        /// Base Unit of Measure (UOM) flag.
-        /// </summary>
-        public global::System.Boolean BaseUOM { get; }
 
         public virtual global::System.Boolean Equals(ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure? other)
         {
@@ -2147,7 +2141,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (((UomCode is null && other.UomCode is null) || UomCode != null && UomCode.Equals(other.UomCode))) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && BaseUOM == other.BaseUOM;
+            return (((UomCode is null && other.UomCode is null) || UomCode != null && UomCode.Equals(other.UomCode))) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -2185,7 +2179,6 @@ namespace AggieEnterpriseApi
                     hash ^= 397 * Name.GetHashCode();
                 }
 
-                hash ^= 397 * BaseUOM.GetHashCode();
                 return hash;
             }
         }
@@ -2287,11 +2280,6 @@ namespace AggieEnterpriseApi
         /// Translatable Unit of Measure (UOM) name
         /// </summary>
         public global::System.String? Name { get; }
-
-        /// <summary>
-        /// Base Unit of Measure (UOM) flag.
-        /// </summary>
-        public global::System.Boolean BaseUOM { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -21350,7 +21338,6 @@ namespace AggieEnterpriseApi
     ///       __typename
     ///       uomCode
     ///       name
-    ///       baseUOM
     ///     }
     ///   }
     /// }
@@ -21365,8 +21352,8 @@ namespace AggieEnterpriseApi
 
         public static ErpUnitOfMeasureSearchQueryDocument Instance { get; } = new ErpUnitOfMeasureSearchQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x45, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x45, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x75, 0x6f, 0x6d, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x62, 0x61, 0x73, 0x65, 0x55, 0x4f, 0x4d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "0dca42a4dac3b12763825907db57f549");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x45, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x45, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x75, 0x6f, 0x6d, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "23d71447cf1e24b9a0bc5b4fd5dfe43b");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -21396,7 +21383,6 @@ namespace AggieEnterpriseApi
     ///       __typename
     ///       uomCode
     ///       name
-    ///       baseUOM
     ///     }
     ///   }
     /// }
@@ -21473,7 +21459,6 @@ namespace AggieEnterpriseApi
     ///       __typename
     ///       uomCode
     ///       name
-    ///       baseUOM
     ///     }
     ///   }
     /// }
@@ -26335,7 +26320,7 @@ namespace AggieEnterpriseApi.State
             IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data returnValue = default !;
             if (data.__typename.Equals("ErpUnitOfMeasure", global::System.StringComparison.Ordinal))
             {
-                returnValue = new ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure(data.UomCode, data.Name, data.BaseUOM ?? throw new global::System.ArgumentNullException());
+                returnValue = new ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure(data.UomCode, data.Name);
             }
             else
             {
@@ -30767,7 +30752,7 @@ namespace AggieEnterpriseApi.State
             var typename = obj.Value.GetProperty("__typename").GetString();
             if (typename?.Equals("ErpUnitOfMeasure", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::AggieEnterpriseApi.State.ErpUnitOfMeasureData(typename, uomCode: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "uomCode")), name: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), baseUOM: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "baseUOM")));
+                return new global::AggieEnterpriseApi.State.ErpUnitOfMeasureData(typename, uomCode: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "uomCode")), name: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")));
             }
 
             throw new global::System.NotSupportedException();
@@ -30781,16 +30766,6 @@ namespace AggieEnterpriseApi.State
             }
 
             return _erpUnitOfMeasureCodeParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _booleanParser.Parse(obj.Value.GetBoolean()!);
         }
     }
 
@@ -35012,12 +34987,11 @@ namespace AggieEnterpriseApi.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ErpUnitOfMeasureData
     {
-        public ErpUnitOfMeasureData(global::System.String __typename, global::System.String? uomCode = default !, global::System.String? name = default !, global::System.Boolean? baseUOM = default !)
+        public ErpUnitOfMeasureData(global::System.String __typename, global::System.String? uomCode = default !, global::System.String? name = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             UomCode = uomCode;
             Name = name;
-            BaseUOM = baseUOM;
         }
 
         public global::System.String __typename { get; }
@@ -35027,9 +35001,6 @@ namespace AggieEnterpriseApi.State
 
         ///<summary>Translatable Unit of Measure (UOM) name</summary>
         public global::System.String? Name { get; }
-
-        ///<summary>Base Unit of Measure (UOM) flag.</summary>
-        public global::System.Boolean? BaseUOM { get; }
     }
 
     ///<summary>Output type for GLJournal requests and follow-up status updates.Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.</summary>
