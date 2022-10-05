@@ -1,0 +1,14 @@
+query PpmExpenditureTypeSearch($filter: PpmExpenditureTypeFilterInput!, $code: String!) {
+        ppmExpenditureTypeByCode(code: $code) {
+          id
+           code
+          name
+      }
+      ppmExpenditureTypeSearch(filter: $filter) {
+        data {
+          id
+          code
+          name
+        }
+      }
+    }
