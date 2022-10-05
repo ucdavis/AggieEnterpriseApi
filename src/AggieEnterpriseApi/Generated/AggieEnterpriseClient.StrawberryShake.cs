@@ -1840,6 +1840,466 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchResult : global::System.IEquatable<ErpUnitOfMeasureSearchResult>, IErpUnitOfMeasureSearchResult
+    {
+        public ErpUnitOfMeasureSearchResult(global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch erpUnitOfMeasureSearch)
+        {
+            ErpUnitOfMeasureSearch = erpUnitOfMeasureSearch;
+        }
+
+        /// <summary>
+        /// Search for ErpUnitOfMeasure objects by multiple properties.
+        /// See the ErpUnitOfMeasureFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch ErpUnitOfMeasureSearch { get; }
+
+        public virtual global::System.Boolean Equals(ErpUnitOfMeasureSearchResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (ErpUnitOfMeasureSearch.Equals(other.ErpUnitOfMeasureSearch));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpUnitOfMeasureSearchResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * ErpUnitOfMeasureSearch.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpUnitOfMeasure
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults : global::System.IEquatable<ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults>, IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults
+    {
+        public ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults(global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata metadata, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data> data)
+        {
+            Metadata = metadata;
+            Data = data;
+        }
+
+        /// <summary>
+        /// Information about the search results returned.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata Metadata { get; }
+
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data> Data { get; }
+
+        public virtual global::System.Boolean Equals(ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Metadata.Equals(other.Metadata)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Data, other.Data);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Metadata.GetHashCode();
+                foreach (var Data_elm in Data)
+                {
+                    hash ^= 397 * Data_elm.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata : global::System.IEquatable<ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata>, IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata
+    {
+        public ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata(global::System.Collections.Generic.IReadOnlyList<global::System.String>? sort, global::System.Int32? limit, global::System.Int32 returnedResultCount, global::System.Int32 startIndex, global::System.Int32? nextStartIndex, global::System.Int32? totalResultCount)
+        {
+            Sort = sort;
+            Limit = limit;
+            ReturnedResultCount = returnedResultCount;
+            StartIndex = startIndex;
+            NextStartIndex = nextStartIndex;
+            TotalResultCount = totalResultCount;
+        }
+
+        /// <summary>
+        /// Array of property names used to sort the results
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
+
+        /// <summary>
+        /// requested limit to the number of records to retrieve
+        /// </summary>
+        public global::System.Int32? Limit { get; }
+
+        /// <summary>
+        /// Results returned in the data property.
+        /// </summary>
+        public global::System.Int32 ReturnedResultCount { get; }
+
+        /// <summary>
+        /// Starting index for the current result set.
+        /// </summary>
+        public global::System.Int32 StartIndex { get; }
+
+        /// <summary>
+        /// Start index for getting the next page of results.  Unset if there are no more results.
+        /// </summary>
+        public global::System.Int32? NextStartIndex { get; }
+
+        /// <summary>
+        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
+        /// </summary>
+        public global::System.Int32? TotalResultCount { get; }
+
+        public virtual global::System.Boolean Equals(ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Sort, other.Sort)) && Limit == other.Limit && ReturnedResultCount == other.ReturnedResultCount && StartIndex == other.StartIndex && NextStartIndex == other.NextStartIndex && TotalResultCount == other.TotalResultCount;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Sort != null)
+                {
+                    foreach (var Sort_elm in Sort)
+                    {
+                        hash ^= 397 * Sort_elm.GetHashCode();
+                    }
+                }
+
+                if (Limit != null)
+                {
+                    hash ^= 397 * Limit.GetHashCode();
+                }
+
+                hash ^= 397 * ReturnedResultCount.GetHashCode();
+                hash ^= 397 * StartIndex.GetHashCode();
+                if (NextStartIndex != null)
+                {
+                    hash ^= 397 * NextStartIndex.GetHashCode();
+                }
+
+                if (TotalResultCount != null)
+                {
+                    hash ^= 397 * TotalResultCount.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure : global::System.IEquatable<ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure>, IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure
+    {
+        public ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure(global::System.String? uomCode, global::System.String? name, global::System.Boolean baseUOM)
+        {
+            UomCode = uomCode;
+            Name = name;
+            BaseUOM = baseUOM;
+        }
+
+        /// <summary>
+        /// Unique short code assigned to a Unit of Measure (UOM)
+        /// </summary>
+        public global::System.String? UomCode { get; }
+
+        /// <summary>
+        /// Translatable Unit of Measure (UOM) name
+        /// </summary>
+        public global::System.String? Name { get; }
+
+        /// <summary>
+        /// Base Unit of Measure (UOM) flag.
+        /// </summary>
+        public global::System.Boolean BaseUOM { get; }
+
+        public virtual global::System.Boolean Equals(ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((UomCode is null && other.UomCode is null) || UomCode != null && UomCode.Equals(other.UomCode))) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && BaseUOM == other.BaseUOM;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (UomCode != null)
+                {
+                    hash ^= 397 * UomCode.GetHashCode();
+                }
+
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                hash ^= 397 * BaseUOM.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearchResult
+    {
+        /// <summary>
+        /// Search for ErpUnitOfMeasure objects by multiple properties.
+        /// See the ErpUnitOfMeasureFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch ErpUnitOfMeasureSearch { get; }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpUnitOfMeasure
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch
+    {
+        /// <summary>
+        /// Information about the search results returned.
+        /// </summary>
+        public global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata Metadata { get; }
+
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data> Data { get; }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for ErpUnitOfMeasure
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults : IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch
+    {
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata
+    {
+        /// <summary>
+        /// Array of property names used to sort the results
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String>? Sort { get; }
+
+        /// <summary>
+        /// requested limit to the number of records to retrieve
+        /// </summary>
+        public global::System.Int32? Limit { get; }
+
+        /// <summary>
+        /// Results returned in the data property.
+        /// </summary>
+        public global::System.Int32 ReturnedResultCount { get; }
+
+        /// <summary>
+        /// Starting index for the current result set.
+        /// </summary>
+        public global::System.Int32 StartIndex { get; }
+
+        /// <summary>
+        /// Start index for getting the next page of results.  Unset if there are no more results.
+        /// </summary>
+        public global::System.Int32? NextStartIndex { get; }
+
+        /// <summary>
+        /// Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
+        /// </summary>
+        public global::System.Int32? TotalResultCount { get; }
+    }
+
+    /// <summary>
+    /// Metadata about the search results returned in a given response.
+    /// Used to provide metrics of the results and the information necessary
+    /// to pull in the next set of records.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata : IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data
+    {
+        /// <summary>
+        /// Unique short code assigned to a Unit of Measure (UOM)
+        /// </summary>
+        public global::System.String? UomCode { get; }
+
+        /// <summary>
+        /// Translatable Unit of Measure (UOM) name
+        /// </summary>
+        public global::System.String? Name { get; }
+
+        /// <summary>
+        /// Base Unit of Measure (UOM) flag.
+        /// </summary>
+        public global::System.Boolean BaseUOM { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure : IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class FundParentsResult : global::System.IEquatable<FundParentsResult>, IFundParentsResult
     {
         public FundParentsResult(global::AggieEnterpriseApi.IFundParents_ErpFund? erpFund)
@@ -5630,6 +6090,478 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearchResult : global::System.IEquatable<PpmProjectSearchResult>, IPpmProjectSearchResult
+    {
+        public PpmProjectSearchResult(global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectByNumber? ppmProjectByNumber, global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch ppmProjectSearch)
+        {
+            PpmProjectByNumber = ppmProjectByNumber;
+            PpmProjectSearch = ppmProjectSearch;
+        }
+
+        /// <summary>
+        /// Get a single PpmProject by the project number.  Returns undefined if no project with that number is found.
+        /// </summary>
+        public global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectByNumber? PpmProjectByNumber { get; }
+
+        /// <summary>
+        /// Search for PpmProject objects by multiple properties.
+        /// See
+        /// See the PpmProjectFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch PpmProjectSearch { get; }
+
+        public virtual global::System.Boolean Equals(PpmProjectSearchResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((PpmProjectByNumber is null && other.PpmProjectByNumber is null) || PpmProjectByNumber != null && PpmProjectByNumber.Equals(other.PpmProjectByNumber))) && PpmProjectSearch.Equals(other.PpmProjectSearch);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((PpmProjectSearchResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (PpmProjectByNumber != null)
+                {
+                    hash ^= 397 * PpmProjectByNumber.GetHashCode();
+                }
+
+                hash ^= 397 * PpmProjectSearch.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
+    /// 
+    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
+    /// 
+    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
+    /// * PPM Project values and CoA Project segment values will be the same
+    /// 
+    /// **Examples:**
+    /// 
+    /// * Capital Projects
+    /// * Sponsored Projects
+    /// * Faculty Projects
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearch_PpmProjectByNumber_PpmProject : global::System.IEquatable<PpmProjectSearch_PpmProjectByNumber_PpmProject>, IPpmProjectSearch_PpmProjectByNumber_PpmProject
+    {
+        public PpmProjectSearch_PpmProjectByNumber_PpmProject(global::System.Int64 id, global::System.String projectNumber, global::System.String name)
+        {
+            Id = id;
+            ProjectNumber = projectNumber;
+            Name = name;
+        }
+
+        /// <summary>
+        /// Project ID: Unique identifier of the project.  Internal to Oracle.
+        /// </summary>
+        public global::System.Int64 Id { get; }
+
+        /// <summary>
+        /// Project Number: Number of the project that is being created.  This will match the GL Project used to record costs to the ledger.
+        /// </summary>
+        public global::System.String ProjectNumber { get; }
+
+        /// <summary>
+        /// Project Name: Name of the project that is being created.
+        /// </summary>
+        public global::System.String Name { get; }
+
+        public virtual global::System.Boolean Equals(PpmProjectSearch_PpmProjectByNumber_PpmProject? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Id == other.Id) && ProjectNumber.Equals(other.ProjectNumber) && Name.Equals(other.Name);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((PpmProjectSearch_PpmProjectByNumber_PpmProject)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Id.GetHashCode();
+                hash ^= 397 * ProjectNumber.GetHashCode();
+                hash ^= 397 * Name.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for PpmProject
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults : global::System.IEquatable<PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults>, IPpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults
+    {
+        public PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data> data)
+        {
+            Data = data;
+        }
+
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data> Data { get; }
+
+        public virtual global::System.Boolean Equals(PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Data, other.Data));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                foreach (var Data_elm in Data)
+                {
+                    hash ^= 397 * Data_elm.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
+    /// 
+    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
+    /// 
+    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
+    /// * PPM Project values and CoA Project segment values will be the same
+    /// 
+    /// **Examples:**
+    /// 
+    /// * Capital Projects
+    /// * Sponsored Projects
+    /// * Faculty Projects
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearch_PpmProjectSearch_Data_PpmProject : global::System.IEquatable<PpmProjectSearch_PpmProjectSearch_Data_PpmProject>, IPpmProjectSearch_PpmProjectSearch_Data_PpmProject
+    {
+        public PpmProjectSearch_PpmProjectSearch_Data_PpmProject(global::System.Int64 id, global::System.String projectNumber, global::System.String name)
+        {
+            Id = id;
+            ProjectNumber = projectNumber;
+            Name = name;
+        }
+
+        /// <summary>
+        /// Project ID: Unique identifier of the project.  Internal to Oracle.
+        /// </summary>
+        public global::System.Int64 Id { get; }
+
+        /// <summary>
+        /// Project Number: Number of the project that is being created.  This will match the GL Project used to record costs to the ledger.
+        /// </summary>
+        public global::System.String ProjectNumber { get; }
+
+        /// <summary>
+        /// Project Name: Name of the project that is being created.
+        /// </summary>
+        public global::System.String Name { get; }
+
+        public virtual global::System.Boolean Equals(PpmProjectSearch_PpmProjectSearch_Data_PpmProject? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Id == other.Id) && ProjectNumber.Equals(other.ProjectNumber) && Name.Equals(other.Name);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((PpmProjectSearch_PpmProjectSearch_Data_PpmProject)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Id.GetHashCode();
+                hash ^= 397 * ProjectNumber.GetHashCode();
+                hash ^= 397 * Name.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmProjectSearchResult
+    {
+        /// <summary>
+        /// Get a single PpmProject by the project number.  Returns undefined if no project with that number is found.
+        /// </summary>
+        public global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectByNumber? PpmProjectByNumber { get; }
+
+        /// <summary>
+        /// Search for PpmProject objects by multiple properties.
+        /// See
+        /// See the PpmProjectFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch PpmProjectSearch { get; }
+    }
+
+    /// <summary>
+    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
+    /// 
+    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
+    /// 
+    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
+    /// * PPM Project values and CoA Project segment values will be the same
+    /// 
+    /// **Examples:**
+    /// 
+    /// * Capital Projects
+    /// * Sponsored Projects
+    /// * Faculty Projects
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmProjectSearch_PpmProjectByNumber
+    {
+        /// <summary>
+        /// Project ID: Unique identifier of the project.  Internal to Oracle.
+        /// </summary>
+        public global::System.Int64 Id { get; }
+
+        /// <summary>
+        /// Project Number: Number of the project that is being created.  This will match the GL Project used to record costs to the ledger.
+        /// </summary>
+        public global::System.String ProjectNumber { get; }
+
+        /// <summary>
+        /// Project Name: Name of the project that is being created.
+        /// </summary>
+        public global::System.String Name { get; }
+    }
+
+    /// <summary>
+    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
+    /// 
+    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
+    /// 
+    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
+    /// * PPM Project values and CoA Project segment values will be the same
+    /// 
+    /// **Examples:**
+    /// 
+    /// * Capital Projects
+    /// * Sponsored Projects
+    /// * Faculty Projects
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmProjectSearch_PpmProjectByNumber_PpmProject : IPpmProjectSearch_PpmProjectByNumber
+    {
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for PpmProject
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmProjectSearch_PpmProjectSearch
+    {
+        /// <summary>
+        /// Results of the search
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data> Data { get; }
+    }
+
+    /// <summary>
+    /// Wrapper object for search results for PpmProject
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults : IPpmProjectSearch_PpmProjectSearch
+    {
+    }
+
+    /// <summary>
+    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
+    /// 
+    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
+    /// 
+    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
+    /// * PPM Project values and CoA Project segment values will be the same
+    /// 
+    /// **Examples:**
+    /// 
+    /// * Capital Projects
+    /// * Sponsored Projects
+    /// * Faculty Projects
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmProjectSearch_PpmProjectSearch_Data
+    {
+        /// <summary>
+        /// Project ID: Unique identifier of the project.  Internal to Oracle.
+        /// </summary>
+        public global::System.Int64 Id { get; }
+
+        /// <summary>
+        /// Project Number: Number of the project that is being created.  This will match the GL Project used to record costs to the ledger.
+        /// </summary>
+        public global::System.String ProjectNumber { get; }
+
+        /// <summary>
+        /// Project Name: Name of the project that is being created.
+        /// </summary>
+        public global::System.String Name { get; }
+    }
+
+    /// <summary>
+    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
+    /// 
+    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
+    /// 
+    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
+    /// * PPM Project values and CoA Project segment values will be the same
+    /// 
+    /// **Examples:**
+    /// 
+    /// * Capital Projects
+    /// * Sponsored Projects
+    /// * Faculty Projects
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmProjectSearch_PpmProjectSearch_Data_PpmProject : IPpmProjectSearch_PpmProjectSearch_Data
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmStringSegmentsValidateResult : global::System.IEquatable<PpmStringSegmentsValidateResult>, IPpmStringSegmentsValidateResult
     {
         public PpmStringSegmentsValidateResult(global::AggieEnterpriseApi.IPpmStringSegmentsValidate_PpmStringSegmentsValidate ppmStringSegmentsValidate)
@@ -8114,7 +9046,7 @@ namespace AggieEnterpriseApi
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory : global::System.IEquatable<ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory>, IScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory
     {
-        public ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory(global::System.Int64 id, global::System.String code, global::System.String name, global::System.String? description, global::System.String? categoryContentCode, global::System.Boolean enabled)
+        public ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory(global::System.Int64 id, global::System.String code, global::System.String name, global::System.String? description, global::System.String? categoryContentCode, global::System.Boolean enabled, global::System.DateTime? startDateActive, global::System.DateTime? endDateActive)
         {
             Id = id;
             Code = code;
@@ -8122,6 +9054,8 @@ namespace AggieEnterpriseApi
             Description = description;
             CategoryContentCode = categoryContentCode;
             Enabled = enabled;
+            StartDateActive = startDateActive;
+            EndDateActive = endDateActive;
         }
 
         /// <summary>
@@ -8154,6 +9088,16 @@ namespace AggieEnterpriseApi
         /// </summary>
         public global::System.Boolean Enabled { get; }
 
+        /// <summary>
+        /// The date from when the value is available for use.
+        /// </summary>
+        public global::System.DateTime? StartDateActive { get; }
+
+        /// <summary>
+        /// The date till which the value is available for use.
+        /// </summary>
+        public global::System.DateTime? EndDateActive { get; }
+
         public virtual global::System.Boolean Equals(ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory? other)
         {
             if (ReferenceEquals(null, other))
@@ -8171,7 +9115,7 @@ namespace AggieEnterpriseApi
                 return false;
             }
 
-            return (Id == other.Id) && Code.Equals(other.Code) && Name.Equals(other.Name) && ((Description is null && other.Description is null) || Description != null && Description.Equals(other.Description)) && ((CategoryContentCode is null && other.CategoryContentCode is null) || CategoryContentCode != null && CategoryContentCode.Equals(other.CategoryContentCode)) && Enabled == other.Enabled;
+            return (Id == other.Id) && Code.Equals(other.Code) && Name.Equals(other.Name) && ((Description is null && other.Description is null) || Description != null && Description.Equals(other.Description)) && ((CategoryContentCode is null && other.CategoryContentCode is null) || CategoryContentCode != null && CategoryContentCode.Equals(other.CategoryContentCode)) && Enabled == other.Enabled && ((StartDateActive is null && other.StartDateActive is null) || StartDateActive != null && StartDateActive.Equals(other.StartDateActive)) && ((EndDateActive is null && other.EndDateActive is null) || EndDateActive != null && EndDateActive.Equals(other.EndDateActive));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -8213,6 +9157,16 @@ namespace AggieEnterpriseApi
                 }
 
                 hash ^= 397 * Enabled.GetHashCode();
+                if (StartDateActive != null)
+                {
+                    hash ^= 397 * StartDateActive.GetHashCode();
+                }
+
+                if (EndDateActive != null)
+                {
+                    hash ^= 397 * EndDateActive.GetHashCode();
+                }
+
                 return hash;
             }
         }
@@ -8339,6 +9293,16 @@ namespace AggieEnterpriseApi
         /// Indicates that the Category is enabled.
         /// </summary>
         public global::System.Boolean Enabled { get; }
+
+        /// <summary>
+        /// The date from when the value is available for use.
+        /// </summary>
+        public global::System.DateTime? StartDateActive { get; }
+
+        /// <summary>
+        /// The date till which the value is available for use.
+        /// </summary>
+        public global::System.DateTime? EndDateActive { get; }
     }
 
     /// <summary>
@@ -8931,938 +9895,6 @@ namespace AggieEnterpriseApi
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial interface IScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location_ErpLocation : IScmSupplierSearch_ScmSupplierSearch_Data_Sites_Location
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationSearchResult : global::System.IEquatable<PpmOrganizationSearchResult>, IPpmOrganizationSearchResult
-    {
-        public PpmOrganizationSearchResult(global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganization? ppmOrganization, global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganizationSearch ppmOrganizationSearch)
-        {
-            PpmOrganization = ppmOrganization;
-            PpmOrganizationSearch = ppmOrganizationSearch;
-        }
-
-        /// <summary>
-        /// Get a single PpmOrganization by code.  Returns undefined if does not exist
-        /// </summary>
-        public global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganization? PpmOrganization { get; }
-
-        /// <summary>
-        /// Search for PpmOrganization objects by multiple properties.
-        /// See
-        /// See the PpmOrganizationFilterInput type for options.
-        /// </summary>
-        public global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganizationSearch PpmOrganizationSearch { get; }
-
-        public virtual global::System.Boolean Equals(PpmOrganizationSearchResult? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (((PpmOrganization is null && other.PpmOrganization is null) || PpmOrganization != null && PpmOrganization.Equals(other.PpmOrganization))) && PpmOrganizationSearch.Equals(other.PpmOrganizationSearch);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((PpmOrganizationSearchResult)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (PpmOrganization != null)
-                {
-                    hash ^= 397 * PpmOrganization.GetHashCode();
-                }
-
-                hash ^= 397 * PpmOrganizationSearch.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    /// <summary>
-    /// The Expenditure Organization identifies the organization that is incurring the expense and revenue. This may NOT be the same as the organization that owns the project.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts in the General Ledger:**
-    /// 
-    /// * The Expenditure Organization value will roll up to the Financial Department segment of the Chart of Accounts.
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Computer Science
-    /// * Plant Sciences
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationSearch_PpmOrganization_PpmOrganization : global::System.IEquatable<PpmOrganizationSearch_PpmOrganization_PpmOrganization>, IPpmOrganizationSearch_PpmOrganization_PpmOrganization
-    {
-        public PpmOrganizationSearch_PpmOrganization_PpmOrganization(global::System.Int64 id, global::System.String code, global::System.String name)
-        {
-            Id = id;
-            Code = code;
-            Name = name;
-        }
-
-        /// <summary>
-        /// Organization ID: Unique identifier of the Organization.  Internal to Oracle.
-        /// </summary>
-        public global::System.Int64 Id { get; }
-
-        /// <summary>
-        /// Organization Code: The code of the Organization.
-        /// </summary>
-        public global::System.String Code { get; }
-
-        /// <summary>
-        /// Organization Name: Name of the Organization
-        /// </summary>
-        public global::System.String Name { get; }
-
-        public virtual global::System.Boolean Equals(PpmOrganizationSearch_PpmOrganization_PpmOrganization? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Id == other.Id) && Code.Equals(other.Code) && Name.Equals(other.Name);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((PpmOrganizationSearch_PpmOrganization_PpmOrganization)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Id.GetHashCode();
-                hash ^= 397 * Code.GetHashCode();
-                hash ^= 397 * Name.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    /// <summary>
-    /// Wrapper object for search results for PpmOrganization
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationSearch_PpmOrganizationSearch_PpmOrganizationSearchResults : global::System.IEquatable<PpmOrganizationSearch_PpmOrganizationSearch_PpmOrganizationSearchResults>, IPpmOrganizationSearch_PpmOrganizationSearch_PpmOrganizationSearchResults
-    {
-        public PpmOrganizationSearch_PpmOrganizationSearch_PpmOrganizationSearchResults(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganizationSearch_Data> data)
-        {
-            Data = data;
-        }
-
-        /// <summary>
-        /// Results of the search
-        /// </summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganizationSearch_Data> Data { get; }
-
-        public virtual global::System.Boolean Equals(PpmOrganizationSearch_PpmOrganizationSearch_PpmOrganizationSearchResults? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Data, other.Data));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((PpmOrganizationSearch_PpmOrganizationSearch_PpmOrganizationSearchResults)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                foreach (var Data_elm in Data)
-                {
-                    hash ^= 397 * Data_elm.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    /// <summary>
-    /// The Expenditure Organization identifies the organization that is incurring the expense and revenue. This may NOT be the same as the organization that owns the project.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts in the General Ledger:**
-    /// 
-    /// * The Expenditure Organization value will roll up to the Financial Department segment of the Chart of Accounts.
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Computer Science
-    /// * Plant Sciences
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization : global::System.IEquatable<PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization>, IPpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization
-    {
-        public PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization(global::System.Int64 id, global::System.String code, global::System.String name)
-        {
-            Id = id;
-            Code = code;
-            Name = name;
-        }
-
-        /// <summary>
-        /// Organization ID: Unique identifier of the Organization.  Internal to Oracle.
-        /// </summary>
-        public global::System.Int64 Id { get; }
-
-        /// <summary>
-        /// Organization Code: The code of the Organization.
-        /// </summary>
-        public global::System.String Code { get; }
-
-        /// <summary>
-        /// Organization Name: Name of the Organization
-        /// </summary>
-        public global::System.String Name { get; }
-
-        public virtual global::System.Boolean Equals(PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Id == other.Id) && Code.Equals(other.Code) && Name.Equals(other.Name);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Id.GetHashCode();
-                hash ^= 397 * Code.GetHashCode();
-                hash ^= 397 * Name.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmOrganizationSearchResult
-    {
-        /// <summary>
-        /// Get a single PpmOrganization by code.  Returns undefined if does not exist
-        /// </summary>
-        public global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganization? PpmOrganization { get; }
-
-        /// <summary>
-        /// Search for PpmOrganization objects by multiple properties.
-        /// See
-        /// See the PpmOrganizationFilterInput type for options.
-        /// </summary>
-        public global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganizationSearch PpmOrganizationSearch { get; }
-    }
-
-    /// <summary>
-    /// The Expenditure Organization identifies the organization that is incurring the expense and revenue. This may NOT be the same as the organization that owns the project.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts in the General Ledger:**
-    /// 
-    /// * The Expenditure Organization value will roll up to the Financial Department segment of the Chart of Accounts.
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Computer Science
-    /// * Plant Sciences
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmOrganizationSearch_PpmOrganization
-    {
-        /// <summary>
-        /// Organization ID: Unique identifier of the Organization.  Internal to Oracle.
-        /// </summary>
-        public global::System.Int64 Id { get; }
-
-        /// <summary>
-        /// Organization Code: The code of the Organization.
-        /// </summary>
-        public global::System.String Code { get; }
-
-        /// <summary>
-        /// Organization Name: Name of the Organization
-        /// </summary>
-        public global::System.String Name { get; }
-    }
-
-    /// <summary>
-    /// The Expenditure Organization identifies the organization that is incurring the expense and revenue. This may NOT be the same as the organization that owns the project.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts in the General Ledger:**
-    /// 
-    /// * The Expenditure Organization value will roll up to the Financial Department segment of the Chart of Accounts.
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Computer Science
-    /// * Plant Sciences
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmOrganizationSearch_PpmOrganization_PpmOrganization : IPpmOrganizationSearch_PpmOrganization
-    {
-    }
-
-    /// <summary>
-    /// Wrapper object for search results for PpmOrganization
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmOrganizationSearch_PpmOrganizationSearch
-    {
-        /// <summary>
-        /// Results of the search
-        /// </summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganizationSearch_Data> Data { get; }
-    }
-
-    /// <summary>
-    /// Wrapper object for search results for PpmOrganization
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmOrganizationSearch_PpmOrganizationSearch_PpmOrganizationSearchResults : IPpmOrganizationSearch_PpmOrganizationSearch
-    {
-    }
-
-    /// <summary>
-    /// The Expenditure Organization identifies the organization that is incurring the expense and revenue. This may NOT be the same as the organization that owns the project.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts in the General Ledger:**
-    /// 
-    /// * The Expenditure Organization value will roll up to the Financial Department segment of the Chart of Accounts.
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Computer Science
-    /// * Plant Sciences
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmOrganizationSearch_PpmOrganizationSearch_Data
-    {
-        /// <summary>
-        /// Organization ID: Unique identifier of the Organization.  Internal to Oracle.
-        /// </summary>
-        public global::System.Int64 Id { get; }
-
-        /// <summary>
-        /// Organization Code: The code of the Organization.
-        /// </summary>
-        public global::System.String Code { get; }
-
-        /// <summary>
-        /// Organization Name: Name of the Organization
-        /// </summary>
-        public global::System.String Name { get; }
-    }
-
-    /// <summary>
-    /// The Expenditure Organization identifies the organization that is incurring the expense and revenue. This may NOT be the same as the organization that owns the project.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts in the General Ledger:**
-    /// 
-    /// * The Expenditure Organization value will roll up to the Financial Department segment of the Chart of Accounts.
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Computer Science
-    /// * Plant Sciences
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization : IPpmOrganizationSearch_PpmOrganizationSearch_Data
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectSearchResult : global::System.IEquatable<PpmProjectSearchResult>, IPpmProjectSearchResult
-    {
-        public PpmProjectSearchResult(global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectByNumber? ppmProjectByNumber, global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch ppmProjectSearch)
-        {
-            PpmProjectByNumber = ppmProjectByNumber;
-            PpmProjectSearch = ppmProjectSearch;
-        }
-
-        /// <summary>
-        /// Get a single PpmProject by the project number.  Returns undefined if no project with that number is found.
-        /// </summary>
-        public global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectByNumber? PpmProjectByNumber { get; }
-
-        /// <summary>
-        /// Search for PpmProject objects by multiple properties.
-        /// See
-        /// See the PpmProjectFilterInput type for options.
-        /// </summary>
-        public global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch PpmProjectSearch { get; }
-
-        public virtual global::System.Boolean Equals(PpmProjectSearchResult? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (((PpmProjectByNumber is null && other.PpmProjectByNumber is null) || PpmProjectByNumber != null && PpmProjectByNumber.Equals(other.PpmProjectByNumber))) && PpmProjectSearch.Equals(other.PpmProjectSearch);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((PpmProjectSearchResult)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (PpmProjectByNumber != null)
-                {
-                    hash ^= 397 * PpmProjectByNumber.GetHashCode();
-                }
-
-                hash ^= 397 * PpmProjectSearch.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    /// <summary>
-    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
-    /// 
-    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
-    /// * PPM Project values and CoA Project segment values will be the same
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Capital Projects
-    /// * Sponsored Projects
-    /// * Faculty Projects
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectSearch_PpmProjectByNumber_PpmProject : global::System.IEquatable<PpmProjectSearch_PpmProjectByNumber_PpmProject>, IPpmProjectSearch_PpmProjectByNumber_PpmProject
-    {
-        public PpmProjectSearch_PpmProjectByNumber_PpmProject(global::System.Int64 id, global::System.String projectNumber, global::System.String name)
-        {
-            Id = id;
-            ProjectNumber = projectNumber;
-            Name = name;
-        }
-
-        /// <summary>
-        /// Project ID: Unique identifier of the project.  Internal to Oracle.
-        /// </summary>
-        public global::System.Int64 Id { get; }
-
-        /// <summary>
-        /// Project Number: Number of the project that is being created.  This will match the GL Project used to record costs to the ledger.
-        /// </summary>
-        public global::System.String ProjectNumber { get; }
-
-        /// <summary>
-        /// Project Name: Name of the project that is being created.
-        /// </summary>
-        public global::System.String Name { get; }
-
-        public virtual global::System.Boolean Equals(PpmProjectSearch_PpmProjectByNumber_PpmProject? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Id == other.Id) && ProjectNumber.Equals(other.ProjectNumber) && Name.Equals(other.Name);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((PpmProjectSearch_PpmProjectByNumber_PpmProject)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Id.GetHashCode();
-                hash ^= 397 * ProjectNumber.GetHashCode();
-                hash ^= 397 * Name.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    /// <summary>
-    /// Wrapper object for search results for PpmProject
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults : global::System.IEquatable<PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults>, IPpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults
-    {
-        public PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data> data)
-        {
-            Data = data;
-        }
-
-        /// <summary>
-        /// Results of the search
-        /// </summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data> Data { get; }
-
-        public virtual global::System.Boolean Equals(PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Data, other.Data));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                foreach (var Data_elm in Data)
-                {
-                    hash ^= 397 * Data_elm.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    /// <summary>
-    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
-    /// 
-    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
-    /// * PPM Project values and CoA Project segment values will be the same
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Capital Projects
-    /// * Sponsored Projects
-    /// * Faculty Projects
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectSearch_PpmProjectSearch_Data_PpmProject : global::System.IEquatable<PpmProjectSearch_PpmProjectSearch_Data_PpmProject>, IPpmProjectSearch_PpmProjectSearch_Data_PpmProject
-    {
-        public PpmProjectSearch_PpmProjectSearch_Data_PpmProject(global::System.Int64 id, global::System.String projectNumber, global::System.String name)
-        {
-            Id = id;
-            ProjectNumber = projectNumber;
-            Name = name;
-        }
-
-        /// <summary>
-        /// Project ID: Unique identifier of the project.  Internal to Oracle.
-        /// </summary>
-        public global::System.Int64 Id { get; }
-
-        /// <summary>
-        /// Project Number: Number of the project that is being created.  This will match the GL Project used to record costs to the ledger.
-        /// </summary>
-        public global::System.String ProjectNumber { get; }
-
-        /// <summary>
-        /// Project Name: Name of the project that is being created.
-        /// </summary>
-        public global::System.String Name { get; }
-
-        public virtual global::System.Boolean Equals(PpmProjectSearch_PpmProjectSearch_Data_PpmProject? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Id == other.Id) && ProjectNumber.Equals(other.ProjectNumber) && Name.Equals(other.Name);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((PpmProjectSearch_PpmProjectSearch_Data_PpmProject)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Id.GetHashCode();
-                hash ^= 397 * ProjectNumber.GetHashCode();
-                hash ^= 397 * Name.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmProjectSearchResult
-    {
-        /// <summary>
-        /// Get a single PpmProject by the project number.  Returns undefined if no project with that number is found.
-        /// </summary>
-        public global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectByNumber? PpmProjectByNumber { get; }
-
-        /// <summary>
-        /// Search for PpmProject objects by multiple properties.
-        /// See
-        /// See the PpmProjectFilterInput type for options.
-        /// </summary>
-        public global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch PpmProjectSearch { get; }
-    }
-
-    /// <summary>
-    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
-    /// 
-    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
-    /// * PPM Project values and CoA Project segment values will be the same
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Capital Projects
-    /// * Sponsored Projects
-    /// * Faculty Projects
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmProjectSearch_PpmProjectByNumber
-    {
-        /// <summary>
-        /// Project ID: Unique identifier of the project.  Internal to Oracle.
-        /// </summary>
-        public global::System.Int64 Id { get; }
-
-        /// <summary>
-        /// Project Number: Number of the project that is being created.  This will match the GL Project used to record costs to the ledger.
-        /// </summary>
-        public global::System.String ProjectNumber { get; }
-
-        /// <summary>
-        /// Project Name: Name of the project that is being created.
-        /// </summary>
-        public global::System.String Name { get; }
-    }
-
-    /// <summary>
-    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
-    /// 
-    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
-    /// * PPM Project values and CoA Project segment values will be the same
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Capital Projects
-    /// * Sponsored Projects
-    /// * Faculty Projects
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmProjectSearch_PpmProjectByNumber_PpmProject : IPpmProjectSearch_PpmProjectByNumber
-    {
-    }
-
-    /// <summary>
-    /// Wrapper object for search results for PpmProject
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmProjectSearch_PpmProjectSearch
-    {
-        /// <summary>
-        /// Results of the search
-        /// </summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data> Data { get; }
-    }
-
-    /// <summary>
-    /// Wrapper object for search results for PpmProject
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults : IPpmProjectSearch_PpmProjectSearch
-    {
-    }
-
-    /// <summary>
-    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
-    /// 
-    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
-    /// * PPM Project values and CoA Project segment values will be the same
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Capital Projects
-    /// * Sponsored Projects
-    /// * Faculty Projects
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmProjectSearch_PpmProjectSearch_Data
-    {
-        /// <summary>
-        /// Project ID: Unique identifier of the project.  Internal to Oracle.
-        /// </summary>
-        public global::System.Int64 Id { get; }
-
-        /// <summary>
-        /// Project Number: Number of the project that is being created.  This will match the GL Project used to record costs to the ledger.
-        /// </summary>
-        public global::System.String ProjectNumber { get; }
-
-        /// <summary>
-        /// Project Name: Name of the project that is being created.
-        /// </summary>
-        public global::System.String Name { get; }
-    }
-
-    /// <summary>
-    /// The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.
-    /// 
-    /// **Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:**
-    /// 
-    /// * The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.
-    /// * PPM Project values and CoA Project segment values will be the same
-    /// 
-    /// **Examples:**
-    /// 
-    /// * Capital Projects
-    /// * Sponsored Projects
-    /// * Faculty Projects
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial interface IPpmProjectSearch_PpmProjectSearch_Data_PpmProject : IPpmProjectSearch_PpmProjectSearch_Data
     {
     }
 
@@ -13178,6 +13210,232 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _searchCommonInputsFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFilterInputFormatter = default !;
+        public global::System.String TypeName => "ErpUnitOfMeasureFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _searchCommonInputsFormatter = serializerResolver.GetInputValueFormatter("SearchCommonInputs");
+            _stringFilterInputFormatter = serializerResolver.GetInputValueFormatter("StringFilterInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsSearchCommonSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("searchCommon", FormatSearchCommon(input.SearchCommon)));
+            }
+
+            if (inputInfo.IsNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("name", FormatName(input.Name)));
+            }
+
+            if (inputInfo.IsUnitOfMeasureIdSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("unitOfMeasureId", FormatUnitOfMeasureId(input.UnitOfMeasureId)));
+            }
+
+            if (inputInfo.IsUomCodeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("uomCode", FormatUomCode(input.UomCode)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatSearchCommon(global::AggieEnterpriseApi.SearchCommonInputs? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _searchCommonInputsFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatName(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUnitOfMeasureId(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatUomCode(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Data object used to run searches on ErpUnitOfMeasure</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureFilterInput : global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo, global::System.IEquatable<ErpUnitOfMeasureFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ErpUnitOfMeasureFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(ErpUnitOfMeasureFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((SearchCommon is null && other.SearchCommon is null) || SearchCommon != null && SearchCommon.Equals(other.SearchCommon))) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && ((UnitOfMeasureId is null && other.UnitOfMeasureId is null) || UnitOfMeasureId != null && UnitOfMeasureId.Equals(other.UnitOfMeasureId)) && ((UomCode is null && other.UomCode is null) || UomCode != null && UomCode.Equals(other.UomCode));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (SearchCommon != null)
+                {
+                    hash ^= 397 * SearchCommon.GetHashCode();
+                }
+
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                if (UnitOfMeasureId != null)
+                {
+                    hash ^= 397 * UnitOfMeasureId.GetHashCode();
+                }
+
+                if (UomCode != null)
+                {
+                    hash ^= 397 * UomCode.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::AggieEnterpriseApi.SearchCommonInputs? _value_searchCommon;
+        private global::System.Boolean _set_searchCommon;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_name;
+        private global::System.Boolean _set_name;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_unitOfMeasureId;
+        private global::System.Boolean _set_unitOfMeasureId;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_uomCode;
+        private global::System.Boolean _set_uomCode;
+        public global::AggieEnterpriseApi.SearchCommonInputs? SearchCommon
+        {
+            get => _value_searchCommon;
+            set
+            {
+                _set_searchCommon = true;
+                _value_searchCommon = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo.IsSearchCommonSet => _set_searchCommon;
+        public global::AggieEnterpriseApi.StringFilterInput? Name
+        {
+            get => _value_name;
+            set
+            {
+                _set_name = true;
+                _value_name = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo.IsNameSet => _set_name;
+        public global::AggieEnterpriseApi.StringFilterInput? UnitOfMeasureId
+        {
+            get => _value_unitOfMeasureId;
+            set
+            {
+                _set_unitOfMeasureId = true;
+                _value_unitOfMeasureId = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo.IsUnitOfMeasureIdSet => _set_unitOfMeasureId;
+        public global::AggieEnterpriseApi.StringFilterInput? UomCode
+        {
+            get => _value_uomCode;
+            set
+            {
+                _set_uomCode = true;
+                _value_uomCode = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IErpUnitOfMeasureFilterInputInfo.IsUomCodeSet => _set_uomCode;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _actionRequestHeaderInputFormatter = default !;
@@ -15700,6 +15958,861 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _searchCommonInputsFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFilterInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _dateFilterInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _booleanFilterInputFormatter = default !;
+        public global::System.String TypeName => "PpmProjectFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _searchCommonInputsFormatter = serializerResolver.GetInputValueFormatter("SearchCommonInputs");
+            _stringFilterInputFormatter = serializerResolver.GetInputValueFormatter("StringFilterInput");
+            _dateFilterInputFormatter = serializerResolver.GetInputValueFormatter("DateFilterInput");
+            _booleanFilterInputFormatter = serializerResolver.GetInputValueFormatter("BooleanFilterInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.PpmProjectFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsSearchCommonSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("searchCommon", FormatSearchCommon(input.SearchCommon)));
+            }
+
+            if (inputInfo.IsProjectNumberSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("projectNumber", FormatProjectNumber(input.ProjectNumber)));
+            }
+
+            if (inputInfo.IsNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("name", FormatName(input.Name)));
+            }
+
+            if (inputInfo.IsProjectStartDateSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("projectStartDate", FormatProjectStartDate(input.ProjectStartDate)));
+            }
+
+            if (inputInfo.IsProjectCompletionDateSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("projectCompletionDate", FormatProjectCompletionDate(input.ProjectCompletionDate)));
+            }
+
+            if (inputInfo.IsProjectStatusCodeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("projectStatusCode", FormatProjectStatusCode(input.ProjectStatusCode)));
+            }
+
+            if (inputInfo.IsPrimaryProjectManagerEmailSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("primaryProjectManagerEmail", FormatPrimaryProjectManagerEmail(input.PrimaryProjectManagerEmail)));
+            }
+
+            if (inputInfo.IsSponsoredProjectSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("sponsoredProject", FormatSponsoredProject(input.SponsoredProject)));
+            }
+
+            if (inputInfo.IsBillingEnabledSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("billingEnabled", FormatBillingEnabled(input.BillingEnabled)));
+            }
+
+            if (inputInfo.IsCapitalizationEnabledSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("capitalizationEnabled", FormatCapitalizationEnabled(input.CapitalizationEnabled)));
+            }
+
+            if (inputInfo.IsTemplateProjectSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("templateProject", FormatTemplateProject(input.TemplateProject)));
+            }
+
+            if (inputInfo.IsLastUpdateDateTimeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lastUpdateDateTime", FormatLastUpdateDateTime(input.LastUpdateDateTime)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatSearchCommon(global::AggieEnterpriseApi.SearchCommonInputs? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _searchCommonInputsFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatProjectNumber(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatName(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatProjectStartDate(global::AggieEnterpriseApi.DateFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatProjectCompletionDate(global::AggieEnterpriseApi.DateFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatProjectStatusCode(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatPrimaryProjectManagerEmail(global::AggieEnterpriseApi.StringFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatSponsoredProject(global::AggieEnterpriseApi.BooleanFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatBillingEnabled(global::AggieEnterpriseApi.BooleanFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatCapitalizationEnabled(global::AggieEnterpriseApi.BooleanFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatTemplateProject(global::AggieEnterpriseApi.BooleanFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _booleanFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLastUpdateDateTime(global::AggieEnterpriseApi.DateFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFilterInputFormatter.Format(input);
+            }
+        }
+    }
+
+    ///<summary>Data object used to run searches on PpmProject</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectFilterInput : global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo, global::System.IEquatable<PpmProjectFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((PpmProjectFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(PpmProjectFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((SearchCommon is null && other.SearchCommon is null) || SearchCommon != null && SearchCommon.Equals(other.SearchCommon))) && ((ProjectNumber is null && other.ProjectNumber is null) || ProjectNumber != null && ProjectNumber.Equals(other.ProjectNumber)) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && ((ProjectStartDate is null && other.ProjectStartDate is null) || ProjectStartDate != null && ProjectStartDate.Equals(other.ProjectStartDate)) && ((ProjectCompletionDate is null && other.ProjectCompletionDate is null) || ProjectCompletionDate != null && ProjectCompletionDate.Equals(other.ProjectCompletionDate)) && ((ProjectStatusCode is null && other.ProjectStatusCode is null) || ProjectStatusCode != null && ProjectStatusCode.Equals(other.ProjectStatusCode)) && ((PrimaryProjectManagerEmail is null && other.PrimaryProjectManagerEmail is null) || PrimaryProjectManagerEmail != null && PrimaryProjectManagerEmail.Equals(other.PrimaryProjectManagerEmail)) && ((SponsoredProject is null && other.SponsoredProject is null) || SponsoredProject != null && SponsoredProject.Equals(other.SponsoredProject)) && ((BillingEnabled is null && other.BillingEnabled is null) || BillingEnabled != null && BillingEnabled.Equals(other.BillingEnabled)) && ((CapitalizationEnabled is null && other.CapitalizationEnabled is null) || CapitalizationEnabled != null && CapitalizationEnabled.Equals(other.CapitalizationEnabled)) && ((TemplateProject is null && other.TemplateProject is null) || TemplateProject != null && TemplateProject.Equals(other.TemplateProject)) && ((LastUpdateDateTime is null && other.LastUpdateDateTime is null) || LastUpdateDateTime != null && LastUpdateDateTime.Equals(other.LastUpdateDateTime));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (SearchCommon != null)
+                {
+                    hash ^= 397 * SearchCommon.GetHashCode();
+                }
+
+                if (ProjectNumber != null)
+                {
+                    hash ^= 397 * ProjectNumber.GetHashCode();
+                }
+
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                if (ProjectStartDate != null)
+                {
+                    hash ^= 397 * ProjectStartDate.GetHashCode();
+                }
+
+                if (ProjectCompletionDate != null)
+                {
+                    hash ^= 397 * ProjectCompletionDate.GetHashCode();
+                }
+
+                if (ProjectStatusCode != null)
+                {
+                    hash ^= 397 * ProjectStatusCode.GetHashCode();
+                }
+
+                if (PrimaryProjectManagerEmail != null)
+                {
+                    hash ^= 397 * PrimaryProjectManagerEmail.GetHashCode();
+                }
+
+                if (SponsoredProject != null)
+                {
+                    hash ^= 397 * SponsoredProject.GetHashCode();
+                }
+
+                if (BillingEnabled != null)
+                {
+                    hash ^= 397 * BillingEnabled.GetHashCode();
+                }
+
+                if (CapitalizationEnabled != null)
+                {
+                    hash ^= 397 * CapitalizationEnabled.GetHashCode();
+                }
+
+                if (TemplateProject != null)
+                {
+                    hash ^= 397 * TemplateProject.GetHashCode();
+                }
+
+                if (LastUpdateDateTime != null)
+                {
+                    hash ^= 397 * LastUpdateDateTime.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::AggieEnterpriseApi.SearchCommonInputs? _value_searchCommon;
+        private global::System.Boolean _set_searchCommon;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_projectNumber;
+        private global::System.Boolean _set_projectNumber;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_name;
+        private global::System.Boolean _set_name;
+        private global::AggieEnterpriseApi.DateFilterInput? _value_projectStartDate;
+        private global::System.Boolean _set_projectStartDate;
+        private global::AggieEnterpriseApi.DateFilterInput? _value_projectCompletionDate;
+        private global::System.Boolean _set_projectCompletionDate;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_projectStatusCode;
+        private global::System.Boolean _set_projectStatusCode;
+        private global::AggieEnterpriseApi.StringFilterInput? _value_primaryProjectManagerEmail;
+        private global::System.Boolean _set_primaryProjectManagerEmail;
+        private global::AggieEnterpriseApi.BooleanFilterInput? _value_sponsoredProject;
+        private global::System.Boolean _set_sponsoredProject;
+        private global::AggieEnterpriseApi.BooleanFilterInput? _value_billingEnabled;
+        private global::System.Boolean _set_billingEnabled;
+        private global::AggieEnterpriseApi.BooleanFilterInput? _value_capitalizationEnabled;
+        private global::System.Boolean _set_capitalizationEnabled;
+        private global::AggieEnterpriseApi.BooleanFilterInput? _value_templateProject;
+        private global::System.Boolean _set_templateProject;
+        private global::AggieEnterpriseApi.DateFilterInput? _value_lastUpdateDateTime;
+        private global::System.Boolean _set_lastUpdateDateTime;
+        public global::AggieEnterpriseApi.SearchCommonInputs? SearchCommon
+        {
+            get => _value_searchCommon;
+            set
+            {
+                _set_searchCommon = true;
+                _value_searchCommon = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsSearchCommonSet => _set_searchCommon;
+        public global::AggieEnterpriseApi.StringFilterInput? ProjectNumber
+        {
+            get => _value_projectNumber;
+            set
+            {
+                _set_projectNumber = true;
+                _value_projectNumber = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsProjectNumberSet => _set_projectNumber;
+        public global::AggieEnterpriseApi.StringFilterInput? Name
+        {
+            get => _value_name;
+            set
+            {
+                _set_name = true;
+                _value_name = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsNameSet => _set_name;
+        public global::AggieEnterpriseApi.DateFilterInput? ProjectStartDate
+        {
+            get => _value_projectStartDate;
+            set
+            {
+                _set_projectStartDate = true;
+                _value_projectStartDate = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsProjectStartDateSet => _set_projectStartDate;
+        public global::AggieEnterpriseApi.DateFilterInput? ProjectCompletionDate
+        {
+            get => _value_projectCompletionDate;
+            set
+            {
+                _set_projectCompletionDate = true;
+                _value_projectCompletionDate = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsProjectCompletionDateSet => _set_projectCompletionDate;
+        public global::AggieEnterpriseApi.StringFilterInput? ProjectStatusCode
+        {
+            get => _value_projectStatusCode;
+            set
+            {
+                _set_projectStatusCode = true;
+                _value_projectStatusCode = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsProjectStatusCodeSet => _set_projectStatusCode;
+        public global::AggieEnterpriseApi.StringFilterInput? PrimaryProjectManagerEmail
+        {
+            get => _value_primaryProjectManagerEmail;
+            set
+            {
+                _set_primaryProjectManagerEmail = true;
+                _value_primaryProjectManagerEmail = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsPrimaryProjectManagerEmailSet => _set_primaryProjectManagerEmail;
+        public global::AggieEnterpriseApi.BooleanFilterInput? SponsoredProject
+        {
+            get => _value_sponsoredProject;
+            set
+            {
+                _set_sponsoredProject = true;
+                _value_sponsoredProject = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsSponsoredProjectSet => _set_sponsoredProject;
+        public global::AggieEnterpriseApi.BooleanFilterInput? BillingEnabled
+        {
+            get => _value_billingEnabled;
+            set
+            {
+                _set_billingEnabled = true;
+                _value_billingEnabled = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsBillingEnabledSet => _set_billingEnabled;
+        public global::AggieEnterpriseApi.BooleanFilterInput? CapitalizationEnabled
+        {
+            get => _value_capitalizationEnabled;
+            set
+            {
+                _set_capitalizationEnabled = true;
+                _value_capitalizationEnabled = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsCapitalizationEnabledSet => _set_capitalizationEnabled;
+        public global::AggieEnterpriseApi.BooleanFilterInput? TemplateProject
+        {
+            get => _value_templateProject;
+            set
+            {
+                _set_templateProject = true;
+                _value_templateProject = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsTemplateProjectSet => _set_templateProject;
+        public global::AggieEnterpriseApi.DateFilterInput? LastUpdateDateTime
+        {
+            get => _value_lastUpdateDateTime;
+            set
+            {
+                _set_lastUpdateDateTime = true;
+                _value_lastUpdateDateTime = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsLastUpdateDateTimeSet => _set_lastUpdateDateTime;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class DateFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _dateFormatter = default !;
+        public global::System.String TypeName => "DateFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _dateFormatter = serializerResolver.GetInputValueFormatter("Date");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::AggieEnterpriseApi.DateFilterInput;
+            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IDateFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsEqSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("eq", FormatEq(input.Eq)));
+            }
+
+            if (inputInfo.IsNeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ne", FormatNe(input.Ne)));
+            }
+
+            if (inputInfo.IsLeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("le", FormatLe(input.Le)));
+            }
+
+            if (inputInfo.IsLtSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lt", FormatLt(input.Lt)));
+            }
+
+            if (inputInfo.IsGeSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ge", FormatGe(input.Ge)));
+            }
+
+            if (inputInfo.IsGtSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("gt", FormatGt(input.Gt)));
+            }
+
+            if (inputInfo.IsBetweenSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("between", FormatBetween(input.Between)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatEq(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNe(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLe(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLt(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGe(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGt(global::System.DateTime? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _dateFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatBetween(global::System.Collections.Generic.IReadOnlyList<global::System.DateTime>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    input_list.Add(_dateFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+    }
+
+    ///<summary>Generic date filter criteria object, only one of these properties should be set</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class DateFilterInput : global::AggieEnterpriseApi.State.IDateFilterInputInfo, global::System.IEquatable<DateFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((DateFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(DateFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((Eq is null && other.Eq is null) || Eq != null && Eq.Equals(other.Eq))) && ((Ne is null && other.Ne is null) || Ne != null && Ne.Equals(other.Ne)) && ((Le is null && other.Le is null) || Le != null && Le.Equals(other.Le)) && ((Lt is null && other.Lt is null) || Lt != null && Lt.Equals(other.Lt)) && ((Ge is null && other.Ge is null) || Ge != null && Ge.Equals(other.Ge)) && ((Gt is null && other.Gt is null) || Gt != null && Gt.Equals(other.Gt)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Between, other.Between);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Eq != null)
+                {
+                    hash ^= 397 * Eq.GetHashCode();
+                }
+
+                if (Ne != null)
+                {
+                    hash ^= 397 * Ne.GetHashCode();
+                }
+
+                if (Le != null)
+                {
+                    hash ^= 397 * Le.GetHashCode();
+                }
+
+                if (Lt != null)
+                {
+                    hash ^= 397 * Lt.GetHashCode();
+                }
+
+                if (Ge != null)
+                {
+                    hash ^= 397 * Ge.GetHashCode();
+                }
+
+                if (Gt != null)
+                {
+                    hash ^= 397 * Gt.GetHashCode();
+                }
+
+                if (Between != null)
+                {
+                    foreach (var Between_elm in Between)
+                    {
+                        hash ^= 397 * Between_elm.GetHashCode();
+                    }
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.DateTime? _value_eq;
+        private global::System.Boolean _set_eq;
+        private global::System.DateTime? _value_ne;
+        private global::System.Boolean _set_ne;
+        private global::System.DateTime? _value_le;
+        private global::System.Boolean _set_le;
+        private global::System.DateTime? _value_lt;
+        private global::System.Boolean _set_lt;
+        private global::System.DateTime? _value_ge;
+        private global::System.Boolean _set_ge;
+        private global::System.DateTime? _value_gt;
+        private global::System.Boolean _set_gt;
+        private global::System.Collections.Generic.IReadOnlyList<global::System.DateTime>? _value_between;
+        private global::System.Boolean _set_between;
+        ///<summary>Test if property is equal to the given value</summary>
+        public global::System.DateTime? Eq
+        {
+            get => _value_eq;
+            set
+            {
+                _set_eq = true;
+                _value_eq = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsEqSet => _set_eq;
+        ///<summary>Test if property is NOT equal to the given value</summary>
+        public global::System.DateTime? Ne
+        {
+            get => _value_ne;
+            set
+            {
+                _set_ne = true;
+                _value_ne = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsNeSet => _set_ne;
+        ///<summary>Test if property is less than or equal to the given value</summary>
+        public global::System.DateTime? Le
+        {
+            get => _value_le;
+            set
+            {
+                _set_le = true;
+                _value_le = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsLeSet => _set_le;
+        ///<summary>Test if property is less than the given value</summary>
+        public global::System.DateTime? Lt
+        {
+            get => _value_lt;
+            set
+            {
+                _set_lt = true;
+                _value_lt = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsLtSet => _set_lt;
+        ///<summary>Test if property is greater than or equal to the given value</summary>
+        public global::System.DateTime? Ge
+        {
+            get => _value_ge;
+            set
+            {
+                _set_ge = true;
+                _value_ge = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsGeSet => _set_ge;
+        ///<summary>Test if property is greater than the given value</summary>
+        public global::System.DateTime? Gt
+        {
+            get => _value_gt;
+            set
+            {
+                _set_gt = true;
+                _value_gt = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsGtSet => _set_gt;
+        ///<summary>Test if property is between the first 2 elements in the array</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::System.DateTime>? Between
+        {
+            get => _value_between;
+            set
+            {
+                _set_between = true;
+                _value_between = value;
+            }
+        }
+
+        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsBetweenSet => _set_between;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ScmPurchaseRequisitionRequestInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _actionRequestHeaderInputFormatter = default !;
@@ -17254,351 +18367,6 @@ namespace AggieEnterpriseApi
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class DateFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
-    {
-        private global::StrawberryShake.Serialization.IInputValueFormatter _dateFormatter = default !;
-        public global::System.String TypeName => "DateFilterInput";
-        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _dateFormatter = serializerResolver.GetInputValueFormatter("Date");
-        }
-
-        public global::System.Object? Format(global::System.Object? runtimeValue)
-        {
-            if (runtimeValue is null)
-            {
-                return null;
-            }
-
-            var input = runtimeValue as global::AggieEnterpriseApi.DateFilterInput;
-            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IDateFilterInputInfo;
-            if (input is null || inputInfo is null)
-            {
-                throw new global::System.ArgumentException(nameof(runtimeValue));
-            }
-
-            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
-            if (inputInfo.IsEqSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("eq", FormatEq(input.Eq)));
-            }
-
-            if (inputInfo.IsNeSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ne", FormatNe(input.Ne)));
-            }
-
-            if (inputInfo.IsLeSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("le", FormatLe(input.Le)));
-            }
-
-            if (inputInfo.IsLtSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lt", FormatLt(input.Lt)));
-            }
-
-            if (inputInfo.IsGeSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ge", FormatGe(input.Ge)));
-            }
-
-            if (inputInfo.IsGtSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("gt", FormatGt(input.Gt)));
-            }
-
-            if (inputInfo.IsBetweenSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("between", FormatBetween(input.Between)));
-            }
-
-            return fields;
-        }
-
-        private global::System.Object? FormatEq(global::System.DateTime? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _dateFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatNe(global::System.DateTime? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _dateFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatLe(global::System.DateTime? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _dateFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatLt(global::System.DateTime? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _dateFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatGe(global::System.DateTime? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _dateFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatGt(global::System.DateTime? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _dateFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatBetween(global::System.Collections.Generic.IReadOnlyList<global::System.DateTime>? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
-                foreach (var input_elm in input)
-                {
-                    input_list.Add(_dateFormatter.Format(input_elm));
-                }
-
-                return input_list;
-            }
-        }
-    }
-
-    ///<summary>Generic date filter criteria object, only one of these properties should be set</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class DateFilterInput : global::AggieEnterpriseApi.State.IDateFilterInputInfo, global::System.IEquatable<DateFilterInput>
-    {
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((DateFilterInput)obj);
-        }
-
-        public virtual global::System.Boolean Equals(DateFilterInput? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (((Eq is null && other.Eq is null) || Eq != null && Eq.Equals(other.Eq))) && ((Ne is null && other.Ne is null) || Ne != null && Ne.Equals(other.Ne)) && ((Le is null && other.Le is null) || Le != null && Le.Equals(other.Le)) && ((Lt is null && other.Lt is null) || Lt != null && Lt.Equals(other.Lt)) && ((Ge is null && other.Ge is null) || Ge != null && Ge.Equals(other.Ge)) && ((Gt is null && other.Gt is null) || Gt != null && Gt.Equals(other.Gt)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Between, other.Between);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (Eq != null)
-                {
-                    hash ^= 397 * Eq.GetHashCode();
-                }
-
-                if (Ne != null)
-                {
-                    hash ^= 397 * Ne.GetHashCode();
-                }
-
-                if (Le != null)
-                {
-                    hash ^= 397 * Le.GetHashCode();
-                }
-
-                if (Lt != null)
-                {
-                    hash ^= 397 * Lt.GetHashCode();
-                }
-
-                if (Ge != null)
-                {
-                    hash ^= 397 * Ge.GetHashCode();
-                }
-
-                if (Gt != null)
-                {
-                    hash ^= 397 * Gt.GetHashCode();
-                }
-
-                if (Between != null)
-                {
-                    foreach (var Between_elm in Between)
-                    {
-                        hash ^= 397 * Between_elm.GetHashCode();
-                    }
-                }
-
-                return hash;
-            }
-        }
-
-        private global::System.DateTime? _value_eq;
-        private global::System.Boolean _set_eq;
-        private global::System.DateTime? _value_ne;
-        private global::System.Boolean _set_ne;
-        private global::System.DateTime? _value_le;
-        private global::System.Boolean _set_le;
-        private global::System.DateTime? _value_lt;
-        private global::System.Boolean _set_lt;
-        private global::System.DateTime? _value_ge;
-        private global::System.Boolean _set_ge;
-        private global::System.DateTime? _value_gt;
-        private global::System.Boolean _set_gt;
-        private global::System.Collections.Generic.IReadOnlyList<global::System.DateTime>? _value_between;
-        private global::System.Boolean _set_between;
-        ///<summary>Test if property is equal to the given value</summary>
-        public global::System.DateTime? Eq
-        {
-            get => _value_eq;
-            set
-            {
-                _set_eq = true;
-                _value_eq = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsEqSet => _set_eq;
-        ///<summary>Test if property is NOT equal to the given value</summary>
-        public global::System.DateTime? Ne
-        {
-            get => _value_ne;
-            set
-            {
-                _set_ne = true;
-                _value_ne = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsNeSet => _set_ne;
-        ///<summary>Test if property is less than or equal to the given value</summary>
-        public global::System.DateTime? Le
-        {
-            get => _value_le;
-            set
-            {
-                _set_le = true;
-                _value_le = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsLeSet => _set_le;
-        ///<summary>Test if property is less than the given value</summary>
-        public global::System.DateTime? Lt
-        {
-            get => _value_lt;
-            set
-            {
-                _set_lt = true;
-                _value_lt = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsLtSet => _set_lt;
-        ///<summary>Test if property is greater than or equal to the given value</summary>
-        public global::System.DateTime? Ge
-        {
-            get => _value_ge;
-            set
-            {
-                _set_ge = true;
-                _value_ge = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsGeSet => _set_ge;
-        ///<summary>Test if property is greater than the given value</summary>
-        public global::System.DateTime? Gt
-        {
-            get => _value_gt;
-            set
-            {
-                _set_gt = true;
-                _value_gt = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsGtSet => _set_gt;
-        ///<summary>Test if property is between the first 2 elements in the array</summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::System.DateTime>? Between
-        {
-            get => _value_between;
-            set
-            {
-                _set_between = true;
-                _value_between = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IDateFilterInputInfo.IsBetweenSet => _set_between;
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class ScmSupplierFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
     {
         private global::StrawberryShake.Serialization.IInputValueFormatter _searchCommonInputsFormatter = default !;
@@ -17929,744 +18697,6 @@ namespace AggieEnterpriseApi
         }
 
         global::System.Boolean global::AggieEnterpriseApi.State.IScmSupplierFilterInputInfo.IsLastUpdateDateTimeSet => _set_lastUpdateDateTime;
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
-    {
-        private global::StrawberryShake.Serialization.IInputValueFormatter _searchCommonInputsFormatter = default !;
-        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFilterInputFormatter = default !;
-        private global::StrawberryShake.Serialization.IInputValueFormatter _booleanFilterInputFormatter = default !;
-        public global::System.String TypeName => "PpmOrganizationFilterInput";
-        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _searchCommonInputsFormatter = serializerResolver.GetInputValueFormatter("SearchCommonInputs");
-            _stringFilterInputFormatter = serializerResolver.GetInputValueFormatter("StringFilterInput");
-            _booleanFilterInputFormatter = serializerResolver.GetInputValueFormatter("BooleanFilterInput");
-        }
-
-        public global::System.Object? Format(global::System.Object? runtimeValue)
-        {
-            if (runtimeValue is null)
-            {
-                return null;
-            }
-
-            var input = runtimeValue as global::AggieEnterpriseApi.PpmOrganizationFilterInput;
-            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IPpmOrganizationFilterInputInfo;
-            if (input is null || inputInfo is null)
-            {
-                throw new global::System.ArgumentException(nameof(runtimeValue));
-            }
-
-            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
-            if (inputInfo.IsSearchCommonSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("searchCommon", FormatSearchCommon(input.SearchCommon)));
-            }
-
-            if (inputInfo.IsCodeSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("code", FormatCode(input.Code)));
-            }
-
-            if (inputInfo.IsNameSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("name", FormatName(input.Name)));
-            }
-
-            if (inputInfo.IsEnabledSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("enabled", FormatEnabled(input.Enabled)));
-            }
-
-            return fields;
-        }
-
-        private global::System.Object? FormatSearchCommon(global::AggieEnterpriseApi.SearchCommonInputs? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _searchCommonInputsFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatCode(global::AggieEnterpriseApi.StringFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatName(global::AggieEnterpriseApi.StringFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatEnabled(global::AggieEnterpriseApi.BooleanFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _booleanFilterInputFormatter.Format(input);
-            }
-        }
-    }
-
-    ///<summary>Data object used to run searches on PpmOrganization</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationFilterInput : global::AggieEnterpriseApi.State.IPpmOrganizationFilterInputInfo, global::System.IEquatable<PpmOrganizationFilterInput>
-    {
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((PpmOrganizationFilterInput)obj);
-        }
-
-        public virtual global::System.Boolean Equals(PpmOrganizationFilterInput? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (((SearchCommon is null && other.SearchCommon is null) || SearchCommon != null && SearchCommon.Equals(other.SearchCommon))) && ((Code is null && other.Code is null) || Code != null && Code.Equals(other.Code)) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && ((Enabled is null && other.Enabled is null) || Enabled != null && Enabled.Equals(other.Enabled));
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (SearchCommon != null)
-                {
-                    hash ^= 397 * SearchCommon.GetHashCode();
-                }
-
-                if (Code != null)
-                {
-                    hash ^= 397 * Code.GetHashCode();
-                }
-
-                if (Name != null)
-                {
-                    hash ^= 397 * Name.GetHashCode();
-                }
-
-                if (Enabled != null)
-                {
-                    hash ^= 397 * Enabled.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-
-        private global::AggieEnterpriseApi.SearchCommonInputs? _value_searchCommon;
-        private global::System.Boolean _set_searchCommon;
-        private global::AggieEnterpriseApi.StringFilterInput? _value_code;
-        private global::System.Boolean _set_code;
-        private global::AggieEnterpriseApi.StringFilterInput? _value_name;
-        private global::System.Boolean _set_name;
-        private global::AggieEnterpriseApi.BooleanFilterInput? _value_enabled;
-        private global::System.Boolean _set_enabled;
-        public global::AggieEnterpriseApi.SearchCommonInputs? SearchCommon
-        {
-            get => _value_searchCommon;
-            set
-            {
-                _set_searchCommon = true;
-                _value_searchCommon = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmOrganizationFilterInputInfo.IsSearchCommonSet => _set_searchCommon;
-        public global::AggieEnterpriseApi.StringFilterInput? Code
-        {
-            get => _value_code;
-            set
-            {
-                _set_code = true;
-                _value_code = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmOrganizationFilterInputInfo.IsCodeSet => _set_code;
-        public global::AggieEnterpriseApi.StringFilterInput? Name
-        {
-            get => _value_name;
-            set
-            {
-                _set_name = true;
-                _value_name = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmOrganizationFilterInputInfo.IsNameSet => _set_name;
-        public global::AggieEnterpriseApi.BooleanFilterInput? Enabled
-        {
-            get => _value_enabled;
-            set
-            {
-                _set_enabled = true;
-                _value_enabled = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmOrganizationFilterInputInfo.IsEnabledSet => _set_enabled;
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
-    {
-        private global::StrawberryShake.Serialization.IInputValueFormatter _searchCommonInputsFormatter = default !;
-        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFilterInputFormatter = default !;
-        private global::StrawberryShake.Serialization.IInputValueFormatter _dateFilterInputFormatter = default !;
-        private global::StrawberryShake.Serialization.IInputValueFormatter _booleanFilterInputFormatter = default !;
-        public global::System.String TypeName => "PpmProjectFilterInput";
-        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _searchCommonInputsFormatter = serializerResolver.GetInputValueFormatter("SearchCommonInputs");
-            _stringFilterInputFormatter = serializerResolver.GetInputValueFormatter("StringFilterInput");
-            _dateFilterInputFormatter = serializerResolver.GetInputValueFormatter("DateFilterInput");
-            _booleanFilterInputFormatter = serializerResolver.GetInputValueFormatter("BooleanFilterInput");
-        }
-
-        public global::System.Object? Format(global::System.Object? runtimeValue)
-        {
-            if (runtimeValue is null)
-            {
-                return null;
-            }
-
-            var input = runtimeValue as global::AggieEnterpriseApi.PpmProjectFilterInput;
-            var inputInfo = runtimeValue as global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo;
-            if (input is null || inputInfo is null)
-            {
-                throw new global::System.ArgumentException(nameof(runtimeValue));
-            }
-
-            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
-            if (inputInfo.IsSearchCommonSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("searchCommon", FormatSearchCommon(input.SearchCommon)));
-            }
-
-            if (inputInfo.IsProjectNumberSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("projectNumber", FormatProjectNumber(input.ProjectNumber)));
-            }
-
-            if (inputInfo.IsNameSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("name", FormatName(input.Name)));
-            }
-
-            if (inputInfo.IsProjectStartDateSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("projectStartDate", FormatProjectStartDate(input.ProjectStartDate)));
-            }
-
-            if (inputInfo.IsProjectCompletionDateSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("projectCompletionDate", FormatProjectCompletionDate(input.ProjectCompletionDate)));
-            }
-
-            if (inputInfo.IsProjectStatusCodeSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("projectStatusCode", FormatProjectStatusCode(input.ProjectStatusCode)));
-            }
-
-            if (inputInfo.IsPrimaryProjectManagerEmailSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("primaryProjectManagerEmail", FormatPrimaryProjectManagerEmail(input.PrimaryProjectManagerEmail)));
-            }
-
-            if (inputInfo.IsSponsoredProjectSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("sponsoredProject", FormatSponsoredProject(input.SponsoredProject)));
-            }
-
-            if (inputInfo.IsBillingEnabledSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("billingEnabled", FormatBillingEnabled(input.BillingEnabled)));
-            }
-
-            if (inputInfo.IsCapitalizationEnabledSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("capitalizationEnabled", FormatCapitalizationEnabled(input.CapitalizationEnabled)));
-            }
-
-            if (inputInfo.IsTemplateProjectSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("templateProject", FormatTemplateProject(input.TemplateProject)));
-            }
-
-            if (inputInfo.IsLastUpdateDateTimeSet)
-            {
-                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lastUpdateDateTime", FormatLastUpdateDateTime(input.LastUpdateDateTime)));
-            }
-
-            return fields;
-        }
-
-        private global::System.Object? FormatSearchCommon(global::AggieEnterpriseApi.SearchCommonInputs? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _searchCommonInputsFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatProjectNumber(global::AggieEnterpriseApi.StringFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatName(global::AggieEnterpriseApi.StringFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatProjectStartDate(global::AggieEnterpriseApi.DateFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _dateFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatProjectCompletionDate(global::AggieEnterpriseApi.DateFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _dateFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatProjectStatusCode(global::AggieEnterpriseApi.StringFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatPrimaryProjectManagerEmail(global::AggieEnterpriseApi.StringFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _stringFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatSponsoredProject(global::AggieEnterpriseApi.BooleanFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _booleanFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatBillingEnabled(global::AggieEnterpriseApi.BooleanFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _booleanFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatCapitalizationEnabled(global::AggieEnterpriseApi.BooleanFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _booleanFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatTemplateProject(global::AggieEnterpriseApi.BooleanFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _booleanFilterInputFormatter.Format(input);
-            }
-        }
-
-        private global::System.Object? FormatLastUpdateDateTime(global::AggieEnterpriseApi.DateFilterInput? input)
-        {
-            if (input is null)
-            {
-                return input;
-            }
-            else
-            {
-                return _dateFilterInputFormatter.Format(input);
-            }
-        }
-    }
-
-    ///<summary>Data object used to run searches on PpmProject</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectFilterInput : global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo, global::System.IEquatable<PpmProjectFilterInput>
-    {
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((PpmProjectFilterInput)obj);
-        }
-
-        public virtual global::System.Boolean Equals(PpmProjectFilterInput? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (((SearchCommon is null && other.SearchCommon is null) || SearchCommon != null && SearchCommon.Equals(other.SearchCommon))) && ((ProjectNumber is null && other.ProjectNumber is null) || ProjectNumber != null && ProjectNumber.Equals(other.ProjectNumber)) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && ((ProjectStartDate is null && other.ProjectStartDate is null) || ProjectStartDate != null && ProjectStartDate.Equals(other.ProjectStartDate)) && ((ProjectCompletionDate is null && other.ProjectCompletionDate is null) || ProjectCompletionDate != null && ProjectCompletionDate.Equals(other.ProjectCompletionDate)) && ((ProjectStatusCode is null && other.ProjectStatusCode is null) || ProjectStatusCode != null && ProjectStatusCode.Equals(other.ProjectStatusCode)) && ((PrimaryProjectManagerEmail is null && other.PrimaryProjectManagerEmail is null) || PrimaryProjectManagerEmail != null && PrimaryProjectManagerEmail.Equals(other.PrimaryProjectManagerEmail)) && ((SponsoredProject is null && other.SponsoredProject is null) || SponsoredProject != null && SponsoredProject.Equals(other.SponsoredProject)) && ((BillingEnabled is null && other.BillingEnabled is null) || BillingEnabled != null && BillingEnabled.Equals(other.BillingEnabled)) && ((CapitalizationEnabled is null && other.CapitalizationEnabled is null) || CapitalizationEnabled != null && CapitalizationEnabled.Equals(other.CapitalizationEnabled)) && ((TemplateProject is null && other.TemplateProject is null) || TemplateProject != null && TemplateProject.Equals(other.TemplateProject)) && ((LastUpdateDateTime is null && other.LastUpdateDateTime is null) || LastUpdateDateTime != null && LastUpdateDateTime.Equals(other.LastUpdateDateTime));
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (SearchCommon != null)
-                {
-                    hash ^= 397 * SearchCommon.GetHashCode();
-                }
-
-                if (ProjectNumber != null)
-                {
-                    hash ^= 397 * ProjectNumber.GetHashCode();
-                }
-
-                if (Name != null)
-                {
-                    hash ^= 397 * Name.GetHashCode();
-                }
-
-                if (ProjectStartDate != null)
-                {
-                    hash ^= 397 * ProjectStartDate.GetHashCode();
-                }
-
-                if (ProjectCompletionDate != null)
-                {
-                    hash ^= 397 * ProjectCompletionDate.GetHashCode();
-                }
-
-                if (ProjectStatusCode != null)
-                {
-                    hash ^= 397 * ProjectStatusCode.GetHashCode();
-                }
-
-                if (PrimaryProjectManagerEmail != null)
-                {
-                    hash ^= 397 * PrimaryProjectManagerEmail.GetHashCode();
-                }
-
-                if (SponsoredProject != null)
-                {
-                    hash ^= 397 * SponsoredProject.GetHashCode();
-                }
-
-                if (BillingEnabled != null)
-                {
-                    hash ^= 397 * BillingEnabled.GetHashCode();
-                }
-
-                if (CapitalizationEnabled != null)
-                {
-                    hash ^= 397 * CapitalizationEnabled.GetHashCode();
-                }
-
-                if (TemplateProject != null)
-                {
-                    hash ^= 397 * TemplateProject.GetHashCode();
-                }
-
-                if (LastUpdateDateTime != null)
-                {
-                    hash ^= 397 * LastUpdateDateTime.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-
-        private global::AggieEnterpriseApi.SearchCommonInputs? _value_searchCommon;
-        private global::System.Boolean _set_searchCommon;
-        private global::AggieEnterpriseApi.StringFilterInput? _value_projectNumber;
-        private global::System.Boolean _set_projectNumber;
-        private global::AggieEnterpriseApi.StringFilterInput? _value_name;
-        private global::System.Boolean _set_name;
-        private global::AggieEnterpriseApi.DateFilterInput? _value_projectStartDate;
-        private global::System.Boolean _set_projectStartDate;
-        private global::AggieEnterpriseApi.DateFilterInput? _value_projectCompletionDate;
-        private global::System.Boolean _set_projectCompletionDate;
-        private global::AggieEnterpriseApi.StringFilterInput? _value_projectStatusCode;
-        private global::System.Boolean _set_projectStatusCode;
-        private global::AggieEnterpriseApi.StringFilterInput? _value_primaryProjectManagerEmail;
-        private global::System.Boolean _set_primaryProjectManagerEmail;
-        private global::AggieEnterpriseApi.BooleanFilterInput? _value_sponsoredProject;
-        private global::System.Boolean _set_sponsoredProject;
-        private global::AggieEnterpriseApi.BooleanFilterInput? _value_billingEnabled;
-        private global::System.Boolean _set_billingEnabled;
-        private global::AggieEnterpriseApi.BooleanFilterInput? _value_capitalizationEnabled;
-        private global::System.Boolean _set_capitalizationEnabled;
-        private global::AggieEnterpriseApi.BooleanFilterInput? _value_templateProject;
-        private global::System.Boolean _set_templateProject;
-        private global::AggieEnterpriseApi.DateFilterInput? _value_lastUpdateDateTime;
-        private global::System.Boolean _set_lastUpdateDateTime;
-        public global::AggieEnterpriseApi.SearchCommonInputs? SearchCommon
-        {
-            get => _value_searchCommon;
-            set
-            {
-                _set_searchCommon = true;
-                _value_searchCommon = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsSearchCommonSet => _set_searchCommon;
-        public global::AggieEnterpriseApi.StringFilterInput? ProjectNumber
-        {
-            get => _value_projectNumber;
-            set
-            {
-                _set_projectNumber = true;
-                _value_projectNumber = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsProjectNumberSet => _set_projectNumber;
-        public global::AggieEnterpriseApi.StringFilterInput? Name
-        {
-            get => _value_name;
-            set
-            {
-                _set_name = true;
-                _value_name = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsNameSet => _set_name;
-        public global::AggieEnterpriseApi.DateFilterInput? ProjectStartDate
-        {
-            get => _value_projectStartDate;
-            set
-            {
-                _set_projectStartDate = true;
-                _value_projectStartDate = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsProjectStartDateSet => _set_projectStartDate;
-        public global::AggieEnterpriseApi.DateFilterInput? ProjectCompletionDate
-        {
-            get => _value_projectCompletionDate;
-            set
-            {
-                _set_projectCompletionDate = true;
-                _value_projectCompletionDate = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsProjectCompletionDateSet => _set_projectCompletionDate;
-        public global::AggieEnterpriseApi.StringFilterInput? ProjectStatusCode
-        {
-            get => _value_projectStatusCode;
-            set
-            {
-                _set_projectStatusCode = true;
-                _value_projectStatusCode = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsProjectStatusCodeSet => _set_projectStatusCode;
-        public global::AggieEnterpriseApi.StringFilterInput? PrimaryProjectManagerEmail
-        {
-            get => _value_primaryProjectManagerEmail;
-            set
-            {
-                _set_primaryProjectManagerEmail = true;
-                _value_primaryProjectManagerEmail = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsPrimaryProjectManagerEmailSet => _set_primaryProjectManagerEmail;
-        public global::AggieEnterpriseApi.BooleanFilterInput? SponsoredProject
-        {
-            get => _value_sponsoredProject;
-            set
-            {
-                _set_sponsoredProject = true;
-                _value_sponsoredProject = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsSponsoredProjectSet => _set_sponsoredProject;
-        public global::AggieEnterpriseApi.BooleanFilterInput? BillingEnabled
-        {
-            get => _value_billingEnabled;
-            set
-            {
-                _set_billingEnabled = true;
-                _value_billingEnabled = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsBillingEnabledSet => _set_billingEnabled;
-        public global::AggieEnterpriseApi.BooleanFilterInput? CapitalizationEnabled
-        {
-            get => _value_capitalizationEnabled;
-            set
-            {
-                _set_capitalizationEnabled = true;
-                _value_capitalizationEnabled = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsCapitalizationEnabledSet => _set_capitalizationEnabled;
-        public global::AggieEnterpriseApi.BooleanFilterInput? TemplateProject
-        {
-            get => _value_templateProject;
-            set
-            {
-                _set_templateProject = true;
-                _value_templateProject = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsTemplateProjectSet => _set_templateProject;
-        public global::AggieEnterpriseApi.DateFilterInput? LastUpdateDateTime
-        {
-            get => _value_lastUpdateDateTime;
-            set
-            {
-                _set_lastUpdateDateTime = true;
-                _value_lastUpdateDateTime = value;
-            }
-        }
-
-        global::System.Boolean global::AggieEnterpriseApi.State.IPpmProjectFilterInputInfo.IsLastUpdateDateTimeSet => _set_lastUpdateDateTime;
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -19211,6 +19241,161 @@ namespace AggieEnterpriseApi
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IErpInstitutionLocationSearchResult>> Watch(global::AggieEnterpriseApi.ErpInstitutionLocationFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ErpUnitOfMeasureSearch GraphQL operation
+    /// <code>
+    /// query ErpUnitOfMeasureSearch($filter: ErpUnitOfMeasureFilterInput!) {
+    ///   erpUnitOfMeasureSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       uomCode
+    ///       name
+    ///       baseUOM
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchQueryDocument : global::StrawberryShake.IDocument
+    {
+        private ErpUnitOfMeasureSearchQueryDocument()
+        {
+        }
+
+        public static ErpUnitOfMeasureSearchQueryDocument Instance { get; } = new ErpUnitOfMeasureSearchQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x45, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x45, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x72, 0x70, 0x55, 0x6e, 0x69, 0x74, 0x4f, 0x66, 0x4d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x75, 0x6f, 0x6d, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x62, 0x61, 0x73, 0x65, 0x55, 0x4f, 0x4d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "0dca42a4dac3b12763825907db57f549");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ErpUnitOfMeasureSearch GraphQL operation
+    /// <code>
+    /// query ErpUnitOfMeasureSearch($filter: ErpUnitOfMeasureFilterInput!) {
+    ///   erpUnitOfMeasureSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       uomCode
+    ///       name
+    ///       baseUOM
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchQuery : global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IErpUnitOfMeasureSearchResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _erpUnitOfMeasureFilterInputFormatter;
+        public ErpUnitOfMeasureSearchQuery(global::StrawberryShake.IOperationExecutor<IErpUnitOfMeasureSearchResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _erpUnitOfMeasureFilterInputFormatter = serializerResolver.GetInputValueFormatter("ErpUnitOfMeasureFilterInput");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IErpUnitOfMeasureSearchResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IErpUnitOfMeasureSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(filter);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IErpUnitOfMeasureSearchResult>> Watch(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(filter);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput filter)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("filter", FormatFilter(filter));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: ErpUnitOfMeasureSearchQueryDocument.Instance.Hash.Value, name: "ErpUnitOfMeasureSearch", document: ErpUnitOfMeasureSearchQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatFilter(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _erpUnitOfMeasureFilterInputFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the ErpUnitOfMeasureSearch GraphQL operation
+    /// <code>
+    /// query ErpUnitOfMeasureSearch($filter: ErpUnitOfMeasureFilterInput!) {
+    ///   erpUnitOfMeasureSearch(filter: $filter) {
+    ///     __typename
+    ///     metadata {
+    ///       __typename
+    ///       sort
+    ///       limit
+    ///       returnedResultCount
+    ///       startIndex
+    ///       nextStartIndex
+    ///       totalResultCount
+    ///     }
+    ///     data {
+    ///       __typename
+    ///       uomCode
+    ///       name
+    ///       baseUOM
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IErpUnitOfMeasureSearchQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IErpUnitOfMeasureSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput filter, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IErpUnitOfMeasureSearchResult>> Watch(global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInput filter, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -20343,6 +20528,183 @@ namespace AggieEnterpriseApi
     }
 
     /// <summary>
+    /// Represents the operation service of the PpmProjectSearch GraphQL operation
+    /// <code>
+    /// query PpmProjectSearch($filter: PpmProjectFilterInput!, $projectNumber: String!) {
+    ///   ppmProjectByNumber(projectNumber: $projectNumber) {
+    ///     __typename
+    ///     id
+    ///     projectNumber
+    ///     name
+    ///     ... on PpmProject {
+    ///       id
+    ///     }
+    ///   }
+    ///   ppmProjectSearch(filter: $filter) {
+    ///     __typename
+    ///     data {
+    ///       __typename
+    ///       id
+    ///       projectNumber
+    ///       name
+    ///       ... on PpmProject {
+    ///         id
+    ///       }
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearchQueryDocument : global::StrawberryShake.IDocument
+    {
+        private PpmProjectSearchQueryDocument()
+        {
+        }
+
+        public static PpmProjectSearchQueryDocument Instance { get; } = new PpmProjectSearchQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x50, 0x70, 0x6d, 0x50, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x50, 0x70, 0x6d, 0x50, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x2c, 0x20, 0x24, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x70, 0x70, 0x6d, 0x50, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x42, 0x79, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x28, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x50, 0x70, 0x6d, 0x50, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x70, 0x70, 0x6d, 0x50, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x50, 0x70, 0x6d, 0x50, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "d17d8e4e05a5e99f4fe93116af03814f");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the PpmProjectSearch GraphQL operation
+    /// <code>
+    /// query PpmProjectSearch($filter: PpmProjectFilterInput!, $projectNumber: String!) {
+    ///   ppmProjectByNumber(projectNumber: $projectNumber) {
+    ///     __typename
+    ///     id
+    ///     projectNumber
+    ///     name
+    ///     ... on PpmProject {
+    ///       id
+    ///     }
+    ///   }
+    ///   ppmProjectSearch(filter: $filter) {
+    ///     __typename
+    ///     data {
+    ///       __typename
+    ///       id
+    ///       projectNumber
+    ///       name
+    ///       ... on PpmProject {
+    ///         id
+    ///       }
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearchQuery : global::AggieEnterpriseApi.IPpmProjectSearchQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IPpmProjectSearchResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _ppmProjectFilterInputFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        public PpmProjectSearchQuery(global::StrawberryShake.IOperationExecutor<IPpmProjectSearchResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _ppmProjectFilterInputFormatter = serializerResolver.GetInputValueFormatter("PpmProjectFilterInput");
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IPpmProjectSearchResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmProjectSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.PpmProjectFilterInput filter, global::System.String projectNumber, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(filter, projectNumber);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmProjectSearchResult>> Watch(global::AggieEnterpriseApi.PpmProjectFilterInput filter, global::System.String projectNumber, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(filter, projectNumber);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::AggieEnterpriseApi.PpmProjectFilterInput filter, global::System.String projectNumber)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("filter", FormatFilter(filter));
+            variables.Add("projectNumber", FormatProjectNumber(projectNumber));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: PpmProjectSearchQueryDocument.Instance.Hash.Value, name: "PpmProjectSearch", document: PpmProjectSearchQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatFilter(global::AggieEnterpriseApi.PpmProjectFilterInput value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _ppmProjectFilterInputFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatProjectNumber(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the PpmProjectSearch GraphQL operation
+    /// <code>
+    /// query PpmProjectSearch($filter: PpmProjectFilterInput!, $projectNumber: String!) {
+    ///   ppmProjectByNumber(projectNumber: $projectNumber) {
+    ///     __typename
+    ///     id
+    ///     projectNumber
+    ///     name
+    ///     ... on PpmProject {
+    ///       id
+    ///     }
+    ///   }
+    ///   ppmProjectSearch(filter: $filter) {
+    ///     __typename
+    ///     data {
+    ///       __typename
+    ///       id
+    ///       projectNumber
+    ///       name
+    ///       ... on PpmProject {
+    ///         id
+    ///       }
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial interface IPpmProjectSearchQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IPpmProjectSearchResult>> ExecuteAsync(global::AggieEnterpriseApi.PpmProjectFilterInput filter, global::System.String projectNumber, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IPpmProjectSearchResult>> Watch(global::AggieEnterpriseApi.PpmProjectFilterInput filter, global::System.String projectNumber, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the operation service of the PpmStringSegmentsValidate GraphQL operation
     /// <code>
     /// query PpmStringSegmentsValidate($segmentString: PpmSegmentString!) {
@@ -21248,6 +21610,8 @@ namespace AggieEnterpriseApi
     ///       description
     ///       categoryContentCode
     ///       enabled
+    ///       startDateActive
+    ///       endDateActive
     ///       ... on ScmPurchasingCategory {
     ///         id
     ///       }
@@ -21265,8 +21629,8 @@ namespace AggieEnterpriseApi
 
         public static ScmPurchasingCategorySearchQueryDocument Instance { get; } = new ScmPurchasingCategorySearchQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x73, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "194fe6003a8c3c166c31e16e8eeb9ac6");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x73, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x28, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x6f, 0x72, 0x74, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x65, 0x64, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x6e, 0x65, 0x78, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x63, 0x6f, 0x64, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x44, 0x61, 0x74, 0x65, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x20, 0x65, 0x6e, 0x64, 0x44, 0x61, 0x74, 0x65, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x53, 0x63, 0x6d, 0x50, 0x75, 0x72, 0x63, 0x68, 0x61, 0x73, 0x69, 0x6e, 0x67, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "1dbdad9f629a900d2e39cc2ab2de6c97");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -21300,6 +21664,8 @@ namespace AggieEnterpriseApi
     ///       description
     ///       categoryContentCode
     ///       enabled
+    ///       startDateActive
+    ///       endDateActive
     ///       ... on ScmPurchasingCategory {
     ///         id
     ///       }
@@ -21383,6 +21749,8 @@ namespace AggieEnterpriseApi
     ///       description
     ///       categoryContentCode
     ///       enabled
+    ///       startDateActive
+    ///       endDateActive
     ///       ... on ScmPurchasingCategory {
     ///         id
     ///       }
@@ -22417,11 +22785,13 @@ namespace AggieEnterpriseApi
     {
         private readonly global::AggieEnterpriseApi.IDeptParentsQuery _deptParents;
         private readonly global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery _erpInstitutionLocationSearch;
+        private readonly global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery _erpUnitOfMeasureSearch;
         private readonly global::AggieEnterpriseApi.IFundParentsQuery _fundParents;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestMutation _glJournalRequest;
         private readonly global::AggieEnterpriseApi.IGlJournalRequestStatusQuery _glJournalRequestStatus;
         private readonly global::AggieEnterpriseApi.ICoaDetailsQuery _coaDetails;
         private readonly global::AggieEnterpriseApi.IKfsConvertAccountQuery _kfsConvertAccount;
+        private readonly global::AggieEnterpriseApi.IPpmProjectSearchQuery _ppmProjectSearch;
         private readonly global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery _ppmStringSegmentsValidate;
         private readonly global::AggieEnterpriseApi.IPpmSegmentsValidateQuery _ppmSegmentsValidate;
         private readonly global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery _ppmTaskByProjectNumberAndTaskNumber;
@@ -22430,19 +22800,19 @@ namespace AggieEnterpriseApi
         private readonly global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery _scmPurchasingCategoryByCode;
         private readonly global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery _scmPurchasingCategorySearch;
         private readonly global::AggieEnterpriseApi.IScmSupplierSearchQuery _scmSupplierSearch;
-        private readonly global::AggieEnterpriseApi.IPpmOrganizationSearchQuery _ppmOrganizationSearch;
-        private readonly global::AggieEnterpriseApi.IPpmProjectSearchQuery _ppmProjectSearch;
         private readonly global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery _glValidateChartSegments;
         private readonly global::AggieEnterpriseApi.IGlValidateChartstringQuery _glValidateChartstring;
-        public AggieEnterpriseClient(global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery erpInstitutionLocationSearch, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IScmPurchaseRequisitionRequestStatusQuery scmPurchaseRequisitionRequestStatus, global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery scmPurchasingCategoryByCode, global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery scmPurchasingCategorySearch, global::AggieEnterpriseApi.IScmSupplierSearchQuery scmSupplierSearch, global::AggieEnterpriseApi.IPpmOrganizationSearchQuery ppmOrganizationSearch, global::AggieEnterpriseApi.IPpmProjectSearchQuery ppmProjectSearch, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
+        public AggieEnterpriseClient(global::AggieEnterpriseApi.IDeptParentsQuery deptParents, global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery erpInstitutionLocationSearch, global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery erpUnitOfMeasureSearch, global::AggieEnterpriseApi.IFundParentsQuery fundParents, global::AggieEnterpriseApi.IGlJournalRequestMutation glJournalRequest, global::AggieEnterpriseApi.IGlJournalRequestStatusQuery glJournalRequestStatus, global::AggieEnterpriseApi.ICoaDetailsQuery coaDetails, global::AggieEnterpriseApi.IKfsConvertAccountQuery kfsConvertAccount, global::AggieEnterpriseApi.IPpmProjectSearchQuery ppmProjectSearch, global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery ppmStringSegmentsValidate, global::AggieEnterpriseApi.IPpmSegmentsValidateQuery ppmSegmentsValidate, global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery ppmTaskByProjectNumberAndTaskNumber, global::AggieEnterpriseApi.IScmPurchaseRequisitionCreateMutation scmPurchaseRequisitionCreate, global::AggieEnterpriseApi.IScmPurchaseRequisitionRequestStatusQuery scmPurchaseRequisitionRequestStatus, global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery scmPurchasingCategoryByCode, global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery scmPurchasingCategorySearch, global::AggieEnterpriseApi.IScmSupplierSearchQuery scmSupplierSearch, global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery glValidateChartSegments, global::AggieEnterpriseApi.IGlValidateChartstringQuery glValidateChartstring)
         {
             _deptParents = deptParents ?? throw new global::System.ArgumentNullException(nameof(deptParents));
             _erpInstitutionLocationSearch = erpInstitutionLocationSearch ?? throw new global::System.ArgumentNullException(nameof(erpInstitutionLocationSearch));
+            _erpUnitOfMeasureSearch = erpUnitOfMeasureSearch ?? throw new global::System.ArgumentNullException(nameof(erpUnitOfMeasureSearch));
             _fundParents = fundParents ?? throw new global::System.ArgumentNullException(nameof(fundParents));
             _glJournalRequest = glJournalRequest ?? throw new global::System.ArgumentNullException(nameof(glJournalRequest));
             _glJournalRequestStatus = glJournalRequestStatus ?? throw new global::System.ArgumentNullException(nameof(glJournalRequestStatus));
             _coaDetails = coaDetails ?? throw new global::System.ArgumentNullException(nameof(coaDetails));
             _kfsConvertAccount = kfsConvertAccount ?? throw new global::System.ArgumentNullException(nameof(kfsConvertAccount));
+            _ppmProjectSearch = ppmProjectSearch ?? throw new global::System.ArgumentNullException(nameof(ppmProjectSearch));
             _ppmStringSegmentsValidate = ppmStringSegmentsValidate ?? throw new global::System.ArgumentNullException(nameof(ppmStringSegmentsValidate));
             _ppmSegmentsValidate = ppmSegmentsValidate ?? throw new global::System.ArgumentNullException(nameof(ppmSegmentsValidate));
             _ppmTaskByProjectNumberAndTaskNumber = ppmTaskByProjectNumberAndTaskNumber ?? throw new global::System.ArgumentNullException(nameof(ppmTaskByProjectNumberAndTaskNumber));
@@ -22451,8 +22821,6 @@ namespace AggieEnterpriseApi
             _scmPurchasingCategoryByCode = scmPurchasingCategoryByCode ?? throw new global::System.ArgumentNullException(nameof(scmPurchasingCategoryByCode));
             _scmPurchasingCategorySearch = scmPurchasingCategorySearch ?? throw new global::System.ArgumentNullException(nameof(scmPurchasingCategorySearch));
             _scmSupplierSearch = scmSupplierSearch ?? throw new global::System.ArgumentNullException(nameof(scmSupplierSearch));
-            _ppmOrganizationSearch = ppmOrganizationSearch ?? throw new global::System.ArgumentNullException(nameof(ppmOrganizationSearch));
-            _ppmProjectSearch = ppmProjectSearch ?? throw new global::System.ArgumentNullException(nameof(ppmProjectSearch));
             _glValidateChartSegments = glValidateChartSegments ?? throw new global::System.ArgumentNullException(nameof(glValidateChartSegments));
             _glValidateChartstring = glValidateChartstring ?? throw new global::System.ArgumentNullException(nameof(glValidateChartstring));
         }
@@ -22460,11 +22828,13 @@ namespace AggieEnterpriseApi
         public static global::System.String ClientName => "AggieEnterpriseClient";
         public global::AggieEnterpriseApi.IDeptParentsQuery DeptParents => _deptParents;
         public global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery ErpInstitutionLocationSearch => _erpInstitutionLocationSearch;
+        public global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery ErpUnitOfMeasureSearch => _erpUnitOfMeasureSearch;
         public global::AggieEnterpriseApi.IFundParentsQuery FundParents => _fundParents;
         public global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest => _glJournalRequest;
         public global::AggieEnterpriseApi.IGlJournalRequestStatusQuery GlJournalRequestStatus => _glJournalRequestStatus;
         public global::AggieEnterpriseApi.ICoaDetailsQuery CoaDetails => _coaDetails;
         public global::AggieEnterpriseApi.IKfsConvertAccountQuery KfsConvertAccount => _kfsConvertAccount;
+        public global::AggieEnterpriseApi.IPpmProjectSearchQuery PpmProjectSearch => _ppmProjectSearch;
         public global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery PpmStringSegmentsValidate => _ppmStringSegmentsValidate;
         public global::AggieEnterpriseApi.IPpmSegmentsValidateQuery PpmSegmentsValidate => _ppmSegmentsValidate;
         public global::AggieEnterpriseApi.IPpmTaskByProjectNumberAndTaskNumberQuery PpmTaskByProjectNumberAndTaskNumber => _ppmTaskByProjectNumberAndTaskNumber;
@@ -22473,8 +22843,6 @@ namespace AggieEnterpriseApi
         public global::AggieEnterpriseApi.IScmPurchasingCategoryByCodeQuery ScmPurchasingCategoryByCode => _scmPurchasingCategoryByCode;
         public global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery ScmPurchasingCategorySearch => _scmPurchasingCategorySearch;
         public global::AggieEnterpriseApi.IScmSupplierSearchQuery ScmSupplierSearch => _scmSupplierSearch;
-        public global::AggieEnterpriseApi.IPpmOrganizationSearchQuery PpmOrganizationSearch => _ppmOrganizationSearch;
-        public global::AggieEnterpriseApi.IPpmProjectSearchQuery PpmProjectSearch => _ppmProjectSearch;
         public global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments => _glValidateChartSegments;
         public global::AggieEnterpriseApi.IGlValidateChartstringQuery GlValidateChartstring => _glValidateChartstring;
     }
@@ -22489,6 +22857,8 @@ namespace AggieEnterpriseApi
 
         global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery ErpInstitutionLocationSearch { get; }
 
+        global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery ErpUnitOfMeasureSearch { get; }
+
         global::AggieEnterpriseApi.IFundParentsQuery FundParents { get; }
 
         global::AggieEnterpriseApi.IGlJournalRequestMutation GlJournalRequest { get; }
@@ -22498,6 +22868,8 @@ namespace AggieEnterpriseApi
         global::AggieEnterpriseApi.ICoaDetailsQuery CoaDetails { get; }
 
         global::AggieEnterpriseApi.IKfsConvertAccountQuery KfsConvertAccount { get; }
+
+        global::AggieEnterpriseApi.IPpmProjectSearchQuery PpmProjectSearch { get; }
 
         global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery PpmStringSegmentsValidate { get; }
 
@@ -22514,10 +22886,6 @@ namespace AggieEnterpriseApi
         global::AggieEnterpriseApi.IScmPurchasingCategorySearchQuery ScmPurchasingCategorySearch { get; }
 
         global::AggieEnterpriseApi.IScmSupplierSearchQuery ScmSupplierSearch { get; }
-
-        global::AggieEnterpriseApi.IPpmOrganizationSearchQuery PpmOrganizationSearch { get; }
-
-        global::AggieEnterpriseApi.IPpmProjectSearchQuery PpmProjectSearch { get; }
 
         global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery GlValidateChartSegments { get; }
 
@@ -22656,6 +23024,27 @@ namespace AggieEnterpriseApi.State
         public global::System.String Name { get; }
     }
 
+    ///<summary>The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.**Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:*** The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.* PPM Project values and CoA Project segment values will be the same**Examples:*** Capital Projects* Sponsored Projects* Faculty Projects</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectEntity
+    {
+        public PpmProjectEntity(global::System.Int64 id = default !, global::System.String projectNumber = default !, global::System.String name = default !)
+        {
+            Id = id;
+            ProjectNumber = projectNumber;
+            Name = name;
+        }
+
+        ///<summary>Project ID: Unique identifier of the project.  Internal to Oracle.</summary>
+        public global::System.Int64 Id { get; }
+
+        ///<summary>Project Number: Number of the project that is being created.  This will match the GL Project used to record costs to the ledger.</summary>
+        public global::System.String ProjectNumber { get; }
+
+        ///<summary>Project Name: Name of the project that is being created.</summary>
+        public global::System.String Name { get; }
+    }
+
     ///<summary>The Task identifies the activities used to further breakdown a PPM project. Every project MUST have at least one Task.  The number of tasks will vary by type of project.**Roll-up relationship to the new Chart of Accounts in the General Ledger:*** The Task value will NOT roll up to the Chart of Accounts. Task values will only be used in the PPM module.* Internal rules within the Oracle PPM module will be used to map the task to components of the GL Chart of Accounts which are not directly mapped to other components of the POET(AF) segments.**Examples:*** Design* Construction* Data Gathering &amp; Analysis</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmTaskEntity
@@ -22748,48 +23137,6 @@ namespace AggieEnterpriseApi.State
 
         ///<summary>User ID of the person who last updated this record.</summary>
         public global::System.String? LastUpdateUserId { get; }
-    }
-
-    ///<summary>The Expenditure Organization identifies the organization that is incurring the expense and revenue. This may NOT be the same as the organization that owns the project.**Roll-up relationship to the new Chart of Accounts in the General Ledger:*** The Expenditure Organization value will roll up to the Financial Department segment of the Chart of Accounts.**Examples:*** Computer Science* Plant Sciences</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationEntity
-    {
-        public PpmOrganizationEntity(global::System.Int64 id = default !, global::System.String code = default !, global::System.String name = default !)
-        {
-            Id = id;
-            Code = code;
-            Name = name;
-        }
-
-        ///<summary>Organization ID: Unique identifier of the Organization.  Internal to Oracle.</summary>
-        public global::System.Int64 Id { get; }
-
-        ///<summary>Organization Code: The code of the Organization.</summary>
-        public global::System.String Code { get; }
-
-        ///<summary>Organization Name: Name of the Organization</summary>
-        public global::System.String Name { get; }
-    }
-
-    ///<summary>The Project identifies the planned work or activity to be completed over a period of time and intended to achieve a particular goal.**Roll-up relationship to the new Chart of Accounts (CoA) in the General Ledger:*** The POET(AF) Project value will roll up to the Project segment of the Chart of Accounts.* PPM Project values and CoA Project segment values will be the same**Examples:*** Capital Projects* Sponsored Projects* Faculty Projects</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectEntity
-    {
-        public PpmProjectEntity(global::System.Int64 id = default !, global::System.String projectNumber = default !, global::System.String name = default !)
-        {
-            Id = id;
-            ProjectNumber = projectNumber;
-            Name = name;
-        }
-
-        ///<summary>Project ID: Unique identifier of the project.  Internal to Oracle.</summary>
-        public global::System.Int64 Id { get; }
-
-        ///<summary>Project Number: Number of the project that is being created.  This will match the GL Project used to record costs to the ledger.</summary>
-        public global::System.String ProjectNumber { get; }
-
-        ///<summary>Project Name: Name of the project that is being created.</summary>
-        public global::System.String Name { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
@@ -23616,6 +23963,124 @@ namespace AggieEnterpriseApi.State
         public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
         {
             return new ErpInstitutionLocationSearchResultInfo(ErpInstitutionLocationSearch, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.ErpUnitOfMeasureSearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public ErpUnitOfMeasureSearchResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult);
+        public ErpUnitOfMeasureSearchResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is ErpUnitOfMeasureSearchResultInfo info)
+            {
+                return new ErpUnitOfMeasureSearchResult(MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch(info.ErpUnitOfMeasureSearch, snapshot));
+            }
+
+            throw new global::System.ArgumentException("ErpUnitOfMeasureSearchResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch(global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultsData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch returnValue = default !;
+            if (data.__typename.Equals("ErpUnitOfMeasureSearchResults", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearchResults(MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata(data.Metadata ?? throw new global::System.ArgumentNullException(), snapshot), MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_DataNonNullableArray(data.Data ?? throw new global::System.ArgumentNullException(), snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata(global::AggieEnterpriseApi.State.SearchResultMetadataData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata returnValue = default !;
+            if (data.__typename.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata_SearchResultMetadata(data.Sort, data.Limit, data.ReturnedResultCount ?? throw new global::System.ArgumentNullException(), data.StartIndex ?? throw new global::System.ArgumentNullException(), data.NextStartIndex, data.TotalResultCount);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data> MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_DataNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpUnitOfMeasureData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var erpUnitOfMeasures = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data>();
+            foreach (global::AggieEnterpriseApi.State.ErpUnitOfMeasureData child in list)
+            {
+                erpUnitOfMeasures.Add(MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data(child, snapshot));
+            }
+
+            return erpUnitOfMeasures;
+        }
+
+        private global::AggieEnterpriseApi.IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data MapNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data(global::AggieEnterpriseApi.State.ErpUnitOfMeasureData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data returnValue = default !;
+            if (data.__typename.Equals("ErpUnitOfMeasure", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new ErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data_ErpUnitOfMeasure(data.UomCode, data.Name, data.BaseUOM ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public ErpUnitOfMeasureSearchResultInfo(global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultsData erpUnitOfMeasureSearch, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            ErpUnitOfMeasureSearch = erpUnitOfMeasureSearch;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Search for ErpUnitOfMeasure objects by multiple properties.
+        /// See the ErpUnitOfMeasureFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultsData ErpUnitOfMeasureSearch { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new ErpUnitOfMeasureSearchResultInfo(ErpUnitOfMeasureSearch, _entityIds, version);
         }
     }
 
@@ -25017,6 +25482,170 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearchResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.PpmProjectSearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectByNumber_PpmProject> _ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper;
+        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectSearch_Data_PpmProject> _ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper;
+        public PpmProjectSearchResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectByNumber_PpmProject> ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectSearch_Data_PpmProject> ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper = ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper ?? throw new global::System.ArgumentNullException(nameof(ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper));
+            _ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper = ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper ?? throw new global::System.ArgumentNullException(nameof(ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IPpmProjectSearchResult);
+        public PpmProjectSearchResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is PpmProjectSearchResultInfo info)
+            {
+                return new PpmProjectSearchResult(MapIPpmProjectSearch_PpmProjectByNumber(info.PpmProjectByNumber, snapshot), MapNonNullableIPpmProjectSearch_PpmProjectSearch(info.PpmProjectSearch, snapshot));
+            }
+
+            throw new global::System.ArgumentException("PpmProjectSearchResultInfo expected.");
+        }
+
+        private global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectByNumber? MapIPpmProjectSearch_PpmProjectByNumber(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId is null)
+            {
+                return null;
+            }
+
+            if (entityId.Value.Name.Equals("PpmProject", global::System.StringComparison.Ordinal))
+            {
+                return _ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.PpmProjectEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch MapNonNullableIPpmProjectSearch_PpmProjectSearch(global::AggieEnterpriseApi.State.PpmProjectSearchResultsData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IPpmProjectSearch_PpmProjectSearch returnValue = default !;
+            if (data.__typename.Equals("PpmProjectSearchResults", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults(MapNonNullableIPpmProjectSearch_PpmProjectSearch_DataNonNullableArray(data.Data ?? throw new global::System.ArgumentNullException(), snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data> MapNonNullableIPpmProjectSearch_PpmProjectSearch_DataNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var ppmProjects = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data>();
+            foreach (global::StrawberryShake.EntityId child in list)
+            {
+                ppmProjects.Add(MapNonNullableIPpmProjectSearch_PpmProjectSearch_Data(child, snapshot));
+            }
+
+            return ppmProjects;
+        }
+
+        private global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data MapNonNullableIPpmProjectSearch_PpmProjectSearch_Data(global::StrawberryShake.EntityId entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId.Name.Equals("PpmProject", global::System.StringComparison.Ordinal))
+            {
+                return _ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.PpmProjectEntity>(entityId) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearchResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public PpmProjectSearchResultInfo(global::StrawberryShake.EntityId? ppmProjectByNumber, global::AggieEnterpriseApi.State.PpmProjectSearchResultsData ppmProjectSearch, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            PpmProjectByNumber = ppmProjectByNumber;
+            PpmProjectSearch = ppmProjectSearch;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Get a single PpmProject by the project number.  Returns undefined if no project with that number is found.
+        /// </summary>
+        public global::StrawberryShake.EntityId? PpmProjectByNumber { get; }
+
+        /// <summary>
+        /// Search for PpmProject objects by multiple properties.
+        /// See
+        /// See the PpmProjectFilterInput type for options.
+        /// </summary>
+        public global::AggieEnterpriseApi.State.PpmProjectSearchResultsData PpmProjectSearch { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new PpmProjectSearchResultInfo(PpmProjectByNumber, PpmProjectSearch, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectByNumber_PpmProject>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public PpmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public PpmProjectSearch_PpmProjectByNumber_PpmProject Map(global::AggieEnterpriseApi.State.PpmProjectEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new PpmProjectSearch_PpmProjectByNumber_PpmProject(entity.Id, entity.ProjectNumber, entity.Name);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectSearch_Data_PpmProject>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public PpmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public PpmProjectSearch_PpmProjectSearch_Data_PpmProject Map(global::AggieEnterpriseApi.State.PpmProjectEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new PpmProjectSearch_PpmProjectSearch_Data_PpmProject(entity.Id, entity.ProjectNumber, entity.Name);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmStringSegmentsValidateResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.PpmStringSegmentsValidateResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -25736,7 +26365,7 @@ namespace AggieEnterpriseApi.State
                 snapshot = _entityStore.CurrentSnapshot;
             }
 
-            return new ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory(entity.Id, entity.Code, entity.Name, entity.Description, entity.CategoryContentCode, entity.Enabled);
+            return new ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory(entity.Id, entity.Code, entity.Name, entity.Description, entity.CategoryContentCode, entity.Enabled, entity.StartDateActive, entity.EndDateActive);
         }
     }
 
@@ -25891,334 +26520,6 @@ namespace AggieEnterpriseApi.State
         public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
         {
             return new ScmSupplierSearchResultInfo(ScmSupplierSearch, _entityIds, version);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationSearchResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.PpmOrganizationSearchResult>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmOrganizationEntity, PpmOrganizationSearch_PpmOrganization_PpmOrganization> _ppmOrganizationSearch_PpmOrganization_PpmOrganizationFromPpmOrganizationEntityMapper;
-        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmOrganizationEntity, PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization> _ppmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganizationFromPpmOrganizationEntityMapper;
-        public PpmOrganizationSearchResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmOrganizationEntity, PpmOrganizationSearch_PpmOrganization_PpmOrganization> ppmOrganizationSearch_PpmOrganization_PpmOrganizationFromPpmOrganizationEntityMapper, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmOrganizationEntity, PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization> ppmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganizationFromPpmOrganizationEntityMapper)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _ppmOrganizationSearch_PpmOrganization_PpmOrganizationFromPpmOrganizationEntityMapper = ppmOrganizationSearch_PpmOrganization_PpmOrganizationFromPpmOrganizationEntityMapper ?? throw new global::System.ArgumentNullException(nameof(ppmOrganizationSearch_PpmOrganization_PpmOrganizationFromPpmOrganizationEntityMapper));
-            _ppmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganizationFromPpmOrganizationEntityMapper = ppmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganizationFromPpmOrganizationEntityMapper ?? throw new global::System.ArgumentNullException(nameof(ppmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganizationFromPpmOrganizationEntityMapper));
-        }
-
-        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IPpmOrganizationSearchResult);
-        public PpmOrganizationSearchResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            if (dataInfo is PpmOrganizationSearchResultInfo info)
-            {
-                return new PpmOrganizationSearchResult(MapIPpmOrganizationSearch_PpmOrganization(info.PpmOrganization, snapshot), MapNonNullableIPpmOrganizationSearch_PpmOrganizationSearch(info.PpmOrganizationSearch, snapshot));
-            }
-
-            throw new global::System.ArgumentException("PpmOrganizationSearchResultInfo expected.");
-        }
-
-        private global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganization? MapIPpmOrganizationSearch_PpmOrganization(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (entityId is null)
-            {
-                return null;
-            }
-
-            if (entityId.Value.Name.Equals("PpmOrganization", global::System.StringComparison.Ordinal))
-            {
-                return _ppmOrganizationSearch_PpmOrganization_PpmOrganizationFromPpmOrganizationEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.PpmOrganizationEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganizationSearch MapNonNullableIPpmOrganizationSearch_PpmOrganizationSearch(global::AggieEnterpriseApi.State.PpmOrganizationSearchResultsData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            IPpmOrganizationSearch_PpmOrganizationSearch returnValue = default !;
-            if (data.__typename.Equals("PpmOrganizationSearchResults", global::System.StringComparison.Ordinal))
-            {
-                returnValue = new PpmOrganizationSearch_PpmOrganizationSearch_PpmOrganizationSearchResults(MapNonNullableIPpmOrganizationSearch_PpmOrganizationSearch_DataNonNullableArray(data.Data ?? throw new global::System.ArgumentNullException(), snapshot));
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganizationSearch_Data> MapNonNullableIPpmOrganizationSearch_PpmOrganizationSearch_DataNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (list is null)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var ppmOrganizations = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganizationSearch_Data>();
-            foreach (global::StrawberryShake.EntityId child in list)
-            {
-                ppmOrganizations.Add(MapNonNullableIPpmOrganizationSearch_PpmOrganizationSearch_Data(child, snapshot));
-            }
-
-            return ppmOrganizations;
-        }
-
-        private global::AggieEnterpriseApi.IPpmOrganizationSearch_PpmOrganizationSearch_Data MapNonNullableIPpmOrganizationSearch_PpmOrganizationSearch_Data(global::StrawberryShake.EntityId entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (entityId.Name.Equals("PpmOrganization", global::System.StringComparison.Ordinal))
-            {
-                return _ppmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganizationFromPpmOrganizationEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.PpmOrganizationEntity>(entityId) ?? throw new global::StrawberryShake.GraphQLClientException());
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
-        {
-            return Create(dataInfo, snapshot);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationSearchResultInfo : global::StrawberryShake.IOperationResultDataInfo
-    {
-        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
-        private readonly global::System.UInt64 _version;
-        public PpmOrganizationSearchResultInfo(global::StrawberryShake.EntityId? ppmOrganization, global::AggieEnterpriseApi.State.PpmOrganizationSearchResultsData ppmOrganizationSearch, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
-        {
-            PpmOrganization = ppmOrganization;
-            PpmOrganizationSearch = ppmOrganizationSearch;
-            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
-            _version = version;
-        }
-
-        /// <summary>
-        /// Get a single PpmOrganization by code.  Returns undefined if does not exist
-        /// </summary>
-        public global::StrawberryShake.EntityId? PpmOrganization { get; }
-
-        /// <summary>
-        /// Search for PpmOrganization objects by multiple properties.
-        /// See
-        /// See the PpmOrganizationFilterInput type for options.
-        /// </summary>
-        public global::AggieEnterpriseApi.State.PpmOrganizationSearchResultsData PpmOrganizationSearch { get; }
-
-        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
-        public global::System.UInt64 Version => _version;
-        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
-        {
-            return new PpmOrganizationSearchResultInfo(PpmOrganization, PpmOrganizationSearch, _entityIds, version);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationSearch_PpmOrganization_PpmOrganizationFromPpmOrganizationEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmOrganizationEntity, PpmOrganizationSearch_PpmOrganization_PpmOrganization>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public PpmOrganizationSearch_PpmOrganization_PpmOrganizationFromPpmOrganizationEntityMapper(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        public PpmOrganizationSearch_PpmOrganization_PpmOrganization Map(global::AggieEnterpriseApi.State.PpmOrganizationEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            return new PpmOrganizationSearch_PpmOrganization_PpmOrganization(entity.Id, entity.Code, entity.Name);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganizationFromPpmOrganizationEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmOrganizationEntity, PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganizationFromPpmOrganizationEntityMapper(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        public PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization Map(global::AggieEnterpriseApi.State.PpmOrganizationEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            return new PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization(entity.Id, entity.Code, entity.Name);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectSearchResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.PpmProjectSearchResult>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectByNumber_PpmProject> _ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper;
-        private readonly global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectSearch_Data_PpmProject> _ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper;
-        public PpmProjectSearchResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectByNumber_PpmProject> ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper, global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectSearch_Data_PpmProject> ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper = ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper ?? throw new global::System.ArgumentNullException(nameof(ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper));
-            _ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper = ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper ?? throw new global::System.ArgumentNullException(nameof(ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper));
-        }
-
-        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::AggieEnterpriseApi.IPpmProjectSearchResult);
-        public PpmProjectSearchResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            if (dataInfo is PpmProjectSearchResultInfo info)
-            {
-                return new PpmProjectSearchResult(MapIPpmProjectSearch_PpmProjectByNumber(info.PpmProjectByNumber, snapshot), MapNonNullableIPpmProjectSearch_PpmProjectSearch(info.PpmProjectSearch, snapshot));
-            }
-
-            throw new global::System.ArgumentException("PpmProjectSearchResultInfo expected.");
-        }
-
-        private global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectByNumber? MapIPpmProjectSearch_PpmProjectByNumber(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (entityId is null)
-            {
-                return null;
-            }
-
-            if (entityId.Value.Name.Equals("PpmProject", global::System.StringComparison.Ordinal))
-            {
-                return _ppmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.PpmProjectEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch MapNonNullableIPpmProjectSearch_PpmProjectSearch(global::AggieEnterpriseApi.State.PpmProjectSearchResultsData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            IPpmProjectSearch_PpmProjectSearch returnValue = default !;
-            if (data.__typename.Equals("PpmProjectSearchResults", global::System.StringComparison.Ordinal))
-            {
-                returnValue = new PpmProjectSearch_PpmProjectSearch_PpmProjectSearchResults(MapNonNullableIPpmProjectSearch_PpmProjectSearch_DataNonNullableArray(data.Data ?? throw new global::System.ArgumentNullException(), snapshot));
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data> MapNonNullableIPpmProjectSearch_PpmProjectSearch_DataNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (list is null)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var ppmProjects = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data>();
-            foreach (global::StrawberryShake.EntityId child in list)
-            {
-                ppmProjects.Add(MapNonNullableIPpmProjectSearch_PpmProjectSearch_Data(child, snapshot));
-            }
-
-            return ppmProjects;
-        }
-
-        private global::AggieEnterpriseApi.IPpmProjectSearch_PpmProjectSearch_Data MapNonNullableIPpmProjectSearch_PpmProjectSearch_Data(global::StrawberryShake.EntityId entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (entityId.Name.Equals("PpmProject", global::System.StringComparison.Ordinal))
-            {
-                return _ppmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper.Map(snapshot.GetEntity<global::AggieEnterpriseApi.State.PpmProjectEntity>(entityId) ?? throw new global::StrawberryShake.GraphQLClientException());
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
-        {
-            return Create(dataInfo, snapshot);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectSearchResultInfo : global::StrawberryShake.IOperationResultDataInfo
-    {
-        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
-        private readonly global::System.UInt64 _version;
-        public PpmProjectSearchResultInfo(global::StrawberryShake.EntityId? ppmProjectByNumber, global::AggieEnterpriseApi.State.PpmProjectSearchResultsData ppmProjectSearch, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
-        {
-            PpmProjectByNumber = ppmProjectByNumber;
-            PpmProjectSearch = ppmProjectSearch;
-            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
-            _version = version;
-        }
-
-        /// <summary>
-        /// Get a single PpmProject by the project number.  Returns undefined if no project with that number is found.
-        /// </summary>
-        public global::StrawberryShake.EntityId? PpmProjectByNumber { get; }
-
-        /// <summary>
-        /// Search for PpmProject objects by multiple properties.
-        /// See
-        /// See the PpmProjectFilterInput type for options.
-        /// </summary>
-        public global::AggieEnterpriseApi.State.PpmProjectSearchResultsData PpmProjectSearch { get; }
-
-        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
-        public global::System.UInt64 Version => _version;
-        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
-        {
-            return new PpmProjectSearchResultInfo(PpmProjectByNumber, PpmProjectSearch, _entityIds, version);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectByNumber_PpmProject>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public PpmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        public PpmProjectSearch_PpmProjectByNumber_PpmProject Map(global::AggieEnterpriseApi.State.PpmProjectEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            return new PpmProjectSearch_PpmProjectByNumber_PpmProject(entity.Id, entity.ProjectNumber, entity.Name);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper : global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, PpmProjectSearch_PpmProjectSearch_Data_PpmProject>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public PpmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        public PpmProjectSearch_PpmProjectSearch_Data_PpmProject Map(global::AggieEnterpriseApi.State.PpmProjectEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            return new PpmProjectSearch_PpmProjectSearch_Data_PpmProject(entity.Id, entity.ProjectNumber, entity.Name);
         }
     }
 
@@ -26669,6 +26970,18 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IErpUnitOfMeasureFilterInputInfo
+    {
+        global::System.Boolean IsSearchCommonSet { get; }
+
+        global::System.Boolean IsNameSet { get; }
+
+        global::System.Boolean IsUnitOfMeasureIdSet { get; }
+
+        global::System.Boolean IsUomCodeSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     internal interface IGlJournalRequestInputInfo
     {
         global::System.Boolean IsHeaderSet { get; }
@@ -26807,6 +27120,52 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IPpmProjectFilterInputInfo
+    {
+        global::System.Boolean IsSearchCommonSet { get; }
+
+        global::System.Boolean IsProjectNumberSet { get; }
+
+        global::System.Boolean IsNameSet { get; }
+
+        global::System.Boolean IsProjectStartDateSet { get; }
+
+        global::System.Boolean IsProjectCompletionDateSet { get; }
+
+        global::System.Boolean IsProjectStatusCodeSet { get; }
+
+        global::System.Boolean IsPrimaryProjectManagerEmailSet { get; }
+
+        global::System.Boolean IsSponsoredProjectSet { get; }
+
+        global::System.Boolean IsBillingEnabledSet { get; }
+
+        global::System.Boolean IsCapitalizationEnabledSet { get; }
+
+        global::System.Boolean IsTemplateProjectSet { get; }
+
+        global::System.Boolean IsLastUpdateDateTimeSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    internal interface IDateFilterInputInfo
+    {
+        global::System.Boolean IsEqSet { get; }
+
+        global::System.Boolean IsNeSet { get; }
+
+        global::System.Boolean IsLeSet { get; }
+
+        global::System.Boolean IsLtSet { get; }
+
+        global::System.Boolean IsGeSet { get; }
+
+        global::System.Boolean IsGtSet { get; }
+
+        global::System.Boolean IsBetweenSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     internal interface IScmPurchaseRequisitionRequestInputInfo
     {
         global::System.Boolean IsHeaderSet { get; }
@@ -26893,24 +27252,6 @@ namespace AggieEnterpriseApi.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    internal interface IDateFilterInputInfo
-    {
-        global::System.Boolean IsEqSet { get; }
-
-        global::System.Boolean IsNeSet { get; }
-
-        global::System.Boolean IsLeSet { get; }
-
-        global::System.Boolean IsLtSet { get; }
-
-        global::System.Boolean IsGeSet { get; }
-
-        global::System.Boolean IsGtSet { get; }
-
-        global::System.Boolean IsBetweenSet { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     internal interface IScmSupplierFilterInputInfo
     {
         global::System.Boolean IsSearchCommonSet { get; }
@@ -26924,46 +27265,6 @@ namespace AggieEnterpriseApi.State
         global::System.Boolean IsSupplierIdSet { get; }
 
         global::System.Boolean IsSupplierNumberSet { get; }
-
-        global::System.Boolean IsLastUpdateDateTimeSet { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    internal interface IPpmOrganizationFilterInputInfo
-    {
-        global::System.Boolean IsSearchCommonSet { get; }
-
-        global::System.Boolean IsCodeSet { get; }
-
-        global::System.Boolean IsNameSet { get; }
-
-        global::System.Boolean IsEnabledSet { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    internal interface IPpmProjectFilterInputInfo
-    {
-        global::System.Boolean IsSearchCommonSet { get; }
-
-        global::System.Boolean IsProjectNumberSet { get; }
-
-        global::System.Boolean IsNameSet { get; }
-
-        global::System.Boolean IsProjectStartDateSet { get; }
-
-        global::System.Boolean IsProjectCompletionDateSet { get; }
-
-        global::System.Boolean IsProjectStatusCodeSet { get; }
-
-        global::System.Boolean IsPrimaryProjectManagerEmailSet { get; }
-
-        global::System.Boolean IsSponsoredProjectSet { get; }
-
-        global::System.Boolean IsBillingEnabledSet { get; }
-
-        global::System.Boolean IsCapitalizationEnabledSet { get; }
-
-        global::System.Boolean IsTemplateProjectSet { get; }
 
         global::System.Boolean IsLastUpdateDateTimeSet { get; }
     }
@@ -27485,6 +27786,215 @@ namespace AggieEnterpriseApi.State
             }
 
             return _scmAddressLineParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _positiveIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _nonNegativeIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _erpUnitOfMeasureCodeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString25Parser;
+        public ErpUnitOfMeasureSearchBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _positiveIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("PositiveInt") ?? throw new global::System.ArgumentException("No serializer for type `PositiveInt` found.");
+            _nonNegativeIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("NonNegativeInt") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeInt` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _erpUnitOfMeasureCodeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ErpUnitOfMeasureCode") ?? throw new global::System.ArgumentException("No serializer for type `ErpUnitOfMeasureCode` found.");
+            _nonEmptyTrimmedString25Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString25") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString25` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IErpUnitOfMeasureSearchResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IErpUnitOfMeasureSearchResult Result, ErpUnitOfMeasureSearchResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IErpUnitOfMeasureSearchResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IErpUnitOfMeasureSearchResult, ErpUnitOfMeasureSearchResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new ErpUnitOfMeasureSearchResultInfo(DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "erpUnitOfMeasureSearch")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultsData DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ErpUnitOfMeasureSearchResults", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultsData(typename, metadata: DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "metadata")), data: DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_DataNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "data")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::AggieEnterpriseApi.State.SearchResultMetadataData DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Metadata(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("SearchResultMetadata", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.SearchResultMetadataData(typename, sort: DeserializeStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "sort")), limit: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "limit")), returnedResultCount: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "returnedResultCount")), startIndex: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startIndex")), nextStartIndex: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "nextStartIndex")), totalResultCount: DeserializeInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "totalResultCount")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String>? DeserializeStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Int32? DeserializeInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _positiveIntParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::System.Int32 DeserializeNonNullableInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _nonNegativeIntParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpUnitOfMeasureData> DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_DataNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var erpUnitOfMeasures = new global::System.Collections.Generic.List<global::AggieEnterpriseApi.State.ErpUnitOfMeasureData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                erpUnitOfMeasures.Add(DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data(child));
+            }
+
+            return erpUnitOfMeasures;
+        }
+
+        private global::AggieEnterpriseApi.State.ErpUnitOfMeasureData DeserializeNonNullableIErpUnitOfMeasureSearch_ErpUnitOfMeasureSearch_Data(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("ErpUnitOfMeasure", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.ErpUnitOfMeasureData(typename, uomCode: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "uomCode")), name: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), baseUOM: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "baseUOM")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _erpUnitOfMeasureCodeParser.Parse(obj.Value.GetString()!);
         }
 
         private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
@@ -28744,6 +29254,197 @@ namespace AggieEnterpriseApi.State
             }
 
             return ppmTaskNumbers;
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearchBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmProjectSearchResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmProjectSearchResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _positiveIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _nonNegativeIntParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTime> _dateParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int64, global::System.Int64> _longParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmProjectNumberParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString240Parser;
+        public PpmProjectSearchBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmProjectSearchResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _positiveIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("PositiveInt") ?? throw new global::System.ArgumentException("No serializer for type `PositiveInt` found.");
+            _nonNegativeIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("NonNegativeInt") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeInt` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _dateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTime>("Date") ?? throw new global::System.ArgumentException("No serializer for type `Date` found.");
+            _longParser = serializerResolver.GetLeafValueParser<global::System.Int64, global::System.Int64>("Long") ?? throw new global::System.ArgumentException("No serializer for type `Long` found.");
+            _ppmProjectNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmProjectNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmProjectNumber` found.");
+            _nonEmptyTrimmedString240Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString240") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString240` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IPpmProjectSearchResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IPpmProjectSearchResult Result, PpmProjectSearchResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IPpmProjectSearchResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IPpmProjectSearchResult, PpmProjectSearchResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            global::StrawberryShake.EntityId? ppmProjectByNumberId = default !;
+            global::AggieEnterpriseApi.State.PpmProjectSearchResultsData ppmProjectSearchId = default !;
+            _entityStore.Update(session =>
+            {
+                ppmProjectByNumberId = UpdateIPpmProjectSearch_PpmProjectByNumberEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "ppmProjectByNumber"), entityIds);
+                ppmProjectSearchId = DeserializeNonNullableIPpmProjectSearch_PpmProjectSearch(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "ppmProjectSearch"), entityIds);
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new PpmProjectSearchResultInfo(ppmProjectByNumberId, ppmProjectSearchId, entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::StrawberryShake.EntityId? UpdateIPpmProjectSearch_PpmProjectByNumberEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("PpmProject", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.PpmProjectEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmProjectEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "projectNumber")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmProjectEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "projectNumber")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Int64 DeserializeNonNullableInt64(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _longParser.Parse(obj.Value.GetInt64()!);
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _ppmProjectNumberParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::AggieEnterpriseApi.State.PpmProjectSearchResultsData DeserializeNonNullableIPpmProjectSearch_PpmProjectSearch(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("PpmProjectSearchResults", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::AggieEnterpriseApi.State.PpmProjectSearchResultsData(typename, data: UpdateNonNullableIPpmProjectSearch_PpmProjectSearch_DataEntityNonNullableArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "data"), entityIds));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> UpdateNonNullableIPpmProjectSearch_PpmProjectSearch_DataEntityNonNullableArray(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var ppmProjects = new global::System.Collections.Generic.List<global::StrawberryShake.EntityId>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                ppmProjects.Add(UpdateNonNullableIPpmProjectSearch_PpmProjectSearch_DataEntity(session, child, entityIds));
+            }
+
+            return ppmProjects;
+        }
+
+        private global::StrawberryShake.EntityId UpdateNonNullableIPpmProjectSearch_PpmProjectSearch_DataEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("PpmProject", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.PpmProjectEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmProjectEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "projectNumber")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmProjectEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "projectNumber")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
         }
     }
 
@@ -30018,11 +30719,11 @@ namespace AggieEnterpriseApi.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), entity.StartDateActive, entity.EndDateActive, DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), entity.LastUpdateDateTime, entity.LastUpdateUserId));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startDateActive")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "endDateActive")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), entity.LastUpdateDateTime, entity.LastUpdateUserId));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), default !, default !, DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), default !, default !));
+                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "description")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "categoryContentCode")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startDateActive")), DeserializeDateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "endDateActive")), DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "enabled")), default !, default !));
                 }
 
                 return entityId;
@@ -30059,6 +30760,16 @@ namespace AggieEnterpriseApi.State
             }
 
             return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+
+        private global::System.DateTime? DeserializeDateTime(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _dateParser.Parse(obj.Value.GetString()!);
         }
     }
 
@@ -30276,384 +30987,6 @@ namespace AggieEnterpriseApi.State
             }
 
             return _scmAddressLineParser.Parse(obj.Value.GetString()!);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationSearchBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmOrganizationSearchResult>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
-        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmOrganizationSearchResult> _resultDataFactory;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _positiveIntParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _nonNegativeIntParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int64, global::System.Int64> _longParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString100Parser;
-        public PpmOrganizationSearchBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmOrganizationSearchResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
-            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
-            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
-            _positiveIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("PositiveInt") ?? throw new global::System.ArgumentException("No serializer for type `PositiveInt` found.");
-            _nonNegativeIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("NonNegativeInt") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeInt` found.");
-            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
-            _longParser = serializerResolver.GetLeafValueParser<global::System.Int64, global::System.Int64>("Long") ?? throw new global::System.ArgumentException("No serializer for type `Long` found.");
-            _nonEmptyTrimmedString100Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString100") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString100` found.");
-        }
-
-        public global::StrawberryShake.IOperationResult<IPpmOrganizationSearchResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
-        {
-            (IPpmOrganizationSearchResult Result, PpmOrganizationSearchResultInfo Info)? data = null;
-            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
-            if (response.Exception is null)
-            {
-                try
-                {
-                    if (response.Body != null)
-                    {
-                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-                        {
-                            data = BuildData(dataElement);
-                        }
-
-                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                        {
-                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                        }
-                    }
-                }
-                catch (global::System.Exception ex)
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
-            }
-            else
-            {
-                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                {
-                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                }
-                else
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
-            }
-
-            return new global::StrawberryShake.OperationResult<IPpmOrganizationSearchResult>(data?.Result, data?.Info, _resultDataFactory, errors);
-        }
-
-        private (IPpmOrganizationSearchResult, PpmOrganizationSearchResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
-        {
-            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
-            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
-            global::StrawberryShake.EntityId? ppmOrganizationId = default !;
-            global::AggieEnterpriseApi.State.PpmOrganizationSearchResultsData ppmOrganizationSearchId = default !;
-            _entityStore.Update(session =>
-            {
-                ppmOrganizationId = UpdateIPpmOrganizationSearch_PpmOrganizationEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "ppmOrganization"), entityIds);
-                ppmOrganizationSearchId = DeserializeNonNullableIPpmOrganizationSearch_PpmOrganizationSearch(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "ppmOrganizationSearch"), entityIds);
-                snapshot = session.CurrentSnapshot;
-            });
-            var resultInfo = new PpmOrganizationSearchResultInfo(ppmOrganizationId, ppmOrganizationSearchId, entityIds, snapshot.Version);
-            return (_resultDataFactory.Create(resultInfo), resultInfo);
-        }
-
-        private global::StrawberryShake.EntityId? UpdateIPpmOrganizationSearch_PpmOrganizationEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
-            entityIds.Add(entityId);
-            if (entityId.Name.Equals("PpmOrganization", global::System.StringComparison.Ordinal))
-            {
-                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.PpmOrganizationEntity? entity))
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmOrganizationEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-                else
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmOrganizationEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-
-                return entityId;
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Int64 DeserializeNonNullableInt64(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _longParser.Parse(obj.Value.GetInt64()!);
-        }
-
-        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _stringParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::AggieEnterpriseApi.State.PpmOrganizationSearchResultsData DeserializeNonNullableIPpmOrganizationSearch_PpmOrganizationSearch(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("PpmOrganizationSearchResults", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.PpmOrganizationSearchResultsData(typename, data: UpdateNonNullableIPpmOrganizationSearch_PpmOrganizationSearch_DataEntityNonNullableArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "data"), entityIds));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> UpdateNonNullableIPpmOrganizationSearch_PpmOrganizationSearch_DataEntityNonNullableArray(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var ppmOrganizations = new global::System.Collections.Generic.List<global::StrawberryShake.EntityId>();
-            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
-            {
-                ppmOrganizations.Add(UpdateNonNullableIPpmOrganizationSearch_PpmOrganizationSearch_DataEntity(session, child, entityIds));
-            }
-
-            return ppmOrganizations;
-        }
-
-        private global::StrawberryShake.EntityId UpdateNonNullableIPpmOrganizationSearch_PpmOrganizationSearch_DataEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
-            entityIds.Add(entityId);
-            if (entityId.Name.Equals("PpmOrganization", global::System.StringComparison.Ordinal))
-            {
-                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.PpmOrganizationEntity? entity))
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmOrganizationEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-                else
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmOrganizationEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "code")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-
-                return entityId;
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectSearchBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmProjectSearchResult>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
-        private readonly global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmProjectSearchResult> _resultDataFactory;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _positiveIntParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _nonNegativeIntParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTime> _dateParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int64, global::System.Int64> _longParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _ppmProjectNumberParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _nonEmptyTrimmedString240Parser;
-        public PpmProjectSearchBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmProjectSearchResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
-            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
-            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
-            _positiveIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("PositiveInt") ?? throw new global::System.ArgumentException("No serializer for type `PositiveInt` found.");
-            _nonNegativeIntParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("NonNegativeInt") ?? throw new global::System.ArgumentException("No serializer for type `NonNegativeInt` found.");
-            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
-            _dateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTime>("Date") ?? throw new global::System.ArgumentException("No serializer for type `Date` found.");
-            _longParser = serializerResolver.GetLeafValueParser<global::System.Int64, global::System.Int64>("Long") ?? throw new global::System.ArgumentException("No serializer for type `Long` found.");
-            _ppmProjectNumberParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("PpmProjectNumber") ?? throw new global::System.ArgumentException("No serializer for type `PpmProjectNumber` found.");
-            _nonEmptyTrimmedString240Parser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("NonEmptyTrimmedString240") ?? throw new global::System.ArgumentException("No serializer for type `NonEmptyTrimmedString240` found.");
-        }
-
-        public global::StrawberryShake.IOperationResult<IPpmProjectSearchResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
-        {
-            (IPpmProjectSearchResult Result, PpmProjectSearchResultInfo Info)? data = null;
-            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
-            if (response.Exception is null)
-            {
-                try
-                {
-                    if (response.Body != null)
-                    {
-                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-                        {
-                            data = BuildData(dataElement);
-                        }
-
-                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                        {
-                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                        }
-                    }
-                }
-                catch (global::System.Exception ex)
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
-            }
-            else
-            {
-                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                {
-                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                }
-                else
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
-            }
-
-            return new global::StrawberryShake.OperationResult<IPpmProjectSearchResult>(data?.Result, data?.Info, _resultDataFactory, errors);
-        }
-
-        private (IPpmProjectSearchResult, PpmProjectSearchResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
-        {
-            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
-            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
-            global::StrawberryShake.EntityId? ppmProjectByNumberId = default !;
-            global::AggieEnterpriseApi.State.PpmProjectSearchResultsData ppmProjectSearchId = default !;
-            _entityStore.Update(session =>
-            {
-                ppmProjectByNumberId = UpdateIPpmProjectSearch_PpmProjectByNumberEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "ppmProjectByNumber"), entityIds);
-                ppmProjectSearchId = DeserializeNonNullableIPpmProjectSearch_PpmProjectSearch(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "ppmProjectSearch"), entityIds);
-                snapshot = session.CurrentSnapshot;
-            });
-            var resultInfo = new PpmProjectSearchResultInfo(ppmProjectByNumberId, ppmProjectSearchId, entityIds, snapshot.Version);
-            return (_resultDataFactory.Create(resultInfo), resultInfo);
-        }
-
-        private global::StrawberryShake.EntityId? UpdateIPpmProjectSearch_PpmProjectByNumberEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
-            entityIds.Add(entityId);
-            if (entityId.Name.Equals("PpmProject", global::System.StringComparison.Ordinal))
-            {
-                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.PpmProjectEntity? entity))
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmProjectEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "projectNumber")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-                else
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmProjectEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "projectNumber")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-
-                return entityId;
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Int64 DeserializeNonNullableInt64(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _longParser.Parse(obj.Value.GetInt64()!);
-        }
-
-        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _ppmProjectNumberParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::AggieEnterpriseApi.State.PpmProjectSearchResultsData DeserializeNonNullableIPpmProjectSearch_PpmProjectSearch(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("PpmProjectSearchResults", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::AggieEnterpriseApi.State.PpmProjectSearchResultsData(typename, data: UpdateNonNullableIPpmProjectSearch_PpmProjectSearch_DataEntityNonNullableArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "data"), entityIds));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> UpdateNonNullableIPpmProjectSearch_PpmProjectSearch_DataEntityNonNullableArray(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var ppmProjects = new global::System.Collections.Generic.List<global::StrawberryShake.EntityId>();
-            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
-            {
-                ppmProjects.Add(UpdateNonNullableIPpmProjectSearch_PpmProjectSearch_DataEntity(session, child, entityIds));
-            }
-
-            return ppmProjects;
-        }
-
-        private global::StrawberryShake.EntityId UpdateNonNullableIPpmProjectSearch_PpmProjectSearch_DataEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
-            entityIds.Add(entityId);
-            if (entityId.Name.Equals("PpmProject", global::System.StringComparison.Ordinal))
-            {
-                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::AggieEnterpriseApi.State.PpmProjectEntity? entity))
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmProjectEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "projectNumber")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-                else
-                {
-                    session.SetEntity(entityId, new global::AggieEnterpriseApi.State.PpmProjectEntity(DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "projectNumber")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name"))));
-                }
-
-                return entityId;
-            }
-
-            throw new global::System.NotSupportedException();
         }
     }
 
@@ -31331,6 +31664,49 @@ namespace AggieEnterpriseApi.State
         public global::System.Boolean? Enabled { get; }
     }
 
+    ///<summary>Wrapper object for search results for ErpUnitOfMeasure</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureSearchResultsData
+    {
+        public ErpUnitOfMeasureSearchResultsData(global::System.String __typename, global::AggieEnterpriseApi.State.SearchResultMetadataData? metadata = default !, global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpUnitOfMeasureData>? data = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            Metadata = metadata;
+            Data = data;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Information about the search results returned.</summary>
+        public global::AggieEnterpriseApi.State.SearchResultMetadataData? Metadata { get; }
+
+        ///<summary>Results of the search</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::AggieEnterpriseApi.State.ErpUnitOfMeasureData>? Data { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class ErpUnitOfMeasureData
+    {
+        public ErpUnitOfMeasureData(global::System.String __typename, global::System.String? uomCode = default !, global::System.String? name = default !, global::System.Boolean? baseUOM = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            UomCode = uomCode;
+            Name = name;
+            BaseUOM = baseUOM;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Unique short code assigned to a Unit of Measure (UOM)</summary>
+        public global::System.String? UomCode { get; }
+
+        ///<summary>Translatable Unit of Measure (UOM) name</summary>
+        public global::System.String? Name { get; }
+
+        ///<summary>Base Unit of Measure (UOM) flag.</summary>
+        public global::System.Boolean? BaseUOM { get; }
+    }
+
     ///<summary>Output type for GLJournal requests and follow-up status updates.Contains the overall request status.  After a successful creation of the journal, will also contain the Oracle Financials assigned journal ID.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class GlJournalRequestStatusOutputData
@@ -31544,6 +31920,22 @@ namespace AggieEnterpriseApi.State
         public global::System.String? FundingSource { get; }
     }
 
+    ///<summary>Wrapper object for search results for PpmProject</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
+    public partial class PpmProjectSearchResultsData
+    {
+        public PpmProjectSearchResultsData(global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? data = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            Data = data;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>Results of the search</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? Data { get; }
+    }
+
     ///<summary>Return data structure when validating a set of PPM segment values.The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.The operation will complete any missing segments with their defaults and return them populated in the "segments" property.  This property is structured such that they could be included as accounting line or distribution data in other operations.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
     public partial class PpmSegmentsValidateOutputData
@@ -31702,38 +32094,6 @@ namespace AggieEnterpriseApi.State
 
         ///<summary>Postal code of the supplier address</summary>
         public global::System.String? PostalCode { get; }
-    }
-
-    ///<summary>Wrapper object for search results for PpmOrganization</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmOrganizationSearchResultsData
-    {
-        public PpmOrganizationSearchResultsData(global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? data = default !)
-        {
-            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
-            Data = data;
-        }
-
-        public global::System.String __typename { get; }
-
-        ///<summary>Results of the search</summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? Data { get; }
-    }
-
-    ///<summary>Wrapper object for search results for PpmProject</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.11.1.0")]
-    public partial class PpmProjectSearchResultsData
-    {
-        public PpmProjectSearchResultsData(global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? data = default !)
-        {
-            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
-            Data = data;
-        }
-
-        public global::System.String __typename { get; }
-
-        ///<summary>Results of the search</summary>
-        public global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? Data { get; }
     }
 
     ///<summary>Return data structure when validating a set of GL segment values.The "result" property will contain the overall validation result and any error messages encountered during validation.  If any errors occur during data parsing (formats/required values), that will be returned as a GraphQL error per the specification in a top-level "errors" property.The operation will complete any missing segments with their defaults and return them populated in the "segments" property as well as the "completeChartstring" property.  Both of these are structured such that (if all properties requested) they could be included as accounting line or distribution data in other operations.</summary>
@@ -31909,10 +32269,9 @@ namespace AggieEnterpriseApi.State
                 "ErpEntity" => ParseErpEntityEntityId(obj, __typename),
                 "ErpAccount" => ParseErpAccountEntityId(obj, __typename),
                 "ErpPurpose" => ParseErpPurposeEntityId(obj, __typename),
+                "PpmProject" => ParsePpmProjectEntityId(obj, __typename),
                 "PpmTask" => ParsePpmTaskEntityId(obj, __typename),
                 "ScmPurchasingCategory" => ParseScmPurchasingCategoryEntityId(obj, __typename),
-                "PpmOrganization" => ParsePpmOrganizationEntityId(obj, __typename),
-                "PpmProject" => ParsePpmProjectEntityId(obj, __typename),
                 _ => throw new global::System.NotSupportedException()};
         }
 
@@ -31925,10 +32284,9 @@ namespace AggieEnterpriseApi.State
                 "ErpEntity" => FormatErpEntityEntityId(entityId),
                 "ErpAccount" => FormatErpAccountEntityId(entityId),
                 "ErpPurpose" => FormatErpPurposeEntityId(entityId),
+                "PpmProject" => FormatPpmProjectEntityId(entityId),
                 "PpmTask" => FormatPpmTaskEntityId(entityId),
                 "ScmPurchasingCategory" => FormatScmPurchasingCategoryEntityId(entityId),
-                "PpmOrganization" => FormatPpmOrganizationEntityId(entityId),
-                "PpmProject" => FormatPpmProjectEntityId(entityId),
                 _ => throw new global::System.NotSupportedException()};
         }
 
@@ -32017,6 +32375,23 @@ namespace AggieEnterpriseApi.State
             return global::System.Text.Encoding.UTF8.GetString(writer.GetInternalBuffer(), 0, writer.Length);
         }
 
+        private global::StrawberryShake.EntityId ParsePpmProjectEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
+        {
+            return new global::StrawberryShake.EntityId(type, obj.GetProperty("id").GetInt64()!);
+        }
+
+        private global::System.String FormatPpmProjectEntityId(global::StrawberryShake.EntityId entityId)
+        {
+            using var writer = new global::StrawberryShake.Internal.ArrayWriter();
+            using var jsonWriter = new global::System.Text.Json.Utf8JsonWriter(writer, _options);
+            jsonWriter.WriteStartObject();
+            jsonWriter.WriteString("__typename", entityId.Name);
+            jsonWriter.WriteNumber("id", (global::System.Int64)entityId.Value);
+            jsonWriter.WriteEndObject();
+            jsonWriter.Flush();
+            return global::System.Text.Encoding.UTF8.GetString(writer.GetInternalBuffer(), 0, writer.Length);
+        }
+
         private global::StrawberryShake.EntityId ParsePpmTaskEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
         {
             return new global::StrawberryShake.EntityId(type, obj.GetProperty("id").GetInt64()!);
@@ -32040,40 +32415,6 @@ namespace AggieEnterpriseApi.State
         }
 
         private global::System.String FormatScmPurchasingCategoryEntityId(global::StrawberryShake.EntityId entityId)
-        {
-            using var writer = new global::StrawberryShake.Internal.ArrayWriter();
-            using var jsonWriter = new global::System.Text.Json.Utf8JsonWriter(writer, _options);
-            jsonWriter.WriteStartObject();
-            jsonWriter.WriteString("__typename", entityId.Name);
-            jsonWriter.WriteNumber("id", (global::System.Int64)entityId.Value);
-            jsonWriter.WriteEndObject();
-            jsonWriter.Flush();
-            return global::System.Text.Encoding.UTF8.GetString(writer.GetInternalBuffer(), 0, writer.Length);
-        }
-
-        private global::StrawberryShake.EntityId ParsePpmOrganizationEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
-        {
-            return new global::StrawberryShake.EntityId(type, obj.GetProperty("id").GetInt64()!);
-        }
-
-        private global::System.String FormatPpmOrganizationEntityId(global::StrawberryShake.EntityId entityId)
-        {
-            using var writer = new global::StrawberryShake.Internal.ArrayWriter();
-            using var jsonWriter = new global::System.Text.Json.Utf8JsonWriter(writer, _options);
-            jsonWriter.WriteStartObject();
-            jsonWriter.WriteString("__typename", entityId.Name);
-            jsonWriter.WriteNumber("id", (global::System.Int64)entityId.Value);
-            jsonWriter.WriteEndObject();
-            jsonWriter.Flush();
-            return global::System.Text.Encoding.UTF8.GetString(writer.GetInternalBuffer(), 0, writer.Length);
-        }
-
-        private global::StrawberryShake.EntityId ParsePpmProjectEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
-        {
-            return new global::StrawberryShake.EntityId(type, obj.GetProperty("id").GetInt64()!);
-        }
-
-        private global::System.String FormatPpmProjectEntityId(global::StrawberryShake.EntityId entityId)
         {
             using var writer = new global::StrawberryShake.Internal.ArrayWriter();
             using var jsonWriter = new global::System.Text.Json.Utf8JsonWriter(writer, _options);
@@ -32111,11 +32452,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::AggieEnterpriseApi.State.AggieEnterpriseClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.DeptParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpUnitOfMeasureSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.FundParentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlJournalRequestStatusQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.CoaDetailsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.KfsConvertAccountQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmProjectSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmStringSegmentsValidateQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmSegmentsValidateQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmTaskByProjectNumberAndTaskNumberQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -32124,8 +32467,6 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmPurchasingCategoryByCodeQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmPurchasingCategorySearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmSupplierSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmOrganizationSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmProjectSearchQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartSegmentsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.GlValidateChartstringQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.AggieEnterpriseClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -32163,13 +32504,11 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpFinancialDepartmentEntity, global::AggieEnterpriseApi.CoaDetails_ErpFinancialDepartment_ErpFinancialDepartment>, global::AggieEnterpriseApi.State.CoaDetails_ErpFinancialDepartment_ErpFinancialDepartmentFromErpFinancialDepartmentEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpAccountEntity, global::AggieEnterpriseApi.CoaDetails_ErpAccount_ErpAccount>, global::AggieEnterpriseApi.State.CoaDetails_ErpAccount_ErpAccountFromErpAccountEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ErpPurposeEntity, global::AggieEnterpriseApi.CoaDetails_ErpPurpose_ErpPurpose>, global::AggieEnterpriseApi.State.CoaDetails_ErpPurpose_ErpPurposeFromErpPurposeEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, global::AggieEnterpriseApi.PpmProjectSearch_PpmProjectByNumber_PpmProject>, global::AggieEnterpriseApi.State.PpmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, global::AggieEnterpriseApi.PpmProjectSearch_PpmProjectSearch_Data_PpmProject>, global::AggieEnterpriseApi.State.PpmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmTaskEntity, global::AggieEnterpriseApi.PpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber_PpmTask>, global::AggieEnterpriseApi.State.PpmTaskByProjectNumberAndTaskNumber_PpmTaskByProjectNumberAndTaskNumber_PpmTaskFromPpmTaskEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity, global::AggieEnterpriseApi.ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategory>, global::AggieEnterpriseApi.State.ScmPurchasingCategoryByCode_ScmPurchasingCategoryByCode_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.ScmPurchasingCategoryEntity, global::AggieEnterpriseApi.ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategory>, global::AggieEnterpriseApi.State.ScmPurchasingCategorySearch_ScmPurchasingCategorySearch_Data_ScmPurchasingCategoryFromScmPurchasingCategoryEntityMapper>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmOrganizationEntity, global::AggieEnterpriseApi.PpmOrganizationSearch_PpmOrganization_PpmOrganization>, global::AggieEnterpriseApi.State.PpmOrganizationSearch_PpmOrganization_PpmOrganizationFromPpmOrganizationEntityMapper>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmOrganizationEntity, global::AggieEnterpriseApi.PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganization>, global::AggieEnterpriseApi.State.PpmOrganizationSearch_PpmOrganizationSearch_Data_PpmOrganizationFromPpmOrganizationEntityMapper>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, global::AggieEnterpriseApi.PpmProjectSearch_PpmProjectByNumber_PpmProject>, global::AggieEnterpriseApi.State.PpmProjectSearch_PpmProjectByNumber_PpmProjectFromPpmProjectEntityMapper>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::AggieEnterpriseApi.State.PpmProjectEntity, global::AggieEnterpriseApi.PpmProjectSearch_PpmProjectSearch_Data_PpmProject>, global::AggieEnterpriseApi.State.PpmProjectSearch_PpmProjectSearch_Data_PpmProjectFromPpmProjectEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.RequestStatusSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.StringSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.BooleanSerializer>(services);
@@ -32193,6 +32532,8 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("CityName"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString60"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpPostalCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpUnitOfMeasureCode"));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString25"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpFundCode"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("LocalDate"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString80"));
@@ -32226,13 +32567,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString30"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("EmailAddress"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString1000"));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString25"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ErpUserId"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("NonEmptyTrimmedString360"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ErpInstitutionLocationFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.SearchCommonInputsInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.StringFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.BooleanFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ErpUnitOfMeasureFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalRequestInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ActionRequestHeaderInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlJournalInputInputValueFormatter>(services);
@@ -32240,15 +32581,14 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlSegmentInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.PpmSegmentInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.GlideInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.PpmProjectFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.DateFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionRequestInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionLineInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchaseRequisitionDistributionInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmPurchasingCategoryFilterInputInputValueFormatter>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.DateFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.ScmSupplierFilterInputInputValueFormatter>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.PpmOrganizationFilterInputInputValueFormatter>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::AggieEnterpriseApi.PpmProjectFilterInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>, global::AggieEnterpriseApi.State.DeptParentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IDeptParentsResult>>(sp));
@@ -32264,6 +32604,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpInstitutionLocationSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IErpInstitutionLocationSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpInstitutionLocationSearchQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>, global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>, global::AggieEnterpriseApi.State.ErpUnitOfMeasureSearchBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IErpUnitOfMeasureSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ErpUnitOfMeasureSearchQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IErpUnitOfMeasureSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ErpUnitOfMeasureSearchQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IFundParentsResult>, global::AggieEnterpriseApi.State.FundParentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IFundParentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IFundParentsQuery>(sp));
@@ -32299,6 +32646,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IKfsConvertAccountResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IKfsConvertAccountResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IKfsConvertAccountResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.KfsConvertAccountQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IKfsConvertAccountQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.KfsConvertAccountQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmProjectSearchResult>, global::AggieEnterpriseApi.State.PpmProjectSearchResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmProjectSearchResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IPpmProjectSearchQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmProjectSearchResult>, global::AggieEnterpriseApi.State.PpmProjectSearchBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IPpmProjectSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmProjectSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmProjectSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.PpmProjectSearchQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IPpmProjectSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmProjectSearchQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmStringSegmentsValidateResult>, global::AggieEnterpriseApi.State.PpmStringSegmentsValidateResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmStringSegmentsValidateResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IPpmStringSegmentsValidateQuery>(sp));
@@ -32355,20 +32709,6 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IScmSupplierSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmSupplierSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IScmSupplierSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.ScmSupplierSearchQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IScmSupplierSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.ScmSupplierSearchQuery>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmOrganizationSearchResult>, global::AggieEnterpriseApi.State.PpmOrganizationSearchResultFactory>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmOrganizationSearchResult>>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IPpmOrganizationSearchQuery>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmOrganizationSearchResult>, global::AggieEnterpriseApi.State.PpmOrganizationSearchBuilder>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IPpmOrganizationSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmOrganizationSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmOrganizationSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.PpmOrganizationSearchQuery>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IPpmOrganizationSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmOrganizationSearchQuery>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmProjectSearchResult>, global::AggieEnterpriseApi.State.PpmProjectSearchResultFactory>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IPpmProjectSearchResult>>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IPpmProjectSearchQuery>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmProjectSearchResult>, global::AggieEnterpriseApi.State.PpmProjectSearchBuilder>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::AggieEnterpriseApi.IPpmProjectSearchResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmProjectSearchResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::AggieEnterpriseApi.IPpmProjectSearchResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.PpmProjectSearchQuery>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::AggieEnterpriseApi.IPpmProjectSearchQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.PpmProjectSearchQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>, global::AggieEnterpriseApi.State.GlValidateChartSegmentsResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::AggieEnterpriseApi.IGlValidateChartSegmentsResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::AggieEnterpriseApi.IGlValidateChartSegmentsQuery>(sp));
