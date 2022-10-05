@@ -1,0 +1,14 @@
+query PpmOrganizationSearch($filter: PpmOrganizationFilterInput!, $code: String!) {
+        ppmOrganization(code: $code) {
+          id
+           code
+          name
+      }
+      ppmOrganizationSearch(filter: $filter) {
+        data {
+          id
+          code
+          name
+        }
+      }
+    }

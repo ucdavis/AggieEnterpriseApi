@@ -23,6 +23,9 @@
     <GraphQL Update="Queries\ValidateChartString.graphql">
       <Generator>MSBuild:Compile</Generator>
     </GraphQL>
+    <GraphQL Update="Queries\Segment\PpmProjectSearch.graphql">
+      <Generator>MSBuild:Compile</Generator>
+    </GraphQL>
   </ItemGroup>
 
 </Project>
