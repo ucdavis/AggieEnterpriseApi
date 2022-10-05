@@ -1,0 +1,11 @@
+query PpmTaskSearch($filter: PpmTaskFilterInput!) {
+      # query projects by filter -- need projectId to properly filter
+      ppmTaskSearch(filter: $filter) {
+        data {
+          id
+          taskNumber
+          projectId
+          name
+        }
+      }
+    }
