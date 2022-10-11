@@ -131,9 +131,102 @@ public class PrePurchasingTests : TestBase
         address.SupplierSiteCode.ShouldBe("PUR-4");
     }
 
-    
-    
-    
+    [Fact]
+    public async Task SearchVendor1()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var filter = new ScmSupplierFilterInput { Name = new StringFilterInput{ Contains = "Fisher"} };
+        var result = await client.SupplierNameAndNumberSupplierSearch.ExecuteAsync(filter, "426"); 
+
+        var data = result.ReadData();
+        data.ShouldNotBeNull();
+        data.ScmSupplierByNumber.ShouldNotBeNull();
+        data.ScmSupplierByNumber.Name.ShouldBe("FISHER SCIENTIFIC COMPANY LLC");
+        data.ScmSupplierByNumber.SupplierNumber.ShouldBe(426);
+
+        data.ScmSupplierSearch.ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.ShouldNotBeNull();
+        //data.ScmSupplierSearch.Data.Count().ShouldBe(15); //Can expect this to change when the data changes
+        data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == 426).FirstOrDefault().ShouldNotBeNull();
+    }
+
+    [Fact]
+    public async Task SearchVendor2()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var filter = new ScmSupplierFilterInput { Name = new StringFilterInput { Contains = "FISHER SCIENTIFIC COMPANY LLC" } };
+        var result = await client.SupplierNameAndNumberSupplierSearch.ExecuteAsync(filter, "426");
+
+        var data = result.ReadData();
+        data.ShouldNotBeNull();
+        data.ScmSupplierByNumber.ShouldNotBeNull();
+        data.ScmSupplierByNumber.Name.ShouldBe("FISHER SCIENTIFIC COMPANY LLC");
+        data.ScmSupplierByNumber.SupplierNumber.ShouldBe(426);
+
+        data.ScmSupplierSearch.ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.Count().ShouldBe(1);
+        data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == 426).FirstOrDefault().ShouldNotBeNull();
+    }
+
+    [Fact]
+    public async Task SearchVendor3()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var filter = new ScmSupplierFilterInput { Name = new StringFilterInput { Contains = "FISHER SCIENTIFIC COMPANY LLC" } };
+        var result = await client.SupplierNameAndNumberSupplierSearch.ExecuteAsync(filter, "FISHER SCIENTIFIC COMPANY LLC");
+
+        var data = result.ReadData();
+        data.ShouldNotBeNull();
+        data.ScmSupplierByNumber.ShouldBeNull();
+        //data.ScmSupplierByNumber.Name.ShouldBe("FISHER SCIENTIFIC COMPANY LLC");
+        //data.ScmSupplierByNumber.SupplierNumber.ShouldBe(426);
+
+        data.ScmSupplierSearch.ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.Count().ShouldBe(1);
+        data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == 426).FirstOrDefault().ShouldNotBeNull();
+    }
+
+    [Fact]
+    public async Task SearchVendor4()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var filter = new ScmSupplierFilterInput { Name = new StringFilterInput { Contains = "426" } };
+        var result = await client.SupplierNameAndNumberSupplierSearch.ExecuteAsync(filter, "426");
+
+        var data = result.ReadData();
+        data.ShouldNotBeNull();
+        data.ScmSupplierByNumber.ShouldNotBeNull();
+        data.ScmSupplierByNumber.Name.ShouldBe("FISHER SCIENTIFIC COMPANY LLC");
+        data.ScmSupplierByNumber.SupplierNumber.ShouldBe(426);
+
+        data.ScmSupplierSearch.ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.Count().ShouldBe(0);
+        //data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == 426).FirstOrDefault().ShouldNotBeNull();
+    }
+
+    [Fact]
+    public async Task SearchVendor5()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var filter = new ScmSupplierFilterInput { Name = new StringFilterInput { Contains = "No Match" } };
+        var result = await client.SupplierNameAndNumberSupplierSearch.ExecuteAsync(filter, "No Match");
+
+        var data = result.ReadData();
+        data.ShouldNotBeNull();
+        data.ScmSupplierByNumber.ShouldBeNull();
+        //data.ScmSupplierByNumber.Name.ShouldBe("FISHER SCIENTIFIC COMPANY LLC");
+        //data.ScmSupplierByNumber.SupplierNumber.ShouldBe(426);
+
+        data.ScmSupplierSearch.ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.Count().ShouldBe(0);
+        //data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == 426).FirstOrDefault().ShouldNotBeNull();
+    }
+
+
     [Fact]
     public async Task CreateRequsition()
     {
