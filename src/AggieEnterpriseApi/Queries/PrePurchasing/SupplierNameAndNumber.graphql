@@ -1,0 +1,18 @@
+query SupplierNameAndNumberSupplierSearch($filter: ScmSupplierFilterInput!, $supplierNumber: String!) 
+{
+  #Get the supplier/Vendor by the supplier number (Same as KFS Vendor Id from conversion)
+  scmSupplierByNumber(supplierNumber: $supplierNumber) 
+  {
+    name
+    supplierNumber
+  }
+  #Search the supplier by the name
+  scmSupplierSearch(filter: $filter) 
+  {
+    data 
+    {
+      name
+      supplierNumber
+    }
+  }
+}
