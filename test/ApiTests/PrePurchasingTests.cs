@@ -129,6 +129,7 @@ public class PrePurchasingTests : TestBase
         var address = data.ScmSupplierSearch.Data.First().Sites.Where(a => a.Location?.City == "ROUND ROCK" && a.Location?.AddressLine2 == "ONE DELL WAY" && a.Location?.State == "TX").FirstOrDefault();
         address.ShouldNotBeNull();
         address.SupplierSiteCode.ShouldBe("PUR-4");
+        address.Location?.CountryCode.ShouldBe("US");
     }
 
     [Fact]
@@ -167,6 +168,7 @@ public class PrePurchasingTests : TestBase
         data.ScmSupplierSearch.Data.ShouldNotBeNull();
         data.ScmSupplierSearch.Data.Count().ShouldBe(1);
         data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == 426).FirstOrDefault().ShouldNotBeNull();
+
     }
 
     [Fact]
