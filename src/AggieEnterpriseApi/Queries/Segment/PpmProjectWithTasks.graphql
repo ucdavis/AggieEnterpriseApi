@@ -1,0 +1,13 @@
+query PpmProjectWithTasks($projectNumber: String!) {
+      # pull single project back by number
+      ppmProjectByNumber(projectNumber: $projectNumber) {
+          id
+          projectNumber
+          name
+          tasks {
+              id
+              taskNumber
+              name
+          }
+      }
+    }
