@@ -45,6 +45,23 @@ public class SearchTests : TestBase
     }
     
     [Fact]
+    public async Task FindPpmSegmentNames()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var result = await client.PpmSegmentsToNames.ExecuteAsync("K30APSD227", "K30APSD227", "TASK01", "APLS002", "770000", "000000", "000000");
+        
+        // var data = result.ReadData();
+        var data = result.Data; // can't call read data because API currently errors erroneously
+
+        data.ShouldNotBeNull();
+        data.PpmProjectByNumber?.Name.ShouldContain("LUNDY");
+        data.PpmTaskByProjectNumberAndTaskNumber?.Name.ShouldBe("TASK01");
+        data.PpmOrganization?.Name.ShouldBe("APLS002 - PLS Faculty Resources");
+        data.PpmExpenditureTypeByCode?.Name.ShouldBe("770000 - Facilities And Equipment Maintenace Services");
+    }
+    
+    [Fact]
     public async Task SearchPpmOrg()
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
