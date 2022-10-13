@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using AggieEnterpriseApi;
 using AggieEnterpriseApi.Extensions;
 using ApiTests.Setup;
+using Shouldly;
 using Xunit;
 
 namespace ApiTests;
@@ -24,6 +25,23 @@ public class SearchTests : TestBase
         Assert.Contains("TRAILER ALT", data.PpmProjectByNumber?.Name ?? string.Empty);
         
         Assert.NotEmpty(data.PpmProjectSearch.Data);
+    }
+    
+    [Fact]
+    public async Task FindPpmProjectWithTasks()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var filter = new PpmProjectFilterInput { Name = new StringFilterInput { Contains = "annual" } };
+        var result = await client.PpmProjectWithTasks.ExecuteAsync("K309872537");
+        
+        var data = result.ReadData();
+
+        Assert.NotNull(data);
+        Assert.NotNull(data.PpmProjectByNumber);
+        Assert.Contains("Circilla", data.PpmProjectByNumber?.Name ?? string.Empty);
+        
+        data.PpmProjectByNumber?.Tasks.ShouldNotBeEmpty();
     }
     
     [Fact]
