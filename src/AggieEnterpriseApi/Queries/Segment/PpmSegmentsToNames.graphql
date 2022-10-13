@@ -1,0 +1,32 @@
+query ppmSegmentsToNames($project: String!, $projectNumber: PpmProjectNumber!, $task: PpmTaskNumber!, $organization: String!, $expenditureType: String!, $award: String!, $fundingSource: String!) { 
+    ppmProjectByNumber(projectNumber: $project) {
+        id
+        projectNumber
+        name
+    }
+    ppmTaskByProjectNumberAndTaskNumber(projectNumber: $projectNumber, taskNumber: $task) {
+        id
+        taskNumber
+        name
+    }
+    ppmOrganization(code: $organization) {
+        id
+        code
+        name
+    }
+    ppmExpenditureTypeByCode(code: $expenditureType) {
+        id
+        code
+        name
+    }
+    ppmAwardByNumber(number: $award) {
+        id
+        awardNumber
+        name
+    }
+    ppmFundingSourceByNumber(fundingSourceNumber: $fundingSource) {
+        id
+        fundingSourceNumber
+        name
+    }
+}
