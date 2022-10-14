@@ -15,7 +15,7 @@ public class PpmSegments
     public PpmSegments(IKfsConvertAccount_KfsConvertAccount_PpmSegments segments)
     {
         Project = segments.Project;
-        Task = segments.Task.FirstOrDefault() ?? "TASK01";
+        Task = segments.Task ?? "TASK01";
         Organization = segments.Organization;
         ExpenditureType = "000000";
         Award = segments.Award;
