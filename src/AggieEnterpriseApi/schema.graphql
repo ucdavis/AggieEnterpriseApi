@@ -288,7 +288,7 @@ input ArInvoiceLineInput {
   customerOrderedQuantity: NonNegativeFloat
   unitSellingPrice: NonNegativeFloat
   unitStandardPrice: NonNegativeFloat
-  distributions: [ArInvoiceDistributionInput!]!
+  distributions: [ArInvoiceDistributionInput!]
 }
 
 """Request object for submitting an AR Invoice to Oracle Financials."""
@@ -1942,10 +1942,10 @@ type GlCostCenterSegments {
   entity: ErpEntityCode!
   fund: ErpFundCode!
   department: ErpDepartmentCode!
-  purpose: ErpPurposeCode
-  project: ErpProjectCode
-  program: ErpProgramCode
-  activity: ErpActivityCode
+  purpose: ErpPurposeCode!
+  project: ErpProjectCode!
+  program: ErpProgramCode!
+  activity: ErpActivityCode!
 }
 
 """
@@ -2910,9 +2910,9 @@ Cost-center components of the POET Segments which can be derived from the KFS Ch
 type PpmCostCenterSegments {
   project: PpmProjectNumber!
   organization: PpmExpenseOrganizationCode!
-  task: [PpmTaskNumber!]!
-  award: PpmAwardNumber
-  fundingSource: PpmFundingSourceNumber
+  task: PpmTaskNumber!
+  award: PpmAwardNumber @deprecated(reason: "Not available in conversion data.")
+  fundingSource: PpmFundingSourceNumber @deprecated(reason: "Not available in conversion data.")
 }
 
 """

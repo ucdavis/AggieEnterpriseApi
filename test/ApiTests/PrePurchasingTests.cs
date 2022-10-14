@@ -32,6 +32,19 @@ public class PrePurchasingTests : TestBase
     }
 
     [Fact]
+    public async Task ConvertKfsToCoaPpm()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var result = await client.KfsConvertAccount.ExecuteAsync("3", "FRMRATE", null);
+        var data = result.ReadData();
+        data.KfsConvertAccount.ShouldNotBeNull();
+        data.KfsConvertAccount.MappingFound.ShouldBeTrue();
+        data.KfsConvertAccount.PpmSegments.ShouldNotBeNull();
+        data.KfsConvertAccount.GlSegments.ShouldBeNull();
+    }
+
+    [Fact]
     public async Task SearchLocation()
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
