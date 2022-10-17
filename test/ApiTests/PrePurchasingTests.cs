@@ -45,7 +45,7 @@ public class PrePurchasingTests : TestBase
     }
 
     [Fact]
-    public async Task SearchLocation()
+    public async Task SearchLocation1()
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
@@ -55,15 +55,39 @@ public class PrePurchasingTests : TestBase
         
         searchParms.LocationCode = new StringFilterInput { Contains = "Mrak%38" };
 
-        var result = await client.ErpInstitutionLocationSearch.ExecuteAsync(searchParms);
+        var result = await client.ErpInstitutionLocationSearch.ExecuteAsync(searchParms, "Mrak%38");
         var data = result.ReadData();
         data.ErpInstitutionLocationSearch.ShouldNotBeNull();
         data.ErpInstitutionLocationSearch.Metadata.ShouldNotBeNull();
         data.ErpInstitutionLocationSearch.Metadata.TotalResultCount.ShouldBe(2);
 
-        data.ErpInstitutionLocationSearch.Data[1].LocationId.ShouldBe(300000008957706);
         data.ErpInstitutionLocationSearch.Data[1].LocationCode.ShouldBe("Mrak Hall, Room 38");
 
+        data.ErpInstitutionLocationByCode.ShouldBeNull();
+
+    }
+
+    [Fact]
+    public async Task SearchLocation2()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var searchParms = new ErpInstitutionLocationFilterInput();
+        searchParms.SearchCommon = new SearchCommonInputs();
+        searchParms.SearchCommon.IncludeTotalResultCount = true;
+
+        searchParms.LocationCode = new StringFilterInput { Contains = "Mrak%38" };
+
+        var result = await client.ErpInstitutionLocationSearch.ExecuteAsync(searchParms, "Mrak Hall, Room 0038C");
+        var data = result.ReadData();
+        data.ErpInstitutionLocationSearch.ShouldNotBeNull();
+        data.ErpInstitutionLocationSearch.Metadata.ShouldNotBeNull();
+        data.ErpInstitutionLocationSearch.Metadata.TotalResultCount.ShouldBe(2);
+
+        data.ErpInstitutionLocationSearch.Data[1].LocationCode.ShouldBe("Mrak Hall, Room 38");
+
+        data.ErpInstitutionLocationByCode.ShouldNotBeNull();
+        data.ErpInstitutionLocationByCode.LocationCode.ShouldBe("Mrak Hall, Room 0038C");
     }
 
     [Fact]
