@@ -1,4 +1,18 @@
-query erpInstitutionLocationSearch ($filter: ErpInstitutionLocationFilterInput!) {
+query erpInstitutionLocationSearch ($filter: ErpInstitutionLocationFilterInput!, $locationCode: String!) {
+    erpInstitutionLocationByCode (locationCode: $locationCode) {
+        locationCode
+        addressLine1
+        addressLine2
+        addressLine3
+        addressLine4
+        city
+        state
+        postalCode
+        countryCode
+        receivingSite
+        deliverySite
+        enabled
+    }	
     erpInstitutionLocationSearch (filter: $filter) {
         metadata {
             sort
@@ -9,7 +23,6 @@ query erpInstitutionLocationSearch ($filter: ErpInstitutionLocationFilterInput!)
             totalResultCount
         }
         data {
-            locationId
             locationCode
             addressLine1
             addressLine2
@@ -20,8 +33,7 @@ query erpInstitutionLocationSearch ($filter: ErpInstitutionLocationFilterInput!)
             postalCode
             receivingSite
             deliverySite
-            enabled
-        
+            enabled      
         }
     }
 }
