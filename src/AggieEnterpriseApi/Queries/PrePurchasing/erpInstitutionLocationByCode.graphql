@@ -1,0 +1,16 @@
+query erpInstitutionLocationByCode ($locationCode: String!) {
+    erpInstitutionLocationByCode (locationCode: $locationCode) {
+        locationCode
+        addressLine1
+        addressLine2
+        addressLine3
+        addressLine4
+        city
+        state
+        postalCode
+        countryCode
+        receivingSite
+        deliverySite
+        enabled
+    }
+}
