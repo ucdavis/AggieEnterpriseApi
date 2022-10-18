@@ -1,0 +1,16 @@
+query ErpDepartmentSearch($filter: ErpFinancialDepartmentFilterInput!, $code: String!) {
+      # pull single project back by number
+      erpFinancialDepartment(code: $code) {
+          id
+          code
+          name
+      }
+      # query projects by filter
+      erpFinancialDepartmentSearch(filter: $filter) {
+        data {
+          id
+          code
+          name
+        }
+      }
+    }

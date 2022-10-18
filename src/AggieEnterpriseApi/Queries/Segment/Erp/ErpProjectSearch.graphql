@@ -1,0 +1,16 @@
+query ErpProjectSearch($filter: ErpProjectFilterInput!, $code: String!) {
+      # pull single project back by number
+      erpProject(code: $code) {
+          id
+          code
+          name
+      }
+      # query projects by filter
+      erpProjectSearch(filter: $filter) {
+        data {
+          id
+          code
+          name
+        }
+      }
+    }

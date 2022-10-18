@@ -7,7 +7,7 @@ using Xunit;
 
 namespace ApiTests;
 
-public class SearchTests : TestBase
+public class PpmSearchTests : TestBase
 {
     [Fact]
     public async Task SearchPpmProject()
