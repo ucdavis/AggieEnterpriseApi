@@ -1,0 +1,14 @@
+query PpmFundingSourceSearch($filter: PpmFundingSourceFilterInput!, $fundingSourceNumber: String!) {
+        ppmFundingSourceByNumber(fundingSourceNumber: $fundingSourceNumber) {
+          id
+          fundingSourceNumber
+          name
+      }
+      ppmFundingSourceSearch(filter: $filter) {
+        data {
+          id
+          fundingSourceNumber
+          name
+        }
+      }
+    }
