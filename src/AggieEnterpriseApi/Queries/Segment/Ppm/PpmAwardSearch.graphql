@@ -1,0 +1,14 @@
+query PpmAwardSearch($filter: PpmAwardFilterInput!, $awardNumber: String!) {
+        ppmAwardByNumber(number: $awardNumber) {
+          id
+           awardNumber
+          name
+      }
+      ppmAwardSearch(filter: $filter) {
+        data {
+          id
+          awardNumber
+          name
+        }
+      }
+    }

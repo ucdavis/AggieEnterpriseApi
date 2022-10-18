@@ -7,7 +7,7 @@ using Xunit;
 
 namespace ApiTests;
 
-public class SearchTests : TestBase
+public class PpmSearchTests : TestBase
 {
     [Fact]
     public async Task SearchPpmProject()
@@ -112,5 +112,39 @@ public class SearchTests : TestBase
         Assert.NotNull(data.PpmTaskSearch);
         Assert.Contains("TASK01", data.PpmTaskSearch.Data[0].Name ?? string.Empty);
         
+    }
+    
+    [Fact]
+    public async Task SearchPpmAward()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var filter = new PpmAwardFilterInput() { Name = new StringFilterInput { Contains = "faculty" }};
+        var result = await client.PpmAwardSearch.ExecuteAsync(filter, "K373D79");
+        
+        var data = result.ReadData();
+
+        data.PpmAwardByNumber.ShouldNotBeNull();
+        data.PpmAwardByNumber?.Name?.ShouldContain("Faculty");
+        
+        data.PpmAwardSearch.ShouldNotBeNull();
+        data.PpmAwardSearch.Data.ShouldNotBeEmpty();
+    }
+    
+    [Fact]
+    public async Task SearchPpmFundingSource()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var filter = new PpmFundingSourceFilterInput() { Name = new StringFilterInput { Contains = "science" }};
+        var result = await client.PpmFundingSourceSearch.ExecuteAsync(filter, "27420");
+        
+        var data = result.ReadData();
+
+        data.PpmFundingSourceByNumber.ShouldNotBeNull();
+        data.PpmFundingSourceByNumber?.Name?.ShouldContain("SCIENCE");
+        
+        data.PpmFundingSourceSearch.ShouldNotBeNull();
+        data.PpmFundingSourceSearch.Data.ShouldNotBeEmpty();
     }
 }

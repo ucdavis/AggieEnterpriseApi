@@ -1,0 +1,16 @@
+query ErpEntitySearch($filter: ErpEntityFilterInput!, $code: String!) {
+      # pull single project back by number
+      erpEntity(code: $code) {
+          id
+          code
+          name
+      }
+      # query projects by filter
+      erpEntitySearch(filter: $filter) {
+        data {
+          id
+          code
+          name
+        }
+      }
+    }
