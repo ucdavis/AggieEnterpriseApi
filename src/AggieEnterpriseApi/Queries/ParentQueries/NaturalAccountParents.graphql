@@ -1,0 +1,27 @@
+query ErpAccountRollup($code: String!) {
+      # get natural account's parents
+      erpAccount(code: $code) {
+          code
+          parent{
+              code
+              parent{
+                  code
+                  parent{
+                      code
+                      parent{
+                          code
+                          parent{
+                              code
+                              parent{
+                                  code
+                                  parent{
+                                      code
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    }
