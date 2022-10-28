@@ -837,6 +837,27 @@ enum ErpCostCenterType {
 scalar ErpCountryCode
 
 """
+Represents an approver from the Oracle Role-Based Security module.  Values here have been extracted
+from advanced security table and formatted for API use.
+"""
+type ErpDepartmentalApprover {
+  """
+  Type of the approver as defined by the functional users.  This name defines its usage in Oracle.
+  """
+  approverType: NonEmptyTrimmedString50!
+
+  """
+  Oracle User ID of the person.  This should be the same as the UCD Computing account ID for campus employees.
+  """
+  userId: ErpUserId!
+  name: NonEmptyTrimmedString360!
+  firstName: NonEmptyTrimmedString150
+  lastName: NonEmptyTrimmedString150
+  employeeId: UcEmployeeId
+  emailAddress: NonEmptyTrimmedString240
+}
+
+"""
 Oracle GL Financial Department Segment Code
 
 * All values are exactly 7 characters matching the regex pattern: `[0-9A-Z]{7}`
@@ -1026,6 +1047,24 @@ type ErpFinancialDepartment {
 
   """User ID of the person who last updated this record."""
   lastUpdateUserId: ErpUserId
+
+  """
+  List of all approvers linked to this department.  To return only a specific approver type, use the approverTypeName argument for this field.
+  """
+  approvers(
+    """
+    If specified, only approvers of this type will be returned.  If the approver type name does not match any existing approver types, no results will be returned.
+    
+    Current Known Approver Type Values are:
+    
+    * Expense Transfer Approver
+    * Financial Control Approver
+    * Recharge Approver
+    * Revenue Transfer Approver
+    * Fiscal Officer Approver Department
+    """
+    approverTypeName: NonEmptyTrimmedString50
+  ): [ErpDepartmentalApprover!]!
 
   """
   Code of the ErpFinancialDepartment which is the immediate parent of this one.
@@ -2103,6 +2142,7 @@ type GlJournalRequestStatusOutput {
   Errors found when validating the payload data.  These must be corrected before the request will be accepted.
   """
   validationResults: ValidationResponse
+  validationWarnings: [SegmentWarning!]
 }
 
 """
@@ -3449,6 +3489,11 @@ type PpmSegmentsValidateOutput {
   PPM segment string matching the segments object.  Only populated if the validation passes.
   """
   segmentString: PpmSegmentString
+
+  """
+  Warnings, if any, related to segments validated during this operation.  The segmentName will be the same as the property name in the GlSegments object.
+  """
+  warnings: [SegmentWarning!]
 }
 
 """
@@ -4325,6 +4370,9 @@ type Query {
 
   """Return the current API Information Object"""
   erpApiInfo: ErpApiInfo!
+
+  """Get the list of roles assigned to your consumer."""
+  erpRoles: [String!]!
 }
 
 """Results of the job as submitted to the ERP system."""
@@ -4434,13 +4482,13 @@ input ScmInvoiceLineInput {
   """
   The quantity of items invoiced include matched invoice lines, price corrections, quantity corrections, and unmatched invoice lines.
   """
-  quantity: PositiveInt!
+  quantity: PositiveInt
 
   """The unit of measure for the quantity invoiced."""
-  unitOfMeasure: NonEmptyTrimmedString25!
+  unitOfMeasure: NonEmptyTrimmedString25
 
   """The price charged per unit of a good or service."""
-  unitPrice: Float!
+  unitPrice: Float
   glSegments: GlSegmentInput
 
   """
@@ -4634,10 +4682,12 @@ Main payload object for a `scmPurchaseRequisitionRequest`.  See operation docume
 """
 input ScmPurchaseRequisitionInput {
   """Centrally assigned source name for your boundary application."""
-  requisitionSourceName: NonEmptyTrimmedString30!
+  requisitionSourceName: NonEmptyTrimmedString80!
+
+  """Value that uniquely identifies the supplier"""
   supplierNumber: NonEmptyTrimmedString30!
 
-  """Value that uniquely identifies the supplier site."""
+  """Value that uniquely identifies the supplier site"""
   supplierSiteCode: String!
 
   """
@@ -4660,6 +4710,9 @@ A single line representing a Requisition Line Item.  A line must have only one o
 input ScmPurchaseRequisitionLineInput {
   """Total amount of the requested items in USD."""
   amount: NonNegativeFloat!
+
+  """Quantity based line or Fixed Price type of line"""
+  lineType: ScmPurchaseRequisitionLineType!
 
   """Quantity of the goods being purchased."""
   quantity: NonNegativeFloat!
@@ -4684,9 +4737,21 @@ input ScmPurchaseRequisitionLineInput {
   """
   Abbreviation that identifies the final location where the buying company should deliver the goods previously received from a supplier.
   """
-  deliveryToLocationCode: NonEmptyTrimmedString60
+  deliveryToLocationCode: NonEmptyTrimmedString60!
   requestedDeliveryDate: LocalDate
   distributions: [ScmPurchaseRequisitionDistributionInput!]!
+}
+
+"""
+Used on SCM Requisitions to distinguish between Quantity based line and Fixed Price lines
+"""
+enum ScmPurchaseRequisitionLineType {
+  """Quantity"""
+  Quantity
+
+  """Fixed Price"""
+  Fixed
+  Price
 }
 
 """
@@ -4986,6 +5051,9 @@ scalar Timestamp
 A field whose value exists in the standard IANA Time Zone Database: https://www.iana.org/time-zones
 """
 scalar TimeZone
+
+"""UC Employee ID.  May be either 8 or 9 digits."""
+scalar UcEmployeeId
 
 """Floats that will have a value of 0 or more."""
 scalar UnsignedFloat
