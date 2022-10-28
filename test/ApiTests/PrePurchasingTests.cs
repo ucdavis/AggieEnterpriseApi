@@ -322,6 +322,7 @@ public class PrePurchasingTests : TestBase
                     GlSegmentString = segmentString, 
                 }
             },
+            LineType = ScmPurchaseRequisitionLineType.Quantity,
         };
 
         var Line2 = new ScmPurchaseRequisitionLineInput
