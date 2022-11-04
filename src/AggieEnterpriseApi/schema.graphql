@@ -309,6 +309,9 @@ type ArInvoiceRequestStatusOutput {
   """Status of the action request overall."""
   requestStatus: ActionRequestStatus!
 
+  """Results of the Job or Jobs required to submit this request to the ERP."""
+  processingResult: ProcessingResult
+
   """Validation errors and messages from payload processing"""
   validationResults: ValidationResponse
 }
@@ -4585,6 +4588,9 @@ type ScmInvoicePaymentRequestStatusOutput {
   """Status of the action request overall."""
   requestStatus: ActionRequestStatus!
 
+  """Results of the Job or Jobs required to submit this request to the ERP."""
+  processingResult: ProcessingResult
+
   """Validation errors of payload data"""
   validationResults: ValidationResponse
 }
@@ -4672,7 +4678,7 @@ input ScmPurchaseRequisitionDistributionInput {
   ppmSegments: PpmSegmentInput
 
   """
-  PPM POET segment values.  If provided, this will override any provided or default GL segments.
+  PPM POET segment values.  If provided, this will override any provided or default PPM segments.
   """
   ppmSegmentString: PpmSegmentString
 }
@@ -4699,7 +4705,8 @@ input ScmPurchaseRequisitionInput {
   description: NonEmptyTrimmedString240!
 
   """Reason for creating the requisition."""
-  justification: NonEmptyTrimmedString1000!
+  justification: NonEmptyTrimmedString1000 @deprecated(reason: "Field is not visible on the oracle UI and does not appear to be used.")
+
   transactionDate: LocalDate
   lines: [ScmPurchaseRequisitionLineInput!]!
 }
@@ -4729,7 +4736,7 @@ input ScmPurchaseRequisitionLineInput {
   """
   Name of the purchasing category that is used for classifying the purchase being made by using this order line.
   """
-  purchasingCategoryName: String!
+  purchasingCategoryName: String
 
   """Price of the requested item in USD."""
   unitPrice: NonNegativeFloat
@@ -4737,7 +4744,7 @@ input ScmPurchaseRequisitionLineInput {
   """
   Abbreviation that identifies the final location where the buying company should deliver the goods previously received from a supplier.
   """
-  deliveryToLocationCode: NonEmptyTrimmedString60!
+  deliveryToLocationCode: NonEmptyTrimmedString60
   requestedDeliveryDate: LocalDate
   distributions: [ScmPurchaseRequisitionDistributionInput!]!
 }
@@ -4750,8 +4757,7 @@ enum ScmPurchaseRequisitionLineType {
   Quantity
 
   """Fixed Price"""
-  Fixed
-  Price
+  Fixed_Price
 }
 
 """
@@ -4773,6 +4779,9 @@ Contains the overall request status.  After a successful creation of the documen
 type ScmPurchaseRequisitionRequestStatusOutput {
   """Status of the action request overall."""
   requestStatus: ActionRequestStatus!
+
+  """Results of the Job or Jobs required to submit this request to the ERP."""
+  processingResult: ProcessingResult
 
   """Validation errors of payload data"""
   validationResults: ValidationResponse
