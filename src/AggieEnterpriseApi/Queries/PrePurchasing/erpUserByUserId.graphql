@@ -1,0 +1,7 @@
+query erpUserByUserId ($userId: String!) {
+    erpUserByUserId (userId: $userId) {
+        userId
+        email
+        active
+    }
+}
