@@ -1,0 +1,17 @@
+query erpUserSearch ($filter: ErpUserFilterInput!) {
+    erpUserSearch (filter: $filter) {
+        metadata {
+            sort
+            limit
+            returnedResultCount
+            startIndex
+            nextStartIndex
+            totalResultCount
+        }
+        data {
+            userId
+            email
+            active
+        }
+    }
+}
