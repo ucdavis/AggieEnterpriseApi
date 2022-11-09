@@ -30,6 +30,33 @@ public class PpmValidationTests : TestBase
         data.PpmTaskByProjectNumberAndTaskNumber.GlPostingFundCode.ShouldBe("13U20");
         data.PpmTaskByProjectNumberAndTaskNumber.GlPostingPurposeCode.ShouldBe("40");
     }
-    
-    
+
+    /// <summary>
+    /// This project is currently only in ait-sit
+    /// And it has a shelf life, but is works as of 2022 11 09
+    /// </summary>
+    /// <returns></returns>
+    [Fact]
+    public async Task ValidatePpmString()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K302300049-TASK01-ADNO006-770000");
+
+        var data = result.ReadData();
+        data.PpmStringSegmentsValidate.ShouldNotBeNull();
+        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue();
+
+        //DO segment check
+        data.PpmStringSegmentsValidate.Segments.ShouldNotBeNull();
+        data.PpmStringSegmentsValidate.Segments.Project.ShouldBe("K302300049");
+
+        //Do warning check
+        data.PpmStringSegmentsValidate.Warnings.ShouldNotBeNull();
+        data.PpmStringSegmentsValidate.Warnings.Count.ShouldBe(1);
+        data.PpmStringSegmentsValidate.Warnings[0].SegmentName.ShouldBe("Project");
+        data.PpmStringSegmentsValidate.Warnings[0].Warning.ShouldBe("PPM Segment Project with value of 300000015106575 is set to expire on 2022-11-30. Please update or transactions to this chartstring will be rejected after that date."); 
+    }
+
+
 }
