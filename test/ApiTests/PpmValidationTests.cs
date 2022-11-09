@@ -36,7 +36,7 @@ public class PpmValidationTests : TestBase
     /// And it has a shelf life, but is works as of 2022 11 09
     /// </summary>
     /// <returns></returns>
-    [Fact]
+    [Fact(Skip = "This project is currently only in ait-sit and is time sensitive. It will fail after december")]
     public async Task ValidatePpmString()
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
@@ -55,7 +55,7 @@ public class PpmValidationTests : TestBase
         data.PpmStringSegmentsValidate.Warnings.ShouldNotBeNull();
         data.PpmStringSegmentsValidate.Warnings.Count.ShouldBe(1);
         data.PpmStringSegmentsValidate.Warnings[0].SegmentName.ShouldBe("Project");
-        data.PpmStringSegmentsValidate.Warnings[0].Warning.ShouldBe("PPM Segment Project with value of 300000015106575 is set to expire on 2022-11-30. Please update or transactions to this chartstring will be rejected after that date."); 
+        data.PpmStringSegmentsValidate.Warnings[0].Warning.ShouldEndWith("Please update or transactions to this chartstring will be rejected after that date."); 
     }
 
 
