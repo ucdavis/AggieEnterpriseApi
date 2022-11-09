@@ -14,5 +14,9 @@ query ppmStringSegmentsValidate ($segmentString: PpmSegmentString!) {
             fundingSource
         }
 		segmentString
+        warnings {
+            segmentName
+            warning
+        }
     }
 }
