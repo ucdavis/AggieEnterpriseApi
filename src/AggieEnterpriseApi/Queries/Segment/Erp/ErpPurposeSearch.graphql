@@ -4,6 +4,7 @@ query ErpPurposeSearch($filter: ErpPurposeFilterInput!, $code: String!) {
           id
           code
           name
+          eligibleForUse
       }
       # query projects by filter
       erpPurposeSearch(filter: $filter) {
@@ -11,6 +12,7 @@ query ErpPurposeSearch($filter: ErpPurposeFilterInput!, $code: String!) {
           id
           code
           name
+          eligibleForUse
         }
       }
     }

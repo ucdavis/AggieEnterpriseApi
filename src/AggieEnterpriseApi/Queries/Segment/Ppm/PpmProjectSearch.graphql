@@ -4,6 +4,7 @@ query PpmProjectSearch($filter: PpmProjectFilterInput!, $projectNumber: String!)
           id
           projectNumber
           name
+          eligibleForUse
       }
       # query projects by filter
       ppmProjectSearch(filter: $filter) {
@@ -11,6 +12,7 @@ query PpmProjectSearch($filter: PpmProjectFilterInput!, $projectNumber: String!)
           id
           projectNumber
           name
+          eligibleForUse
         }
       }
     }

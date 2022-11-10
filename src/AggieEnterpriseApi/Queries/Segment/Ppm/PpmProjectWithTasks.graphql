@@ -4,10 +4,12 @@ query PpmProjectWithTasks($projectNumber: String!) {
           id
           projectNumber
           name
+          eligibleForUse
           tasks {
               id
               taskNumber
               name
+              eligibleForUse
           }
       }
     }

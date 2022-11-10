@@ -3,30 +3,36 @@ query ppmSegmentsToNames($project: String!, $projectNumber: PpmProjectNumber!, $
         id
         projectNumber
         name
+        eligibleForUse
     }
     ppmTaskByProjectNumberAndTaskNumber(projectNumber: $projectNumber, taskNumber: $task) {
         id
         taskNumber
         name
+        eligibleForUse
     }
     ppmOrganization(code: $organization) {
         id
         code
         name
+        eligibleForUse
     }
     ppmExpenditureTypeByCode(code: $expenditureType) {
         id
         code
         name
+        eligibleForUse
     }
     ppmAwardByNumber(number: $award) {
         id
         awardNumber
         name
+        eligibleForUse
     }
     ppmFundingSourceByNumber(fundingSourceNumber: $fundingSource) {
         id
         fundingSourceNumber
         name
+        eligibleForUse
     }
 }
