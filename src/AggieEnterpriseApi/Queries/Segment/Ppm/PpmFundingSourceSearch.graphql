@@ -3,12 +3,14 @@ query PpmFundingSourceSearch($filter: PpmFundingSourceFilterInput!, $fundingSour
           id
           fundingSourceNumber
           name
+          eligibleForUse
       }
       ppmFundingSourceSearch(filter: $filter) {
         data {
           id
           fundingSourceNumber
           name
+          eligibleForUse
         }
       }
     }

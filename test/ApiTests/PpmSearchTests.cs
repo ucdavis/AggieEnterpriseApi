@@ -14,15 +14,15 @@ public class PpmSearchTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        var filter = new PpmProjectFilterInput { Name = new StringFilterInput { Contains = "annual" } };
-        var result = await client.PpmProjectSearch.ExecuteAsync(filter, "KP0939277U");
+        var filter = new PpmProjectFilterInput { Name = new StringFilterInput { Contains = "faculty" } };
+        var result = await client.PpmProjectSearch.ExecuteAsync(filter, "K30GEAFAFU");
         
         var data = result.ReadData();
         
         Assert.NotNull(data);
 
         Assert.NotNull(data.PpmProjectByNumber);
-        Assert.Contains("TRAILER ALT", data.PpmProjectByNumber?.Name ?? string.Empty);
+        Assert.Contains("FACULTY", data.PpmProjectByNumber?.Name ?? string.Empty);
         
         Assert.NotEmpty(data.PpmProjectSearch.Data);
     }

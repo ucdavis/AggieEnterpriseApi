@@ -1,14 +1,16 @@
 query PpmOrganizationSearch($filter: PpmOrganizationFilterInput!, $code: String!) {
         ppmOrganization(code: $code) {
           id
-           code
+          code
           name
+          eligibleForUse
       }
       ppmOrganizationSearch(filter: $filter) {
         data {
           id
           code
           name
+          eligibleForUse
         }
       }
     }
