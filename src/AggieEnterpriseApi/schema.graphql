@@ -276,11 +276,15 @@ input ArInvoiceInput {
   """
   accountingDate: LocalDate
   memoLineName: NonEmptyTrimmedString50!
+
+  """Payment Term Name (ie, IMMEDIATE) for the invoice"""
+  paymentTerm: NonEmptyTrimmedString50!
   lines: [ArInvoiceLineInput!]!
 }
 
 input ArInvoiceLineInput {
   lineType: ArLineType!
+  lineNumber: PositiveInt!
   description: NonEmptyTrimmedString240!
   lineAmount: NonNegativeFloat!
   quantity: NonNegativeFloat
@@ -593,7 +597,7 @@ type ErpAccount {
 
   """
   Returns whether this ErpAccount is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpAccount must:
   * Be enabled
   * Not be summaryOnly
@@ -603,7 +607,7 @@ type ErpAccount {
 
   """
   Whether GL segment strings using this account code require a purpose code.  All expenses require an assigned purpose code.  Purpose is optional on other types of transactions.
-
+  
   Expense accounts are defined as those which descend from account 50000B.
   """
   purposeRequired: Boolean!
@@ -746,7 +750,7 @@ type ErpActivity {
 
   """
   Returns whether this ErpActivity is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpActivity must:
   * Be enabled
   * Not be summaryOnly
@@ -792,6 +796,87 @@ type ErpApiInfo {
   committedOn: Date
   erpSchema: String!
   apiSchema: String!
+}
+
+type ErpBuilding {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on ErpBuilding"""
+input ErpBuildingFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type ErpBuildingRoom {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on ErpBuildingRoom"""
+input ErpBuildingRoomFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type ErpBuildingRoomSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ErpBuildingRoom!]!
+}
+
+type ErpBuildingSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ErpBuilding!]!
+}
+
+type ErpCampus {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on ErpCampus"""
+input ErpCampusFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type ErpCampusSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ErpCampus!]!
 }
 
 """
@@ -957,7 +1042,7 @@ type ErpEntity {
 
   """
   Returns whether this ErpEntity is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpEntity must:
   * Be enabled
   * Not be summaryOnly
@@ -1057,9 +1142,9 @@ type ErpFinancialDepartment {
   approvers(
     """
     If specified, only approvers of this type will be returned.  If the approver type name does not match any existing approver types, no results will be returned.
-
+    
     Current Known Approver Type Values are:
-
+    
     * Expense Transfer Approver
     * Financial Control Approver
     * Recharge Approver
@@ -1100,7 +1185,7 @@ type ErpFinancialDepartment {
 
   """
   Returns whether this ErpFinancialDepartment is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpFinancialDepartment must:
   * Be enabled
   * Not be summaryOnly
@@ -1216,7 +1301,7 @@ type ErpFund {
 
   """
   Returns whether this ErpFund is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpFund must:
   * Be enabled
   * Not be summaryOnly
@@ -1253,6 +1338,33 @@ type ErpFundSearchResults {
 
   """Results of the search"""
   data: [ErpFund!]!
+}
+
+type ErpFundSource {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on ErpFundSource"""
+input ErpFundSourceFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type ErpFundSourceSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ErpFundSource!]!
 }
 
 """
@@ -1506,7 +1618,7 @@ type ErpProgram {
 
   """
   Returns whether this ErpProgram is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpProgram must:
   * Be enabled
   * Not be summaryOnly
@@ -1648,7 +1760,7 @@ type ErpProject {
 
   """
   Returns whether this ErpProject is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpProject must:
   * Be enabled
   * Not be summaryOnly
@@ -1764,7 +1876,7 @@ type ErpPurpose {
 
   """
   Returns whether this ErpPurpose is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpPurpose must:
   * Be enabled
   * Not be summaryOnly
@@ -1904,6 +2016,433 @@ type ErpUserSearchResults {
 
   """Results of the search"""
   data: [ErpUser!]!
+}
+
+type FaAcquisitionCode {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaAcquisitionCode"""
+input FaAcquisitionCodeFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaAcquisitionCodeSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaAcquisitionCode!]!
+}
+
+type FaAsset {
+  """Internal Oracle Identifier for this asset"""
+  assetId: Long!
+
+  """Sequential ID number assigned to the asset and visible within Oracle."""
+  assetNumber: NonEmptyTrimmedString30!
+
+  """UC-Assigned Tag Number for the asset"""
+  assetTagNumber: NonEmptyTrimmedString15!
+  assetType: NonEmptyTrimmedString15!
+  assetCategoryId: Long!
+  description: NonEmptyTrimmedString80
+  manufacturerName: NonEmptyTrimmedString360
+  serialNumber: NonEmptyTrimmedString40
+  modelNumber: NonEmptyTrimmedString40
+  minorCategory: NonEmptyTrimmedString150!
+  campusCode: NonEmptyTrimmedString150!
+  buildingCode: NonEmptyTrimmedString150!
+  roomCode: NonEmptyTrimmedString150
+  alternateAddress: NonEmptyTrimmedString150
+  custodialDivisionCode: NonEmptyTrimmedString150!
+  custodialDepartmentCode: NonEmptyTrimmedString150!
+  assetRepresentativeName: NonEmptyTrimmedString150
+  titleFlag: Boolean!
+  acquisitionCode: NonEmptyTrimmedString150!
+  primaryFundCode: NonEmptyTrimmedString150!
+  equipFundSourceCode: NonEmptyTrimmedString150!
+  conditionCode: NonEmptyTrimmedString150!
+  equipLoanCode: NonEmptyTrimmedString150!
+  lastCertificationDate: LocalDate
+  piName: NonEmptyTrimmedString150!
+  sponsorName: NonEmptyTrimmedString150
+  loanDetail: NonEmptyTrimmedString150
+  warrantyInfo: NonEmptyTrimmedString150
+  hospitalAssetNumber: NonEmptyTrimmedString150
+  creationDate: DateTime!
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+  acquisitionCodeInfo: FaAcquisitionCode
+  custodialDivisionInfo: FaCustodialDivision
+  custodialDepartmentInfo: FaCustodialDepartment
+  campusInfo: ErpCampus
+  buildingInfo: ErpBuilding
+  roomInfo: ErpBuildingRoom
+  conditionCodeInfo: FaCondition
+  equipFundSourceInfo: FaFundSource
+  equipLoanInfo: FaLoanCode
+  minorCategoryInfo: FaMinorCategory
+  primaryFundInfo: ErpFundSource
+  costHistory: [FaAssetCostHistory!]!
+}
+
+type FaAssetCategory {
+  assetCategoryId: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  inventorialFlag: Boolean!
+  capitalizeFlag: Boolean!
+  propertyTypeCode: NonEmptyTrimmedString150!
+  categoryType: NonEmptyTrimmedString150!
+  majorCategoryCode: NonEmptyTrimmedString150!
+  minorCategoryCode: NonEmptyTrimmedString150!
+  ownedOrLeasedCode: NonEmptyTrimmedString150!
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaAssetCategory"""
+input FaAssetCategoryFilterInput {
+  assetCategoryId: StringFilterInput
+  name: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaAssetCategorySearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaAssetCategory!]!
+}
+
+type FaAssetCostHistory {
+  assetId: Long
+  typeCode: NonEmptyTrimmedString30
+  headerId: Long
+  serviceDate: LocalDate
+  totalCost: Float
+  effectiveDate: LocalDate
+  ineffectiveDate: LocalDate
+  creationDate: DateTime
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime
+}
+
+"""Data object used to run searches on FaAssetCostHistory"""
+input FaAssetCostHistoryFilterInput {
+  typeCode: StringFilterInput
+}
+
+type FaAssetCostHistorySearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaAssetCostHistory!]!
+}
+
+type FaAssetDistributionHistory {
+  assetId: Long!
+  distributionId: Long!
+  bookTypeCode: NonEmptyTrimmedString240!
+  deprCodeCombinationId: Long!
+  effectiveDate: DateTime!
+  ineffectiveDate: DateTime!
+  unitsAssigned: Long!
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaAssetDistributionHistory"""
+input FaAssetDistributionHistoryFilterInput {
+  assetCategoryId: StringFilterInput
+  name: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaAssetDistributionHistorySearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaAssetDistributionHistory!]!
+}
+
+"""Data object used to run searches on FaAsset"""
+input FaAssetFilterInput {
+  assetNumber: StringFilterInput
+  assetTagNumber: StringFilterInput
+  description: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
+  conditionCode: StringFilterInput
+  buildingCode: StringFilterInput
+  custodialDivisionCode: StringFilterInput
+  custodialDepartmentCode: StringFilterInput
+  assetType: StringFilterInput
+}
+
+type FaAssetSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaAsset!]!
+}
+
+type FaCondition {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaCondition"""
+input FaConditionFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaConditionSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaCondition!]!
+}
+
+type FaCustodialDepartment {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaCustodialDepartment"""
+input FaCustodialDepartmentFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaCustodialDepartmentSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaCustodialDepartment!]!
+}
+
+type FaCustodialDivision {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaCustodialDivision"""
+input FaCustodialDivisionFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaCustodialDivisionSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaCustodialDivision!]!
+}
+
+type FaFundSource {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaFundSource"""
+input FaFundSourceFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaFundSourceSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaFundSource!]!
+}
+
+type FaLoanCode {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaLoanCode"""
+input FaLoanCodeFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaLoanCodeSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaLoanCode!]!
+}
+
+type FaLocation {
+  locationId: Long!
+  propertyTypeCode: NonEmptyTrimmedString150!
+  campusCode: NonEmptyTrimmedString150!
+  buildingCode: NonEmptyTrimmedString150!
+  roomCode: NonEmptyTrimmedString150!
+  address: NonEmptyTrimmedString240!
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaLocation"""
+input FaLocationFilterInput {
+  locationId: StringFilterInput
+  address: StringFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaLocationSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaLocation!]!
+}
+
+type FaMajorCategory {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaMajorCategory"""
+input FaMajorCategoryFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaMajorCategorySearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaMajorCategory!]!
+}
+
+type FaMinorCategory {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaMinorCategory"""
+input FaMinorCategoryFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaMinorCategorySearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaMinorCategory!]!
+}
+
+type FaProgram {
+  code: NonEmptyTrimmedString150!
+  id: Long!
+  name: NonEmptyTrimmedString240!
+  enabled: Boolean!
+  startDate: LocalDate
+  endDate: LocalDate
+  lastUpdateUserId: ErpUserId
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on FaProgram"""
+input FaProgramFilterInput {
+  description: StringFilterInput
+  code: StringFilterInput
+  enabled: BooleanFilterInput
+  lastUpdateDateTime: StringFilterInput
+}
+
+type FaProgramSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [FaProgram!]!
 }
 
 """
@@ -2079,12 +2618,12 @@ input GlJournalLineInput {
 
   """
   Hyphen-Delimited PPM segment string
-
+  
   Must be populated with either the 4 required segments, or all 6 segments.  (Project-Task Number-Expense Organization-Expense Type-Award Number-Funding Source)
-
+  
   * Format Pattern (Required Only): `SP00000001-0001-0000000-000000`
   * Format Pattern (Sponsored Projects): `CP00000001-0001-0000000-000000-0000000-00000`
-
+  
   For more information, see the description of the [PpmSegmentString scalar]({{Types.PpmSegmentString}})
   """
   ppmSegmentString: PpmSegmentString
@@ -2519,19 +3058,19 @@ type Mutation {
 
   """
   Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
-
+  
   The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
-
+  
   This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
-
+  
   The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
-
+  
   Please see below in this document for examples of payloads into this API.
-
+  
   #### Supporting Operations
-
+  
   Other operations which should be used to pre-validate chartstring segments are below.  Please see <https://financeandbusiness.ucdavis.edu/aggie-enterprise/chart-of-accounts/redesign> for information about each of these segments.
-
+  
   * [`erpEntity`]({{Queries.erpEntity}})
   * [`erpFund`]({{Queries.erpFund}})
   * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
@@ -2540,51 +3079,51 @@ type Mutation {
   * [`erpProject`]({{Queries.erpProject}})
   * [`erpProgram`]({{Queries.erpProgram}})
   * [`erpActivity`]({{Queries.erpActivity}})
-
+  
   For validating combinations, the following two operations are provided, differing only in their input format.
-
+  
   * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
   * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
-
+  
   #### Managed Project Cost Entries (PPM/POET)
-
+  
   In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
-
+  
   For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
-
+  
   For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
-
+  
   * `p`roject
   * `o`rganization (same values as `ErpFinancialDepartment`)
   * `e`xpenditureType (same values as `ErpAccount`)
   * `t`ask
-
+  
   Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
-
+  
   There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
-
+  
   * award (only for sponsored projects)
   * fundingSource (only for sponsored projects)
-
+  
   As with the GL segments, the API provides the operations below for lookups and validation:
-
+  
   * [`ppmProject`]({{Queries.ppmProject}})
   * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
   * [`ppmOrganization`]({{Queries.ppmOrganization}})
   * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
-
+  
   #### Volume of Data
-
+  
   Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
-
+  
   #### Journal Balancing
-
+  
   As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
-
+  
   While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
-
+  
   #### Basic Use
-
+  
   1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
   2. GraphQL Server will validate content format and reject if invalid.
   3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
@@ -2597,43 +3136,43 @@ type Mutation {
 
   """
   Requests that an Invoice Payment be uploaded to Oracle.
-
+  
   This API replaces the various AP Feed flat file upload processes.
-
+  
   The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
-
+  
   Please see below in this document for examples of payloads into this API.
-
+  
   #### Supporting Operations
-
+  
   As this API accepts GL and PPM segments, those must be valid for the request to be accepted.  Please see the [`glJournalCreate`]({{Mutations.glJournalCreate}}) for links to those supporting operations.
-
+  
   There are also SCM-specific operations you can use to look up or validate information.
-
+  
   * [`scmPaymentTerm`]({{Queries.scmPaymentTerm}})
   * [`scmPaymentTermSearch`]({{Queries.scmPaymentTermSearch}})
   * [`erpUnitOfMeasure`]({{Queries.erpUnitOfMeasure}})
   * [`erpUnitOfMeasureSearch`]({{Queries.erpUnitOfMeasureSearch}})
   * [`scmSupplierByNumber`]({{Queries.scmSupplierByNumber}})
   * [`scmSupplierSearch`]({{Queries.scmSupplierSearch}})
-
+  
   #### Data Validation
-
+  
   ##### GraphQL Data Model and Type Resolvers
-
+  
   * Valid JSON data structure.
   * Required fields (enforced by GraphQL data model)
   * Ensure required fields are non-blank. (enforced by GraphQL data model)
   * Ensure fields are formatted properly (enforced by GraphQL data model - and custom code if needed)
   * Verify maximum lengths on fields.  (Delegate using custom data types if possible.)
     * (e.g., `TrimmedNonEmptyString240`)
-
+  
   ##### Request Header Checks
-
+  
   * Confirm if `consumerTrackingId` previously used and reject if found in the action request table.
-
+  
   ##### Data Validation
-
+  
   * Validate LineType:  LINE_TYPE_LOOKUP_CODE
     * The code you enter must be ITEM, TAX, MISCELLANEOUS, or FREIGHT. Validate against lookup codes stored in the AP_LOOKUP_CODES table
   * Validate InvoiceType: INVOICE_TYPE_LOOKUP_CODE
@@ -2658,10 +3197,10 @@ type Mutation {
     * Validate Sum of Line Amount equals Invoice Amount
   * Validate Payment Method Code.
   * Validate Line Type (Enum: ITEM, FREIGHT, MISCELLANEOUS).
-
-
+  
+  
   #### Basic Use
-
+  
   1. Call the operation (`scmInvoicePaymentCreate`) providing a data payload with the proper structure.  (See [`ScmInvoicePaymentRequestInput`]({{Types.ScmInvoicePaymentRequestInput}}))
   2. GraphQL Server will validate content format and reject if invalid.
   3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
@@ -2857,13 +3396,13 @@ type PpmAward {
   id: Long!
 
   """Award Name: Name of the award."""
-  name: NonEmptyTrimmedString240
+  name: NonEmptyTrimmedString240!
 
   """ Award Number: Award number tracked by the sponsor."""
-  awardNumber: NonEmptyTrimmedString30
+  awardNumber: NonEmptyTrimmedString30!
 
   """The award type name associated with the award"""
-  awardTypeName: String
+  awardTypeName: NonEmptyTrimmedString30!
 
   """Description: Brief description of the award."""
   description: NonEmptyTrimmedString240
@@ -2882,7 +3421,7 @@ type PpmAward {
   """
   Award Owning Organization: An organization that owns awards within an enterprise. An organizing unit in the internal or external structure of your enterprise. Organization structures provide the framework for performing legal reporting, financial control, and management reporting for the award.
   """
-  awardOwningOrganizationName: String
+  awardOwningOrganizationName: NonEmptyTrimmedString240!
 
   """Purpose: Name of the award purpose."""
   awardPurpose: NonEmptyTrimmedString80
@@ -2895,7 +3434,7 @@ type PpmAward {
   """
   Business Unit: Unit of an enterprise that performs one or many business functions that can be rolled up in a management hierarchy. An award business unit is one within which the award is created.
   """
-  businessUnitName: NonEmptyTrimmedString100
+  businessUnitName: NonEmptyTrimmedString100!
 
   """The date when the award was last updated."""
   lastUpdateDateTime: DateTime!
@@ -2911,7 +3450,7 @@ type PpmAward {
 
   """
   Returns whether this PpmAward is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmAward must:
   * Have closeDate after the given accountingDate
   """
@@ -3008,7 +3547,7 @@ type PpmExpenditureType {
 
   """
   Returns whether this PpmExpenditureType is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmExpenditureType must:
   * Have a startDate and endDate range which includes the given accoutingDate
   """
@@ -3087,15 +3626,15 @@ type PpmFundingSource {
   """
   Funding Source From Date: The date from which the funding source is active.
   """
-  fundingSourceFromDate: LocalDate!
+  fundingSourceFromDate: LocalDate
 
   """
   Funding Source To Date: The date till which the funding source is active.
   """
   fundingSourceToDate: LocalDate
 
-  """The code of the funding source type."""
-  fundingSourceTypeCode: String
+  """The funding source type name."""
+  fundingSourceType: NonEmptyTrimmedString50
 
   """The date when the funding source was last updated."""
   lastUpdateDateTime: DateTime!
@@ -3104,11 +3643,11 @@ type PpmFundingSource {
   lastUpdatedBy: ErpUserId
 
   """The award id linked to the funding Source"""
-  awardId: Long
+  awardId: Long!
 
   """
   Returns whether this PpmFundingSource is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmFundingSource must:
   * Have a fundingSourceFromDate and fundingSourceToDate range which includes the given accountingDate
   """
@@ -3119,8 +3658,10 @@ type PpmFundingSource {
 input PpmFundingSourceFilterInput {
   searchCommon: SearchCommonInputs
   fundingSourceNumber: StringFilterInput
-  id: StringFilterInput
   name: StringFilterInput
+  awardId: StringFilterInput
+  fundingSourceFromDate: DateFilterInput
+  fundingSourceToDate: DateFilterInput
   lastUpdateDateTime: DateFilterInput
 }
 
@@ -3181,7 +3722,7 @@ type PpmOrganization {
 
   """
   Returns whether this PpmOrganization is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmOrganization must:
   * Have a effectiveStartDate and effectiveEndDate range which includes the given accountingDate
   * Be enabled
@@ -3324,7 +3865,7 @@ type PpmProject {
 
   """
   Tasks: The Task resource includes the attributes that are used to store values while creating or updating project tasks. Tasks are units of project work assigned or performed as part of the duties of a resource. Tasks can be a portion of project work to be performed within a defined period by a specific resource or multiple resources.
-
+  
   By default, this will only list tasks which are allowed to be assigned costs.  If you need to see all tasks, set the property argument to false.
   """
   tasks(
@@ -3347,7 +3888,7 @@ type PpmProject {
 
   """
   Returns whether this PpmProject is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmProject must:
   * Have a projectStatusCode of ACTIVE
   * Not be a templateProject
@@ -3414,14 +3955,14 @@ input PpmSegmentInput {
 
   """
   Award for Sponsored projects only
-
+  
   **API Users, do not provide.  The valid value will be derived from the project if necessary.**
   """
   award: PpmAwardNumber
 
   """
   Award funding source for Sponsored projects only
-
+  
   **API Users, do not provide.  The valid value will be derived from the project if necessary.**
   """
   fundingSource: PpmFundingSourceNumber
@@ -3576,7 +4117,7 @@ type PpmTask {
 
   """
   Returns whether this PpmTask is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmTask must:
   * Be chargeable
   * Be a lowestLevelTask
@@ -3983,6 +4524,48 @@ type Query {
   """
   erpPurposeSearch(filter: ErpPurposeFilterInput!): ErpPurposeSearchResults!
 
+  """Get a single ErpBuilding by id.  Returns undefined if does not exist"""
+  erpBuilding(code: String!): ErpBuilding
+
+  """
+  Search for ErpBuilding objects by multiple properties.
+  
+  See the ErpBuildingFilterInput type for options.
+  """
+  erpBuildingSearch(filter: ErpBuildingFilterInput!): ErpBuildingSearchResults!
+
+  """
+  Get a single ErpBuildingRoom by id.  Returns undefined if does not exist
+  """
+  erpBuildingRoom(code: String!): ErpBuildingRoom
+
+  """
+  Search for ErpBuildingRoom objects by multiple properties.
+  
+  See the ErpBuildingRoomFilterInput type for options.
+  """
+  erpBuildingRoomSearch(filter: ErpBuildingRoomFilterInput!): ErpBuildingRoomSearchResults!
+
+  """Get a single ErpCampus by id.  Returns undefined if does not exist"""
+  erpCampus(code: String!): ErpCampus
+
+  """
+  Search for ErpCampus objects by multiple properties.
+  
+  See the ErpCampusFilterInput type for options.
+  """
+  erpCampusSearch(filter: ErpCampusFilterInput!): ErpCampusSearchResults!
+
+  """Get a single ErpFundSource by id.  Returns undefined if does not exist"""
+  erpFundSource(code: String!): ErpFundSource
+
+  """
+  Search for ErpFundSource objects by multiple properties.
+  
+  See the ErpFundSourceFilterInput type for options.
+  """
+  erpFundSourceSearch(filter: ErpFundSourceFilterInput!): ErpFundSourceSearchResults!
+
   """
   Get a single ErpInstitutionLocation by internal ID.  Returns undefined if does not exist
   """
@@ -4021,7 +4604,7 @@ type Query {
   erpUnitOfMeasureSearch(filter: ErpUnitOfMeasureFilterInput!): ErpUnitOfMeasureSearchResults!
 
   """Get a single ErpUser by id.  Returns undefined if does not exist"""
-  erpUser(id: String!): ErpUser
+  erpUser(code: String!): ErpUser
 
   """Get a single ErpUser by user id.  Returns undefined if does not exist"""
   erpUserByUserId(userId: String!): ErpUser
@@ -4038,7 +4621,7 @@ type Query {
 
   """
   Accepts a chart and account (and optionally a sub account and/or project code) which was converted as part of cutover and returns the cost center portion with matching GL or POET segments needed to record a transaction.  If no match is found when a sub account or project code is provided, the conversion will revert to only using the chart and account.  The attributes used for the returned converted values will be included in the response.
-
+  
   In the case of a POET segment response, an array of tasks will be returned.  The data conversion mapping does not contain that information.  At cutover, there will be only one task per project.  However, additional tasks will be added as part of use after go-live.
   """
   kfsConvertAccount(chart: KfsChartCode!, account: KfsAccountNumber!, subAccount: KfsSubAccountNumber): KfsConvertAccountOutput!
@@ -4047,6 +4630,154 @@ type Query {
   Accepts a chart and org code which was converted as part of cutover and returns the financial department(s) to which it was mapped.
   """
   kfsConvertOrgCode(chart: KfsChartCode!, org: KfsOrgCode!): KfsConvertOrgOutput!
+
+  """
+  Get a single FaAcquisitionCode by id.  Returns undefined if does not exist
+  """
+  faAcquisitionCode(code: String!): FaAcquisitionCode
+
+  """
+  Search for FaAcquisitionCode objects by multiple properties.
+  
+  See the FaAcquisitionCodeFilterInput type for options.
+  """
+  faAcquisitionCodeSearch(filter: FaAcquisitionCodeFilterInput!): FaAcquisitionCodeSearchResults!
+
+  """Get a single FaAsset by id.  Returns undefined if does not exist"""
+  faAsset(id: String!): FaAsset
+
+  """
+  Search for FaAsset objects by multiple properties.
+  
+  See the FaAssetFilterInput type for options.
+  """
+  faAssetSearch(filter: FaAssetFilterInput!): FaAssetSearchResults!
+  faAssetByAssetTagNumber(assetTagNumber: String!): FaAsset
+  faAssetByAssetNumber(assetNumber: String!): FaAsset
+
+  """
+  Get a single FaAssetCategory by id.  Returns undefined if does not exist
+  """
+  faAssetCategory(id: String!): FaAssetCategory
+
+  """
+  Search for FaAssetCategory objects by multiple properties.
+  
+  See the FaAssetCategoryFilterInput type for options.
+  """
+  faAssetCategorySearch(filter: FaAssetCategoryFilterInput!): FaAssetCategorySearchResults!
+
+  """
+  Get a single FaAssetDistributionHistory by id.  Returns undefined if does not exist
+  """
+  faAssetDistributionHistory(id: String!): FaAssetDistributionHistory
+
+  """
+  Search for FaAssetDistributionHistory objects by multiple properties.
+  
+  See the FaAssetDistributionHistoryFilterInput type for options.
+  """
+  faAssetDistributionHistorySearch(filter: FaAssetDistributionHistoryFilterInput!): FaAssetDistributionHistorySearchResults!
+  faAssetDistributionHistoryByAssetTagNumber(assetTagNumber: String!): FaAssetDistributionHistory
+  faAssetDistributionHistoryByAssetNumber(assetNumber: String!): FaAssetDistributionHistory
+
+  """Get a single FaCondition by id.  Returns undefined if does not exist"""
+  faCondition(code: String!): FaCondition
+
+  """
+  Search for FaCondition objects by multiple properties.
+  
+  See the FaConditionFilterInput type for options.
+  """
+  faConditionSearch(filter: FaConditionFilterInput!): FaConditionSearchResults!
+
+  """
+  Get a single FaCustodialDepartment by id.  Returns undefined if does not exist
+  """
+  faCustodialDepartment(code: String!): FaCustodialDepartment
+
+  """
+  Search for FaCustodialDepartment objects by multiple properties.
+  
+  See the FaCustodialDepartmentFilterInput type for options.
+  """
+  faCustodialDepartmentSearch(filter: FaCustodialDepartmentFilterInput!): FaCustodialDepartmentSearchResults!
+
+  """
+  Get a single FaCustodialDivision by id.  Returns undefined if does not exist
+  """
+  faCustodialDivision(code: String!): FaCustodialDivision
+
+  """
+  Search for FaCustodialDivision objects by multiple properties.
+  
+  See the FaCustodialDivisionFilterInput type for options.
+  """
+  faCustodialDivisionSearch(filter: FaCustodialDivisionFilterInput!): FaCustodialDivisionSearchResults!
+
+  """Get a single FaFundSource by id.  Returns undefined if does not exist"""
+  faFundSource(code: String!): FaFundSource
+
+  """
+  Search for FaFundSource objects by multiple properties.
+  
+  See the FaFundSourceFilterInput type for options.
+  """
+  faFundSourceSearch(filter: FaFundSourceFilterInput!): FaFundSourceSearchResults!
+
+  """Get a single FaLoanCode by id.  Returns undefined if does not exist"""
+  faLoanCode(code: String!): FaLoanCode
+
+  """
+  Search for FaLoanCode objects by multiple properties.
+  
+  See the FaLoanCodeFilterInput type for options.
+  """
+  faLoanCodeSearch(filter: FaLoanCodeFilterInput!): FaLoanCodeSearchResults!
+
+  """Get a single FaLocation by id.  Returns undefined if does not exist"""
+  faLocation(id: String!): FaLocation
+
+  """
+  Search for FaLocation objects by multiple properties.
+  
+  See the FaLocationFilterInput type for options.
+  """
+  faLocationSearch(filter: FaLocationFilterInput!): FaLocationSearchResults!
+
+  """
+  Get a single FaMajorCategory by id.  Returns undefined if does not exist
+  """
+  faMajorCategory(code: String!): FaMajorCategory
+
+  """
+  Search for FaMajorCategory objects by multiple properties.
+  
+  See the FaMajorCategoryFilterInput type for options.
+  """
+  faMajorCategorySearch(filter: FaMajorCategoryFilterInput!): FaMajorCategorySearchResults!
+
+  """
+  Get a single FaMinorCategory by id.  Returns undefined if does not exist
+  """
+  faMinorCategory(code: String!): FaMinorCategory
+
+  """
+  Search for FaMinorCategory objects by multiple properties.
+  
+  See the FaMinorCategoryFilterInput type for options.
+  """
+  faMinorCategorySearch(filter: FaMinorCategoryFilterInput!): FaMinorCategorySearchResults!
+
+  """Get a single FaProgram by id.  Returns undefined if does not exist"""
+  faProgram(code: String!): FaProgram
+
+  """
+  Search for FaProgram objects by multiple properties.
+  
+  See the FaProgramFilterInput type for options.
+  """
+  faProgramSearch(filter: FaProgramFilterInput!): FaProgramSearchResults!
 
   """
   Get a single GlAccountingPeriod by its name.  Returns undefined if does not exist
@@ -4084,12 +4815,12 @@ type Query {
   Validates that the given set of GL chartstring segments are most likely valid for posting
   to the financial system general ledger.  Individual non-blank elements will be checked
   for current validity.
-
+  
   If validateCVRs is true, certain combinations of attributes will be sanity checked.
-
+  
   This operation will return a fully populated set of segments, including defaults in
   both individual segment and full chartstring form.
-
+  
   If the combination was previously known/used in the financial system, its unique ID will be included.
   """
   glValidateChartSegments(segments: GlSegmentInput!, validateCVRs: Boolean = true): GlValidateChartSegmentsOutput!
@@ -4099,11 +4830,11 @@ type Query {
   to the financial system general ledger.  The input string format is strongly typed
   and will reject the call if not structured properly.  Please see the definition of the
   [GlSegmentString]({{Types.GlSegmentString}}) for format information.
-
+  
   If validateCVRs is true, certain combinations of attributes will be sanity checked if the string format is accepted.
-
+  
   This operation will return the validation result and the segments as parsed out into their component fields.
-
+  
   If the combination was previously known/used in the financial system, its unique ID will be included.
   """
   glValidateChartstring(segmentString: GlSegmentString!, validateCVRs: Boolean = true): GlValidateChartSegmentsOutput!
@@ -4131,7 +4862,7 @@ type Query {
 
   """
   Get a single PpmExpenditureType by id.  Returns undefined if does not exist.
-
+  
   This ID is an internal tracking number used by the financial system.  It is only used to link between objects internally.
   Use the ppmExpenditureTypeByName or ppmExpenditureTypeByAccount operations to pull by a unique identifier.
   """
@@ -4149,7 +4880,7 @@ type Query {
 
   """
   Gets PpmExpenditureTypes by the associated GL Account.  Returns undefined if none is found.
-
+  
   PPM Expense Type names will be the GL Account number plus a description.  This full string must be used in file-based feeds.
   This method will allow you to obtain the exact string (in the name property) that needs to be included.
   """
@@ -4273,9 +5004,9 @@ type Query {
   Validates that the given set of PPM segments are most likely valid for posting
   to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
   for current validity.
-
+  
   If no date is passed, today's date will be assumed.
-
+  
   This operation will return a fully populated set of segments.
   """
   ppmSegmentsValidate(segments: PpmSegmentInput!): PpmSegmentsValidateOutput!
@@ -4284,11 +5015,11 @@ type Query {
   Validates that the given PPM chartstring is most likely valid for posting
   to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
   for current validity.
-
+  
   If no date is passed, today's date will be assumed.
-
+  
   This operation will return a fully populated set of segments.
-
+  
   This operation will return the validation result and the segments as parsed out into their component fields.
   """
   ppmStringSegmentsValidate(segmentString: PpmSegmentString!): PpmSegmentsValidateOutput!
@@ -4503,6 +5234,11 @@ input ScmInvoiceLineInput {
   PPM POET segment values.  If provided, this will override any provided or default GL segments.
   """
   ppmSegments: PpmSegmentInput
+
+  """
+  PPM POET segment values.  If provided, this will override any provided or default PPM segments.
+  """
+  ppmSegmentString: PpmSegmentString
 }
 
 """
@@ -4703,10 +5439,6 @@ input ScmPurchaseRequisitionInput {
 
   """Description of the requisition"""
   description: NonEmptyTrimmedString240!
-
-  """Reason for creating the requisition."""
-  justification: NonEmptyTrimmedString1000 @deprecated(reason: "Field is not visible on the oracle UI and does not appear to be used.")
-
   transactionDate: LocalDate
   lines: [ScmPurchaseRequisitionLineInput!]!
 }

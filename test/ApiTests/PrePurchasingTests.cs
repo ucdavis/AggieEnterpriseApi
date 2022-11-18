@@ -414,7 +414,7 @@ public class PrePurchasingTests : TestBase
             SupplierSiteCode = searchData.ScmSupplierSearch.Data.First().Sites.Where(a => a.Location?.City == "ROUND ROCK" && a.Location?.AddressLine2 == "ONE DELL WAY" && a.Location?.State == "TX").First().SupplierSiteCode,
             RequesterEmailAddress = "jsylvestre@ucdavis.edu",
             Description = "ACRU-EHIT218 - TEST",
-            Justification = "Print Toner for PrintsCharming 38 Mrak Dell eQuote #3000118141264",
+            
         };
 
         var distributionResult = await client.KfsConvertAccount.ExecuteAsync("3", "CRU9033", null);
