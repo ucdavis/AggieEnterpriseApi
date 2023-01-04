@@ -77,17 +77,17 @@ type ActionRequestStatus {
   errorMessages: [String!]
 
   """
-  GraphQL Payload to post back to this server to check on the status of the request.
+  GraphQL payload to post back to this server to check on the status of the request.
   """
   statusRequestPayload: JSON
 
-  """Original action request payload for this request."""
+  """Original payload for this request."""
   actionRequestPayload: JSON
 
   """
   Additional identifiers and/or status information extracted from the downstream system during or after processing.  This property may not be filled in until some time after the process has completed, as data may have to be retrieved from scheduled data extracts.
   """
-  resultAttributes: JSON
+  resultValues: RequestResultValues!
 
   """
   When true, indicates this request was set to be batch processed along with other compatible requests.
@@ -820,7 +820,7 @@ input ErpBuildingFilterInput {
 type ErpBuildingRoom {
   code: NonEmptyTrimmedString150!
   id: Long!
-  name: NonEmptyTrimmedString240!
+  name: NonEmptyTrimmedString240
   enabled: Boolean!
   startDate: LocalDate
   endDate: LocalDate
@@ -830,8 +830,8 @@ type ErpBuildingRoom {
 
 """Data object used to run searches on ErpBuildingRoom"""
 input ErpBuildingRoomFilterInput {
-  description: StringFilterInput
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
   lastUpdateDateTime: StringFilterInput
 }
@@ -2069,13 +2069,18 @@ type FaAsset {
   custodialDepartmentCode: NonEmptyTrimmedString150!
   assetRepresentativeName: NonEmptyTrimmedString150
   titleFlag: Boolean!
+
+  """
+  The current recorded cost of the asset.  See costHistory for a history of cost changes.
+  """
+  totalCost: Float
   acquisitionCode: NonEmptyTrimmedString150!
   primaryFundCode: NonEmptyTrimmedString150!
   equipFundSourceCode: NonEmptyTrimmedString150!
   conditionCode: NonEmptyTrimmedString150!
-  equipLoanCode: NonEmptyTrimmedString150!
+  equipLoanCode: NonEmptyTrimmedString150
   lastCertificationDate: LocalDate
-  piName: NonEmptyTrimmedString150!
+  piName: String
   sponsorName: NonEmptyTrimmedString150
   loanDetail: NonEmptyTrimmedString150
   warrantyInfo: NonEmptyTrimmedString150
@@ -2141,19 +2146,6 @@ type FaAssetCostHistory {
   lastUpdateDateTime: DateTime
 }
 
-"""Data object used to run searches on FaAssetCostHistory"""
-input FaAssetCostHistoryFilterInput {
-  typeCode: StringFilterInput
-}
-
-type FaAssetCostHistorySearchResults {
-  """Information about the search results returned."""
-  metadata: SearchResultMetadata!
-
-  """Results of the search"""
-  data: [FaAssetCostHistory!]!
-}
-
 type FaAssetDistributionHistory {
   assetId: Long!
   distributionId: Long!
@@ -2184,6 +2176,7 @@ type FaAssetDistributionHistorySearchResults {
 
 """Data object used to run searches on FaAsset"""
 input FaAssetFilterInput {
+  searchCommon: SearchCommonInputs
   assetNumber: StringFilterInput
   assetTagNumber: StringFilterInput
   description: StringFilterInput
@@ -2347,21 +2340,6 @@ type FaLocation {
   address: NonEmptyTrimmedString240!
   lastUpdateUserId: ErpUserId
   lastUpdateDateTime: DateTime!
-}
-
-"""Data object used to run searches on FaLocation"""
-input FaLocationFilterInput {
-  locationId: StringFilterInput
-  address: StringFilterInput
-  lastUpdateDateTime: StringFilterInput
-}
-
-type FaLocationSearchResults {
-  """Information about the search results returned."""
-  metadata: SearchResultMetadata!
-
-  """Results of the search"""
-  data: [FaLocation!]!
 }
 
 type FaMajorCategory {
@@ -2828,7 +2806,7 @@ type GlValidateChartSegmentsOutput {
   """
   End Dates, if defined, after which a given segment will no longer be accepted for processing.  The segmentName will be the same as the property name in the GlSegments type.  Only segments which have defined end dates will be included in this list.
   """
-  endDates: [SegmentEndDate!]
+  endDates: [SegmentEndDate!]!
 }
 
 """
@@ -4037,7 +4015,12 @@ type PpmSegmentsValidateOutput {
   """
   Warnings, if any, related to segments validated during this operation.  The segmentName will be the same as the property name in the GlSegments object.
   """
-  warnings: [SegmentWarning!]
+  warnings: [SegmentWarning]!
+
+  """
+  End Dates, if defined, after which a given segment will no longer be accepted for processing.  The segmentName will be the same as the property name in the GlSegments type.  Only segments which have defined end dates will be included in this list.
+  """
+  endDates: [SegmentEndDate]!
 }
 
 """
@@ -4328,7 +4311,7 @@ type Query {
   """
   Get the status of a previously submitted AR invoice request by the API-assigned request ID.
   """
-  arInvoiceRequestStatus(requestId: String!): ArInvoiceRequestStatusOutput
+  arInvoiceRequestStatus(requestId: UUID!): ArInvoiceRequestStatusOutput
 
   """
   Get the status of a previously submitted AR invoice request by the consumer's unique tracking ID.
@@ -4667,20 +4650,6 @@ type Query {
   """
   faAssetCategorySearch(filter: FaAssetCategoryFilterInput!): FaAssetCategorySearchResults!
 
-  """
-  Get a single FaAssetDistributionHistory by id.  Returns undefined if does not exist
-  """
-  faAssetDistributionHistory(id: String!): FaAssetDistributionHistory
-
-  """
-  Search for FaAssetDistributionHistory objects by multiple properties.
-  
-  See the FaAssetDistributionHistoryFilterInput type for options.
-  """
-  faAssetDistributionHistorySearch(filter: FaAssetDistributionHistoryFilterInput!): FaAssetDistributionHistorySearchResults!
-  faAssetDistributionHistoryByAssetTagNumber(assetTagNumber: String!): FaAssetDistributionHistory
-  faAssetDistributionHistoryByAssetNumber(assetNumber: String!): FaAssetDistributionHistory
-
   """Get a single FaCondition by id.  Returns undefined if does not exist"""
   faCondition(code: String!): FaCondition
 
@@ -4734,16 +4703,6 @@ type Query {
   See the FaLoanCodeFilterInput type for options.
   """
   faLoanCodeSearch(filter: FaLoanCodeFilterInput!): FaLoanCodeSearchResults!
-
-  """Get a single FaLocation by id.  Returns undefined if does not exist"""
-  faLocation(id: String!): FaLocation
-
-  """
-  Search for FaLocation objects by multiple properties.
-  
-  See the FaLocationFilterInput type for options.
-  """
-  faLocationSearch(filter: FaLocationFilterInput!): FaLocationSearchResults!
 
   """
   Get a single FaMajorCategory by id.  Returns undefined if does not exist
@@ -4799,7 +4758,7 @@ type Query {
   """
   Get the status of a previously submitted journal voucher request by the API-assigned request ID.
   """
-  glJournalRequestStatus(requestId: String!): GlJournalRequestStatusOutput
+  glJournalRequestStatus(requestId: UUID!): GlJournalRequestStatusOutput
 
   """
   Get the status of a previously submitted journal voucher request by the consumer's unique tracking ID.
@@ -5027,7 +4986,7 @@ type Query {
   """
   Get the status of a previously submitted payable payment request by the API-assigned request ID.
   """
-  scmInvoicePaymentRequestStatus(requestId: String!): ScmInvoicePaymentRequestStatusOutput
+  scmInvoicePaymentRequestStatus(requestId: UUID!): ScmInvoicePaymentRequestStatusOutput
 
   """
   Get the status of a previously submitted payable payment request by the consumer's unique tracking ID.
@@ -5058,7 +5017,7 @@ type Query {
   """
   Get the status of a previously submitted Purchase Requisition request by the API-assigned request ID.
   """
-  scmPurchaseRequisitionRequestStatus(requestId: String!): ScmPurchaseRequisitionRequestStatusOutput
+  scmPurchaseRequisitionRequestStatus(requestId: UUID!): ScmPurchaseRequisitionRequestStatusOutput
 
   """
   Get the status of a previously submitted purchase requisition request by the consumer's unique tracking ID.
@@ -5130,6 +5089,41 @@ type RequestJobResult {
 
   """Time the job completion was recorded."""
   completedDateTime: DateTime
+}
+
+"""
+Generated values related to request which have been extracted from the downstream system.  This property may not be filled in until some time after the process has completed, as data may have to be retrieved from scheduled data extracts.
+"""
+type RequestJobResultValues {
+  """
+  The identifier of the type of job executed that generated the values.  This will be a value like 'gl_journal' or 'ppm_costs'.
+  """
+  jobType: String!
+
+  """The values extracted from the downstream system for the given job."""
+  values: [RequestResultValue!]!
+}
+
+"""A single value extracted from the downstream system."""
+type RequestResultValue {
+  """
+  Integration determined name of the value.  This will match the name in the downstream system if possible.
+  """
+  name: String!
+
+  """Value extracted from the downstream system."""
+  value: String!
+}
+
+"""
+Values related to request which have been extracted from the downstream system.  This property may not be filled in until some time after the process has completed, as data may have to be retrieved from scheduled data extracts.
+"""
+type RequestResultValues {
+  """Whether the Values have yet been extracted from the downstream system."""
+  valuesExtracted: Boolean!
+
+  """The values extracted from the downstream system."""
+  jobs: [RequestJobResultValues!]!
 }
 
 """
