@@ -1,4 +1,4 @@
-query glJournalRequestStatus($requestId: String!) {
+query glJournalRequestStatus($requestId: UUID!) {
     glJournalRequestStatus(requestId: $requestId) {
         requestStatus {
             statusRequestPayload

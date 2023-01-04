@@ -511,7 +511,7 @@ public class PrePurchasingTests : TestBase
 
         var saveId = Guid.NewGuid().ToString();
 
-        var result = await client.ScmPurchaseRequisitionRequestStatus.ExecuteAsync("e54836a7-5171-4f9c-96c1-5d70c5612ae9");
+        var result = await client.ScmPurchaseRequisitionRequestStatus.ExecuteAsync(new Guid("e54836a7-5171-4f9c-96c1-5d70c5612ae9"));
 
         var data = result.ReadData();
 
