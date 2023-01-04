@@ -18,7 +18,7 @@ public class GlJournalTests : TestBase
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
         // TODO: get better example request that wasn't errored out
-        var result = await client.GlJournalRequestStatus.ExecuteAsync("22374301-0428-4356-847e-cb7ddaebf661");
+        var result = await client.GlJournalRequestStatus.ExecuteAsync(new Guid( "22374301-0428-4356-847e-cb7ddaebf661"));
 
         var data = result.ReadData();
 
