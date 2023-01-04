@@ -1,4 +1,4 @@
-query scmPurchaseRequisitionRequestStatus($requestId: String!) {
+query scmPurchaseRequisitionRequestStatus($requestId: UUID!) {
   scmPurchaseRequisitionRequestStatus(requestId: $requestId) {
     requestStatus {
             requestId
