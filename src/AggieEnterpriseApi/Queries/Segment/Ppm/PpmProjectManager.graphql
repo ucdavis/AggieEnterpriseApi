@@ -1,0 +1,9 @@
+query PpmProjectManager($projectNumber: String!) {
+      # pull single project back by number
+      ppmProjectByNumber(projectNumber: $projectNumber) {
+          projectNumber
+          name
+          primaryProjectManagerName
+          primaryProjectManagerEmail   
+      }
+    }
