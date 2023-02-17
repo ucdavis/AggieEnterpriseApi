@@ -13,18 +13,24 @@ namespace ApiTests;
 public class GlJournalTests : TestBase
 {
     [Fact]
-    public async Task ValidJournalStatus()
+    public async Task InValidJournalStatus()
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
         // TODO: get better example request that wasn't errored out
-        var result = await client.GlJournalRequestStatus.ExecuteAsync(new Guid( "22374301-0428-4356-847e-cb7ddaebf661"));
+        var result = await client.GlJournalRequestStatus.ExecuteAsync(new Guid("130fba74-24d0-4838-8d35-831812020893"));
 
         var data = result.ReadData();
 
         data.GlJournalRequestStatus.ShouldNotBeNull();
         data.GlJournalRequestStatus.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Error);
-        data.GlJournalRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("ORDER_12345");
+        data.GlJournalRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("Aggie Enterprise Test Recharge");
+        data.GlJournalRequestStatus.ProcessingResult.ShouldNotBeNull();
+        data.GlJournalRequestStatus.ProcessingResult.Jobs.ShouldNotBeNull();
+        data.GlJournalRequestStatus.ProcessingResult.Jobs.Count.ShouldBe(3);
+        data.GlJournalRequestStatus.ProcessingResult.Jobs[0].JobStatus.ShouldBe("PROCESSED");
+        data.GlJournalRequestStatus.ProcessingResult.Jobs[1].JobStatus.ShouldBe("ERROR");
+        data.GlJournalRequestStatus.ProcessingResult.Jobs[1].JobReport.ShouldStartWith("{\"G_REQUEST_ID\":1323230,\"G_BUSINESS_UNIT\":\"UCD CGA Business Unit\",\"G_PROCESS_MODE\":\"Importing and processing transactions\",\"G_TRANSACTION_STATUS\":\"Not previously imported\"");
     }
 
     [Fact]

@@ -6,7 +6,7 @@ query glJournalRequestStatus($requestId: UUID!) {
             requestStatus
             requestDateTime
             lastStatusDateTime
-            errorMessages
+            errorMessages   
             processedDateTime
             boundaryApplicationName
             consumerId
@@ -16,6 +16,14 @@ query glJournalRequestStatus($requestId: UUID!) {
         processingResult {
             status
             processedDateTime
+            jobs {
+                jobId
+                jobStatus
+                assignedJobId
+                jobReport
+                failedRecords
+                completedDateTime
+            }
         }
         validationResults {
             valid

@@ -3241,6 +3241,11 @@ scalar NonEmptyTrimmedString2
 scalar NonEmptyTrimmedString20
 
 """
+String limited to 2000 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
+"""
+scalar NonEmptyTrimmedString2000
+
+"""
 String limited to 225 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
 """
 scalar NonEmptyTrimmedString225
@@ -3425,6 +3430,13 @@ type PpmAward {
   """
   awardFundingSource: [PpmFundingSource!]
   defaultFundingSourceNumber: PpmFundingSourceNumber
+  awardCfda: [PpmCfdaAward!]
+  flowThruAmount: NonNegativeFloat
+  flowThruFromDate: LocalDate
+  flowThruToDate: LocalDate
+  flowThruPrimarySponsorId: NonEmptyTrimmedString30
+  flowThruRefAwardName: NonEmptyTrimmedString100
+  flowThruIsFederal: Boolean
 
   """
   Returns whether this PpmAward is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
@@ -3462,6 +3474,43 @@ type PpmAwardSearchResults {
 
   """Results of the search"""
   data: [PpmAward!]!
+}
+
+"""CFDA"""
+type PpmCfda {
+  cfda: NonEmptyTrimmedString30!
+  assistanceType: NonEmptyTrimmedString2000
+  programTitle: NonEmptyTrimmedString255
+  creationDate: DateTime
+  lastUpdateDateTime: DateTime
+  lastUpdateUserId: ErpUserId
+}
+
+"""CFDAAward"""
+type PpmCfdaAward {
+  id: Long!
+  cfda: NonEmptyTrimmedString30
+  awardId: Long
+  creationFate: DateTime
+  lastUpdateDateTime: DateTime
+  lastUpdateUserId: ErpUserId
+}
+
+"""Data object used to run searches on PpmCfda"""
+input PpmCfdaFilterInput {
+  searchCommon: SearchCommonInputs
+  cfda: StringFilterInput
+  programTitle: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
+}
+
+"""Wrapper object for search results for PpmCfda"""
+type PpmCfdaSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [PpmCfda!]!
 }
 
 """
@@ -3842,6 +3891,11 @@ type PpmProject {
   lastUpdateUserId: ErpUserId
 
   """
+  is project budgeted by joining to project to project budgeted status view in datasources
+  """
+  projectBudgeted: Boolean!
+
+  """
   Tasks: The Task resource includes the attributes that are used to store values while creating or updating project tasks. Tasks are units of project work assigned or performed as part of the duties of a resource. Tasks can be a portion of project work to be performed within a defined period by a specific resource or multiple resources.
   
   By default, this will only list tasks which are allowed to be assigned costs.  If you need to see all tasks, set the property argument to false.
@@ -4021,6 +4075,42 @@ type PpmSegmentsValidateOutput {
   End Dates, if defined, after which a given segment will no longer be accepted for processing.  The segmentName will be the same as the property name in the GlSegments type.  Only segments which have defined end dates will be included in this list.
   """
   endDates: [SegmentEndDate]!
+}
+
+"""SPONSOR"""
+type PpmSponsor {
+  sponsorId: Long!
+  partyId: Long
+  burdenScheduleId: Long
+  billToSponsorId: Long
+  letterOfCreditNumber: NonEmptyTrimmedString240
+  isLetterOfCredit: Boolean
+  isFederal: Boolean
+  statusCode: NonEmptyTrimmedString30
+  creationDate: DateTime
+  lastUpdateDateTime: DateTime
+  lastUpdateUserId: ErpUserId
+}
+
+"""Data object used to run searches on PpmSponsor"""
+input PpmSponsorFilterInput {
+  searchCommon: SearchCommonInputs
+  sponsorId: StringFilterInput
+  partyId: StringFilterInput
+  billToSponsorId: StringFilterInput
+  burdenScheduleId: StringFilterInput
+  statusCode: StringFilterInput
+  isFederal: BooleanFilterInput
+  lastUpdateDateTime: DateFilterInput
+}
+
+"""Wrapper object for search results for PpmSponsor"""
+type PpmSponsorSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [PpmSponsor!]!
 }
 
 """
@@ -4215,6 +4305,47 @@ type PpmTermsSearchResults {
 }
 
 """
+Tracked points along the processing of a request.  May be used for troubleshooting requests which fail or never complete processing.
+"""
+type ProcessingCheckpoint {
+  """
+  Identifier of the pipeline which generated the checkpoint.  Multiple pipelines may be used in the processing of a request.
+  """
+  pipelineId: NonEmptyTrimmedString50!
+
+  """
+  Identifier of the checkpoint.  This is an arbirtary string which is unique within a pipeline and roughly indicates the activity that completed just before the checkpoint.  It is mainly meaningful to the integrations team.
+  """
+  checkpointId: NonEmptyTrimmedString50!
+
+  """
+  Whether the checkpoint was reached in the normal processing path or in an error or failure path.
+  """
+  checkpointType: ProcessingCheckpointType!
+
+  """Time this checkpoint entry was logged to the database."""
+  checkpointDateTime: DateTime!
+}
+
+"""
+Type of a given checkpoint in the processing of a request.  Not all request pipelines will utilize all checkpoint types.
+"""
+enum ProcessingCheckpointType {
+  """Checkpoint is in the normal successful processing path."""
+  NORMAL
+
+  """
+  Checkpoint is in a path reached after there were validation failures in the data.
+  """
+  ERROR
+
+  """
+  Checkpoint is in a path reached though an unexpected procesing failure.
+  """
+  FAILURE
+}
+
+"""
 Result of the attempt to process the action request in the destination system
 """
 type ProcessingResult {
@@ -4240,6 +4371,11 @@ type ProcessingResult {
   List of the individual destination-system jobs that were required to process this request.
   """
   jobs: [RequestJobResult!]
+
+  """
+  Checkpoints reached during the processing of the request.  Not all action requests will have checkpoints.
+  """
+  checkpoints: [ProcessingCheckpoint!]
 }
 
 """Status of the pipeline request triggered from an API action request."""
@@ -4818,6 +4954,8 @@ type Query {
   See the PpmAwardFilterInput type for options.
   """
   ppmAwardSearch(filter: PpmAwardFilterInput!): PpmAwardSearchResults!
+  ppmCfda(cfda: String!): PpmCfda
+  ppmCfdaSearch(filter: PpmCfdaFilterInput!): PpmCfdaSearchResults!
 
   """
   Get a single PpmExpenditureType by id.  Returns undefined if does not exist.
@@ -4920,6 +5058,8 @@ type Query {
   See the PpmProjectFilterInput type for options.
   """
   ppmProjectSearch(filter: PpmProjectFilterInput!): PpmProjectSearchResults!
+  ppmSponsor(sponsorId: String!): PpmSponsor
+  ppmSponsorSearch(filter: PpmSponsorFilterInput!): PpmSponsorSearchResults!
 
   """Get a single PpmTask by id.  Returns undefined if it does not exist"""
   ppmTask(id: String!): PpmTask
