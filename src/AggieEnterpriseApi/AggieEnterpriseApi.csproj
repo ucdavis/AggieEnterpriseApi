@@ -10,6 +10,7 @@
 	<LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>fedb544e-ecea-46b8-bd82-34de51287159</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
