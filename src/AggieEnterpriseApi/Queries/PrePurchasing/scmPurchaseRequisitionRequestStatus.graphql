@@ -10,6 +10,16 @@ query scmPurchaseRequisitionRequestStatus($requestId: UUID!) {
             lastStatusDateTime
             processedDateTime
             errorMessages
+            resultValues {
+            valuesExtracted
+            jobs {
+              jobType
+              values {
+                name
+                value
+              }
+            }
+          }
         }
         validationResults {
             valid
