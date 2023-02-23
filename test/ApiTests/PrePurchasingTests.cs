@@ -505,7 +505,7 @@ public class PrePurchasingTests : TestBase
     }
 
     [Fact(Skip ="Old data")]
-    public async Task LookupStatus()
+    public async Task LookupStatus1()
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
@@ -523,6 +523,44 @@ public class PrePurchasingTests : TestBase
         data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ErrorMessages.ShouldNotBeNull();
         data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ErrorMessages.Count.ShouldBe(0);
 
+    }
+
+    [Fact]
+    public async Task LookupStatus2()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var saveId = Guid.NewGuid().ToString();
+
+        var result = await client.ScmPurchaseRequisitionRequestStatus.ExecuteAsync(new Guid("6f53e1e8-791e-49e6-a5c5-ac624c427d26"));
+
+        var data = result.ReadData();
+
+        data.ScmPurchaseRequisitionRequestStatus.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Complete);
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("ACRU-C7MTNT2");
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ConsumerTrackingId.ShouldBe("be33b61d-0e14-4b5e-a947-5bc357548145");
+        data.ScmPurchaseRequisitionRequestStatus.ValidationResults.ShouldBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ErrorMessages.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ErrorMessages.Count.ShouldBe(0);
+
+        //PO stuff
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.ValuesExtracted.ShouldBeTrue();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.Count.ShouldBe(1);
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.Where(a => a.JobType == "scm_reqn").ShouldNotBeNull();
+        var xxx = data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.Where(a => a.JobType == "scm_reqn");
+        xxx.ShouldNotBeNull();
+        var yyy = data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs[0];
+        yyy.JobType.ShouldBe("scm_reqn");
+        var zzz = yyy.Values;
+        zzz[0].Name.ShouldBe("requisitionNumber");
+        zzz[0].Value.ShouldBe("REQ00000538");
+        zzz[1].Name.ShouldBe("poNumber");
+        zzz[1].Value.ShouldBe("UCDPO00000251");
+
+        //data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.Where(a => a.JobType == "scm_reqn").Values.ShouldNotBeNull();
     }
 
     [Fact]
