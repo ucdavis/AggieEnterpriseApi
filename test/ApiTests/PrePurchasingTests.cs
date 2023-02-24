@@ -550,17 +550,24 @@ public class PrePurchasingTests : TestBase
         data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.ShouldNotBeNull();
         data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.Count.ShouldBe(1);
         data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.Where(a => a.JobType == "scm_reqn").ShouldNotBeNull();
-        var xxx = data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.Where(a => a.JobType == "scm_reqn");
-        xxx.ShouldNotBeNull();
-        var yyy = data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs[0];
-        yyy.JobType.ShouldBe("scm_reqn");
-        var zzz = yyy.Values;
-        zzz[0].Name.ShouldBe("requisitionNumber");
-        zzz[0].Value.ShouldBe("REQ00000538");
-        zzz[1].Name.ShouldBe("poNumber");
-        zzz[1].Value.ShouldBe("UCDPO00000251");
 
-        //data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.Where(a => a.JobType == "scm_reqn").Values.ShouldNotBeNull();
+
+        foreach (var job in data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs)
+        {
+            job.JobType.ShouldBe("scm_reqn");
+            job.Values.ShouldNotBeNull();
+            job.Values.Count.ShouldBe(2);
+            foreach (var value in job.Values)
+            {
+                value.Name.ShouldNotBeNull();
+                value.Value.ShouldNotBeNull();
+            }
+            job.Values[0].Name.ShouldBe("requisitionNumber");
+            job.Values[0].Value.ShouldBe("REQ00000538");
+            job.Values[1].Name.ShouldBe("poNumber");
+            job.Values[1].Value.ShouldBe("UCDPO00000251");
+        }
+
     }
 
     [Fact]
