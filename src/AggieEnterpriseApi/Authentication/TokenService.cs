@@ -7,6 +7,7 @@ namespace AggieEnterpriseApi.Authentication;
 
 public interface ITokenService
 {
+    Task<string> GetValidToken(GraphQlClientOptions options);
     Task<string> GetValidToken(string url, string key, string secret, string scope);
 }
 
@@ -21,6 +22,11 @@ public class TokenService : ITokenService
     {
         _clientFactory = clientFactory;
         _memoryCache = memoryCache;
+    }
+    
+    public async Task<string> GetValidToken(GraphQlClientOptions options)
+    {
+        return await GetValidToken(options.TokenEndpoint, options.Key, options.Secret, options.Scope);
     }
 
     public async Task<string> GetValidToken(string tokenUrl, string key, string secret, string scope)

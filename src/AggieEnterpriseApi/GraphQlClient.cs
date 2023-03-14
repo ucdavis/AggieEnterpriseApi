@@ -15,17 +15,20 @@ public class GraphQlClient
     /// <param name="secret">Consumer Secret</param>
     /// <param name="scope">Optional scope to avoid collisions. Each app should provide their own scope</param>
     /// <returns></returns>
-    public static IAggieEnterpriseClient Get(string queryEndpoint, string tokenEndpoint, string key, string secret, string scope = "default")
+    public static IAggieEnterpriseClient Get(string queryEndpoint, string tokenEndpoint, string key, string secret,
+        string scope = "default")
     {
-        var graphQlUri = new Uri(queryEndpoint);
-
         var serviceCollection = new ServiceCollection();
 
         // add in general services
         serviceCollection.AddHttpClient();
         serviceCollection.AddMemoryCache();
+        serviceCollection.AddTransient<AuthenticationDelegatingHandler>();
         serviceCollection.AddSingleton<ITokenService, TokenService>();
-        
+
+        // add in options so we can use them in our delegating handler
+        serviceCollection.AddSingleton(new GraphQlClientOptions(queryEndpoint, tokenEndpoint, key, secret, scope));
+
         // add in serializers for custom int/float types (ex: PositiveInt)
         serviceCollection.AddSerializer<PositiveIntSerializer>();
         serviceCollection.AddSerializer<NonNegativeIntSerializer>();
@@ -36,25 +39,26 @@ public class GraphQlClient
             .AddAggieEnterpriseClient()
             .ConfigureHttpClient((serviceProvider, client) =>
             {
-                client.BaseAddress = graphQlUri;
-                var tokenService = serviceProvider.GetRequiredService<ITokenService>();
-                
-                var token = tokenService.GetValidToken(tokenEndpoint, key, secret, scope).Result;
-                
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                var options = serviceProvider.GetRequiredService<GraphQlClientOptions>();
+
+                client.BaseAddress = new Uri(options.QueryEndpoint);
+            }, builder =>
+            {
+                // add in our delegating handler to refresh the token if needed
+                builder.AddHttpMessageHandler<AuthenticationDelegatingHandler>();
             });
 
         IServiceProvider services = serviceCollection.BuildServiceProvider();
-        
+
         return services.GetRequiredService<IAggieEnterpriseClient>();
     }
-    
+
     public static IAggieEnterpriseClient Get(string url, string token)
     {
         var graphQlUri = new Uri(url);
 
         var serviceCollection = new ServiceCollection();
-        
+
         // add in serializers for custom int/float types (ex: PositiveInt)
         serviceCollection.AddSerializer<PositiveIntSerializer>();
         serviceCollection.AddSerializer<NonNegativeIntSerializer>();
