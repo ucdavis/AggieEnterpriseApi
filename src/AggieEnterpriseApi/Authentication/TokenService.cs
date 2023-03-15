@@ -8,7 +8,7 @@ namespace AggieEnterpriseApi.Authentication;
 public interface ITokenService
 {
     Task<string> GetValidToken(GraphQlClientOptions options);
-    Task<string> GetValidToken(string url, string key, string secret, string scope);
+    void ClearTokenCache();
 }
 
 public class TokenService : ITokenService
@@ -23,13 +23,18 @@ public class TokenService : ITokenService
         _clientFactory = clientFactory;
         _memoryCache = memoryCache;
     }
-    
+
+    public void ClearTokenCache()
+    {
+        _memoryCache.Remove(TokenCacheKey);
+    }
+
     public async Task<string> GetValidToken(GraphQlClientOptions options)
     {
         return await GetValidToken(options.TokenEndpoint, options.Key, options.Secret, options.Scope);
     }
 
-    public async Task<string> GetValidToken(string tokenUrl, string key, string secret, string scope)
+    private async Task<string> GetValidToken(string tokenUrl, string key, string secret, string scope)
     {
         // check if we have a token in cache
         if (_memoryCache.TryGetValue(TokenCacheKey, out string token))
@@ -39,7 +44,7 @@ public class TokenService : ITokenService
 
         // if not, get a new one
         var httpClient = _clientFactory.CreateClient();
-        
+
         // set auth with our consumer key and secret
         httpClient.DefaultRequestHeaders.Add("Authorization",
             "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{key}:{secret}")));
@@ -56,10 +61,10 @@ public class TokenService : ITokenService
 
         // error if we didn't get a 200
         request.EnsureSuccessStatusCode();
-    
+
         // get back json with our JWT in access_token
         var response = await request.Content.ReadFromJsonAsync<TokenResponse>();
-        
+
         // error if we didn't get a valid response
         if (response?.access_token == null)
         {
@@ -80,7 +85,5 @@ public class TokenService : ITokenService
         public string? token_type { get; set; }
         public string? scope { get; set; }
         public int expires_in { get; set; }
-        
-        
     }
 }
