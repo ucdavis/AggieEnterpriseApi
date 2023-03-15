@@ -8,14 +8,14 @@ namespace AggieEnterpriseApi.Authentication;
 public interface ITokenService
 {
     Task<string> GetValidToken(GraphQlClientOptions options);
-    void ClearTokenCache();
+    void ClearTokenCache(GraphQlClientOptions options);
 }
 
 public class TokenService : ITokenService
 {
     // set buffer time in seconds
     private const int BufferTime = 300;
-    
+
     //Instantiate a Singleton of the Semaphore with a value of 1. This means that only 1 thread can be granted access at a time.
     private static readonly SemaphoreSlim SemaphoreSlim = new SemaphoreSlim(1, 1);
 
@@ -30,9 +30,9 @@ public class TokenService : ITokenService
         _memoryCache = memoryCache;
     }
 
-    public void ClearTokenCache()
+    public void ClearTokenCache(GraphQlClientOptions options)
     {
-        _memoryCache.Remove(TokenCacheKey);
+        _memoryCache.Remove(GetTokenCacheKey(options.Scope));
     }
 
     public async Task<string> GetValidToken(GraphQlClientOptions options)
@@ -42,8 +42,10 @@ public class TokenService : ITokenService
 
     private async Task<string> GetValidToken(string tokenUrl, string key, string secret, string scope)
     {
+        var scopedTokenCacheKey = GetTokenCacheKey(scope);
+
         // check if we have a token in cache
-        if (_memoryCache.TryGetValue(TokenCacheKey, out string token))
+        if (_memoryCache.TryGetValue(scopedTokenCacheKey, out string token))
         {
             return token;
         }
@@ -52,7 +54,7 @@ public class TokenService : ITokenService
         await SemaphoreSlim.WaitAsync();
 
         // if we waited on the semaphore, check the cache again to see if another thread got a token while we were waiting
-        if (_memoryCache.TryGetValue(TokenCacheKey, out string token2))
+        if (_memoryCache.TryGetValue(scopedTokenCacheKey, out string token2))
         {
             // if one appeared while we were waiting, release the semaphore and return the token
             SemaphoreSlim.Release();
@@ -91,7 +93,8 @@ public class TokenService : ITokenService
             }
 
             // cache the token for expired_in seconds (minus a little for safety)
-            _memoryCache.Set(TokenCacheKey, response.access_token, TimeSpan.FromSeconds(response.expires_in - BufferTime));
+            _memoryCache.Set(scopedTokenCacheKey, response.access_token,
+                TimeSpan.FromSeconds(response.expires_in - BufferTime));
 
             // return the token
             return response.access_token;
@@ -100,6 +103,11 @@ public class TokenService : ITokenService
         {
             SemaphoreSlim.Release();
         }
+    }
+
+    private string GetTokenCacheKey(string scope)
+    {
+        return $"{TokenCacheKey}_{scope}";
     }
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]

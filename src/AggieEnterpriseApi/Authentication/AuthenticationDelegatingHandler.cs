@@ -32,7 +32,7 @@ public class AuthenticationDelegatingHandler : DelegatingHandler
         if (response.StatusCode == HttpStatusCode.Unauthorized || response.StatusCode == HttpStatusCode.Forbidden)
         {
             // if we get unauthorized, clear the token cache and try again
-            _tokenService.ClearTokenCache();
+            _tokenService.ClearTokenCache(_options);
 
             token = await _tokenService.GetValidToken(_options);
 
