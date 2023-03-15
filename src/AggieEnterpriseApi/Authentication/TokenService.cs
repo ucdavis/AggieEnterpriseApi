@@ -13,6 +13,9 @@ public interface ITokenService
 
 public class TokenService : ITokenService
 {
+    //Instantiate a Singleton of the Semaphore with a value of 1. This means that only 1 thread can be granted access at a time.
+    private static readonly SemaphoreSlim SemaphoreSlim = new SemaphoreSlim(1, 1);
+
     private readonly IHttpClientFactory _clientFactory;
     private readonly IMemoryCache _memoryCache;
 
@@ -42,40 +45,60 @@ public class TokenService : ITokenService
             return token;
         }
 
-        // if not, get a new one
-        var httpClient = _clientFactory.CreateClient();
+        // if not, get a new token. Use a semaphore to ensure only 1 thread is getting a token at a time.
+        await SemaphoreSlim.WaitAsync();
 
-        // set auth with our consumer key and secret
-        httpClient.DefaultRequestHeaders.Add("Authorization",
-            "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{key}:{secret}")));
-
-        // setup the request content
-        var content = new FormUrlEncodedContent(new[]
+        // if we waited on the semaphore, check the cache again to see if another thread got a token while we were waiting
+        if (_memoryCache.TryGetValue(TokenCacheKey, out string token2))
         {
-            new KeyValuePair<string, string>("grant_type", "client_credentials"),
-            new KeyValuePair<string, string>("scope", scope)
-        });
-
-        // make the request
-        var request = await httpClient.PostAsync(tokenUrl, content);
-
-        // error if we didn't get a 200
-        request.EnsureSuccessStatusCode();
-
-        // get back json with our JWT in access_token
-        var response = await request.Content.ReadFromJsonAsync<TokenResponse>();
-
-        // error if we didn't get a valid response
-        if (response?.access_token == null)
-        {
-            throw new Exception("Invalid response from Aggie Enterprise API. Access token was not returned.");
+            // if one appeared while we were waiting, release the semaphore and return the token
+            SemaphoreSlim.Release();
+            return token2;
         }
 
-        // cache the token for expired_in seconds (minus 60 seconds for safety)
-        _memoryCache.Set(TokenCacheKey, response.access_token, TimeSpan.FromSeconds(response.expires_in - 60));
+        // nothing in the cache, go get a token
+        try
+        {
+            var httpClient = _clientFactory.CreateClient();
 
-        // return the token
-        return response.access_token;
+            // set auth with our consumer key and secret
+            httpClient.DefaultRequestHeaders.Add("Authorization",
+                "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{key}:{secret}")));
+
+            // setup the request content
+            var content = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("grant_type", "client_credentials"),
+                new KeyValuePair<string, string>("scope", scope)
+            });
+
+            // make the request
+            var request = await httpClient.PostAsync(tokenUrl, content);
+
+            // error if we didn't get a 200
+            request.EnsureSuccessStatusCode();
+
+            // get back json with our JWT in access_token
+            var response = await request.Content.ReadFromJsonAsync<TokenResponse>();
+
+            // error if we didn't get a valid response
+            if (response?.access_token == null)
+            {
+                throw new Exception("Invalid response from Aggie Enterprise API. Access token was not returned.");
+            }
+            
+            // TODO: read the JWT to get expiration date and use that instead of expires_in
+
+            // cache the token for expired_in seconds (minus 60 seconds for safety)
+            _memoryCache.Set(TokenCacheKey, response.access_token, TimeSpan.FromSeconds(response.expires_in - 60));
+
+            // return the token
+            return response.access_token;
+        }
+        finally
+        {
+            SemaphoreSlim.Release();
+        }
     }
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]
