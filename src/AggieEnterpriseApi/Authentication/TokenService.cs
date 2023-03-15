@@ -13,6 +13,9 @@ public interface ITokenService
 
 public class TokenService : ITokenService
 {
+    // set buffer time in seconds
+    private const int BufferTime = 300;
+    
     //Instantiate a Singleton of the Semaphore with a value of 1. This means that only 1 thread can be granted access at a time.
     private static readonly SemaphoreSlim SemaphoreSlim = new SemaphoreSlim(1, 1);
 
@@ -86,11 +89,9 @@ public class TokenService : ITokenService
             {
                 throw new Exception("Invalid response from Aggie Enterprise API. Access token was not returned.");
             }
-            
-            // TODO: read the JWT to get expiration date and use that instead of expires_in
 
-            // cache the token for expired_in seconds (minus 60 seconds for safety)
-            _memoryCache.Set(TokenCacheKey, response.access_token, TimeSpan.FromSeconds(response.expires_in - 60));
+            // cache the token for expired_in seconds (minus a little for safety)
+            _memoryCache.Set(TokenCacheKey, response.access_token, TimeSpan.FromSeconds(response.expires_in - BufferTime));
 
             // return the token
             return response.access_token;
