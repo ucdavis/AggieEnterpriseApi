@@ -6,6 +6,8 @@ namespace AggieEnterpriseApi;
 
 public class GraphQlClient
 {
+    private static readonly Dictionary<string, IAggieEnterpriseClient> _clients = new();
+
     /// <summary>
     /// Returns an IAggieEnterpriseClient that uses consumer key and secret to generate new access tokens as needed
     /// </summary>
@@ -18,63 +20,81 @@ public class GraphQlClient
     public static IAggieEnterpriseClient Get(string queryEndpoint, string tokenEndpoint, string key, string secret,
         string scope = "default")
     {
-        var serviceCollection = new ServiceCollection();
+        var clientKey = $"{queryEndpoint}_{tokenEndpoint}_{key}_{secret}_{scope}";
 
-        // add in general services
-        serviceCollection.AddHttpClient();
-        serviceCollection.AddMemoryCache();
-        serviceCollection.AddTransient<AuthenticationDelegatingHandler>();
-        serviceCollection.AddSingleton<ITokenService, TokenService>();
+        if (!_clients.TryGetValue(clientKey, out var client))
+        {
+            var serviceCollection = new ServiceCollection();
 
-        // add in options so we can use them in our delegating handler
-        serviceCollection.AddSingleton(new GraphQlClientOptions(queryEndpoint, tokenEndpoint, key, secret, scope));
+            // add in general services
+            serviceCollection.AddHttpClient();
+            serviceCollection.AddMemoryCache();
+            serviceCollection.AddTransient<AuthenticationDelegatingHandler>();
+            serviceCollection.AddSingleton<ITokenService, TokenService>();
 
-        // add in serializers for custom int/float types (ex: PositiveInt)
-        serviceCollection.AddSerializer<PositiveIntSerializer>();
-        serviceCollection.AddSerializer<NonNegativeIntSerializer>();
-        serviceCollection.AddSerializer<NonPositiveIntSerializer>();
-        serviceCollection.AddSerializer<NonNegativeFloatSerializer>();
+            // add in options so we can use them in our delegating handler
+            serviceCollection.AddSingleton(new GraphQlClientOptions(queryEndpoint, tokenEndpoint, key, secret, scope));
 
-        serviceCollection
-            .AddAggieEnterpriseClient()
-            .ConfigureHttpClient((serviceProvider, client) =>
-            {
-                var options = serviceProvider.GetRequiredService<GraphQlClientOptions>();
+            // add in serializers for custom int/float types (ex: PositiveInt)
+            serviceCollection.AddSerializer<PositiveIntSerializer>();
+            serviceCollection.AddSerializer<NonNegativeIntSerializer>();
+            serviceCollection.AddSerializer<NonPositiveIntSerializer>();
+            serviceCollection.AddSerializer<NonNegativeFloatSerializer>();
 
-                client.BaseAddress = new Uri(options.QueryEndpoint);
-            }, builder =>
-            {
-                // add in our delegating handler to refresh the token if needed
-                builder.AddHttpMessageHandler<AuthenticationDelegatingHandler>();
-            });
+            serviceCollection
+                .AddAggieEnterpriseClient()
+                .ConfigureHttpClient((serviceProvider, client) =>
+                {
+                    var options = serviceProvider.GetRequiredService<GraphQlClientOptions>();
 
-        IServiceProvider services = serviceCollection.BuildServiceProvider();
+                    client.BaseAddress = new Uri(options.QueryEndpoint);
+                }, builder =>
+                {
+                    // add in our delegating handler to refresh the token if needed
+                    builder.AddHttpMessageHandler<AuthenticationDelegatingHandler>();
+                });
 
-        return services.GetRequiredService<IAggieEnterpriseClient>();
+            IServiceProvider services = serviceCollection.BuildServiceProvider();
+
+            client = services.GetRequiredService<IAggieEnterpriseClient>();
+
+            _clients.Add(clientKey, client);
+        }
+
+        return client;
     }
 
     public static IAggieEnterpriseClient Get(string url, string token)
     {
-        var graphQlUri = new Uri(url);
+        var clientKey = $"{url}_{token}";
 
-        var serviceCollection = new ServiceCollection();
+        if (!_clients.TryGetValue(clientKey, out var client))
+        {
+            var graphQlUri = new Uri(url);
 
-        // add in serializers for custom int/float types (ex: PositiveInt)
-        serviceCollection.AddSerializer<PositiveIntSerializer>();
-        serviceCollection.AddSerializer<NonNegativeIntSerializer>();
-        serviceCollection.AddSerializer<NonPositiveIntSerializer>();
-        serviceCollection.AddSerializer<NonNegativeFloatSerializer>();
+            var serviceCollection = new ServiceCollection();
 
-        serviceCollection
-            .AddAggieEnterpriseClient()
-            .ConfigureHttpClient(client =>
-            {
-                client.BaseAddress = graphQlUri;
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-            });
+            // add in serializers for custom int/float types (ex: PositiveInt)
+            serviceCollection.AddSerializer<PositiveIntSerializer>();
+            serviceCollection.AddSerializer<NonNegativeIntSerializer>();
+            serviceCollection.AddSerializer<NonPositiveIntSerializer>();
+            serviceCollection.AddSerializer<NonNegativeFloatSerializer>();
 
-        IServiceProvider services = serviceCollection.BuildServiceProvider();
+            serviceCollection
+                .AddAggieEnterpriseClient()
+                .ConfigureHttpClient(client =>
+                {
+                    client.BaseAddress = graphQlUri;
+                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                });
 
-        return services.GetRequiredService<IAggieEnterpriseClient>();
+            IServiceProvider services = serviceCollection.BuildServiceProvider();
+
+            client = services.GetRequiredService<IAggieEnterpriseClient>();
+
+            _clients.Add(clientKey, client);
+        }
+
+        return client;
     }
 }
