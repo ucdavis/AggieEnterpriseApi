@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http.Json;
 using System.Text;
 using Microsoft.Extensions.Caching.Memory;
+using Serilog;
 
 namespace AggieEnterpriseApi.Authentication;
 
@@ -62,6 +63,7 @@ public class TokenService : ITokenService
         }
 
         // nothing in the cache, go get a token
+        Log.Information("Requesting new token from Aggie Enterprise API for scope {AggieEnterpriseScope}", scope);
         try
         {
             var httpClient = _clientFactory.CreateClient();
