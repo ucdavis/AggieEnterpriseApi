@@ -10,7 +10,7 @@ namespace AggieEnterpriseApi.Authentication;
 public class AuthenticationDelegatingHandler : DelegatingHandler
 {
     private const string BearerScheme = "Bearer";
-    
+
     private readonly ITokenService _tokenService;
     private readonly GraphQlClientOptions _options;
 
@@ -31,8 +31,13 @@ public class AuthenticationDelegatingHandler : DelegatingHandler
 
         if (response.StatusCode == HttpStatusCode.Unauthorized || response.StatusCode == HttpStatusCode.Forbidden)
         {
+            // if we get unauthorized, clear the token cache and try again
+            _tokenService.ClearTokenCache(_options);
+
             token = await _tokenService.GetValidToken(_options);
+
             request.Headers.Authorization = new AuthenticationHeaderValue(BearerScheme, token);
+
             response = await base.SendAsync(request, cancellationToken);
         }
 
