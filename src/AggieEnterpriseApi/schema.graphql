@@ -93,6 +93,11 @@ type ActionRequestStatus {
   When true, indicates this request was set to be batch processed along with other compatible requests.
   """
   batchRequest: Boolean
+
+  """
+  Once a request marked with batchRequest has been picked up for processing, this will contain the batchId.  This may be used to identify all requests which were submitted to the destination system as a unit.
+  """
+  batchId: UUID
 }
 
 """
@@ -135,6 +140,31 @@ type ApAccountingPeriodSearchResults {
 
   """Results of the search"""
   data: [ApAccountingPeriod!]!
+}
+
+type ApInvoice {
+  invoiceId: Long!
+  vendorId: Long!
+  vendorSiteId: Long!
+  orgId: Long!
+  poHeaderId: Long
+  supplierNumber: NonEmptyTrimmedString30
+  supplierSiteCode: NonEmptyTrimmedString15
+  supplierName: NonEmptyTrimmedString360
+  supplierInvoiceNumber: NonEmptyTrimmedString25
+  invoiceNumber: NonEmptyTrimmedString50
+  poNumber: NonEmptyTrimmedString30
+  checkNumber: NonEmptyTrimmedString50
+  paymentAmount: Long
+  invoiceDate: Date
+  paymentDate: Date
+  paymentStatusCode: NonEmptyTrimmedString1
+  paymentSourceName: NonEmptyTrimmedString25
+  checkStatusCode: NonEmptyTrimmedString50
+  paymentMethodCode: NonEmptyTrimmedString25
+  batchName: NonEmptyTrimmedString50
+  lastUpdateDateTime: DateTime
+  lastUpdateUserId: ErpUserId
 }
 
 """
@@ -191,6 +221,8 @@ type ArAccountingPeriodSearchResults {
 }
 
 type ArCustomerAccount {
+  custAccountId: Long!
+
   """Value that uniquely identifies the CustomerAccount by number"""
   accountNumber: NonEmptyTrimmedString50
 
@@ -202,6 +234,9 @@ type ArCustomerAccount {
 
   """Date/Time last updated"""
   lastUpdateDateTime: DateTime
+
+  """Customer Accounts have one to many Sites associated"""
+  customerAccountSites: [ArCustomerAccountSite]
 }
 
 """Data object used to run searches on Supplier"""
@@ -218,6 +253,39 @@ type ArCustomerAccountSearchResults {
 
   """Results of the search"""
   data: [ArCustomerAccount!]!
+}
+
+type ArCustomerAccountSite {
+  custAccountSiteId: Long!
+  custAccountId: Long!
+  partySiteId: Long!
+  startDate: Date
+  endDate: Date
+  shipToFlag: NonEmptyTrimmedString1
+  billToFlag: NonEmptyTrimmedString1
+  status: NonEmptyTrimmedString1
+  lastUpdateDateTime: DateTime
+  partySite: ArPartySite
+}
+
+"""Input object used to run searches on ArCustomerAccountSite"""
+input ArCustomerAccountSiteFilterInput {
+  searchCommon: SearchCommonInputs
+  custAccountSiteId: StringFilterInput
+  custAccountId: StringFilterInput
+  partySiteId: StringFilterInput
+  startDate: DateFilterInput
+  endDate: DateFilterInput
+  lastUpdateDateTime: DateFilterInput
+}
+
+"""Search results object for ArCustomerAccountSite"""
+type ArCustomerAccountSiteSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ArCustomerAccountSite!]!
 }
 
 """
@@ -369,6 +437,37 @@ type ArMemoLineSearchResults {
   data: [ArMemoLine!]!
 }
 
+type ArPartySite {
+  """Value that uniquely identifies the PartySite by number"""
+  partySiteNumber: NonEmptyTrimmedString50!
+
+  """Value that uniquely identifies the PartySite by name"""
+  partySiteName: NonEmptyTrimmedString100!
+
+  """Status Code of the PartySite"""
+  status: NonEmptyTrimmedString10
+  partySiteId: Long
+  partyId: Long
+  locationId: Long
+  lastUpdateDateTime: DateTime
+}
+
+"""Data object used to run searches on Supplier"""
+input ArPartySiteFilterInput {
+  searchCommon: SearchCommonInputs
+  partySiteNumber: StringFilterInput
+  partySiteName: StringFilterInput
+}
+
+"""Wrapper object for search results for ArPartySite"""
+type ArPartySiteSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ArPartySite!]!
+}
+
 """TODO"""
 type ArPaymentTerm {
   id: Long!
@@ -448,6 +547,11 @@ scalar CityName
 scalar CountryCode
 
 """
+A field whose value conforms to the standard cuid format as specified in https://github.com/ericelliott/cuid#broken-down
+"""
+scalar Cuid
+
+"""
 A field whose value is a Currency: https://en.wikipedia.org/wiki/ISO_4217.
 """
 scalar Currency
@@ -462,25 +566,25 @@ Generic date filter criteria object, only one of these properties should be set
 """
 input DateFilterInput {
   """Test if property is equal to the given value"""
-  eq: Date
+  eq: LocalDate
 
   """Test if property is NOT equal to the given value"""
-  ne: Date
+  ne: LocalDate
 
   """Test if property is less than or equal to the given value"""
-  le: Date
+  le: LocalDate
 
   """Test if property is less than the given value"""
-  lt: Date
+  lt: LocalDate
 
   """Test if property is greater than or equal to the given value"""
-  ge: Date
+  ge: LocalDate
 
   """Test if property is greater than the given value"""
-  gt: Date
+  gt: LocalDate
 
   """Test if property is between the first 2 elements in the array"""
-  between: [Date!]
+  between: [LocalDate!]
 }
 
 """
@@ -597,7 +701,7 @@ type ErpAccount {
 
   """
   Returns whether this ErpAccount is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the ErpAccount must:
   * Be enabled
   * Not be summaryOnly
@@ -607,7 +711,7 @@ type ErpAccount {
 
   """
   Whether GL segment strings using this account code require a purpose code.  All expenses require an assigned purpose code.  Purpose is optional on other types of transactions.
-  
+
   Expense accounts are defined as those which descend from account 50000B.
   """
   purposeRequired: Boolean!
@@ -750,7 +854,7 @@ type ErpActivity {
 
   """
   Returns whether this ErpActivity is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the ErpActivity must:
   * Be enabled
   * Not be summaryOnly
@@ -1042,7 +1146,7 @@ type ErpEntity {
 
   """
   Returns whether this ErpEntity is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the ErpEntity must:
   * Be enabled
   * Not be summaryOnly
@@ -1142,9 +1246,9 @@ type ErpFinancialDepartment {
   approvers(
     """
     If specified, only approvers of this type will be returned.  If the approver type name does not match any existing approver types, no results will be returned.
-    
+
     Current Known Approver Type Values are:
-    
+
     * Expense Transfer Approver
     * Financial Control Approver
     * Recharge Approver
@@ -1185,7 +1289,7 @@ type ErpFinancialDepartment {
 
   """
   Returns whether this ErpFinancialDepartment is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the ErpFinancialDepartment must:
   * Be enabled
   * Not be summaryOnly
@@ -1301,7 +1405,7 @@ type ErpFund {
 
   """
   Returns whether this ErpFund is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the ErpFund must:
   * Be enabled
   * Not be summaryOnly
@@ -1618,7 +1722,7 @@ type ErpProgram {
 
   """
   Returns whether this ErpProgram is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the ErpProgram must:
   * Be enabled
   * Not be summaryOnly
@@ -1760,7 +1864,7 @@ type ErpProject {
 
   """
   Returns whether this ErpProject is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the ErpProject must:
   * Be enabled
   * Not be summaryOnly
@@ -1876,7 +1980,7 @@ type ErpPurpose {
 
   """
   Returns whether this ErpPurpose is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the ErpPurpose must:
   * Be enabled
   * Not be summaryOnly
@@ -1958,8 +2062,6 @@ type ErpUser {
 
   """The latest principal username of the user"""
   userId: NonEmptyTrimmedString100!
-
-  """The description of the journal category associated with the row."""
   personId: Long!
 
   """Person's First name."""
@@ -1971,19 +2073,12 @@ type ErpUser {
   """Peron's Display name."""
   displayName: NonEmptyTrimmedString360
 
-  """Person's Full name."""
-  fullName: NonEmptyTrimmedString360
-
   """E-mail address."""
   email: ErpEmailAddress
-
-  """Unique code representing the status."""
   assignmentStatus: NonEmptyTrimmedString30
 
   """Identifies the type of record: employee, CWK, applicant or non-workers"""
   assignmentType: NonEmptyTrimmedString30
-
-  """Flag to mark when a user record that has been deleted in LDAP."""
   active: Boolean
 
   """The date that the user is active from."""
@@ -1998,10 +2093,10 @@ type ErpUser {
 """Data object used to run searches on ErpUser"""
 input ErpUserFilterInput {
   searchCommon: SearchCommonInputs
-  id: StringFilterInput
-  personId: StringFilterInput
   userId: StringFilterInput
+  firstName: StringFilterInput
   lastName: StringFilterInput
+  email: StringFilterInput
   displayName: StringFilterInput
   lastUpdateDateTime: DateFilterInput
 }
@@ -2586,6 +2681,8 @@ input GlJournalLineInput {
 
   """
   Delimited complete GL segment string.  All fields of the GL Accounting Key must be provided.
+
+  * Format Pattern: `0000-00000-0000000-000000-00-000-0000000000-000000-0000-000000-000000`
   """
   glSegmentString: GlSegmentString
 
@@ -2596,12 +2693,12 @@ input GlJournalLineInput {
 
   """
   Hyphen-Delimited PPM segment string
-  
+
   Must be populated with either the 4 required segments, or all 6 segments.  (Project-Task Number-Expense Organization-Expense Type-Award Number-Funding Source)
-  
-  * Format Pattern (Required Only): `SP00000001-0001-0000000-000000`
-  * Format Pattern (Sponsored Projects): `CP00000001-0001-0000000-000000-0000000-00000`
-  
+
+  * Format Pattern (Required Only): `FP00000001-TASK01-0000000-000000`
+  * Format Pattern (Sponsored Projects): `K300000001-TASK01-0000000-000000-0000000-00000`
+
   For more information, see the description of the [PpmSegmentString scalar]({{Types.PpmSegmentString}})
   """
   ppmSegmentString: PpmSegmentString
@@ -2876,6 +2973,11 @@ enum InvoiceType {
 }
 
 """
+A field whose value is either an IPv4 or IPv6 address: https://en.wikipedia.org/wiki/IP_address.
+"""
+scalar IP
+
+"""
 A field whose value is a IPv4 address: https://en.wikipedia.org/wiki/IPv4.
 """
 scalar IPv4
@@ -3036,19 +3138,19 @@ type Mutation {
 
   """
   Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
-  
+
   The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
-  
+
   This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
-  
+
   The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
-  
+
   Please see below in this document for examples of payloads into this API.
-  
+
   #### Supporting Operations
-  
+
   Other operations which should be used to pre-validate chartstring segments are below.  Please see <https://financeandbusiness.ucdavis.edu/aggie-enterprise/chart-of-accounts/redesign> for information about each of these segments.
-  
+
   * [`erpEntity`]({{Queries.erpEntity}})
   * [`erpFund`]({{Queries.erpFund}})
   * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
@@ -3057,51 +3159,51 @@ type Mutation {
   * [`erpProject`]({{Queries.erpProject}})
   * [`erpProgram`]({{Queries.erpProgram}})
   * [`erpActivity`]({{Queries.erpActivity}})
-  
+
   For validating combinations, the following two operations are provided, differing only in their input format.
-  
+
   * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
   * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
-  
+
   #### Managed Project Cost Entries (PPM/POET)
-  
+
   In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
-  
+
   For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
-  
+
   For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
-  
+
   * `p`roject
   * `o`rganization (same values as `ErpFinancialDepartment`)
   * `e`xpenditureType (same values as `ErpAccount`)
   * `t`ask
-  
+
   Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
-  
+
   There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
-  
+
   * award (only for sponsored projects)
   * fundingSource (only for sponsored projects)
-  
+
   As with the GL segments, the API provides the operations below for lookups and validation:
-  
+
   * [`ppmProject`]({{Queries.ppmProject}})
   * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
   * [`ppmOrganization`]({{Queries.ppmOrganization}})
   * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
-  
+
   #### Volume of Data
-  
+
   Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
-  
+
   #### Journal Balancing
-  
+
   As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
-  
+
   While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
-  
+
   #### Basic Use
-  
+
   1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
   2. GraphQL Server will validate content format and reject if invalid.
   3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
@@ -3114,43 +3216,43 @@ type Mutation {
 
   """
   Requests that an Invoice Payment be uploaded to Oracle.
-  
+
   This API replaces the various AP Feed flat file upload processes.
-  
+
   The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
-  
+
   Please see below in this document for examples of payloads into this API.
-  
+
   #### Supporting Operations
-  
+
   As this API accepts GL and PPM segments, those must be valid for the request to be accepted.  Please see the [`glJournalCreate`]({{Mutations.glJournalCreate}}) for links to those supporting operations.
-  
+
   There are also SCM-specific operations you can use to look up or validate information.
-  
+
   * [`scmPaymentTerm`]({{Queries.scmPaymentTerm}})
   * [`scmPaymentTermSearch`]({{Queries.scmPaymentTermSearch}})
   * [`erpUnitOfMeasure`]({{Queries.erpUnitOfMeasure}})
   * [`erpUnitOfMeasureSearch`]({{Queries.erpUnitOfMeasureSearch}})
   * [`scmSupplierByNumber`]({{Queries.scmSupplierByNumber}})
   * [`scmSupplierSearch`]({{Queries.scmSupplierSearch}})
-  
+
   #### Data Validation
-  
+
   ##### GraphQL Data Model and Type Resolvers
-  
+
   * Valid JSON data structure.
   * Required fields (enforced by GraphQL data model)
   * Ensure required fields are non-blank. (enforced by GraphQL data model)
   * Ensure fields are formatted properly (enforced by GraphQL data model - and custom code if needed)
   * Verify maximum lengths on fields.  (Delegate using custom data types if possible.)
     * (e.g., `TrimmedNonEmptyString240`)
-  
+
   ##### Request Header Checks
-  
+
   * Confirm if `consumerTrackingId` previously used and reject if found in the action request table.
-  
+
   ##### Data Validation
-  
+
   * Validate LineType:  LINE_TYPE_LOOKUP_CODE
     * The code you enter must be ITEM, TAX, MISCELLANEOUS, or FREIGHT. Validate against lookup codes stored in the AP_LOOKUP_CODES table
   * Validate InvoiceType: INVOICE_TYPE_LOOKUP_CODE
@@ -3175,10 +3277,10 @@ type Mutation {
     * Validate Sum of Line Amount equals Invoice Amount
   * Validate Payment Method Code.
   * Validate Line Type (Enum: ITEM, FREIGHT, MISCELLANEOUS).
-  
-  
+
+
   #### Basic Use
-  
+
   1. Call the operation (`scmInvoicePaymentCreate`) providing a data payload with the proper structure.  (See [`ScmInvoicePaymentRequestInput`]({{Types.ScmInvoicePaymentRequestInput}}))
   2. GraphQL Server will validate content format and reject if invalid.
   3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
@@ -3440,7 +3542,7 @@ type PpmAward {
 
   """
   Returns whether this PpmAward is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the PpmAward must:
   * Have closeDate after the given accountingDate
   """
@@ -3574,7 +3676,7 @@ type PpmExpenditureType {
 
   """
   Returns whether this PpmExpenditureType is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the PpmExpenditureType must:
   * Have a startDate and endDate range which includes the given accoutingDate
   """
@@ -3674,7 +3776,7 @@ type PpmFundingSource {
 
   """
   Returns whether this PpmFundingSource is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the PpmFundingSource must:
   * Have a fundingSourceFromDate and fundingSourceToDate range which includes the given accountingDate
   """
@@ -3749,7 +3851,7 @@ type PpmOrganization {
 
   """
   Returns whether this PpmOrganization is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the PpmOrganization must:
   * Have a effectiveStartDate and effectiveEndDate range which includes the given accountingDate
   * Be enabled
@@ -3897,7 +3999,7 @@ type PpmProject {
 
   """
   Tasks: The Task resource includes the attributes that are used to store values while creating or updating project tasks. Tasks are units of project work assigned or performed as part of the duties of a resource. Tasks can be a portion of project work to be performed within a defined period by a specific resource or multiple resources.
-  
+
   By default, this will only list tasks which are allowed to be assigned costs.  If you need to see all tasks, set the property argument to false.
   """
   tasks(
@@ -3920,7 +4022,7 @@ type PpmProject {
 
   """
   Returns whether this PpmProject is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the PpmProject must:
   * Have a projectStatusCode of ACTIVE
   * Not be a templateProject
@@ -3987,14 +4089,14 @@ input PpmSegmentInput {
 
   """
   Award for Sponsored projects only
-  
+
   **API Users, do not provide.  The valid value will be derived from the project if necessary.**
   """
   award: PpmAwardNumber
 
   """
   Award funding source for Sponsored projects only
-  
+
   **API Users, do not provide.  The valid value will be derived from the project if necessary.**
   """
   fundingSource: PpmFundingSourceNumber
@@ -4190,7 +4292,7 @@ type PpmTask {
 
   """
   Returns whether this PpmTask is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-  
+
   To be eligible for use, the PpmTask must:
   * Be chargeable
   * Be a lowestLevelTask
@@ -4445,6 +4547,17 @@ type Query {
   arCustomerAccountSearch(filter: ArCustomerAccountFilterInput!): ArCustomerAccountSearchResults!
 
   """
+  Get a single ArCustomerAccountSite by custAccountSiteId.  Returns undefined if does not exist
+  """
+  arCustomerAccountSite(custAccountSiteId: String!): ArCustomerAccountSite
+
+  """
+  Search for ArCustomerAccountSite objects by multiple properties.
+  See the ArCustomerAccountSiteFilterInput type for options.
+  """
+  arCustomerAccountSiteSearch(filter: ArCustomerAccountSiteFilterInput!): ArCustomerAccountSiteSearchResults!
+
+  """
   Get the status of a previously submitted AR invoice request by the API-assigned request ID.
   """
   arInvoiceRequestStatus(requestId: UUID!): ArInvoiceRequestStatusOutput
@@ -4475,6 +4588,27 @@ type Query {
   See the ArMemoLineFilterInput type for options.
   """
   arMemoLineSearch(filter: ArMemoLineFilterInput!): ArMemoLineSearchResults!
+
+  """
+  Get a single ArPartySite by partySiteId.  Returns undefined if does not exist
+  """
+  arPartySite(partySiteId: Long!): ArPartySite
+
+  """
+  Get a single ArPartySite by partySiteNumber.  Returns undefined if does not exist
+  """
+  arPartySiteByPartySiteNumber(partySiteNumber: String!): ArPartySite
+
+  """
+  Get a single ArPartySite by partySiteName.  Returns undefined if does not exist
+  """
+  arPartySiteByPartySiteName(partySiteName: String!): ArPartySite
+
+  """
+  Search for ArPartySite objects by multiple properties.
+  See the ArPartySiteFilterInput type for options.
+  """
+  arPartySiteSearch(filter: ArPartySiteFilterInput!): ArPartySiteSearchResults!
 
   """
   Get a single ArPaymentTerm by code.  Returns undefined if does not exist
@@ -4648,7 +4782,7 @@ type Query {
 
   """
   Search for ErpBuilding objects by multiple properties.
-  
+
   See the ErpBuildingFilterInput type for options.
   """
   erpBuildingSearch(filter: ErpBuildingFilterInput!): ErpBuildingSearchResults!
@@ -4660,7 +4794,7 @@ type Query {
 
   """
   Search for ErpBuildingRoom objects by multiple properties.
-  
+
   See the ErpBuildingRoomFilterInput type for options.
   """
   erpBuildingRoomSearch(filter: ErpBuildingRoomFilterInput!): ErpBuildingRoomSearchResults!
@@ -4670,7 +4804,7 @@ type Query {
 
   """
   Search for ErpCampus objects by multiple properties.
-  
+
   See the ErpCampusFilterInput type for options.
   """
   erpCampusSearch(filter: ErpCampusFilterInput!): ErpCampusSearchResults!
@@ -4680,7 +4814,7 @@ type Query {
 
   """
   Search for ErpFundSource objects by multiple properties.
-  
+
   See the ErpFundSourceFilterInput type for options.
   """
   erpFundSourceSearch(filter: ErpFundSourceFilterInput!): ErpFundSourceSearchResults!
@@ -4723,13 +4857,10 @@ type Query {
   erpUnitOfMeasureSearch(filter: ErpUnitOfMeasureFilterInput!): ErpUnitOfMeasureSearchResults!
 
   """Get a single ErpUser by id.  Returns undefined if does not exist"""
-  erpUser(code: String!): ErpUser
+  erpUser(id: String!): ErpUser
 
   """Get a single ErpUser by user id.  Returns undefined if does not exist"""
   erpUserByUserId(userId: String!): ErpUser
-
-  """Get all currently valid ErpUser objects."""
-  erpUserAll(sort: [String!]): [ErpUser!]!
 
   """
   Search for ErpUser objects by multiple properties.
@@ -4740,7 +4871,7 @@ type Query {
 
   """
   Accepts a chart and account (and optionally a sub account and/or project code) which was converted as part of cutover and returns the cost center portion with matching GL or POET segments needed to record a transaction.  If no match is found when a sub account or project code is provided, the conversion will revert to only using the chart and account.  The attributes used for the returned converted values will be included in the response.
-  
+
   In the case of a POET segment response, an array of tasks will be returned.  The data conversion mapping does not contain that information.  At cutover, there will be only one task per project.  However, additional tasks will be added as part of use after go-live.
   """
   kfsConvertAccount(chart: KfsChartCode!, account: KfsAccountNumber!, subAccount: KfsSubAccountNumber): KfsConvertAccountOutput!
@@ -4757,7 +4888,7 @@ type Query {
 
   """
   Search for FaAcquisitionCode objects by multiple properties.
-  
+
   See the FaAcquisitionCodeFilterInput type for options.
   """
   faAcquisitionCodeSearch(filter: FaAcquisitionCodeFilterInput!): FaAcquisitionCodeSearchResults!
@@ -4767,7 +4898,7 @@ type Query {
 
   """
   Search for FaAsset objects by multiple properties.
-  
+
   See the FaAssetFilterInput type for options.
   """
   faAssetSearch(filter: FaAssetFilterInput!): FaAssetSearchResults!
@@ -4781,7 +4912,7 @@ type Query {
 
   """
   Search for FaAssetCategory objects by multiple properties.
-  
+
   See the FaAssetCategoryFilterInput type for options.
   """
   faAssetCategorySearch(filter: FaAssetCategoryFilterInput!): FaAssetCategorySearchResults!
@@ -4791,7 +4922,7 @@ type Query {
 
   """
   Search for FaCondition objects by multiple properties.
-  
+
   See the FaConditionFilterInput type for options.
   """
   faConditionSearch(filter: FaConditionFilterInput!): FaConditionSearchResults!
@@ -4803,7 +4934,7 @@ type Query {
 
   """
   Search for FaCustodialDepartment objects by multiple properties.
-  
+
   See the FaCustodialDepartmentFilterInput type for options.
   """
   faCustodialDepartmentSearch(filter: FaCustodialDepartmentFilterInput!): FaCustodialDepartmentSearchResults!
@@ -4815,7 +4946,7 @@ type Query {
 
   """
   Search for FaCustodialDivision objects by multiple properties.
-  
+
   See the FaCustodialDivisionFilterInput type for options.
   """
   faCustodialDivisionSearch(filter: FaCustodialDivisionFilterInput!): FaCustodialDivisionSearchResults!
@@ -4825,7 +4956,7 @@ type Query {
 
   """
   Search for FaFundSource objects by multiple properties.
-  
+
   See the FaFundSourceFilterInput type for options.
   """
   faFundSourceSearch(filter: FaFundSourceFilterInput!): FaFundSourceSearchResults!
@@ -4835,7 +4966,7 @@ type Query {
 
   """
   Search for FaLoanCode objects by multiple properties.
-  
+
   See the FaLoanCodeFilterInput type for options.
   """
   faLoanCodeSearch(filter: FaLoanCodeFilterInput!): FaLoanCodeSearchResults!
@@ -4847,7 +4978,7 @@ type Query {
 
   """
   Search for FaMajorCategory objects by multiple properties.
-  
+
   See the FaMajorCategoryFilterInput type for options.
   """
   faMajorCategorySearch(filter: FaMajorCategoryFilterInput!): FaMajorCategorySearchResults!
@@ -4859,7 +4990,7 @@ type Query {
 
   """
   Search for FaMinorCategory objects by multiple properties.
-  
+
   See the FaMinorCategoryFilterInput type for options.
   """
   faMinorCategorySearch(filter: FaMinorCategoryFilterInput!): FaMinorCategorySearchResults!
@@ -4869,7 +5000,7 @@ type Query {
 
   """
   Search for FaProgram objects by multiple properties.
-  
+
   See the FaProgramFilterInput type for options.
   """
   faProgramSearch(filter: FaProgramFilterInput!): FaProgramSearchResults!
@@ -4907,15 +5038,20 @@ type Query {
   glJournalRequestStatusByConsumerReference(consumerReferenceId: String!): [GlJournalRequestStatusOutput!]!
 
   """
+  Get the list of journal requests which were processed via the given batch ID.
+  """
+  glJournalRequestStatusByBatchId(batchId: UUID!): [GlJournalRequestStatusOutput!]!
+
+  """
   Validates that the given set of GL chartstring segments are most likely valid for posting
   to the financial system general ledger.  Individual non-blank elements will be checked
   for current validity.
-  
+
   If validateCVRs is true, certain combinations of attributes will be sanity checked.
-  
+
   This operation will return a fully populated set of segments, including defaults in
   both individual segment and full chartstring form.
-  
+
   If the combination was previously known/used in the financial system, its unique ID will be included.
   """
   glValidateChartSegments(segments: GlSegmentInput!, validateCVRs: Boolean = true): GlValidateChartSegmentsOutput!
@@ -4925,11 +5061,11 @@ type Query {
   to the financial system general ledger.  The input string format is strongly typed
   and will reject the call if not structured properly.  Please see the definition of the
   [GlSegmentString]({{Types.GlSegmentString}}) for format information.
-  
+
   If validateCVRs is true, certain combinations of attributes will be sanity checked if the string format is accepted.
-  
+
   This operation will return the validation result and the segments as parsed out into their component fields.
-  
+
   If the combination was previously known/used in the financial system, its unique ID will be included.
   """
   glValidateChartstring(segmentString: GlSegmentString!, validateCVRs: Boolean = true): GlValidateChartSegmentsOutput!
@@ -4959,7 +5095,7 @@ type Query {
 
   """
   Get a single PpmExpenditureType by id.  Returns undefined if does not exist.
-  
+
   This ID is an internal tracking number used by the financial system.  It is only used to link between objects internally.
   Use the ppmExpenditureTypeByName or ppmExpenditureTypeByAccount operations to pull by a unique identifier.
   """
@@ -4977,7 +5113,7 @@ type Query {
 
   """
   Gets PpmExpenditureTypes by the associated GL Account.  Returns undefined if none is found.
-  
+
   PPM Expense Type names will be the GL Account number plus a description.  This full string must be used in file-based feeds.
   This method will allow you to obtain the exact string (in the name property) that needs to be included.
   """
@@ -5103,9 +5239,9 @@ type Query {
   Validates that the given set of PPM segments are most likely valid for posting
   to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
   for current validity.
-  
+
   If no date is passed, today's date will be assumed.
-  
+
   This operation will return a fully populated set of segments.
   """
   ppmSegmentsValidate(segments: PpmSegmentInput!): PpmSegmentsValidateOutput!
@@ -5114,11 +5250,11 @@ type Query {
   Validates that the given PPM chartstring is most likely valid for posting
   to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
   for current validity.
-  
+
   If no date is passed, today's date will be assumed.
-  
+
   This operation will return a fully populated set of segments.
-  
+
   This operation will return the validation result and the segments as parsed out into their component fields.
   """
   ppmStringSegmentsValidate(segmentString: PpmSegmentString!): PpmSegmentsValidateOutput!
@@ -5137,6 +5273,7 @@ type Query {
   Get the statuses of previously submitted payable payment requests by the consumer's reference ID.
   """
   scmInvoicePaymentRequestStatusByConsumerReference(consumerReferenceId: String!): ScmInvoicePaymentRequestStatusOutput
+  scmInvoicePaymentSearch(filter: ScmInvoicePaymentFilterInput!): ScmInvoicePaymentSearchResults!
 
   """
   Get a single ScmPaymentTerm by unitOfMeasureId.  Returns undefined if does not exist
@@ -5350,7 +5487,7 @@ input ScmInvoiceLineInput {
   """
   The quantity of items invoiced include matched invoice lines, price corrections, quantity corrections, and unmatched invoice lines.
   """
-  quantity: PositiveInt
+  quantity: PositiveFloat
 
   """The unit of measure for the quantity invoiced."""
   unitOfMeasure: NonEmptyTrimmedString25
@@ -5373,6 +5510,13 @@ input ScmInvoiceLineInput {
   PPM POET segment values.  If provided, this will override any provided or default PPM segments.
   """
   ppmSegmentString: PpmSegmentString
+}
+
+input ScmInvoicePaymentFilterInput {
+  searchCommon: SearchCommonInputs
+  invoiceNumber: StringFilterInput
+  supplierNumber: StringFilterInput
+  invoiceDate: DateFilterInput
 }
 
 """
@@ -5463,6 +5607,14 @@ type ScmInvoicePaymentRequestStatusOutput {
 
   """Validation errors of payload data"""
   validationResults: ValidationResponse
+}
+
+type ScmInvoicePaymentSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ApInvoice!]!
 }
 
 """
@@ -5870,6 +6022,9 @@ type SegmentWarning {
   """Warning message associated with the use of the given segment."""
   warning: String!
 }
+
+"""A field whose value is a Semantic Version: https://semver.org"""
+scalar SemVer
 
 """
 String filter criteria object, only one of this object's properties should be set.  Except as noted in the properties below, all comparisons are case-sensitive.
