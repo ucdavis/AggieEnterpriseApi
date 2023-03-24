@@ -161,8 +161,8 @@ public class PrePurchasingTests : TestBase
         data.ScmSupplierSearch.ShouldNotBeNull();
         data.ScmSupplierSearch.Data.ShouldNotBeNull();
         data.ScmSupplierSearch.Data.First().Name.ShouldBe("DELL ENTERPRISES");
-        data.ScmSupplierSearch.Data.First().SupplierNumber.ShouldBe(83526);
-        data.ScmSupplierSearch.Data.First().SupplierNumber.ToString().ShouldBe("83526");
+        data.ScmSupplierSearch.Data.First().SupplierNumber.ShouldBe("83526");
+        //data.ScmSupplierSearch.Data.First().SupplierNumber.ToString().ShouldBe("83526");
         var address = data.ScmSupplierSearch.Data.First().Sites.Where(a => a.Location?.City == "ROUND ROCK" && a.Location?.AddressLine2 == "ONE DELL WAY" && a.Location?.State == "TX").FirstOrDefault();
         address.ShouldNotBeNull();
         address.SupplierSiteCode.ShouldBe("PUR-4");
@@ -180,12 +180,12 @@ public class PrePurchasingTests : TestBase
         data.ShouldNotBeNull();
         data.ScmSupplierByNumber.ShouldNotBeNull();
         data.ScmSupplierByNumber.Name.ShouldBe("FISHER SCIENTIFIC COMPANY LLC");
-        data.ScmSupplierByNumber.SupplierNumber.ShouldBe(426);
+        data.ScmSupplierByNumber.SupplierNumber.ShouldBe("426");
 
         data.ScmSupplierSearch.ShouldNotBeNull();
         data.ScmSupplierSearch.Data.ShouldNotBeNull();
         //data.ScmSupplierSearch.Data.Count().ShouldBe(15); //Can expect this to change when the data changes
-        data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == 426).FirstOrDefault().ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == "426").FirstOrDefault().ShouldNotBeNull();
     }
 
     [Fact]
@@ -199,12 +199,12 @@ public class PrePurchasingTests : TestBase
         data.ShouldNotBeNull();
         data.ScmSupplierByNumber.ShouldNotBeNull();
         data.ScmSupplierByNumber.Name.ShouldBe("FISHER SCIENTIFIC COMPANY LLC");
-        data.ScmSupplierByNumber.SupplierNumber.ShouldBe(426);
+        data.ScmSupplierByNumber.SupplierNumber.ShouldBe("426");
 
         data.ScmSupplierSearch.ShouldNotBeNull();
         data.ScmSupplierSearch.Data.ShouldNotBeNull();
         data.ScmSupplierSearch.Data.Count().ShouldBe(1);
-        data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == 426).FirstOrDefault().ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == "426").FirstOrDefault().ShouldNotBeNull();
 
     }
 
@@ -224,7 +224,7 @@ public class PrePurchasingTests : TestBase
         data.ScmSupplierSearch.ShouldNotBeNull();
         data.ScmSupplierSearch.Data.ShouldNotBeNull();
         data.ScmSupplierSearch.Data.Count().ShouldBe(1);
-        data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == 426).FirstOrDefault().ShouldNotBeNull();
+        data.ScmSupplierSearch.Data.Where(a => a.SupplierNumber == "426").FirstOrDefault().ShouldNotBeNull();
     }
 
     [Fact]
@@ -238,7 +238,7 @@ public class PrePurchasingTests : TestBase
         data.ShouldNotBeNull();
         data.ScmSupplierByNumber.ShouldNotBeNull();
         data.ScmSupplierByNumber.Name.ShouldBe("FISHER SCIENTIFIC COMPANY LLC");
-        data.ScmSupplierByNumber.SupplierNumber.ShouldBe(426);
+        data.ScmSupplierByNumber.SupplierNumber.ShouldBe("426");
 
         data.ScmSupplierSearch.ShouldNotBeNull();
         data.ScmSupplierSearch.Data.ShouldNotBeNull();
