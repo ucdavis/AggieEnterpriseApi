@@ -2612,13 +2612,13 @@ GLIDe fields are part of the GL/PPM Combined journal. These fields are optional.
 """
 input GlideInput {
   lineDescription: String
-  journalLineNumber: Float
-  transactionDate: Date
+  journalLineNumber: PositiveInt
+  transactionDate: LocalDate
   udfNumeric1: Float
   udfNumeric2: Float
   udfNumeric3: Float
-  udfDate1: Date
-  udfDate2: Date
+  udfDate1: LocalDate
+  udfDate2: LocalDate
   udfString1: String
   udfString2: String
   udfString3: String
@@ -5325,7 +5325,7 @@ type Query {
   """
   Get a single ScmSupplier by supplierId.  Returns undefined if does not exist
   """
-  scmSupplier(supplierId: String!): ScmSupplier
+  scmSupplier(supplierId: Long!): ScmSupplier
 
   """
   Get a single ScmSupplier by supplier number.  Returns undefined if does not exist
@@ -5879,7 +5879,7 @@ type ScmSupplier {
   """
   Unique ID for the supplier used to reference it within the UI and in interfaces.  This largely corresponds to the Vendor ID in KFS.
   """
-  supplierNumber: Long!
+  supplierNumber: NonEmptyTrimmedString30!
 
   """Supplier: Name of the supplier."""
   name: NonEmptyTrimmedString360!
@@ -5895,14 +5895,22 @@ type ScmSupplier {
   """
   businessRelationshipCode: NonEmptyTrimmedString30
 
-  """Supplier Type: Type of supplier."""
-  supplierType: NonEmptyTrimmedString80
+  """DEPRECATED: Use organizationTypeCode instead."""
+  supplierType: NonEmptyTrimmedString30
+
+  """The general type of goods or services provided by this supplier."""
+  supplierTypeCode: NonEmptyTrimmedString30
+
+  """
+  The nature of the supplier's business structure.  (Corporation, Partnership, etc...)
+  """
+  organizationTypeCode: NonEmptyTrimmedString30
 
   """The date from when the value is available for use."""
-  startDateActive: Date
+  startDateActive: LocalDate
 
   """The date till which the value is available for use."""
-  endDateActive: Date
+  endDateActive: LocalDate
 
   """Timestamp this record was last updated in the financial system."""
   lastUpdateDateTime: DateTime!
@@ -5922,8 +5930,8 @@ input ScmSupplierFilterInput {
   name: StringFilterInput
   aliasName: StringFilterInput
   alternateName: StringFilterInput
-  supplierId: StringFilterInput
   supplierNumber: StringFilterInput
+  organizationTypeCode: StringFilterInput
   lastUpdateDateTime: DateFilterInput
 }
 
