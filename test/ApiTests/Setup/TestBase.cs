@@ -6,6 +6,11 @@ public class TestBase
 {
     protected readonly string Token;
     protected readonly string GraphQlUrl;
+    protected readonly string ConsumerKey;
+    protected readonly string ConsumerSecret;
+    protected readonly string TokenEndpoint;
+    protected readonly string ScopeApp;
+    protected readonly string ScopeEnv;
 
     protected TestBase()
     {
@@ -15,5 +20,10 @@ public class TestBase
 
         Token = configuration.GetSection("Token").Value;
         GraphQlUrl = configuration.GetSection("GraphQlUrl").Value;
+        ConsumerKey = configuration.GetSection("ConsumerKey").Value;
+        ConsumerSecret = configuration.GetSection("ConsumerSecret").Value;
+        TokenEndpoint = configuration.GetSection("TokenEndpoint").Value;
+        ScopeApp = configuration.GetSection("ScopeApp").Value;
+        ScopeEnv = configuration.GetSection("ScopeEnv").Value;
     }
 }

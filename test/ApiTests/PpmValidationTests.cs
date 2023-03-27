@@ -5,7 +5,7 @@ using ApiTests.Setup;
 using Xunit;
 using Shouldly;
 using Microsoft.Extensions.Configuration;
-
+using AggieEnterpriseApi.Validation;
 
 namespace ApiTests;
 public class PpmValidationTests : TestBase
@@ -58,5 +58,37 @@ public class PpmValidationTests : TestBase
         data.PpmStringSegmentsValidate.Warnings[0].Warning.ShouldEndWith("Please update or transactions to this chartstring will be rejected after that date."); 
     }
 
+    [Fact]
+    public async Task TestJwtWorks()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
+        var result = await client.DeptParents.ExecuteAsync("ACBS001");
+
+        var data = result.ReadData();
+
+        data.ShouldNotBeNull();
+
+        data.ErpFinancialDepartment.ShouldNotBeNull();
+        data.ErpFinancialDepartment.Code.ShouldBe("ACBS001");
+        data.ErpFinancialDepartment.Enabled.ShouldBeTrue();
+        data.ErpFinancialDepartment.Parent.ShouldNotBeNull();
+
+
+        DoesDeptRollUp.Dept(data.ErpFinancialDepartment, "AAES00C").ShouldBeTrue();
+        DoesDeptRollUp.Dept(data.ErpFinancialDepartment, "AAES00B").ShouldBeFalse();
+    }
+
+    [Fact]
+    public async Task TestLookupProjectManager()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
+        var result = await client.PpmProjectManager.ExecuteAsync("K302300049");
+
+        var data = result.ReadData();
+
+        data.ShouldNotBeNull();
+    }
 
 }
