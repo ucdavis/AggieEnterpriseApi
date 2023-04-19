@@ -5,6 +5,7 @@ query ErpAccountSearch($filter: ErpAccountFilterInput!, $code: String!) {
           code
           name
           eligibleForUse
+          parentCode
       }
       # query projects by filter
       erpAccountSearch(filter: $filter) {
@@ -13,6 +14,7 @@ query ErpAccountSearch($filter: ErpAccountFilterInput!, $code: String!) {
           code
           name
           eligibleForUse
+          parentCode
         }
       }
     }

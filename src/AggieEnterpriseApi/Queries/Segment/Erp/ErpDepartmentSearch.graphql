@@ -5,6 +5,7 @@ query ErpDepartmentSearch($filter: ErpFinancialDepartmentFilterInput!, $code: St
           code
           name
           eligibleForUse
+          parentCode
       }
       # query projects by filter
       erpFinancialDepartmentSearch(filter: $filter) {
@@ -13,6 +14,7 @@ query ErpDepartmentSearch($filter: ErpFinancialDepartmentFilterInput!, $code: St
           code
           name
           eligibleForUse
+          parentCode
         }
       }
     }
