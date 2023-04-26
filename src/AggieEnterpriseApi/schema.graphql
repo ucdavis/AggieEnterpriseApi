@@ -593,6 +593,11 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 scalar DateTime
 
 """
+A field whose value conforms to the standard DeweyDecimal format as specified by the OCLC https://www.oclc.org/content/dam/oclc/dewey/resources/summaries/deweysummaries.pdf
+"""
+scalar DeweyDecimal
+
+"""
 A field whose value conforms to the standard DID format as specified in did-core: https://www.w3.org/TR/did-core/.
 """
 scalar DID
@@ -618,7 +623,7 @@ Matches moment.js, Luxon and DateFns implementations
 scalar Duration
 
 """
-A field whose value conforms to the standard internet email address format as specified in RFC822: https://www.w3.org/Protocols/rfc822/.
+A field whose value conforms to the standard internet email address format as specified in HTML Spec: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address.
 """
 scalar EmailAddress
 
@@ -701,7 +706,7 @@ type ErpAccount {
 
   """
   Returns whether this ErpAccount is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpAccount must:
   * Be enabled
   * Not be summaryOnly
@@ -709,12 +714,8 @@ type ErpAccount {
   """
   eligibleForUse(accountingDate: LocalDate): Boolean!
 
-  """
-  Whether GL segment strings using this account code require a purpose code.  All expenses require an assigned purpose code.  Purpose is optional on other types of transactions.
-
-  Expense accounts are defined as those which descend from account 50000B.
-  """
-  purposeRequired: Boolean!
+  """DEPRECATED - NOT IMPLEMENTED"""
+  purposeRequired: Boolean! @deprecated(reason: "This field was not implemented and will be removed in a future version.")
 }
 
 """
@@ -854,7 +855,7 @@ type ErpActivity {
 
   """
   Returns whether this ErpActivity is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpActivity must:
   * Be enabled
   * Not be summaryOnly
@@ -915,16 +916,17 @@ type ErpBuilding {
 
 """Data object used to run searches on ErpBuilding"""
 input ErpBuildingFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type ErpBuildingRoom {
   code: NonEmptyTrimmedString150!
   id: Long!
-  name: NonEmptyTrimmedString240
+  name: NonEmptyTrimmedString240!
   enabled: Boolean!
   startDate: LocalDate
   endDate: LocalDate
@@ -934,10 +936,11 @@ type ErpBuildingRoom {
 
 """Data object used to run searches on ErpBuildingRoom"""
 input ErpBuildingRoomFilterInput {
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
   name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type ErpBuildingRoomSearchResults {
@@ -969,10 +972,11 @@ type ErpCampus {
 
 """Data object used to run searches on ErpCampus"""
 input ErpCampusFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type ErpCampusSearchResults {
@@ -1146,7 +1150,7 @@ type ErpEntity {
 
   """
   Returns whether this ErpEntity is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpEntity must:
   * Be enabled
   * Not be summaryOnly
@@ -1246,9 +1250,9 @@ type ErpFinancialDepartment {
   approvers(
     """
     If specified, only approvers of this type will be returned.  If the approver type name does not match any existing approver types, no results will be returned.
-
+    
     Current Known Approver Type Values are:
-
+    
     * Expense Transfer Approver
     * Financial Control Approver
     * Recharge Approver
@@ -1289,7 +1293,7 @@ type ErpFinancialDepartment {
 
   """
   Returns whether this ErpFinancialDepartment is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpFinancialDepartment must:
   * Be enabled
   * Not be summaryOnly
@@ -1405,7 +1409,7 @@ type ErpFund {
 
   """
   Returns whether this ErpFund is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpFund must:
   * Be enabled
   * Not be summaryOnly
@@ -1457,10 +1461,11 @@ type ErpFundSource {
 
 """Data object used to run searches on ErpFundSource"""
 input ErpFundSourceFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type ErpFundSourceSearchResults {
@@ -1722,7 +1727,7 @@ type ErpProgram {
 
   """
   Returns whether this ErpProgram is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpProgram must:
   * Be enabled
   * Not be summaryOnly
@@ -1864,7 +1869,7 @@ type ErpProject {
 
   """
   Returns whether this ErpProject is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpProject must:
   * Be enabled
   * Not be summaryOnly
@@ -1980,7 +1985,7 @@ type ErpPurpose {
 
   """
   Returns whether this ErpPurpose is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the ErpPurpose must:
   * Be enabled
   * Not be summaryOnly
@@ -2126,10 +2131,11 @@ type FaAcquisitionCode {
 
 """Data object used to run searches on FaAcquisitionCode"""
 input FaAcquisitionCodeFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type FaAcquisitionCodeSearchResults {
@@ -2155,7 +2161,7 @@ type FaAsset {
   manufacturerName: NonEmptyTrimmedString360
   serialNumber: NonEmptyTrimmedString40
   modelNumber: NonEmptyTrimmedString40
-  minorCategory: NonEmptyTrimmedString150!
+  minorCategoryCode: NonEmptyTrimmedString150!
   campusCode: NonEmptyTrimmedString150!
   buildingCode: NonEmptyTrimmedString150!
   roomCode: NonEmptyTrimmedString150
@@ -2199,10 +2205,10 @@ type FaAsset {
 
 type FaAssetCategory {
   assetCategoryId: Long!
-  name: NonEmptyTrimmedString240!
+  name: NonEmptyTrimmedString240
   enabled: Boolean!
-  inventorialFlag: Boolean!
-  capitalizeFlag: Boolean!
+  inventorial: Boolean!
+  capitalize: Boolean!
   propertyTypeCode: NonEmptyTrimmedString150!
   categoryType: NonEmptyTrimmedString150!
   majorCategoryCode: NonEmptyTrimmedString150!
@@ -2214,10 +2220,14 @@ type FaAssetCategory {
 
 """Data object used to run searches on FaAssetCategory"""
 input FaAssetCategoryFilterInput {
-  assetCategoryId: StringFilterInput
+  searchCommon: SearchCommonInputs
   name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  inventorial: BooleanFilterInput
+  categoryType: StringFilterInput
+  majorCategoryCode: StringFilterInput
+  minorCategoryCode: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type FaAssetCategorySearchResults {
@@ -2229,44 +2239,17 @@ type FaAssetCategorySearchResults {
 }
 
 type FaAssetCostHistory {
-  assetId: Long
-  typeCode: NonEmptyTrimmedString30
-  headerId: Long
-  serviceDate: LocalDate
-  totalCost: Float
-  effectiveDate: LocalDate
-  ineffectiveDate: LocalDate
-  creationDate: DateTime
-  lastUpdateUserId: ErpUserId
-  lastUpdateDateTime: DateTime
-}
-
-type FaAssetDistributionHistory {
+  headerId: Long!
   assetId: Long!
-  distributionId: Long!
-  bookTypeCode: NonEmptyTrimmedString240!
-  deprCodeCombinationId: Long!
-  effectiveDate: DateTime!
-  ineffectiveDate: DateTime!
-  unitsAssigned: Long!
+  typeCode: NonEmptyTrimmedString30!
+  headerOutId: Long
+  serviceDate: LocalDate!
+  totalCost: Float!
+  effectiveDate: LocalDate!
+  ineffectiveDate: LocalDate
+  creationDate: DateTime!
   lastUpdateUserId: ErpUserId
   lastUpdateDateTime: DateTime!
-}
-
-"""Data object used to run searches on FaAssetDistributionHistory"""
-input FaAssetDistributionHistoryFilterInput {
-  assetCategoryId: StringFilterInput
-  name: StringFilterInput
-  enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
-}
-
-type FaAssetDistributionHistorySearchResults {
-  """Information about the search results returned."""
-  metadata: SearchResultMetadata!
-
-  """Results of the search"""
-  data: [FaAssetDistributionHistory!]!
 }
 
 """Data object used to run searches on FaAsset"""
@@ -2280,6 +2263,7 @@ input FaAssetFilterInput {
   buildingCode: StringFilterInput
   custodialDivisionCode: StringFilterInput
   custodialDepartmentCode: StringFilterInput
+  minorCategoryCode: StringFilterInput
   assetType: StringFilterInput
 }
 
@@ -2304,10 +2288,11 @@ type FaCondition {
 
 """Data object used to run searches on FaCondition"""
 input FaConditionFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type FaConditionSearchResults {
@@ -2331,10 +2316,11 @@ type FaCustodialDepartment {
 
 """Data object used to run searches on FaCustodialDepartment"""
 input FaCustodialDepartmentFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type FaCustodialDepartmentSearchResults {
@@ -2358,10 +2344,11 @@ type FaCustodialDivision {
 
 """Data object used to run searches on FaCustodialDivision"""
 input FaCustodialDivisionFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type FaCustodialDivisionSearchResults {
@@ -2385,10 +2372,11 @@ type FaFundSource {
 
 """Data object used to run searches on FaFundSource"""
 input FaFundSourceFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type FaFundSourceSearchResults {
@@ -2412,10 +2400,11 @@ type FaLoanCode {
 
 """Data object used to run searches on FaLoanCode"""
 input FaLoanCodeFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type FaLoanCodeSearchResults {
@@ -2450,10 +2439,11 @@ type FaMajorCategory {
 
 """Data object used to run searches on FaMajorCategory"""
 input FaMajorCategoryFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type FaMajorCategorySearchResults {
@@ -2477,10 +2467,11 @@ type FaMinorCategory {
 
 """Data object used to run searches on FaMinorCategory"""
 input FaMinorCategoryFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type FaMinorCategorySearchResults {
@@ -2504,10 +2495,11 @@ type FaProgram {
 
 """Data object used to run searches on FaProgram"""
 input FaProgramFilterInput {
-  description: StringFilterInput
+  searchCommon: SearchCommonInputs
   code: StringFilterInput
+  name: StringFilterInput
   enabled: BooleanFilterInput
-  lastUpdateDateTime: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
 }
 
 type FaProgramSearchResults {
@@ -2608,22 +2600,57 @@ type GlCostCenterSegments {
 scalar GlDescriptionField40
 
 """
-GLIDe fields are part of the GL/PPM Combined journal. These fields are optional.
+This GLIDE object is part of the GL/PPM Combined journal lines. All of these fields are optional.
 """
 input GlideInput {
-  lineDescription: String
+  """Freeform description to include in the GLIDe journal entry."""
+  lineDescription: TrimmedString100
+
+  """Journal line number from the boundary system."""
   journalLineNumber: PositiveInt
+
+  """Date of the business transaction for this accounting entry."""
   transactionDate: LocalDate
+
+  """
+  Numeric value from source transaction.  Recommendation/Example: Unit Quantity
+  """
   udfNumeric1: Float
+
+  """
+  Numeric value from source transaction.  Recommendation/Example: Unit Amount
+  """
   udfNumeric2: Float
+
+  """Numeric value from source transaction."""
   udfNumeric3: Float
+
+  """Date value from source transaction."""
   udfDate1: LocalDate
+
+  """Date value from source transaction."""
   udfDate2: LocalDate
-  udfString1: String
-  udfString2: String
-  udfString3: String
-  udfString4: String
-  udfString5: String
+
+  """
+  Freeform string / identifier from source transaction.  Recommendation/Example: Unit of Measure
+  """
+  udfString1: TrimmedString50
+
+  """
+  Freeform string / identifier from source transaction.  Recommendation/Example: Transaction Category for reporting
+  """
+  udfString2: TrimmedString50
+
+  """Freeform string / identifier from source transaction."""
+  udfString3: TrimmedString50
+
+  """Freeform string / identifier from source transaction."""
+  udfString4: TrimmedString50
+
+  """
+  Freeform string / identifier from source transaction.  **This field is overwritten if the segments on this line need to be changed due to validation failures after submission.**
+  """
+  udfString5: TrimmedString50
 }
 
 """
@@ -2681,7 +2708,7 @@ input GlJournalLineInput {
 
   """
   Delimited complete GL segment string.  All fields of the GL Accounting Key must be provided.
-
+  
   * Format Pattern: `0000-00000-0000000-000000-00-000-0000000000-000000-0000-000000-000000`
   """
   glSegmentString: GlSegmentString
@@ -2693,12 +2720,12 @@ input GlJournalLineInput {
 
   """
   Hyphen-Delimited PPM segment string
-
+  
   Must be populated with either the 4 required segments, or all 6 segments.  (Project-Task Number-Expense Organization-Expense Type-Award Number-Funding Source)
-
+  
   * Format Pattern (Required Only): `FP00000001-TASK01-0000000-000000`
   * Format Pattern (Sponsored Projects): `K300000001-TASK01-0000000-000000-0000000-00000`
-
+  
   For more information, see the description of the [PpmSegmentString scalar]({{Types.PpmSegmentString}})
   """
   ppmSegmentString: PpmSegmentString
@@ -2978,6 +3005,11 @@ A field whose value is either an IPv4 or IPv6 address: https://en.wikipedia.org/
 scalar IP
 
 """
+A field whose value is an IPC Class Symbol within the International Patent Classification System: https://www.wipo.int/classifications/ipc/en/
+"""
+scalar IPCPatent
+
+"""
 A field whose value is a IPv4 address: https://en.wikipedia.org/wiki/IPv4.
 """
 scalar IPv4
@@ -3100,6 +3132,11 @@ A field whose value is a valid decimal degrees latitude number (53.471): https:/
 scalar Latitude
 
 """
+A field whose value conforms to the Library of Congress Subclass Format ttps://www.loc.gov/catdir/cpso/lcco/
+"""
+scalar LCCSubclass
+
+"""
 A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`.
 """
 scalar LocalDate
@@ -3133,126 +3170,48 @@ A field whose value is a IEEE 802 48-bit MAC address: https://en.wikipedia.org/w
 scalar MAC
 
 type Mutation {
-  """Requests that a Accounts Receivable Invoice be uploaded to Oracle."""
-  arInvoiceCreate(data: ArInvoiceRequestInput!): ArInvoiceRequestStatusOutput!
-
-  """
-  Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
-
-  The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
-
-  This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
-
-  The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
-
-  Please see below in this document for examples of payloads into this API.
-
-  #### Supporting Operations
-
-  Other operations which should be used to pre-validate chartstring segments are below.  Please see <https://financeandbusiness.ucdavis.edu/aggie-enterprise/chart-of-accounts/redesign> for information about each of these segments.
-
-  * [`erpEntity`]({{Queries.erpEntity}})
-  * [`erpFund`]({{Queries.erpFund}})
-  * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
-  * [`erpAccount`]({{Queries.erpAccount}})
-  * [`erpPurpose`]({{Queries.erpPurpose}})
-  * [`erpProject`]({{Queries.erpProject}})
-  * [`erpProgram`]({{Queries.erpProgram}})
-  * [`erpActivity`]({{Queries.erpActivity}})
-
-  For validating combinations, the following two operations are provided, differing only in their input format.
-
-  * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
-  * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
-
-  #### Managed Project Cost Entries (PPM/POET)
-
-  In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
-
-  For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
-
-  For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
-
-  * `p`roject
-  * `o`rganization (same values as `ErpFinancialDepartment`)
-  * `e`xpenditureType (same values as `ErpAccount`)
-  * `t`ask
-
-  Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
-
-  There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
-
-  * award (only for sponsored projects)
-  * fundingSource (only for sponsored projects)
-
-  As with the GL segments, the API provides the operations below for lookups and validation:
-
-  * [`ppmProject`]({{Queries.ppmProject}})
-  * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
-  * [`ppmOrganization`]({{Queries.ppmOrganization}})
-  * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
-
-  #### Volume of Data
-
-  Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
-
-  #### Journal Balancing
-
-  As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
-
-  While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
-
-  #### Basic Use
-
-  1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
-  2. GraphQL Server will validate content format and reject if invalid.
-  3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
-  4. A failure in either of these initial validations will result in an error response with no request being generated.
-  5. Passing validation will save the request to allow for pickup by the integration platform for processing.
-  6. A request tracking ID will be generated and returned to allow for the consumer to check on the status of the request and obtain results when completed.
-  7. At a later time, use the generated request tracking ID against the [`glJournalRequestStatus`]({{Queries.glJournalRequestStatus}}) operation to determine if the request was processed successfully
-  """
-  glJournalRequest(data: GlJournalRequestInput!): GlJournalRequestStatusOutput!
+  """Requests that a Purchase Requisition be uploaded to Oracle."""
+  scmPurchaseRequisitionCreate(data: ScmPurchaseRequisitionRequestInput!): ScmPurchaseRequisitionRequestStatusOutput!
 
   """
   Requests that an Invoice Payment be uploaded to Oracle.
-
+  
   This API replaces the various AP Feed flat file upload processes.
-
+  
   The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
-
+  
   Please see below in this document for examples of payloads into this API.
-
+  
   #### Supporting Operations
-
+  
   As this API accepts GL and PPM segments, those must be valid for the request to be accepted.  Please see the [`glJournalCreate`]({{Mutations.glJournalCreate}}) for links to those supporting operations.
-
+  
   There are also SCM-specific operations you can use to look up or validate information.
-
+  
   * [`scmPaymentTerm`]({{Queries.scmPaymentTerm}})
   * [`scmPaymentTermSearch`]({{Queries.scmPaymentTermSearch}})
   * [`erpUnitOfMeasure`]({{Queries.erpUnitOfMeasure}})
   * [`erpUnitOfMeasureSearch`]({{Queries.erpUnitOfMeasureSearch}})
   * [`scmSupplierByNumber`]({{Queries.scmSupplierByNumber}})
   * [`scmSupplierSearch`]({{Queries.scmSupplierSearch}})
-
+  
   #### Data Validation
-
+  
   ##### GraphQL Data Model and Type Resolvers
-
+  
   * Valid JSON data structure.
   * Required fields (enforced by GraphQL data model)
   * Ensure required fields are non-blank. (enforced by GraphQL data model)
   * Ensure fields are formatted properly (enforced by GraphQL data model - and custom code if needed)
   * Verify maximum lengths on fields.  (Delegate using custom data types if possible.)
     * (e.g., `TrimmedNonEmptyString240`)
-
+  
   ##### Request Header Checks
-
+  
   * Confirm if `consumerTrackingId` previously used and reject if found in the action request table.
-
+  
   ##### Data Validation
-
+  
   * Validate LineType:  LINE_TYPE_LOOKUP_CODE
     * The code you enter must be ITEM, TAX, MISCELLANEOUS, or FREIGHT. Validate against lookup codes stored in the AP_LOOKUP_CODES table
   * Validate InvoiceType: INVOICE_TYPE_LOOKUP_CODE
@@ -3277,10 +3236,10 @@ type Mutation {
     * Validate Sum of Line Amount equals Invoice Amount
   * Validate Payment Method Code.
   * Validate Line Type (Enum: ITEM, FREIGHT, MISCELLANEOUS).
-
-
+  
+  
   #### Basic Use
-
+  
   1. Call the operation (`scmInvoicePaymentCreate`) providing a data payload with the proper structure.  (See [`ScmInvoicePaymentRequestInput`]({{Types.ScmInvoicePaymentRequestInput}}))
   2. GraphQL Server will validate content format and reject if invalid.
   3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
@@ -3291,8 +3250,86 @@ type Mutation {
   """
   scmInvoicePaymentCreate(data: ScmInvoicePaymentRequestInput!): ScmInvoicePaymentRequestStatusOutput!
 
-  """Requests that a Purchase Requisition be uploaded to Oracle."""
-  scmPurchaseRequisitionCreate(data: ScmPurchaseRequisitionRequestInput!): ScmPurchaseRequisitionRequestStatusOutput!
+  """
+  Requests that a Journal Voucher and/or PPM Costing file be uploaded to Oracle.
+  
+  The journal voucher is the primary interface for loading transactions into Oracle from boundary systems.  It is used regardless of whether the expenses are costs which can be applied to the general ledger or must be expensed to the PPM sub-ledger.  The data model in the request allows for all fields which might be needed for GL or PPM transactions to be provided.  However, it is up to the caller to know and fill out the fields properly.  Where possible, the API will reject invalid data prior to it being sent to Oracle.
+  
+  This API replaces the KFS GL Collector process.  While the valid values of the FAU components (now called chartstring segments) have changed, the basic concepts of feeding transactional data to the financial system have not.  As always, transactions submitted to the GL must be balanced between debits and credits.  Valid values must be used for certain fields, and fields have content and length limits.
+  
+  The correct values to use for chartstring segments is out of scope for this documentation.  This API is the mechanism by which you submit values already determined to be functionally correct to the financial system.  Other operations on this server provide data retrieval and validation tools to support generation of correct data payloads for the API.
+  
+  Please see below in this document for examples of payloads into this API.
+  
+  #### Supporting Operations
+  
+  Other operations which should be used to pre-validate chartstring segments are below.  Please see <https://financeandbusiness.ucdavis.edu/aggie-enterprise/chart-of-accounts/redesign> for information about each of these segments.
+  
+  * [`erpEntity`]({{Queries.erpEntity}})
+  * [`erpFund`]({{Queries.erpFund}})
+  * [`erpFinancialDepartment`]({{Queries.erpFinancialDepartment}})
+  * [`erpAccount`]({{Queries.erpAccount}})
+  * [`erpPurpose`]({{Queries.erpPurpose}})
+  * [`erpProject`]({{Queries.erpProject}})
+  * [`erpProgram`]({{Queries.erpProgram}})
+  * [`erpActivity`]({{Queries.erpActivity}})
+  
+  For validating combinations, the following two operations are provided, differing only in their input format.
+  
+  * [`glValidateChartSegments`]({{Queries.glValidateChartSegments}})
+  * [`glValidateChartstring`]({{Queries.glValidateChartstring}})
+  
+  #### Managed Project Cost Entries (PPM/POET)
+  
+  In addition to the standard GL-type of transaction which aligns with the KFS general ledger, Oracle Financials also utilizes a sub-ledger for tracking costs against managed projects.  This loosely matches contracts and grants (award-based) accounts from KFS, but PPM (Project and Portfolio Management) encompasses more than that.
+  
+  For expenses (or income) which are to be recorded against these managed projects, the expense must be recorded in the sub-ledger first, using a different set of chartstring values.  This interface allows you to provide both GL and PPM sub-ledger transactions in the same payload.  (Any attempt to record transactions against a managed project directly (using GL segments) will be rejected.)
+  
+  For PPM, you must use a different set of input strings on the journal line, utilizing the 4 fields below (all required):
+  
+  * `p`roject
+  * `o`rganization (same values as `ErpFinancialDepartment`)
+  * `e`xpenditureType (same values as `ErpAccount`)
+  * `t`ask
+  
+  Tasks are child records to each project.  You can obtain the list of valid tasks for any project by referencing the `PpmProject.tasks` property.
+  
+  There are also the two segments listed below.  For API-based use, the framework will pull the correct award and funding source for any sponsored projects.  For file-based submissions, the default values must be included by querying from the `ppmProject` operation.  You can check whether you need to include these by referencing the `sponsoredProject` property on the `PpmProject`.
+  
+  * award (only for sponsored projects)
+  * fundingSource (only for sponsored projects)
+  
+  As with the GL segments, the API provides the operations below for lookups and validation:
+  
+  * [`ppmProject`]({{Queries.ppmProject}})
+  * [`ppmExpenditureType`]({{Queries.ppmExpenditureType}})
+  * [`ppmOrganization`]({{Queries.ppmOrganization}})
+  * [`ppmSegmentsValidate`]({{Queries.ppmSegmentsValidate}})
+  
+  #### Volume of Data
+  
+  Unlike the use of the KFS ledger, the Oracle Financials general ledger will be a thin ledger.  This means that the level of detail that is allowed to be loaded into the ledger will be limited to summary level information.  It is required that you summarize data down as much as possible to the chartstring segments while being able to retain a link to the source of the transactions.  (E.g., an order number, batch number, or a transaction date)  Submitting lines for each source line item in an external billing system will not be allowed.  Failure to summarize data to an acceptable level will result in loss of API or journal upload access.
+  
+  #### Journal Balancing
+  
+  As with the KFS ledger, journal payloads must balance.  (debit = credits)  Each API payload is a single journal (document number in KFS).
+  
+  While lines with `glSegments` and `ppmSegments` are posted to different ledgers, we can balance across them when creating journals.  Offset entries are required by Oracle to keep the GL in balance until sub-ledger accounting processes execute.  These will be created by the integration framework for you and applied to a central clearing location outside of your department's cost center.
+  
+  #### Basic Use
+  
+  1. Call the operation (`glJournalRequest`) providing a data payload with the proper structure.  (See [`GlJournalRequestInput`]({{Types.GlJournalRequestInput}}))
+  2. GraphQL Server will validate content format and reject if invalid.
+  3. API Server will perform request-specific validation against a local copy of Oracle ERP data.
+  4. A failure in either of these initial validations will result in an error response with no request being generated.
+  5. Passing validation will save the request to allow for pickup by the integration platform for processing.
+  6. A request tracking ID will be generated and returned to allow for the consumer to check on the status of the request and obtain results when completed.
+  7. At a later time, use the generated request tracking ID against the [`glJournalRequestStatus`]({{Queries.glJournalRequestStatus}}) operation to determine if the request was processed successfully
+  """
+  glJournalRequest(data: GlJournalRequestInput!): GlJournalRequestStatusOutput!
+
+  """Requests that a Accounts Receivable Invoice be uploaded to Oracle."""
+  arInvoiceCreate(data: ArInvoiceRequestInput!): ArInvoiceRequestStatusOutput!
 }
 
 """Floats that will have a value less than 0."""
@@ -3433,6 +3470,11 @@ scalar NonPositiveFloat
 scalar NonPositiveInt
 
 """
+String consisting of only digits.  Used to represent numbers larger than other data types easily allow.  Max 40 digits.
+"""
+scalar NumericString
+
+"""
 A field whose value conforms with the standard mongodb object ID as described here: https://docs.mongodb.com/manual/reference/method/ObjectId/#ObjectId. Example: 5e5677d71bdc2ae76344968c
 """
 scalar ObjectID
@@ -3536,13 +3578,13 @@ type PpmAward {
   flowThruAmount: NonNegativeFloat
   flowThruFromDate: LocalDate
   flowThruToDate: LocalDate
-  flowThruPrimarySponsorId: NonEmptyTrimmedString30
+  flowThruPrimarySponsorId: Long
   flowThruRefAwardName: NonEmptyTrimmedString100
   flowThruIsFederal: Boolean
 
   """
   Returns whether this PpmAward is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmAward must:
   * Have closeDate after the given accountingDate
   """
@@ -3676,7 +3718,7 @@ type PpmExpenditureType {
 
   """
   Returns whether this PpmExpenditureType is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmExpenditureType must:
   * Have a startDate and endDate range which includes the given accoutingDate
   """
@@ -3776,7 +3818,7 @@ type PpmFundingSource {
 
   """
   Returns whether this PpmFundingSource is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmFundingSource must:
   * Have a fundingSourceFromDate and fundingSourceToDate range which includes the given accountingDate
   """
@@ -3851,7 +3893,7 @@ type PpmOrganization {
 
   """
   Returns whether this PpmOrganization is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmOrganization must:
   * Have a effectiveStartDate and effectiveEndDate range which includes the given accountingDate
   * Be enabled
@@ -3999,7 +4041,7 @@ type PpmProject {
 
   """
   Tasks: The Task resource includes the attributes that are used to store values while creating or updating project tasks. Tasks are units of project work assigned or performed as part of the duties of a resource. Tasks can be a portion of project work to be performed within a defined period by a specific resource or multiple resources.
-
+  
   By default, this will only list tasks which are allowed to be assigned costs.  If you need to see all tasks, set the property argument to false.
   """
   tasks(
@@ -4022,7 +4064,7 @@ type PpmProject {
 
   """
   Returns whether this PpmProject is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmProject must:
   * Have a projectStatusCode of ACTIVE
   * Not be a templateProject
@@ -4089,14 +4131,14 @@ input PpmSegmentInput {
 
   """
   Award for Sponsored projects only
-
+  
   **API Users, do not provide.  The valid value will be derived from the project if necessary.**
   """
   award: PpmAwardNumber
 
   """
   Award funding source for Sponsored projects only
-
+  
   **API Users, do not provide.  The valid value will be derived from the project if necessary.**
   """
   fundingSource: PpmFundingSourceNumber
@@ -4292,7 +4334,7 @@ type PpmTask {
 
   """
   Returns whether this PpmTask is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
-
+  
   To be eligible for use, the PpmTask must:
   * Be chargeable
   * Be a lowestLevelTask
@@ -4496,191 +4538,630 @@ enum ProcessingResultStatus {
 }
 
 type Query {
-  """
-  Get a single ApAccountingPeriod by its name.  Returns undefined if does not exist
-  """
-  apAccountingPeriod(periodName: String!): ApAccountingPeriod
+  """Return the current API Information Object"""
+  erpApiInfo: ErpApiInfo!
+
+  """Get the list of roles assigned to your consumer."""
+  erpRoles: [String!]!
 
   """
-  Get a single non-adjustment ApAccountingPeriod by the given date.  Returns undefined if no period is defined for the given date.
+  Get a single ScmSupplier by supplierId.  Returns undefined if does not exist
   """
-  apAccountingPeriodByDate(accountingDate: Date!): ApAccountingPeriod
+  scmSupplier(supplierId: Long!): ScmSupplier
 
   """
-  Search for ApAccountingPeriod objects by multiple properties.
+  Get a single ScmSupplier by supplier number.  Returns undefined if does not exist
+  """
+  scmSupplierByNumber(supplierNumber: String!): ScmSupplier
+
+  """
+  Search for ScmSupplier objects by multiple properties.
+  See the ScmSupplierFilterInput type for options.
+  """
+  scmSupplierSearch(filter: ScmSupplierFilterInput!): ScmSupplierSearchResults!
+
+  """
+  Get a single ScmPurchasingCategory by unitOfMeasureId.  Returns undefined if does not exist
+  """
+  scmPurchasingCategory(id: String!): ScmPurchasingCategory
+
+  """
+  Get a single ScmPurchasingCategory by category code.  Returns undefined if does not exist
+  """
+  scmPurchasingCategoryByCode(code: String!): ScmPurchasingCategory
+
+  """
+  Get a single ScmPurchasingCategory by name.  Returns undefined if does not exist
+  """
+  scmPurchasingCategoryByName(name: String!): ScmPurchasingCategory
+
+  """
+  Search for ScmPurchasingCategory objects by multiple properties.
+  See the ScmPurchasingCategoryFilterInput type for options.
+  """
+  scmPurchasingCategorySearch(filter: ScmPurchasingCategoryFilterInput!): ScmPurchasingCategorySearchResults!
+
+  """
+  Get the status of a previously submitted Purchase Requisition request by the API-assigned request ID.
+  """
+  scmPurchaseRequisitionRequestStatus(requestId: UUID!): ScmPurchaseRequisitionRequestStatusOutput
+
+  """
+  Get the status of a previously submitted purchase requisition request by the consumer's unique tracking ID.
+  """
+  scmPurchaseRequisitionRequestStatusByConsumerTracking(consumerTrackingId: String!): ScmPurchaseRequisitionRequestStatusOutput
+
+  """
+  Get a single ScmPaymentTerm by unitOfMeasureId.  Returns undefined if does not exist
+  """
+  scmPaymentTerm(termId: String!): ScmPaymentTerm
+
+  """
+  Get a single ScmPaymentTerm by category code.  Returns undefined if does not exist
+  """
+  scmPaymentTermByName(name: String!): ScmPaymentTerm
+
+  """
+  Search for ScmPaymentTerm objects by multiple properties.
+  See the ScmPaymentTermFilterInput type for options.
+  """
+  scmPaymentTermSearch(filter: ScmPaymentTermFilterInput!): ScmPaymentTermSearchResults!
+
+  """
+  Get the status of a previously submitted payable payment request by the API-assigned request ID.
+  """
+  scmInvoicePaymentRequestStatus(requestId: UUID!): ScmInvoicePaymentRequestStatusOutput
+
+  """
+  Get the status of a previously submitted payable payment request by the consumer's unique tracking ID.
+  """
+  scmInvoicePaymentRequestStatusByConsumerTracking(consumerTrackingId: String!): ScmInvoicePaymentRequestStatusOutput
+
+  """
+  Get the statuses of previously submitted payable payment requests by the consumer's reference ID.
+  """
+  scmInvoicePaymentRequestStatusByConsumerReference(consumerReferenceId: String!): ScmInvoicePaymentRequestStatusOutput
+  scmInvoicePaymentSearch(filter: ScmInvoicePaymentFilterInput!): ScmInvoicePaymentSearchResults!
+
+  """
+  Validates that the given set of PPM segments are most likely valid for posting
+  to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+  for current validity.
+  
+  If no date is passed, today's date will be assumed.
+  
+  This operation will return a fully populated set of segments.
+  """
+  ppmSegmentsValidate(segments: PpmSegmentInput!): PpmSegmentsValidateOutput!
+
+  """
+  Validates that the given PPM chartstring is most likely valid for posting
+  to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
+  for current validity.
+  
+  If no date is passed, today's date will be assumed.
+  
+  This operation will return a fully populated set of segments.
+  
+  This operation will return the validation result and the segments as parsed out into their component fields.
+  """
+  ppmStringSegmentsValidate(segmentString: PpmSegmentString!): PpmSegmentsValidateOutput!
+
+  """Get a single PpmTerms by id.  Returns undefined if does not exist"""
+  ppmTerms(id: NumericString!): PpmTerms
+
+  """
+  Gets PpmTermss by category name and name.  Returns undefined if none are found
+  """
+  ppmTermsByName(categoryName: String!, name: String!): PpmTerms
+
+  """
+  Gets PpmTermss by distinct category code.  Returns empty list if none are found
+  """
+  ppmTermsCategories: [PpmTerms!]!
+
+  """
+  Search for PpmTerms objects by multiple properties.
   See
-  See the ApAccountingPeriodFilterInput type for options.
+  See the PpmTermsFilterInput type for options.
   """
-  apAccountingPeriodSearch(filter: ApAccountingPeriodFilterInput!): ApAccountingPeriodSearchResults!
+  ppmTermsSearch(filter: PpmTermsFilterInput!): PpmTermsSearchResults!
+
+  """Get a single PpmTask by id.  Returns undefined if it does not exist"""
+  ppmTask(id: NumericString!): PpmTask
+
+  """Gets PpmTasks by project.  Returns empty list if none are found"""
+  ppmTaskByProjectNumber(projectNumber: PpmProjectNumber!): [PpmTask!]!
 
   """
-  Get a single ArAccountingPeriod by its name.  Returns undefined if does not exist
+  Gets PpmTasks by projectNumber and taskNumber.  Returns undefined if not found
   """
-  arAccountingPeriod(periodName: String!): ArAccountingPeriod
+  ppmTaskByProjectNumberAndTaskNumber(projectNumber: PpmProjectNumber!, taskNumber: PpmTaskNumber!): PpmTask
 
   """
-  Get a single non-adjustment ArAccountingPeriod by the given date.  Returns undefined if no period is defined for the given date.
-  """
-  arAccountingPeriodByDate(accountingDate: Date!): ArAccountingPeriod
-
-  """
-  Search for ArAccountingPeriod objects by multiple properties.
+  Search for PpmTask objects by multiple properties.
   See
-  See the ArAccountingPeriodFilterInput type for options.
+  See the PpmTaskFilterInput type for options.
   """
-  arAccountingPeriodSearch(filter: ArAccountingPeriodFilterInput!): ArAccountingPeriodSearchResults!
+  ppmTaskSearch(filter: PpmTaskFilterInput!): PpmTaskSearchResults!
+  ppmSponsor(sponsorId: String!): PpmSponsor
+  ppmSponsorSearch(filter: PpmSponsorFilterInput!): PpmSponsorSearchResults!
+
+  """Get a single PpmProject by code.  Returns undefined if does not exist"""
+  ppmProject(projectId: NumericString!): PpmProject
 
   """
-  Get a single ArCustomerAccount by accountNumber.  Returns undefined if does not exist
+  Get a single PpmProject by the project number.  Returns undefined if no project with that number is found.
   """
-  arCustomerAccount(accountNumber: String!): ArCustomerAccount
+  ppmProjectByNumber(projectNumber: String!): PpmProject
 
   """
-  Get a single ArCustomerAccount by accountName.  Returns undefined if does not exist
+  Gets a list of PpmProjects by exact name.  Returns empty list if none are found.  Project Name should be unique in oracle.
   """
-  arCustomerAccountByAccountName(accountName: String!): ArCustomerAccount
+  ppmProjectByName(projectName: String!): [PpmProject!]!
 
   """
-  Search for ArCustomerAccount objects by multiple properties.
-  See the ArCustomerAccountFilterInput type for options.
-  """
-  arCustomerAccountSearch(filter: ArCustomerAccountFilterInput!): ArCustomerAccountSearchResults!
-
-  """
-  Get a single ArCustomerAccountSite by custAccountSiteId.  Returns undefined if does not exist
-  """
-  arCustomerAccountSite(custAccountSiteId: String!): ArCustomerAccountSite
-
-  """
-  Search for ArCustomerAccountSite objects by multiple properties.
-  See the ArCustomerAccountSiteFilterInput type for options.
-  """
-  arCustomerAccountSiteSearch(filter: ArCustomerAccountSiteFilterInput!): ArCustomerAccountSiteSearchResults!
-
-  """
-  Get the status of a previously submitted AR invoice request by the API-assigned request ID.
-  """
-  arInvoiceRequestStatus(requestId: UUID!): ArInvoiceRequestStatusOutput
-
-  """
-  Get the status of a previously submitted AR invoice request by the consumer's unique tracking ID.
-  """
-  arInvoiceRequestStatusByConsumerTracking(consumerTrackingId: String!): ArInvoiceRequestStatusOutput
-
-  """
-  Get the statuses of previously submitted AR invoice requests by the consumer's reference ID.
-  """
-  arInvoiceRequestStatusByConsumerReference(consumerReferenceId: String!): [ArInvoiceRequestStatusOutput!]!
-
-  """
-  Using the provided transaction number, check on the status of the given invoice.  Returns null if the transaction number is unknown.
-  """
-  arInvoiceSummary(transactionNumber: String!): ArInvoiceSummary
-
-  """Get a single ArMemoLine by id.  Returns undefined if does not exist"""
-  arMemoLine(id: String!): ArMemoLine
-
-  """Get a single ArMemoLine by name.  Returns undefined if does not exist"""
-  arMemoLineByName(name: String!): ArMemoLine
-
-  """
-  Search for ArMemoLine objects by multiple properties.
-  See the ArMemoLineFilterInput type for options.
-  """
-  arMemoLineSearch(filter: ArMemoLineFilterInput!): ArMemoLineSearchResults!
-
-  """
-  Get a single ArPartySite by partySiteId.  Returns undefined if does not exist
-  """
-  arPartySite(partySiteId: Long!): ArPartySite
-
-  """
-  Get a single ArPartySite by partySiteNumber.  Returns undefined if does not exist
-  """
-  arPartySiteByPartySiteNumber(partySiteNumber: String!): ArPartySite
-
-  """
-  Get a single ArPartySite by partySiteName.  Returns undefined if does not exist
-  """
-  arPartySiteByPartySiteName(partySiteName: String!): ArPartySite
-
-  """
-  Search for ArPartySite objects by multiple properties.
-  See the ArPartySiteFilterInput type for options.
-  """
-  arPartySiteSearch(filter: ArPartySiteFilterInput!): ArPartySiteSearchResults!
-
-  """
-  Get a single ArPaymentTerm by code.  Returns undefined if does not exist
-  """
-  arPaymentTerm(id: Long!): ArPaymentTerm
-
-  """
-  Get a single ArPaymentTerm by name.  Returns undefined if does not exist
-  """
-  arPaymentTermByName(name: NonEmptyTrimmedString15!): ArPaymentTerm
-
-  """
-  Search for ArPaymentTerm objects by multiple properties.
+  Search for PpmProject objects by multiple properties.
   See
-  See the ArPaymentTermFilterInput type for options.
+  See the PpmProjectFilterInput type for options.
   """
-  arPaymentTermSearch(filter: ArPaymentTermFilterInput!): ArPaymentTermSearchResults!
-
-  """Get a single ErpAccount by code.  Returns undefined if does not exist"""
-  erpAccount(code: String!): ErpAccount
-
-  """Get all currently valid ErpAccount objects."""
-  erpAccountAll(sort: [String!]): [ErpAccount!]!
+  ppmProjectSearch(filter: PpmProjectFilterInput!): PpmProjectSearchResults!
 
   """
-  Get items under the given ErpAccount in the hierarchy.
+  Get a single PpmOrganization by code.  Returns undefined if does not exist
+  """
+  ppmOrganization(code: String!): PpmOrganization
+
+  """
+  Gets PpmOrganizations by exact name.  Returns undefined if does not exist
+  """
+  ppmOrganizationByName(name: String!): PpmOrganization
+
+  """
+  Search for PpmOrganization objects by multiple properties.
+  See
+  See the PpmOrganizationFilterInput type for options.
+  """
+  ppmOrganizationSearch(filter: PpmOrganizationFilterInput!): PpmOrganizationSearchResults!
+
+  """
+  Get a single PpmFundingSource by id.  Returns undefined if does not exist
+  """
+  ppmFundingSource(id: NumericString!): PpmFundingSource
+
+  """
+  Get a single PpmFundingSource by number.  Returns undefined if does not exist
+  """
+  ppmFundingSourceByNumber(fundingSourceNumber: String!): PpmFundingSource
+
+  """
+  Get a single PpmFundingSource by project number and funding source number.  Returns null if does not exist
+  """
+  ppmFundingSourceByProjectAndFundingSourceNumber(projectNumber: String!, fundingSourceNumber: String!): PpmFundingSource
+
+  """
+  Gets PpmFundingSources by exact name.  Returns empty list if none are found
+  """
+  ppmFundingSourceByName(name: String!): [PpmFundingSource!]!
+
+  """
+  Search for PpmFundingSource objects by multiple properties.
+  See
+  See the PpmFundingSourceFilterInput type for options.
+  """
+  ppmFundingSourceSearch(filter: PpmFundingSourceFilterInput!): PpmFundingSourceSearchResults!
+
+  """
+  Get a single PpmExpenditureType by id.  Returns undefined if does not exist.
+  
+  This ID is an internal tracking number used by the financial system.  It is only used to link between objects internally.
+  Use the ppmExpenditureTypeByName or ppmExpenditureTypeByAccount operations to pull by a unique identifier.
+  """
+  ppmExpenditureType(id: NumericString!): PpmExpenditureType
+
+  """
+  Gets PpmExpenditureTypes by exact name.  Returns empty list if none are found
+  """
+  ppmExpenditureTypeByName(name: NonEmptyTrimmedString100!): PpmExpenditureType!
+
+  """
+  Get a single PpmExpenditureType by code.  Returns undefined if does not exist
+  """
+  ppmExpenditureTypeByCode(code: String!): PpmExpenditureType
+
+  """
+  Gets PpmExpenditureTypes by the associated GL Account.  Returns undefined if none is found.
+  
+  PPM Expense Type names will be the GL Account number plus a description.  This full string must be used in file-based feeds.
+  This method will allow you to obtain the exact string (in the name property) that needs to be included.
+  """
+  ppmExpenditureTypeByAccount(account: ErpAccountCode!): PpmExpenditureType
+
+  """
+  Search for PpmExpenditureType objects by multiple properties.
+  See
+  See the PpmExpenditureTypeFilterInput type for options.
+  """
+  ppmExpenditureTypeSearch(filter: PpmExpenditureTypeFilterInput!): PpmExpenditureTypeSearchResults!
+  ppmCfda(cfda: String!): PpmCfda
+  ppmCfdaSearch(filter: PpmCfdaFilterInput!): PpmCfdaSearchResults!
+
+  """Get a single PpmAward by id.  Returns undefined if does not exist"""
+  ppmAward(id: NumericString!): PpmAward
+
+  """Gets PpmAwards by exact name.  Returns empty list if none are found"""
+  ppmAwardByName(name: String!): [PpmAward!]!
+
+  """Gets PpmAwards by number.  Returns empty if not found"""
+  ppmAwardByNumber(number: String!): PpmAward
+
+  """
+  Gets PpmAwards by projectNumber and awardNumber.  Returns null if not found
+  """
+  ppmAwardByProjectAndAwardNumber(projectNumber: String!, awardNumber: String!): PpmAward
+
+  """
+  Search for PpmAward objects by multiple properties.
+  See
+  See the PpmAwardFilterInput type for options.
+  """
+  ppmAwardSearch(filter: PpmAwardFilterInput!): PpmAwardSearchResults!
+
+  """
+  Validates that the given set of GL chartstring segments are most likely valid for posting
+  to the financial system general ledger.  Individual non-blank elements will be checked
+  for current validity.
+  
+  If validateCVRs is true, certain combinations of attributes will be sanity checked.
+  
+  This operation will return a fully populated set of segments, including defaults in
+  both individual segment and full chartstring form.
+  
+  If the combination was previously known/used in the financial system, its unique ID will be included.
+  """
+  glValidateChartSegments(segments: GlSegmentInput!, validateCVRs: Boolean = true): GlValidateChartSegmentsOutput!
+
+  """
+  Validates that the given GL chartstring is most likely valid for posting
+  to the financial system general ledger.  The input string format is strongly typed
+  and will reject the call if not structured properly.  Please see the definition of the
+  [GlSegmentString]({{Types.GlSegmentString}}) for format information.
+  
+  If validateCVRs is true, certain combinations of attributes will be sanity checked if the string format is accepted.
+  
+  This operation will return the validation result and the segments as parsed out into their component fields.
+  
+  If the combination was previously known/used in the financial system, its unique ID will be included.
+  """
+  glValidateChartstring(segmentString: GlSegmentString!, validateCVRs: Boolean = true): GlValidateChartSegmentsOutput!
+
+  """
+  Get the status of a previously submitted journal voucher request by the API-assigned request ID.
+  """
+  glJournalRequestStatus(requestId: UUID!): GlJournalRequestStatusOutput
+
+  """
+  Get the status of a previously submitted journal voucher request by the consumer's unique tracking ID.
+  """
+  glJournalRequestStatusByConsumerTracking(consumerTrackingId: String!): GlJournalRequestStatusOutput
+
+  """
+  Get the statuses of previously submitted journal voucher requests by the consumer's reference ID.
+  """
+  glJournalRequestStatusByConsumerReference(consumerReferenceId: String!): [GlJournalRequestStatusOutput!]!
+
+  """
+  Get the list of journal requests which were processed via the given batch ID.
+  """
+  glJournalRequestStatusByBatchId(batchId: UUID!): [GlJournalRequestStatusOutput!]!
+
+  """
+  Get a single GlAccountingPeriod by its name.  Returns undefined if does not exist
+  """
+  glAccountingPeriod(periodName: String!): GlAccountingPeriod
+
+  """
+  Get a single non-adjustment GlAccountingPeriod by the given date.  Returns undefined if no period is defined for the given date.
+  """
+  glAccountingPeriodByDate(accountingDate: Date!): GlAccountingPeriod
+
+  """
+  Search for GlAccountingPeriod objects by multiple properties.
+  See
+  See the GlAccountingPeriodFilterInput type for options.
+  """
+  glAccountingPeriodSearch(filter: GlAccountingPeriodFilterInput!): GlAccountingPeriodSearchResults!
+
+  """Get a single FaProgram by id.  Returns undefined if does not exist"""
+  faProgram(code: String!): FaProgram
+
+  """
+  Search for FaProgram objects by multiple properties.
+  
+  See the FaProgramFilterInput type for options.
+  """
+  faProgramSearch(filter: FaProgramFilterInput!): FaProgramSearchResults!
+
+  """
+  Get a single FaMinorCategory by id.  Returns undefined if does not exist
+  """
+  faMinorCategory(code: String!): FaMinorCategory
+
+  """
+  Search for FaMinorCategory objects by multiple properties.
+  
+  See the FaMinorCategoryFilterInput type for options.
+  """
+  faMinorCategorySearch(filter: FaMinorCategoryFilterInput!): FaMinorCategorySearchResults!
+
+  """
+  Get a single FaMajorCategory by id.  Returns undefined if does not exist
+  """
+  faMajorCategory(code: String!): FaMajorCategory
+
+  """
+  Search for FaMajorCategory objects by multiple properties.
+  
+  See the FaMajorCategoryFilterInput type for options.
+  """
+  faMajorCategorySearch(filter: FaMajorCategoryFilterInput!): FaMajorCategorySearchResults!
+
+  """Get a single FaLoanCode by id.  Returns undefined if does not exist"""
+  faLoanCode(code: String!): FaLoanCode
+
+  """
+  Search for FaLoanCode objects by multiple properties.
+  
+  See the FaLoanCodeFilterInput type for options.
+  """
+  faLoanCodeSearch(filter: FaLoanCodeFilterInput!): FaLoanCodeSearchResults!
+
+  """Get a single FaFundSource by id.  Returns undefined if does not exist"""
+  faFundSource(code: String!): FaFundSource
+
+  """
+  Search for FaFundSource objects by multiple properties.
+  
+  See the FaFundSourceFilterInput type for options.
+  """
+  faFundSourceSearch(filter: FaFundSourceFilterInput!): FaFundSourceSearchResults!
+
+  """
+  Get a single FaCustodialDivision by id.  Returns undefined if does not exist
+  """
+  faCustodialDivision(code: String!): FaCustodialDivision
+
+  """
+  Search for FaCustodialDivision objects by multiple properties.
+  
+  See the FaCustodialDivisionFilterInput type for options.
+  """
+  faCustodialDivisionSearch(filter: FaCustodialDivisionFilterInput!): FaCustodialDivisionSearchResults!
+
+  """
+  Get a single FaCustodialDepartment by id.  Returns undefined if does not exist
+  """
+  faCustodialDepartment(code: String!): FaCustodialDepartment
+
+  """
+  Search for FaCustodialDepartment objects by multiple properties.
+  
+  See the FaCustodialDepartmentFilterInput type for options.
+  """
+  faCustodialDepartmentSearch(filter: FaCustodialDepartmentFilterInput!): FaCustodialDepartmentSearchResults!
+
+  """Get a single FaCondition by id.  Returns undefined if does not exist"""
+  faCondition(code: String!): FaCondition
+
+  """
+  Search for FaCondition objects by multiple properties.
+  
+  See the FaConditionFilterInput type for options.
+  """
+  faConditionSearch(filter: FaConditionFilterInput!): FaConditionSearchResults!
+
+  """
+  Get a single FaAssetCategory by id.  Returns undefined if does not exist
+  """
+  faAssetCategory(id: String!): FaAssetCategory
+
+  """
+  Search for FaAssetCategory objects by multiple properties.
+  
+  See the FaAssetCategoryFilterInput type for options.
+  """
+  faAssetCategorySearch(filter: FaAssetCategoryFilterInput!): FaAssetCategorySearchResults!
+
+  """Get a single FaAsset by id.  Returns undefined if does not exist"""
+  faAsset(id: String!): FaAsset
+
+  """
+  Search for FaAsset objects by multiple properties.
+  
+  See the FaAssetFilterInput type for options.
+  """
+  faAssetSearch(filter: FaAssetFilterInput!): FaAssetSearchResults!
+  faAssetByAssetTagNumber(assetTagNumber: String!): FaAsset
+  faAssetByAssetNumber(assetNumber: String!): FaAsset
+
+  """
+  Get a single FaAcquisitionCode by id.  Returns undefined if does not exist
+  """
+  faAcquisitionCode(code: String!): FaAcquisitionCode
+
+  """
+  Search for FaAcquisitionCode objects by multiple properties.
+  
+  See the FaAcquisitionCodeFilterInput type for options.
+  """
+  faAcquisitionCodeSearch(filter: FaAcquisitionCodeFilterInput!): FaAcquisitionCodeSearchResults!
+
+  """
+  Accepts a chart and account (and optionally a sub account and/or project code) which was converted as part of cutover and returns the cost center portion with matching GL or POET segments needed to record a transaction.  If no match is found when a sub account or project code is provided, the conversion will revert to only using the chart and account.  The attributes used for the returned converted values will be included in the response.
+  
+  In the case of a POET segment response, an array of tasks will be returned.  The data conversion mapping does not contain that information.  At cutover, there will be only one task per project.  However, additional tasks will be added as part of use after go-live.
+  """
+  kfsConvertAccount(chart: KfsChartCode!, account: KfsAccountNumber!, subAccount: KfsSubAccountNumber): KfsConvertAccountOutput!
+
+  """
+  Accepts a chart and org code which was converted as part of cutover and returns the financial department(s) to which it was mapped.
+  """
+  kfsConvertOrgCode(chart: KfsChartCode!, org: KfsOrgCode!): KfsConvertOrgOutput!
+
+  """Get a single ErpUser by id.  Returns undefined if does not exist"""
+  erpUser(id: String!): ErpUser
+
+  """Get a single ErpUser by user id.  Returns undefined if does not exist"""
+  erpUserByUserId(userId: String!): ErpUser
+
+  """
+  Search for ErpUser objects by multiple properties.
+  See
+  See the ErpUserFilterInput type for options.
+  """
+  erpUserSearch(filter: ErpUserFilterInput!): ErpUserSearchResults!
+
+  """
+  Get a single ErpUnitOfMeasure by unitOfMeasureId.  Returns undefined if does not exist
+  """
+  erpUnitOfMeasure(unitOfMeasureId: String!): ErpUnitOfMeasure
+
+  """
+  Get a single ErpUnitOfMeasure by uom code.  Returns undefined if does not exist
+  """
+  erpUnitOfMeasureByCode(uomCode: String!): ErpUnitOfMeasure
+
+  """
+  Get a single ErpUnitOfMeasure by unit of measure.  Returns undefined if does not exist
+  """
+  erpUnitOfMeasureByName(name: String!): ErpUnitOfMeasure
+
+  """
+  Search for ErpUnitOfMeasure objects by multiple properties.
+  See the ErpUnitOfMeasureFilterInput type for options.
+  """
+  erpUnitOfMeasureSearch(filter: ErpUnitOfMeasureFilterInput!): ErpUnitOfMeasureSearchResults!
+
+  """
+  Get a single ErpInstitutionLocation by internal ID.  Returns undefined if does not exist
+  """
+  erpInstitutionLocation(id: String!): ErpInstitutionLocation
+
+  """
+  Get a single ErpInstitutionLocation by code.  Returns undefined if does not exist
+  """
+  erpInstitutionLocationByCode(locationCode: String!): ErpInstitutionLocation
+
+  """
+  Search for ErpInstitutionLocation objects by multiple properties.
+  See the ErpInstitutionLocationFilterInput type for options.
+  """
+  erpInstitutionLocationSearch(filter: ErpInstitutionLocationFilterInput!): ErpInstitutionLocationSearchResults!
+
+  """Get a single ErpFundSource by id.  Returns undefined if does not exist"""
+  erpFundSource(code: String!): ErpFundSource
+
+  """
+  Search for ErpFundSource objects by multiple properties.
+  
+  See the ErpFundSourceFilterInput type for options.
+  """
+  erpFundSourceSearch(filter: ErpFundSourceFilterInput!): ErpFundSourceSearchResults!
+
+  """Get a single ErpCampus by id.  Returns undefined if does not exist"""
+  erpCampus(code: String!): ErpCampus
+
+  """
+  Search for ErpCampus objects by multiple properties.
+  
+  See the ErpCampusFilterInput type for options.
+  """
+  erpCampusSearch(filter: ErpCampusFilterInput!): ErpCampusSearchResults!
+
+  """
+  Get a single ErpBuildingRoom by id.  Returns undefined if does not exist
+  """
+  erpBuildingRoom(code: String!): ErpBuildingRoom
+
+  """
+  Search for ErpBuildingRoom objects by multiple properties.
+  
+  See the ErpBuildingRoomFilterInput type for options.
+  """
+  erpBuildingRoomSearch(filter: ErpBuildingRoomFilterInput!): ErpBuildingRoomSearchResults!
+
+  """Get a single ErpBuilding by id.  Returns undefined if does not exist"""
+  erpBuilding(code: String!): ErpBuilding
+
+  """
+  Search for ErpBuilding objects by multiple properties.
+  
+  See the ErpBuildingFilterInput type for options.
+  """
+  erpBuildingSearch(filter: ErpBuildingFilterInput!): ErpBuildingSearchResults!
+
+  """Get a single ErpPurpose by code.  Returns undefined if does not exist"""
+  erpPurpose(code: String!): ErpPurpose
+
+  """Get all currently valid ErpPurpose objects."""
+  erpPurposeAll(sort: [String!]): [ErpPurpose!]!
+
+  """
+  Get items under the given ErpPurpose in the hierarchy.
   Returns undefined if the parent does not exist.
   Returns an empty list if the given record has no children.
   """
-  erpAccountChildren(code: String!): [ErpAccount!]
+  erpPurposeChildren(code: String!): [ErpPurpose!]
 
   """
-  Search for ErpAccount objects by multiple properties.
-  See the ErpAccountFilterInput type for options.
-  """
-  erpAccountSearch(filter: ErpAccountFilterInput!): ErpAccountSearchResults!
-
-  """Get a single ErpActivity by code.  Returns undefined if does not exist"""
-  erpActivity(code: String!): ErpActivity
-
-  """
-  Get items under the given ErpActivity in the hierarchy.
-  Returns undefined if the parent does not exist.
-  Returns an empty list if the given record has no children.
-  """
-  erpActivityChildren(code: String!): [ErpActivity!]
-
-  """
-  Search for ErpActivity objects by multiple properties.
-  See the ErpActivityFilterInput type for options.
-  """
-  erpActivitySearch(filter: ErpActivityFilterInput!): ErpActivitySearchResults!
-
-  """Get a single ErpEntity by code.  Returns undefined if does not exist"""
-  erpEntity(code: String!): ErpEntity
-
-  """Get all currently valid ErpEntity objects."""
-  erpEntityAll(sort: [String!]): [ErpEntity!]!
-
-  """
-  Get items under the given ErpEntity in the hierarchy.
-  Returns undefined if the parent does not exist.
-  Returns an empty list if the given record has no children.
-  """
-  erpEntityChildren(code: String!): [ErpEntity!]
-
-  """
-  Search for ErpEntity objects by multiple properties.
+  Search for ErpPurpose objects by multiple properties.
   See
-  See the ErpEntityFilterInput type for options.
+  See the ErpPurposeFilterInput type for options.
   """
-  erpEntitySearch(filter: ErpEntityFilterInput!): ErpEntitySearchResults!
+  erpPurposeSearch(filter: ErpPurposeFilterInput!): ErpPurposeSearchResults!
+
+  """Get a single ErpProject by code.  Returns undefined if does not exist"""
+  erpProject(code: String!): ErpProject
+
+  """
+  Search for ErpProject objects by multiple properties.
+  See the ErpProjectFilterInput type for options.
+  """
+  erpProjectSearch(filter: ErpProjectFilterInput!): ErpProjectSearchResults!
+
+  """Get a single ErpProgram by code.  Returns undefined if does not exist"""
+  erpProgram(code: String!): ErpProgram
+
+  """
+  Get items under the given ErpProgram in the hierarchy.
+  Returns undefined if the parent does not exist.
+  Returns an empty list if the given record has no children.
+  """
+  erpProgramChildren(code: String!): [ErpProgram!]
+
+  """
+  Search for ErpProgram objects by multiple properties.
+  See
+  See the ErpProgramFilterInput type for options.
+  """
+  erpProgramSearch(filter: ErpProgramFilterInput!): ErpProgramSearchResults!
+
+  """Get a single ErpFund by code.  Returns undefined if does not exist"""
+  erpFund(code: String!): ErpFund
+
+  """
+  Get items under the given ErpFund in the hierarchy.
+  Returns undefined if the parent does not exist.
+  Returns an empty list if the given record has no children.
+  """
+  erpFundChildren(code: String!): [ErpFund!]
+
+  """
+  Search for ErpFund objects by multiple properties.
+  See
+  See the ErpFundFilterInput type for options.
+  """
+  erpFundSearch(filter: ErpFundFilterInput!): ErpFundSearchResults!
 
   """
   Get a single ErpFinancialDepartment by code.  Returns undefined if does not exist.
@@ -4707,642 +5188,191 @@ type Query {
   """
   erpFinancialDepartmentSearch(filter: ErpFinancialDepartmentFilterInput!): ErpFinancialDepartmentSearchResults!
 
-  """Get a single ErpFund by code.  Returns undefined if does not exist"""
-  erpFund(code: String!): ErpFund
+  """Get a single ErpEntity by code.  Returns undefined if does not exist"""
+  erpEntity(code: String!): ErpEntity
+
+  """Get all currently valid ErpEntity objects."""
+  erpEntityAll(sort: [String!]): [ErpEntity!]!
 
   """
-  Get items under the given ErpFund in the hierarchy.
+  Get items under the given ErpEntity in the hierarchy.
   Returns undefined if the parent does not exist.
   Returns an empty list if the given record has no children.
   """
-  erpFundChildren(code: String!): [ErpFund!]
+  erpEntityChildren(code: String!): [ErpEntity!]
 
   """
-  Search for ErpFund objects by multiple properties.
+  Search for ErpEntity objects by multiple properties.
   See
-  See the ErpFundFilterInput type for options.
+  See the ErpEntityFilterInput type for options.
   """
-  erpFundSearch(filter: ErpFundFilterInput!): ErpFundSearchResults!
+  erpEntitySearch(filter: ErpEntityFilterInput!): ErpEntitySearchResults!
 
-  """Get a single ErpProgram by code.  Returns undefined if does not exist"""
-  erpProgram(code: String!): ErpProgram
+  """Get a single ErpActivity by code.  Returns undefined if does not exist"""
+  erpActivity(code: String!): ErpActivity
 
   """
-  Get items under the given ErpProgram in the hierarchy.
+  Get items under the given ErpActivity in the hierarchy.
   Returns undefined if the parent does not exist.
   Returns an empty list if the given record has no children.
   """
-  erpProgramChildren(code: String!): [ErpProgram!]
+  erpActivityChildren(code: String!): [ErpActivity!]
 
   """
-  Search for ErpProgram objects by multiple properties.
-  See
-  See the ErpProgramFilterInput type for options.
+  Search for ErpActivity objects by multiple properties.
+  See the ErpActivityFilterInput type for options.
   """
-  erpProgramSearch(filter: ErpProgramFilterInput!): ErpProgramSearchResults!
+  erpActivitySearch(filter: ErpActivityFilterInput!): ErpActivitySearchResults!
 
-  """Get a single ErpProject by code.  Returns undefined if does not exist"""
-  erpProject(code: String!): ErpProject
+  """Get a single ErpAccount by code.  Returns undefined if does not exist"""
+  erpAccount(code: String!): ErpAccount
+
+  """Get all currently valid ErpAccount objects."""
+  erpAccountAll(sort: [String!]): [ErpAccount!]!
 
   """
-  Get items under the given ErpProject in the hierarchy.
+  Get items under the given ErpAccount in the hierarchy.
   Returns undefined if the parent does not exist.
   Returns an empty list if the given record has no children.
   """
-  erpProjectChildren(code: String!): [ErpProject!]
+  erpAccountChildren(code: String!): [ErpAccount!]
 
   """
-  Search for ErpProject objects by multiple properties.
-  See the ErpProjectFilterInput type for options.
+  Search for ErpAccount objects by multiple properties.
+  See the ErpAccountFilterInput type for options.
   """
-  erpProjectSearch(filter: ErpProjectFilterInput!): ErpProjectSearchResults!
-
-  """Get a single ErpPurpose by code.  Returns undefined if does not exist"""
-  erpPurpose(code: String!): ErpPurpose
-
-  """Get all currently valid ErpPurpose objects."""
-  erpPurposeAll(sort: [String!]): [ErpPurpose!]!
+  erpAccountSearch(filter: ErpAccountFilterInput!): ErpAccountSearchResults!
 
   """
-  Get items under the given ErpPurpose in the hierarchy.
-  Returns undefined if the parent does not exist.
-  Returns an empty list if the given record has no children.
+  Get a single ArPaymentTerm by code.  Returns undefined if does not exist
   """
-  erpPurposeChildren(code: String!): [ErpPurpose!]
+  arPaymentTerm(id: Long!): ArPaymentTerm
 
   """
-  Search for ErpPurpose objects by multiple properties.
+  Get a single ArPaymentTerm by name.  Returns undefined if does not exist
+  """
+  arPaymentTermByName(name: NonEmptyTrimmedString15!): ArPaymentTerm
+
+  """
+  Search for ArPaymentTerm objects by multiple properties.
   See
-  See the ErpPurposeFilterInput type for options.
+  See the ArPaymentTermFilterInput type for options.
   """
-  erpPurposeSearch(filter: ErpPurposeFilterInput!): ErpPurposeSearchResults!
-
-  """Get a single ErpBuilding by id.  Returns undefined if does not exist"""
-  erpBuilding(code: String!): ErpBuilding
+  arPaymentTermSearch(filter: ArPaymentTermFilterInput!): ArPaymentTermSearchResults!
 
   """
-  Search for ErpBuilding objects by multiple properties.
-
-  See the ErpBuildingFilterInput type for options.
+  Get a single ArPartySite by partySiteId.  Returns undefined if does not exist
   """
-  erpBuildingSearch(filter: ErpBuildingFilterInput!): ErpBuildingSearchResults!
+  arPartySite(partySiteId: Long!): ArPartySite
 
   """
-  Get a single ErpBuildingRoom by id.  Returns undefined if does not exist
+  Get a single ArPartySite by partySiteNumber.  Returns undefined if does not exist
   """
-  erpBuildingRoom(code: String!): ErpBuildingRoom
+  arPartySiteByPartySiteNumber(partySiteNumber: String!): ArPartySite
 
   """
-  Search for ErpBuildingRoom objects by multiple properties.
-
-  See the ErpBuildingRoomFilterInput type for options.
+  Get a single ArPartySite by partySiteName.  Returns undefined if does not exist
   """
-  erpBuildingRoomSearch(filter: ErpBuildingRoomFilterInput!): ErpBuildingRoomSearchResults!
-
-  """Get a single ErpCampus by id.  Returns undefined if does not exist"""
-  erpCampus(code: String!): ErpCampus
+  arPartySiteByPartySiteName(partySiteName: String!): ArPartySite
 
   """
-  Search for ErpCampus objects by multiple properties.
-
-  See the ErpCampusFilterInput type for options.
+  Search for ArPartySite objects by multiple properties.
+  See the ArPartySiteFilterInput type for options.
   """
-  erpCampusSearch(filter: ErpCampusFilterInput!): ErpCampusSearchResults!
+  arPartySiteSearch(filter: ArPartySiteFilterInput!): ArPartySiteSearchResults!
 
-  """Get a single ErpFundSource by id.  Returns undefined if does not exist"""
-  erpFundSource(code: String!): ErpFundSource
+  """Get a single ArMemoLine by id.  Returns undefined if does not exist"""
+  arMemoLine(id: String!): ArMemoLine
 
-  """
-  Search for ErpFundSource objects by multiple properties.
-
-  See the ErpFundSourceFilterInput type for options.
-  """
-  erpFundSourceSearch(filter: ErpFundSourceFilterInput!): ErpFundSourceSearchResults!
+  """Get a single ArMemoLine by name.  Returns undefined if does not exist"""
+  arMemoLineByName(name: String!): ArMemoLine
 
   """
-  Get a single ErpInstitutionLocation by internal ID.  Returns undefined if does not exist
+  Search for ArMemoLine objects by multiple properties.
+  See the ArMemoLineFilterInput type for options.
   """
-  erpInstitutionLocation(id: String!): ErpInstitutionLocation
+  arMemoLineSearch(filter: ArMemoLineFilterInput!): ArMemoLineSearchResults!
 
   """
-  Get a single ErpInstitutionLocation by code.  Returns undefined if does not exist
+  Get the status of a previously submitted AR invoice request by the API-assigned request ID.
   """
-  erpInstitutionLocationByCode(locationCode: String!): ErpInstitutionLocation
+  arInvoiceRequestStatus(requestId: UUID!): ArInvoiceRequestStatusOutput
 
   """
-  Search for ErpInstitutionLocation objects by multiple properties.
-  See the ErpInstitutionLocationFilterInput type for options.
+  Get the status of a previously submitted AR invoice request by the consumer's unique tracking ID.
   """
-  erpInstitutionLocationSearch(filter: ErpInstitutionLocationFilterInput!): ErpInstitutionLocationSearchResults!
+  arInvoiceRequestStatusByConsumerTracking(consumerTrackingId: String!): ArInvoiceRequestStatusOutput
 
   """
-  Get a single ErpUnitOfMeasure by unitOfMeasureId.  Returns undefined if does not exist
+  Get the statuses of previously submitted AR invoice requests by the consumer's reference ID.
   """
-  erpUnitOfMeasure(unitOfMeasureId: String!): ErpUnitOfMeasure
+  arInvoiceRequestStatusByConsumerReference(consumerReferenceId: String!): [ArInvoiceRequestStatusOutput!]!
 
   """
-  Get a single ErpUnitOfMeasure by uom code.  Returns undefined if does not exist
+  Using the provided transaction number, check on the status of the given invoice.  Returns null if the transaction number is unknown.
   """
-  erpUnitOfMeasureByCode(uomCode: String!): ErpUnitOfMeasure
+  arInvoiceSummary(transactionNumber: String!): ArInvoiceSummary
 
   """
-  Get a single ErpUnitOfMeasure by unit of measure.  Returns undefined if does not exist
+  Get a single ArCustomerAccountSite by custAccountSiteId.  Returns undefined if does not exist
   """
-  erpUnitOfMeasureByName(name: String!): ErpUnitOfMeasure
+  arCustomerAccountSite(custAccountSiteId: String!): ArCustomerAccountSite
 
   """
-  Search for ErpUnitOfMeasure objects by multiple properties.
-  See the ErpUnitOfMeasureFilterInput type for options.
+  Search for ArCustomerAccountSite objects by multiple properties.
+  See the ArCustomerAccountSiteFilterInput type for options.
   """
-  erpUnitOfMeasureSearch(filter: ErpUnitOfMeasureFilterInput!): ErpUnitOfMeasureSearchResults!
-
-  """Get a single ErpUser by id.  Returns undefined if does not exist"""
-  erpUser(id: String!): ErpUser
-
-  """Get a single ErpUser by user id.  Returns undefined if does not exist"""
-  erpUserByUserId(userId: String!): ErpUser
+  arCustomerAccountSiteSearch(filter: ArCustomerAccountSiteFilterInput!): ArCustomerAccountSiteSearchResults!
 
   """
-  Search for ErpUser objects by multiple properties.
+  Get a single ArCustomerAccount by accountNumber.  Returns undefined if does not exist
+  """
+  arCustomerAccount(accountNumber: String!): ArCustomerAccount
+
+  """
+  Get a single ArCustomerAccount by accountName.  Returns undefined if does not exist
+  """
+  arCustomerAccountByAccountName(accountName: String!): ArCustomerAccount
+
+  """
+  Search for ArCustomerAccount objects by multiple properties.
+  See the ArCustomerAccountFilterInput type for options.
+  """
+  arCustomerAccountSearch(filter: ArCustomerAccountFilterInput!): ArCustomerAccountSearchResults!
+
+  """
+  Get a single ArAccountingPeriod by its name.  Returns undefined if does not exist
+  """
+  arAccountingPeriod(periodName: String!): ArAccountingPeriod
+
+  """
+  Get a single non-adjustment ArAccountingPeriod by the given date.  Returns undefined if no period is defined for the given date.
+  """
+  arAccountingPeriodByDate(accountingDate: Date!): ArAccountingPeriod
+
+  """
+  Search for ArAccountingPeriod objects by multiple properties.
   See
-  See the ErpUserFilterInput type for options.
+  See the ArAccountingPeriodFilterInput type for options.
   """
-  erpUserSearch(filter: ErpUserFilterInput!): ErpUserSearchResults!
+  arAccountingPeriodSearch(filter: ArAccountingPeriodFilterInput!): ArAccountingPeriodSearchResults!
 
   """
-  Accepts a chart and account (and optionally a sub account and/or project code) which was converted as part of cutover and returns the cost center portion with matching GL or POET segments needed to record a transaction.  If no match is found when a sub account or project code is provided, the conversion will revert to only using the chart and account.  The attributes used for the returned converted values will be included in the response.
-
-  In the case of a POET segment response, an array of tasks will be returned.  The data conversion mapping does not contain that information.  At cutover, there will be only one task per project.  However, additional tasks will be added as part of use after go-live.
+  Get a single ApAccountingPeriod by its name.  Returns undefined if does not exist
   """
-  kfsConvertAccount(chart: KfsChartCode!, account: KfsAccountNumber!, subAccount: KfsSubAccountNumber): KfsConvertAccountOutput!
+  apAccountingPeriod(periodName: String!): ApAccountingPeriod
 
   """
-  Accepts a chart and org code which was converted as part of cutover and returns the financial department(s) to which it was mapped.
+  Get a single non-adjustment ApAccountingPeriod by the given date.  Returns undefined if no period is defined for the given date.
   """
-  kfsConvertOrgCode(chart: KfsChartCode!, org: KfsOrgCode!): KfsConvertOrgOutput!
+  apAccountingPeriodByDate(accountingDate: Date!): ApAccountingPeriod
 
   """
-  Get a single FaAcquisitionCode by id.  Returns undefined if does not exist
-  """
-  faAcquisitionCode(code: String!): FaAcquisitionCode
-
-  """
-  Search for FaAcquisitionCode objects by multiple properties.
-
-  See the FaAcquisitionCodeFilterInput type for options.
-  """
-  faAcquisitionCodeSearch(filter: FaAcquisitionCodeFilterInput!): FaAcquisitionCodeSearchResults!
-
-  """Get a single FaAsset by id.  Returns undefined if does not exist"""
-  faAsset(id: String!): FaAsset
-
-  """
-  Search for FaAsset objects by multiple properties.
-
-  See the FaAssetFilterInput type for options.
-  """
-  faAssetSearch(filter: FaAssetFilterInput!): FaAssetSearchResults!
-  faAssetByAssetTagNumber(assetTagNumber: String!): FaAsset
-  faAssetByAssetNumber(assetNumber: String!): FaAsset
-
-  """
-  Get a single FaAssetCategory by id.  Returns undefined if does not exist
-  """
-  faAssetCategory(id: String!): FaAssetCategory
-
-  """
-  Search for FaAssetCategory objects by multiple properties.
-
-  See the FaAssetCategoryFilterInput type for options.
-  """
-  faAssetCategorySearch(filter: FaAssetCategoryFilterInput!): FaAssetCategorySearchResults!
-
-  """Get a single FaCondition by id.  Returns undefined if does not exist"""
-  faCondition(code: String!): FaCondition
-
-  """
-  Search for FaCondition objects by multiple properties.
-
-  See the FaConditionFilterInput type for options.
-  """
-  faConditionSearch(filter: FaConditionFilterInput!): FaConditionSearchResults!
-
-  """
-  Get a single FaCustodialDepartment by id.  Returns undefined if does not exist
-  """
-  faCustodialDepartment(code: String!): FaCustodialDepartment
-
-  """
-  Search for FaCustodialDepartment objects by multiple properties.
-
-  See the FaCustodialDepartmentFilterInput type for options.
-  """
-  faCustodialDepartmentSearch(filter: FaCustodialDepartmentFilterInput!): FaCustodialDepartmentSearchResults!
-
-  """
-  Get a single FaCustodialDivision by id.  Returns undefined if does not exist
-  """
-  faCustodialDivision(code: String!): FaCustodialDivision
-
-  """
-  Search for FaCustodialDivision objects by multiple properties.
-
-  See the FaCustodialDivisionFilterInput type for options.
-  """
-  faCustodialDivisionSearch(filter: FaCustodialDivisionFilterInput!): FaCustodialDivisionSearchResults!
-
-  """Get a single FaFundSource by id.  Returns undefined if does not exist"""
-  faFundSource(code: String!): FaFundSource
-
-  """
-  Search for FaFundSource objects by multiple properties.
-
-  See the FaFundSourceFilterInput type for options.
-  """
-  faFundSourceSearch(filter: FaFundSourceFilterInput!): FaFundSourceSearchResults!
-
-  """Get a single FaLoanCode by id.  Returns undefined if does not exist"""
-  faLoanCode(code: String!): FaLoanCode
-
-  """
-  Search for FaLoanCode objects by multiple properties.
-
-  See the FaLoanCodeFilterInput type for options.
-  """
-  faLoanCodeSearch(filter: FaLoanCodeFilterInput!): FaLoanCodeSearchResults!
-
-  """
-  Get a single FaMajorCategory by id.  Returns undefined if does not exist
-  """
-  faMajorCategory(code: String!): FaMajorCategory
-
-  """
-  Search for FaMajorCategory objects by multiple properties.
-
-  See the FaMajorCategoryFilterInput type for options.
-  """
-  faMajorCategorySearch(filter: FaMajorCategoryFilterInput!): FaMajorCategorySearchResults!
-
-  """
-  Get a single FaMinorCategory by id.  Returns undefined if does not exist
-  """
-  faMinorCategory(code: String!): FaMinorCategory
-
-  """
-  Search for FaMinorCategory objects by multiple properties.
-
-  See the FaMinorCategoryFilterInput type for options.
-  """
-  faMinorCategorySearch(filter: FaMinorCategoryFilterInput!): FaMinorCategorySearchResults!
-
-  """Get a single FaProgram by id.  Returns undefined if does not exist"""
-  faProgram(code: String!): FaProgram
-
-  """
-  Search for FaProgram objects by multiple properties.
-
-  See the FaProgramFilterInput type for options.
-  """
-  faProgramSearch(filter: FaProgramFilterInput!): FaProgramSearchResults!
-
-  """
-  Get a single GlAccountingPeriod by its name.  Returns undefined if does not exist
-  """
-  glAccountingPeriod(periodName: String!): GlAccountingPeriod
-
-  """
-  Get a single non-adjustment GlAccountingPeriod by the given date.  Returns undefined if no period is defined for the given date.
-  """
-  glAccountingPeriodByDate(accountingDate: Date!): GlAccountingPeriod
-
-  """
-  Search for GlAccountingPeriod objects by multiple properties.
+  Search for ApAccountingPeriod objects by multiple properties.
   See
-  See the GlAccountingPeriodFilterInput type for options.
+  See the ApAccountingPeriodFilterInput type for options.
   """
-  glAccountingPeriodSearch(filter: GlAccountingPeriodFilterInput!): GlAccountingPeriodSearchResults!
-
-  """
-  Get the status of a previously submitted journal voucher request by the API-assigned request ID.
-  """
-  glJournalRequestStatus(requestId: UUID!): GlJournalRequestStatusOutput
-
-  """
-  Get the status of a previously submitted journal voucher request by the consumer's unique tracking ID.
-  """
-  glJournalRequestStatusByConsumerTracking(consumerTrackingId: String!): GlJournalRequestStatusOutput
-
-  """
-  Get the statuses of previously submitted journal voucher requests by the consumer's reference ID.
-  """
-  glJournalRequestStatusByConsumerReference(consumerReferenceId: String!): [GlJournalRequestStatusOutput!]!
-
-  """
-  Get the list of journal requests which were processed via the given batch ID.
-  """
-  glJournalRequestStatusByBatchId(batchId: UUID!): [GlJournalRequestStatusOutput!]!
-
-  """
-  Validates that the given set of GL chartstring segments are most likely valid for posting
-  to the financial system general ledger.  Individual non-blank elements will be checked
-  for current validity.
-
-  If validateCVRs is true, certain combinations of attributes will be sanity checked.
-
-  This operation will return a fully populated set of segments, including defaults in
-  both individual segment and full chartstring form.
-
-  If the combination was previously known/used in the financial system, its unique ID will be included.
-  """
-  glValidateChartSegments(segments: GlSegmentInput!, validateCVRs: Boolean = true): GlValidateChartSegmentsOutput!
-
-  """
-  Validates that the given GL chartstring is most likely valid for posting
-  to the financial system general ledger.  The input string format is strongly typed
-  and will reject the call if not structured properly.  Please see the definition of the
-  [GlSegmentString]({{Types.GlSegmentString}}) for format information.
-
-  If validateCVRs is true, certain combinations of attributes will be sanity checked if the string format is accepted.
-
-  This operation will return the validation result and the segments as parsed out into their component fields.
-
-  If the combination was previously known/used in the financial system, its unique ID will be included.
-  """
-  glValidateChartstring(segmentString: GlSegmentString!, validateCVRs: Boolean = true): GlValidateChartSegmentsOutput!
-
-  """Get a single PpmAward by id.  Returns undefined if does not exist"""
-  ppmAward(id: String!): PpmAward
-
-  """Gets PpmAwards by exact name.  Returns empty list if none are found"""
-  ppmAwardByName(name: String!): [PpmAward!]!
-
-  """Gets PpmAwards by number.  Returns empty if not found"""
-  ppmAwardByNumber(number: String!): PpmAward
-
-  """
-  Gets PpmAwards by projectNumber and awardNumber.  Returns null if not found
-  """
-  ppmAwardByProjectAndAwardNumber(projectNumber: String!, awardNumber: String!): PpmAward
-
-  """
-  Search for PpmAward objects by multiple properties.
-  See
-  See the PpmAwardFilterInput type for options.
-  """
-  ppmAwardSearch(filter: PpmAwardFilterInput!): PpmAwardSearchResults!
-  ppmCfda(cfda: String!): PpmCfda
-  ppmCfdaSearch(filter: PpmCfdaFilterInput!): PpmCfdaSearchResults!
-
-  """
-  Get a single PpmExpenditureType by id.  Returns undefined if does not exist.
-
-  This ID is an internal tracking number used by the financial system.  It is only used to link between objects internally.
-  Use the ppmExpenditureTypeByName or ppmExpenditureTypeByAccount operations to pull by a unique identifier.
-  """
-  ppmExpenditureType(id: String!): PpmExpenditureType
-
-  """
-  Gets PpmExpenditureTypes by exact name.  Returns empty list if none are found
-  """
-  ppmExpenditureTypeByName(name: NonEmptyTrimmedString100!): PpmExpenditureType!
-
-  """
-  Get a single PpmExpenditureType by code.  Returns undefined if does not exist
-  """
-  ppmExpenditureTypeByCode(code: String!): PpmExpenditureType
-
-  """
-  Gets PpmExpenditureTypes by the associated GL Account.  Returns undefined if none is found.
-
-  PPM Expense Type names will be the GL Account number plus a description.  This full string must be used in file-based feeds.
-  This method will allow you to obtain the exact string (in the name property) that needs to be included.
-  """
-  ppmExpenditureTypeByAccount(account: ErpAccountCode!): PpmExpenditureType
-
-  """
-  Search for PpmExpenditureType objects by multiple properties.
-  See
-  See the PpmExpenditureTypeFilterInput type for options.
-  """
-  ppmExpenditureTypeSearch(filter: PpmExpenditureTypeFilterInput!): PpmExpenditureTypeSearchResults!
-
-  """
-  Get a single PpmFundingSource by id.  Returns undefined if does not exist
-  """
-  ppmFundingSource(id: String!): PpmFundingSource
-
-  """
-  Get a single PpmFundingSource by number.  Returns undefined if does not exist
-  """
-  ppmFundingSourceByNumber(fundingSourceNumber: String!): PpmFundingSource
-
-  """
-  Get a single PpmFundingSource by project number and funding source number.  Returns null if does not exist
-  """
-  ppmFundingSourceByProjectAndFundingSourceNumber(projectNumber: String!, fundingSourceNumber: String!): PpmFundingSource
-
-  """
-  Gets PpmFundingSources by exact name.  Returns empty list if none are found
-  """
-  ppmFundingSourceByName(name: String!): [PpmFundingSource!]!
-
-  """
-  Search for PpmFundingSource objects by multiple properties.
-  See
-  See the PpmFundingSourceFilterInput type for options.
-  """
-  ppmFundingSourceSearch(filter: PpmFundingSourceFilterInput!): PpmFundingSourceSearchResults!
-
-  """
-  Get a single PpmOrganization by code.  Returns undefined if does not exist
-  """
-  ppmOrganization(code: String!): PpmOrganization
-
-  """
-  Gets PpmOrganizations by exact name.  Returns undefined if does not exist
-  """
-  ppmOrganizationByName(name: String!): PpmOrganization
-
-  """
-  Search for PpmOrganization objects by multiple properties.
-  See
-  See the PpmOrganizationFilterInput type for options.
-  """
-  ppmOrganizationSearch(filter: PpmOrganizationFilterInput!): PpmOrganizationSearchResults!
-
-  """Get a single PpmProject by code.  Returns undefined if does not exist"""
-  ppmProject(projectId: String!): PpmProject
-
-  """
-  Get a single PpmProject by the project number.  Returns undefined if no project with that number is found.
-  """
-  ppmProjectByNumber(projectNumber: String!): PpmProject
-
-  """
-  Gets a list of PpmProjects by exact name.  Returns empty list if none are found.  Project Name should be unique in oracle.
-  """
-  ppmProjectByName(projectName: String!): [PpmProject!]!
-
-  """
-  Gets default award and funding source for PpmProjects by exact name.   Project Name should be unique in oracle.
-  """
-  ppmProjectDefaultAwardFundingSource(projectName: String!): [PpmProject!]!
-
-  """
-  Search for PpmProject objects by multiple properties.
-  See
-  See the PpmProjectFilterInput type for options.
-  """
-  ppmProjectSearch(filter: PpmProjectFilterInput!): PpmProjectSearchResults!
-  ppmSponsor(sponsorId: String!): PpmSponsor
-  ppmSponsorSearch(filter: PpmSponsorFilterInput!): PpmSponsorSearchResults!
-
-  """Get a single PpmTask by id.  Returns undefined if it does not exist"""
-  ppmTask(id: String!): PpmTask
-
-  """Gets PpmTasks by project.  Returns empty list if none are found"""
-  ppmTaskByProjectNumber(projectNumber: PpmProjectNumber!): [PpmTask!]!
-
-  """
-  Gets PpmTasks by projectNumber and taskNumber.  Returns undefined if not found
-  """
-  ppmTaskByProjectNumberAndTaskNumber(projectNumber: PpmProjectNumber!, taskNumber: PpmTaskNumber!): PpmTask
-
-  """
-  Search for PpmTask objects by multiple properties.
-  See
-  See the PpmTaskFilterInput type for options.
-  """
-  ppmTaskSearch(filter: PpmTaskFilterInput!): PpmTaskSearchResults!
-
-  """Get a single PpmTerms by id.  Returns undefined if does not exist"""
-  ppmTerms(id: String!): PpmTerms
-
-  """
-  Gets PpmTermss by category name and name.  Returns undefined if none are found
-  """
-  ppmTermsByName(categoryName: String!, name: String!): PpmTerms
-
-  """
-  Gets PpmTermss by distinct category code.  Returns empty list if none are found
-  """
-  ppmTermsCategories: [PpmTerms!]!
-
-  """
-  Search for PpmTerms objects by multiple properties.
-  See
-  See the PpmTermsFilterInput type for options.
-  """
-  ppmTermsSearch(filter: PpmTermsFilterInput!): PpmTermsSearchResults!
-
-  """
-  Validates that the given set of PPM segments are most likely valid for posting
-  to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
-  for current validity.
-
-  If no date is passed, today's date will be assumed.
-
-  This operation will return a fully populated set of segments.
-  """
-  ppmSegmentsValidate(segments: PpmSegmentInput!): PpmSegmentsValidateOutput!
-
-  """
-  Validates that the given PPM chartstring is most likely valid for posting
-  to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
-  for current validity.
-
-  If no date is passed, today's date will be assumed.
-
-  This operation will return a fully populated set of segments.
-
-  This operation will return the validation result and the segments as parsed out into their component fields.
-  """
-  ppmStringSegmentsValidate(segmentString: PpmSegmentString!): PpmSegmentsValidateOutput!
-
-  """
-  Get the status of a previously submitted payable payment request by the API-assigned request ID.
-  """
-  scmInvoicePaymentRequestStatus(requestId: UUID!): ScmInvoicePaymentRequestStatusOutput
-
-  """
-  Get the status of a previously submitted payable payment request by the consumer's unique tracking ID.
-  """
-  scmInvoicePaymentRequestStatusByConsumerTracking(consumerTrackingId: String!): ScmInvoicePaymentRequestStatusOutput
-
-  """
-  Get the statuses of previously submitted payable payment requests by the consumer's reference ID.
-  """
-  scmInvoicePaymentRequestStatusByConsumerReference(consumerReferenceId: String!): ScmInvoicePaymentRequestStatusOutput
-  scmInvoicePaymentSearch(filter: ScmInvoicePaymentFilterInput!): ScmInvoicePaymentSearchResults!
-
-  """
-  Get a single ScmPaymentTerm by unitOfMeasureId.  Returns undefined if does not exist
-  """
-  scmPaymentTerm(termId: String!): ScmPaymentTerm
-
-  """
-  Get a single ScmPaymentTerm by category code.  Returns undefined if does not exist
-  """
-  scmPaymentTermByName(name: String!): ScmPaymentTerm
-
-  """
-  Search for ScmPaymentTerm objects by multiple properties.
-  See the ScmPaymentTermFilterInput type for options.
-  """
-  scmPaymentTermSearch(filter: ScmPaymentTermFilterInput!): ScmPaymentTermSearchResults!
-
-  """
-  Get the status of a previously submitted Purchase Requisition request by the API-assigned request ID.
-  """
-  scmPurchaseRequisitionRequestStatus(requestId: UUID!): ScmPurchaseRequisitionRequestStatusOutput
-
-  """
-  Get the status of a previously submitted purchase requisition request by the consumer's unique tracking ID.
-  """
-  scmPurchaseRequisitionRequestStatusByConsumerTracking(consumerTrackingId: String!): ScmPurchaseRequisitionRequestStatusOutput
-
-  """
-  Get a single ScmPurchasingCategory by unitOfMeasureId.  Returns undefined if does not exist
-  """
-  scmPurchasingCategory(id: String!): ScmPurchasingCategory
-
-  """
-  Get a single ScmPurchasingCategory by category code.  Returns undefined if does not exist
-  """
-  scmPurchasingCategoryByCode(code: String!): ScmPurchasingCategory
-
-  """
-  Get a single ScmPurchasingCategory by name.  Returns undefined if does not exist
-  """
-  scmPurchasingCategoryByName(name: String!): ScmPurchasingCategory
-
-  """
-  Search for ScmPurchasingCategory objects by multiple properties.
-  See the ScmPurchasingCategoryFilterInput type for options.
-  """
-  scmPurchasingCategorySearch(filter: ScmPurchasingCategoryFilterInput!): ScmPurchasingCategorySearchResults!
-
-  """
-  Get a single ScmSupplier by supplierId.  Returns undefined if does not exist
-  """
-  scmSupplier(supplierId: Long!): ScmSupplier
-
-  """
-  Get a single ScmSupplier by supplier number.  Returns undefined if does not exist
-  """
-  scmSupplierByNumber(supplierNumber: String!): ScmSupplier
-
-  """
-  Search for ScmSupplier objects by multiple properties.
-  See the ScmSupplierFilterInput type for options.
-  """
-  scmSupplierSearch(filter: ScmSupplierFilterInput!): ScmSupplierSearchResults!
-
-  """Return the current API Information Object"""
-  erpApiInfo: ErpApiInfo!
-
-  """Get the list of roles assigned to your consumer."""
-  erpRoles: [String!]!
+  apAccountingPeriodSearch(filter: ApAccountingPeriodFilterInput!): ApAccountingPeriodSearchResults!
 }
 
 """Results of the job as submitted to the ERP system."""
@@ -5389,7 +5419,7 @@ type RequestResultValue {
   name: String!
 
   """Value extracted from the downstream system."""
-  value: String!
+  value: String
 }
 
 """
@@ -5407,28 +5437,26 @@ type RequestResultValues {
 Status options within the [ActionRequestStatus]({{Types.ActionRequestStatus}}) that reflect the states a request can be in.
 """
 enum RequestStatus {
-  """
-  Request has been submitted to the server, but not validated or processed.
-  """
+  """Request has been submitted to the API, but picked up for processing."""
   PENDING
 
   """Request has been picked up for processing."""
   INPROCESS
 
-  """There was an error processing the request after it was picked up."""
+  """
+  There was an error processing the request.  Review the results to determine what corrective action may be required.  In the case that multiple jobs were required to process the request, some may have completed successfully while others may have failed.
+  """
   ERROR
 
-  """Request has been processed, but the callback has not been completed."""
-  PROCESSED
+  """
+  There were issues while processing the request.  Some of the submitted data may not be completely imported to the target system.  You should review any output to see if corrective action is required.
+  """
+  WARNING
 
-  """
-  If Callback URL Provided: Request has been processed, and the callback was successfully contacted.  Or, request has been processed, and no callback URL was provided.
-  """
+  """Request has been processed with no significant issues."""
   COMPLETE
 
-  """
-  If Callback URL Provided: Request has been processed, but repeated attempts to contact the callback have failed and no more will be tried.
-  """
+  """Request never completed within the maximum allowed time."""
   STALE
 
   """There was a validation error in the request payload data."""
@@ -6007,6 +6035,7 @@ type SearchResultMetadata {
   Total number of results.  Will only be populated if `includeTotalResultCount` is true in the search request.
   """
   totalResultCount: NonNegativeInt
+  filterInput: JSON
 }
 
 """Valid end date for a given segment in a GL or PPM chartstring."""
@@ -6089,6 +6118,16 @@ scalar Timestamp
 A field whose value exists in the standard IANA Time Zone Database: https://www.iana.org/time-zones
 """
 scalar TimeZone
+
+"""
+String limited to 100 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
+"""
+scalar TrimmedString100
+
+"""
+String limited to 50 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
+"""
+scalar TrimmedString50
 
 """UC Employee ID.  May be either 8 or 9 digits."""
 scalar UcEmployeeId
