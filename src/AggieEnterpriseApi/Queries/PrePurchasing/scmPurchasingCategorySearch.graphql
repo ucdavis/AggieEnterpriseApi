@@ -4,7 +4,6 @@ query scmPurchasingCategorySearch ($filter: ScmPurchasingCategoryFilterInput!) {
             sort
             limit
             returnedResultCount
-            startIndex
             nextStartIndex
             totalResultCount
         }

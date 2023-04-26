@@ -4,7 +4,6 @@ query erpUnitOfMeasureSearch ($filter: ErpUnitOfMeasureFilterInput!) {
             sort
             limit
             returnedResultCount
-            startIndex
             nextStartIndex
             totalResultCount
         }

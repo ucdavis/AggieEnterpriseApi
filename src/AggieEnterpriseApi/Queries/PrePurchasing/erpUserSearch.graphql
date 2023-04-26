@@ -4,7 +4,6 @@ query erpUserSearch ($filter: ErpUserFilterInput!) {
             sort
             limit
             returnedResultCount
-            startIndex
             nextStartIndex
             totalResultCount
         }
