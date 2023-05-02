@@ -4234,18 +4234,28 @@ type PpmSponsor {
   creationDate: DateTime
   lastUpdateDateTime: DateTime
   lastUpdateUserId: ErpUserId
+  references: [PpmSponsorReference!]!
 }
 
 """Data object used to run searches on PpmSponsor"""
 input PpmSponsorFilterInput {
   searchCommon: SearchCommonInputs
   sponsorId: StringFilterInput
-  partyId: StringFilterInput
-  billToSponsorId: StringFilterInput
-  burdenScheduleId: StringFilterInput
   statusCode: StringFilterInput
   isFederal: BooleanFilterInput
   lastUpdateDateTime: DateFilterInput
+  referenceValue: StringFilterInput
+}
+
+"""SPONSOR REFERENCE"""
+type PpmSponsorReference {
+  id: Long!
+  sponsorId: Long!
+  referenceTypeName: NonEmptyTrimmedString80!
+  referenceValue: NonEmptyTrimmedString80
+  comments: NonEmptyTrimmedString2000
+  lastUpdateDateTime: DateTime!
+  lastUpdateUserId: ErpUserId
 }
 
 """Wrapper object for search results for PpmSponsor"""
