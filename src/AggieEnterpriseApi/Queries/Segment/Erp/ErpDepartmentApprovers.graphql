@@ -1,0 +1,15 @@
+query ErpDepartmentApprovers($code: String!) {
+      # pull single project back by number
+      erpFinancialDepartment(code: $code) {
+          id
+          code
+          name
+          approvers{
+              approverType
+              emailAddress
+              firstName
+              lastName
+              userId
+          }
+      }
+    }
