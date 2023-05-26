@@ -44,5 +44,13 @@ public class GlSegmentDetailsTests : TestBase
 
     }
 
+    [Fact]
+    public async Task GetDepartmentApprovers()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        //var result = await client.erpd
+    }
+
 
 }
