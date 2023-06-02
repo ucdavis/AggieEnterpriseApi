@@ -183,13 +183,13 @@ public class ChartValidationTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000");
+        var result = await client.PpmSegmentStringValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000");
 
         var data = result.ReadData();
 
-        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
-        data.PpmStringSegmentsValidate.SegmentString.ShouldNotBeNull();
-        data.PpmStringSegmentsValidate.SegmentString.ShouldStartWith("K30APSD227-TASK01-APLS002-770000");
+        data.PpmSegmentStringValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+        data.PpmSegmentStringValidate.SegmentString.ShouldNotBeNull();
+        data.PpmSegmentStringValidate.SegmentString.ShouldStartWith("K30APSD227-TASK01-APLS002-770000");
         //data.PpmSegmentsValidate.SegmentString.ShouldBe("K30APSD227-TASK01-APLS002-770000-K381C99-27666"); //Do we care about the extra values returned?
     }
 
@@ -198,11 +198,11 @@ public class ChartValidationTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-K381C99-27666");
+        var result = await client.PpmSegmentStringValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-K381C99-27666");
 
         var data = result.ReadData();
 
-        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
+        data.PpmSegmentStringValidate.ValidationResponse.Valid.ShouldBeTrue("Response should be valid");
     }
 
     [Fact]
@@ -210,11 +210,11 @@ public class ChartValidationTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK99-APLS002-770000");
+        var result = await client.PpmSegmentStringValidate.ExecuteAsync("K30APSD227-TASK99-APLS002-770000");
 
         var data = result.ReadData();
 
-        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeFalse("Response should be invalid");
+        data.PpmSegmentStringValidate.ValidationResponse.Valid.ShouldBeFalse("Response should be invalid");
     }
 
     [Fact]
@@ -222,10 +222,10 @@ public class ChartValidationTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-0000000-00000");
+        var result = await client.PpmSegmentStringValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-0000000-00000");
 
         var data = result.ReadData();
 
-        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue();
+        data.PpmSegmentStringValidate.ValidationResponse.Valid.ShouldBeTrue();
     }
 }
