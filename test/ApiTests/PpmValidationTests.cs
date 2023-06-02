@@ -41,21 +41,21 @@ public class PpmValidationTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
 
-        var result = await client.PpmStringSegmentsValidate.ExecuteAsync("K302300049-TASK01-ADNO006-770000");
+        var result = await client.PpmSegmentStringValidate.ExecuteAsync("K302300049-TASK01-ADNO006-770000");
 
         var data = result.ReadData();
-        data.PpmStringSegmentsValidate.ShouldNotBeNull();
-        data.PpmStringSegmentsValidate.ValidationResponse.Valid.ShouldBeTrue();
+        data.PpmSegmentStringValidate.ShouldNotBeNull();
+        data.PpmSegmentStringValidate.ValidationResponse.Valid.ShouldBeTrue();
 
         //DO segment check
-        data.PpmStringSegmentsValidate.Segments.ShouldNotBeNull();
-        data.PpmStringSegmentsValidate.Segments.Project.ShouldBe("K302300049");
+        data.PpmSegmentStringValidate.Segments.ShouldNotBeNull();
+        data.PpmSegmentStringValidate.Segments.Project.ShouldBe("K302300049");
 
         //Do warning check
-        data.PpmStringSegmentsValidate.Warnings.ShouldNotBeNull();
-        data.PpmStringSegmentsValidate.Warnings.Count.ShouldBe(1);
-        data.PpmStringSegmentsValidate.Warnings[0].SegmentName.ShouldBe("Project");
-        data.PpmStringSegmentsValidate.Warnings[0].Warning.ShouldEndWith("Please update or transactions to this chartstring will be rejected after that date."); 
+        data.PpmSegmentStringValidate.Warnings.ShouldNotBeNull();
+        data.PpmSegmentStringValidate.Warnings.Count.ShouldBe(1);
+        data.PpmSegmentStringValidate.Warnings[0].SegmentName.ShouldBe("Project");
+        data.PpmSegmentStringValidate.Warnings[0].Warning.ShouldEndWith("Please update or transactions to this chartstring will be rejected after that date."); 
     }
 
     [Fact]
