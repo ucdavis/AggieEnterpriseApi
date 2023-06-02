@@ -1,5 +1,5 @@
-query ppmStringSegmentsValidate ($segmentString: PpmSegmentString!) {
-    ppmStringSegmentsValidate (segmentString: $segmentString) {
+query ppmSegmentStringValidate ($segmentString: PpmSegmentString!) {
+    ppmSegmentStringValidate (segmentString: $segmentString) {
         validationResponse {
             valid
             errorMessages
