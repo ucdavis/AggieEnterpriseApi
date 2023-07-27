@@ -155,7 +155,8 @@ type ApInvoice {
   invoiceNumber: NonEmptyTrimmedString50
   poNumber: NonEmptyTrimmedString30
   checkNumber: NonEmptyTrimmedString50
-  paymentAmount: Long
+  paymentAmount: Float
+  invoiceAmount: Float
   invoiceDate: Date
   paymentDate: Date
   paymentStatusCode: NonEmptyTrimmedString1
@@ -403,7 +404,7 @@ enum ArLineType {
 
 type ArMemoLine {
   """Value that uniquely identifies the MemoLine by ID"""
-  id: NonEmptyTrimmedString20
+  id: Long!
 
   """Value that uniquely identifies the MemoLine by name"""
   name: NonEmptyTrimmedString50
@@ -442,7 +443,7 @@ type ArPartySite {
   partySiteNumber: NonEmptyTrimmedString50!
 
   """Value that uniquely identifies the PartySite by name"""
-  partySiteName: NonEmptyTrimmedString100!
+  partySiteName: NonEmptyTrimmedString100
 
   """Status Code of the PartySite"""
   status: NonEmptyTrimmedString10
@@ -593,6 +594,11 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 scalar DateTime
 
 """
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.This scalar is serialized to a string in ISO 8601 format and parsed from a string in ISO 8601 format.
+"""
+scalar DateTimeISO
+
+"""
 A field whose value conforms to the standard DeweyDecimal format as specified by the OCLC https://www.oclc.org/content/dam/oclc/dewey/resources/summaries/deweysummaries.pdf
 """
 scalar DeweyDecimal
@@ -703,6 +709,11 @@ type ErpAccount {
 
   """Reporting Level designation based on the hierarchy depth."""
   hierarchyLevel: String
+
+  """
+  If true, this natural account is also a PPM Expenditure Type and may be used when creating expenses against PPM-managed projects.
+  """
+  ppmAllowed: Boolean!
 
   """
   Returns whether this ErpAccount is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
@@ -3141,6 +3152,11 @@ A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, 
 """
 scalar LocalDate
 
+"""
+A local date-time string (i.e., with no associated timezone) in `YYYY-MM-DDTHH:mm:ss` format, e.g. `2020-01-01T00:00:00`.
+"""
+scalar LocalDateTime
+
 """The locale in the format of a BCP 47 (RFC 5646) standard string"""
 scalar Locale
 
@@ -4031,15 +4047,16 @@ type PpmProject {
   """
   Name of the component of the system that this project belongs to.  There is a separation between sponsored projects managed by CGA, and other managed projects.  The value in this field should align with the sponsoredProject flag.
   """
-  businessUnitName: NonEmptyTrimmedString240
+  businessUnitName: NonEmptyTrimmedString240!
 
   """
   Legal Entity: Name of the legal entity associated with the project. A legal entity is a recognized party with given rights and responsibilities by legislation. Legal entities generally have the right to own property, the right to trade, the responsibility to repay debt, and the responsibility to account for themselves to company regulators, taxation authorities, and owners according to rules specified in the relevant legislation.
   """
-  legalEntityName: NonEmptyTrimmedString240
+  legalEntityName: NonEmptyTrimmedString240!
+  legalEntityCode: ErpEntityCode
 
   """Project Type Name: String # Max Length: 2000"""
-  projectTypeName: String
+  projectTypeName: String!
 
   """
   Project Manager Email: Email of the person who leads the project team and who has the authority and responsibility for meeting the project objectives.
@@ -4062,7 +4079,7 @@ type PpmProject {
   sourceProjectReference: NonEmptyTrimmedString30
 
   """TODO"""
-  projectCategory: NonEmptyTrimmedString30
+  projectCategory: NonEmptyTrimmedString30!
 
   """
   Sponsored Project Flag: Whether this project is a sponsored project and requires Award and Funding Source segments when assigning costs.
@@ -5871,7 +5888,7 @@ input ScmPurchaseRequisitionLineInput {
   """
   Name of the purchasing category that is used for classifying the purchase being made by using this order line.
   """
-  purchasingCategoryName: String
+  purchasingCategoryName: String!
 
   """Price of the requested item in USD."""
   unitPrice: NonNegativeFloat
@@ -5961,6 +5978,9 @@ type ScmPurchasingCategory {
 
   """User ID of the person who last updated this record."""
   lastUpdateUserId: ErpUserId
+
+  """Valid Expenditure Types for give purchase Category."""
+  expenditureTypes: [PpmExpenditureType!]!
 }
 
 """Data object used to run searches on ScmPurchasingCategory"""
