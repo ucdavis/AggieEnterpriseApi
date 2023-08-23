@@ -1,4 +1,4 @@
-query erpUserByUserId ($userId: String!) {
+query erpUserByUserId ($userId: ErpUserId!) {
     erpUserByUserId (userId: $userId) {
         userId
         email
