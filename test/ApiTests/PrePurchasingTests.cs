@@ -616,11 +616,11 @@ public class PrePurchasingTests : TestBase
         data.ErpUserSearch.Data[0].Active.ShouldBe(true);
     }
 
-    [Fact(Skip ="This is currently not working in AE")]
+    [Fact]
     public async Task GetUser()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
-        
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
         var result = await client.ErpUserByUserId.ExecuteAsync("jsylvest");
         var data = result.ReadData();
         data.ErpUserByUserId.ShouldNotBeNull();
