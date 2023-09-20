@@ -54,8 +54,8 @@ public class PpmValidationTests : TestBase
         //Do warning check
         data.PpmSegmentStringValidate.Warnings.ShouldNotBeNull();
         data.PpmSegmentStringValidate.Warnings.Count.ShouldBe(1);
-        data.PpmSegmentStringValidate.Warnings[0].SegmentName.ShouldBe("Project");
-        data.PpmSegmentStringValidate.Warnings[0].Warning.ShouldEndWith("Please update or transactions to this chartstring will be rejected after that date."); 
+        data.PpmSegmentStringValidate.Warnings[0]?.SegmentName.ShouldBe("Project");
+        data.PpmSegmentStringValidate.Warnings[0]?.Warning.ShouldEndWith("Please update or transactions to this chartstring will be rejected after that date."); 
     }
 
     [Fact]
