@@ -1,0 +1,56 @@
+query PpmDetails($projectNumber: PpmProjectNumber!, $projectNumberString: String!, $segmentString: PpmSegmentString!, $taskNumber: PpmTaskNumber!) {
+    # pull single project back by number
+    ppmProjectByNumber(projectNumber: $projectNumberString) {
+        id
+        projectNumber
+        name
+        projectStartDate
+        projectCompletionDate
+        projectStatus
+        projectOrganizationName
+        legalEntityCode
+        legalEntityName
+        projectTypeName
+        primaryProjectManagerEmail
+        primaryProjectManagerName
+        projectCategory
+        sponsoredProject
+        billingEnabled
+        capitalizationEnabled
+        templateProject
+    }
+    ppmSegmentStringValidate (segmentString: $segmentString) {
+        validationResponse {
+            valid
+            errorMessages
+            messageProperties
+        }
+        segments {
+            project
+            task
+            organization
+            expenditureType
+            award
+            fundingSource
+        }
+        segmentString
+        warnings {
+            segmentName
+            warning
+        }
+    }
+    ppmTaskByProjectNumberAndTaskNumber(projectNumber: $projectNumber, taskNumber: $taskNumber) {
+        taskNumber
+        name
+        description
+        billable
+        chargeable
+        eligibleForUse
+        taskStartDate
+        taskFinishDate
+        glPostingProgramCode
+        glPostingPurposeCode
+        glPostingFundCode
+        glPostingActivityCode
+    }
+}
