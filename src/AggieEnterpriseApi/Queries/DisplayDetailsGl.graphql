@@ -1,0 +1,51 @@
+query DisplayDetailsGl($segmentString: GlSegmentString!, $validateCVRs: Boolean = true, $entity: String!,
+                       $fund: String!, $dept: String!, $account: String!, $purpose: String!) {
+    glValidateChartstring(segmentString: $segmentString, validateCVRs: $validateCVRs) {
+        validationResponse {
+            valid
+            errorMessages
+            messageProperties
+        }
+        segments {
+            project
+            entity
+            fund
+            department
+            purpose
+            account
+            program
+            activity
+        }
+        warnings {
+            segmentName
+            warning
+        }
+    }
+    erpEntity(code: $entity) {
+        code
+        name
+    }
+    erpFund(code:$fund) {
+        code
+        name
+    }
+    erpFinancialDepartment(code: $dept) {
+        code
+        name
+        eligibleForUse
+        approvers {
+            firstName
+            lastName
+            emailAddress
+            approverType
+        }
+    }
+    erpAccount(code: $account) {
+        code
+        name
+    }
+    erpPurpose(code:$purpose) {
+        code
+        name
+    }
+}
