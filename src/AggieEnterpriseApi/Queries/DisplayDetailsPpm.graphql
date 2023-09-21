@@ -1,4 +1,5 @@
-query PpmDetails($projectNumber: PpmProjectNumber!, $projectNumberString: String!, $segmentString: PpmSegmentString!, $taskNumber: PpmTaskNumber!) {
+query DisplayDetailsPpm($projectNumber: PpmProjectNumber!, $projectNumberString: String!, 
+                        $segmentString: PpmSegmentString!, $taskNumber: PpmTaskNumber!) {
     # pull single project back by number
     ppmProjectByNumber(projectNumber: $projectNumberString) {
         id
