@@ -1,5 +1,6 @@
-query DisplayDetailsGl($segmentString: GlSegmentString!, $validateCVRs: Boolean = true, $entity: String!,
-                       $fund: String!, $dept: String!, $account: String!, $purpose: String!) {
+query DisplayDetailsGl($segmentString: GlSegmentString!, $validateCVRs: Boolean = true, $project: String!,
+    $entity: String!, $fund: String!, $dept: String!, $account: String!, $purpose: String!, $program: String!
+    $activity: String!) {
     glValidateChartstring(segmentString: $segmentString, validateCVRs: $validateCVRs) {
         validationResponse {
             valid
@@ -19,6 +20,15 @@ query DisplayDetailsGl($segmentString: GlSegmentString!, $validateCVRs: Boolean 
         warnings {
             segmentName
             warning
+        }
+    }
+    erpProject(code: $project) {
+        code
+        name
+        isPpmProject
+        ppmProject {
+            name
+            projectNumber
         }
     }
     erpEntity(code: $entity) {
@@ -45,6 +55,14 @@ query DisplayDetailsGl($segmentString: GlSegmentString!, $validateCVRs: Boolean 
         name
     }
     erpPurpose(code:$purpose) {
+        code
+        name
+    }
+    erpProgram(code:$program) {
+        code
+        name
+    }
+    erpActivity(code:$activity) {
         code
         name
     }
