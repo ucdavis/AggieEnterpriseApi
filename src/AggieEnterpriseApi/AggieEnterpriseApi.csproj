@@ -7,7 +7,8 @@
     <Company>UC Davis</Company>
     <Description>Aggie Enterprise API</Description>
     <TargetFramework>netstandard2.0</TargetFramework>
-	<LangVersion>latest</LangVersion>
+	  <LangVersion>latest</LangVersion>
+    <StrawberryShake_State>$(MSBuildProjectExtensionsPath)berry</StrawberryShake_State>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
