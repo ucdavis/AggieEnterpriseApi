@@ -630,4 +630,68 @@ public class PrePurchasingTests : TestBase
         data.ErpUserByUserId.Email.ShouldStartWith("jsylvestre@");
         data.ErpUserByUserId.Active.ShouldBe(true);
     }
+
+    [Fact]
+    public async Task GetJobErrorDetails()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
+        var result = await client.ScmPurchaseRequisitionRequestErrors.ExecuteAsync(new Guid("d594a0f3-73f3-41d6-bd02-e122bf98d384"));
+        var data = result.ReadData();
+
+        data.ScmPurchaseRequisitionRequestStatus.ShouldNotBeNull();
+
+        data.ScmPurchaseRequisitionRequestStatus.ProcessingResult.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.ProcessingResult.Jobs.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.ProcessingResult.Jobs.Count.ShouldBe(1);
+        data.ScmPurchaseRequisitionRequestStatus.ProcessingResult.Jobs[0].JobId.ShouldBe("scm_reqn");
+        data.ScmPurchaseRequisitionRequestStatus.ProcessingResult.Jobs[0].JobStatus.ShouldBe("ERROR");
+        data.ScmPurchaseRequisitionRequestStatus.ProcessingResult.Jobs[0].JobReport.ShouldStartWith("{\"REQUESTID\":1990106,\"G_1\":[{\"REQ_IMPORT_ERROR_ID\":3002,");
+        data.ScmPurchaseRequisitionRequestStatus.ProcessingResult.Jobs[0].JobReport.ShouldContain("The variance account can't be derived. Contact the Procurement application administrator. Oracle Transaction Account Builder can't derive an account. Verify that the account combination is active, allows posting, and segment value security rules restrict none of the segments.");
+    }
+
+    [Fact]
+    public async Task LookupStatus3()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
+        var saveId = Guid.NewGuid().ToString();
+
+        var result = await client.ScmPurchaseRequisitionRequestStatus.ExecuteAsync(new Guid("abd6f202-ca59-423e-b794-f48f3a69231e"));
+
+        var data = result.ReadData();
+
+        data.ScmPurchaseRequisitionRequestStatus.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.RequestStatus.ShouldBe(RequestStatus.Complete);
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ConsumerReferenceId.ShouldBe("ACRU-FV04Y2T");
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ConsumerTrackingId.ShouldBe("bad6125a-8e9a-4366-98d2-821b11f8b900");
+        data.ScmPurchaseRequisitionRequestStatus.ValidationResults.ShouldBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ErrorMessages.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ErrorMessages.Count.ShouldBe(0);
+
+        //PO stuff
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.ValuesExtracted.ShouldBeTrue();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.ShouldNotBeNull();
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.Count.ShouldBe(1);
+        data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs.Where(a => a.JobType == "scm_reqn").ShouldNotBeNull();
+
+
+        foreach (var job in data.ScmPurchaseRequisitionRequestStatus.RequestStatus.ResultValues.Jobs)
+        {
+            job.JobType.ShouldBe("scm_reqn");
+            job.Values.ShouldNotBeNull();
+            job.Values.Count.ShouldBe(2);
+            foreach (var value in job.Values)
+            {
+                value.Name.ShouldNotBeNull();
+                value.Value.ShouldNotBeNull();
+            }
+            job.Values[0].Name.ShouldBe("requisitionNumber");
+            job.Values[0].Value.ShouldBe("REQ00000822");
+            job.Values[1].Name.ShouldBe("poNumber");
+            job.Values[1].Value.ShouldBe("UCDPO00000410");
+        }
+
+    }
 }
