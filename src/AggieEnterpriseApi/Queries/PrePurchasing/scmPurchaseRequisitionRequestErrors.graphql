@@ -1,0 +1,23 @@
+query scmPurchaseRequisitionRequestErrors($requestId: UUID!) {
+scmPurchaseRequisitionRequestStatus (requestId: $requestId) {
+        requestStatus {
+            requestId            
+            requestDateTime
+            requestStatus
+            lastStatusDateTime
+            processedDateTime
+            errorMessages
+        }
+        processingResult {
+            status            
+            requestDateTime
+            lastStatusCheckDateTime
+            processedDateTime
+            jobs {
+                jobId
+                jobStatus
+                jobReport
+            }
+        }
+    }
+}
