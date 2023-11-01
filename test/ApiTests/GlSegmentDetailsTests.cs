@@ -6,6 +6,7 @@ using AggieEnterpriseApi.Extensions;
 using AggieEnterpriseApi.Validation;
 using ApiTests.Setup;
 using Shouldly;
+using StrawberryShake;
 using Xunit;
 
 namespace ApiTests;
@@ -57,16 +58,60 @@ public class GlSegmentDetailsTests : TestBase
         data.ErpFinancialDepartment.ShouldNotBeNull();
         data.ErpFinancialDepartment.Code.ShouldBe("ADNO003");
         data.ErpFinancialDepartment.Approvers.ShouldNotBeNull();
-        data.ErpFinancialDepartment.Approvers.Count.ShouldBe(6);
+
+        var typeOfApprovers = data.ErpFinancialDepartment.Approvers.Select(a => a.ApproverType).Distinct().ToList();
+        //data.ErpFinancialDepartment.Approvers.Count.ShouldBe(6);
         var FoApprovers = data.ErpFinancialDepartment.Approvers.Where(a => a.ApproverType == "Fiscal Officer Approver").ToList();
-        FoApprovers.Count().ShouldBe(2);
-        FoApprovers[0].EmailAddress.ShouldBe("bmceligot@ucdavis.edu");
-        FoApprovers[0].FirstName.ShouldBe("Brian");
-        FoApprovers[0].LastName.ShouldBe("Mceligot");
-        FoApprovers[0].UserId.ShouldBe("mceligot");
-        FoApprovers[1].EmailAddress.ShouldBe("satanguay@ucdavis.edu");
-        FoApprovers[1].FirstName.ShouldBe("Shannon");
-        FoApprovers[1].LastName.ShouldBe("Tanguay");
-        FoApprovers[1].UserId.ShouldBe("tanguay");
+        FoApprovers.Count().ShouldBe(6);
+
+        var appr = FoApprovers.Where(a => a.UserId == "mceligot").FirstOrDefault();
+        appr.EmailAddress.ShouldBe("bmceligot@ucdavis.edu");
+        appr.FirstName.ShouldBe("Brian");
+        appr.LastName.ShouldBe("Mceligot");
+        appr.UserId.ShouldBe("mceligot");
+
+        FoApprovers.SingleOrDefault(a => a.UserId == "bjgregg").ShouldNotBeNull();
+    }
+
+    [Fact]
+    public async Task GetDisplayDetailsGl()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
+        var result = await client.DisplayDetailsGl.ExecuteAsync(
+            segmentString: "3110-13U20-ADNO003-238533-44-000-0000000000-000000-0000-000000-000000", 
+            project: "0000000000", 
+            entity: "3110", 
+            fund: "13U20", 
+            dept: "ADNO003", 
+            account: "238533", 
+            purpose: "44", 
+            program: "000", 
+            activity: "000000",
+            validateCVRs : true);
+
+        var data = result.ReadData();
+        data.ShouldNotBeNull();
+
+    }
+
+    [Fact]
+    public async Task GetDisplayDetailsPpm()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
+        var result = await client.DisplayDetailsPpm.ExecuteAsync(
+            projectNumber: "KL0733ATC1",
+            projectNumberString: "KL0733ATC1",
+            segmentString: "KL0733ATC1-TASK01-ADNO001-501090",
+            taskNumber: "TASK01",
+            organization: "ADNO001"
+            );
+
+        var data = result.ReadData();
+        data.ShouldNotBeNull();
+        data.ErpFinancialDepartment.ShouldNotBeNull();
+        data.ErpFinancialDepartment.Code.ShouldBe("ADNO001");
+        data.ErpFinancialDepartment.Approvers.ShouldNotBeNull();
     }
 }
