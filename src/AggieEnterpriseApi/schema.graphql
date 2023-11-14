@@ -1265,6 +1265,9 @@ type ErpFinancialDepartment {
   """User ID of the person who last updated this record."""
   lastUpdateUserId: ErpUserId
 
+  """List of all entity codes with which this department may be used."""
+  allowedEntityCodes: [ErpEntityCode!]!
+
   """
   List of all approvers linked to this department.  To return only a specific approver type, use the approverTypeName argument for this field.
   """
@@ -1278,7 +1281,7 @@ type ErpFinancialDepartment {
     * Financial Control Approver
     * Recharge Approver
     * Revenue Transfer Approver
-    * Fiscal Officer Approver Department
+    * Fiscal Officer Approver
     """
     approverTypeName: NonEmptyTrimmedString50
   ): [ErpDepartmentalApprover!]!
@@ -2138,7 +2141,7 @@ input ErpUserFilterInput {
   lastUpdateDateTime: DateFilterInput
 }
 
-"""Oracle User ID: 32 character limit"""
+"""Oracle User ID: 64 character limit"""
 scalar ErpUserId
 
 """Wrapper object for search results for ErpUser"""
@@ -3711,6 +3714,8 @@ The Award Number identifies the number assigned to an award containing funding a
 
 **Examples:**
 
+
+
 * Award Number values will be Oracle-generated
 """
 type PpmAward {
@@ -3770,6 +3775,8 @@ type PpmAward {
   awardFundingSource: [PpmFundingSource!]
   defaultFundingSourceNumber: PpmFundingSourceNumber
   awardCfda: [PpmCfdaAward!]
+  glFundCode: ErpFundCode
+  glPurposeCode: ErpPurposeCode
   flowThruAmount: NonNegativeFloat
   flowThruFromDate: LocalDate
   flowThruToDate: LocalDate
@@ -3879,14 +3886,18 @@ The Expenditure Type identifies the natural classification of the expense transa
 * Travel
 """
 type PpmExpenditureType {
-  """Expenditure Type ID: Unique identifier of the expenditure type."""
-  id: Long!
-
-  """Expenditure Type: Name of the expenditure type."""
-  name: NonEmptyTrimmedString240!
+  """
+  Expenditure Type ID: Unique identifier of the expenditure type.
+  
+  DEPRECATED: This field is deprecated and will be removed in a future release.  Use the 'code' field instead.
+  """
+  id: Long
 
   """Expenditure Type Code: The code of the Expenditure Type."""
   code: String!
+
+  """Expenditure Type: Name of the expenditure type."""
+  name: NonEmptyTrimmedString240!
 
   """Expenditure Type Description: Description of the expenditure type."""
   description: String
@@ -5438,6 +5449,11 @@ type Query {
   erpFinancialDepartmentAll(sort: [String!]): [ErpFinancialDepartment!]!
 
   """
+  Get ErpFinancialDepartment records which may be used with the given entity code.
+  """
+  erpFinancialDepartmentByEntity(entity: ErpEntityCode!): [ErpFinancialDepartment!]!
+
+  """
   Get items under the given ErpFinancialDepartment in the segment hierarchy.
   Returns undefined if the parent does not exist.
   Returns an empty list if the given record has no children.
@@ -6147,6 +6163,7 @@ type ScmPurchasingCategory {
 
   """Valid Expenditure Types for give purchase Category."""
   expenditureTypes: [PpmExpenditureType!]!
+  eligibleForUse: Boolean!
 }
 
 """Data object used to run searches on ScmPurchasingCategory"""
