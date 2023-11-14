@@ -18,7 +18,6 @@ query ppmSegmentsToNames($project: String!, $projectNumber: PpmProjectNumber!, $
         eligibleForUse
     }
     ppmExpenditureTypeByCode(code: $expenditureType) {
-        id
         code
         name
         eligibleForUse
