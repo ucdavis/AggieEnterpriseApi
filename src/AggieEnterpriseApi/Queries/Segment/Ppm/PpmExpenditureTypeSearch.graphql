@@ -1,13 +1,11 @@
 query PpmExpenditureTypeSearch($filter: PpmExpenditureTypeFilterInput!, $code: String!) {
         ppmExpenditureTypeByCode(code: $code) {
-          id
           code
           name
           eligibleForUse
       }
       ppmExpenditureTypeSearch(filter: $filter) {
         data {
-          id
           code
           name
           eligibleForUse
