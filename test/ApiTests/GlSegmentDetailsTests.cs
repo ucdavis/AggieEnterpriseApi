@@ -114,4 +114,23 @@ public class GlSegmentDetailsTests : TestBase
         data.ErpFinancialDepartment.Code.ShouldBe("ADNO001");
         data.ErpFinancialDepartment.Approvers.ShouldNotBeNull();
     }
+
+    [Fact]
+    public async Task SearchPpmExpenditureType()
+    {
+
+            var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
+            var filter = new PpmExpenditureTypeFilterInput() { Name = new StringFilterInput { Contains = "faculty" } };
+            var result = await client.PpmExpenditureTypeSearch.ExecuteAsync(filter, "770000");
+
+            var data = result.ReadData();
+
+            Assert.NotNull(data);
+
+            Assert.NotNull(data.PpmExpenditureTypeByCode);
+            data.PpmExpenditureTypeByCode.Name.ShouldContain("Facilities and Equipment Maintenace Services");
+
+
+    }
 }
