@@ -1,5 +1,5 @@
 query DisplayDetailsPpm($projectNumber: PpmProjectNumber!, $projectNumberString: String!, 
-                        $segmentString: PpmSegmentString!, $taskNumber: PpmTaskNumber!, $organization: String!) {
+                        $segmentString: PpmSegmentString!, $taskNumber: PpmTaskNumber!, $organization: String!, $expendCode: String!) {
     # pull single project back by number
     ppmProjectByNumber(projectNumber: $projectNumberString) {
         id
@@ -53,6 +53,11 @@ query DisplayDetailsPpm($projectNumber: PpmProjectNumber!, $projectNumberString:
         glPostingPurposeCode
         glPostingFundCode
         glPostingActivityCode
+    }
+    ppmExpenditureTypeByCode(code: $expendCode) {
+        code
+        name
+        eligibleForUse
     }
     erpFinancialDepartment(code: $organization) {
         code
