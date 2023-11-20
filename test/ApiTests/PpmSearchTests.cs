@@ -12,7 +12,7 @@ public class PpmSearchTests : TestBase
     [Fact]
     public async Task SearchPpmProject()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new PpmProjectFilterInput { Name = new StringFilterInput { Contains = "faculty" } };
         var result = await client.PpmProjectSearch.ExecuteAsync(filter, "K30GEAFAFU");
@@ -30,7 +30,7 @@ public class PpmSearchTests : TestBase
     [Fact]
     public async Task FindPpmProjectWithTasks()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new PpmProjectFilterInput { Name = new StringFilterInput { Contains = "annual" } };
         var result = await client.PpmProjectWithTasks.ExecuteAsync("K309872537");
@@ -47,7 +47,7 @@ public class PpmSearchTests : TestBase
     [Fact]
     public async Task FindPpmSegmentNames()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.PpmSegmentsToNames.ExecuteAsync("K30APSD227", "K30APSD227", "TASK01", "APLS002", "770000", "000000", "000000");
         
@@ -64,7 +64,7 @@ public class PpmSearchTests : TestBase
     [Fact]
     public async Task SearchPpmOrg()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new PpmOrganizationFilterInput() { Name = new StringFilterInput { Contains = "faculty" } };
         var result = await client.PpmOrganizationSearch.ExecuteAsync(filter, "APLS002");
@@ -82,7 +82,7 @@ public class PpmSearchTests : TestBase
     [Fact]
     public async Task SearchPpmExpenditureType()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new PpmExpenditureTypeFilterInput() { Name = new StringFilterInput { Contains = "faculty" } };
         var result = await client.PpmExpenditureTypeSearch.ExecuteAsync(filter, "770000");
@@ -100,7 +100,7 @@ public class PpmSearchTests : TestBase
     [Fact]
     public async Task SearchPpmTask()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new PpmTaskFilterInput() { Name = new StringFilterInput { Contains = "TASK" }, TaskNumber = new StringFilterInput() { Contains = "TASK01" }, ProjectId = new StringFilterInput() { Eq = "300000008444977"}};
         var result = await client.PpmTaskSearch.ExecuteAsync(filter);
@@ -117,7 +117,7 @@ public class PpmSearchTests : TestBase
     [Fact]
     public async Task SearchPpmAward()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new PpmAwardFilterInput() { Name = new StringFilterInput { Contains = "faculty" }};
         var result = await client.PpmAwardSearch.ExecuteAsync(filter, "K373D79");
@@ -130,11 +130,29 @@ public class PpmSearchTests : TestBase
         data.PpmAwardSearch.ShouldNotBeNull();
         data.PpmAwardSearch.Data.ShouldNotBeEmpty();
     }
-    
+
+    [Fact]
+    public async Task GetPpmAward()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
+        var result = await client.PpmAward.ExecuteAsync("KL85D83");
+
+        var data = result.ReadData();
+
+        data.PpmAwardByNumber.ShouldNotBeNull();
+        data.PpmAwardByNumber.AwardNumber.ShouldBe("KL85D83");
+        data.PpmAwardByNumber.GlFundCode.ShouldBe("20701");
+        data.PpmAwardByNumber.GlPurposeCode.ShouldBe("62");
+        data.PpmAwardByNumber.Name.ShouldBe("CAP Advanced testing and commercialization of novel defensin peptides and therapies for HLB control USDA FAIN 2021 70029 36056 KL85D83");
+
+
+    }
+
     [Fact]
     public async Task SearchPpmFundingSource()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new PpmFundingSourceFilterInput() { Name = new StringFilterInput { Contains = "science" }};
         var result = await client.PpmFundingSourceSearch.ExecuteAsync(filter, "27420");

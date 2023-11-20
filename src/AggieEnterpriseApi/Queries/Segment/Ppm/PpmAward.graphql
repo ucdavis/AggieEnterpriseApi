@@ -1,0 +1,10 @@
+query PpmAward($awardNumber: String!) {
+        ppmAwardByNumber(number: $awardNumber) {
+          id
+          awardNumber
+          name
+          eligibleForUse
+          glFundCode
+          glPurposeCode
+      }
+    }

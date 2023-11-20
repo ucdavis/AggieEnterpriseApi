@@ -22,8 +22,8 @@ public class GlSearchTests : TestBase
     public async Task SearchEntity()
     {
         const string name = "campus";
-        
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new ErpEntityFilterInput() { Name = new StringFilterInput { Contains = name } };
         var result = await client.ErpEntitySearch.ExecuteAsync(filter, "1311");
@@ -40,8 +40,8 @@ public class GlSearchTests : TestBase
     public async Task SearchFund()
     {
         const string name = "Campuswide";
-        
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new ErpFundFilterInput() { Name = new StringFilterInput { Contains = name } };
         var result = await client.ErpFundSearch.ExecuteAsync(filter, "09505");
@@ -58,8 +58,8 @@ public class GlSearchTests : TestBase
     public async Task SearchDepartment()
     {
         const string name = "practice";
-        
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new ErpFinancialDepartmentFilterInput() { Name = new StringFilterInput { Contains = name } };
         var result = await client.ErpDepartmentSearch.ExecuteAsync(filter, "1009374");
@@ -76,8 +76,8 @@ public class GlSearchTests : TestBase
     public async Task SearchPurpose()
     {
         const string name = "academic";
-        
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new ErpPurposeFilterInput() { Name = new StringFilterInput { Contains = name } };
         var result = await client.ErpPurposeSearch.ExecuteAsync(filter, "1B");
@@ -94,8 +94,8 @@ public class GlSearchTests : TestBase
     public async Task SearchAccount()
     {
         const string name = "academic";
-        
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new ErpAccountFilterInput() { Name = new StringFilterInput { Contains = name } };
         var result = await client.ErpAccountSearch.ExecuteAsync(filter, "400010");
@@ -112,8 +112,8 @@ public class GlSearchTests : TestBase
     public async Task SearchProject()
     {
         const string name = "academic";
-        
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new ErpProjectFilterInput() { Name = new StringFilterInput { Contains = name } };
         var result = await client.ErpProjectSearch.ExecuteAsync(filter, "AR0000000B");
@@ -130,8 +130,8 @@ public class GlSearchTests : TestBase
     public async Task SearchProgram()
     {
         const string name = "academic";
-        
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new ErpProgramFilterInput() { Name = new StringFilterInput { Contains = name } };
         var result = await client.ErpProgramSearch.ExecuteAsync(filter, "50B");
@@ -148,8 +148,8 @@ public class GlSearchTests : TestBase
     public async Task SearchActivity()
     {
         const string name = "academic";
-        
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new ErpActivityFilterInput() { Name = new StringFilterInput { Contains = name } };
         var result = await client.ErpActivitySearch.ExecuteAsync(filter, "202011");

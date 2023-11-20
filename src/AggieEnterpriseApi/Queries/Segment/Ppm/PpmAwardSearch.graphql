@@ -4,6 +4,8 @@ query PpmAwardSearch($filter: PpmAwardFilterInput!, $awardNumber: String!) {
           awardNumber
           name
           eligibleForUse
+          glFundCode
+          glPurposeCode
       }
       ppmAwardSearch(filter: $filter) {
         data {
@@ -11,6 +13,8 @@ query PpmAwardSearch($filter: PpmAwardFilterInput!, $awardNumber: String!) {
           awardNumber
           name
           eligibleForUse
+          glFundCode 
+          glPurposeCode
         }
       }
     }

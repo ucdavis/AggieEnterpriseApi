@@ -15,7 +15,7 @@ public class NaturalAccountRollUpTests : TestBase
     [Fact]
     public async Task NaturalAccountRollUpTest1()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.ErpAccountRollup.ExecuteAsync("410004");
 
@@ -42,7 +42,7 @@ public class NaturalAccountRollUpTests : TestBase
     [Fact]
     public async Task NaturalAccountRollUpTest2()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.ErpAccountRollup.ExecuteAsync("440011");
 
@@ -69,7 +69,7 @@ public class NaturalAccountRollUpTests : TestBase
     [Fact]
     public async Task NaturalAccountRollUpTest3()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.ErpAccountRollup.ExecuteAsync("Z40011");
 

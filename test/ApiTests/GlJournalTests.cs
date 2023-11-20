@@ -15,7 +15,7 @@ public class GlJournalTests : TestBase
     [Fact]
     public async Task InValidJournalStatus()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         // TODO: get better example request that wasn't errored out
         var result = await client.GlJournalRequestStatus.ExecuteAsync(new Guid("130fba74-24d0-4838-8d35-831812020893"));
@@ -36,7 +36,7 @@ public class GlJournalTests : TestBase
     [Fact]
     public async Task CreateValidJournal()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var newJournalEntry = await client.GlJournalRequest.ExecuteAsync(new GlJournalRequestInput
         {
@@ -83,7 +83,7 @@ public class GlJournalTests : TestBase
     [Fact]
     public async Task CreateInValidJournal()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var newJournalEntry = await client.GlJournalRequest.ExecuteAsync(new GlJournalRequestInput
         {
