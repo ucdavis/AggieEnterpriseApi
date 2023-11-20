@@ -130,7 +130,25 @@ public class PpmSearchTests : TestBase
         data.PpmAwardSearch.ShouldNotBeNull();
         data.PpmAwardSearch.Data.ShouldNotBeEmpty();
     }
-    
+
+    [Fact]
+    public async Task GetPpmAward()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
+        var result = await client.PpmAward.ExecuteAsync("KL85D83");
+
+        var data = result.ReadData();
+
+        data.PpmAwardByNumber.ShouldNotBeNull();
+        data.PpmAwardByNumber.AwardNumber.ShouldBe("KL85D83");
+        data.PpmAwardByNumber.GlFundCode.ShouldBe("20701");
+        data.PpmAwardByNumber.GlPurposeCode.ShouldBe("62");
+        data.PpmAwardByNumber.Name.ShouldBe("CAP Advanced testing and commercialization of novel defensin peptides and therapies for HLB control USDA FAIN 2021 70029 36056 KL85D83");
+
+
+    }
+
     [Fact]
     public async Task SearchPpmFundingSource()
     {
