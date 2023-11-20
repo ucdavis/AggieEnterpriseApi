@@ -14,7 +14,7 @@ public class DeptTests : TestBase
     [Fact]
     public async Task GetDept1()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.DeptParents.ExecuteAsync("ACBS001");
         
@@ -35,7 +35,7 @@ public class DeptTests : TestBase
     [Fact]
     public async Task GetDept2()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.DeptParents.ExecuteAsync("AAES00C");
 

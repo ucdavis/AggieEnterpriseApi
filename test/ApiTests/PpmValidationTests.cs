@@ -17,7 +17,7 @@ public class PpmValidationTests : TestBase
     [Fact]
     public async Task ValidateGlFundCodeForPpmProjectAndTask()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.PpmTaskByProjectNumberAndTaskNumber.ExecuteAsync("FPADNO1111", "HHMI01");
 
@@ -39,7 +39,7 @@ public class PpmValidationTests : TestBase
     [Fact(Skip = "This project is currently only in ait-sit and is time sensitive. It will fail after december")]
     public async Task ValidatePpmString()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.PpmSegmentStringValidate.ExecuteAsync("K302300049-TASK01-ADNO006-770000");
 

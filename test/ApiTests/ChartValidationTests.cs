@@ -13,7 +13,7 @@ public class ChartValidationTests : TestBase
     [Fact]
     public async Task ValidChartString()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.GlValidateChartstring.ExecuteAsync("3110-13U20-ADNO003-410000-43-000-0000000000-000000-0000-000000-000000", false);
 
@@ -41,7 +41,7 @@ public class ChartValidationTests : TestBase
     [Fact]
     public async Task ValidChartSegments()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var segments = new GlSegmentInput
         {
@@ -75,7 +75,7 @@ public class ChartValidationTests : TestBase
     [Fact]
     public async Task ValidChartSegmentsWithoutFlex()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var segments = new GlSegmentInput
         {
@@ -98,7 +98,7 @@ public class ChartValidationTests : TestBase
     [Fact]
     public async Task InValidChartStringFormat()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.GlValidateChartstring.ExecuteAsync("3110-72160-9300202-775000-85-000-0000000000-000000-0000-000000", false);
 
@@ -112,7 +112,7 @@ public class ChartValidationTests : TestBase
     [Fact]
     public async Task InvalidPpmSegments()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var ppmSegments = new PpmSegmentInput
         {
@@ -135,7 +135,7 @@ public class ChartValidationTests : TestBase
     [Fact]
     public async Task ValidPpmSegmentsShort()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var ppmSegments = new PpmSegmentInput
         {
@@ -158,7 +158,7 @@ public class ChartValidationTests : TestBase
     [Fact]
     public async Task ValidPpmSegmentsLong()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var ppmSegments = new PpmSegmentInput
         {
@@ -181,7 +181,7 @@ public class ChartValidationTests : TestBase
     [Fact]
     public async Task ValidPPmStringShort()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.PpmSegmentStringValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000");
 
@@ -196,7 +196,7 @@ public class ChartValidationTests : TestBase
     [Fact]
     public async Task ValidPPmStringLong()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.PpmSegmentStringValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-K381C99-27666");
 
@@ -208,7 +208,7 @@ public class ChartValidationTests : TestBase
     [Fact]
     public async Task InValidPPmStringShort()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.PpmSegmentStringValidate.ExecuteAsync("K30APSD227-TASK99-APLS002-770000");
 
@@ -220,7 +220,7 @@ public class ChartValidationTests : TestBase
     [Fact]
     public async Task IPPmStringLongWithDefaultValues()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.PpmSegmentStringValidate.ExecuteAsync("K30APSD227-TASK01-APLS002-770000-0000000-00000");
 

@@ -15,7 +15,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task ConvertKfsToCoa()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.KfsConvertAccount.ExecuteAsync("3", "CRU9033", null);
         var data = result.ReadData();
@@ -34,7 +34,7 @@ public class PrePurchasingTests : TestBase
     [Fact(Skip = "Need to find correct mapping values for this test")]
     public async Task ConvertKfsToCoaPpm()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.KfsConvertAccount.ExecuteAsync("3", "FRMRATE", null);
         var data = result.ReadData();
@@ -47,7 +47,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task SearchLocation1()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var searchParms = new ErpInstitutionLocationFilterInput();
         searchParms.SearchCommon = new SearchCommonInputs();
@@ -70,7 +70,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task SearchLocation2()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var searchParms = new ErpInstitutionLocationFilterInput();
         searchParms.SearchCommon = new SearchCommonInputs();
@@ -93,7 +93,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task SearchCategory1()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var searchParms = new ScmPurchasingCategoryFilterInput();
         searchParms.SearchCommon = new SearchCommonInputs();
@@ -115,7 +115,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task SearchCategory2()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var searchParms = new ScmPurchasingCategoryFilterInput();
         searchParms.SearchCommon = new SearchCommonInputs();
@@ -138,7 +138,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task CategoryCode()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.ScmPurchasingCategoryByCode.ExecuteAsync("14110000");
         var data = result.ReadData();
@@ -151,7 +151,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task LookupKfsVendor()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var search = new ScmSupplierFilterInput { SupplierNumber = new StringFilterInput{ Eq = "83526" } };
 
@@ -172,7 +172,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task SearchVendor1()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
         var filter = new ScmSupplierFilterInput { Name = new StringFilterInput{ Contains = "Fisher"} };
         var result = await client.SupplierNameAndNumberSupplierSearch.ExecuteAsync(filter, "426"); 
 
@@ -191,7 +191,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task SearchVendor2()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
         var filter = new ScmSupplierFilterInput { Name = new StringFilterInput { Contains = "FISHER SCIENTIFIC COMPANY LLC" } };
         var result = await client.SupplierNameAndNumberSupplierSearch.ExecuteAsync(filter, "426");
 
@@ -211,7 +211,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task SearchVendor3()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
         var filter = new ScmSupplierFilterInput { Name = new StringFilterInput { Contains = "FISHER SCIENTIFIC COMPANY LLC" } };
         var result = await client.SupplierNameAndNumberSupplierSearch.ExecuteAsync(filter, "FISHER SCIENTIFIC COMPANY LLC");
 
@@ -230,7 +230,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task SearchVendor4()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
         var filter = new ScmSupplierFilterInput { Name = new StringFilterInput { Contains = "426" } };
         var result = await client.SupplierNameAndNumberSupplierSearch.ExecuteAsync(filter, "426");
 
@@ -249,7 +249,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task SearchVendor5()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
         var filter = new ScmSupplierFilterInput { Name = new StringFilterInput { Contains = "No Match" } };
         var result = await client.SupplierNameAndNumberSupplierSearch.ExecuteAsync(filter, "No Match");
 
@@ -269,7 +269,7 @@ public class PrePurchasingTests : TestBase
     [Fact(Skip = "This test is not working because of old values")]
     public async Task CreateRequsition()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var saveId = Guid.NewGuid().ToString();
 
@@ -388,7 +388,7 @@ public class PrePurchasingTests : TestBase
     [Fact(Skip = "Don't want to create a requisition every time")]
     public async Task CreateInvalidRequsition()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var saveId = Guid.NewGuid().ToString();
 
@@ -507,7 +507,7 @@ public class PrePurchasingTests : TestBase
     [Fact(Skip ="Old data")]
     public async Task LookupStatus1()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var saveId = Guid.NewGuid().ToString();
 
@@ -528,7 +528,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task LookupStatus2()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var saveId = Guid.NewGuid().ToString();
 
@@ -573,7 +573,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task SearchUnitOfMeasure()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var searchParms = new ErpUnitOfMeasureFilterInput();
         searchParms.SearchCommon = new SearchCommonInputs();
@@ -597,7 +597,7 @@ public class PrePurchasingTests : TestBase
     [Fact]
     public async Task SearchUser()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var searchParms = new ErpUserFilterInput();
         searchParms.SearchCommon = new SearchCommonInputs();

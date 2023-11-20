@@ -14,7 +14,7 @@ public class FundTests : TestBase
     [Fact]
     public async Task GetFund()
     {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, Token);
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var result = await client.FundParents.ExecuteAsync("12100");
         
