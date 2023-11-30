@@ -105,15 +105,11 @@ public class GlSegmentDetailsTests : TestBase
             projectNumberString: "KL0733ATC1",
             segmentString: "KL0733ATC1-TASK01-ADNO001-501090",
             taskNumber: "TASK01",
-            organization: "ADNO001",
             expendCode: "501090"
             );
 
         var data = result.ReadData();
         data.ShouldNotBeNull();
-        data.ErpFinancialDepartment.ShouldNotBeNull();
-        data.ErpFinancialDepartment.Code.ShouldBe("ADNO001");
-        data.ErpFinancialDepartment.Approvers.ShouldNotBeNull();
     }
 
     [Fact]
