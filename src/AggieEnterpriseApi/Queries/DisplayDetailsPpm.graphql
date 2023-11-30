@@ -1,5 +1,5 @@
 query DisplayDetailsPpm($projectNumber: PpmProjectNumber!, $projectNumberString: String!, 
-    $segmentString: PpmSegmentString!, $taskNumber: PpmTaskNumber!, $expendCode: String!) {
+    $segmentString: PpmSegmentString!, $taskNumber: PpmTaskNumber!, $organization: String!, $expendCode: String!) {
     # pull single project back by number
     ppmProjectByNumber(projectNumber: $projectNumberString) {
         id
@@ -59,4 +59,9 @@ query DisplayDetailsPpm($projectNumber: PpmProjectNumber!, $projectNumberString:
         name
         eligibleForUse
     }
+    ppmOrganization(code: $organization) {
+          code
+          name
+          eligibleForUse
+      }
 }

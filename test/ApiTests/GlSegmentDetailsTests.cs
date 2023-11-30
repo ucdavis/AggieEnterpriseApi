@@ -105,7 +105,8 @@ public class GlSegmentDetailsTests : TestBase
             projectNumberString: "KL0733ATC1",
             segmentString: "KL0733ATC1-TASK01-ADNO001-501090",
             taskNumber: "TASK01",
-            expendCode: "501090"
+            expendCode: "501090",
+            organization: "ADNO001"
             );
 
         var data = result.ReadData();
