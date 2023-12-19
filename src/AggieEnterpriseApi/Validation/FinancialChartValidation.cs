@@ -18,7 +18,7 @@ public static class FinancialChartValidation
             "^[0-9]{3}[0-9AB]-[0-9A-Z]{5}-[0-9A-Z]{7}-[0-9A-Z]{6}-[0-9][0-9A-Z]-[0-9A-Z]{3}-[0-9A-Z]{10}-[0-9A-Z]{6}-0000-000000-000000$");
 
     public static readonly Regex PpmSegmentStringPattern =
-        new Regex("^[0-9A-Z]{10}-[0-9A-Z]{6}-[0-9A-Z]{7}-[0-9A-Z]{6}(-[0-9A-Z]{7}-[0-9A-Z]{5})?$");
+        new Regex("^[0-9A-Z]{10}-[0-9A-Z]{6}-[0-9A-Z]{7}-[0-9A-Z]{6}(-[0-9A-Z]{7}-[0-9A-Z]{5,10})?$");
 
 
     public static bool IsValidGlSegmentString(string glSegmentString)
