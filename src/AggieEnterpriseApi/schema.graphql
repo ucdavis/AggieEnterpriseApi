@@ -775,6 +775,30 @@ type ErpAccountSearchResults {
   data: [ErpAccount!]!
 }
 
+"""Data object used to run searches on ErpActionRequestStatus"""
+input ErpActionRequestStatusFilterInput {
+  searchCommon: SearchCommonInputs
+  operationName: StringFilterInput
+  consumerTrackingId: StringFilterInput
+  consumerReferenceId: StringFilterInput
+  requestId: StringFilterInput
+  requestDateTime: DateFilterInput
+  requestStatus: StringFilterInput
+  batchRequest: BooleanFilterInput
+  batchId: StringFilterInput
+  processedDateTime: DateFilterInput
+  lastUpdateDateTime: DateFilterInput
+}
+
+"""Wrapper object for search results for ErpActionRequestStatus"""
+type ErpActionRequestStatusSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ActionRequestStatus!]!
+}
+
 """
 The Activity segment will track significant transactions which are recurring and take place at a point in time.
 
@@ -1281,7 +1305,7 @@ type ErpFinancialDepartment {
     * Financial Control Approver
     * Recharge Approver
     * Revenue Transfer Approver
-    * Fiscal Officer Approver
+    * Fiscal Officer Approver Department
     """
     approverTypeName: NonEmptyTrimmedString50
   ): [ErpDepartmentalApprover!]!
@@ -3886,19 +3910,14 @@ The Expenditure Type identifies the natural classification of the expense transa
 * Travel
 """
 type PpmExpenditureType {
-  """
-  Expenditure Type ID: Unique identifier of the expenditure type.
-  
-  DEPRECATED: This field is deprecated and will be removed in a future release.  Use the 'code' field instead.
-  Removed in our local version. IMPORTANT, if this gets added back we need to remove it again id: Long
-  """
-  blah: String
-
-  """Expenditure Type Code: The code of the Expenditure Type."""
-  code: String!
+  """Expenditure Type ID: Unique identifier of the expenditure type."""
+  id: Long!
 
   """Expenditure Type: Name of the expenditure type."""
   name: NonEmptyTrimmedString240!
+
+  """Expenditure Type Code: The code of the Expenditure Type."""
+  code: String!
 
   """Expenditure Type Description: Description of the expenditure type."""
   description: String
@@ -5377,6 +5396,13 @@ type Query {
   See the ErpBuildingFilterInput type for options.
   """
   erpBuildingSearch(filter: ErpBuildingFilterInput!): ErpBuildingSearchResults!
+
+  """
+  Search for ErpActionRequestStatus objects by multiple properties.
+  See
+  See the ErpActionRequestStatusFilterInput type for options.
+  """
+  erpActionRequestStatusSearch(filter: ErpActionRequestStatusFilterInput!): ErpActionRequestStatusSearchResults!
 
   """Get a single ErpPurpose by code.  Returns undefined if does not exist"""
   erpPurpose(code: String!): ErpPurpose

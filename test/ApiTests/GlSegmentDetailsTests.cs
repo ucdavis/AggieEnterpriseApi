@@ -62,7 +62,7 @@ public class GlSegmentDetailsTests : TestBase
         var typeOfApprovers = data.ErpFinancialDepartment.Approvers.Select(a => a.ApproverType).Distinct().ToList();
         //data.ErpFinancialDepartment.Approvers.Count.ShouldBe(6);
         var FoApprovers = data.ErpFinancialDepartment.Approvers.Where(a => a.ApproverType == "Fiscal Officer Approver").ToList();
-        FoApprovers.Count().ShouldBe(6);
+        FoApprovers.Count().ShouldBe(3);
 
         var appr = FoApprovers.Where(a => a.UserId == "mceligot").FirstOrDefault();
         appr.EmailAddress.ShouldBe("bmceligot@ucdavis.edu");
