@@ -775,30 +775,6 @@ type ErpAccountSearchResults {
   data: [ErpAccount!]!
 }
 
-"""Data object used to run searches on ErpActionRequestStatus"""
-input ErpActionRequestStatusFilterInput {
-  searchCommon: SearchCommonInputs
-  operationName: StringFilterInput
-  consumerTrackingId: StringFilterInput
-  consumerReferenceId: StringFilterInput
-  requestId: StringFilterInput
-  requestDateTime: DateFilterInput
-  requestStatus: StringFilterInput
-  batchRequest: BooleanFilterInput
-  batchId: StringFilterInput
-  processedDateTime: DateFilterInput
-  lastUpdateDateTime: DateFilterInput
-}
-
-"""Wrapper object for search results for ErpActionRequestStatus"""
-type ErpActionRequestStatusSearchResults {
-  """Information about the search results returned."""
-  metadata: SearchResultMetadata!
-
-  """Results of the search"""
-  data: [ActionRequestStatus!]!
-}
-
 """
 The Activity segment will track significant transactions which are recurring and take place at a point in time.
 
@@ -1305,7 +1281,7 @@ type ErpFinancialDepartment {
     * Financial Control Approver
     * Recharge Approver
     * Revenue Transfer Approver
-    * Fiscal Officer Approver Department
+    * Fiscal Officer Approver
     """
     approverTypeName: NonEmptyTrimmedString50
   ): [ErpDepartmentalApprover!]!
@@ -3910,14 +3886,18 @@ The Expenditure Type identifies the natural classification of the expense transa
 * Travel
 """
 type PpmExpenditureType {
-  """Expenditure Type ID: Unique identifier of the expenditure type."""
-  id: Long!
-
-  """Expenditure Type: Name of the expenditure type."""
-  name: NonEmptyTrimmedString240!
+  """
+  Expenditure Type ID: Unique identifier of the expenditure type.
+  
+  DEPRECATED: This field is deprecated and will be removed in a future release.  Use the 'code' field instead.
+  """
+  id: Long
 
   """Expenditure Type Code: The code of the Expenditure Type."""
   code: String!
+
+  """Expenditure Type: Name of the expenditure type."""
+  name: NonEmptyTrimmedString240!
 
   """Expenditure Type Description: Description of the expenditure type."""
   description: String
@@ -4070,9 +4050,7 @@ input PpmFundingSourceFilterInput {
 """
 Oracle PPM Funding Source Number
 
-Only required for Sponsored Research projects (defined as a flag on the [PpmProject]({{Types.PpmProject}})), this identifies the funding to which the expenses are applied.  It will be used to derive the GL Fund segment.
-
-**FORMAT AND LENGTH OF THIS SEGMENT IS UNKNOWN AT THIS TIME (4/4/22)**
+The PPM Funding Source Number is a 5-10 character code.  Only required for Sponsored projects (defined as a flag on the [PpmProject]({{Types.PpmProject}})), this identifies the funding to which the expenses are applied.  It will be used to derive the GL Fund segment.  Conversion funding sources will be "K" followed by the 5-character legacy fund code.  All funding sources created in oracle will be based on a system-generated incremental number.
 
 Normally, you will not need to provide this, as most projects will have a single funding source and this will be derived by the API.  File-based submitters will need to look up the default project number from the PpmProject and supply it when the `sponsoredProject` property is true.
 """
@@ -4409,7 +4387,7 @@ Must be populated with either the 4 required segments, or all 6 segments.  (Proj
 
 * Format Pattern (Required Only): `SP00000001-000001-0000000-000000`
 * Format Pattern (Sponsored Projects): `CP00000001-000001-0000000-000000-0000000-00000`
-* Format Regex:   `^[0-9A-Z]{10}-[0-9A-Z]{6}-[0-9A-Z]{7}-[0-9A-Z]{6}(-[0-9A-Z]{7}-[0-9A-Z]{5})?$`
+* Format Regex:   `^[0-9A-Z]{10}-[0-9A-Z]{6}-[0-9A-Z]{7}-[0-9A-Z]{6}(-[0-9A-Z]{7}-[0-9A-Z]{5,10})?$`
 
 See documentation on the individual segments for more information:
 
@@ -5396,13 +5374,6 @@ type Query {
   See the ErpBuildingFilterInput type for options.
   """
   erpBuildingSearch(filter: ErpBuildingFilterInput!): ErpBuildingSearchResults!
-
-  """
-  Search for ErpActionRequestStatus objects by multiple properties.
-  See
-  See the ErpActionRequestStatusFilterInput type for options.
-  """
-  erpActionRequestStatusSearch(filter: ErpActionRequestStatusFilterInput!): ErpActionRequestStatusSearchResults!
 
   """Get a single ErpPurpose by code.  Returns undefined if does not exist"""
   erpPurpose(code: String!): ErpPurpose
