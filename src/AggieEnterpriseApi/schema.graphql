@@ -3890,8 +3890,9 @@ type PpmExpenditureType {
   Expenditure Type ID: Unique identifier of the expenditure type.
   
   DEPRECATED: This field is deprecated and will be removed in a future release.  Use the 'code' field instead.
+  Removed in our local version. IMPORTANT, if this gets added back we need to remove it again id: Long VERY VERY IMPORTANT 
   """
-  id: Long
+  blah: String
 
   """Expenditure Type Code: The code of the Expenditure Type."""
   code: String!
