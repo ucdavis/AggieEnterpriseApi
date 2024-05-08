@@ -6,5 +6,6 @@ query PpmAward($awardNumber: String!) {
           eligibleForUse
           glFundCode
           glPurposeCode
+		  awardStatus
       }
     }

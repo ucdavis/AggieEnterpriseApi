@@ -126,7 +126,11 @@ public class PpmSearchTests : TestBase
 
         data.PpmAwardByNumber.ShouldNotBeNull();
         data.PpmAwardByNumber?.Name?.ShouldContain("Faculty");
+        data.PpmAwardByNumber.AwardStatus.ToString().ShouldBe("Active");
         
+
+
+
         data.PpmAwardSearch.ShouldNotBeNull();
         data.PpmAwardSearch.Data.ShouldNotBeEmpty();
     }
@@ -145,6 +149,7 @@ public class PpmSearchTests : TestBase
         data.PpmAwardByNumber.GlFundCode.ShouldBe("20701");
         data.PpmAwardByNumber.GlPurposeCode.ShouldBe("62");
         data.PpmAwardByNumber.Name.ShouldBe("CAP Advanced testing and commercialization of novel defensin peptides and therapies for HLB control USDA FAIN 2021 70029 36056 KL85D83");
+        data.PpmAwardByNumber.AwardStatus.ToString().ShouldBe("Active");
 
 
     }
