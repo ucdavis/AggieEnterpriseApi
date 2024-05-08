@@ -57,8 +57,8 @@ public class PpmSearchTests : TestBase
         data.ShouldNotBeNull();
         data.PpmProjectByNumber?.Name.ShouldContain("LUNDY");
         data.PpmTaskByProjectNumberAndTaskNumber?.Name.ShouldBe("TASK01");
-        data.PpmOrganization?.Name.ShouldBe("APLS002 - PLS Faculty Resources");
-        data.PpmExpenditureTypeByCode?.Name.ShouldBe("770000 - Facilities And Equipment Maintenace Services");
+        data.PpmOrganization?.Name.ShouldBe("APLS002 - APLS Faculty Resources");
+        data.PpmExpenditureTypeByCode?.Name.ShouldBe("770000 - Facilities and Equipment Maintenace Services");
     }
     
     [Fact]
@@ -92,7 +92,7 @@ public class PpmSearchTests : TestBase
         Assert.NotNull(data);
         
         Assert.NotNull(data.PpmExpenditureTypeByCode);
-        Assert.Contains("Facilities And Equipment Maintenace Services", data.PpmExpenditureTypeByCode?.Name ?? string.Empty);
+        Assert.Contains("Facilities and Equipment Maintenace Services", data.PpmExpenditureTypeByCode?.Name ?? string.Empty);
         
         Assert.NotEmpty(data.PpmExpenditureTypeSearch.Data);
     }
@@ -102,7 +102,7 @@ public class PpmSearchTests : TestBase
     {
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
-        var filter = new PpmTaskFilterInput() { Name = new StringFilterInput { Contains = "TASK" }, TaskNumber = new StringFilterInput() { Contains = "TASK01" }, ProjectId = new StringFilterInput() { Eq = "300000008444977"}};
+        var filter = new PpmTaskFilterInput() { Name = new StringFilterInput { Contains = "TASK" }, TaskNumber = new StringFilterInput() { Contains = "TASK01" }, ProjectId = new StringFilterInput() { Eq = "300000014411052" } };
         var result = await client.PpmTaskSearch.ExecuteAsync(filter);
         
         var data = result.ReadData();
@@ -155,7 +155,7 @@ public class PpmSearchTests : TestBase
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new PpmFundingSourceFilterInput() { Name = new StringFilterInput { Contains = "science" }};
-        var result = await client.PpmFundingSourceSearch.ExecuteAsync(filter, "27420");
+        var result = await client.PpmFundingSourceSearch.ExecuteAsync(filter, "K103042");
         
         var data = result.ReadData();
 
