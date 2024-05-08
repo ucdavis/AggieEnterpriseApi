@@ -3705,34 +3705,32 @@ type PpmAccountingPeriodSearchResults {
   data: [PpmAccountingPeriod!]!
 }
 
-"""
-The Award Number identifies the number assigned to an award containing funding activities.
-
-**Roll-up relationship to the new Chart of Accounts in the General Ledger:**
-
-* The Award Number value will NOT roll up to the Chart of Accounts. Award Number values will only be maintained in the PPM module.
-
-**Examples:**
-
-
-
-* Award Number values will be Oracle-generated
-"""
 type PpmAward {
-  """Award ID: Unique identifier of the award."""
+  """Award ID: Internal Unique identifier of the award."""
   id: Long!
+
+  """Award number tracked by the sponsor."""
+  awardNumber: NonEmptyTrimmedString30!
 
   """Award Name: Name of the award."""
   name: NonEmptyTrimmedString240!
 
-  """ Award Number: Award number tracked by the sponsor."""
-  awardNumber: NonEmptyTrimmedString30!
+  """Description: Brief description of the award."""
+  description: NonEmptyTrimmedString240
+  awardStatus: PpmAwardStatus
+
+  """
+  Classification of an award, for example, Federal grants or Private grants.  Used to determine the GL Fund Code.
+  """
+  awardType: NonEmptyTrimmedString30
 
   """The award type name associated with the award"""
   awardTypeName: NonEmptyTrimmedString30!
 
-  """Description: Brief description of the award."""
-  description: NonEmptyTrimmedString240
+  """
+  Purpose: Code of the award purpose.  Used to determine the GL Purpose Code.
+  """
+  awardPurpose: NonEmptyTrimmedString80
 
   """Start Date: Start date of the award."""
   startDate: LocalDate
@@ -3750,18 +3748,13 @@ type PpmAward {
   """
   awardOwningOrganizationName: NonEmptyTrimmedString240!
 
-  """Purpose: Name of the award purpose."""
-  awardPurpose: NonEmptyTrimmedString80
-
-  """
-  Type: Classification of an award, for example, Federal grants or Private grants.
-  """
-  awardType: NonEmptyTrimmedString30
-
   """
   Business Unit: Unit of an enterprise that performs one or many business functions that can be rolled up in a management hierarchy. An award business unit is one within which the award is created.
   """
   businessUnitName: NonEmptyTrimmedString100!
+
+  """Business entity associated with the award."""
+  legalEntityName: NonEmptyTrimmedString240
 
   """The date when the award was last updated."""
   lastUpdateDateTime: DateTime!
@@ -3772,23 +3765,44 @@ type PpmAward {
   """
   Award Funding Sources: The Award Funding Sources resource is used to view the attributes used to create or update a funding source for the award.
   """
-  awardFundingSource: [PpmFundingSource!]
+  awardFundingSource: [PpmFundingSource!]!
+
+  """
+  The default (usually first) funding source attached to the award.  If the funding source is left blank on a transaction, this is the one which will be auto-inserted during processing.
+  """
   defaultFundingSourceNumber: PpmFundingSourceNumber
-  awardCfda: [PpmCfdaAward!]
+
+  """
+  List of CFDA catalog numbers associated with the award.  CFDA numbers are used to identify federal assistance programs.
+  """
+  awardCfda: [PpmCfdaAward!]!
+
+  """
+  The GL Fund code which will be used when the Oracle Projects module posts to the General Ledger.
+  """
   glFundCode: ErpFundCode
+
+  """
+  The GL Purpose code which will be used when the Oracle Projects module posts to the General Ledger.
+  """
   glPurposeCode: ErpPurposeCode
   flowThruAmount: NonNegativeFloat
   flowThruFromDate: LocalDate
   flowThruToDate: LocalDate
+
+  """
+  Internal ID of the party associated with the flow-thru activity.  Will be linked to that data if determined necessary and available.
+  """
   flowThruPrimarySponsorId: Long
   flowThruRefAwardName: NonEmptyTrimmedString100
-  flowThruIsFederal: Boolean
+  flowThruIsFederal: Boolean!
 
   """
   Returns whether this PpmAward is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
   
   To be eligible for use, the PpmAward must:
   * Have closeDate after the given accountingDate
+  * Be active or under amendment
   """
   eligibleForUse(accountingDate: LocalDate): Boolean!
 }
@@ -3796,11 +3810,13 @@ type PpmAward {
 """Data object used to run searches on PpmAward"""
 input PpmAwardFilterInput {
   searchCommon: SearchCommonInputs
-  id: StringFilterInput
   name: StringFilterInput
-  projectId: StringFilterInput
+  projectNumber: StringFilterInput
   awardType: StringFilterInput
   awardNumber: StringFilterInput
+  awardStatus: StringFilterInput
+  awardOwningOrganizationName: StringFilterInput
+  closeDate: DateFilterInput
   lastUpdateDateTime: DateFilterInput
 }
 
@@ -3820,6 +3836,39 @@ type PpmAwardSearchResults {
 
   """Results of the search"""
   data: [PpmAward!]!
+}
+
+"""
+The Award Number identifies the number assigned to an award containing funding activities.
+
+**Roll-up relationship to the new Chart of Accounts in the General Ledger:**
+
+* The Award Number value will NOT roll up to the Chart of Accounts. Award Number values will only be maintained in the PPM module.
+
+**Examples:**
+
+* Award Number values will be Oracle-generated
+"""
+enum PpmAwardStatus {
+  """Award is active and can be used for transactions."""
+  ACTIVE
+
+  """Award has ended and can no longer be used for transactions."""
+  EXPIRED
+
+  """
+  Award is being amended but might still be able to be used for transactions.
+  """
+  UNDER_AMENDMENT
+
+  """Award funding is on hold."""
+  HOLD
+
+  """Award was canceled and can not be used for transactions."""
+  CANCELED
+
+  """Award has not been finalized and is still in draft status."""
+  DRAFT
 }
 
 """CFDA"""
@@ -3940,8 +3989,10 @@ type PpmExpenditureType {
 """Data object used to run searches on PpmExpenditureType"""
 input PpmExpenditureTypeFilterInput {
   searchCommon: SearchCommonInputs
-  id: StringFilterInput
+  code: StringFilterInput
   name: StringFilterInput
+  expenditureCategory: StringFilterInput
+  revenue: BooleanFilterInput
   lastUpdateDateTime: DateFilterInput
 }
 
@@ -4165,7 +4216,7 @@ type PpmProject {
   projectStartDate: LocalDate!
 
   """
-  Project Finish Date: The date that work or information tracking completes for a project.
+  Project Completion Date: The date that work or information tracking completes for a project.
   """
   projectCompletionDate: LocalDate
 
@@ -4195,8 +4246,20 @@ type PpmProject {
   legalEntityName: NonEmptyTrimmedString240!
   legalEntityCode: ErpEntityCode
 
-  """Project Type Name: String # Max Length: 2000"""
-  projectTypeName: String!
+  """
+  Project Type - Values:
+  
+  * Sponsored Capital
+  * Capital
+  * Fabrication
+  * Sponsored
+  * Sponsored Fabrication
+  * Internal
+  """
+  projectType: NonEmptyTrimmedString30!
+
+  """Project Type Name: String"""
+  projectTypeName: NonEmptyTrimmedString240!
 
   """
   Project Manager Email: Email of the person who leads the project team and who has the authority and responsibility for meeting the project objectives.
@@ -4246,9 +4309,12 @@ type PpmProject {
   lastUpdateUserId: ErpUserId
 
   """
-  is project budgeted by joining to project to project budgeted status view in datasources
+  Does this project have an established budget.  With a budget, transactions against a project will be rejected.
   """
   projectBudgeted: Boolean!
+
+  """Whether this project is subject to budgetary control rules."""
+  hasBudgetaryControl: Boolean!
 
   """
   Tasks: The Task resource includes the attributes that are used to store values while creating or updating project tasks. Tasks are units of project work assigned or performed as part of the duties of a resource. Tasks can be a portion of project work to be performed within a defined period by a specific resource or multiple resources.
@@ -4289,6 +4355,7 @@ input PpmProjectFilterInput {
   searchCommon: SearchCommonInputs
   projectNumber: StringFilterInput
   name: StringFilterInput
+  projectType: StringFilterInput
   projectStartDate: DateFilterInput
   projectOrganizationName: StringFilterInput
   projectCompletionDate: DateFilterInput
@@ -4998,17 +5065,9 @@ type Query {
   ppmFundingSourceSearch(filter: PpmFundingSourceFilterInput!): PpmFundingSourceSearchResults!
 
   """
-  Get a single PpmExpenditureType by id.  Returns undefined if does not exist.
-  
-  This ID is an internal tracking number used by the financial system.  It is only used to link between objects internally.
-  Use the ppmExpenditureTypeByName or ppmExpenditureTypeByAccount operations to pull by a unique identifier.
+  Get a single PpmExpenditureType by code.  Returns undefined if does not exist.
   """
-  ppmExpenditureType(id: NumericString!): PpmExpenditureType
-
-  """
-  Gets PpmExpenditureTypes by exact name.  Returns empty list if none are found
-  """
-  ppmExpenditureTypeByName(name: NonEmptyTrimmedString100!): PpmExpenditureType!
+  ppmExpenditureType(id: String!): PpmExpenditureType
 
   """
   Get a single PpmExpenditureType by code.  Returns undefined if does not exist
@@ -5016,12 +5075,12 @@ type Query {
   ppmExpenditureTypeByCode(code: String!): PpmExpenditureType
 
   """
-  Gets PpmExpenditureTypes by the associated GL Account.  Returns undefined if none is found.
-  
-  PPM Expense Type names will be the GL Account number plus a description.  This full string must be used in file-based feeds.
-  This method will allow you to obtain the exact string (in the name property) that needs to be included.
+  Gets PpmExpenditureTypes by exact name.  Returns empty list if none are found
   """
-  ppmExpenditureTypeByAccount(account: ErpAccountCode!): PpmExpenditureType
+  ppmExpenditureTypeByName(name: NonEmptyTrimmedString100!): PpmExpenditureType!
+
+  """Get all currently valid PpmExpenditureType objects."""
+  ppmExpenditureTypeAll(sort: [String!]): [PpmExpenditureType!]!
 
   """
   Search for PpmExpenditureType objects by multiple properties.
@@ -5824,6 +5883,11 @@ input ScmInvoiceLineInput {
   PPM POET segment values.  If provided, this will override any provided or default PPM segments.
   """
   ppmSegmentString: PpmSegmentString
+
+  """
+  Abbreviation that identifies the final location where the buying company should deliver the goods previously received from a supplier.
+  """
+  deliveryToLocationCode: NonEmptyTrimmedString60
 }
 
 input ScmInvoicePaymentFilterInput {
@@ -6410,6 +6474,11 @@ type SegmentWarning {
 
 """A field whose value is a Semantic Version: https://semver.org"""
 scalar SemVer
+
+"""
+A field whose value conforms to the standard personal number (personnummer) formats for Sweden
+"""
+scalar SESSN
 
 """
 String filter criteria object, only one of this object's properties should be set.  Except as noted in the properties below, all comparisons are case-sensitive.
