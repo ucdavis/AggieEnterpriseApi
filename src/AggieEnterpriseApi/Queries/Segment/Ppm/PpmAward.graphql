@@ -7,5 +7,7 @@ query PpmAward($awardNumber: String!) {
           glFundCode
           glPurposeCode
 		  awardStatus
+		  startDate
+		  endDate
       }
     }
