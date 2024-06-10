@@ -1,5 +1,5 @@
-query PpmAwardSearch($filter: PpmAwardFilterInput!, $awardNumber: String!) {
-        ppmAwardByNumber(number: $awardNumber) {
+query PpmAwardSearch($filter: PpmAwardFilterInput!, $ppmAwardNumber: NonEmptyTrimmedString30!) {
+	  ppmAwardByPpmAwardNumber(ppmAwardNumber: $ppmAwardNumber) {
           id
           awardNumber
           name

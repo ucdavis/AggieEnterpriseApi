@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using AggieEnterpriseApi;
 using AggieEnterpriseApi.Extensions;
@@ -120,14 +121,17 @@ public class PpmSearchTests : TestBase
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
         var filter = new PpmAwardFilterInput() { Name = new StringFilterInput { Contains = "faculty" }};
+
         var result = await client.PpmAwardSearch.ExecuteAsync(filter, "K373D79");
         
         var data = result.ReadData();
 
-        data.PpmAwardByNumber.ShouldNotBeNull();
-        data.PpmAwardByNumber?.Name?.ShouldContain("Faculty");
-        data.PpmAwardByNumber.AwardStatus.ToString().ShouldBe("Active");
-        
+
+        //With this change, this can return a list of awards, so we need to check the first one (They will all be the same, they can be linked to multiple projects when there is CostSharing (start with CS))
+        data.PpmAwardByPpmAwardNumber.FirstOrDefault().ShouldNotBeNull();
+        data.PpmAwardByPpmAwardNumber.FirstOrDefault()?.Name?.ShouldContain("Faculty");
+        data.PpmAwardByPpmAwardNumber.FirstOrDefault()?.AwardStatus.ToString().ShouldBe("Active");
+
 
 
 
