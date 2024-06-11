@@ -10,5 +10,13 @@ query PpmAward($ppmAwardNumber: NonEmptyTrimmedString30!) {
 		  awardStatus
 		  startDate
 		  endDate
+          personnel{
+            roleName
+            person{
+                firstName
+                lastName
+                email
+            }
+          }
       }
     }
