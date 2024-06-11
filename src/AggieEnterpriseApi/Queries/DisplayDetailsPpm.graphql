@@ -5,6 +5,7 @@ query DisplayDetailsPpm($projectNumber: PpmProjectNumber!, $projectNumberString:
         id
         projectNumber
         name
+        description
         projectStartDate
         projectCompletionDate
         projectStatus
@@ -19,6 +20,14 @@ query DisplayDetailsPpm($projectNumber: PpmProjectNumber!, $projectNumberString:
         billingEnabled
         capitalizationEnabled
         templateProject
+        teamMembers{
+            roleName
+            person{
+                firstName
+                lastName
+                email
+            }
+        }
     }
     ppmSegmentStringValidate (segmentString: $segmentString) {
         validationResponse {
