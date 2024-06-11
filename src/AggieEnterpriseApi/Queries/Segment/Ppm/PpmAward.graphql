@@ -1,7 +1,8 @@
-query PpmAward($awardNumber: String!) {
-        ppmAwardByNumber(number: $awardNumber) {
+query PpmAward($ppmAwardNumber: NonEmptyTrimmedString30!) {
+        ppmAwardByPpmAwardNumber(ppmAwardNumber: $ppmAwardNumber) {
           id
           awardNumber
+		  ppmAwardNumber
           name
           eligibleForUse
           glFundCode
@@ -9,5 +10,13 @@ query PpmAward($awardNumber: String!) {
 		  awardStatus
 		  startDate
 		  endDate
+          personnel{
+            roleName
+            person{
+                firstName
+                lastName
+                email
+            }
+          }
       }
     }

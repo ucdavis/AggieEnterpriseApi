@@ -25,6 +25,7 @@ query ppmSegmentsToNames($project: String!, $projectNumber: PpmProjectNumber!, $
     ppmAwardByNumber(number: $award) {
         id
         awardNumber
+		ppmAwardNumber
         name
         eligibleForUse
     }

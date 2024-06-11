@@ -349,7 +349,7 @@ input ArInvoiceInput {
   Identifies the accounting date of the transaction. The accounting date determines the accounting period that the transaction is recorded in the general ledger.
   """
   accountingDate: LocalDate
-  memoLineName: NonEmptyTrimmedString50!
+  memoLineName: NonEmptyTrimmedString50
 
   """Payment Term Name (ie, IMMEDIATE) for the invoice"""
   paymentTerm: NonEmptyTrimmedString50!
@@ -366,6 +366,7 @@ input ArInvoiceLineInput {
   customerOrderedQuantity: NonNegativeFloat
   unitSellingPrice: NonNegativeFloat
   unitStandardPrice: NonNegativeFloat
+  memoLineName: NonEmptyTrimmedString50
   distributions: [ArInvoiceDistributionInput!]
 }
 
@@ -425,6 +426,16 @@ type ArMemoLine {
 
   """Date/Time last updated"""
   lastUpdateDateTime: DateTime
+
+  """
+  GL Segments String representing the configured Revenue segments for this MemoLine
+  """
+  revenueChartstring: GlSegmentString
+
+  """
+  GL Segments representing the configured Revenue segments for this MemoLine
+  """
+  revenueChartSegments: GlSegments
 }
 
 """Data object used to run searches on MemoLine"""
@@ -2098,10 +2109,10 @@ type ErpUser {
   personId: Long!
 
   """UCPath employee ID of the user."""
-  employeeId: UcEmployeeId!
+  employeeId: UcEmployeeId
 
   """Person's First name."""
-  firstName: NonEmptyTrimmedString150!
+  firstName: NonEmptyTrimmedString150
 
   """Person's Last name."""
   lastName: NonEmptyTrimmedString150!
@@ -2120,7 +2131,7 @@ type ErpUser {
   active: Boolean!
 
   """The date that the user is active from."""
-  startDate: LocalDate
+  startDate: LocalDate!
 
   """The date that the user ceases to be active in fusion."""
   endDate: LocalDate
@@ -3710,7 +3721,10 @@ type PpmAward {
   id: Long!
 
   """Award number tracked by the sponsor."""
-  awardNumber: NonEmptyTrimmedString30!
+  awardNumber: NonEmptyTrimmedString60!
+
+  """Award number used internally to PPM.  Generally of the form K1234567."""
+  ppmAwardNumber: NonEmptyTrimmedString30!
 
   """Award Name: Name of the award."""
   name: NonEmptyTrimmedString240!
@@ -3797,6 +3811,9 @@ type PpmAward {
   flowThruRefAwardName: NonEmptyTrimmedString100
   flowThruIsFederal: Boolean!
 
+  """List of personnel associated with the award."""
+  personnel(roleName: NonEmptyTrimmedString60): [PpmAwardPersonnel!]!
+
   """
   Returns whether this PpmAward is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
   
@@ -3813,7 +3830,9 @@ input PpmAwardFilterInput {
   name: StringFilterInput
   projectNumber: StringFilterInput
   awardType: StringFilterInput
+  awardTypeName: StringFilterInput
   awardNumber: StringFilterInput
+  ppmAwardNumber: StringFilterInput
   awardStatus: StringFilterInput
   awardOwningOrganizationName: StringFilterInput
   closeDate: DateFilterInput
@@ -3828,6 +3847,36 @@ Only required for Sponsored Research projects (defined as a flag on the [PpmProj
 Normally, you will not need to provide this, as most projects will have a single award and this will be derived by the API.  File-based submitters will need to look up the default project number from the PpmProject and supply it when the `sponsoredProject` property is true.
 """
 scalar PpmAwardNumber
+
+type PpmAwardPersonnel {
+  """Unique identifier of the person.  Internal to Oracle."""
+  personId: Long!
+
+  """UCPath Employee ID of the person associated with the award."""
+  employeeId: UcEmployeeId!
+
+  """Display Name of the person associated with the award."""
+  name: NonEmptyTrimmedString360!
+
+  """
+  Person's Role on the award.  E.g., Principal Investigator, Grants Administrator, Project Administrator, etc.
+  """
+  roleName: NonEmptyTrimmedString240!
+
+  """Person's Email Address."""
+  email: EmailAddress!
+
+  """Person's Job Title as extracted from UCPath."""
+  jobTitle: NonEmptyTrimmedString240!
+
+  """"""
+  creditPercent: NonNegativeFloat
+
+  """
+  Person record associated with this team member.  May contain additional information about the person.
+  """
+  person: ErpUser
+}
 
 """Wrapper object for search results for PpmAward"""
 type PpmAwardSearchResults {
@@ -3853,7 +3902,7 @@ enum PpmAwardStatus {
   """Award is active and can be used for transactions."""
   ACTIVE
 
-  """Award has ended and can no longer be used for transactions."""
+  """Award has ended but has not been closed for transactions."""
   EXPIRED
 
   """
@@ -3869,6 +3918,9 @@ enum PpmAwardStatus {
 
   """Award has not been finalized and is still in draft status."""
   DRAFT
+
+  """Award has been closed and can not be used for transactions."""
+  CLOSED
 }
 
 """CFDA"""
@@ -3935,14 +3987,6 @@ The Expenditure Type identifies the natural classification of the expense transa
 * Travel
 """
 type PpmExpenditureType {
-  """
-  Expenditure Type ID: Unique identifier of the expenditure type.
-  
-  DEPRECATED: This field is deprecated and will be removed in a future release.  Use the 'code' field instead.
-  Removed in our local version. IMPORTANT, if this gets added back we need to remove it again id: Long VERY VERY IMPORTANT 
-  """
-  blah: String
-
   """Expenditure Type Code: The code of the Expenditure Type."""
   code: String!
 
@@ -3978,12 +4022,25 @@ type PpmExpenditureType {
   lastUpdateUserId: ErpUserId
 
   """
+  Project Type Codes which will accept use of this expenditure type.  If empty, the project type will not be validated against the expense type upon data submission.
+  """
+  allowedOnProjectTypeCodes: [NonEmptyTrimmedString30!]!
+
+  """
   Returns whether this PpmExpenditureType is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
   
   To be eligible for use, the PpmExpenditureType must:
-  * Have a startDate and endDate range which includes the given accoutingDate
+  * Have a startDate and endDate range which includes the given accountingDate
   """
   eligibleForUse(accountingDate: LocalDate): Boolean!
+
+  """
+  Expenditure Type ID: Unique identifier of the expenditure type.
+  
+  DEPRECATED: This field is deprecated and will be removed in a future release.  Use the 'code' field instead.
+  Removed in our local version. IMPORTANT, if this gets added back we need to remove it again id: Long VERY VERY IMPORTANT 
+  """
+  blah: String
 }
 
 """Data object used to run searches on PpmExpenditureType"""
@@ -4216,6 +4273,11 @@ type PpmProject {
   projectStartDate: LocalDate!
 
   """
+  Project End Date:  The last accounting date for which costs may be charged to the project.
+  """
+  projectEndDate: LocalDate!
+
+  """
   Project Completion Date: The date that work or information tracking completes for a project.
   """
   projectCompletionDate: LocalDate
@@ -4262,16 +4324,6 @@ type PpmProject {
   projectTypeName: NonEmptyTrimmedString240!
 
   """
-  Project Manager Email: Email of the person who leads the project team and who has the authority and responsibility for meeting the project objectives.
-  """
-  primaryProjectManagerEmail: NonEmptyTrimmedString240
-
-  """
-  Project Manager: Name of the person who leads the project team and who has the authority and responsibility for meeting project objectives.
-  """
-  primaryProjectManagerName: NonEmptyTrimmedString240
-
-  """
   Source Application: The third-party application from which the project originates.
   """
   sourceApplicationCode: NonEmptyTrimmedString30
@@ -4280,8 +4332,6 @@ type PpmProject {
   Source Reference: The identifier of the project in the external system where it was originally entered.
   """
   sourceProjectReference: NonEmptyTrimmedString30
-
-  """TODO"""
   projectCategory: NonEmptyTrimmedString30!
 
   """
@@ -4317,6 +4367,61 @@ type PpmProject {
   hasBudgetaryControl: Boolean!
 
   """
+  For sponsored projects, the default award number that will be expensed if left off of the journal line or distribution.
+  """
+  defaultAwardNumber: PpmAwardNumber
+
+  """
+  For sponsored projects, the sponsor award number for the default award that will be expensed if left off of the journal line or distribution.
+  """
+  defaultAwardSponsorAwardNumber: NonEmptyTrimmedString60
+
+  """
+  For sponsored projects, the default funding source that will be expensed if left off of the journal line or distribution.
+  """
+  defaultFundingSourceNumber: PpmFundingSourceNumber
+
+  """
+  Indicates that the the Fund, Purpose, Program, and Activity GL segments are based on the expensed task.  Those fields will be unset at this level if this flag is true.
+  """
+  glInfoAtTaskLevel: Boolean!
+
+  """
+  Entity code used when expenses to this project are applied to the general ledger.
+  """
+  glPostingEntityCode: ErpEntityCode!
+
+  """
+  Fund code used when expenses to this project are applied to the general ledger.
+  """
+  glPostingFundCode: ErpFundCode
+
+  """
+  Financial Department code used when expenses to this project are applied to the general ledger.
+  """
+  glPostingDepartmentCode: ErpDepartmentCode!
+
+  """
+  Purpose code used when expenses to this project are applied to the general ledger.
+  """
+  glPostingPurposeCode: ErpPurposeCode
+
+  """
+  Program code used when expenses to this project are applied to the general ledger.
+  """
+  glPostingProgramCode: ErpProgramCode
+
+  """
+  Project code used when expenses to this project are applied to the general ledger.
+  """
+  glPostingProjectCode: ErpProjectCode!
+
+  """
+  Activity code used when expenses to this project are applied to the general ledger.
+  """
+  glPostingActivityCode: ErpActivityCode
+
+  """
   Tasks: The Task resource includes the attributes that are used to store values while creating or updating project tasks. Tasks are units of project work assigned or performed as part of the duties of a resource. Tasks can be a portion of project work to be performed within a defined period by a specific resource or multiple resources.
   
   By default, this will only list tasks which are allowed to be assigned costs.  If you need to see all tasks, set the property argument to false.
@@ -4326,18 +4431,33 @@ type PpmProject {
     Whether to include only chargeable tasks in the results or all (including parent) tasks.
     """
     chargeableOnly: Boolean = true
-  ): [PpmTask!]
-  awards: [PpmAward!]
+  ): [PpmTask!]!
+  awards: [PpmAward!]!
 
   """
-  For sponsored projects, the default award number that will be expensed if left off of the journal line or distribution.
+  List of the project team members.  If roleName is provided, only team members with that role will be returned.
   """
-  defaultAwardNumber: PpmAwardNumber
+  teamMembers(roleName: NonEmptyTrimmedString60): [PpmProjectTeamMember!]!
 
   """
-  For sponsored projects, the default funding source that will be expensed if left off of the journal line or distribution.
+  List of the award personnel if this is a sponsored project associated with an award.  If roleName is provided, only people with that role will be returned.  Will return an empty list if this is not a sponsored project.
   """
-  defaultFundingSourceNumber: PpmFundingSourceNumber
+  awardPersonnel(roleName: NonEmptyTrimmedString60): [PpmAwardPersonnel!]!
+
+  """
+  Person who leads the project team and who has the authority and responsibility for meeting the project objectives
+  """
+  primaryProjectManager: ErpUser
+
+  """
+  Project Manager Email: Email of the person who leads the project team and who has the authority and responsibility for meeting the project objectives.
+  """
+  primaryProjectManagerEmail: NonEmptyTrimmedString240
+
+  """
+  Project Manager: Name of the person who leads the project team and who has the authority and responsibility for meeting project objectives.
+  """
+  primaryProjectManagerName: NonEmptyTrimmedString240
 
   """
   Returns whether this PpmProject is valid to use on transactional documents for the given accounting date.  If not provided, the date will be defaulted to the current date.
@@ -4358,9 +4478,11 @@ input PpmProjectFilterInput {
   projectType: StringFilterInput
   projectStartDate: DateFilterInput
   projectOrganizationName: StringFilterInput
+  defaultAwardNumber: StringFilterInput
+  defaultAwardSponsorAwardNumber: StringFilterInput
+  defaultFundingSourceNumber: StringFilterInput
   projectCompletionDate: DateFilterInput
   projectStatusCode: StringFilterInput
-  primaryProjectManagerEmail: StringFilterInput
   sponsoredProject: BooleanFilterInput
   billingEnabled: BooleanFilterInput
   capitalizationEnabled: BooleanFilterInput
@@ -4388,6 +4510,44 @@ type PpmProjectSearchResults {
 
   """Results of the search"""
   data: [PpmProject!]!
+}
+
+"""
+Person Associated with a PPM Project.  Identifies the person and their role on the project.
+"""
+type PpmProjectTeamMember {
+  """Unique identifier of the person.  Internal to Oracle."""
+  personId: Long!
+
+  """UCPath Employee ID of the person associated with the project."""
+  employeeId: UcEmployeeId!
+
+  """Display Name of the person associated with the project."""
+  name: NonEmptyTrimmedString360!
+
+  """
+  Person's Role on the project.  E.g., Principal Investigator, Project Administrator, Project Manager, Co-Principal Investigator, etc.
+  """
+  roleName: NonEmptyTrimmedString240!
+
+  """Person's Email Address."""
+  email: EmailAddress!
+
+  """Person's Job Title as extracted from UCPath."""
+  jobTitle: NonEmptyTrimmedString240!
+
+  """Start Date of the person's association with the project."""
+  startDate: LocalDate!
+
+  """
+  End Date of the person's association with the project.  Usually null for current team members.
+  """
+  endDate: LocalDate
+
+  """
+  Person record associated with this team member.  May contain additional information about the person.
+  """
+  person: ErpUser
 }
 
 """Input structure for specifying POET/PPM segment values."""
@@ -4933,6 +5093,22 @@ type Query {
   scmInvoicePaymentSearch(filter: ScmInvoicePaymentFilterInput!): ScmInvoicePaymentSearchResults!
 
   """
+  Get a ScmAgreement by suppler number.  Returns undefined if does not exist
+  """
+  scmAgreementBySupplier(supplierNumber: NonEmptyTrimmedString30!): ScmAgreement
+
+  """
+  Get a single ScmAgreement by agreement number.  Returns undefined if does not exist
+  """
+  scmAgreementByNumber(agreementNumber: NonEmptyTrimmedString30!): ScmAgreement
+
+  """
+  Search for ScmAgreement objects by multiple properties.
+  See the ScmAgreementFilterInput type for options.
+  """
+  scmAgreementSearch(filter: ScmAgreementFilterInput!): ScmAgreementSearchResults!
+
+  """
   Validates that the given set of PPM segments are most likely valid for posting
   to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
   for current validity.
@@ -5000,6 +5176,12 @@ type Query {
   ppmSponsorByNumber(sponsorNumber: NonEmptyTrimmedString30!): PpmSponsor
   ppmSponsorSearch(filter: PpmSponsorFilterInput!): PpmSponsorSearchResults!
 
+  """Pull all active project team members by project number."""
+  ppmProjectTeamMemberByProjectNumber(projectNumber: PpmProjectNumber!): [PpmProjectTeamMember!]!
+
+  """Pull all active project team members by project number and role."""
+  ppmProjectTeamMemberByProjectAndRole(projectNumber: PpmProjectNumber!, roleName: NonEmptyTrimmedString240!): [PpmProjectTeamMember!]!
+
   """Get a single PpmProject by code.  Returns undefined if does not exist"""
   ppmProject(projectId: NumericString!): PpmProject
 
@@ -5012,6 +5194,16 @@ type Query {
   Gets a list of PpmProjects by exact name.  Returns empty list if none are found.  Project Name should be unique in oracle.
   """
   ppmProjectByName(projectName: String!): [PpmProject!]!
+
+  """
+  Find PpmProject objects by active team members.  Role name is optional.  If not passed then the project is returned if they have any role on the project.
+  """
+  ppmProjectByProjectTeamMemberEmployeeId(employeeId: UcEmployeeId!, roleName: NonEmptyTrimmedString60): [PpmProject!]!
+
+  """
+  Find PpmProject objects by active team members.  Role name is optional.  If not passed then the project is returned if they have any role on the project.
+  """
+  ppmProjectByProjectTeamMemberEmail(email: EmailAddress!, roleName: NonEmptyTrimmedString60): [PpmProject!]!
 
   """
   Search for PpmProject objects by multiple properties.
@@ -5094,23 +5286,46 @@ type Query {
   """Get a single PpmAward by id.  Returns undefined if does not exist"""
   ppmAward(id: NumericString!): PpmAward
 
-  """Gets PpmAwards by exact name.  Returns empty list if none are found"""
-  ppmAwardByName(name: String!): [PpmAward!]!
-
-  """Gets PpmAwards by number.  Returns empty if not found"""
-  ppmAwardByNumber(number: String!): PpmAward
-
-  """
-  Gets PpmAwards by projectNumber and awardNumber.  Returns null if not found
-  """
-  ppmAwardByProjectAndAwardNumber(projectNumber: String!, awardNumber: String!): PpmAward
-
   """
   Search for PpmAward objects by multiple properties.
   See
   See the PpmAwardFilterInput type for options.
   """
   ppmAwardSearch(filter: PpmAwardFilterInput!): PpmAwardSearchResults!
+
+  """Find PpmAwards by the Oracle PPM-assigned award number."""
+  ppmAwardByPpmAwardNumber(ppmAwardNumber: NonEmptyTrimmedString30!): [PpmAward!]!
+
+  """Find PpmAwards by the sponsor-assigned award number."""
+  ppmAwardBySponsorAwardNumber(awardNumber: NonEmptyTrimmedString60!): [PpmAward!]!
+
+  """Find PpmAwards by the project they are associated with."""
+  ppmAwardByProjectNumber(projectNumber: PpmProjectNumber!): [PpmAward!]!
+
+  """
+  Find PpmAward objects by active personnel.  Role name is optional.  If not passed then the award is returned if the person has any role on the project.
+  """
+  ppmAwardByPersonnelEmployeeId(employeeId: UcEmployeeId!, roleName: NonEmptyTrimmedString60): [PpmAward!]!
+
+  """
+  Find PpmAward objects by active personnel.  Role name is optional.  If not passed then the award is returned if the person has any role on the project.
+  """
+  ppmAwardByPersonnelEmail(email: EmailAddress!, roleName: NonEmptyTrimmedString60): [PpmAward!]!
+
+  """
+  DEPRECATED - use ppmAwardSearch instead.  Gets PpmAwards by exact name.  Returns empty list if none are found
+  """
+  ppmAwardByName(name: String!): [PpmAward!]!
+
+  """
+  DEPRECATED - use ppmAwardByPpmAwardNumber instead.  Gets PpmAwards by number.  Returns empty if not found
+  """
+  ppmAwardByNumber(number: String!): PpmAward
+
+  """
+  DEPRECATED - use ppmAwardSearch instead.  Gets PpmAwards by projectNumber and awardNumber.  Returns null if not found
+  """
+  ppmAwardByProjectAndAwardNumber(projectNumber: String!, awardNumber: String!): PpmAward
 
   """
   Get a single PpmAccountingPeriod by its name.  Returns undefined if does not exist
@@ -5830,6 +6045,81 @@ scalar SafeInt
 
 """Oracle SCM Address Line, 240 Character Limit"""
 scalar ScmAddressLine
+
+"""Represents a purchasing agreement within the financial system."""
+type ScmAgreement {
+  """
+  Assigned identifier for the agreement.  User during communications and in requisition creation.
+  """
+  agreementNumber: NonEmptyTrimmedString30!
+
+  """Identifier of the supplier associated with this agreement."""
+  supplierNumber: NonEmptyTrimmedString30!
+
+  """Default/main name of the supplier."""
+  supplierName: NonEmptyTrimmedString360!
+
+  """
+  Site code representing the particular location of the supplier associated with this agreement.
+  """
+  supplierSiteCode: NonEmptyTrimmedString15
+
+  """
+  Status of the underlying document for this agreement in the financial system.
+  """
+  documentStatus: NonEmptyTrimmedString30!
+
+  """Effective date of the agreement."""
+  startDate: LocalDate
+
+  """End date of the agreement."""
+  endDate: LocalDate
+
+  """
+  Total amount of the agreement.  This is the maximum amount that can be spent under this agreement.
+  """
+  agreementTotalAmount: NonNegativeFloat!
+
+  """Amount of the agreement that has been used to date on purchase orders."""
+  amountReleased: NonNegativeFloat!
+
+  """
+  Maximum amount that the agreement total amount can be increased to without additional approvals.
+  """
+  agreementAmountLimit: NonNegativeFloat
+
+  """Comments about the agreement."""
+  comments: NonEmptyTrimmedString240
+
+  """Timestamp this record was last updated in the financial system."""
+  lastUpdateDateTime: DateTime!
+
+  """User ID of the person who last updated this record."""
+  lastUpdateUserId: ErpUserId
+  supplierId: Long!
+  supplierSiteId: Long!
+  supplier: ScmSupplier
+  supplierSite: ScmSupplierSite
+}
+
+"""Data object used to run searches on ScmAgreement"""
+input ScmAgreementFilterInput {
+  searchCommon: SearchCommonInputs
+  agreementNumber: StringFilterInput
+  supplierNumber: StringFilterInput
+  supplierName: StringFilterInput
+  documentStatus: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
+}
+
+"""Wrapper object for search results for ScmAgreement"""
+type ScmAgreementSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ScmAgreement!]!
+}
 
 """Invoice Lines attributes for ScmInvoicePayment."""
 input ScmInvoiceLineInput {
