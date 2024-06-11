@@ -2,6 +2,7 @@ query PpmAwardSearch($filter: PpmAwardFilterInput!, $ppmAwardNumber: NonEmptyTri
 	  ppmAwardByPpmAwardNumber(ppmAwardNumber: $ppmAwardNumber) {
           id
           awardNumber
+		  ppmAwardNumber
           name
           eligibleForUse
           glFundCode
@@ -14,6 +15,7 @@ query PpmAwardSearch($filter: PpmAwardFilterInput!, $ppmAwardNumber: NonEmptyTri
         data {
           id
           awardNumber
+		  ppmAwardNumber
           name
           eligibleForUse
           glFundCode 
