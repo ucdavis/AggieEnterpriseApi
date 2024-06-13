@@ -1,0 +1,18 @@
+query PpmProjectTeamMembers(
+  $projectNumber: String!
+  $roleName: NonEmptyTrimmedString60
+) {
+  # pull single project back by number. If no role name is provided, all team members are returned
+  ppmProjectByNumber(projectNumber: $projectNumber) {
+    projectNumber
+    teamMembers(roleName: $roleName) {
+      name
+      roleName
+      person {
+        email
+        firstName
+        lastName
+      }
+    }
+  }
+}
