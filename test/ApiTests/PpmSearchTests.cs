@@ -131,7 +131,7 @@ public class PpmSearchTests : TestBase
         data.PpmAwardByPpmAwardNumber.FirstOrDefault().ShouldNotBeNull();
         data.PpmAwardByPpmAwardNumber.FirstOrDefault()?.Name?.ShouldContain("Faculty");
         data.PpmAwardByPpmAwardNumber.FirstOrDefault()?.AwardStatus.ToString().ShouldBe("Active");
-
+        data.PpmAwardByPpmAwardNumber.FirstOrDefault()?.CloseDate.ShouldNotBeNull();
 
 
 
