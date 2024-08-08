@@ -10,6 +10,7 @@ query PpmAward($ppmAwardNumber: NonEmptyTrimmedString30!) {
 		  awardStatus
 		  startDate
 		  endDate
+		  closeDate
           personnel{
             roleName
             person{

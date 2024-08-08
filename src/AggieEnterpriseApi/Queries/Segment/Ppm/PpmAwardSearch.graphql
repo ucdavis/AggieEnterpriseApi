@@ -10,6 +10,7 @@ query PpmAwardSearch($filter: PpmAwardFilterInput!, $ppmAwardNumber: NonEmptyTri
 		  awardStatus
 		  startDate
 		  endDate
+		  closeDate
       }
       ppmAwardSearch(filter: $filter) {
         data {
@@ -23,6 +24,7 @@ query PpmAwardSearch($filter: PpmAwardFilterInput!, $ppmAwardNumber: NonEmptyTri
 		  awardStatus
 		  startDate
 		  endDate
+		  closeDate
         }
       }
     }
