@@ -654,6 +654,154 @@ A field whose value conforms to the standard internet email address format as sp
 """
 scalar EmailAddress
 
+"""UCPath Employee and Primary Job Information"""
+type Employee {
+  """System generated Employee ID from UCPath"""
+  employeeId: UcEmployeeId!
+
+  """Employee Preferred Name"""
+  name: NonEmptyTrimmedString100!
+
+  """Display Version of Employee's Preferred Name"""
+  displayName: NonEmptyTrimmedString50!
+
+  """Preferred First Name"""
+  firstName: NonEmptyTrimmedString30!
+
+  """Preferred Middle Name"""
+  middleName: TrimmedString30
+
+  """Preferred Last Name"""
+  lastName: NonEmptyTrimmedString30!
+
+  """Primary Job Department Code"""
+  primaryDepartmentCode: HrDepartmentCode!
+
+  """Primary Job Department Name"""
+  primaryDepartmentName: NonEmptyTrimmedString30!
+
+  """Primary Job Department"""
+  primaryDepartment: HrDepartment!
+
+  """Primary Job EMPL_RCD number"""
+  primaryJobEmployeeRecord: NonNegativeInt!
+
+  """Primary Job current record effective date"""
+  primaryJobEffectiveDate: LocalDate!
+
+  """Primary Job current record effective sequence number"""
+  primaryJobEffectiveSequence: NonNegativeInt!
+
+  """Primary Job position number"""
+  primaryJobPositionNumber: NumericString!
+
+  """
+  Business Unit associated with the person's primary job (Campus, UCDH, ANR)
+  """
+  primaryJobBusinessUnit: HrBusinessUnit!
+
+  """Primary Jobcode identifying the person's title"""
+  primaryJobJobcode: NonEmptyTrimmedString10!
+
+  """Campus Division 2-character code for the primary department"""
+  divisionCode: UcdDivisionCode
+
+  """Campus Division Name for the primary department"""
+  divisionName: NonEmptyTrimmedString30
+
+  """UCPath System person active indicator"""
+  employmentStatusCode: HrActiveIndicator!
+
+  """Primary Job employment status code"""
+  primaryJobStatusCode: EmployeeStatus!
+
+  """Primary Job employment status"""
+  primaryJobStatusName: NonEmptyTrimmedString30!
+
+  """Work email address"""
+  businessEmailAddress: EmailAddress
+
+  """Preferred email address, if given"""
+  preferredEmailAddress: EmailAddress
+
+  """Employee Class (academic/staff/casual/contract)"""
+  employeeClassCode: NonEmptyTrimmedString3
+
+  """Employee Class (academic/staff/casual/contract)"""
+  employeeClassName: NonEmptyTrimmedString30
+
+  """Employee Type (hourly/salaried)"""
+  employeeTypeCode: NonEmptyTrimmedString1
+
+  """Bargaining unit for primary job"""
+  unionCode: NonEmptyTrimmedString2
+
+  """Job Group code applicable to the primary job within UCPath."""
+  ucJobGroupCode: NonEmptyTrimmedString3
+
+  """Date the employee was originally hired by UC."""
+  hireDate: LocalDate!
+
+  """
+  Date the employee was last hired into a position by UCD if there was a break in service.
+  """
+  lastHireDate: LocalDate!
+}
+
+"""Data object used to run searches on Employee objects"""
+input EmployeeFilterInput {
+  searchCommon: SearchCommonInputs
+  employeeId: StringFilterInput
+  name: StringFilterInput
+  firstName: StringFilterInput
+  lastName: StringFilterInput
+  primaryPositionNumber: StringFilterInput
+  primaryDepartmentCode: StringFilterInput
+  primaryDepartmentName: StringFilterInput
+  primaryJobStatusCode: StringFilterInput
+  employmentStatusCode: StringFilterInput
+  businessEmailAddress: StringFilterInput
+  employeeClassCode: StringFilterInput
+  employeeClassName: StringFilterInput
+  employeeTypeCode: StringFilterInput
+  unionCode: StringFilterInput
+}
+
+type EmployeeSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [Employee!]!
+}
+
+"""UCPath Employee Status Codes"""
+enum EmployeeStatus {
+  """Active"""
+  A
+
+  """Deceased"""
+  D
+
+  """Unpaid Leave of Absence"""
+  L
+
+  """Paid Leave of Absence"""
+  P
+
+  """Retired"""
+  R
+
+  """Terminated"""
+  T
+
+  """Terminated With Pay"""
+  U
+
+  """Short Work Break"""
+  W
+}
+
 """
 For clarity between the CoA Account segment and the current KFS Account, we will refer to the CoA segment as "Natural Account", a commonly used accounting term.
 
@@ -1221,6 +1369,41 @@ type ErpEntitySearchResults {
 
   """Results of the search"""
   data: [ErpEntity!]!
+}
+
+type ErpFavoritesCostCenter {
+  """Value that uniquely identifies the ErpFavoritesCostCenter."""
+  id: Long!
+
+  """UCD NetworkId of the user that owns the Favorite"""
+  userId: NonEmptyTrimmedString20!
+
+  """Key as a unique name for the Favorite value"""
+  key: NonEmptyTrimmedString100!
+
+  """Value of the favorite (JSON)"""
+  value: JSON
+  creationDate: DateTime!
+  lastUpdateDate: DateTime!
+}
+
+enum ErpFavoritesCostCenterChangeResult {
+  SUCCESS
+  FAILURE
+}
+
+type ErpFavoritesCostCenterRemoveOutput {
+  recordsRemoved: Int!
+}
+
+type ErpFavoritesCostCenterUpsertOutput {
+  result: ErpFavoritesCostCenterChangeResult!
+  id: Long!
+  userId: NonEmptyTrimmedString20!
+  key: NonEmptyTrimmedString100!
+  value: JSON
+  creationDate: DateTime!
+  lastUpdateDate: DateTime!
 }
 
 """
@@ -2058,6 +2241,30 @@ type ErpPurposeSearchResults {
   data: [ErpPurpose!]!
 }
 
+"""Definition of a role in the ERP system."""
+type ErpRole {
+  """Internal identifier for the role membership."""
+  roleCode: NonEmptyTrimmedString100!
+  roleName: NonEmptyTrimmedString240!
+  roleDescription: String
+}
+
+"""Data object used to run searches on ErpRole"""
+input ErpRoleFilterInput {
+  searchCommon: SearchCommonInputs
+  roleCode: StringFilterInput
+  roleName: StringFilterInput
+}
+
+"""Wrapper object for search results for ErpRole"""
+type ErpRoleSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ErpRole!]!
+}
+
 type ErpUnitOfMeasure {
   """Unique identifier of the Unit of Measure (UOM)"""
   unitOfMeasureId: Long
@@ -2137,6 +2344,49 @@ type ErpUser {
   endDate: LocalDate
   lastUpdateDateTime: DateTime!
   lastUpdateUserId: ErpUserId
+
+  """
+  List of roles assigned to the user.  By default includes only the current and active roles.  Use includeInactive to include all role memberships ever assigned to the person.
+  """
+  userRoles(includeInactive: Boolean = false): [ErpUserRole!]!
+}
+
+"""
+Association between a user account and an approval group in the Oracle application.
+"""
+type ErpUserApprovalGroup {
+  """Name of the approval group in Oracle."""
+  approvalGroupName: NonEmptyTrimmedString80!
+
+  """
+  User ID used to identify the person in the ERP application.  Matches their UCD computing account.
+  """
+  userId: ErpUserId!
+
+  """User object for the person in the ERP application."""
+  user: ErpUser!
+
+  """Whether this user/role association is active."""
+  active: Boolean!
+  lastUpdateDateTime: DateTime!
+}
+
+"""Data object used to run searches on ErpUserApprovalGroup"""
+input ErpUserApprovalGroupFilterInput {
+  searchCommon: SearchCommonInputs
+  userId: StringFilterInput
+  approvalGroupName: StringFilterInput
+  active: BooleanFilterInput
+  lastUpdateDateTime: DateFilterInput
+}
+
+"""Wrapper object for search results for ErpUserApprovalGroup"""
+type ErpUserApprovalGroupSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ErpUserApprovalGroup!]!
 }
 
 """Data object used to run searches on ErpUser"""
@@ -2154,6 +2404,207 @@ input ErpUserFilterInput {
 
 """Oracle User ID: 64 character limit"""
 scalar ErpUserId
+
+"""Association between a user account and role in the Oracle application."""
+type ErpUserRole {
+  """Internal identifier for the role membership."""
+  id: Long!
+
+  """
+  User ID used to identify the person in the ERP application.  Matches their UCD computing account.
+  """
+  userId: ErpUserId!
+
+  """User object for the person in the ERP application."""
+  user: ErpUser
+  roleCode: NonEmptyTrimmedString100!
+  roleName: NonEmptyTrimmedString240!
+  roleDescription: String
+
+  """Whether this user/role association is active."""
+  active: Boolean!
+
+  """The date that the role membership is active from."""
+  startDate: LocalDate!
+
+  """The date that the role membership ends."""
+  endDate: LocalDate
+
+  """
+  Internal GUID used for linking user accounts to roles within the ERP system.
+  """
+  userGuid: String!
+  lastUpdateDateTime: DateTime!
+  lastUpdateUserId: ErpUserId
+}
+
+"""
+A record which indicates the scope of access a role grants a specific user within the Oracle application.
+"""
+type ErpUserRoleDataAccess {
+  """Internal identifier for the role membership."""
+  id: Long!
+
+  """
+  User ID used to identify the person in the ERP application.  Matches their UCD computing account.
+  """
+  userId: ErpUserId!
+
+  """User object for the person in the ERP application."""
+  user: ErpUser
+  userRole: ErpUserRole
+
+  """Role this data security value is associated with."""
+  roleCode: NonEmptyTrimmedString100!
+
+  """Role this data security value is associated with."""
+  roleName: NonEmptyTrimmedString240!
+
+  """
+  The part of the application of this data security value applies to within Oracle.
+  """
+  dataAccessType: ErpUserRoleDataAccessType!
+
+  """
+  The scope this record gives to the user within the context of the linked role.
+  """
+  dataAccessValue: NonEmptyTrimmedString255!
+
+  """
+  Internal GUID used for linking user accounts to roles within the ERP system.
+  """
+  userGuid: String!
+
+  """Whether this user/role association is active."""
+  active: Boolean!
+
+  """The date that the role membership is active from."""
+  startDate: LocalDate!
+
+  """The date that the role membership ends."""
+  endDate: LocalDate
+  lastUpdateDateTime: DateTime!
+  lastUpdateUserId: ErpUserId
+}
+
+"""Data object used to run searches on ErpUserRoleDataAccess"""
+input ErpUserRoleDataAccessFilterInput {
+  searchCommon: SearchCommonInputs
+  userId: StringFilterInput
+  roleCode: StringFilterInput
+  roleName: StringFilterInput
+  active: BooleanFilterInput
+  lastUpdateDateTime: DateFilterInput
+}
+
+input ErpUserRoleDataAccessInput {
+  dataAccessType: ErpUserRoleDataAccessType!
+  dataAccessValue: NonEmptyTrimmedString255!
+}
+
+"""Wrapper object for search results for ErpUserRoleDataAccess"""
+type ErpUserRoleDataAccessSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ErpUserRoleDataAccess!]!
+}
+
+enum ErpUserRoleDataAccessType {
+  Academic_Organization
+  Academic_Organization_by_Campus
+  All
+  Asset_book
+  Award_Organization_Hierarchy
+  Business_unit
+  Campus
+  Collaboration_document
+  Control_budget
+  Cost_organization
+  Data_access_set
+  Intercompany_organization
+  Inventory_organization
+  Item_organization
+  Ledger
+  Legal_entity
+  Manufacturing_plant
+  Project_organization_classification
+  Reference_data_set
+}
+
+"""Data object used to run searches on ErpUserRole"""
+input ErpUserRoleFilterInput {
+  searchCommon: SearchCommonInputs
+  userId: StringFilterInput
+  roleCode: StringFilterInput
+  roleName: StringFilterInput
+  active: BooleanFilterInput
+  lastUpdateDateTime: DateFilterInput
+}
+
+"""Main payload for requesting updates to a user's roles."""
+input ErpUserRoleInput {
+  """
+  User ID known to the ERP application.  Matches their UCD computing account.
+  """
+  userId: ErpUserId!
+
+  """List of roles information to apply to the user."""
+  roles: [ErpUserRoleRolesInput!]!
+}
+
+input ErpUserRoleRequestInput {
+  """Request-level header information common to all action requests."""
+  header: ActionRequestHeaderInput!
+
+  """Main operation data."""
+  payload: ErpUserRoleInput!
+}
+
+type ErpUserRoleRequestStatusOutput {
+  """Overall status of the action request"""
+  requestStatus: ActionRequestStatus!
+
+  """Results of the Job or Jobs required to submit this request to the ERP."""
+  processingResult: ProcessingResult
+
+  """
+  Errors found when validating the payload data.  These must be corrected before the request will be accepted.
+  """
+  validationResults: ValidationResponse
+}
+
+enum ErpUserRoleRequestType {
+  ADD
+  REMOVE
+}
+
+input ErpUserRoleRolesInput {
+  """
+  Nature of the overall action to take on this user-role.  Value here will determine how other fields in this payload are used and interpreted.
+  """
+  requestType: ErpUserRoleRequestType!
+
+  """Role to add/update/remove from the user."""
+  roleCodeOrName: NonEmptyTrimmedString100!
+
+  """
+  Used with: (all).
+  On ADD, this will attempt to add all given values to the role.
+  On REMOVE, values are ignored, as all data access values will be removed from the role.
+  """
+  dataAccessValues: [ErpUserRoleDataAccessInput!]
+}
+
+"""Wrapper object for search results for ErpUserRole"""
+type ErpUserRoleSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ErpUserRole!]!
+}
 
 """Wrapper object for search results for ErpUser"""
 type ErpUserSearchResults {
@@ -3032,6 +3483,120 @@ A field whose value is a hex color code: https://en.wikipedia.org/wiki/Web_color
 """
 scalar HexColorCode
 
+enum HrActiveIndicator {
+  """Active"""
+  A
+
+  """Inactive"""
+  I
+}
+
+enum HrBusinessUnit {
+  """Davis Campus"""
+  DVCMP
+
+  """Agriculture and Natural Resources"""
+  UCANR
+
+  """UCD Health"""
+  DVMED
+}
+
+"""UCPath City Name, 30-character limit"""
+scalar HrCityName
+
+"""
+UCPath HR Department
+
+Department known to the Payroll system for classification of employees and job locations.
+"""
+type HrDepartment {
+  """
+  Mostly unique code for a department.  Could be duplicated across SETIDs.
+  """
+  code: HrDepartmentCode!
+
+  """Business unit for the department."""
+  setId: HrBusinessUnit!
+
+  """Name of the department"""
+  name: NonEmptyTrimmedString30!
+
+  """Abbreviated name of the department"""
+  shortName: NonEmptyTrimmedString10!
+
+  """Is the department currently able to be used in UCPath?"""
+  active: Boolean!
+
+  """Campus Division 2-character code"""
+  divisionCode: UcdDivisionCode
+
+  """Campus Division Name"""
+  divisionName: NonEmptyTrimmedString30
+
+  """Line 1 of department physical address."""
+  addressLine1: TrimmedString50
+
+  """Line 2 of department physical address."""
+  addressLine2: TrimmedString50
+
+  """Line 3 of department physical address."""
+  addressLine3: TrimmedString50
+
+  """Line 4 of department physical address."""
+  addressLine4: TrimmedString50
+
+  """City of department physical address."""
+  cityName: HrCityName
+
+  """State of department physical address."""
+  stateCode: HrStateCode
+
+  """Postal code of department physical address."""
+  postalCode: HrPostalCode
+
+  """Location code within UCPath for this department."""
+  hrLocationCode: NonEmptyTrimmedString10
+
+  """Location name within UCPath for this department."""
+  hrLocationName: NonEmptyTrimmedString30
+
+  """Timestamp this record was last updated in UCPath."""
+  lastUpdateDateTime: DateTime!
+}
+
+"""UCPath 6-character Department Code"""
+scalar HrDepartmentCode
+
+"""Filter data type for department search"""
+input HrDepartmentFilterInput {
+  searchCommon: SearchCommonInputs
+  code: StringFilterInput
+  name: StringFilterInput
+  divisionCode: StringFilterInput
+  divisionName: StringFilterInput
+  locationCode: StringFilterInput
+  locationName: StringFilterInput
+  addressLine1: StringFilterInput
+  setId: StringFilterInput
+  active: BooleanFilterInput
+  lastUpdateDateTime: DateFilterInput
+}
+
+type HrDepartmentSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [HrDepartment!]!
+}
+
+"""UCPath Postal Code"""
+scalar HrPostalCode
+
+"""UCPath State Code, 6-character limit"""
+scalar HrStateCode
+
 """
 A field whose value is a CSS HSL color: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#hsl()_and_hsla().
 """
@@ -3417,6 +3982,18 @@ type Mutation {
   """
   glJournalRequest(data: GlJournalRequestInput!): GlJournalRequestStatusOutput!
 
+  """Request an update to a user's roles in the ERP system."""
+  erpUserRoleRequest(data: ErpUserRoleRequestInput!): ErpUserRoleRequestStatusOutput!
+
+  """Adds or Updates an ERP Favorite CostCenter for a userid and a key"""
+  erpFavoritesCostCenterUpsert(userId: NonEmptyTrimmedString20!, key: NonEmptyTrimmedString100!, name: NonEmptyTrimmedString50!, chartString: NonEmptyTrimmedString150!): ErpFavoritesCostCenterUpsertOutput
+
+  """Removes all ERP Favorite CostCenters for a userid and a key"""
+  erpFavoritesCostCenterRemoveAll(userId: NonEmptyTrimmedString20!, key: NonEmptyTrimmedString100!): ErpFavoritesCostCenterRemoveOutput
+
+  """Remove a single named ERP Favorite CostCenters for a userid and a key"""
+  erpFavoritesCostCenterRemove(userId: NonEmptyTrimmedString20!, key: NonEmptyTrimmedString100!, name: NonEmptyTrimmedString50!): ErpFavoritesCostCenterRemoveOutput
+
   """Requests that a Accounts Receivable Invoice be uploaded to Oracle."""
   arInvoiceCreate(data: ArInvoiceRequestInput!): ArInvoiceRequestStatusOutput!
 }
@@ -3505,6 +4082,11 @@ scalar NonEmptyTrimmedString3
 
 """Trimmed String limited to 30 characters."""
 scalar NonEmptyTrimmedString30
+
+"""
+String limited to 300 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
+"""
+scalar NonEmptyTrimmedString300
 
 """
 String limited to 32 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
@@ -5085,6 +5667,22 @@ type Query {
   scmInvoicePaymentSearch(filter: ScmInvoicePaymentFilterInput!): ScmInvoicePaymentSearchResults!
 
   """
+  Get a single ScmAgreement by agreement number.  Returns undefined if does not exist
+  """
+  scmAgreement(agreementNumber: NonEmptyTrimmedString30!): ScmAgreement
+
+  """
+  Get ScmAgreements by supplier number.  Returns an empty list if none exist
+  """
+  scmAgreementBySupplier(supplierNumber: NonEmptyTrimmedString30!): [ScmAgreement!]!
+
+  """
+  Search for ScmAgreement objects by multiple properties.
+  See the ScmAgreementFilterInput type for options.
+  """
+  scmAgreementSearch(filter: ScmAgreementFilterInput!): ScmAgreementSearchResults!
+
+  """
   Validates that the given set of PPM segments are most likely valid for posting
   to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
   for current validity.
@@ -5524,6 +6122,90 @@ type Query {
   """
   kfsConvertOrgCode(chart: KfsChartCode!, org: KfsOrgCode!): KfsConvertOrgOutput!
 
+  """
+  Get a single ErpUserRoleDataAccess by ID.  Returns undefined if does not exist
+  """
+  erpUserRoleDataAccess(id: Long!): ErpUserRoleDataAccess
+
+  """
+  Get ErpUserRoleDataAccess records by user ID.  Only returns current and active user data security records.
+  """
+  erpUserRoleDataAccessByUserId(userId: ErpUserId!): [ErpUserRoleDataAccess!]!
+
+  """
+  Get ErpUserRoleDataAccess records by user ID and role code or name.  Only returns current and active user data security records.
+  """
+  erpUserRoleDataAccessByUserIdAndRole(userId: ErpUserId!, roleCodeOrName: NonEmptyTrimmedString100!): [ErpUserRoleDataAccess!]!
+
+  """
+  Search for ErpUserRoleDataAccess objects by multiple properties.
+  See
+  See the ErpUserRoleDataAccessFilterInput type for options.
+  """
+  erpUserRoleDataAccessSearch(filter: ErpUserRoleDataAccessFilterInput!): ErpUserRoleDataAccessSearchResults!
+
+  """Get a single ErpUserRole by ID.  Returns undefined if does not exist"""
+  erpUserRole(id: Long!): ErpUserRole
+
+  """
+  Get ErpUserRoles by user ID and role code or name.  Only returns current and active user roles.  Returns undefined if one does not exist.
+  """
+  erpUserRoleByUserIdAndRole(userId: ErpUserId!, roleCodeOrName: NonEmptyTrimmedString100!): ErpUserRole
+
+  """
+  Get ErpUserRoles by user ID.  Only returns current and active user roles.
+  """
+  erpUserRoleByUserId(userId: ErpUserId!): [ErpUserRole!]!
+
+  """
+  Search for ErpUserRole objects by multiple properties.
+  See
+  See the ErpUserRoleFilterInput type for options.
+  """
+  erpUserRoleSearch(filter: ErpUserRoleFilterInput!): ErpUserRoleSearchResults!
+
+  """
+  Get the status of a previously submitted ERP User Role request by the API-assigned request ID.
+  """
+  erpUserRoleRequestStatus(requestId: UUID!): ErpUserRoleRequestStatusOutput
+
+  """
+  Get the status of a previously submitted ERP User Role request by the consumer's unique tracking ID.
+  """
+  erpUserRoleRequestStatusByConsumerTracking(consumerTrackingId: String!): ErpUserRoleRequestStatusOutput
+
+  """
+  Get the statuses of previously submitted ERP User Role requests by the consumer's reference ID.
+  """
+  erpUserRoleRequestStatusByConsumerReference(consumerReferenceId: String!): [ErpUserRoleRequestStatusOutput!]!
+
+  """
+  Get the list of ERP User Role requests which were processed via the given batch ID.
+  """
+  erpUserRoleRequestStatusByBatchId(batchId: UUID!): [ErpUserRoleRequestStatusOutput!]!
+
+  """
+  Get ErpUserApprovalGroups by user ID.  Only returns current and active records.
+  """
+  erpUserApprovalGroupByUserId(userId: ErpUserId!): [ErpUserApprovalGroup!]!
+
+  """
+  Get ErpUserApprovalGroups by a group name.  Only returns current and active records.
+  """
+  erpUserApprovalGroupByGroupName(approvalGroupName: NonEmptyTrimmedString80!): [ErpUserApprovalGroup!]!
+
+  """
+  Get all ErpUserApprovalGroups.  Only returns current and active records.
+  """
+  erpUserApprovalGroupAll: [ErpUserApprovalGroup!]!
+
+  """
+  Search for ErpUserApprovalGroup objects by multiple properties.
+  See
+  See the ErpUserApprovalGroupFilterInput type for options.
+  """
+  erpUserApprovalGroupSearch(filter: ErpUserApprovalGroupFilterInput!): ErpUserApprovalGroupSearchResults!
+
   """Get a single ErpUser by ID.  Returns undefined if does not exist"""
   erpUser(id: Long!): ErpUser
 
@@ -5568,6 +6250,22 @@ type Query {
   """
   erpUnitOfMeasureSearch(filter: ErpUnitOfMeasureFilterInput!): ErpUnitOfMeasureSearchResults!
 
+  """Get a single ErpRole by ID.  Returns undefined if does not exist"""
+  erpRole(roleCode: NonEmptyTrimmedString100!): ErpRole
+
+  """Get a single ErpRole by its name.  Returns undefined if does not exist"""
+  erpRoleByName(roleName: NonEmptyTrimmedString240!): ErpRole
+
+  """Gets all ERP System Roles"""
+  erpRoleAll: [ErpRole!]!
+
+  """
+  Search for ErpRole objects by multiple properties.
+  See
+  See the ErpRoleFilterInput type for options.
+  """
+  erpRoleSearch(filter: ErpRoleFilterInput!): ErpRoleSearchResults!
+
   """
   Get a single ErpInstitutionLocation by internal ID.  Returns undefined if does not exist
   """
@@ -5593,6 +6291,26 @@ type Query {
   See the ErpFundSourceFilterInput type for options.
   """
   erpFundSourceSearch(filter: ErpFundSourceFilterInput!): ErpFundSourceSearchResults!
+
+  """
+  Get a single ErpFavoritesCostCenter by internal ID.  Returns undefined if does not exist
+  """
+  erpFavoritesCostCenter(id: NumericString!): ErpFavoritesCostCenter
+
+  """
+  Get a single ErpFavoritesCostCenter by internal ID.  Returns undefined if does not exist
+  """
+  erpFavoritesCostCenterById(id: NumericString!): ErpFavoritesCostCenter
+
+  """
+  Get a single ErpFavoritesCostCenter by userId and key.  Returns undefined if does not exist
+  """
+  erpFavoritesCostCenterByUserIdAndKey(userId: NonEmptyTrimmedString20!, key: NonEmptyTrimmedString100!): ErpFavoritesCostCenter
+
+  """
+  Get all of ErpFavoritesCostCenter by userId.  Returns undefined if does not exist
+  """
+  erpFavoritesCostCenterByUserId(userId: NonEmptyTrimmedString20!): [ErpFavoritesCostCenter]!
 
   """Get a single ErpCampus by id.  Returns undefined if does not exist"""
   erpCampus(code: String!): ErpCampus
@@ -5904,6 +6622,44 @@ type Query {
   See the ApAccountingPeriodFilterInput type for options.
   """
   apAccountingPeriodSearch(filter: ApAccountingPeriodFilterInput!): ApAccountingPeriodSearchResults!
+
+  """Return the current API Information Object"""
+  ucpathApiInfo: UcpathApiInfo!
+
+  """Get the list of roles assigned to your consumer."""
+  ucpathRoles: [String!]!
+
+  """Returns a single record based on its primary key"""
+  hrDepartment(code: HrDepartmentCode!): HrDepartment
+
+  """Search for records based on a set of filters."""
+  hrDepartmentSearch(filter: HrDepartmentFilterInput!): HrDepartmentSearchResults!
+
+  """
+  Search for departments by their code or portion of their name.
+  Designed for use in typeahead fields.
+  Limits results to 50 records.
+  Sorts results dependent on input type.  If all numeric, sorts by code, otherwise sorts by name.
+  """
+  hrDepartmentByCodeOrNameFragment(criteria: NonEmptyTrimmedString30!): [HrDepartment!]!
+
+  """Get a single Employee by ID.  Returns undefined if does not exist"""
+  employee(employeeId: String!): Employee
+
+  """
+  Search for Employee objects by multiple properties.
+  See
+  See the EmployeeFilterInput type for options.
+  """
+  employeeSearch(filter: EmployeeFilterInput!): EmployeeSearchResults!
+
+  """
+  Search for employees by their employee ID or a fragment of their first or last names.
+  Designed for use in typeahead fields.
+  Limits results to 50 records.
+  Sorts results by last name, first name.
+  """
+  employeeByIdOrNameFragment(criteria: NonEmptyTrimmedString50!, activeOnly: Boolean = true): [Employee!]!
 }
 
 """Results of the job as submitted to the ERP system."""
@@ -6021,6 +6777,81 @@ scalar SafeInt
 
 """Oracle SCM Address Line, 240 Character Limit"""
 scalar ScmAddressLine
+
+"""Represents a purchasing agreement within the financial system."""
+type ScmAgreement {
+  """
+  Assigned identifier for the agreement.  User during communications and in requisition creation.
+  """
+  agreementNumber: NonEmptyTrimmedString30!
+
+  """Identifier of the supplier associated with this agreement."""
+  supplierNumber: NonEmptyTrimmedString30!
+
+  """Default/main name of the supplier."""
+  supplierName: NonEmptyTrimmedString360!
+
+  """
+  Site code representing the particular location of the supplier associated with this agreement.
+  """
+  supplierSiteCode: NonEmptyTrimmedString15
+
+  """
+  Status of the underlying document for this agreement in the financial system.
+  """
+  documentStatus: NonEmptyTrimmedString30!
+
+  """Effective date of the agreement."""
+  startDate: LocalDate
+
+  """End date of the agreement."""
+  endDate: LocalDate
+
+  """
+  Total amount of the agreement.  This is the maximum amount that can be spent under this agreement.
+  """
+  agreementTotalAmount: NonNegativeFloat!
+
+  """Amount of the agreement that has been used to date on purchase orders."""
+  amountReleased: NonNegativeFloat!
+
+  """
+  Maximum amount that the agreement total amount can be increased to without additional approvals.
+  """
+  agreementAmountLimit: NonNegativeFloat
+
+  """Comments about the agreement."""
+  comments: NonEmptyTrimmedString240
+
+  """Timestamp this record was last updated in the financial system."""
+  lastUpdateDateTime: DateTime!
+
+  """User ID of the person who last updated this record."""
+  lastUpdateUserId: ErpUserId
+  supplierId: Long!
+  supplierSiteId: Long!
+  supplier: ScmSupplier
+  supplierSite: ScmSupplierSite
+}
+
+"""Data object used to run searches on ScmAgreement"""
+input ScmAgreementFilterInput {
+  searchCommon: SearchCommonInputs
+  agreementNumber: StringFilterInput
+  supplierNumber: StringFilterInput
+  supplierName: StringFilterInput
+  documentStatus: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
+}
+
+"""Wrapper object for search results for ScmAgreement"""
+type ScmAgreementSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ScmAgreement!]!
+}
 
 """Invoice Lines attributes for ScmInvoicePayment."""
 input ScmInvoiceLineInput {
@@ -6297,6 +7128,7 @@ input ScmPurchaseRequisitionInput {
   description: NonEmptyTrimmedString240!
   transactionDate: LocalDate
   lines: [ScmPurchaseRequisitionLineInput!]!
+  agreementNumber: NonEmptyTrimmedString30
 }
 
 """
@@ -6335,6 +7167,7 @@ input ScmPurchaseRequisitionLineInput {
   deliveryToLocationCode: NonEmptyTrimmedString60
   requestedDeliveryDate: LocalDate
   distributions: [ScmPurchaseRequisitionDistributionInput!]!
+  supplierItem: NonEmptyTrimmedString300
 }
 
 """
@@ -6733,12 +7566,30 @@ String limited to 100 characters.  Whitespace will be trimmed from both ends of 
 scalar TrimmedString100
 
 """
+String limited to 30 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
+"""
+scalar TrimmedString30
+
+"""
 String limited to 50 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
 """
 scalar TrimmedString50
 
+"""UCD Division Code (legacy field)"""
+scalar UcdDivisionCode
+
 """UC Employee ID.  May be either 8 or 9 digits."""
 scalar UcEmployeeId
+
+"""Contains information about the ERP API server's version."""
+type UcpathApiInfo {
+  versionNumber: String!
+  shortHash: String
+  branch: String
+  committedOn: Date
+  ucpathSchema: String!
+  apiSchema: String!
+}
 
 """Floats that will have a value of 0 or more."""
 scalar UnsignedFloat
