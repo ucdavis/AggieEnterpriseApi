@@ -5,7 +5,7 @@ query SupplierNameAndNumberSupplierSearch($filter: ScmSupplierFilterInput!, $sup
   {
     name
     supplierNumber
-	eligibleForUse
+    eligibleForUse
   }
   #Search the supplier by the name
   scmSupplierSearch(filter: $filter) 
@@ -14,7 +14,7 @@ query SupplierNameAndNumberSupplierSearch($filter: ScmSupplierFilterInput!, $sup
     {
       name
       supplierNumber
-	  eligibleForUse
+      eligibleForUse
     }
   }
 }
