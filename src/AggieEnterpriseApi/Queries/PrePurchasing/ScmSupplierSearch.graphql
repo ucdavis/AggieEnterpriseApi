@@ -3,9 +3,10 @@ query ScmSupplierSearch($filter: ScmSupplierFilterInput!) {
          data {
            name
            supplierNumber
+		   eligibleForUse
            sites{
             supplierSiteCode
-
+			eligibleForUse
             location{
               addressLine1
               addressLine2

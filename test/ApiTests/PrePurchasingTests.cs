@@ -314,7 +314,7 @@ public class PrePurchasingTests : TestBase
             ItemDescription = "Dell 2155cnd Black Toner",
             PurchasingCategoryName = "15000FAC", //Completely faked
             UnitPrice = 102.99m,
-            SupplierItem = "331-0716", //Faked, new field in UAT
+            //SupplierItem = "331-0716", //Faked, new field in UAT //TODO: Test when this is in prod
             Distributions = new[]
             {
                 new ScmPurchaseRequisitionDistributionInput
