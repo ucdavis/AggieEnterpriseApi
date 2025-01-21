@@ -294,7 +294,7 @@ public class PrePurchasingTests : TestBase
             SupplierNumber = searchData.ScmSupplierSearch.Data.First().SupplierNumber.ToString(),
             SupplierSiteCode = searchData.ScmSupplierSearch.Data.First().Sites.Where(a => a.Location?.City == "ROUND ROCK" && a.Location?.AddressLine2 == "ONE DELL WAY" && a.Location?.State == "TX").First().SupplierSiteCode,
             RequesterEmailAddress = "jsylvestre@ucdavis.edu",
-            Description = "ACRU-EHIT218 - TEST",
+            Description = "ACRU-EHIT218 - TEST",            
             //Justification = "Print Toner for PrintsCharming 38 Mrak Dell eQuote #3000118141264",
         };
 
@@ -314,7 +314,7 @@ public class PrePurchasingTests : TestBase
             ItemDescription = "Dell 2155cnd Black Toner",
             PurchasingCategoryName = "15000FAC", //Completely faked
             UnitPrice = 102.99m,
-            //SupplierItem = "331-0716", //Faked, new field in UAT //TODO: Test when this is in prod
+            SupplierItem = "331-0716", //Faked, new field in UAT //TODO: Test when this is in prod
             Distributions = new[]
             {
                 new ScmPurchaseRequisitionDistributionInput
@@ -324,6 +324,7 @@ public class PrePurchasingTests : TestBase
                 }
             },
             LineType = ScmPurchaseRequisitionLineType.Quantity,
+            
         };
 
         var Line2 = new ScmPurchaseRequisitionLineInput
