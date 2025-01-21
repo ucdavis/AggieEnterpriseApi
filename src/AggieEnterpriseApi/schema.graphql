@@ -568,6 +568,9 @@ scalar CityName
 """A country code as defined by ISO 3166-1 alpha-2"""
 scalar CountryCode
 
+"""A country name (short name) as defined by ISO 3166-1"""
+scalar CountryName
+
 """
 A field whose value conforms to the standard cuid format as specified in https://github.com/ericelliott/cuid#broken-down
 """
@@ -1221,6 +1224,41 @@ type ErpEntitySearchResults {
 
   """Results of the search"""
   data: [ErpEntity!]!
+}
+
+type ErpFavoritesCostCenter {
+  """Value that uniquely identifies the ErpFavoritesCostCenter."""
+  id: Long!
+
+  """UCD NetworkId of the user that owns the Favorite"""
+  userId: NonEmptyTrimmedString20!
+
+  """Key as a unique name for the Favorite value"""
+  key: NonEmptyTrimmedString100!
+
+  """Value of the favorite (JSON)"""
+  value: JSON
+  creationDate: DateTime!
+  lastUpdateDate: DateTime!
+}
+
+enum ErpFavoritesCostCenterChangeResult {
+  SUCCESS
+  FAILURE
+}
+
+type ErpFavoritesCostCenterRemoveOutput {
+  recordsRemoved: Int!
+}
+
+type ErpFavoritesCostCenterUpsertOutput {
+  result: ErpFavoritesCostCenterChangeResult!
+  id: Long!
+  userId: NonEmptyTrimmedString20!
+  key: NonEmptyTrimmedString100!
+  value: JSON
+  creationDate: DateTime!
+  lastUpdateDate: DateTime!
 }
 
 """
@@ -2595,6 +2633,11 @@ input FloatFilterInput {
 }
 
 """
+A GeoJSON object as defined by RFC 7946: https://datatracker.ietf.org/doc/html/rfc7946
+"""
+scalar GeoJSON
+
+"""
 Represents an accounting period in Oracle Financials.  Used for validation of submitted journal entry data.
 """
 type GlAccountingPeriod {
@@ -3417,6 +3460,15 @@ type Mutation {
   """
   glJournalRequest(data: GlJournalRequestInput!): GlJournalRequestStatusOutput!
 
+  """Adds or Updates an ERP Favorite CostCenter for a userid and a key"""
+  erpFavoritesCostCenterUpsert(userId: NonEmptyTrimmedString20!, key: NonEmptyTrimmedString100!, name: NonEmptyTrimmedString50!, chartString: NonEmptyTrimmedString150!): ErpFavoritesCostCenterUpsertOutput
+
+  """Removes all ERP Favorite CostCenters for a userid and a key"""
+  erpFavoritesCostCenterRemoveAll(userId: NonEmptyTrimmedString20!, key: NonEmptyTrimmedString100!): ErpFavoritesCostCenterRemoveOutput
+
+  """Remove a single named ERP Favorite CostCenters for a userid and a key"""
+  erpFavoritesCostCenterRemove(userId: NonEmptyTrimmedString20!, key: NonEmptyTrimmedString100!, name: NonEmptyTrimmedString50!): ErpFavoritesCostCenterRemoveOutput
+
   """Requests that a Accounts Receivable Invoice be uploaded to Oracle."""
   arInvoiceCreate(data: ArInvoiceRequestInput!): ArInvoiceRequestStatusOutput!
 }
@@ -3505,6 +3557,11 @@ scalar NonEmptyTrimmedString3
 
 """Trimmed String limited to 30 characters."""
 scalar NonEmptyTrimmedString30
+
+"""
+String limited to 300 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
+"""
+scalar NonEmptyTrimmedString300
 
 """
 String limited to 32 characters.  Whitespace will be trimmed from both ends of the string when passing in both directions.  In the case that source data to be returned by the API exceeds this length, it will be truncated.
@@ -5085,6 +5142,22 @@ type Query {
   scmInvoicePaymentSearch(filter: ScmInvoicePaymentFilterInput!): ScmInvoicePaymentSearchResults!
 
   """
+  Get a single ScmAgreement by agreement number.  Returns undefined if does not exist
+  """
+  scmAgreement(agreementNumber: NonEmptyTrimmedString30!): ScmAgreement
+
+  """
+  Get ScmAgreements by supplier number.  Returns an empty list if none exist
+  """
+  scmAgreementBySupplier(supplierNumber: NonEmptyTrimmedString30!): [ScmAgreement!]!
+
+  """
+  Search for ScmAgreement objects by multiple properties.
+  See the ScmAgreementFilterInput type for options.
+  """
+  scmAgreementSearch(filter: ScmAgreementFilterInput!): ScmAgreementSearchResults!
+
+  """
   Validates that the given set of PPM segments are most likely valid for posting
   to the Oracle ERP PPM Module sub-ledger.  Individual non-blank elements will be checked
   for current validity.
@@ -5594,6 +5667,26 @@ type Query {
   """
   erpFundSourceSearch(filter: ErpFundSourceFilterInput!): ErpFundSourceSearchResults!
 
+  """
+  Get a single ErpFavoritesCostCenter by internal ID.  Returns undefined if does not exist
+  """
+  erpFavoritesCostCenter(id: NumericString!): ErpFavoritesCostCenter
+
+  """
+  Get a single ErpFavoritesCostCenter by internal ID.  Returns undefined if does not exist
+  """
+  erpFavoritesCostCenterById(id: NumericString!): ErpFavoritesCostCenter
+
+  """
+  Get a single ErpFavoritesCostCenter by userId and key.  Returns undefined if does not exist
+  """
+  erpFavoritesCostCenterByUserIdAndKey(userId: NonEmptyTrimmedString20!, key: NonEmptyTrimmedString100!): ErpFavoritesCostCenter
+
+  """
+  Get all of ErpFavoritesCostCenter by userId.  Returns undefined if does not exist
+  """
+  erpFavoritesCostCenterByUserId(userId: NonEmptyTrimmedString20!): [ErpFavoritesCostCenter]!
+
   """Get a single ErpCampus by id.  Returns undefined if does not exist"""
   erpCampus(code: String!): ErpCampus
 
@@ -6022,6 +6115,81 @@ scalar SafeInt
 """Oracle SCM Address Line, 240 Character Limit"""
 scalar ScmAddressLine
 
+"""Represents a purchasing agreement within the financial system."""
+type ScmAgreement {
+  """
+  Assigned identifier for the agreement.  User during communications and in requisition creation.
+  """
+  agreementNumber: NonEmptyTrimmedString30!
+
+  """Identifier of the supplier associated with this agreement."""
+  supplierNumber: NonEmptyTrimmedString30!
+
+  """Default/main name of the supplier."""
+  supplierName: NonEmptyTrimmedString360!
+
+  """
+  Site code representing the particular location of the supplier associated with this agreement.
+  """
+  supplierSiteCode: NonEmptyTrimmedString15
+
+  """
+  Status of the underlying document for this agreement in the financial system.
+  """
+  documentStatus: NonEmptyTrimmedString30!
+
+  """Effective date of the agreement."""
+  startDate: LocalDate
+
+  """End date of the agreement."""
+  endDate: LocalDate
+
+  """
+  Total amount of the agreement.  This is the maximum amount that can be spent under this agreement.
+  """
+  agreementTotalAmount: NonNegativeFloat!
+
+  """Amount of the agreement that has been used to date on purchase orders."""
+  amountReleased: NonNegativeFloat!
+
+  """
+  Maximum amount that the agreement total amount can be increased to without additional approvals.
+  """
+  agreementAmountLimit: NonNegativeFloat
+
+  """Comments about the agreement."""
+  comments: NonEmptyTrimmedString240
+
+  """Timestamp this record was last updated in the financial system."""
+  lastUpdateDateTime: DateTime!
+
+  """User ID of the person who last updated this record."""
+  lastUpdateUserId: ErpUserId
+  supplierId: Long!
+  supplierSiteId: Long!
+  supplier: ScmSupplier
+  supplierSite: ScmSupplierSite
+}
+
+"""Data object used to run searches on ScmAgreement"""
+input ScmAgreementFilterInput {
+  searchCommon: SearchCommonInputs
+  agreementNumber: StringFilterInput
+  supplierNumber: StringFilterInput
+  supplierName: StringFilterInput
+  documentStatus: StringFilterInput
+  lastUpdateDateTime: DateFilterInput
+}
+
+"""Wrapper object for search results for ScmAgreement"""
+type ScmAgreementSearchResults {
+  """Information about the search results returned."""
+  metadata: SearchResultMetadata!
+
+  """Results of the search"""
+  data: [ScmAgreement!]!
+}
+
 """Invoice Lines attributes for ScmInvoicePayment."""
 input ScmInvoiceLineInput {
   """The inventory item name."""
@@ -6297,6 +6465,7 @@ input ScmPurchaseRequisitionInput {
   description: NonEmptyTrimmedString240!
   transactionDate: LocalDate
   lines: [ScmPurchaseRequisitionLineInput!]!
+  agreementNumber: NonEmptyTrimmedString30
 }
 
 """
@@ -6335,6 +6504,7 @@ input ScmPurchaseRequisitionLineInput {
   deliveryToLocationCode: NonEmptyTrimmedString60
   requestedDeliveryDate: LocalDate
   distributions: [ScmPurchaseRequisitionDistributionInput!]!
+  supplierItem: NonEmptyTrimmedString300
 }
 
 """
