@@ -1,0 +1,17 @@
+query PpmProjectByProjectTeamMemberEmployeeId(
+  $employeeId: UcEmployeeId!,
+  $roleName: NonEmptyTrimmedString60
+) {
+  ppmProjectByProjectTeamMemberEmployeeId(employeeId: $employeeId, roleName: $roleName) {
+    name
+    projectNumber
+    projectStartDate
+    projectEndDate
+    projectStatus
+    teamMembers {
+      employeeId
+      name
+      roleName
+    }
+  }
+}
