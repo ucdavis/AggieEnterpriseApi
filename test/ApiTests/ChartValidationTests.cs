@@ -10,6 +10,20 @@ using Microsoft.Extensions.Configuration;
 namespace ApiTests;
 public class ChartValidationTests : TestBase
 {
+    [Fact] 
+    async Task PingApiReturnsValue()
+    {
+        var client = GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
+        var result = await client.PingApi.ExecuteAsync();
+        var data = result.ReadData();
+        data.ErpEntity.ShouldNotBeNull("ErpEntity should not be null");
+        data.ErpEntity.Code.ShouldBe("3110", "Entity code should be 3110");
+
+
+    }
+
+
     [Fact]
     public async Task ValidChartString()
     {

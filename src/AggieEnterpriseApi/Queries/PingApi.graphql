@@ -1,0 +1,5 @@
+query PingApi {
+    erpEntity(code: "3110") {
+        code
+    }
+}
