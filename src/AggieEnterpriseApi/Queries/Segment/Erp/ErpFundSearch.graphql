@@ -1,20 +1,22 @@
 query ErpFundSearch($filter: ErpFundFilterInput!, $code: String!) {
-      # pull single project back by number
-      erpFund(code: $code) {
-          id
-          code
-          name
-          eligibleForUse
-          parentCode
-      }
-      # query projects by filter
-      erpFundSearch(filter: $filter) {
-        data {
-          id
-          code
-          name
-          eligibleForUse
-          parentCode
-        }
-      }
+  # pull single project back by number
+  erpFund(code: $code) {
+    id
+    code
+    name
+    fundPurpose
+    eligibleForUse
+    parentCode
+  }
+  # query projects by filter
+  erpFundSearch(filter: $filter) {
+    data {
+      id
+      code
+      name
+      fundPurpose
+      eligibleForUse
+      parentCode
     }
+  }
+}
