@@ -13,5 +13,19 @@ query PpmProjectByProjectTeamMemberEmployeeId(
       name
       roleName
     }
+	awards{
+		name
+		ppmAwardNumber
+		awardStatus 
+		awardTypeName
+		startDate
+		endDate
+		closeDate
+		personnel {
+			roleName
+			name
+			employeeId
+		}
+	}
   }
 }
