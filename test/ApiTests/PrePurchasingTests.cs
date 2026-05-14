@@ -12,37 +12,26 @@ using System.Collections.Generic;
 namespace ApiTests;
 public class PrePurchasingTests : TestBase
 {
-    [Fact]
-    public async Task ConvertKfsToCoa()
-    {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+    //This has been removed from the schema. Only keeping it here for informational purposes.
+    //[Fact]
+    //public async Task ConvertKfsToCoa()
+    //{
+    //    var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
-        var result = await client.KfsConvertAccount.ExecuteAsync("3", "CRU9033", null);
-        var data = result.ReadData();
-        data.KfsConvertAccount.ShouldNotBeNull();
-        data.KfsConvertAccount.MappingFound.ShouldBeTrue();
-        data.KfsConvertAccount.PpmSegments.ShouldBeNull();
-        data.KfsConvertAccount.GlSegments.ShouldNotBeNull();
+    //    var result = await client.KfsConvertAccount.ExecuteAsync("3", "CRU9033", null);
+    //    var data = result.ReadData();
+    //    data.KfsConvertAccount.ShouldNotBeNull();
+    //    data.KfsConvertAccount.MappingFound.ShouldBeTrue();
+    //    data.KfsConvertAccount.PpmSegments.ShouldBeNull();
+    //    data.KfsConvertAccount.GlSegments.ShouldNotBeNull();
 
-        var glSegments = new GlSegments(data.KfsConvertAccount.GlSegments.Entity, data.KfsConvertAccount.GlSegments.Fund, data.KfsConvertAccount.GlSegments.Department, "000000", data.KfsConvertAccount.GlSegments.Purpose ?? "00", data.KfsConvertAccount.GlSegments.Program ?? "000", data.KfsConvertAccount.GlSegments.Project ?? "0000000000", data.KfsConvertAccount.GlSegments.Activity ?? "000000");
-        glSegments.ToSegmentString().ShouldBe("3110-13U02-ADNO006-000000-43-000-0000000000-000000-0000-000000-000000");
+    //    var glSegments = new GlSegments(data.KfsConvertAccount.GlSegments.Entity, data.KfsConvertAccount.GlSegments.Fund, data.KfsConvertAccount.GlSegments.Department, "000000", data.KfsConvertAccount.GlSegments.Purpose ?? "00", data.KfsConvertAccount.GlSegments.Program ?? "000", data.KfsConvertAccount.GlSegments.Project ?? "0000000000", data.KfsConvertAccount.GlSegments.Activity ?? "000000");
+    //    glSegments.ToSegmentString().ShouldBe("3110-13U02-ADNO006-000000-43-000-0000000000-000000-0000-000000-000000");
 
-        var segments2 = new GlSegments(data.KfsConvertAccount.GlSegments).ToSegmentString();
-        segments2.ShouldBe("3110-13U02-ADNO006-000000-43-000-0000000000-000000-0000-000000-000000");
-    }
+    //    var segments2 = new GlSegments(data.KfsConvertAccount.GlSegments).ToSegmentString();
+    //    segments2.ShouldBe("3110-13U02-ADNO006-000000-43-000-0000000000-000000-0000-000000-000000");
+    //}
 
-    [Fact(Skip = "Need to find correct mapping values for this test")]
-    public async Task ConvertKfsToCoaPpm()
-    {
-        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
-
-        var result = await client.KfsConvertAccount.ExecuteAsync("3", "FRMRATE", null);
-        var data = result.ReadData();
-        data.KfsConvertAccount.ShouldNotBeNull();
-        data.KfsConvertAccount.MappingFound.ShouldBeTrue();
-        data.KfsConvertAccount.PpmSegments.ShouldNotBeNull();
-        data.KfsConvertAccount.GlSegments.ShouldBeNull();
-    }
 
     [Fact]
     public async Task SearchLocation1()
@@ -298,13 +287,13 @@ public class PrePurchasingTests : TestBase
             //Justification = "Print Toner for PrintsCharming 38 Mrak Dell eQuote #3000118141264",
         };
 
-        var distributionResult = await client.KfsConvertAccount.ExecuteAsync("3", "CRU9033", null);
-        var distributionData = distributionResult.ReadData();
+        //var distributionResult = await client.KfsConvertAccount.ExecuteAsync("3", "CRU9033", null);
+        //var distributionData = distributionResult.ReadData();
         var segmentString = "";
-        if(distributionData.KfsConvertAccount.GlSegments != null)
-        {
-            segmentString = new GlSegments(distributionData.KfsConvertAccount.GlSegments).ToSegmentString();
-        }
+        //if(distributionData.KfsConvertAccount.GlSegments != null)
+        //{
+        //    segmentString = new GlSegments(distributionData.KfsConvertAccount.GlSegments).ToSegmentString();
+        //}
 
         var Line1 = new ScmPurchaseRequisitionLineInput
         {
@@ -419,13 +408,13 @@ public class PrePurchasingTests : TestBase
             
         };
 
-        var distributionResult = await client.KfsConvertAccount.ExecuteAsync("3", "CRU9033", null);
-        var distributionData = distributionResult.ReadData();
-        var segmentString = "";
-        if (distributionData.KfsConvertAccount.GlSegments != null)
-        {
-            segmentString = new GlSegments(distributionData.KfsConvertAccount.GlSegments).ToSegmentString();
-        }
+        //var distributionResult = await client.KfsConvertAccount.ExecuteAsync("3", "CRU9033", null);
+        //var distributionData = distributionResult.ReadData();
+        var segmentString = ""; //TODO: put in a chart string. KfsConvertAccount is not supported anymore.
+        //if (distributionData.KfsConvertAccount.GlSegments != null)
+        //{
+        //    segmentString = new GlSegments(distributionData.KfsConvertAccount.GlSegments).ToSegmentString();
+        //}
 
         var Line1 = new ScmPurchaseRequisitionLineInput
         {
