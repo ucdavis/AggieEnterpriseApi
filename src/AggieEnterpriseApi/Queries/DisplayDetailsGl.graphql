@@ -51,6 +51,9 @@ query DisplayDetailsGl(
     code
     name
     fundPurpose
+	giftFund
+    endowmentGiftFund
+	eligibleForUse
   }
   erpFinancialDepartment(code: $dept) {
     code

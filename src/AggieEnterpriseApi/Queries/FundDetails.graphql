@@ -1,0 +1,13 @@
+query FundDetails($code: String!) {
+      # pull single project back by number
+      erpFund(code: $code) {
+          id
+          code
+          name
+		  parentCode
+          fundPurpose
+          giftFund
+          endowmentGiftFund
+		  eligibleForUse
+      }
+    }
