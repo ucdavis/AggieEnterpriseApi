@@ -33,15 +33,14 @@ public class FundTests : TestBase
     }
 
     [Fact]
-    public async Task GetFundIncludesFundPurpose()
+    public async Task GetFundDetails()
     {
         const string fundCode = "36327";
         const string expectedFundPurpose = "Scholarships for such worthy students at the College of Agriculture located at Davis California";
 
         var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
 
-        var filter = new ErpFundFilterInput { Code = new StringFilterInput { Eq = fundCode } };
-        var result = await client.ErpFundSearch.ExecuteAsync(filter, fundCode);
+        var result = await client.FundDetails.ExecuteAsync(fundCode);
 
         var data = result.ReadData();
 
@@ -50,5 +49,7 @@ public class FundTests : TestBase
         data.ErpFund.ShouldNotBeNull();
         data.ErpFund.Code.ShouldBe(fundCode);
         data.ErpFund.FundPurpose.ShouldBe(expectedFundPurpose);
+        data.ErpFund.GiftFund.ShouldBeFalse();
+        data.ErpFund.EndowmentGiftFund.ShouldBeTrue();
     }
 }
