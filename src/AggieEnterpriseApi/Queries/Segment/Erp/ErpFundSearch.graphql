@@ -4,7 +4,6 @@ query ErpFundSearch($filter: ErpFundFilterInput!, $code: String!) {
     id
     code
     name
-    fundPurpose
     eligibleForUse
     parentCode
   }
@@ -14,7 +13,6 @@ query ErpFundSearch($filter: ErpFundFilterInput!, $code: String!) {
       id
       code
       name
-      fundPurpose
       eligibleForUse
       parentCode
     }
