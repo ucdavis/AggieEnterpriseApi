@@ -20,4 +20,17 @@ public class PpmTeamTests : TestBase
         data.PpmProjectByProjectTeamMemberEmployeeId.ShouldNotBeEmpty();
 
     }
+
+    [Fact]
+    public async Task? GetProjectsForPerson2()
+    {
+        var client = AggieEnterpriseApi.GraphQlClient.Get(GraphQlUrl, TokenEndpoint, ConsumerKey, ConsumerSecret, $"{ScopeApp}-{ScopeEnv}");
+
+        var result = await client.PpmProjectAndAwardTeamByEmpId.ExecuteAsync("10727488", null);
+
+        var data = result.ReadData();
+
+        data.PpmProjectByProjectTeamMemberEmployeeId.ShouldNotBeEmpty();
+
+    }
 }
