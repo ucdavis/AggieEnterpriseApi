@@ -9,6 +9,7 @@ query PpmProjectTeamMembers(
       name
       roleName
       person {
+	    employeeId
         email
         firstName
         lastName
