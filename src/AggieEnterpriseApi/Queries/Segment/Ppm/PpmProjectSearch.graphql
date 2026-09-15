@@ -5,6 +5,7 @@ query PpmProjectSearch($filter: PpmProjectFilterInput!, $projectNumber: String!)
           projectNumber
           name
           eligibleForUse
+		  glPostingDepartmentCode
       }
       # query projects by filter
       ppmProjectSearch(filter: $filter) {
@@ -13,6 +14,7 @@ query PpmProjectSearch($filter: PpmProjectFilterInput!, $projectNumber: String!)
           projectNumber
           name
           eligibleForUse
+		  glPostingDepartmentCode
         }
       }
     }
