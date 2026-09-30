@@ -7,7 +7,7 @@ namespace AggieEnterpriseApi;
 
 public class GraphQlClient
 {
-    private static readonly ConcurrentDictionary<string, Lazy<IAggieEnterpriseClient>> _lazyClients = new();
+    private static readonly ConcurrentDictionary<(string Connection, bool QueryRetries), Lazy<IAggieEnterpriseClient>> _lazyClients = new();
 
     /// <summary>
     /// Returns an IAggieEnterpriseClient that uses consumer key and secret to generate new access tokens as needed
@@ -20,8 +20,13 @@ public class GraphQlClient
     /// <returns></returns>
     public static IAggieEnterpriseClient Get(string queryEndpoint, string tokenEndpoint, string key, string secret,
         string scope = "default")
+        => Get(queryEndpoint, tokenEndpoint, key, secret, scope, enableQueryRetries: false);
+
+    /// <summary>Optionally retry read-only queries on HTTP 502, 503, or 504, at most twice.</summary>
+    public static IAggieEnterpriseClient Get(string queryEndpoint, string tokenEndpoint, string key, string secret,
+        string scope, bool enableQueryRetries)
     {
-        var lazyClient = _lazyClients.GetOrAdd($"{queryEndpoint}_{tokenEndpoint}_{key}_{secret}_{scope}", clientKey =>
+        var lazyClient = _lazyClients.GetOrAdd(($"{queryEndpoint}_{tokenEndpoint}_{key}_{secret}_{scope}", enableQueryRetries), clientKey =>
         {
             return new Lazy<IAggieEnterpriseClient>(() =>
             {
@@ -53,6 +58,8 @@ public class GraphQlClient
                     {
                         // add in our delegating handler to refresh the token if needed
                         builder.AddHttpMessageHandler<AuthenticationDelegatingHandler>();
+                        if (enableQueryRetries)
+                            builder.AddHttpMessageHandler(() => new QueryRetryHandler());
                     });
 
                 IServiceProvider services = serviceCollection.BuildServiceProvider();
@@ -64,10 +71,12 @@ public class GraphQlClient
     }
 
     public static IAggieEnterpriseClient Get(string url, string token)
-    {
-        var clientKey = $"{url}_{token}";
+        => Get(url, token, enableQueryRetries: false);
 
-        var lazyClient = _lazyClients.GetOrAdd($"{url}_{token}", clientKey =>
+    /// <summary>Optionally retry read-only queries on HTTP 502, 503, or 504, at most twice.</summary>
+    public static IAggieEnterpriseClient Get(string url, string token, bool enableQueryRetries)
+    {
+        var lazyClient = _lazyClients.GetOrAdd(($"{url}_{token}", enableQueryRetries), clientKey =>
         {
             return new Lazy<IAggieEnterpriseClient>(() =>
             {
@@ -87,6 +96,10 @@ public class GraphQlClient
                     {
                         client.BaseAddress = graphQlUri;
                         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                    }, builder =>
+                    {
+                        if (enableQueryRetries)
+                            builder.AddHttpMessageHandler(() => new QueryRetryHandler());
                     });
 
                 IServiceProvider services = serviceCollection.BuildServiceProvider();
