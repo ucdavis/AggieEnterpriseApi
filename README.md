@@ -17,3 +17,17 @@ If you need to manually replace the schema, put it in schema.graphql
 ## Query changes
 
 Queries (*.graphql) are compiled and injected on build (via roslyn).  So changes to queries don't require any special handling.
+
+## Opt-in query retries
+
+Retries are disabled by default. Enable them with:
+
+```csharp
+var client = GraphQlClient.Get(queryEndpoint, tokenEndpoint, key, secret, scope,
+    enableQueryRetries: true);
+```
+
+The bearer-token overload also accepts `enableQueryRetries: true`. This retries
+single read-only queries on HTTP 502/503/504 at most twice, with exponential
+backoff and jitter. Mutations and ambiguous requests receive no transient retries.
+Cancellation and the existing HTTP timeout still apply.
