@@ -16,7 +16,6 @@ query PpmProjectByProjectTeamMemberEmployeeId(
 	awards{
 		name
 		ppmAwardNumber
-		awardStatus 
 		awardTypeName
 		startDate
 		endDate
