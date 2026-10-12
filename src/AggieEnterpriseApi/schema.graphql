@@ -297,22 +297,26 @@ type ArCustomerAccountSiteSearchResults {
 """
 Account class for this accounting distribution. Valid values are:
 
-* REV - Revenue
-* FREIGHT - Freight
-* TAX - Tax
-* REC - Receivables
-* CHARGES -  Late Charges
-* UNBILL - Unbilled Receivables
-* UNEARN -  Unearned Revenue
-
-When the line type is LINE, the value for this column should be REV, UNBILL, UNEARN, or REC."
+* Revenue
+* Freight
+* Tax
+* Receivables
+# * CHARGES -  Late Charges
+# * UNBILL - Unbilled Receivables
+# * UNEARN -  Unearned Revenue
 """
 enum ArDistributionAccountClass {
   """Revenue"""
-  REV
+  Revenue
 
   """Receivable"""
-  REC
+  Receivable
+
+  """Freight"""
+  Freight
+
+  """Tax"""
+  Tax
 }
 
 """
@@ -4353,8 +4357,29 @@ The Award Number identifies the number assigned to an award containing funding a
 * Award Number values will be Oracle-generated
 """
 enum PpmAwardStatus {
+  """Award was canceled and can not be used for transactions."""
+  CANCELED
+
   """Award is active and can be used for transactions."""
   ACTIVE
+
+  """Award has been closed and can not be used for transactions."""
+  CLOSED
+
+  """Award has not been finalized and is still in draft status."""
+  DRAFT
+
+  """Award funding is on hold."""
+  HOLD
+
+  """Award is pending signature and cannot be edited."""
+  PENDING_ACCEPTANCE
+
+  """Award is pending internal approval and cannot be edited."""
+  PENDING_APPROVAL
+
+  """Award is sent for signature and cannot be edited."""
+  SENT_FOR_SIGNATURE
 
   """Award has ended but has not been closed for transactions."""
   EXPIRED
@@ -4363,18 +4388,6 @@ enum PpmAwardStatus {
   Award is being amended but might still be able to be used for transactions.
   """
   UNDER_AMENDMENT
-
-  """Award funding is on hold."""
-  HOLD
-
-  """Award was canceled and can not be used for transactions."""
-  CANCELED
-
-  """Award has not been finalized and is still in draft status."""
-  DRAFT
-
-  """Award has been closed and can not be used for transactions."""
-  CLOSED
 }
 
 """CFDA"""
@@ -7231,7 +7244,7 @@ type ScmSupplierSite {
   supplierSiteId: Long!
 
   """Code used to identify the site on the UI and in interfaces."""
-  supplierSiteCode: NonEmptyTrimmedString15!
+  supplierSiteCode: NonEmptyTrimmedString240!
 
   """Internal location code containing address information."""
   locationId: Long
